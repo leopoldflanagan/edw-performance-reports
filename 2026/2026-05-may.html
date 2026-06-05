@@ -1,50 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EDW · May 2026 Performance Report</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
 
   :root{
-    --navy:#16233f; --navy2:#1f3155; --blue:#2e6fd6; --blue-soft:#5b8de8;
-    --teal:#2fa8a0; --green:#26a85b; --amber:#e3a008; --red:#dc4a55;
-    --ink:#1a2230; --muted:#6a7689; --line:#e3e9f2; --bg:#f4f7fc;
-    --card:#ffffff; --shadow:0 1px 3px rgba(20,35,63,.06),0 6px 24px rgba(20,35,63,.06);
-    --healthy:#26a85b; --warning:#e3a008; --risk:#dc4a55;
+    --wf-blue:#007CBC; --wf-blue-d:#005f91; --wf-blue-l:#65B2D5; --wf-blue-bg:#e5f2f8;
+    --wf-green:#4FA800; --wf-ink:#32373c; --wf-muted:#626c84; --wf-muted2:#69727d;
+    --line:#e2e8f0; --bg:#f5f8fb; --card:#ffffff;
+    --shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);
+    --healthy:#4FA800; --warning:#ED7D31; --risk:#d64550;
+    --healthy-bg:#eef7e3; --warning-bg:#fdeee3; --risk-bg:#fbeced;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Archivo',sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55;-webkit-font-smoothing:antialiased}
   .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  a{color:var(--wf-blue);text-decoration:none}
+  a:hover{text-decoration:underline}
 
-  /* Header */
-  header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;padding:36px 0 30px;position:relative;overflow:hidden}
-  header::after{content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(91,141,232,.25),transparent 70%)}
-  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue-soft);font-weight:700}
-  header h1{font-family:'Fraunces',serif;font-weight:600;font-size:42px;line-height:1.05;margin:6px 0 4px}
-  header .sub{color:#aebfdd;font-size:15px;max-width:640px}
-  .statuspill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;background:rgba(227,160,8,.16);border:1px solid rgba(227,160,8,.45);color:#ffd87a;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
-  .statuspill .dot{width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(227,160,8,.25)}
+  header{background:linear-gradient(135deg,#005f91 0%,#007CBC 100%);color:#fff;padding:38px 0 32px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;right:-90px;top:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+  header h1{font-weight:800;font-size:40px;line-height:1.05;margin:8px 0 6px;letter-spacing:-.02em}
+  header .sub{color:#cfe7f3;font-size:15px;max-width:660px}
+  .statuspill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;background:rgba(237,125,49,.22);border:1px solid rgba(237,125,49,.55);color:#ffd9bf;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
+  .statuspill .dot{width:10px;height:10px;border-radius:50%;background:var(--warning);box-shadow:0 0 0 4px rgba(237,125,49,.28)}
 
-  /* Tabs */
-  .tabs{position:sticky;top:0;z-index:30;background:rgba(244,247,252,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-  .tabs .wrap{display:flex;gap:6px}
-  .tab{appearance:none;background:none;border:none;font-family:'Archivo';font-weight:600;font-size:15px;color:var(--muted);padding:18px 22px;cursor:pointer;position:relative;transition:color .2s}
-  .tab:hover{color:var(--ink)}
-  .tab.active{color:var(--navy)}
-  .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;background:var(--blue);border-radius:3px 3px 0 0}
+  .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tabs .wrap{display:flex;gap:4px}
+  .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;color:var(--wf-muted);padding:17px 22px;cursor:pointer;position:relative;transition:color .2s}
+  .tab:hover{color:var(--wf-ink)}
+  .tab.active{color:var(--wf-blue)}
+  .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;background:var(--wf-blue);border-radius:3px 3px 0 0}
 
   main{padding:34px 0 70px}
   .panel{display:none;animation:fade .4s ease}
   .panel.active{display:block}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-  .sectit{font-family:'Fraunces',serif;font-weight:600;font-size:24px;color:var(--navy);margin:6px 0 2px}
-  .secsub{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .sectit{font-weight:800;font-size:24px;color:var(--wf-blue-d);margin:6px 0 2px;letter-spacing:-.01em}
+  .secsub{color:var(--wf-muted);font-size:14px;margin-bottom:20px}
 
-  /* Gadget grid */
   .grid{display:grid;gap:18px}
   .g3{grid-template-columns:repeat(3,1fr)}
   .g2{grid-template-columns:repeat(2,1fr)}
@@ -52,101 +52,146 @@
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);position:relative}
   .card .ghead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-  .card .gname{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .g3>.card{display:flex;flex-direction:column}
+  .card .gname{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+  .cardfill{flex:1}
+  .docsep{border:none;border-top:1px dashed var(--line);margin:14px 0 0}
   .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
   .badge .d{width:7px;height:7px;border-radius:50%}
-  .b-green{background:rgba(38,168,91,.12);color:#1d7d44}.b-green .d{background:var(--green)}
-  .b-amber{background:rgba(227,160,8,.14);color:#a9760a}.b-amber .d{background:var(--amber)}
-  .b-red{background:rgba(220,74,85,.12);color:#b3303b}.b-red .d{background:var(--red)}
+  .b-green{background:var(--healthy-bg);color:#3a7d00}.b-green .d{background:var(--healthy)}
+  .b-amber{background:var(--warning-bg);color:#a9760a}.b-amber .d{background:var(--warning)}
+  .b-red{background:var(--risk-bg);color:#b3303b}.b-red .d{background:var(--risk)}
 
-  .bignum{font-family:'Fraunces',serif;font-weight:600;font-size:40px;line-height:1;color:var(--navy)}
-  .bignum .unit{font-size:16px;color:var(--muted);font-family:'Archivo';font-weight:500;margin-left:4px}
-  .subline{font-size:13px;color:var(--muted);margin-top:6px}
+  .bignum{font-weight:800;font-size:40px;line-height:1;color:var(--wf-blue-d);letter-spacing:-.02em}
+  .bignum .unit{font-size:15px;color:var(--wf-muted);font-weight:600;margin-left:4px}
+  .secondary{font-size:13px;color:var(--wf-muted);margin-top:7px}
+  .secondary b{color:var(--wf-ink)}
+  .targetline{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;background:#f0f4f8;border:1px solid var(--line);padding:4px 10px;border-radius:7px;color:var(--wf-muted2)}
+  .targetline .tl{font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--wf-blue);font-size:10px}
+
   .deltarow{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
-  .delta{font-size:13px}.delta .lbl{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px}
-  .up{color:var(--green);font-weight:700}.down{color:var(--red);font-weight:700}.flat{color:var(--muted);font-weight:700}
-  .pos{color:var(--green);font-weight:700}.neg{color:var(--red);font-weight:700}
+  .delta{font-size:13px}.delta .lbl{color:var(--wf-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px;font-weight:700}
+  .delta.primary .lbl{color:var(--wf-blue)}
+  .pos{color:var(--healthy);font-weight:700}.neg{color:var(--risk);font-weight:700}.flat{color:var(--wf-muted);font-weight:700}
+
+  .infopanel{margin-top:14px;border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.45}
+  .infopanel.ip-green{background:var(--healthy-bg);border-left:3px solid var(--healthy);color:#36631a}
+  .infopanel.ip-amber{background:var(--warning-bg);border-left:3px solid var(--warning);color:#8a6200}
+  .infopanel.ip-red{background:var(--risk-bg);border-left:3px solid var(--risk);color:#9c2a34}
+  .infopanel b{font-weight:700}
+  .ip-link{font-weight:700;color:inherit;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+  .ip-link:hover{opacity:.75}
+
+  .doclink{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:12px;font-weight:600;color:var(--wf-blue)}
+  .doclink::before{content:"📄";font-size:12px}
+  .bignum.num-green{color:var(--healthy)}
+  .bignum.num-amber{color:var(--warning)}
+  .bignum.num-red{color:var(--risk)}
+  .num-green .unit,.num-amber .unit,.num-red .unit{color:inherit;opacity:.85}
 
   .chartbox{position:relative;height:200px;margin-top:6px}
-  .chartbox.tall{height:230px}
+  .chartbox.tall{height:240px}
+  .centerbox{display:flex;flex-direction:column;align-items:center;justify-content:center}
 
-  /* WIP rows */
+  .mixcard{display:flex;flex-direction:column}
+  .mixbody{flex:1;display:flex;align-items:center;justify-content:center;gap:30px;padding:10px 0;flex-wrap:wrap}
+  .donutwrap{position:relative;width:200px;height:200px;flex-shrink:0}
+  .donutctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+  .dc-num{font-size:42px;font-weight:800;color:var(--risk);line-height:1}
+  .dc-lbl{font-size:11px;color:var(--wf-muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-top:2px;text-align:center;line-height:1.3}
+  .mixlegend{display:flex;flex-direction:column;gap:14px}
+  .ml-row{display:flex;align-items:center;gap:10px;font-size:14px}
+  .ml-sw{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+  .ml-nm{font-weight:600;color:var(--wf-ink);min-width:78px}
+  .ml-val{color:var(--wf-muted);font-weight:600}
+
+  .wipwrap{width:100%;margin:14px 0 0}
+  .wipcard{display:flex;flex-direction:column}
+  .wiptotal{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#f3f9fc,#e8f3f9);border:1px solid var(--wf-blue-bg);border-radius:12px;padding:14px 18px;margin-bottom:4px}
+  .wt-num{font-size:38px;font-weight:800;color:var(--wf-blue-d);line-height:1}
+  .wt-den{font-size:18px;color:var(--wf-muted);font-weight:600;margin-left:2px}
+  .wt-lbl{font-size:12.5px;color:var(--wf-muted);line-height:1.4}
+  .wt-lbl b{color:var(--healthy)}
   .wiprow{display:flex;align-items:center;gap:10px;margin:9px 0}
-  .wiprow .nm{width:120px;font-size:13px;font-weight:600;color:var(--ink)}
+  .wiprow .nm{width:120px;font-size:13px;font-weight:600;color:var(--wf-ink)}
   .wipbar{flex:1;height:22px;background:#eef2f8;border-radius:6px;position:relative;overflow:hidden}
-  .wipfill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--blue-soft));display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-size:11px;font-weight:700}
-  .wiplim{width:58px;text-align:right;font-size:12px;color:var(--muted);font-weight:600}
+  .wipfill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--wf-blue),var(--wf-blue-l));display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-size:11px;font-weight:700}
+  .wiplim{width:50px;text-align:right;font-size:12px;color:var(--wf-muted);font-weight:600}
 
-  .note{background:#f2f6fd;border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#33425c;margin-top:16px}
-  .note b{color:var(--navy)}
+  .note{background:var(--wf-blue-bg);border-left:3px solid var(--wf-blue);border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#244b5e;margin-top:16px}
+  .note b{color:var(--wf-blue-d)}
 
-  /* Exec table */
   table.exec{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
-  table.exec th{background:var(--navy);color:#fff;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:12px 14px;text-align:center}
+  table.exec th{background:var(--wf-blue-d);color:#fff;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:12px 14px;text-align:center}
   table.exec th:first-child{text-align:left}
   table.exec td{padding:13px 14px;text-align:center;font-size:14px;border-bottom:1px solid var(--line)}
-  table.exec td:first-child{text-align:left;font-weight:700;color:var(--navy)}
+  table.exec td:first-child{text-align:left;font-weight:700;color:var(--wf-blue-d)}
   table.exec tr:last-child td{border-bottom:none}
-  table.exec tr:nth-child(even) td{background:#fafcff}
+  table.exec tr:nth-child(even) td{background:#f8fbfd}
   .st-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
 
-  /* comparison metric cards */
   .cmpcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
-  .cmpcard h3{font-family:'Fraunces',serif;font-size:20px;color:var(--navy);font-weight:600;display:flex;align-items:center;gap:10px}
+  .cmpcard h3{font-size:20px;color:var(--wf-blue-d);font-weight:700;display:flex;align-items:center;gap:10px}
   .cmphead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:8px}
   .cmpgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;margin-top:8px}
   @media(max-width:860px){.cmpgrid{grid-template-columns:1fr}}
   .readout{font-size:14px;color:#33425c}
   .readout .line{margin:10px 0;padding-left:14px;border-left:3px solid var(--line)}
-  .readout .line b{color:var(--navy)}
-  .vs-tag{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+  .readout .line b{color:var(--wf-blue-d)}
+  .vs-tag{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--wf-muted);font-weight:700}
 
-  /* Unplanned breakdown */
   .splitwrap{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
   @media(max-width:860px){.splitwrap{grid-template-columns:1fr}}
   .originbar{margin:10px 0}
   .originbar .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
-  .originbar .top .nm{font-weight:600;color:var(--ink)}
-  .originbar .top .pct{font-weight:700;color:var(--navy)}
+  .originbar .top .nm{font-weight:600;color:var(--wf-ink)}
+  .originbar .top .pct{font-weight:700;color:var(--wf-blue-d)}
   .obtrack{height:14px;background:#eef2f8;border-radius:7px;overflow:hidden}
   .obfill{height:100%;border-radius:7px}
 
   .ticket{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:flex-start}
   .ticket:last-child{border:none}
-  .tkey{font-weight:700;color:var(--blue);min-width:78px}
+  .tkey{font-weight:700;color:var(--wf-blue);min-width:78px}
   .tdesc{flex:1;color:#33425c}
   .ttag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;align-self:center}
-  .tg-rec{background:rgba(227,160,8,.14);color:#a9760a}
-  .tg-pred{background:rgba(46,111,214,.12);color:#2358ad}
-  .tg-real{background:rgba(220,74,85,.12);color:#b3303b}
+  .tg-rec{background:var(--warning-bg);color:#a9760a}
+  .tg-pred{background:var(--wf-blue-bg);color:#1d6a93}
+  .tg-real{background:var(--risk-bg);color:#b3303b}
 
-  /* actionables */
-  .insightbox{background:linear-gradient(135deg,#1f3155,#2a4470);color:#fff;border-radius:18px;padding:26px 28px;margin:8px 0 26px;position:relative;overflow:hidden}
-  .insightbox::after{content:"";position:absolute;right:-40px;bottom:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(91,141,232,.3),transparent 70%)}
-  .insightbox .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-soft);font-weight:700}
-  .insightbox h2{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin:8px 0 10px;line-height:1.2}
-  .insightbox p{color:#cdd8ee;font-size:15px;max-width:760px}
-  .insightbox .stat{display:inline-block;font-family:'Fraunces',serif;font-size:22px;color:#fff;font-weight:700;border-bottom:2px solid var(--amber)}
+  .insightbox{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;border-radius:18px;padding:26px 28px;margin:8px 0 26px;position:relative;overflow:hidden}
+  .insightbox::after{content:"";position:absolute;right:-40px;bottom:-60px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+  .insightbox .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+  .insightbox h2{font-weight:800;font-size:25px;margin:8px 0 10px;line-height:1.2;letter-spacing:-.01em}
+  .insightbox p{color:#d4ebf5;font-size:15px;max-width:780px}
+  .insightbox .stat{display:inline-block;font-weight:800;color:#fff;border-bottom:2px solid var(--wf-green)}
 
-  .act{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;display:flex}
+  .act{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;display:flex}
   .act .pri{width:8px;flex-shrink:0}
   .act .inner{padding:18px 20px;flex:1}
   .act .atop{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
-  .act h4{font-size:16px;color:var(--navy);font-weight:700}
+  .act h4{font-size:16px;color:var(--wf-blue-d);font-weight:700}
   .act .pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:6px}
   .act p{font-size:14px;color:#33425c}
-  .act .owner{font-size:12px;color:var(--muted);margin-top:8px}
-  .act .owner b{color:var(--navy)}
-  .p-red{background:var(--red)}.p-amber{background:var(--amber)}.p-blue{background:var(--blue)}.p-green{background:var(--green)}.p-grey{background:#9aa6b8}
-  .pill-red{background:rgba(220,74,85,.12);color:#b3303b}.pill-amber{background:rgba(227,160,8,.14);color:#a9760a}.pill-blue{background:rgba(46,111,214,.12);color:#2358ad}.pill-green{background:rgba(38,168,91,.12);color:#1d7d44}.pill-grey{background:#eef1f6;color:#5a6678}
+  .act .owner{font-size:12px;color:var(--wf-muted);margin-top:8px}
+  .act .owner b{color:var(--wf-blue-d)}
+  .p-red{background:var(--risk)}.p-amber{background:var(--warning)}.p-blue{background:var(--wf-blue)}.p-green{background:var(--healthy)}.p-grey{background:#9aa6b8}
+  .pill-red{background:var(--risk-bg);color:#b3303b}.pill-amber{background:var(--warning-bg);color:#a9760a}.pill-blue{background:var(--wf-blue-bg);color:#1d6a93}.pill-green{background:var(--healthy-bg);color:#3a7d00}.pill-grey{background:#eef1f6;color:#5a6678}
 
   .retro{background:#fff;border:2px dashed var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
-  .retro h4{font-family:'Fraunces',serif;color:var(--navy);font-size:18px;margin-bottom:10px}
+  .retro h4{color:var(--wf-blue-d);font-size:18px;margin-bottom:10px;font-weight:700}
   .retro li{margin:8px 0 8px 18px;font-size:14px;color:#33425c}
-  .retro li b{color:var(--navy)}
+  .retro li b{color:var(--wf-blue-d)}
 
-  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:12px;text-align:center}
-  .legend-inline{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px}
+  .reslinks{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-top:24px}
+  .reslinks .rt{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:12px}
+  .reslinks .rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(max-width:860px){.reslinks .rgrid{grid-template-columns:1fr}}
+  .rlink{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--wf-blue-d);transition:.15s;background:#fbfdfe}
+  .rlink:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg);text-decoration:none}
+  .rlink .ico{width:30px;height:30px;border-radius:8px;background:var(--wf-blue-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);font-size:12px;text-align:center}
+  .legend-inline{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--wf-muted);margin-top:10px;justify-content:center}
   .legend-inline span{display:inline-flex;align-items:center;gap:6px}
   .legend-inline i{width:10px;height:10px;border-radius:3px;display:inline-block}
 </style>
@@ -157,7 +202,7 @@
   <div class="wrap">
     <div class="eyebrow">Enterprise Data Warehouse · Flow Metrics</div>
     <h1>May 2026 Performance Report</h1>
-    <div class="sub">Monthly snapshot of delivery flow health, compared against April 2026 and the recalculated Q1 2026 baseline.</div>
+    <div class="sub">Monthly snapshot of delivery flow health, compared against April 2026 and the Q1 2026 baseline.</div>
     <div class="statuspill"><span class="dot"></span> Overall Flow Health: WARNING — flow healthy, planning predictability at risk</div>
   </div>
 </header>
@@ -165,8 +210,8 @@
 <div class="tabs">
   <div class="wrap">
     <button class="tab active" data-tab="dash">Dashboard · May</button>
-    <button class="tab" data-tab="cmp">Comparativas</button>
-    <button class="tab" data-tab="act">Accionables &amp; Retro</button>
+    <button class="tab" data-tab="cmp">Comparatives</button>
+    <button class="tab" data-tab="act">Observations &amp; Retro</button>
   </div>
 </div>
 
@@ -176,248 +221,251 @@
 <!-- ============ TAB 1: DASHBOARD ============ -->
 <section class="panel active" id="dash">
   <div class="sectit">Dashboard — May 2026</div>
-  <div class="secsub">Versión mejorada de los gadgets del dashboard de Jira, sin las limitaciones de visualización de la herramienta.</div>
+  <div class="secsub">Enhanced version of the Jira dashboard gadgets, without the tool's visualization limits.</div>
 
   <div class="grid g3">
     <!-- Cycle Time -->
     <div class="card">
       <div class="ghead"><span class="gname">Cycle Time</span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="bignum">7.16<span class="unit">d avg</span></div>
-      <div class="subline">Median 4.83d · 35 issues · Max 38.96d</div>
+      <div class="bignum num-green">4.83<span class="unit">d median</span></div>
+      <div class="secondary">Average <b>7.16d</b> · 35 issues · Max 38.96d</div>
+      <div class="targetline"><span class="tl">Target</span> ≤6d median · ≤9d avg</div>
       <div class="deltarow">
-        <div class="delta"><span class="lbl">vs April</span><span class="up">+21.8%</span> avg</div>
-        <div class="delta"><span class="lbl">vs Baseline</span><span class="pos">−8.6%</span> avg</div>
+        <div class="delta primary"><span class="lbl">vs Baseline</span><span class="pos">−23.2%</span> median</div>
+        <div class="delta"><span class="lbl">vs April</span><span class="neg">+23.2%</span> median</div>
       </div>
-      <div class="note" style="margin-top:14px">Both avg &amp; median below target (≤9d / ≤6d). Slower than April but April was unusually fast.</div>
+      <div class="infopanel ip-green">Median <b>4.83d</b> well below target. Slower than April, but April was an unusually fast month — both stay within target.</div>
+      <div class="cardfill"></div>
+      <hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/x/RYCQtQ" target="_blank">Cycle Time — Team Guide</a>
     </div>
 
     <!-- Throughput -->
     <div class="card">
-      <div class="ghead"><span class="gname">Throughput</span><span class="badge b-green"><span class="d"></span>Stable</span></div>
-      <div class="bignum">39<span class="unit">items</span></div>
-      <div class="subline">30 Story · 8 Urgent Task · 1 Bug</div>
+      <div class="ghead"><span class="gname">Throughput</span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+      <div class="bignum num-green">39<span class="unit">items · month total</span></div>
+      <div class="secondary">30 Story · 8 Urgent Task · 1 Bug</div>
+      <div class="targetline"><span class="tl">Target</span> 42/mo median · range 34–50</div>
       <div class="deltarow">
-        <div class="delta"><span class="lbl">vs April (36)</span><span class="up">+8.3%</span></div>
-        <div class="delta"><span class="lbl">vs Q1 median (42)</span><span class="neg">−7.1%</span></div>
+        <div class="delta primary"><span class="lbl">vs Baseline (42)</span><span class="neg">−7.1%</span></div>
+        <div class="delta"><span class="lbl">vs April (36)</span><span class="pos">+8.3%</span></div>
       </div>
-      <div class="note" style="margin-top:14px">Within healthy range (34–50). −4.9% vs Q1 average (41.3).</div>
+      <div class="infopanel ip-green">Within the healthy range (34–50). <b>−5.6%</b> vs Q1 average of 41.3.</div>
+      <div class="cardfill"></div>
+      <hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3056467970" target="_blank">Throughput — Team Guide</a>
     </div>
 
     <!-- Unplanned -->
     <div class="card">
       <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge b-red"><span class="d"></span>Risk</span></div>
-      <div class="bignum" style="color:var(--red)">17.95<span class="unit" style="color:var(--red)">%</span></div>
-      <div class="subline">7 of 39 items labeled Unplanned</div>
+      <div class="bignum num-red">17.95<span class="unit">%</span></div>
+      <div class="secondary">7 of 39 items labeled Unplanned</div>
+      <div class="targetline"><span class="tl">Target</span> ≤5% · Warning 5–10% · Risk &gt;10%</div>
       <div class="deltarow">
-        <div class="delta"><span class="lbl">vs April (2.8%)</span><span class="neg">+15.2 pp</span></div>
-        <div class="delta"><span class="lbl">vs Q1 (4.9%)</span><span class="neg">+13.0 pp</span></div>
+        <div class="delta primary"><span class="lbl">vs Baseline (4.9%)</span><span class="neg">+13.0 pp</span></div>
+        <div class="delta"><span class="lbl">vs April (2.8%)</span><span class="neg">+15.1 pp</span></div>
       </div>
-      <div class="note" style="margin-top:14px;border-color:var(--red);background:#fdf2f3">First month above the 10% Risk threshold. See breakdown in Accionables.</div>
+      <div class="infopanel ip-red">First month above the <b>10% Risk threshold</b>. <a href="#" class="ip-link" data-goto="act">See origin breakdown in Observations →</a></div>
+      <div class="cardfill"></div>
+      <hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a>
     </div>
   </div>
 
   <div class="grid g2" style="margin-top:18px">
-    <!-- Donut: real planned vs unplanned -->
-    <div class="card">
-      <div class="ghead"><span class="gname">Work Mix — May</span><span class="badge b-red"><span class="d"></span>Risk</span></div>
-      <div class="chartbox tall"><canvas id="donut"></canvas></div>
-      <div class="legend-inline" style="justify-content:center">
-        <span><i style="background:#2e6fd6"></i>Planned · 32 (82.05%)</span>
-        <span><i style="background:#dc4a55"></i>Unplanned · 7 (17.95%)</span>
+    <!-- Donut -->
+    <div class="card mixcard">
+      <div class="ghead" style="width:100%"><span class="gname">Work Mix — May</span><span class="badge b-red"><span class="d"></span>Risk</span></div>
+      <div class="mixbody">
+        <div class="donutwrap"><canvas id="donut"></canvas>
+          <div class="donutctr"><div class="dc-num">7</div><div class="dc-lbl">of 39<br>unplanned</div></div>
+        </div>
+        <div class="mixlegend">
+          <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Planned</span><span class="ml-val">32 · 82.05%</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:#d64550"></span><span class="ml-nm">Unplanned</span><span class="ml-val">7 · 17.95%</span></div>
+        </div>
       </div>
-      <div class="note">Jira's pie can't render the "no-label" group, so it showed only the Unplanned slice. This chart computes Planned = Total − Unplanned, giving the real split.</div>
+      <div class="infopanel ip-red">Jira's pie can't render the "no-label" group, so it showed only the Unplanned slice. This computes Planned = Total − Unplanned for the real split.</div>
+      <div class="cardfill"></div>
+      <hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a>
     </div>
 
     <!-- WIP -->
-    <div class="card">
-      <div class="ghead"><span class="gname">Work In Progress · live snapshot</span><span class="badge b-green"><span class="d"></span>Within limits</span></div>
-      <div style="margin-top:8px">
+    <div class="card wipcard">
+      <div class="ghead"><span class="gname">Work In Progress · live snapshot</span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+      <div class="wiptotal">
+        <div class="wt-num">13<span class="wt-den">/ 18</span></div>
+        <div class="wt-lbl">total items in progress<br><b>72% of limit</b> — comfortable headroom</div>
+      </div>
+      <div class="wipwrap">
         <div class="wiprow"><span class="nm">In Development</span><div class="wipbar"><div class="wipfill" style="width:83%">10</div></div><span class="wiplim">/ ≤12</span></div>
         <div class="wiprow"><span class="nm">Waiting Review</span><div class="wipbar"><div class="wipfill" style="width:50%">3</div></div><span class="wiplim">/ ≤6</span></div>
-        <div class="wiprow"><span class="nm">Total</span><div class="wipbar"><div class="wipfill" style="width:72%;background:linear-gradient(90deg,#16233f,#2e6fd6)">13</div></div><span class="wiplim">/ ≤18</span></div>
+        <div class="wiprow"><span class="nm">Total</span><div class="wipbar"><div class="wipfill" style="width:72%;background:linear-gradient(90deg,#005f91,#007CBC)">13</div></div><span class="wiplim">/ ≤18</span></div>
       </div>
-      <div class="note"><b>Policy updated in May</b> for team growth (4→6 devs). Per-dev reference unchanged (2 In Dev + 1 Waiting Review). Limits raised: 8→12 / 4→6 / 12→18.</div>
+      <div class="infopanel ip-green"><b>Policy updated in May</b> for team growth (4→6 devs). Per-dev reference unchanged (2 In Dev + 1 Waiting Review). Limits raised: 8→12 / 4→6 / 12→18.</div>
+      <div class="cardfill"></div>
+      <hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/pages/resumedraft.action?draftId=3023470624" target="_blank">WIP — Usage &amp; Reporting Guide</a>
     </div>
   </div>
 
   <div style="margin-top:26px"></div>
   <div class="sectit" style="font-size:20px">Executive Summary</div>
-  <div class="secsub">Las cuatro métricas, lado a lado.</div>
+  <div class="secsub">The key metrics, side by side.</div>
   <table class="exec">
-    <thead><tr><th>Metric</th><th>May</th><th>April</th><th>Q1 Baseline</th><th>vs April</th><th>vs Baseline</th><th>Status</th></tr></thead>
+    <thead><tr><th>Metric</th><th>May</th><th>April</th><th>Q1 Baseline</th><th>vs Baseline</th><th>vs April</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Cycle Time (avg)</td><td>7.16d</td><td>5.88d</td><td>7.83d</td><td class="neg">+21.8%</td><td class="pos">−8.6%</td><td><span class="st-dot" style="background:var(--green)"></span></td></tr>
-      <tr><td>Cycle Time (median)</td><td>4.83d</td><td>3.92d</td><td>6.29d</td><td class="neg">+23.2%</td><td class="pos">−23.2%</td><td><span class="st-dot" style="background:var(--green)"></span></td></tr>
-      <tr><td>Throughput</td><td>39</td><td>36</td><td>42 (med)</td><td class="pos">+8.3%</td><td class="neg">−7.1%</td><td><span class="st-dot" style="background:var(--green)"></span></td></tr>
-      <tr><td>Unplanned work</td><td>17.95%</td><td>2.8%</td><td>4.9%</td><td class="neg">+15.2 pp</td><td class="neg">+13.0 pp</td><td><span class="st-dot" style="background:var(--red)"></span></td></tr>
-      <tr><td>WIP</td><td>In limits</td><td>In limits</td><td>In limits</td><td class="flat">—</td><td>≤18 (new)</td><td><span class="st-dot" style="background:var(--green)"></span></td></tr>
+      <tr><td>Cycle Time (median)</td><td>4.83d</td><td>3.92d</td><td>6.29d</td><td class="pos">−23.2%</td><td class="neg">+23.2%</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
+      <tr><td>Throughput</td><td>39</td><td>36</td><td>42 (med)</td><td class="neg">−7.1%</td><td class="pos">+8.3%</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
+      <tr><td>Unplanned work</td><td>17.95%</td><td>2.8%</td><td>4.9%</td><td class="neg">+13.0 pp</td><td class="neg">+15.1 pp</td><td><span class="st-dot" style="background:var(--risk)"></span></td></tr>
+      <tr><td>WIP</td><td>In limits</td><td>In limits</td><td>In limits</td><td>≤18 (new)</td><td class="flat">—</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
     </tbody>
   </table>
+
+  <div class="reslinks">
+    <div class="rt">Resources &amp; Documentation</div>
+    <div class="rgrid">
+      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3420356612" target="_blank"><span class="ico">📄</span> May 2026 Snapshot — Confluence</a>
+      <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">📊</span> EDW ScrumBan Dashboard — Jira</a>
+      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3131736131/ScrumBan+Dashboard+-+Team+Guide" target="_blank"><span class="ico">📘</span> How to read the dashboard</a>
+      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876" target="_blank"><span class="ico">📐</span> Q1 2026 Baseline Report</a>
+    </div>
+  </div>
 </section>
 
-<!-- ============ TAB 2: COMPARATIVAS ============ -->
+<!-- ============ TAB 2: COMPARATIVES ============ -->
 <section class="panel" id="cmp">
-  <div class="sectit">Comparativas por métrica</div>
-  <div class="secsub">Cada métrica de Mayo frente a Abril (mes anterior) y al baseline Q1 2026.</div>
+  <div class="sectit">Comparatives by metric</div>
+  <div class="secsub">Each May metric against April (prior month) and the Q1 2026 baseline.</div>
 
-  <!-- Cycle Time -->
   <div class="cmpcard">
-    <div class="cmphead">
-      <h3><span class="st-dot" style="background:var(--green);width:13px;height:13px"></span> Cycle Time</h3>
-      <span class="badge b-green"><span class="d"></span>Healthy</span>
-    </div>
+    <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> Cycle Time</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:230px"><canvas id="cCycle"></canvas></div>
       <div class="readout">
-        <div class="line"><span class="vs-tag">vs April</span><br><b>+21.8% avg / +23.2% median</b> — más lento, pero Abril fue un mes inusualmente rápido. Ambos meses dentro de target.</div>
-        <div class="line" style="border-color:var(--green)"><span class="vs-tag">vs Baseline Q1</span><br><b>−8.6% avg / −23.2% median</b> — mejora sostenida sobre el baseline recalculado (7.83d / 6.29d).</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs Baseline Q1</span><br><b>−23.2% median / −8.6% avg</b> — sustained improvement over the baseline (6.29d / 7.83d).</div>
+        <div class="line"><span class="vs-tag">vs April</span><br><b>+23.2% median / +21.8% avg</b> — slower, but April was unusually fast. Both months within target.</div>
       </div>
     </div>
   </div>
 
-  <!-- Throughput -->
   <div class="cmpcard">
-    <div class="cmphead">
-      <h3><span class="st-dot" style="background:var(--green);width:13px;height:13px"></span> Throughput</h3>
-      <span class="badge b-green"><span class="d"></span>Stable</span>
-    </div>
+    <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> Throughput</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:230px"><canvas id="cThru"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:var(--green)"><span class="vs-tag">vs April (36)</span><br><b>+8.3%</b> — cadencia de entrega creciente.</div>
-        <div class="line"><span class="vs-tag">vs Baseline Q1</span><br><b>−7.1% vs mediana (42) · −4.9% vs promedio (41.3)</b> — dentro del rango sano ±20% (34–50).</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs Baseline Q1</span><br><b>−7.1% vs median (42) · −5.6% vs avg (41.3)</b> — within the healthy ±20% range (34–50).</div>
+        <div class="line"><span class="vs-tag">vs April (36)</span><br><b>+8.3%</b> — growing delivery cadence.</div>
       </div>
     </div>
   </div>
 
-  <!-- Unplanned -->
   <div class="cmpcard">
-    <div class="cmphead">
-      <h3><span class="st-dot" style="background:var(--red);width:13px;height:13px"></span> Planned vs Unplanned</h3>
-      <span class="badge b-red"><span class="d"></span>Risk</span>
-    </div>
+    <div class="cmphead"><h3><span class="st-dot" style="background:var(--risk);width:13px;height:13px"></span> Planned vs Unplanned</h3><span class="badge b-red"><span class="d"></span>Risk</span></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:230px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:var(--red)"><span class="vs-tag">vs April (2.8%)</span><br><b>+15.2 pp</b> — salto fuerte mes a mes.</div>
-        <div class="line" style="border-color:var(--red)"><span class="vs-tag">vs Baseline Q1 (4.9%)</span><br><b>+13.0 pp</b> — primer mes en Risk (&gt;10%). Mezcla de mejor etiquetado y aumento real de solicitudes.</div>
+        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs Baseline Q1 (4.9%)</span><br><b>+13.0 pp</b> — first month in Risk (&gt;10%). Mix of better labeling and a real rise in requests.</div>
+        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs April (2.8%)</span><br><b>+15.1 pp</b> — sharp month-over-month jump.</div>
       </div>
     </div>
   </div>
 
-  <!-- WIP -->
   <div class="cmpcard">
-    <div class="cmphead">
-      <h3><span class="st-dot" style="background:var(--green);width:13px;height:13px"></span> WIP Policy</h3>
-      <span class="badge b-green"><span class="d"></span>Controlled</span>
-    </div>
+    <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> WIP Policy</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:230px"><canvas id="cWip"></canvas></div>
       <div class="readout">
-        <div class="line"><span class="vs-tag">Q1 → May (cambio de política)</span><br>El equipo creció de <b>4 a 6 developers</b>. Límites elevados manteniendo la referencia por dev (2 In Dev + 1 Waiting Review).</div>
-        <div class="line" style="border-color:var(--green)"><span class="vs-tag">May actual</span><br>13 de 18 total — dentro de los nuevos límites. Flujo controlado, sin cuellos de botella.</div>
+        <div class="line"><span class="vs-tag">Q1 → May (policy change)</span><br>Team grew from <b>4 to 6 developers</b>. Limits raised, keeping the per-dev reference (2 In Dev + 1 Waiting Review).</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">May actual</span><br>13 of 18 total — within the new limits. Flow controlled, no bottlenecks.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ TAB 3: ACCIONABLES ============ -->
+<!-- ============ TAB 3: ACTIONABLES ============ -->
 <section class="panel" id="act">
-  <div class="sectit">Accionables &amp; Retrospectiva</div>
-  <div class="secsub">Foco en el hallazgo del mes: el origen del trabajo Unplanned.</div>
+  <div class="sectit">Observations &amp; Retrospective</div>
+  <div class="secsub">A closer look at where the Unplanned work came from this month, as input for team discussion.</div>
 
   <div class="insightbox">
-    <div class="k">El hallazgo del mes</div>
-    <h2>El 17.95% no es "el equipo apagando incendios".<br>Es trabajo planificable entrando por la puerta de atrás.</h2>
-    <p>De los 7 ítems Unplanned, <span class="stat">5 (71%)</span> son reportería de Finance/Accounting, y al menos <span class="stat">4 de 7</span> son <b style="color:#fff">recurrentes o tenían fecha previsible</b> (refresh mensual de CapRaise, reconciliación trimestral DCA, reporte de elegibilidad para renovación de seguro). No fueron incidentes impredecibles — entraron sin pasar por planning.</p>
+    <div class="k">Observation of the month</div>
+    <h2>Most of May's Unplanned work shares a common source: reporting requests.</h2>
+    <p>Of the 7 items labeled Unplanned, <span class="stat">5 (71%)</span> were Finance/Accounting reporting requests. This is an observation from the data — the team is best placed to interpret what drove it and whether any of it could be anticipated. The points below are starting points for that conversation, not conclusions.</p>
   </div>
 
-  <!-- Breakdown -->
   <div class="cmpcard">
-    <div class="cmphead"><h3>Origen del Unplanned · May</h3></div>
+    <div class="cmphead"><h3>Unplanned origin · May</h3></div>
     <div class="splitwrap">
       <div class="chartbox" style="height:230px"><canvas id="cOrigin"></canvas></div>
       <div>
         <div class="originbar">
           <div class="top"><span class="nm">Finance / Accounting reporting</span><span class="pct">71% · 5 items</span></div>
-          <div class="obtrack"><div class="obfill" style="width:71%;background:var(--amber)"></div></div>
+          <div class="obtrack"><div class="obfill" style="width:71%;background:var(--warning)"></div></div>
         </div>
         <div class="originbar">
-          <div class="top"><span class="nm">Reporting / data fix (otras áreas)</span><span class="pct">29% · 2 items</span></div>
-          <div class="obtrack"><div class="obfill" style="width:29%;background:var(--blue)"></div></div>
+          <div class="top"><span class="nm">Reporting / data fix (other areas)</span><span class="pct">29% · 2 items</span></div>
+          <div class="obtrack"><div class="obfill" style="width:29%;background:var(--wf-blue)"></div></div>
         </div>
-        <div style="margin-top:14px">
-          <div class="legend-inline">
-            <span><i style="background:var(--amber)"></i>Recurrente / previsible</span>
-            <span><i style="background:var(--blue)"></i>Previsible (fecha conocida)</span>
-            <span><i style="background:var(--red)"></i>Incidente real</span>
-          </div>
-        </div>
+        <p style="font-size:13px;color:var(--wf-muted);margin-top:14px">The 7 items labeled Unplanned in May, for reference during the retro:</p>
       </div>
     </div>
 
     <div style="margin-top:18px">
-      <div class="ticket"><span class="tkey">EDW-1893</span><span class="tdesc">Finance Monthly CapRaise report refresh process — <i>proceso mensual recurrente</i></span><span class="ttag tg-rec">Recurrente</span></div>
-      <div class="ticket"><span class="tkey">EDW-1913</span><span class="tdesc">Update CapRaise data model for April — <i>actualización mensual del modelo</i></span><span class="ttag tg-rec">Recurrente</span></div>
-      <div class="ticket"><span class="tkey">EDW-1949</span><span class="tdesc">DCA Q1 2026 commission reconciliation — <i>cierre trimestral, evento de calendario</i></span><span class="ttag tg-rec">Recurrente</span></div>
-      <div class="ticket"><span class="tkey">EDW-1911</span><span class="tdesc">PDS eligibility count by state — <i>"needed for upcoming insurance renewal" (fecha conocida)</i></span><span class="ttag tg-pred">Previsible</span></div>
-      <div class="ticket"><span class="tkey">EDW-1943</span><span class="tdesc">Solomon Reporting — <i>routing de reportería entre portales</i></span><span class="ttag tg-pred">Previsible</span></div>
-      <div class="ticket"><span class="tkey">EDW-1899</span><span class="tdesc">ES reports add Practice Filter — <i>feature de reporte (era Story)</i></span><span class="ttag tg-pred">Previsible</span></div>
-      <div class="ticket"><span class="tkey">EDW-1904</span><span class="tdesc">WFP reporting transactionid binding refresh — <i>fix de duplicado que rompía el modelo</i></span><span class="ttag tg-real">Incidente</span></div>
+      <div class="ticket"><span class="tkey">EDW-1949</span><span class="tdesc">DCA Q1 2026 commission reconciliation</span></div>
+      <div class="ticket"><span class="tkey">EDW-1943</span><span class="tdesc">Solomon Reporting</span></div>
+      <div class="ticket"><span class="tkey">EDW-1913</span><span class="tdesc">Update CapRaise data model for April</span></div>
+      <div class="ticket"><span class="tkey">EDW-1911</span><span class="tdesc">PDS eligibility count by state — Accounting</span></div>
+      <div class="ticket"><span class="tkey">EDW-1904</span><span class="tdesc">WFP reporting — transactionid binding refresh</span></div>
+      <div class="ticket"><span class="tkey">EDW-1899</span><span class="tdesc">ES reports — add Practice Filter</span></div>
+      <div class="ticket"><span class="tkey">EDW-1893</span><span class="tdesc">Finance Monthly CapRaise report refresh process</span></div>
     </div>
-    <div class="note"><b>Lectura:</b> solo 1 de 7 (EDW-1904) parece un incidente genuino. Los otros 6 son recurrentes o tenían fecha previsible — candidatos a moverse al backlog.</div>
   </div>
 
-  <!-- Actionables -->
-  <div class="sectit" style="font-size:20px;margin-top:28px">Acciones sugeridas</div>
-  <div class="secsub">Priorizadas para reducir el Unplanned convirtiéndolo en trabajo planificable.</div>
+  <div class="sectit" style="font-size:20px;margin-top:28px">Possible directions to explore</div>
+  <div class="secsub">Ideas the team might consider in the retro — to validate, adapt, or set aside based on the real context.</div>
 
-  <div class="act"><div class="pri p-red"></div><div class="inner">
-    <div class="atop"><h4>1. Crear un "Finance Reporting Calendar"</h4><span class="pill pill-red">Mayor impacto</span></div>
-    <p>El 71% del Unplanned viene de Finance. Mapear los procesos recurrentes (CapRaise refresh mensual, reconciliación DCA trimestral, elegibilidad para renovaciones) a un calendario con sus fechas conocidas. Así entran al backlog del sprint correspondiente en vez de interrumpir. Potencial: convertir ~4 de 7 en planned.</p>
-    <div class="owner">Propuesto a: <b>EDW + Finance</b> · Esfuerzo: bajo · Reduce Unplanned recurrente</div>
-  </div></div>
-
-  <div class="act"><div class="pri p-amber"></div><div class="inner">
-    <div class="atop"><h4>2. Productizar los refresh recurrentes</h4><span class="pill pill-amber">Alto impacto</span></div>
-    <p>EDW-1893 era literalmente "hacer el refresh mensual fácil de ejecutar". Automatizar o entregar como self-service a Finance los procesos que se repiten cada mes. Inversión única que elimina la recurrencia del ticket.</p>
-    <div class="owner">Propuesto a: <b>EDW</b> · Esfuerzo: medio · Elimina recurrencia de raíz</div>
+  <div class="act"><div class="pri p-blue"></div><div class="inner">
+    <div class="atop"><h4>Look at the Finance reporting requests together</h4><span class="pill pill-blue">Discuss</span></div>
+    <p>Since reporting requests made up most of the Unplanned work this month, it may be worth reviewing them as a group. The team would know whether some of these tend to recur or could be anticipated — and if so, whether they could be brought into planning ahead of time.</p>
+    <div class="owner">For discussion with: <b>EDW + Finance</b></div>
   </div></div>
 
   <div class="act"><div class="pri p-blue"></div><div class="inner">
-    <div class="atop"><h4>3. Definir un SLA / intake con Finance</h4><span class="pill pill-blue">Proceso</span></div>
-    <p>Acordar que las solicitudes de reportería entren con X días de anticipación (salvo incidente real). Da ventana para planificar en sprint en vez de tratar todo como urgente.</p>
-    <div class="owner">Propuesto a: <b>EDW + Finance + PO</b> · Esfuerzo: bajo</div>
+    <div class="atop"><h4>Consider whether any recurring work can be simplified</h4><span class="pill pill-blue">Discuss</span></div>
+    <p>If any of these requests turn out to repeat regularly, the team might explore whether they could be made easier to run or handed off as self-service — reducing how often they come back as new work. Only the team knows which (if any) fit this.</p>
+    <div class="owner">For discussion with: <b>EDW</b></div>
   </div></div>
 
-  <div class="act"><div class="pri p-amber"></div><div class="inner">
-    <div class="atop"><h4>4. Separar "urgente real" de "entró sin planear"</h4><span class="pill pill-amber">Medición</span></div>
-    <p>Clasificar cada Unplanned en la retro: incidente genuino (producción/dato bloqueante) vs trabajo previsible que se coló. Solo lo primero debería contar como urgencia legítima. Esto limpia la métrica y revela el verdadero nivel de interrupción.</p>
-    <div class="owner">Propuesto a: <b>EDW</b> · Esfuerzo: bajo · Mejora calidad del dato</div>
+  <div class="act"><div class="pri p-blue"></div><div class="inner">
+    <div class="atop"><h4>Explore an intake agreement with Finance</h4><span class="pill pill-blue">Discuss</span></div>
+    <p>If predictability is a shared concern, the team and Finance could discuss a lightweight way for reporting requests to arrive with some lead time, leaving room to fit them into a sprint. Whether this is needed is for both sides to decide.</p>
+    <div class="owner">For discussion with: <b>EDW + Finance</b></div>
   </div></div>
 
   <div class="act"><div class="pri p-green"></div><div class="inner">
-    <div class="atop"><h4>5. Reservar capacity buffer para lo reactivo real</h4><span class="pill pill-green">Capacidad</span></div>
-    <p>Para lo que sí es impredecible, reservar ~10–15% de capacidad como "support lane" en cada sprint, en vez de que desplace los compromisos planeados. El Unplanned legítimo deja de descarrilar el sprint.</p>
-    <div class="owner">Propuesto a: <b>EDW + PO</b> · Esfuerzo: bajo · Protege compromisos</div>
+    <div class="atop"><h4>Revisit capacity for reactive work</h4><span class="pill pill-green">Discuss</span></div>
+    <p>For work that genuinely can't be planned ahead, the team might consider whether reserving a small amount of sprint capacity helps absorb it without affecting planned commitments. The right amount — if any — is something to feel out over a few sprints.</p>
+    <div class="owner">For discussion with: <b>EDW</b></div>
   </div></div>
 
   <div class="act"><div class="pri p-grey"></div><div class="inner">
-    <div class="atop"><h4>6. Disciplina de etiquetado &amp; higiene de datos</h4><span class="pill pill-grey">Seguimiento</span></div>
-    <p>Todo ítem reactivo debe llevar label <i>Unplanned</i> (en May 6/8 Urgent Tasks vs 1/5 en April — parte del salto es mejor etiquetado, no solo volumen real). Pendientes técnicos: completar el Rich Filter del donut, y verificar que los saved filters mensuales usen <i>resolved</i> y no <i>created</i>.</p>
-    <div class="owner">Propuesto a: <b>EDW</b> · Esfuerzo: bajo · Baseline limpio a futuro</div>
+    <div class="atop"><h4>Keep labeling consistent &amp; tidy up the data</h4><span class="pill pill-grey">Follow-up</span></div>
+    <p>Labeling consistency affects how comparable the numbers are month to month, so keeping the <i>Unplanned</i> label applied consistently helps the trend stay meaningful. Two open technical follow-ups: complete the donut's Rich Filter, and confirm the monthly saved filters use <i>resolved</i> rather than <i>created</i>.</p>
+    <div class="owner">For follow-up by: <b>EDW</b></div>
   </div></div>
 
-  <!-- Retro discussion -->
-  <div class="sectit" style="font-size:20px;margin-top:28px">Para discutir en la retrospectiva</div>
+  <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
   <div class="retro">
-    <h4>Preguntas para el equipo</h4>
+    <h4>Questions for the team</h4>
     <ul>
-      <li>De los 7 Unplanned, ¿cuántos coincidimos en que eran realmente impredecibles? (hipótesis: solo 1)</li>
-      <li>¿Qué procesos de Finance se repiten cada mes/trimestre y podríamos calendarizar <b>ya</b> para junio?</li>
-      <li>¿Cuál de los refresh recurrentes da mejor ROI automatizar primero? (CapRaise parece el candidato)</li>
-      <li>¿Qué % de capacidad reservamos como support lane sin sentir que perdemos velocidad?</li>
-      <li>Con 2 devs nuevos entrando, ¿re-baselineamos throughput al cierre de Q2 o esperamos?</li>
+      <li>Looking at the 7 Unplanned items, how would we characterize them — were any of them things we could have seen coming?</li>
+      <li>Are there reporting requests that tend to repeat, and would it help to anticipate them in planning?</li>
+      <li>Would any recurring work benefit from being automated or simplified?</li>
+      <li>Does it feel like reactive work is affecting our planned commitments, and if so, how do we want to handle it?</li>
+      <li>With 2 new developers ramping up, when does it make sense to revisit the throughput baseline?</li>
     </ul>
   </div>
 </section>
@@ -426,11 +474,10 @@
 </main>
 
 <footer>
-  EDW — May 2026 Performance Report · Fuentes: EDW ScrumBan Dashboard · April &amp; May 2026 Snapshots (Confluence) · Q1 2026 Baseline · Generado 2 jun 2026
+  EDW — May 2026 Performance Report · Sources: EDW ScrumBan Dashboard · April &amp; May 2026 Snapshots (Confluence) · Q1 2026 Baseline · Generated Jun 2, 2026
 </footer>
 
 <script>
-// Tabs
 document.querySelectorAll('.tab').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
@@ -440,63 +487,72 @@ document.querySelectorAll('.tab').forEach(t=>{
     window.scrollTo({top:0,behavior:'smooth'});
   });
 });
+// in-card links that jump to another tab
+document.querySelectorAll('[data-goto]').forEach(l=>{
+  l.addEventListener('click',e=>{
+    e.preventDefault();
+    document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();
+  });
+});
 
-// Chart defaults
-Chart.defaults.font.family = "'Archivo', sans-serif";
+Chart.defaults.font.family = "'DM Sans', sans-serif";
 Chart.defaults.font.size = 11;
-Chart.defaults.color = '#6a7689';
-const NAVY='#16233f',BLUE='#2e6fd6',BLUESOFT='#5b8de8',TEAL='#2fa8a0',GREEN='#26a85b',AMBER='#e3a008',RED='#dc4a55',GREY='#c3cdda';
+Chart.defaults.color = '#626c84';
+const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda',NAVY='#005f91';
 const gridc='#eef2f8';
 
-// Donut (dashboard)
 new Chart(document.getElementById('donut'),{
   type:'doughnut',
   data:{labels:['Planned','Unplanned'],datasets:[{data:[32,7],backgroundColor:[BLUE,RED],borderColor:'#fff',borderWidth:3}]},
-  options:{cutout:'62%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw} (${(c.raw/39*100).toFixed(1)}%)`}}}}
+  options:{cutout:'68%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw} (${(c.raw/39*100).toFixed(1)}%)`}}}}
 });
 
-// Cycle Time grouped
 new Chart(document.getElementById('cCycle'),{
   type:'bar',
   data:{labels:['Q1 Baseline','April','May'],datasets:[
-    {label:'Average',data:[7.83,5.88,7.16],backgroundColor:BLUE,borderRadius:5},
-    {label:'Median',data:[6.29,3.92,4.83],backgroundColor:TEAL,borderRadius:5}]},
+    {label:'Median',data:[6.29,3.92,4.83],backgroundColor:BLUE,borderRadius:5},
+    {label:'Average',data:[7.83,5.88,7.16],backgroundColor:BLUEL,borderRadius:5}]},
   options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:10,grid:{color:gridc},title:{display:true,text:'Days'}},x:{grid:{display:false}}}}
 });
 
-// Throughput
+const thruRefLines={id:'thruRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
+  const refs=[{v:42,t:'Q1 median 42',col:BLUED},{v:41.3,t:'Q1 avg 41.3',col:'#9aa6b8'}];
+  refs.forEach(r=>{const yp=y.getPixelForValue(r.v);
+    ctx.save();ctx.strokeStyle=r.col;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
+    ctx.setLineDash([]);ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';
+    ctx.fillText(r.t,right-4,yp-4);ctx.restore();});
+}};
 new Chart(document.getElementById('cThru'),{
   type:'bar',
-  data:{labels:['Q1 median (42)','Q1 avg (41.3)','April (36)','May (39)'],datasets:[
-    {data:[42,41.3,36,39],backgroundColor:[GREY,GREY,BLUE,GREEN],borderRadius:5}]},
-  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:52,grid:{color:gridc},title:{display:true,text:'Items / month'}},x:{grid:{display:false}}}}
+  data:{labels:['April','May'],datasets:[
+    {label:'Monthly total',data:[36,39],backgroundColor:[BLUEL,BLUE],borderRadius:6,barPercentage:0.55}]},
+  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} items completed`}}},scales:{y:{beginAtZero:true,max:52,grid:{color:gridc},title:{display:true,text:'Items / month'}},x:{grid:{display:false}}}},
+  plugins:[thruRefLines]
 });
 
-// Unplanned trend with threshold bands
 const bandPlugin={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;const z=(v)=>y.getPixelForValue(v);
   ctx.save();
-  ctx.fillStyle='rgba(38,168,91,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
-  ctx.fillStyle='rgba(227,160,8,.10)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
-  ctx.fillStyle='rgba(220,74,85,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));
+  ctx.fillStyle='rgba(79,168,0,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
+  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
+  ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));
   ctx.restore();}};
 new Chart(document.getElementById('cUnp'),{
   type:'line',
-  data:{labels:['Q1','April','May'],datasets:[{data:[4.9,2.8,17.95],borderColor:NAVY,backgroundColor:NAVY,tension:.25,pointRadius:6,pointHoverRadius:8,borderWidth:3,
-    pointBackgroundColor:['#26a85b','#26a85b','#dc4a55']}]},
+  data:{labels:['Q1','April','May'],datasets:[{data:[4.9,2.8,17.95],borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,pointHoverRadius:8,borderWidth:3,
+    pointBackgroundColor:[GREEN,GREEN,RED]}]},
   options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw}% unplanned`}}},scales:{y:{beginAtZero:true,max:20,grid:{color:gridc},title:{display:true,text:'% Unplanned'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}},
   plugins:[bandPlugin]
 });
 
-// WIP grouped horizontal
 new Chart(document.getElementById('cWip'),{
   type:'bar',
   data:{labels:['In Development','Waiting Review','Total'],datasets:[
     {label:'Q1 (4 devs)',data:[8,4,12],backgroundColor:GREY,borderRadius:4},
-    {label:'May (6 devs)',data:[12,6,18],backgroundColor:NAVY,borderRadius:4}]},
+    {label:'May (6 devs)',data:[12,6,18],backgroundColor:BLUE,borderRadius:4}]},
   options:{indexAxis:'y',plugins:{legend:{position:'top'}},scales:{x:{beginAtZero:true,max:20,grid:{color:gridc},title:{display:true,text:'WIP limit'}},y:{grid:{display:false}}}}
 });
 
-// Origin donut (unplanned breakdown)
 new Chart(document.getElementById('cOrigin'),{
   type:'doughnut',
   data:{labels:['Finance/Accounting','Other reporting'],datasets:[{data:[5,2],backgroundColor:[AMBER,BLUE],borderColor:'#fff',borderWidth:3}]},
