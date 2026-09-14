@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDW · Q1 2026 Performance Report</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
+
+  :root{
+    --wf-blue:#007CBC; --wf-blue-d:#005f91; --wf-blue-l:#65B2D5; --wf-blue-bg:#e5f2f8;
+    --wf-green:#4FA800; --wf-ink:#32373c; --wf-muted:#626c84; --wf-muted2:#69727d;
+    --line:#e2e8f0; --bg:#f5f8fb; --card:#ffffff;
+    --shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);
+    --healthy:#4FA800; --warning:#ED7D31; --risk:#d64550;
+    --healthy-bg:#eef7e3; --warning-bg:#fdeee3; --risk-bg:#fbeced;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  a{color:var(--wf-blue);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  header{background:linear-gradient(135deg,#005f91 0%,#007CBC 100%);color:#fff;padding:38px 0 32px;position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;right:-90px;top:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+  header h1{font-weight:800;font-size:40px;line-height:1.05;margin:8px 0 6px;letter-spacing:-.02em}
+  header .sub{color:#cfe7f3;font-size:15px;max-width:660px}
+  .statuspill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;background:rgba(237,125,49,.22);border:1px solid rgba(237,125,49,.55);color:#ffd9bf;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
+  .statuspill .dot{width:10px;height:10px;border-radius:50%;background:var(--warning);box-shadow:0 0 0 4px rgba(237,125,49,.28)}
+
+  .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tabs .wrap{display:flex;gap:4px}
+  .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;color:var(--wf-muted);padding:17px 22px;cursor:pointer;position:relative;transition:color .2s}
+  .tab:hover{color:var(--wf-ink)}
+  .tab.active{color:var(--wf-blue)}
+  .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;background:var(--wf-blue);border-radius:3px 3px 0 0}
+
+  main{padding:34px 0 70px}
+  .panel{display:none;animation:fade .4s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .sectit{font-weight:800;font-size:24px;color:var(--wf-blue-d);margin:6px 0 2px;letter-spacing:-.01em}
+  .secsub{color:var(--wf-muted);font-size:14px;margin-bottom:20px}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:860px){.g3,.g2{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);position:relative}
+  .card .ghead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .g3>.card{display:flex;flex-direction:column}
+  .card .gname{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+  .cardfill{flex:1}
+  .docsep{border:none;border-top:1px dashed var(--line);margin:14px 0 0}
+  .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+  .badge .d{width:7px;height:7px;border-radius:50%}
+  .b-green{background:var(--healthy-bg);color:#3a7d00}.b-green .d{background:var(--healthy)}
+  .b-amber{background:var(--warning-bg);color:#a9760a}.b-amber .d{background:var(--warning)}
+  .b-red{background:var(--risk-bg);color:#b3303b}.b-red .d{background:var(--risk)}
+
+  .bignum{font-weight:800;font-size:40px;line-height:1;color:var(--wf-blue-d);letter-spacing:-.02em}
+  .bignum .unit{font-size:15px;color:var(--wf-muted);font-weight:600;margin-left:4px}
+  .secondary{font-size:13px;color:var(--wf-muted);margin-top:7px}
+  .secondary b{color:var(--wf-ink)}
+  .targetline{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;background:#f0f4f8;border:1px solid var(--line);padding:4px 10px;border-radius:7px;color:var(--wf-muted2)}
+  .targetline .tl{font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--wf-blue);font-size:10px}
+
+  .deltarow{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+  .delta{font-size:13px}.delta .lbl{color:var(--wf-muted);font-size:10px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px;font-weight:700}
+  .delta.primary .lbl{color:var(--wf-blue)}
+  .pos{color:var(--healthy);font-weight:700}.neg{color:var(--risk);font-weight:700}.flat{color:var(--wf-muted);font-weight:700}
+
+  .infopanel{margin-top:14px;border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.45}
+  .infopanel.ip-green{background:var(--healthy-bg);border-left:3px solid var(--healthy);color:#36631a}
+  .infopanel.ip-amber{background:var(--warning-bg);border-left:3px solid var(--warning);color:#8a6200}
+  .infopanel.ip-red{background:var(--risk-bg);border-left:3px solid var(--risk);color:#9c2a34}
+  .infopanel b{font-weight:700}
+  .ip-link{font-weight:700;color:inherit;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+  .ip-link:hover{opacity:.75}
+
+  .doclink{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:12px;font-weight:600;color:var(--wf-blue)}
+  .doclink::before{content:"📄";font-size:12px}
+  .bignum.num-green{color:var(--healthy)}
+  .bignum.num-amber{color:var(--warning)}
+  .bignum.num-red{color:var(--risk)}
+  .num-green .unit,.num-amber .unit,.num-red .unit{color:inherit;opacity:.85}
+
+  .chartbox{position:relative;height:200px;margin-top:6px}
+  .chartbox.tall{height:240px}
+  .centerbox{display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+  .mixcard{display:flex;flex-direction:column}
+  .mixbody{flex:1;display:flex;align-items:center;justify-content:center;gap:30px;padding:10px 0;flex-wrap:wrap}
+  .donutwrap{position:relative;width:200px;height:200px;flex-shrink:0}
+  .donutctr{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+  .dc-num{font-size:42px;font-weight:800;color:var(--risk);line-height:1}
+  .dc-lbl{font-size:11px;color:var(--wf-muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600;margin-top:2px;text-align:center;line-height:1.3}
+  .mixlegend{display:flex;flex-direction:column;gap:14px}
+  .ml-row{display:flex;align-items:center;gap:10px;font-size:14px}
+  .ml-sw{width:14px;height:14px;border-radius:4px;flex-shrink:0}
+  .ml-nm{font-weight:600;color:var(--wf-ink);min-width:78px}
+  .ml-val{color:var(--wf-muted);font-weight:600}
+
+  .wipwrap{width:100%;margin:14px 0 0}
+  .wipcard{display:flex;flex-direction:column}
+  .wiptotal{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#f3f9fc,#e8f3f9);border:1px solid var(--wf-blue-bg);border-radius:12px;padding:14px 18px;margin-bottom:4px}
+  .wt-num{font-size:38px;font-weight:800;color:var(--wf-blue-d);line-height:1}
+  .wt-den{font-size:18px;color:var(--wf-muted);font-weight:600;margin-left:2px}
+  .wt-lbl{font-size:12.5px;color:var(--wf-muted);line-height:1.4}
+  .wt-lbl b{color:var(--healthy)}
+  .wiprow{display:flex;align-items:center;gap:10px;margin:9px 0}
+  .wiprow .nm{width:120px;font-size:13px;font-weight:600;color:var(--wf-ink)}
+  .wipbar{flex:1;height:22px;background:#eef2f8;border-radius:6px;position:relative;overflow:hidden}
+  .wipfill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--wf-blue),var(--wf-blue-l));display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-size:11px;font-weight:700}
+  .wiplim{width:50px;text-align:right;font-size:12px;color:var(--wf-muted);font-weight:600}
+
+  .note{background:var(--wf-blue-bg);border-left:3px solid var(--wf-blue);border-radius:0 10px 10px 0;padding:12px 14px;font-size:13px;color:#244b5e;margin-top:16px}
+  .note b{color:var(--wf-blue-d)}
+
+  table.exec{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+  table.exec th{background:var(--wf-blue-d);color:#fff;font-size:12px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;padding:12px 14px;text-align:center}
+  table.exec th:first-child{text-align:left}
+  table.exec td{padding:13px 14px;text-align:center;font-size:14px;border-bottom:1px solid var(--line)}
+  table.exec td:first-child{text-align:left;font-weight:700;color:var(--wf-blue-d)}
+  table.exec tr:last-child td{border-bottom:none}
+  table.exec tr:nth-child(even) td{background:#f8fbfd}
+  .st-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
+
+  .cmpcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+  .cmpcard h3{font-size:20px;color:var(--wf-blue-d);font-weight:700;display:flex;align-items:center;gap:10px}
+  .cmphead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px;flex-wrap:wrap;gap:8px}
+  .cmpgrid{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:center;margin-top:8px}
+  @media(max-width:860px){.cmpgrid{grid-template-columns:1fr}}
+  .readout{font-size:14px;color:#33425c}
+  .readout .line{margin:10px 0;padding-left:14px;border-left:3px solid var(--line)}
+  .readout .line b{color:var(--wf-blue-d)}
+  .vs-tag{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--wf-muted);font-weight:700}
+
+  .splitwrap{display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
+  @media(max-width:860px){.splitwrap{grid-template-columns:1fr}}
+  .originbar{margin:10px 0}
+  .originbar .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
+  .originbar .top .nm{font-weight:600;color:var(--wf-ink)}
+  .originbar .top .pct{font-weight:700;color:var(--wf-blue-d)}
+  .obtrack{height:14px;background:#eef2f8;border-radius:7px;overflow:hidden}
+  .obfill{height:100%;border-radius:7px}
+
+  .ticket{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:flex-start}
+  .ticket:last-child{border:none}
+  .tkey{font-weight:700;color:var(--wf-blue);min-width:78px}
+  .tdesc{flex:1;color:#33425c}
+  .ttag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;align-self:center}
+  .tg-rec{background:var(--warning-bg);color:#a9760a}
+  .tg-pred{background:var(--wf-blue-bg);color:#1d6a93}
+  .tg-real{background:var(--risk-bg);color:#b3303b}
+
+  .insightbox{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;border-radius:18px;padding:26px 28px;margin:8px 0 26px;position:relative;overflow:hidden}
+  .insightbox::after{content:"";position:absolute;right:-40px;bottom:-60px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+  .insightbox .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+  .insightbox h2{font-weight:800;font-size:25px;margin:8px 0 10px;line-height:1.2;letter-spacing:-.01em}
+  .insightbox p{color:#d4ebf5;font-size:15px;max-width:780px}
+  .insightbox .stat{display:inline-block;font-weight:800;color:#fff;border-bottom:2px solid var(--wf-green)}
+
+  .act{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;display:flex}
+  .act .pri{width:8px;flex-shrink:0}
+  .act .inner{padding:18px 20px;flex:1}
+  .act .atop{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .act h4{font-size:16px;color:var(--wf-blue-d);font-weight:700}
+  .act .pill{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:6px}
+  .act p{font-size:14px;color:#33425c}
+  .act .owner{font-size:12px;color:var(--wf-muted);margin-top:8px}
+  .act .owner b{color:var(--wf-blue-d)}
+  .p-red{background:var(--risk)}.p-amber{background:var(--warning)}.p-blue{background:var(--wf-blue)}.p-green{background:var(--healthy)}.p-grey{background:#9aa6b8}
+  .pill-red{background:var(--risk-bg);color:#b3303b}.pill-amber{background:var(--warning-bg);color:#a9760a}.pill-blue{background:var(--wf-blue-bg);color:#1d6a93}.pill-green{background:var(--healthy-bg);color:#3a7d00}.pill-grey{background:#eef1f6;color:#5a6678}
+
+  .retro{background:#fff;border:2px dashed var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+  .retro h4{color:var(--wf-blue-d);font-size:18px;margin-bottom:10px;font-weight:700}
+  .retro li{margin:8px 0 8px 18px;font-size:14px;color:#33425c}
+  .retro li b{color:var(--wf-blue-d)}
+
+  .reslinks{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-top:24px}
+  .reslinks .rt{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:12px}
+  .reslinks .rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  @media(max-width:860px){.reslinks .rgrid{grid-template-columns:1fr}}
+  .rlink{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--wf-blue-d);transition:.15s;background:#fbfdfe}
+  .rlink:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg);text-decoration:none}
+  .rlink .ico{width:30px;height:30px;border-radius:8px;background:var(--wf-blue-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);font-size:12px;text-align:center}
+  .legend-inline{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--wf-muted);margin-top:10px;justify-content:center}
+  .legend-inline span{display:inline-flex;align-items:center;gap:6px}
+  .legend-inline i{width:10px;height:10px;border-radius:3px;display:inline-block}
+</style>
+
+<style>
+ .statuspill .dot{background:var(--healthy)}
+ .scrumgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px}
+ .sh{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+ .sh .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+ .sh .v{font-size:32px;font-weight:800;color:var(--wf-blue-d);line-height:1.1;margin-top:6px}
+ .sh .n{font-size:12.5px;color:var(--wf-muted);margin-top:4px}
+ .progbar{display:flex;height:30px;border-radius:8px;overflow:hidden;margin:6px 0 10px}
+ .progbar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+ .nodata{background:#f4f6fa;border:1px dashed #c3cdda;border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}
+ .nodata .big{font-size:26px;font-weight:800;color:#8b95a8;display:block;margin-bottom:4px}
+ .fnote{font-size:12.5px;color:var(--wf-muted);border-left:3px solid var(--warning);padding-left:12px;margin-top:14px}
+
+ .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+ .crumb a:hover{border-color:#fff}
+ .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+ .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
+ .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
+     text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
+ .rp:hover{background:var(--wf-blue-l);color:#fff}
+ .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
+ .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
+ .rhome:hover{text-decoration:underline}
+ @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
+
+ .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
+ .tscroll table.exec{min-width:660px}
+ .statuspill{display:inline-block;max-width:100%;text-align:left}
+ .statuspill .dot{display:inline-block;vertical-align:middle;margin-right:9px}
+ @media(max-width:760px){
+  .tabs .wrap{overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tab{padding:15px 14px;font-size:14px}
+  header{padding:32px 0 28px}
+  header h1{font-size:27px}
+  .statuspill{font-size:13px;line-height:1.35;padding:9px 14px}
+  .bignum{font-size:34px}
+  .sectit{font-size:20px}
+  .insightbox{padding:20px}
+  .insightbox h2{font-size:20px}
+ }
+ @media(max-width:430px){ .wrap{padding:0 16px} .rp{padding:5px 10px;font-size:11.5px} }
+
+ .sprinthead{align-items:center;gap:12px;justify-content:flex-start;margin-bottom:16px}
+ .sprinthead h3{flex:0 0 auto}
+ .sprintdates{margin-left:auto;font-size:13.5px;color:var(--wf-muted);font-weight:600;white-space:nowrap}
+ .badge-lg{font-size:12.5px;padding:5px 13px;letter-spacing:.01em}
+ .badge-lg .d{width:8px;height:8px}
+ @media(max-width:640px){.sprintdates{margin-left:0;width:100%;white-space:normal}}
+
+ .chartbox.zoomable{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s}
+ .chartbox.zoomable:hover{background:#f7fafd}
+ .chartbox.zoomable::after{content:"Expand";position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:700;
+   letter-spacing:.08em;text-transform:uppercase;color:var(--wf-blue);background:#fff;border:1px solid var(--line);
+   border-radius:999px;padding:3px 9px;opacity:0;transition:opacity .15s;pointer-events:none}
+ .chartbox.zoomable:hover::after{opacity:1}
+ .cmodal{position:fixed;inset:0;z-index:200;background:rgba(20,32,44,.68);display:none;
+   align-items:center;justify-content:center;padding:28px}
+ .cmodal.open{display:flex}
+ .cmbox{background:#fff;border-radius:18px;width:min(1180px,100%);height:min(78vh,760px);
+   display:flex;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden}
+ .cmhead{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
+ .cmhead h4{font-size:17px;font-weight:700;color:var(--wf-blue-d);flex:1;line-height:1.3}
+ .cmclose{appearance:none;border:1px solid var(--line);background:#fff;border-radius:9px;width:34px;height:34px;
+   font-size:19px;line-height:1;color:var(--wf-muted);cursor:pointer;flex-shrink:0}
+ .cmclose:hover{background:#f4f6fa;color:var(--wf-ink)}
+ .cmbody{flex:1;padding:18px 20px 22px;min-height:0}
+ @media(max-width:760px){.cmodal{padding:12px}.cmbox{height:min(88vh,620px)}.chartbox.zoomable::after{display:none}}
+
+ [data-tip]{cursor:help;border-bottom:1px dotted currentColor;text-decoration:none}
+ .tipbox{position:fixed;z-index:300;max-width:320px;background:#12232f;color:#fff;font-size:12.5px;
+   line-height:1.5;padding:10px 13px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,.28);
+   pointer-events:none;opacity:0;transition:opacity .12s;font-weight:400;letter-spacing:0;text-transform:none}
+ .tipbox.on{opacity:1}
+
+</style></head>
+<body>
+<header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; Q1 2026 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
+<h1>Q1 2026 Performance Report</h1><div class="sub">Quarter close for January-March 2026 — the reference baseline for the year.</div>
+<div class="statuspill"><span class="dot"></span> Baseline quarter — reconciled September 2026</div></div></header>
+<div class="tabs"><div class="wrap">
+ <button class="tab active" data-tab="dash">Flow</button>
+ <button class="tab" data-tab="scrum">Sprints</button>
+ <button class="tab" data-tab="cmp">Comparatives</button>
+ <button class="tab" data-tab="act">Findings &amp; Retro</button>
+</div></div>
+<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-05-may.html">MAY</a><a class="rp" href="2026-06-june.html">JUN</a><a class="rp" href="2026-07-july.html">JUL</a><a class="rp" href="2026-08-august.html">AUG</a><span class="rsep"></span><span class="rp on">Q1</span><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<main><div class="wrap">
+<section class="panel active" id="dash">
+  <div class="sectit">Q1 2026 — January to March</div>
+  <div class="secsub">Closed items only, sub-tasks and epics excluded. Figures reconciled September 2026.</div>
+  <div class="grid g3">
+    <div class="card"><div class="ghead"><span class="gname"><span data-tip="Items closed per month. Measures delivery capacity, not effort or complexity.">Throughput</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+      <div class="bignum num-green">40.0<span class="unit">avg/month</span></div>
+      <div class="secondary">120 closed in the quarter · Jan 44 · Feb 36 · Mar 40</div>
+      <div class="targetline"><span class="tl">Healthy range</span> 36–44 items/month (&plusmn;20%)</div>
+      <div class="infopanel ip-green">A flat quarter: the spread between the best and the worst month is 8 items, which
+      is what makes it usable as a baseline. On top of the 120 closed there were <b>4 discarded</b>
+      (Won't Do), which are not deliveries. Note that this baseline describes a 4-developer team.</div>
+      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3056467970" target="_blank">Throughput — Team Guide</a></div>
+    <div class="card"><div class="ghead"><span class="gname"><span data-tip="Share of delivered work that was reactive. Measures predictability, not productivity.">Planned vs Unplanned</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+      <div class="bignum num-green">4.17<span class="unit">%</span></div>
+      <div class="secondary">5 of 120 closed · Jan 1 · Feb 2 · Mar 2</div>
+      <div class="targetline"><span class="tl">Target</span> &le;5%</div>
+      <div class="infopanel ip-green">Comfortably inside target and the most stable metric of the quarter: never more
+      than 2 unplanned items in a month. This is the reference the later months are measured against.</div>
+      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a></div>
+    <div class="card"><div class="ghead"><span class="gname"><span data-tip="How long an item takes from the moment work starts until it closes, in calendar days.">Cycle Time</span></span><span class="badge b-amber"><span class="d"></span>Warning</span></div>
+      <div class="bignum num-amber">6.29<span class="unit">d median</span></div>
+      <div class="secondary">Average <b>7.83d</b> · 99 issues</div>
+      <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
+      <div class="infopanel ip-amber">The median sits just above the 6-day target while the average is comfortably
+      inside the 9-day one — the quarter's only metric not fully in the green. Measured from first entry into
+      <i>In Development</i> to resolution, in calendar days, excluding sub-tasks.</div>
+      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117" target="_blank">Cycle Time — Team Guide</a></div>
+  </div>
+  <div style="margin-top:24px"></div>
+  <div class="cmpcard"><div class="cmphead"><h3>Q1 month by month</h3></div>
+   <div class="chartbox" style="height:300px"><canvas id="cQ1"></canvas></div>
+   <div class="infopanel ip-green">All three months land inside the healthy range. January is the strongest, and the
+   quarter closes almost exactly on its own average — the profile of a steady quarter rather than a ramp.</div>
+  </div>
+  <div class="sectit" style="font-size:20px">Quarter comparison</div>
+  <div class="tscroll"><table class="exec">
+   <thead><tr><th>Reference</th><th>Period</th><th>Devs</th><th>Closed</th><th>Avg/month</th><th>Unplanned</th><th>Status</th></tr></thead>
+   <tbody>
+    <tr><td>Q1 2026</td><td>Jan - Mar</td><td>4</td><td>120</td><td>40.0</td><td>4.17%</td><td>baseline, reconciled</td></tr>
+    <tr><td>Q2 2026</td><td>Apr - Jun</td><td>4 &rarr; 6</td><td>149</td><td>49.7</td><td>8.72%</td><td>mixed quarter, not usable</td></tr>
+    <tr><td>Q3 2026</td><td>Jul - Sep</td><td>5</td><td class="flat">in progress</td><td class="flat">—</td><td class="flat">—</td><td class="flat">closes in September</td></tr>
+   </tbody>
+  </table></div>
+  <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
+    <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
+    <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
+    <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3131736131" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
+    <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">&#128200;</span> EDW ScrumBan Dashboard</a>
+  </div></div>
+  <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
+  over each month's resolution date, which excludes discarded work. Figures reconciled in September 2026 — the method
+  and what changed are documented in Findings &amp; Retro.</div>
+</section>
+
+<section class="panel" id="scrum">
+ <div class="sectit">Sprint metrics — Q1 2026</div>
+ <div class="secsub">The seven sprints that closed inside the quarter, rebuilt from Jira.</div>
+ 
+ <div class="insightbox" style="margin-bottom:24px"><div class="k">What the Q1 sprints show</div>
+  <h2>Every sprint delivered between 100% and 156% of what it committed to on day 1.</h2>
+  <p>Scope grew between +0% and +56% mid-sprint — modest next to the +76% to +279% the same board shows
+  from April on. The pattern that later becomes a problem is already here in a milder form: the team commits low and
+  fills the sprint as it runs, so completion against commitment reads above 100% while the commitment itself means
+  little. Average delivered across the seven sprints is <span class="stat">52.6 points</span>, though one sprint
+  (R9.00-S5, 111 points) carries most of January on its own.</p>
+ </div>
+ <div class="sectit" style="font-size:20px;margin-top:28px">Burndown per sprint</div>
+ <div class="secsub">Grey is total scope, blue is work still open.</div>
+ 
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-R8.29-S3</h3>
+     <span class="badge badge-lg b-green"><span class="d"></span>scope +27%</span>
+     <span class="sprintdates">Dec 22 &rarr; Jan 5</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">26</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+7</div><div class="n">final scope 33 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">33</div><div class="n">11 of 11 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">127%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd0"></canvas></div>
+   <div class="infopanel ip-amber">Opened Dec 22 and closed Jan 5, so it straddles the year. It is included because it closed inside Q1.</div>
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-R9.00-S4</h3>
+     <span class="badge badge-lg b-amber"><span class="d"></span>scope +52%</span>
+     <span class="sprintdates">Jan 5 &rarr; Jan 19</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">31</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+16</div><div class="n">final scope 47 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">47</div><div class="n">17 of 17 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">152%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd1"></canvas></div>
+   
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-R9.00-S5</h3>
+     <span class="badge badge-lg b-green"><span class="d"></span>scope +16%</span>
+     <span class="sprintdates">Jan 19 &rarr; Feb 2</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">96</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+15</div><div class="n">final scope 111 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">111</div><div class="n">35 of 35 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">116%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd2"></canvas></div>
+   <div class="infopanel ip-amber">96 points committed on day 1 and 111 delivered, against a 26-48 range in every other Q1 sprint. This one sprint carries most of January's throughput.</div>
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-Sprint 6-26</h3>
+     <span class="badge badge-lg b-green"><span class="d"></span>scope +0%</span>
+     <span class="sprintdates">Feb 2 &rarr; Feb 17</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">48</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+0</div><div class="n">final scope 48 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">48</div><div class="n">16 of 16 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">100%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd3"></canvas></div>
+   
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-Sprint 7-26</h3>
+     <span class="badge badge-lg b-amber"><span class="d"></span>scope +56%</span>
+     <span class="sprintdates">Feb 17 &rarr; Mar 2</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">27</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+15</div><div class="n">final scope 42 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">42</div><div class="n">17 of 17 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">156%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd4"></canvas></div>
+   
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-Sprint 8-27</h3>
+     <span class="badge badge-lg b-green"><span class="d"></span>scope +44%</span>
+     <span class="sprintdates">Mar 2 &rarr; Mar 16</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">41</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+18</div><div class="n">final scope 59 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">59</div><div class="n">21 of 21 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">144%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd5"></canvas></div>
+   <div class="infopanel ip-amber">Named <b>8-27</b> on the board. By position in the series this is sprint 8 — a naming slip. Database Services has the same pattern with its <i>16-27</i>.</div>
+ </div>
+ <div class="cmpcard">
+   <div class="cmphead sprinthead">
+     <h3>EDW-Sprint 9-26</h3>
+     <span class="badge badge-lg b-green"><span class="d"></span>scope +0%</span>
+     <span class="sprintdates">Mar 16 &rarr; Mar 30</span>
+   </div>
+   <div class="scrumgrid">
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">28</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+0</div><div class="n">final scope 28 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">28</div><div class="n">12 of 12 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">100%</div><div class="n">completed against day-1 scope</div></div>
+   </div>
+   <div class="chartbox" style="height:310px"><canvas id="bd6"></canvas></div>
+   
+ </div>
+ <div class="sectit" style="font-size:20px;margin-top:28px">Committed vs Completed</div><div class="secsub">Day-1 commitment against what was added mid-sprint and what closed.</div><div class="tscroll"><table class="exec">
+  <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
+  <tbody><tr><td>EDW-R8.29-S3</td><td>Dec 22 - Jan 5</td><td>26</td><td>+7</td><td>33</td><td>127%</td><td>1</td><td class="neg">2</td><td>33%</td></tr><tr><td>EDW-R9.00-S4</td><td>Jan 5 - Jan 19</td><td>31</td><td>+16</td><td>47</td><td>152%</td><td>1</td><td class="neg">6</td><td>14%</td></tr><tr><td>EDW-R9.00-S5</td><td>Jan 19 - Feb 2</td><td>96</td><td>+15</td><td>111</td><td>116%</td><td>0</td><td class="neg">7</td><td>0%</td></tr><tr><td>EDW-Sprint 6-26</td><td>Feb 2 - Feb 17</td><td>48</td><td>+0</td><td>48</td><td>100%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 7-26</td><td>Feb 17 - Mar 2</td><td>27</td><td>+15</td><td>42</td><td>156%</td><td>1</td><td class="neg">8</td><td>11%</td></tr><tr><td>EDW-Sprint 8-27</td><td>Mar 2 - Mar 16</td><td>41</td><td>+18</td><td>59</td><td>144%</td><td>2</td><td class="neg">5</td><td>29%</td></tr><tr><td>EDW-Sprint 9-26</td><td>Mar 16 - Mar 30</td><td>28</td><td>+0</td><td>28</td><td>100%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr></tbody>
+ </table></div>
+</section>
+<section class="panel" id="cmp"><div class="sectit">Comparatives</div>
+ <div class="secsub">See the Flow tab — this is a quarter report, not a monthly one. The full-year series lives on the monthly pages.</div></section>
+<section class="panel" id="act">
+  <div class="sectit">Findings &amp; retro</div>
+  <div class="secsub">What to take from the quarter, and from the correction.</div>
+  <div class="insightbox"><div class="k">Quarter takeaway</div>
+   <h2>Q1 was a stable quarter. The reason nobody could tell is that three different numbers were circulating for the same metric.</h2>
+   <p>40 deliveries a month with an 8-item spread, unplanned work comfortably under target and cycle time close to it.
+   As a baseline it holds — with the caveat that it describes a 4-developer team, which EDW no longer is.</p></div>
+  <div class="act"><div class="pri p-grey"></div><div class="inner">
+   <div class="atop"><h4>How these figures were reconciled</h4><span class="pill pill-grey">Method</span></div>
+   <p>The Q1 report published in Confluence carried two different throughput figures: 41 items/month in its executive
+   summary, and 100 closed / 33.3 per month (10 &rarr; 45 &rarr; 45) in its detail section. Neither could be reproduced
+   from Jira under any filter definition — January returns between 32 and 51 in every variant tested. The 100 matches
+   the Cycle Time population instead: 102 of the 120 items closed in Q1 ever entered
+   <i>In Development</i>, and the Cycle Time section is built on 99 issues. The same denominator explains the unplanned
+   figure: the published 4.9% is 5 items over 102, where over 120 it is 4.17%. Both sit
+   under target, so that status is unchanged. The Confluence page now carries the corrected figures.</p>
+   <div class="owner">Reconciled: <b>September 2026</b></div></div></div>
+  <div class="act"><div class="pri p-red"></div><div class="inner">
+   <div class="atop"><h4>Retire one of the two throughput filters</h4><span class="pill pill-red">Action</span></div>
+   <p>The dashboard gadget reads <i>EDW – Throughput – Previous Month (Resolved)</i> (id 14345), which has no
+   <code>resolution</code> clause and counts Won't Do items — Q1 gives 124. <i>EDW – Throughput – Last Month</i>
+   (id 14344) restricts to <code>issuetype in (Bug, Story)</code> — Q1 gives 122. The clean definition gives 120.
+   While all three exist, the same metric reports a different number depending on where it is read. Database Services
+   has the identical duplicated pair (ids 15837 and 16212).</p>
+   <div class="owner">For action by: <b>EDW + DS</b></div></div></div>
+  <div class="act"><div class="pri p-amber"></div><div class="inner">
+   <div class="atop"><h4>Decide what Cycle Time counts</h4><span class="pill pill-amber">Discuss</span></div>
+   <p>The published 6.29d / 7.83d and the recalculated 7.24d /
+   18.49d come from the same data read two ways. The monthly reports use the second method, so until
+   this is settled, Q1 is not strictly comparable to the months that follow it.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
+  <div class="act"><div class="pri p-blue"></div><div class="inner">
+   <div class="atop"><h4>Commit to something closer to what gets delivered</h4><span class="pill pill-blue">Discuss</span></div>
+   <p>Five of the seven Q1 sprints closed above 110% of their day-1 commitment. Reading that as over-performance is
+   tempting and wrong: it means the sprint is planned after it starts. It is mild here and severe by August, so Q1 is
+   where the habit is visible without the noise.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
+  <div class="act"><div class="pri p-grey"></div><div class="inner">
+   <div class="atop"><h4>Fix the sprint naming</h4><span class="pill pill-grey">Follow-up</span></div>
+   <p><i>EDW-Sprint 8-27</i> should be 8-26. Cheap to fix, and it is the same slip DS has with <i>16-27</i> — worth a
+   shared naming convention rather than two separate corrections.</p>
+   <div class="owner">For follow-up by: <b>EDW + DS</b></div></div></div>
+  <div class="retro"><h4>Questions for the team</h4><ul>
+   <li>Looking at Q1: if we had committed to what we actually finished, what would each sprint have looked like?</li>
+   <li>Which of the three throughput numbers have we been quoting to stakeholders?</li>
+   <li>R9.00-S5 delivered 111 points against a 26-48 range everywhere else. What happened in that sprint?</li>
+  </ul></div>
+</section></div></main>
+<footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
+<script>
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ t.classList.add('active');document.getElementById(t.dataset.tab).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});});});
+document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',e=>{
+ e.preventDefault();document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();});});
+Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
+Chart.defaults.maintainAspectRatio=false;
+const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
+const gridc='#eef2f8';
+
+const q1Ref={id:'q1Ref',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
+ const yp=y.getPixelForValue(40.0);ctx.save();ctx.strokeStyle=BLUED;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
+ ctx.fillStyle=BLUED;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText('Quarter average 40.0',right-4,yp-4);ctx.restore();}};
+new Chart(document.getElementById('cQ1'),{type:'bar',
+ data:{labels:['January','February','March'],datasets:[
+  {label:'Items closed',data:[44,36,40],backgroundColor:BLUE,borderRadius:6}]},
+ options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:55,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
+ plugins:[q1Ref]});
+
+new Chart(document.getElementById('bd0'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
+  {label:'Total scope',data:[11, 26, 26, 28, 28, 30, 30, 30, 33, 33, 33, 33, 33, 33, 33, 33],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[11, 16, 16, 16, 16, 16, 16, 16, 14, 14, 14, 14, 9, 9, 3, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[11.0, 10.3, 9.5, 8.8, 8.1, 7.3, 6.6, 5.9, 5.1, 4.4, 3.7, 2.9, 2.2, 1.5, 0.7, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd1'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
+  {label:'Total scope',data:[31, 31, 34, 36, 39, 42, 42, 42, 42, 42, 42, 45, 47, 47, 47, 47],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[26, 26, 26, 21, 19, 17, 17, 12, 12, 7, 7, 8, 7, 7, 2, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[31.0, 28.9, 26.9, 24.8, 22.7, 20.7, 18.6, 16.5, 14.5, 12.4, 10.3, 8.3, 6.2, 4.1, 2.1, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd2'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
+  {label:'Total scope',data:[63, 96, 99, 99, 101, 103, 103, 110, 110, 110, 110, 111, 111, 111, 111, 111],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[36, 64, 64, 53, 38, 38, 38, 35, 33, 30, 30, 31, 31, 31, 28, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[63.0, 58.8, 54.6, 50.4, 46.2, 42.0, 37.8, 33.6, 29.4, 25.2, 21.0, 16.8, 12.6, 8.4, 4.2, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd3'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15", "d16"],datasets:[
+  {label:'Total scope',data:[48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[48, 45, 45, 45, 45, 45, 45, 40, 28, 28, 24, 18, 10, 10, 10, 0, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[48.0, 45.0, 42.0, 39.0, 36.0, 33.0, 30.0, 27.0, 24.0, 21.0, 18.0, 15.0, 12.0, 9.0, 6.0, 3.0, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd4'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
+  {label:'Total scope',data:[25, 27, 29, 31, 31, 31, 31, 33, 33, 36, 36, 42, 42, 42, 42],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[25, 27, 27, 27, 22, 22, 22, 24, 22, 25, 14, 14, 14, 11, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[25.0, 23.2, 21.4, 19.6, 17.9, 16.1, 14.3, 12.5, 10.7, 8.9, 7.1, 5.4, 3.6, 1.8, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd5'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
+  {label:'Total scope',data:[38, 41, 41, 42, 44, 44, 44, 44, 51, 53, 53, 53, 53, 53, 59, 59],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[38, 37, 30, 25, 27, 27, 27, 25, 32, 28, 23, 15, 10, 10, 0, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[38.0, 35.5, 32.9, 30.4, 27.9, 25.3, 22.8, 20.3, 17.7, 15.2, 12.7, 10.1, 7.6, 5.1, 2.5, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+new Chart(document.getElementById('bd6'),{type:'line',
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
+  {label:'Total scope',data:[28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28, 28],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[28, 28, 28, 27, 26, 23, 23, 18, 16, 13, 13, 8, 5, 5, 0, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[28.0, 26.1, 24.3, 22.4, 20.5, 18.7, 16.8, 14.9, 13.1, 11.2, 9.3, 7.5, 5.6, 3.7, 1.9, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+
+// --- click a chart to open it full size -------------------------------------
+(function(){
+  if(typeof Chart==='undefined') return;
+  const m=document.createElement('div'); m.className='cmodal';
+  m.innerHTML='<div class="cmbox"><div class="cmhead"><h4></h4>'+
+              '<button class="cmclose" aria-label="Close">&times;</button></div>'+
+              '<div class="cmbody"><canvas id="cmCanvas"></canvas></div></div>';
+  document.body.appendChild(m);
+  const title=m.querySelector('h4'), body=m.querySelector('.cmbody');
+  let big=null;
+  function close(){ if(big){big.destroy();big=null;} m.classList.remove('open'); }
+  m.addEventListener('click',e=>{ if(e.target===m) close(); });
+  m.querySelector('.cmclose').addEventListener('click',close);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close(); });
+  function labelFor(box){
+    const card=box.closest('.cmpcard,.card');
+    const h=card&&(card.querySelector('.cmphead h3')||card.querySelector('.gname'));
+    return h?h.textContent.trim():'Chart';
+  }
+  function open(src,box){
+    if(big) big.destroy();
+    title.textContent=labelFor(box);
+    body.innerHTML='<canvas id="cmCanvas"></canvas>';
+    const cfg=src.config;
+    big=new Chart(body.querySelector('canvas'),{
+      type:cfg.type,
+      data:JSON.parse(JSON.stringify(cfg.data)),
+      options:Object.assign({},cfg.options,{responsive:true,maintainAspectRatio:false,animation:false}),
+      plugins:cfg.plugins||[]
+    });
+    m.classList.add('open');
+  }
+  document.querySelectorAll('canvas').forEach(cv=>{
+    const ch=Chart.getChart(cv); if(!ch) return;
+    const box=cv.closest('.chartbox')||cv.parentElement;
+    if(!box||box.classList.contains('zoomable')) return;
+    box.classList.add('zoomable');
+    box.addEventListener('click',()=>open(ch,box));
+  });
+})();
+
+// --- hover tooltips ---------------------------------------------------------
+(function(){
+  const tip=document.createElement('div'); tip.className='tipbox'; document.body.appendChild(tip);
+  let cur=null;
+  function show(el){
+    cur=el; tip.textContent=el.getAttribute('data-tip'); tip.classList.add('on');
+    const r=el.getBoundingClientRect(); tip.style.left='0px'; tip.style.top='0px';
+    const t=tip.getBoundingClientRect();
+    let x=r.left+r.width/2-t.width/2;
+    x=Math.max(10,Math.min(x,window.innerWidth-t.width-10));
+    let y=r.top-t.height-9;
+    if(y<8) y=r.bottom+9;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  function hide(){ cur=null; tip.classList.remove('on'); }
+  document.addEventListener('mouseover',e=>{ const el=e.target.closest('[data-tip]'); if(el&&el!==cur) show(el); });
+  document.addEventListener('mouseout',e=>{ const el=e.target.closest('[data-tip]'); if(el&&el===cur) hide(); });
+  document.addEventListener('focusin',e=>{ const el=e.target.closest('[data-tip]'); if(el) show(el); });
+  document.addEventListener('focusout',hide);
+  window.addEventListener('scroll',()=>{ if(cur) show(cur); },{passive:true});
+})();
+
+</script></body></html>

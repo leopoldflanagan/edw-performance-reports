@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDW · May 2026 Performance Report</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDW · July 2026 Performance Report</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
@@ -194,6 +191,20 @@
   .legend-inline{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--wf-muted);margin-top:10px;justify-content:center}
   .legend-inline span{display:inline-flex;align-items:center;gap:6px}
   .legend-inline i{width:10px;height:10px;border-radius:3px;display:inline-block}
+</style>
+
+<style>
+ .statuspill .dot{background:var(--risk)}
+ .scrumgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:18px}
+ .sh{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+ .sh .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+ .sh .v{font-size:32px;font-weight:800;color:var(--wf-blue-d);line-height:1.1;margin-top:6px}
+ .sh .n{font-size:12.5px;color:var(--wf-muted);margin-top:4px}
+ .progbar{display:flex;height:30px;border-radius:8px;overflow:hidden;margin:6px 0 10px}
+ .progbar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
+ .nodata{background:#f4f6fa;border:1px dashed #c3cdda;border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}
+ .nodata .big{font-size:26px;font-weight:800;color:#8b95a8;display:block;margin-bottom:4px}
+ .fnote{font-size:12.5px;color:var(--wf-muted);border-left:3px solid var(--warning);padding-left:12px;margin-top:14px}
 
  .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
@@ -259,159 +270,114 @@
    line-height:1.5;padding:10px 13px;border-radius:10px;box-shadow:0 8px 26px rgba(0,0,0,.28);
    pointer-events:none;opacity:0;transition:opacity .12s;font-weight:400;letter-spacing:0;text-transform:none}
  .tipbox.on{opacity:1}
-</style>
-</head>
+
+</style></head>
 <body>
-
-<header>
-  <div class="wrap">
-    <div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; May 2026 Performance Report</div>
-    <div class="eyebrow">Enterprise Data Warehouse · Flow Metrics</div>
-    <h1>May 2026 Performance Report</h1>
-    <div class="sub">Monthly snapshot of delivery flow health, compared against April 2026 and the Q1 2026 baseline.</div>
-    <div class="statuspill"><span class="dot"></span> Flow Health: WARNING — flow healthy, planning predictability at risk</div>
-  </div>
-</header>
-
-<div class="tabs">
-  <div class="wrap">
-    <button class="tab active" data-tab="dash">Flow</button>
-    <button class="tab" data-tab="scrum">Sprints</button>
-    <button class="tab" data-tab="cmp">Comparatives</button>
-    <button class="tab" data-tab="act">Findings &amp; Retro</button>
-  </div>
-</div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><span class="rp on">MAY</span><a class="rp" href="2026-06-june.html">JUN</a><a class="rp" href="2026-07-july.html">JUL</a><a class="rp" href="2026-08-august.html">AUG</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
-
-<main>
-<div class="wrap">
-
-<!-- ============ TAB 1: DASHBOARD ============ -->
+<header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; July 2026 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
+<h1>July 2026 Performance Report</h1><div class="sub">Flow and sprint metrics for the month, against June 2026 and the closed quarters of the year: Q1 and Q2 2026.</div>
+<div class="statuspill"><span class="dot"></span> Flow Health: RISK — Bugs triple and unplanned work is back in the risk band.</div></div></header>
+<div class="tabs"><div class="wrap">
+ <button class="tab active" data-tab="dash">Flow</button>
+ <button class="tab" data-tab="scrum">Sprints</button>
+ <button class="tab" data-tab="cmp">Comparatives</button>
+ <button class="tab" data-tab="act">Findings &amp; Retro</button>
+</div></div>
+<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-05-may.html">MAY</a><a class="rp" href="2026-06-june.html">JUN</a><span class="rp on">JUL</span><a class="rp" href="2026-08-august.html">AUG</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<main><div class="wrap">
 <section class="panel active" id="dash">
-  <div class="sectit">Flow metrics — May 2026</div>
-  <div class="secsub">Enhanced version of the Jira dashboard gadgets, without the tool's visualization limits.</div>
-
+  <div class="sectit">Flow metrics — July 2026</div>
+  <div class="secsub">Throughput counts closed items only; discarded work is reported separately.</div>
   <div class="grid g3">
-    <!-- Cycle Time -->
     <div class="card">
-      <div class="ghead"><span class="gname"><span data-tip="How long an item takes from the moment work starts until it closes, in calendar days.">Cycle Time</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="bignum num-green">4.83<span class="unit">d median</span></div>
-      <div class="secondary">Average <b>7.16d</b> · 35 issues · Max 38.96d</div>
-      <div class="targetline"><span class="tl">Target</span> ≤6d median · ≤9d avg</div>
-      <div class="deltarow">
-        <div class="delta primary"><span class="lbl">vs Baseline</span><span class="pos">−23.2%</span> median</div>
-        <div class="delta"><span class="lbl">vs April</span><span class="neg">+23.2%</span> median</div>
-      </div>
-      <div class="infopanel ip-green">Median <b>4.83d</b> well below target. Slower than April, but April was an unusually fast month — both stay within target.</div>
-      <div class="cardfill"></div>
-      <hr class="docsep">
-      <a class="doclink" href="https://wellfit.atlassian.net/wiki/x/RYCQtQ" target="_blank">Cycle Time — Team Guide</a>
-    </div>
-
-    <!-- Throughput -->
-    <div class="card">
-      <div class="ghead"><span class="gname"><span data-tip="Items closed per month. Measures delivery capacity, not effort or complexity.">Throughput</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="bignum num-green">39<span class="unit">items · month total</span></div>
-      <div class="secondary">30 Story · 8 Urgent Task · 1 Bug</div>
+      <div class="ghead"><span class="gname"><span data-tip="Items closed per month. Measures delivery capacity, not effort or complexity.">Throughput</span></span><span class="badge b-red"><span class="d"></span>Risk</span></div>
+      <div class="bignum num-red">79<span class="unit">closed · month</span></div>
+      <div class="secondary">55 Story · 15 Bug · 9 Urgent Task · 2 Spike · 2 Task · 1 TechDebt</div>
       <div class="targetline"><span class="tl">Q1 baseline</span> 40/mo · range 36–44</div>
       <div class="deltarow">
-        <div class="delta primary"><span class="lbl">vs Q1 (40)</span><span class="neg">−2.5%</span></div>
-        <div class="delta"><span class="lbl">vs April (36)</span><span class="pos">+8.3%</span></div>
+        <div class="delta primary"><span class="lbl">vs Q1 (40)</span><span class="pos">+97.5%</span></div>
+        <div class="delta primary"><span class="lbl">vs Q2 (39)</span><span class="pos">+102.6%</span></div>
+        <div class="delta"><span class="lbl">vs June (74)</span><span class="pos">+6.8%</span></div>
       </div>
-      <div class="infopanel ip-green">Within the healthy range (36–44). <b>−2.5%</b> vs the Q1 average of 40.0 (120 closed in the quarter, 44/36/40).</div>
-      <div class="cardfill"></div>
-      <hr class="docsep">
+      <div class="infopanel ip-red">On top of the 79 closed there were <b>5 discarded</b> (Won't Do), which are not deliveries. The baseline of 40 was set with 4 devs and no longer describes this team.</div>
+      <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3056467970" target="_blank">Throughput — Team Guide</a>
     </div>
-
-    <!-- Unplanned -->
+    <div class="card">
+      <div class="ghead"><span class="gname"><span data-tip="How long an item takes from the moment work starts until it closes, in calendar days.">Cycle Time</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+      <div class="bignum num-green">3.81<span class="unit">d median</span></div>
+      <div class="secondary">Average <b>5.01d</b> · 67 issues · Max 22.0d</div>
+      <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
+      <div class="deltarow">
+        <div class="delta primary"><span class="lbl">vs Q1 (6.29d)</span><span class="pos">-39.4%</span> median</div>
+        <div class="delta primary"><span class="lbl">vs Q2 (4.59d)</span><span class="pos">-17.0%</span></div>
+        <div class="delta"><span class="lbl">vs May (5.18d)</span><span class="pos">-26.4%</span></div>
+      </div>
+      <div class="infopanel ip-green">Median and average both within target. The gap between 3.8d and 5.0d comes from a few long tickets — the longest this month took 22 days.</div>
+      <div class="cardfill"></div><hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117" target="_blank">Cycle Time — Team Guide</a>
+    </div>
     <div class="card">
       <div class="ghead"><span class="gname"><span data-tip="Share of delivered work that was reactive. Measures predictability, not productivity.">Planned vs Unplanned</span></span><span class="badge b-red"><span class="d"></span>Risk</span></div>
-      <div class="bignum num-red">17.95<span class="unit">%</span></div>
-      <div class="secondary">7 of 39 items labeled Unplanned</div>
-      <div class="targetline"><span class="tl">Target</span> ≤5% · Warning 5–10% · Risk &gt;10%</div>
+      <div class="bignum num-red">12.66<span class="unit">%</span></div>
+      <div class="secondary">10 of 79 deliveries labeled Unplanned</div>
+      <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       <div class="deltarow">
-        <div class="delta primary"><span class="lbl">vs Baseline (4.9%)</span><span class="neg">+13.0 pp</span></div>
-        <div class="delta"><span class="lbl">vs April (2.8%)</span><span class="neg">+15.1 pp</span></div>
+        <div class="delta primary"><span class="lbl">vs Q1 (4.9%)</span><span class="neg">+7.8 pp</span></div>
+        <div class="delta primary"><span class="lbl">vs Q2 (8.72%)</span><span class="neg">+3.9 pp</span></div>
+        <div class="delta"><span class="lbl">vs May (17.95%)</span><span class="pos">-5.3 pp</span></div>
       </div>
-      <div class="infopanel ip-red">First month above the <b>10% Risk threshold</b>. <a href="#" class="ip-link" data-goto="act">See origin breakdown in Findings &amp; Retro →</a></div>
-      <div class="cardfill"></div>
-      <hr class="docsep">
-      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a>
-    </div>
+      <div class="infopanel ip-red"><a href="#" class="ip-link" data-goto="act">See the breakdown in Findings &amp; Retro &rarr;</a></div>
+      <div class="cardfill"></div><hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a></div>
   </div>
-
   <div class="grid g2" style="margin-top:18px">
-    <!-- Donut -->
     <div class="card mixcard">
-      <div class="ghead" style="width:100%"><span class="gname">Work Mix — May</span><span class="badge b-red"><span class="d"></span>Risk</span></div>
-      <div class="mixbody">
-        <div class="donutwrap"><canvas id="donut"></canvas>
-          <div class="donutctr"><div class="dc-num">7</div><div class="dc-lbl">of 39<br>unplanned</div></div>
-        </div>
+      <div class="ghead" style="width:100%"><span class="gname"><span data-tip="Closed items against those resolved as Won’t Do in the same month.">Delivered vs discarded</span></span></div>
+      <div class="mixbody"><div class="donutwrap"><canvas id="donut"></canvas>
+        <div class="donutctr"><div class="dc-num">79</div><div class="dc-lbl">of 84<br>closed</div></div></div>
         <div class="mixlegend">
-          <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Planned</span><span class="ml-val">32 · 82.05%</span></div>
-          <div class="ml-row"><span class="ml-sw" style="background:#d64550"></span><span class="ml-nm">Unplanned</span><span class="ml-val">7 · 17.95%</span></div>
-        </div>
-      </div>
-      <div class="infopanel ip-red">Jira's pie can't render the "no-label" group, so it showed only the Unplanned slice. This computes Planned = Total − Unplanned for the real split.</div>
+          <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">79</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:#c3cdda"></span><span class="ml-nm">Won't Do</span><span class="ml-val">5</span></div>
+        </div></div>
+      <div class="infopanel ip-amber">May closed 39 without a single discard. From June on, discards show up every month.</div>
       <div class="cardfill"></div>
-      <hr class="docsep">
-      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834" target="_blank">Planned vs Unplanned — Team Guide</a>
     </div>
-
-    <!-- WIP -->
     <div class="card wipcard">
-      <div class="ghead"><span class="gname">Work In Progress · live snapshot</span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="wiptotal">
-        <div class="wt-num">13<span class="wt-den">/ 18</span></div>
-        <div class="wt-lbl">total items in progress<br><b>72% of limit</b> — comfortable headroom</div>
-      </div>
-      <div class="wipwrap">
-        <div class="wiprow"><span class="nm">In Development</span><div class="wipbar"><div class="wipfill" style="width:83%">10</div></div><span class="wiplim">/ ≤12</span></div>
-        <div class="wiprow"><span class="nm">Waiting Review</span><div class="wipbar"><div class="wipfill" style="width:50%">3</div></div><span class="wiplim">/ ≤6</span></div>
-        <div class="wiprow"><span class="nm">Total</span><div class="wipbar"><div class="wipfill" style="width:72%;background:linear-gradient(90deg,#005f91,#007CBC)">13</div></div><span class="wiplim">/ ≤18</span></div>
-      </div>
-      <div class="infopanel ip-green"><b>Policy updated in May</b> for team growth (4→6 devs). Per-dev reference unchanged (2 In Dev + 1 Waiting Review). Limits raised: 8→12 / 4→6 / 12→18.</div>
-      <div class="cardfill"></div>
-      <hr class="docsep">
-      <a class="doclink" href="https://wellfit.atlassian.net/wiki/pages/resumedraft.action?draftId=3023470624" target="_blank">WIP — Usage &amp; Reporting Guide</a>
-    </div>
+      <div class="ghead"><span class="gname"><span data-tip="Items in In Development or Awaiting Review. A point-in-time reading, not a monthly total.">Work In Progress</span></span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
+      <div class="nodata" style="margin:10px 0"><span class="big">—</span>historical snapshot not captured</div>
+      <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of July, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the August report.</div>
+      <div class="cardfill"></div><hr class="docsep">
+      <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3023470624" target="_blank">WIP — Team Guide</a></div>
   </div>
 
   <div style="margin-top:26px"></div>
-  <div class="sectit" style="font-size:20px">Executive Summary</div>
-  <div class="secsub">The key metrics, side by side.</div>
+  <div class="sectit" style="font-size:20px">Executive summary</div>
   <div class="tscroll"><table class="exec">
-    <thead><tr><th>Metric</th><th>May</th><th>April</th><th>Q1 Baseline</th><th>vs Baseline</th><th>vs April</th><th>Status</th></tr></thead>
+    <thead><tr><th>Metric</th><th>July</th><th>June</th><th>Q1 2026</th><th>Q2 2026</th><th>vs Q1</th><th>vs Q2</th></tr></thead>
     <tbody>
-      <tr><td><span data-tip="Calendar days from the first entry into In Development until closure, median across the month.">Cycle Time (median)</span></td><td>4.83d</td><td>3.92d</td><td>6.29d</td><td class="pos">−23.2%</td><td class="neg">+23.2%</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
-      <tr><td>Throughput</td><td>39</td><td>36</td><td>40 (avg)</td><td class="neg">−2.5%</td><td class="pos">+8.3%</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
-      <tr><td><span data-tip="Share of the month’s closed items labeled Unplanned. Target is 5% or below.">Unplanned work</span></td><td>17.95%</td><td>2.8%</td><td>4.9%</td><td class="neg">+13.0 pp</td><td class="neg">+15.1 pp</td><td><span class="st-dot" style="background:var(--risk)"></span></td></tr>
-      <tr><td>WIP</td><td>In limits</td><td>In limits</td><td>In limits</td><td>≤18 (new)</td><td class="flat">—</td><td><span class="st-dot" style="background:var(--healthy)"></span></td></tr>
+      <tr><td><span data-tip="Items that reached Closed during the month. Sub-tasks and epics excluded; discarded work is not counted.">Throughput (closed)</span></td><td>79</td><td>74</td><td>40</td><td>39</td><td class="pos">+97.5%</td><td class="pos">+102.6%</td></tr>
+      <tr><td><span data-tip="Share of the month’s closed items labeled Unplanned. Target is 5% or below.">Unplanned work</span></td><td>12.66%</td><td class="flat">—</td><td>4.9%</td><td>8.72%</td><td class="neg">+7.8 pp</td><td class="neg">+3.9 pp</td></tr>
+      <tr><td><span data-tip="Calendar days from the first entry into In Development until closure, median across the month.">Cycle Time (median)</span></td><td>3.81d</td><td class="flat">—</td><td>6.29d</td><td>4.59d</td><td class="pos">-39.4%</td><td class="pos">-17.0%</td></tr>
+      <tr><td><span data-tip="Items closed without ever recording a transition into In Development. They have no Cycle Time, so they sit outside that metric.">Closed without entering development</span></td><td>12 (15%)</td><td class="flat">—</td><td class="flat">—</td><td>24</td><td class="flat">—</td><td class="flat">—</td></tr>
     </tbody>
   </table></div>
-
-  <div class="reslinks">
-    <div class="rt">Resources &amp; Documentation</div>
-    <div class="rgrid">
-      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3420356612" target="_blank"><span class="ico">📄</span> May 2026 Snapshot — Confluence</a>
-      <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">📊</span> EDW ScrumBan Dashboard — Jira</a>
-      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3131736131/ScrumBan+Dashboard+-+Team+Guide" target="_blank"><span class="ico">📘</span> How to read the dashboard</a>
-      <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876" target="_blank"><span class="ico">📐</span> Q1 2026 Baseline Report</a>
-    </div>
-  </div>
+  <div class="fnote">Comparatives use the closed quarters of the year: Q1 and Q2. Q3 joins this table once September closes and its report is created. Q1's monthly detail is under review — the figure used here is the one published in Confluence.</div>
+  <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
+    <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3131736131" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
+    <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
+    <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
+    <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">&#128200;</span> EDW ScrumBan Dashboard</a>
+  </div></div>
 </section>
 
-<!-- ============ TAB 2: COMPARATIVES ============ -->
 
 <section class="panel" id="scrum">
- <div class="sectit">Sprint metrics — May</div>
+ <div class="sectit">Sprint metrics — July</div>
  <div class="secsub">The sprints that closed this month, rebuilt from Jira.</div>
  
  <div class="insightbox" style="margin-bottom:24px"><div class="k">This month's sprints</div>
-  <h2>Scope grew +32% to +76% after the sprints had started.</h2>
-  <p>Of everything added after day 1, <span class="stat">30%</span> carried a reactive marker — labeled <i>Unplanned</i> or typed <i>Urgent Task</i>. The rest came in as ordinary planned work. The series-wide view — velocity, scope-change trend and the full sprint table — lives in the
+  <h2>Scope grew +76% to +95% after the sprints had started.</h2>
+  <p>Of everything added after day 1, <span class="stat">18%</span> carried a reactive marker — labeled <i>Unplanned</i> or typed <i>Urgent Task</i>. The rest came in as ordinary planned work. The series-wide view — velocity, scope-change trend and the full sprint table — lives in the
   <a href="#" class="ip-link" data-goto="cmp" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.5)">Comparatives tab</a>.</p>
  </div>
  <div class="sectit" style="font-size:20px">Burndown per sprint</div>
@@ -419,90 +385,77 @@
  
  <div class="cmpcard">
    <div class="cmphead sprinthead">
-     <h3>EDW-Sprint 12-26</h3>
-     <span class="badge badge-lg b-green"><span class="d"></span>scope +32%</span>
-     <span class="sprintdates">Apr 27 &rarr; May 11</span>
+     <h3>EDW-Sprint 16-26</h3>
+     <span class="badge badge-lg b-amber"><span class="d"></span>scope +95%</span>
+     <span class="sprintdates">Jun 22 &rarr; Jul 6</span>
    </div>
    <div class="scrumgrid">
-     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">37</div><div class="n">story points in scope on day 1</div></div>
-     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+12</div><div class="n">final scope 49 points</div></div>
-     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">46</div><div class="n">15 of 16 items · still open 3 pts</div></div>
-     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">124%</div><div class="n">completed against day-1 scope</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">39</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+37</div><div class="n">final scope 76 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">76</div><div class="n">34 of 34 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">195%</div><div class="n">completed against day-1 scope</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd0"></canvas></div>
    
  </div>
  <div class="cmpcard">
    <div class="cmphead sprinthead">
-     <h3>EDW-Sprint 13-26</h3>
+     <h3>EDW-Sprint 17-26</h3>
      <span class="badge badge-lg b-amber"><span class="d"></span>scope +76%</span>
-     <span class="sprintdates">May 11 &rarr; May 26</span>
+     <span class="sprintdates">Jul 6 &rarr; Jul 20</span>
    </div>
    <div class="scrumgrid">
-     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">33</div><div class="n">story points in scope on day 1</div></div>
-     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+25</div><div class="n">final scope 58 points</div></div>
-     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">58</div><div class="n">19 of 19 items</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">51</div><div class="n">story points in scope on day 1</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+39</div><div class="n">final scope 90 points</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">90</div><div class="n">34 of 34 items</div></div>
      <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">176%</div><div class="n">completed against day-1 scope</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd1"></canvas></div>
    
  </div>
  
- <div class="sectit" style="font-size:20px;margin-top:28px">Committed vs Completed — May</div>
+ <div class="sectit" style="font-size:20px;margin-top:28px">Committed vs Completed — July</div>
  <div class="secsub">Day-1 commitment against what was added mid-sprint and what actually closed.</div>
  <div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>37</td><td>+12</td><td>46</td><td>124%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>33</td><td>+25</td><td>58</td><td>176%</td><td>4</td><td class="neg">21</td><td>16%</td></tr></tbody>
+  <tbody><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>39</td><td>+37</td><td>76</td><td>195%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>51</td><td>+39</td><td>90</td><td>176%</td><td>5</td><td class="neg">34</td><td>13%</td></tr></tbody>
  </table></div>
 </section>
 <section class="panel" id="cmp">
-  <div class="sectit">Comparatives by metric</div>
-  <div class="secsub">Each May metric against April (prior month) and the Q1 2026 baseline.</div>
-
+  <div class="sectit">Comparatives</div>
+  <div class="secsub">The full series from the baseline, so the trend shows and not just the month.</div>
+  <div class="cmpcard">
+    <div class="cmphead"><h3><span class="st-dot" style="background:var(--risk);width:13px;height:13px"></span> Throughput</h3><span class="badge b-red"><span class="d"></span>Risk</span></div>
+    <div class="cmpgrid">
+      <div class="chartbox" style="height:250px"><canvas id="cThru"></canvas></div>
+      <div class="readout">
+        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs Q1 (40/mo)</span><br><b>+97.5%</b> — third month in a row above the healthy range.</div>
+        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs Q2 (39/mo)</span><br><b>+102.6%</b> — Q2 is no better as a yardstick: its median is set by April and May, under the previous team.</div>
+        <div class="line"><span class="vs-tag">Reading</span><br>When a baseline breaks three months running in the same direction, the baseline is the problem. The guide asks for a quarterly recalculation.</div>
+      </div>
+    </div>
+  </div>
   <div class="cmpcard">
     <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> Cycle Time</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
     <div class="cmpgrid">
-      <div class="chartbox" style="height:230px"><canvas id="cCycle"></canvas></div>
+      <div class="chartbox" style="height:250px"><canvas id="cCyc"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs Baseline Q1</span><br><b>−23.2% median / −8.6% avg</b> — sustained improvement over the baseline (6.29d / 7.83d).</div>
-        <div class="line"><span class="vs-tag">vs April</span><br><b>+23.2% median / +21.8% avg</b> — slower, but April was unusually fast. Both months within target.</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Method</span><br>Rebuilt from Jira history: from the first entry into <i>In Development</i> to closure, in calendar days.</div>
+        <div class="line"><span class="vs-tag">Comparability note</span><br>Applied to May it gives a <b>5.18d</b> median against the <b>4.83d</b> published. The Control Chart summed only the time inside the board columns; this method measures elapsed time end to end and includes bounce-backs. The series is consistent with itself, but runs slightly above the historical one.</div>
       </div>
     </div>
   </div>
-
   <div class="cmpcard">
-    <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> Throughput</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
+    <div class="cmphead"><h3>Unplanned work</h3></div>
     <div class="cmpgrid">
-      <div class="chartbox" style="height:230px"><canvas id="cThru"></canvas></div>
+      <div class="chartbox" style="height:250px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs Baseline Q1</span><br><b>−2.5% vs the Q1 average (40)</b> — within the healthy ±20% range (36–44).</div>
-        <div class="line"><span class="vs-tag">vs April (36)</span><br><b>+8.3%</b> — growing delivery cadence.</div>
+        <div class="line"><span class="vs-tag">The series</span><br>Q1 4.9% &rarr; Q2 8.72% &rarr; May 17.95% &rarr; June 6.76% &rarr; July 12.66% &rarr; August no data.</div>
+        <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Careful</span><br>August's break is not a drop to zero, it is missing labeling. The line is interrupted on purpose.</div>
       </div>
     </div>
   </div>
-
-  <div class="cmpcard">
-    <div class="cmphead"><h3><span class="st-dot" style="background:var(--risk);width:13px;height:13px"></span> Planned vs Unplanned</h3><span class="badge b-red"><span class="d"></span>Risk</span></div>
-    <div class="cmpgrid">
-      <div class="chartbox" style="height:230px"><canvas id="cUnp"></canvas></div>
-      <div class="readout">
-        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs Baseline Q1 (4.9%)</span><br><b>+13.0 pp</b> — first month in Risk (&gt;10%). Mix of better labeling and a real rise in requests.</div>
-        <div class="line" style="border-color:var(--risk)"><span class="vs-tag">vs April (2.8%)</span><br><b>+15.1 pp</b> — sharp month-over-month jump.</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="cmpcard">
-    <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> WIP Policy</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-    <div class="cmpgrid">
-      <div class="chartbox" style="height:230px"><canvas id="cWip"></canvas></div>
-      <div class="readout">
-        <div class="line"><span class="vs-tag">Q1 → May (policy change)</span><br>Team grew from <b>4 to 6 developers</b>. Limits raised, keeping the per-dev reference (2 In Dev + 1 Waiting Review).</div>
-        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">May actual</span><br>13 of 18 total — within the new limits. Flow controlled, no bottlenecks.</div>
-      </div>
-    </div>
-  </div>
-
+  
  <div class="sectit" style="font-size:20px;margin-top:30px">Sprint series — full history</div><div class="secsub">Every sprint of 2026 on the board, so the month can be read against the trend.</div>
  <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
   <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
@@ -533,182 +486,93 @@
   <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>37</td><td>+12</td><td>46</td><td>124%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>33</td><td>+25</td><td>58</td><td>176%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>50</td><td>+35</td><td>80</td><td>160%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>48</td><td>+40</td><td>81</td><td>169%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>39</td><td>+37</td><td>76</td><td>195%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>51</td><td>+39</td><td>90</td><td>176%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>51</td><td>+51</td><td>102</td><td>200%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>14</td><td>+39</td><td>53</td><td>379%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>46</td><td>+39</td><td>85</td><td>185%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26 <span style="color:var(--wf-muted)">in progress</span></td><td>Aug 31 - Sep 14</td><td>45</td><td>+51</td><td>64</td><td>142%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr></tbody>
  </table></div>
  <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
-</section>
 
-<!-- ============ TAB 3: ACTIONABLES ============ -->
+</section>
 <section class="panel" id="act">
   <div class="sectit">Findings &amp; retro</div>
-  <div class="secsub">A closer look at where the Unplanned work came from this month, as input for team discussion.</div>
-
-  <div class="insightbox">
-    <div class="k">Observation of the month</div>
-    <h2>Most of May's Unplanned work shares a common source: reporting requests.</h2>
-    <p>Of the 7 items labeled Unplanned, <span class="stat">5 (71%)</span> were Finance/Accounting reporting requests. This is an observation from the data — the team is best placed to interpret what drove it and whether any of it could be anticipated. The points below are starting points for that conversation, not conclusions.</p>
+  <div class="secsub">What the data shows, as input for the team's conversation.</div>
+  <div class="insightbox"><div class="k">Observation of the month</div>
+   <h2>Bugs triple and unplanned work is back in the risk band.</h2>
+   <p>The references we measure against — 40 deliveries a month, 45 points a sprint, WIP of 12/6/18 — were set with a 4-dev team in Q1. Since then Harisha and Shruti joined and Dipika left. Comparing against those figures says more about the baseline than about the team.</p>
   </div>
-
   <div class="cmpcard">
-    <div class="cmphead"><h3>Unplanned origin · May</h3></div>
-    <div class="splitwrap">
-      <div class="chartbox" style="height:230px"><canvas id="cOrigin"></canvas></div>
-      <div>
-        <div class="originbar">
-          <div class="top"><span class="nm">Finance / Accounting reporting</span><span class="pct">71% · 5 items</span></div>
-          <div class="obtrack"><div class="obfill" style="width:71%;background:var(--warning)"></div></div>
-        </div>
-        <div class="originbar">
-          <div class="top"><span class="nm">Reporting / data fix (other areas)</span><span class="pct">29% · 2 items</span></div>
-          <div class="obtrack"><div class="obfill" style="width:29%;background:var(--wf-blue)"></div></div>
-        </div>
-        <p style="font-size:13px;color:var(--wf-muted);margin-top:14px">The 7 items labeled Unplanned in May, for reference during the retro:</p>
-      </div>
-    </div>
-
-    <div style="margin-top:18px">
-      <div class="ticket"><span class="tkey">EDW-1949</span><span class="tdesc">DCA Q1 2026 commission reconciliation</span></div>
-      <div class="ticket"><span class="tkey">EDW-1943</span><span class="tdesc">Solomon Reporting</span></div>
-      <div class="ticket"><span class="tkey">EDW-1913</span><span class="tdesc">Update CapRaise data model for April</span></div>
-      <div class="ticket"><span class="tkey">EDW-1911</span><span class="tdesc">PDS eligibility count by state — Accounting</span></div>
-      <div class="ticket"><span class="tkey">EDW-1904</span><span class="tdesc">WFP reporting — transactionid binding refresh</span></div>
-      <div class="ticket"><span class="tkey">EDW-1899</span><span class="tdesc">ES reports — add Practice Filter</span></div>
-      <div class="ticket"><span class="tkey">EDW-1893</span><span class="tdesc">Finance Monthly CapRaise report refresh process</span></div>
-    </div>
-  </div>
-
-  <div class="sectit" style="font-size:20px;margin-top:28px">Possible directions to explore</div>
-  <div class="secsub">Ideas the team might consider in the retro — to validate, adapt, or set aside based on the real context.</div>
-
+     <div class="cmphead"><h3>The 10 items labeled Unplanned</h3></div>
+     <div class="ticket"><span class="tkey">EDW-2110</span><span class="tdesc">Hack WFP report to include Solomon</span></div><div class="ticket"><span class="tkey">EDW-2130</span><span class="tdesc">Office duplicated in Sales Report</span></div><div class="ticket"><span class="tkey">EDW-2134</span><span class="tdesc">Compliance model not refreshing - reduce model size</span></div><div class="ticket"><span class="tkey">EDW-2077</span><span class="tdesc">[Accounting] Plans Purchase Detail report update - round 2.2</span></div><div class="ticket"><span class="tkey">EDW-2137</span><span class="tdesc">Update DataCap model for June</span></div><div class="ticket"><span class="tkey">EDW-2147</span><span class="tdesc">FBO Reconciliation Troubleshoot</span></div><div class="ticket"><span class="tkey">EDW-2164</span><span class="tdesc">Patterson RevShare insert failure - ADF load broke</span></div><div class="ticket"><span class="tkey">EDW-2169</span><span class="tdesc">[Onboarding] Report addition</span></div><div class="ticket"><span class="tkey">EDW-2173</span><span class="tdesc">Update ExistingCreditLine logic in loan transactions report</span></div><div class="ticket"><span class="tkey">EDW-2096</span><span class="tdesc">SOT tables for ll_staging tables</span></div>
+     <div class="fnote">Same pattern as May: reporting requests from Finance, Accounting and Sales. The May retro conversation about anticipating these requests is still open.</div>
+   </div>
+  <div class="sectit" style="font-size:20px;margin-top:28px">Directions to explore</div>
+  <div class="secsub">Ideas to validate, adapt or set aside depending on the real context.</div>
   <div class="act"><div class="pri p-blue"></div><div class="inner">
-    <div class="atop"><h4>Look at the Finance reporting requests together</h4><span class="pill pill-blue">Discuss</span></div>
-    <p>Since reporting requests made up most of the Unplanned work this month, it may be worth reviewing them as a group. The team would know whether some of these tend to recur or could be anticipated — and if so, whether they could be brought into planning ahead of time.</p>
-    <div class="owner">For discussion with: <b>EDW + Finance</b></div>
-  </div></div>
-
+   <div class="atop"><h4>Recalculate the baselines with the current team</h4><span class="pill pill-blue">Discuss</span></div>
+   <p>Throughput and Velocity have been out of range for months, and WIP has already been recalculated to 5 devs. The guide asks for a quarterly review; the Q2 report in this series proposes the new starting point.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
   <div class="act"><div class="pri p-blue"></div><div class="inner">
-    <div class="atop"><h4>Consider whether any recurring work can be simplified</h4><span class="pill pill-blue">Discuss</span></div>
-    <p>If any of these requests turn out to repeat regularly, the team might explore whether they could be made easier to run or handed off as self-service — reducing how often they come back as new work. Only the team knows which (if any) fit this.</p>
-    <div class="owner">For discussion with: <b>EDW</b></div>
-  </div></div>
-
-  <div class="act"><div class="pri p-blue"></div><div class="inner">
-    <div class="atop"><h4>Explore an intake agreement with Finance</h4><span class="pill pill-blue">Discuss</span></div>
-    <p>If predictability is a shared concern, the team and Finance could discuss a lightweight way for reporting requests to arrive with some lead time, leaving room to fit them into a sprint. Whether this is needed is for both sides to decide.</p>
-    <div class="owner">For discussion with: <b>EDW + Finance</b></div>
-  </div></div>
-
-  <div class="act"><div class="pri p-green"></div><div class="inner">
-    <div class="atop"><h4>Revisit capacity for reactive work</h4><span class="pill pill-green">Discuss</span></div>
-    <p>For work that genuinely can't be planned ahead, the team might consider whether reserving a small amount of sprint capacity helps absorb it without affecting planned commitments. The right amount — if any — is something to feel out over a few sprints.</p>
-    <div class="owner">For discussion with: <b>EDW</b></div>
-  </div></div>
-
+   <div class="atop"><h4>Look at the sustained 100% completion</h4><span class="pill pill-blue">Discuss</span></div>
+   <p>Five sprints in a row closing everything committed, with no spillover. It could be conservative planning, or tickets closed right at the sprint edge. The team is the one who knows which, and the answer changes how reliable Velocity is for planning.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
+  <div class="act"><div class="pri p-amber"></div><div class="inner">
+   <div class="atop"><h4>Bring back the Unplanned label</h4><span class="pill pill-amber">Action</span></div>
+   <p>Without it there is no predictability metric. It is the same follow-up left open in the May retro, and in August it cut the series entirely.</p>
+   <div class="owner">Follow-up by: <b>EDW</b></div></div></div>
   <div class="act"><div class="pri p-grey"></div><div class="inner">
-    <div class="atop"><h4>Keep labeling consistent &amp; tidy up the data</h4><span class="pill pill-grey">Follow-up</span></div>
-    <p>Labeling consistency affects how comparable the numbers are month to month, so keeping the <i>Unplanned</i> label applied consistently helps the trend stay meaningful. Two open technical follow-ups: complete the donut's Rich Filter, and confirm the monthly saved filters use <i>resolved</i> rather than <i>created</i>.</p>
-    <div class="owner">For follow-up by: <b>EDW</b></div>
-  </div></div>
-
+     <div class="atop"><h4>Review the 5 discarded items</h4><span class="pill pill-grey">Follow-up</span></div>
+     <p>The official Throughput filter uses <i>resolved</i>, which mixes closed with discarded (Won't Do). This month that is 5 of 84 resolved (6%), which is why the headline counts only the 79 closed. Worth looking at in the retro at what was opened and then dropped — it usually signals work that came in without enough definition.</p>
+     <div class="owner">Follow-up by: <b>EDW</b></div></div></div>
+  <div class="act"><div class="pri p-amber"></div><div class="inner">
+   <div class="atop"><h4>12 items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
+   <p>Of the 79 items closed this month, 12 (15%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 67. In May it was 6 of 39 (15%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
+   <div class="owner">To review with: <b>EDW</b></div></div></div>
   <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
-  <div class="retro">
-    <h4>Questions for the team</h4>
-    <ul>
-      <li>Looking at the 7 Unplanned items, how would we characterize them — were any of them things we could have seen coming?</li>
-      <li>Are there reporting requests that tend to repeat, and would it help to anticipate them in planning?</li>
-      <li>Would any recurring work benefit from being automated or simplified?</li>
-      <li>Does it feel like reactive work is affecting our planned commitments, and if so, how do we want to handle it?</li>
-      <li>With 2 new developers ramping up, when does it make sense to revisit the throughput baseline?</li>
-    </ul>
-  </div>
-</section>
-
-</div>
-</main>
-
-<footer>
-  EDW — May 2026 Performance Report · Sources: EDW ScrumBan Dashboard · April &amp; May 2026 Snapshots (Confluence) · Q1 2026 Baseline · Generated Jun 2, 2026
-</footer>
-
+  <div class="retro"><h4>Questions for the team</h4><ul>
+   <li>Do we close at 100% because we commit to less, or because we close tickets to make the sprint cut-off?</li>
+   <li>With 5 devs today, how many deliveries a month and how many points a sprint are a realistic commitment?</li>
+   <li>What did we open this month that ended as Won't Do, and what was missing when it came in?</li>
+   <li>What would make the <i>Unplanned</i> label get applied on its own, without depending on someone remembering?</li>
+  </ul></div>
+</section></div></main>
+<footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
 <script>
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById(t.dataset.tab).classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-});
-// in-card links that jump to another tab
-document.querySelectorAll('[data-goto]').forEach(l=>{
-  l.addEventListener('click',e=>{
-    e.preventDefault();
-    document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();
-  });
-});
-
-Chart.defaults.font.family = "'DM Sans', sans-serif";
-Chart.defaults.font.size = 11;
-Chart.defaults.color = '#626c84';
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{
+ document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+ t.classList.add('active');document.getElementById(t.dataset.tab).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});});});
+document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',e=>{
+ e.preventDefault();document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();});});
+Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
 Chart.defaults.maintainAspectRatio=false;
-const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda',NAVY='#005f91';
+const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
 const gridc='#eef2f8';
 
-new Chart(document.getElementById('donut'),{
-  type:'doughnut',
-  data:{labels:['Planned','Unplanned'],datasets:[{data:[32,7],backgroundColor:[BLUE,RED],borderColor:'#fff',borderWidth:3}]},
-  options:{cutout:'68%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw} (${(c.raw/39*100).toFixed(1)}%)`}}}}
-});
-
-new Chart(document.getElementById('cCycle'),{
-  type:'bar',
-  data:{labels:['Q1 Baseline','April','May'],datasets:[
-    {label:'Median',data:[6.29,3.92,4.83],backgroundColor:BLUE,borderRadius:5},
-    {label:'Average',data:[7.83,5.88,7.16],backgroundColor:BLUEL,borderRadius:5}]},
-  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:10,grid:{color:gridc},title:{display:true,text:'Days'}},x:{grid:{display:false}}}}
-});
-
-const thruRefLines={id:'thruRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
-  const refs=[{v:40,t:'Q1 40',col:BLUED}];
-  refs.forEach(r=>{const yp=y.getPixelForValue(r.v);
-    ctx.save();ctx.strokeStyle=r.col;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
-    ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();
-    ctx.setLineDash([]);ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';
-    ctx.fillText(r.t,right-4,yp-4);ctx.restore();});
-}};
-new Chart(document.getElementById('cThru'),{
-  type:'bar',
-  data:{labels:['April','May'],datasets:[
-    {label:'Monthly total',data:[36,39],backgroundColor:[BLUEL,BLUE],borderRadius:6,barPercentage:0.55}]},
-  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw} items completed`}}},scales:{y:{beginAtZero:true,max:52,grid:{color:gridc},title:{display:true,text:'Items / month'}},x:{grid:{display:false}}}},
-  plugins:[thruRefLines]
-});
-
-const bandPlugin={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;const z=(v)=>y.getPixelForValue(v);
-  ctx.save();
-  ctx.fillStyle='rgba(79,168,0,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
-  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
-  ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));
-  ctx.restore();}};
-new Chart(document.getElementById('cUnp'),{
-  type:'line',
-  data:{labels:['Q1','April','May'],datasets:[{data:[4.9,2.8,17.95],borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,pointHoverRadius:8,borderWidth:3,
-    pointBackgroundColor:[GREEN,GREEN,RED]}]},
-  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.raw}% unplanned`}}},scales:{y:{beginAtZero:true,max:20,grid:{color:gridc},title:{display:true,text:'% Unplanned'},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}},
-  plugins:[bandPlugin]
-});
-
-new Chart(document.getElementById('cWip'),{
-  type:'bar',
-  data:{labels:['In Development','Waiting Review','Total'],datasets:[
-    {label:'Q1 (4 devs)',data:[8,4,12],backgroundColor:GREY,borderRadius:4},
-    {label:'May (6 devs)',data:[12,6,18],backgroundColor:BLUE,borderRadius:4}]},
-  options:{indexAxis:'y',plugins:{legend:{position:'top'}},scales:{x:{beginAtZero:true,max:20,grid:{color:gridc},title:{display:true,text:'WIP limit'}},y:{grid:{display:false}}}}
-});
-
-new Chart(document.getElementById('cOrigin'),{
-  type:'doughnut',
-  data:{labels:['Finance/Accounting','Other reporting'],datasets:[{data:[5,2],backgroundColor:[AMBER,BLUE],borderColor:'#fff',borderWidth:3}]},
-  options:{cutout:'58%',plugins:{legend:{position:'bottom'},tooltip:{callbacks:{label:c=>` ${c.label}: ${c.raw} items (${(c.raw/7*100).toFixed(0)}%)`}}}}
-});
+new Chart(document.getElementById('donut'),{type:'doughnut',
+ data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[79,5],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
+ options:{cutout:'68%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
+const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
+ [{v:40,t:'Q1 40',col:BLUED},{v:39,t:'Q2 39',col:AMBER}].forEach(r=>{
+  const yp=y.getPixelForValue(r.v);ctx.save();ctx.strokeStyle=r.col;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
+  ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
+new Chart(document.getElementById('cThru'),{type:'bar',
+ data:{labels:['Apr','May','Jun','Jul','Aug'],datasets:[{label:'Closed',
+  data:[36,39,74,79,82],backgroundColor:['#c3cdda','#c3cdda','#65B2D5','#007CBC','#65B2D5'],borderRadius:6}]},
+ options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:110,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
+ plugins:[thrRef]});
+new Chart(document.getElementById('cCyc'),{type:'bar',
+ data:{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[
+  {label:'Median',data:[6.29,4.59,5.18,4.26,3.81,4.39],backgroundColor:BLUE,borderRadius:5},
+  {label:'Average',data:[7.83,9.33,8.04,8.42,5.01,7.91],backgroundColor:BLUEL,borderRadius:5}]},
+ options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:11,grid:{color:gridc},title:{display:true,text:'Days'}},x:{grid:{display:false}}}}});
+const bands={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;const z=v=>y.getPixelForValue(v);
+ ctx.save();ctx.fillStyle='rgba(79,168,0,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
+ ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
+ ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));ctx.restore();}};
+new Chart(document.getElementById('cUnp'),{type:'line',
+ data:{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[{data:[4.9,8.72,17.95,6.76,12.66,null],
+  borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,borderWidth:3,spanGaps:false,
+  pointBackgroundColor:[GREEN,AMBER,RED,AMBER,RED,GREY]}]},
+ options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw==null?' no data':` ${c.raw}% unplanned`}}},
+  scales:{y:{beginAtZero:true,max:20,grid:{color:gridc},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}},
+ plugins:[bands]});
 
 const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
  const yp=y.getPixelForValue(45);ctx.save();ctx.strokeStyle=RED;ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
@@ -727,15 +591,15 @@ new Chart(document.getElementById('cSplit'),{type:'bar',
  options:{plugins:{legend:{position:'top'}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Points added mid-sprint'}}}}});
 new Chart(document.getElementById('bd0'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
-  {label:'Total scope',data:[37, 37, 37, 40, 40, 40, 40, 40, 45, 45, 47, 47, 47, 47, 49],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
-  {label:'Work still open',data:[37, 34, 31, 31, 31, 28, 28, 20, 25, 18, 20, 16, 16, 16, 3],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[37.0, 34.4, 31.7, 29.1, 26.4, 23.8, 21.1, 18.5, 15.9, 13.2, 10.6, 7.9, 5.3, 2.6, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Total scope',data:[39, 42, 45, 48, 50, 50, 50, 55, 61, 64, 73, 76, 76, 76, 76],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[39, 34, 34, 29, 28, 28, 28, 29, 25, 25, 26, 29, 29, 29, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[39.0, 36.2, 33.4, 30.6, 27.9, 25.1, 22.3, 19.5, 16.7, 13.9, 11.1, 8.4, 5.6, 2.8, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd1'),{type:'line',
- data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
-  {label:'Total scope',data:[33, 42, 42, 42, 45, 45, 45, 50, 53, 55, 58, 58, 58, 58, 58, 58],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
-  {label:'Work still open',data:[31, 36, 32, 32, 32, 32, 32, 37, 40, 42, 45, 33, 26, 26, 26, 8],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[33.0, 30.8, 28.6, 26.4, 24.2, 22.0, 19.8, 17.6, 15.4, 13.2, 11.0, 8.8, 6.6, 4.4, 2.2, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
+  {label:'Total scope',data:[51, 61, 61, 69, 74, 76, 76, 80, 82, 83, 88, 90, 90, 90, 90],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[51, 59, 55, 47, 47, 49, 49, 38, 39, 40, 40, 21, 21, 21, 7],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[51.0, 47.4, 43.7, 40.1, 36.4, 32.8, 29.1, 25.5, 21.9, 18.2, 14.6, 10.9, 7.3, 3.6, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 
 // --- click a chart to open it full size -------------------------------------
@@ -801,6 +665,4 @@ new Chart(document.getElementById('bd1'),{type:'line',
   window.addEventListener('scroll',()=>{ if(cur) show(cur); },{passive:true});
 })();
 
-</script>
-</body>
-</html>
+</script></body></html>
