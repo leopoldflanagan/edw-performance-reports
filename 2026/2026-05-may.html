@@ -628,22 +628,27 @@
 </footer>
 
 <script>
-document.querySelectorAll('.tab').forEach(t=>{
-  t.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
-    document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById(t.dataset.tab).classList.add('active');
-    window.scrollTo({top:0,behavior:'smooth'});
-  });
-});
+function showTab(id,scroll){
+  const tab=document.querySelector(`.tab[data-tab="${id}"]`), panel=document.getElementById(id);
+  if(!tab||!panel)return false;
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  tab.classList.add('active');panel.classList.add('active');
+  try{history.replaceState(null,'','#t='+id);}catch(e){}
+ if(window.Chart)panel.querySelectorAll('canvas').forEach(c=>{const ch=Chart.getChart(c);if(ch)ch.resize();});
+  if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+  return true;
+}
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>showTab(t.dataset.tab,true));});
 // in-card links that jump to another tab
 document.querySelectorAll('[data-goto]').forEach(l=>{
-  l.addEventListener('click',e=>{
-    e.preventDefault();
-    document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();
-  });
+  l.addEventListener('click',e=>{ e.preventDefault(); showTab(l.dataset.goto,true); });
 });
+// carry the open tab across reports
+function currentTab(){const a=document.querySelector('.tab.active');return a?a.dataset.tab:'';}
+document.querySelectorAll('.repnav a.rp').forEach(a=>{a.addEventListener('click',e=>{
+  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
+(function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 
 Chart.defaults.font.family = "'DM Sans', sans-serif";
 Chart.defaults.font.size = 11;
@@ -799,6 +804,77 @@ new Chart(document.getElementById('bd1'),{type:'line',
   document.addEventListener('focusin',e=>{ const el=e.target.closest('[data-tip]'); if(el) show(el); });
   document.addEventListener('focusout',hide);
   window.addEventListener('scroll',()=>{ if(cur) show(cur); },{passive:true});
+})();
+
+
+/* Sprints tab: newest first, collapsible cards */
+(function(){
+ var css=document.createElement('style');
+ css.textContent=
+ '#scrum .cmpcard.spc{padding-top:0;overflow:hidden}'+
+ '#scrum .cmpcard.spc>.sprinthead{cursor:pointer;padding:18px 0 14px;margin:0;user-select:none;position:relative;padding-right:34px}'+
+ '#scrum .cmpcard.spc>.sprinthead:hover h3{color:var(--wf-blue,#007CBC)}'+
+ '#scrum .spc .spchev{position:absolute;right:4px;top:50%;transform:translateY(-50%) rotate(0deg);transition:transform .18s ease;'+
+   'width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#8b95a8;font-size:11px;background:#eef2f8}'+
+ '#scrum .spc.open .spchev{transform:translateY(-50%) rotate(180deg)}'+
+ '#scrum .spc .spcsum{font-size:12.5px;color:#626c84;margin:-4px 0 14px;display:block}'+
+ '#scrum .spc.open .spcsum{display:none}'+
+ '#scrum .spc .spcbody{display:none;padding-bottom:4px}'+
+ '#scrum .spc.open .spcbody{display:block}'+
+ '#scrum .spc+.spc{margin-top:14px}';
+ document.head.appendChild(css);
+
+ var panel=document.getElementById('scrum'); if(!panel)return;
+ var cards=[].slice.call(panel.querySelectorAll('.cmpcard')).filter(function(c){return c.querySelector('.sprinthead');});
+ if(!cards.length)return;
+
+ // group each card by the section heading that precedes it, then reverse inside each group
+ var groups=[],seen=[];
+ cards.forEach(function(c){
+  var h=c.previousElementSibling,key=null;
+  while(h){ if(h.classList&&h.classList.contains('sectit')){key=h;break;} h=h.previousElementSibling; }
+  var i=seen.indexOf(key); if(i<0){seen.push(key);groups.push([]);i=groups.length-1;}
+  groups[i].push(c);
+ });
+ groups.forEach(function(g){
+  if(g.length<2)return;
+  var parent=g[0].parentNode, anchor=g[g.length-1].nextSibling;
+  g.slice().reverse().forEach(function(c){parent.insertBefore(c,anchor);});
+ });
+
+ // collapse each card, keeping a one-line summary visible
+ cards.forEach(function(c){
+  var head=c.querySelector('.sprinthead');
+  var body=document.createElement('div'); body.className='spcbody';
+  var n=head.nextSibling; while(n){var nx=n.nextSibling; body.appendChild(n); n=nx;}
+  c.appendChild(body); c.classList.add('spc');
+
+  var vals=[].slice.call(body.querySelectorAll('.scrumgrid .sh')).map(function(sh){
+   var k=sh.querySelector('.k'), v=sh.querySelector('.v');
+   return {k:k?k.textContent.trim():'', v:v?v.textContent.trim():''};});
+  if(vals.length>=4){
+   var s=document.createElement('span'); s.className='spcsum';
+   s.textContent=vals[0].v+' pts committed → '+vals[2].v+' completed · '+vals[3].v+' of commitment';
+   c.insertBefore(s,body);
+  }
+  var chev=document.createElement('span'); chev.className='spchev'; chev.textContent='▾';
+  head.appendChild(chev);
+  head.addEventListener('click',function(){
+   c.classList.toggle('open');
+   if(c.classList.contains('open')&&window.Chart)
+    body.querySelectorAll('canvas').forEach(function(cv){var ch=Chart.getChart(cv); if(ch)ch.resize();});
+  });
+ });
+ // newest sprint open by default
+ var first=panel.querySelector('.cmpcard.spc');
+ if(first){first.classList.add('open');
+  if(window.Chart)first.querySelectorAll('canvas').forEach(function(cv){var ch=Chart.getChart(cv);if(ch)ch.resize();});}
+
+ // reverse the sprint tables too (newest row first)
+ panel.querySelectorAll('table.exec tbody').forEach(function(tb){
+  var rows=[].slice.call(tb.children);
+  if(rows.length>1)rows.reverse().forEach(function(r){tb.appendChild(r);});
+ });
 })();
 
 </script>

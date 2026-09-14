@@ -313,20 +313,6 @@
       <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117" target="_blank">Cycle Time — Team Guide</a></div>
   </div>
   <div style="margin-top:24px"></div>
-  <div class="cmpcard"><div class="cmphead"><h3>Q1 month by month</h3></div>
-   <div class="chartbox" style="height:300px"><canvas id="cQ1"></canvas></div>
-   <div class="infopanel ip-green">All three months land inside the healthy range. January is the strongest, and the
-   quarter closes almost exactly on its own average — the profile of a steady quarter rather than a ramp.</div>
-  </div>
-  <div class="sectit" style="font-size:20px">Quarter comparison</div>
-  <div class="tscroll"><table class="exec">
-   <thead><tr><th>Reference</th><th>Period</th><th>Devs</th><th>Closed</th><th>Avg/month</th><th>Unplanned</th><th>Status</th></tr></thead>
-   <tbody>
-    <tr><td>Q1 2026</td><td>Jan - Mar</td><td>4</td><td>120</td><td>40.0</td><td>4.17%</td><td>baseline, reconciled</td></tr>
-    <tr><td>Q2 2026</td><td>Apr - Jun</td><td>4 &rarr; 6</td><td>149</td><td>49.7</td><td>8.72%</td><td>mixed quarter, not usable</td></tr>
-    <tr><td>Q3 2026</td><td>Jul - Sep</td><td>5</td><td class="flat">in progress</td><td class="flat">—</td><td class="flat">—</td><td class="flat">closes in September</td></tr>
-   </tbody>
-  </table></div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
     <a class="rlink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
@@ -463,8 +449,24 @@
   <tbody><tr><td>EDW-R8.29-S3</td><td>Dec 22 - Jan 5</td><td>26</td><td>+7</td><td>33</td><td>127%</td><td>1</td><td class="neg">2</td><td>33%</td></tr><tr><td>EDW-R9.00-S4</td><td>Jan 5 - Jan 19</td><td>31</td><td>+16</td><td>47</td><td>152%</td><td>1</td><td class="neg">6</td><td>14%</td></tr><tr><td>EDW-R9.00-S5</td><td>Jan 19 - Feb 2</td><td>96</td><td>+15</td><td>111</td><td>116%</td><td>0</td><td class="neg">7</td><td>0%</td></tr><tr><td>EDW-Sprint 6-26</td><td>Feb 2 - Feb 17</td><td>48</td><td>+0</td><td>48</td><td>100%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 7-26</td><td>Feb 17 - Mar 2</td><td>27</td><td>+15</td><td>42</td><td>156%</td><td>1</td><td class="neg">8</td><td>11%</td></tr><tr><td>EDW-Sprint 8-27</td><td>Mar 2 - Mar 16</td><td>41</td><td>+18</td><td>59</td><td>144%</td><td>2</td><td class="neg">5</td><td>29%</td></tr><tr><td>EDW-Sprint 9-26</td><td>Mar 16 - Mar 30</td><td>28</td><td>+0</td><td>28</td><td>100%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr></tbody>
  </table></div>
 </section>
-<section class="panel" id="cmp"><div class="sectit">Comparatives</div>
- <div class="secsub">See the Flow tab — this is a quarter report, not a monthly one. The full-year series lives on the monthly pages.</div></section>
+<section class="panel" id="cmp">
+  <div class="sectit">Comparatives</div>
+  <div class="secsub">Q1 against the rest of the year, and against the quarters that follow it.</div>
+  <div class="cmpcard"><div class="cmphead"><h3>Q1 month by month</h3></div>
+   <div class="chartbox" style="height:300px"><canvas id="cQ1"></canvas></div>
+   <div class="infopanel ip-green">All three months land inside the healthy range. January is the strongest, and the
+   quarter closes almost exactly on its own average — the profile of a steady quarter rather than a ramp.</div>
+  </div>
+  <div class="sectit" style="font-size:20px">Quarter comparison</div>
+  <div class="tscroll"><table class="exec">
+   <thead><tr><th>Reference</th><th>Period</th><th>Devs</th><th>Closed</th><th>Avg/month</th><th>Unplanned</th><th>Status</th></tr></thead>
+   <tbody>
+    <tr><td>Q1 2026</td><td>Jan - Mar</td><td>4</td><td>120</td><td>40.0</td><td>4.17%</td><td>baseline, reconciled</td></tr>
+    <tr><td>Q2 2026</td><td>Apr - Jun</td><td>4 &rarr; 6</td><td>149</td><td>49.7</td><td>8.72%</td><td>mixed quarter, not usable</td></tr>
+    <tr><td>Q3 2026</td><td>Jul - Sep</td><td>5</td><td class="flat">in progress</td><td class="flat">—</td><td class="flat">—</td><td class="flat">closes in September</td></tr>
+   </tbody>
+  </table></div>
+</section>
 <section class="panel" id="act">
   <div class="sectit">Findings &amp; retro</div>
   <div class="secsub">What to take from the quarter, and from the correction.</div>
@@ -515,13 +517,24 @@
 </section></div></main>
 <footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
 <script>
-document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>{
+function showTab(id,scroll){
+ const tab=document.querySelector(`.tab[data-tab="${id}"]`), panel=document.getElementById(id);
+ if(!tab||!panel)return false;
  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
- t.classList.add('active');document.getElementById(t.dataset.tab).classList.add('active');
- window.scrollTo({top:0,behavior:'smooth'});});});
+ tab.classList.add('active');panel.classList.add('active');
+ try{history.replaceState(null,'','#t='+id);}catch(e){}
+ if(window.Chart)panel.querySelectorAll('canvas').forEach(c=>{const ch=Chart.getChart(c);if(ch)ch.resize();});
+ if(scroll)window.scrollTo({top:0,behavior:'smooth'});
+ return true;}
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>showTab(t.dataset.tab,true));});
 document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',e=>{
- e.preventDefault();document.querySelector(`.tab[data-tab="${l.dataset.goto}"]`).click();});});
+ e.preventDefault();showTab(l.dataset.goto,true);});});
+// carry the open tab across reports: the month/quarter pills keep you where you were
+function currentTab(){const a=document.querySelector('.tab.active');return a?a.dataset.tab:'';}
+document.querySelectorAll('.repnav a.rp').forEach(a=>{a.addEventListener('click',e=>{
+ const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
+(function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
 Chart.defaults.maintainAspectRatio=false;
 const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
@@ -579,6 +592,76 @@ new Chart(document.getElementById('bd6'),{type:'line',
   {label:'Work still open',data:[28, 28, 28, 27, 26, 23, 23, 18, 16, 13, 13, 8, 5, 5, 0, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
   {label:'Ideal from day-1 commitment',data:[28.0, 26.1, 24.3, 22.4, 20.5, 18.7, 16.8, 14.9, 13.1, 11.2, 9.3, 7.5, 5.6, 3.7, 1.9, 0.0],borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
+/* Sprints tab: newest first, collapsible cards */
+(function(){
+ var css=document.createElement('style');
+ css.textContent=
+ '#scrum .cmpcard.spc{padding-top:0;overflow:hidden}'+
+ '#scrum .cmpcard.spc>.sprinthead{cursor:pointer;padding:18px 0 14px;margin:0;user-select:none;position:relative;padding-right:34px}'+
+ '#scrum .cmpcard.spc>.sprinthead:hover h3{color:var(--wf-blue,#007CBC)}'+
+ '#scrum .spc .spchev{position:absolute;right:4px;top:50%;transform:translateY(-50%) rotate(0deg);transition:transform .18s ease;'+
+   'width:22px;height:22px;border-radius:6px;display:flex;align-items:center;justify-content:center;color:#8b95a8;font-size:11px;background:#eef2f8}'+
+ '#scrum .spc.open .spchev{transform:translateY(-50%) rotate(180deg)}'+
+ '#scrum .spc .spcsum{font-size:12.5px;color:#626c84;margin:-4px 0 14px;display:block}'+
+ '#scrum .spc.open .spcsum{display:none}'+
+ '#scrum .spc .spcbody{display:none;padding-bottom:4px}'+
+ '#scrum .spc.open .spcbody{display:block}'+
+ '#scrum .spc+.spc{margin-top:14px}';
+ document.head.appendChild(css);
+
+ var panel=document.getElementById('scrum'); if(!panel)return;
+ var cards=[].slice.call(panel.querySelectorAll('.cmpcard')).filter(function(c){return c.querySelector('.sprinthead');});
+ if(!cards.length)return;
+
+ // group each card by the section heading that precedes it, then reverse inside each group
+ var groups=[],seen=[];
+ cards.forEach(function(c){
+  var h=c.previousElementSibling,key=null;
+  while(h){ if(h.classList&&h.classList.contains('sectit')){key=h;break;} h=h.previousElementSibling; }
+  var i=seen.indexOf(key); if(i<0){seen.push(key);groups.push([]);i=groups.length-1;}
+  groups[i].push(c);
+ });
+ groups.forEach(function(g){
+  if(g.length<2)return;
+  var parent=g[0].parentNode, anchor=g[g.length-1].nextSibling;
+  g.slice().reverse().forEach(function(c){parent.insertBefore(c,anchor);});
+ });
+
+ // collapse each card, keeping a one-line summary visible
+ cards.forEach(function(c){
+  var head=c.querySelector('.sprinthead');
+  var body=document.createElement('div'); body.className='spcbody';
+  var n=head.nextSibling; while(n){var nx=n.nextSibling; body.appendChild(n); n=nx;}
+  c.appendChild(body); c.classList.add('spc');
+
+  var vals=[].slice.call(body.querySelectorAll('.scrumgrid .sh')).map(function(sh){
+   var k=sh.querySelector('.k'), v=sh.querySelector('.v');
+   return {k:k?k.textContent.trim():'', v:v?v.textContent.trim():''};});
+  if(vals.length>=4){
+   var s=document.createElement('span'); s.className='spcsum';
+   s.textContent=vals[0].v+' pts committed → '+vals[2].v+' completed · '+vals[3].v+' of commitment';
+   c.insertBefore(s,body);
+  }
+  var chev=document.createElement('span'); chev.className='spchev'; chev.textContent='▾';
+  head.appendChild(chev);
+  head.addEventListener('click',function(){
+   c.classList.toggle('open');
+   if(c.classList.contains('open')&&window.Chart)
+    body.querySelectorAll('canvas').forEach(function(cv){var ch=Chart.getChart(cv); if(ch)ch.resize();});
+  });
+ });
+ // newest sprint open by default
+ var first=panel.querySelector('.cmpcard.spc');
+ if(first){first.classList.add('open');
+  if(window.Chart)first.querySelectorAll('canvas').forEach(function(cv){var ch=Chart.getChart(cv);if(ch)ch.resize();});}
+
+ // reverse the sprint tables too (newest row first)
+ panel.querySelectorAll('table.exec tbody').forEach(function(tb){
+  var rows=[].slice.call(tb.children);
+  if(rows.length>1)rows.reverse().forEach(function(r){tb.appendChild(r);});
+ });
+})();
+
 
 // --- click a chart to open it full size -------------------------------------
 (function(){
