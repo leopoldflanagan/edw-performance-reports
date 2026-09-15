@@ -4,8 +4,13 @@ on:
   schedule:
     - cron: '*/30 * * * *'      # GitHub's own timer: best effort, often late
   repository_dispatch:
-    types: [refresh]            # what cron-job.org triggers, every 5 minutes
+    types: [refresh]            # what cron-job.org triggers, every 15 minutes
   workflow_dispatch:            # the "Run workflow" button, for testing
+    inputs:
+      selfcheck:
+        description: 'Recompute one frozen sprint and print the delta (e.g. EDW-Sprint 20-26)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -32,10 +37,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Fetch live data from Jira
+      - name: Pull from Jira and rebuild the pages
         env:
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          SELFCHECK:  ${{ github.event.inputs.selfcheck }}
         run: |
           {
             echo "--- config check -------------------------------------"
@@ -47,36 +53,46 @@ jobs:
             if [ -z "$JIRA_EMAIL" ] || [ -z "$JIRA_TOKEN" ]; then
               echo "CONFIG ERROR: a secret arrived empty."
               echo "Settings -> Secrets and variables -> Actions -> tab 'Secrets'."
-              echo "The names must be exactly JIRA_EMAIL and JIRA_TOKEN. Anything"
-              echo "created in the 'Variables' tab arrives here as an empty string."
+              echo "The names must be exactly JIRA_EMAIL and JIRA_TOKEN."
             fi
-          } | tee /tmp/fetch.log
+          } | tee /tmp/run.log
           set +e
           python3 scripts/fetch_jira.py \
-            --team    "$TEAM_KEY" \
-            --board   "$BOARD_ID" \
-            --project "$PROJECT_KEY" \
-            --out     data/live.json 2>&1 | tee -a /tmp/fetch.log
+            --team "$TEAM_KEY" --board "$BOARD_ID" --project "$PROJECT_KEY" \
+            --out data/live.json --month-out data/current.json \
+            ${SELFCHECK:+--selfcheck "$SELFCHECK"} 2>&1 | tee -a /tmp/run.log
           code=${PIPESTATUS[0]}
+          if [ "$code" = "0" ] && [ -z "$SELFCHECK" ]; then
+            python3 scripts/build_reports.py --all 2>&1 | tee -a /tmp/run.log
+            code=${PIPESTATUS[0]}
+          fi
           {
-            echo "### Jira fetch - exit code $code"
+            echo "### Refresh - exit code $code"
             echo ''
             echo '```'
-            tail -n 40 /tmp/fetch.log
+            tail -n 60 /tmp/run.log
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
           exit $code
 
-      - name: Commit only if the data actually changed
+      - name: Commit only what actually changed
         run: |
           git config user.name  "live-data bot"
           git config user.email "actions@github.com"
-          # ignore the timestamp line, so an unchanged sprint makes no commit
+          # anything other than data/live.json is a real change
+          other=$(git status --porcelain -- . ':(exclude)data/live.json' | wc -l)
+          if [ "$other" -gt 0 ]; then
+            git add -A
+            git commit -m "reports: $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+            exit 0
+          fi
+          # only live.json moved: skip when it is just the timestamp line
           if git diff --quiet -- data/live.json; then
             echo "no change"; exit 0
           fi
           if [ "$(git diff -- data/live.json | grep -c '^[+-][^+-]')" -le 2 ]; then
-            echo "only the timestamp moved — skipping commit"
+            echo "only the timestamp moved - skipping commit"
             git checkout -- data/live.json; exit 0
           fi
           git add data/live.json
