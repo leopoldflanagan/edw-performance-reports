@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T18:30:20Z",
+ "generated": "2026-09-15T19:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -9,43 +9,43 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 17,
+  "items": 18,
   "items_done": 3,
-  "committed": 44,
-  "final": 44,
+  "committed": 49,
+  "final": 49,
   "completed": 7,
   "scope_change": 0,
-  "vs_commitment": 16,
+  "vs_commitment": 14,
   "time_elapsed": 9,
   "spill": {
-   "open_items": 13,
-   "open_pts": 37.0,
+   "open_items": 14,
+   "open_pts": 42.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 7.0
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 5,
+   "In Development": 6,
    "Closed": 3,
    "Backlog": 1,
    "Ready for Development": 7,
    "Won't Do": 1
   },
   "burn": [
-   34.0,
-   42.0,
-   37.0
+   39.0,
+   47.0,
+   42.0
   ],
   "scope": [
-   34.0,
-   44.0,
-   44.0
+   39.0,
+   49.0,
+   49.0
   ],
   "ghost": [
-   34.0,
-   42.0,
-   37.0
+   39.0,
+   47.0,
+   42.0
   ]
  },
  "next": {
