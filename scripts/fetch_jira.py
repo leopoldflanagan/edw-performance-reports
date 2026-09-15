@@ -238,10 +238,17 @@ def _clean(d):
     """Strip the raw payload the month block needs but the panel must not carry."""
     return {k: v for k, v in d.items() if not k.startswith("_")}
 
-def month_so_far(project):
+def month_so_far(project, window=None, label=None, key=None):
+    """What has closed in the period in progress. The period is the current release
+    when one is given, and the calendar month only as a fallback -- mixing the two
+    in one card is what made day 15 of September sit next to day 2 of the sprint."""
     today = dt.date.today()
-    first = today.replace(day=1)
-    nxt   = (first + dt.timedelta(days=32)).replace(day=1)
+    if window:
+        first = dt.date.fromisoformat(window[0])
+        nxt   = dt.date.fromisoformat(window[1]) + dt.timedelta(days=1)
+    else:
+        first = today.replace(day=1)
+        nxt   = (first + dt.timedelta(days=32)).replace(day=1)
     base  = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
              f'AND resolution = Done AND resolved >= "{first}" AND resolved < "{nxt}"')
     iss   = search(base, ["resolutiondate", SP_FIELD, "labels", "issuetype", "assignee"])
@@ -249,15 +256,24 @@ def month_so_far(project):
                 if any(l.lower() in ("unplanned", "not planned", "not_planned")
                        for l in i["fields"].get("labels", []))
                 or i["fields"]["issuetype"]["name"] == "Urgent Task")
+    # No label anywhere in the period means the question was never asked. That is
+    # not the same as a period with no reactive work, and must not read as 0%.
+    labelled = any(i["fields"].get("labels") for i in iss) or unp > 0
     dar   = sum(1 for i in iss if any("access" in l.lower() for l in i["fields"].get("labels", [])))
     pts   = sum(sp_of(i) for i in iss)
     people = {}
     for i in iss:
         a = (i["fields"].get("assignee") or {}).get("displayName")
         if a: people[a] = people.get(a, 0) + 1
-    return {"month": first.strftime("%Y-%m"), "label": first.strftime("%B %Y"),
-            "day": today.day, "closed": len(iss), "points": round(pts),
-            "unplanned": unp, "unplanned_pct": round(100*unp/len(iss), 1) if iss else None,
+    day  = max(1, min((today - first).days + 1, (nxt - first).days))
+    return {"month": key or first.strftime("%Y-%m"),
+            "label": label or first.strftime("%B %Y"),
+            "kind": "release" if window else "month",
+            "start": first.isoformat(), "end": (nxt - dt.timedelta(days=1)).isoformat(),
+            "day": day, "days": (nxt - first).days,
+            "closed": len(iss), "points": round(pts),
+            "unplanned": unp if labelled else None,
+            "unplanned_pct": (round(100*unp/len(iss), 1) if iss else None) if labelled else None,
             "access_requests": dar,
             "people_active": sum(1 for _, c in people.items() if c >= 2)}
 
@@ -574,13 +590,31 @@ def main():
     else:           sp, kind = None, "none"
 
     det = sprint_detail(a.board, sp, a.project) if sp else None
+    live_sp = _clean(det) if det else None
+    if live_sp and live_sp.get("start") and live_sp.get("end"):
+        # one number for "how far in are we", used by the tiles and the burndown
+        _s = dt.date.fromisoformat(live_sp["start"][:10])
+        _e = dt.date.fromisoformat(live_sp["end"][:10])
+        live_sp["days"] = max(1, (_e - _s).days)
+        live_sp["day"]  = max(1, min((dt.date.today() - _s).days + 1, live_sp["days"]))
+
+    # the period in progress, in the unit the reports now use: the release
+    cur = current_release(a.frozen)
+    if cur:
+        _rk, _r = cur
+        period = month_so_far(a.project, window=(_r["start"], _r["end"]),
+                              label=_r.get("label") or f"Release {_rk}", key=_rk)
+        period["sprints"] = _r["sprints"]
+    else:
+        period = month_so_far(a.project)
+
     out = {
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "team": a.team, "board": a.board, "kind": kind,
-        "sprint": _clean(det) if det else None,
+        "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),
-        "month": month_so_far(a.project),
+        "month": period,
     }
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     with open(a.out, "w") as f:
@@ -591,7 +625,6 @@ def main():
     # the month in progress, in the same shape the frozen months use
     # The period in progress is the release whose window contains today. Falls back
     # to the calendar month only if the release table is missing.
-    cur = current_release(a.frozen)
     if cur:
         rk, r = cur
         prev_closed = None

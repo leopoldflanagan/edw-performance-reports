@@ -91,6 +91,17 @@ except Exception:
     LIVE = None
 
 
+def OPEN_SPRINT(n):
+    """(day, days) when this sprint is the one running right now, else None.
+    Everything that must not hand an open sprint a verdict asks this first."""
+    if not LIVE or LIVE.get("kind") != "active":
+        return None
+    sp_ = LIVE.get("sprint") or {}
+    if sp_.get("name") != n or not sp_.get("days"):
+        return None
+    return (sp_.get("day") or 1, sp_["days"])
+
+
 def _review(slug):
     """amber until a human signs the page off in data/review.json"""
     try:
@@ -666,7 +677,14 @@ def sprint_card(name, idx, note=""):
     sl = spill(n) or dict(done=(0,0), open=(0,0), out=(0,0))
     gone_i = sl["open"][0] + sl["out"][0]
     gone_p = sl["open"][1] + sl["out"][1]
-    if gone_p:
+    run = OPEN_SPRINT(n)
+    if run:
+        # mid-sprint there is no spillover and no result: open work is just open
+        spill_html = ('<div class="spill"><div class="sk">Still open</div>'
+                      f'<div class="sv">{gone_p} pts<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; {gone_i} items</span></div>'
+                      f'<div class="sn">Work in flight on day {run[0]} of {run[1]}. Whatever is still open '
+                      f'on {en} becomes the spillover into the next sprint — not before.</div></div>')
+    elif gone_p:
         bits = []
         if sl["out"][0]:  bits.append(f"{sl['out'][0]} removed before the sprint closed")
         if sl["open"][0]: bits.append(f"{sl['open'][0]} still open at close")
@@ -690,7 +708,7 @@ def sprint_card(name, idx, note=""):
      <div class="sh"><div class="k">Committed at start</div><div class="v">{comm}</div><div class="n">story points in scope on day 1</div></div>
      <div class="sh"><div class="k">Added during sprint</div><div class="v">+{final-comm}</div><div class="n">final scope {final} points</div></div>
      <div class="sh"><div class="k">Completed</div><div class="v">{comp}</div><div class="n">{done} of {items} items{' · still open ' + str(open_sp) + ' pts' if open_sp else ''}</div></div>
-     <div class="sh"><div class="k">vs commitment</div><div class="v">{pct}%</div><div class="n">completed against day-1 scope</div></div>
+     {f'<div class="sh"><div class="k">Sprint elapsed</div><div class="v">Day {run[0]}</div><div class="n">of {run[1]} — no verdict until it closes</div></div>' if run else f'<div class="sh"><div class="k">vs commitment</div><div class="v">{pct}%</div><div class="n">completed against day-1 scope</div></div>'}
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd{idx}"></canvas></div>
    {spill_html}
@@ -701,7 +719,8 @@ def sprint_card(name, idx, note=""):
  </div>"""
 
 def month_scrum_insight(mk):
-    names = [n for n in SP_BY_MONTH[mk] if sp(n)]
+    # the sprint still running has not "left points unfinished" — it is unfinished
+    names = [n for n in SP_BY_MONTH[mk] if sp(n) and not OPEN_SPRINT(n)]
     if not names:
         return ""
     gone_p = sum((spill(n) or dict(open=(0,0),out=(0,0)))["open"][1] +
@@ -721,7 +740,7 @@ def month_scrum_insight(mk):
         tail = ("The <i>Unplanned</i> label was not being applied in these sprints, so the reactive share "
                 "cannot be computed — the split shows as no data, not as zero reactive work.")
     return f'''
- <div class="insightbox" style="margin-bottom:24px"><div class="k">This month\'s sprints</div>
+ <div class="insightbox" style="margin-bottom:24px"><div class="k">Sprints closed in this {PERIOD_WORD}</div>
   <h2>Scope grew {span} after the sprints had started, and {gone_p} points left the sprints without finishing.</h2>
   <p>{tail} The series-wide view — velocity, scope-change trend and the full sprint table — lives in the
   <a href="#" class="ip-link" data-goto="cmp" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.5)">Comparatives tab</a>.</p>
@@ -732,15 +751,23 @@ def sprint_table(names, short=False):
     for n in names:
         _,st,en,items,done,c0,final,comp_sp,chg,_,_ = sp(n)
         pct = round(100*comp_sp/c0) if c0 else 0
-        tag = ' <span style="color:var(--wf-muted)">in progress</span>' if n == ACTIVE else ""
+        run = OPEN_SPRINT(n)
+        tag = (f' <span class="runtag">day {run[0]} of {run[1]}</span>' if run
+               else (' <span style="color:var(--wf-muted)">in progress</span>' if n == ACTIVE else ""))
         sl = SPLIT.get(n, SPLIT_Q1.get(n))
         cells = (f'<td>{sl["react"]}</td><td class="neg">{sl["plan"]}</td><td>{sl["pct"]}%</td>' if sl
                  else '<td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td>')
         sl2 = spill(n) or dict(open=(0,0), out=(0,0))
         gp = sl2["open"][1] + sl2["out"][1]
         gcell = (f'<td class="neg">{gp}</td>' if gp else '<td>0</td>')
-        rows += (f'<tr><td>{n}{tag}</td><td>{st} - {en}</td><td>{c0}</td><td>+{final-c0}</td>'
-                 f'<td>{comp_sp}</td>{gcell}<td>{pct}%</td>{cells}</tr>')
+        # a sprint that has not closed cannot be measured against its commitment:
+        # 14% on day 2 is a position, not a result, and reads as a failure in a table
+        vcell = '<td class="flat">still running</td>' if run else f'<td>{pct}%</td>'
+        if run:
+            gcell = '<td class="flat">&mdash;</td>'
+        rowcls = ' class="runrow"' if run else ''
+        rows += (f'<tr{rowcls}><td>{n}{tag}</td><td>{st} - {en}</td><td>{c0}</td><td>+{final-c0}</td>'
+                 f'<td>{comp_sp}</td>{gcell}{vcell}{cells}</tr>')
     return f'''<div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th>Committed</th><th>Added</th><th>Completed</th><th>Left sprint</th><th>vs commit</th><th>Added: reactive</th><th>Added: plannable</th><th>% reactive</th></tr></thead>
   <tbody>{rows}</tbody>
@@ -753,7 +780,15 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
         # not been collected; render what exists rather than failing the page
         names = [n for n in SP_BY_MONTH[mk] if sp(n)]
         missing = [n for n in SP_BY_MONTH[mk] if not sp(n)]
+        # A sprint that is still running belongs to the period but not to its
+        # result. Leaving it in made day 2 of Sprint 22-26 read as "14% vs
+        # commitment" under a heading that said the sprint had closed.
+        running = [n for n in names if OPEN_SPRINT(n)]
+        names   = [n for n in names if n not in running]
         cards = "".join(sprint_card(n, i) for i, n in enumerate(names))
+        if not cards:
+            cards = ('<div class="goalbox">No sprint of this period has closed yet. '
+                     'The numbers on this page are a position, not a result.</div>')
         if missing:
             cards += ('<div class="goalbox" style="margin-top:12px">'
                       + ", ".join(f"<b>{n}</b>" for n in missing)
@@ -761,7 +796,16 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
                       + " not run yet, so " + ("it is" if len(missing)==1 else "they are")
                       + " not measured here. This period is not complete.</div>")
         extra = ""
-        if mk == MK_LAST and ACTIVE and ACTIVE not in names and sp(ACTIVE):
+        if running:
+            _n = running[0]; _d, _dn = OPEN_SPRINT(_n)
+            _left = _dn - _d
+            extra = ('<div class="activewrap"><span class="activetag">Sprint open right now</span>'
+                     f'<div class="secsub" style="margin-bottom:10px"><b>{_n}</b> is on '
+                     f'<b>day {_d} of {_dn}</b>, with {_left} day{"" if _left == 1 else "s"} to go. '
+                     f'It is shown here because it belongs to {MONTH_LABEL[mk]}, but it is '
+                     'not in the totals above and gets no verdict until it closes.</div>'
+                     + dist_block(_n) + sprint_card(_n, 90) + '</div>')
+        elif mk == MK_LAST and ACTIVE and ACTIVE not in names and sp(ACTIVE):
             live_sp = (LIVE or {}).get("sprint") or {}
             if (LIVE or {}).get("kind") == "active":
                 tag, note = "Sprint open right now", (
@@ -775,10 +819,11 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
                      f'<div class="secsub" style="margin-bottom:10px">{note}</div>'
                      + health_block(ACTIVE) + dist_block(ACTIVE) + sprint_card(ACTIVE, 90) + '</div>')
             names = names + [ACTIVE]
+        names = names + running      # the table shows it, flagged, without a verdict
         return f"""
 <section class="panel" id="scrum">
  <div class="sectit">Sprint metrics — {MONTH_LABEL[mk]}</div>
- <div class="secsub">The sprints that closed this month, rebuilt from Jira.</div>
+ <div class="secsub">The sprints that closed in this {PERIOD_WORD}, rebuilt from Jira.</div>
  {month_scrum_insight(mk)}
  {extra}
  <div class="sectit" style="font-size:20px;margin-top:28px">Sprints that closed in {MONTH_LABEL[mk]}</div>
@@ -1548,7 +1593,10 @@ def index_page():
     if months:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Monthly Reports</div>\n'
                 '<p style="font-size:13px;color:var(--wf-muted);margin:-6px 0 14px">'
-                'Closed series. Reporting moved to the release calendar after August, so these stay as published.</p>\n'
+                'Closed series. Reporting moved to the release calendar after August, so these stay as published. '
+                'They cut the work by calendar month; the release reports cut it by release window, which is why '
+                'August reads 82 items here and R9.07 reads 57 for Aug 3&ndash;30. Both are right, and the two '
+                'numbers are not meant to be added or compared.</p>\n'
                 + "".join(c for _, c in months))
     if quarters:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
