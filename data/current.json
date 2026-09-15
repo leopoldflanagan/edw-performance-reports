@@ -6,15 +6,15 @@
   "short": "SEP",
   "prev": "August",
   "prev_closed": 82,
-  "closed": 29,
+  "closed": 30,
   "discarded": 2,
-  "resolved": 31,
+  "resolved": 32,
   "unplanned": 0,
   "unp_pct": 0.0,
   "types": [
    [
     "Story",
-    23
+    24
    ],
    [
     "Bug",
@@ -38,9 +38,9 @@
   "day": 15,
   "days": 30,
   "status": "warning",
-  "headline": "29 items closed in the first 15 days, a pace of about 58 for the month against 82 last month. Running 29% behind last month's pace.",
+  "headline": "30 items closed in the first 15 days, a pace of about 60 for the month against 82 last month. Running 27% behind last month's pace.",
   "notes": [
-   "running 29% behind last month's pace"
+   "running 27% behind last month's pace"
   ]
  },
  "SPRINTS": [
@@ -48,7 +48,7 @@
    "EDW-Sprint 21-26",
    "Aug 31",
    "Sep 14",
-   52,
+   53,
    35,
    88,
    122,
@@ -95,21 +95,21 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   15,
-   1,
-   41,
-   41,
-   2,
+   17,
+   3,
+   44,
+   44,
+   7,
    0,
    [
-    31.0,
-    39.0,
-    39.0
+    34.0,
+    42.0,
+    37.0
    ],
    [
-    31.0,
-    41.0,
-    41.0
+    34.0,
+    44.0,
+    44.0
    ]
   ]
  ],
@@ -130,12 +130,12 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    1,
-    2
+    3,
+    7
    ],
    "open": [
     13,
-    39
+    37
    ],
    "out": [
     0,
@@ -154,13 +154,13 @@
  "TIS": {
   "EDW-Sprint 21-26": {
    "tis": {
+    "Backlog": {
+     "n": 21,
+     "med": 0.25
+    },
     "In Development": {
      "n": 35,
      "med": 1.03
-    },
-    "Backlog": {
-     "n": 20,
-     "med": 0.23
     },
     "Ready for Development": {
      "n": 25,
@@ -188,35 +188,39 @@
     }
    },
    "dist": {
-    "In Development": 4,
-    "Closed": 35,
+    "Closed": 37,
     "Ready for Development": 6,
     "Won't Do": 2,
     "Deferred": 4,
+    "In Development": 3,
     "Backlog": 1
    },
-   "stalled": 11,
+   "stalled": 12,
    "worst": 2.98,
    "worstSt": "Ready for Development",
-   "items": 52
+   "items": 53
   },
   "EDW-Sprint 22-26": {
    "tis": {
     "Backlog": {
-     "n": 6,
-     "med": 0.2
+     "n": 8,
+     "med": 0.24
+    },
+    "In Development": {
+     "n": 8,
+     "med": 12.61
+    },
+    "Awaiting Review": {
+     "n": 2,
+     "med": 0.0
     },
     "Closed": {
-     "n": 2,
-     "med": 6.71
+     "n": 4,
+     "med": 12.52
     },
     "Ready for Development": {
      "n": 9,
      "med": 13.5
-    },
-    "In Development": {
-     "n": 6,
-     "med": 13.51
     },
     "Won't Do": {
      "n": 1,
@@ -224,16 +228,16 @@
     }
    },
    "dist": {
-    "Backlog": 1,
-    "Closed": 1,
-    "Ready for Development": 7,
     "In Development": 5,
+    "Closed": 3,
+    "Backlog": 1,
+    "Ready for Development": 7,
     "Won't Do": 1
    },
    "stalled": 13,
-   "worst": 13.51,
-   "worstSt": "In Development",
-   "items": 15
+   "worst": 13.5,
+   "worstSt": "Ready for Development",
+   "items": 17
   }
  },
  "GHOST": {
@@ -256,27 +260,27 @@
    44.0
   ],
   "EDW-Sprint 22-26": [
-   31.0,
-   39.0,
-   39.0
+   34.0,
+   42.0,
+   37.0
   ]
  },
  "CAP": {
   "09": [
-   29,
-   25,
-   73,
+   30,
+   26,
+   78,
    5
   ]
  },
  "CYC": {
   "09": {
-   "med": 4.74,
-   "avg": 8.23,
-   "n": 27,
+   "med": 4.81,
+   "avg": 8.2,
+   "n": 28,
    "mx": 50.15,
    "nodev": 2,
-   "base": 29
+   "base": 30
   }
  },
  "complete": false

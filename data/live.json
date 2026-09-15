@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T18:15:18Z",
+ "generated": "2026-09-15T18:30:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -9,43 +9,43 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 15,
-  "items_done": 1,
-  "committed": 41,
-  "final": 41,
-  "completed": 2,
+  "items": 17,
+  "items_done": 3,
+  "committed": 44,
+  "final": 44,
+  "completed": 7,
   "scope_change": 0,
-  "vs_commitment": 5,
+  "vs_commitment": 16,
   "time_elapsed": 9,
   "spill": {
    "open_items": 13,
-   "open_pts": 39.0,
+   "open_pts": 37.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 2.0
+   "done_pts": 7.0
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 1,
-   "Closed": 1,
-   "Ready for Development": 7,
    "In Development": 5,
+   "Closed": 3,
+   "Backlog": 1,
+   "Ready for Development": 7,
    "Won't Do": 1
   },
   "burn": [
-   31.0,
-   39.0,
-   39.0
+   34.0,
+   42.0,
+   37.0
   ],
   "scope": [
-   31.0,
-   41.0,
-   41.0
+   34.0,
+   44.0,
+   44.0
   ],
   "ghost": [
-   31.0,
-   39.0,
-   39.0
+   34.0,
+   42.0,
+   37.0
   ]
  },
  "next": {
@@ -57,8 +57,8 @@
   "month": "2026-09",
   "label": "September 2026",
   "day": 15,
-  "closed": 29,
-  "points": 73,
+  "closed": 30,
+  "points": 78,
   "unplanned": 0,
   "unplanned_pct": 0.0,
   "access_requests": 0,
