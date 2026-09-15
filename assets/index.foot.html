@@ -168,6 +168,12 @@
     var top = Math.max.apply(null, a.rows.map(function (r) { return r.open; })) || 1;
     var rows = a.rows.map(function (r) {
       var stuck = r.over > 0;
+      if (!r.open) {
+        return '<tr style="opacity:.6"><td class="agst">' + esc(r.status) + '</td>' +
+          '<td class="agbar"><b>0</b></td><td class="agnum">&mdash;</td>' +
+          '<td class="agnum">&mdash;</td><td class="agsm">nothing waiting</td>' +
+          '<td class="agnum">' + (r.clear_med == null ? '&mdash;' : r.clear_med + 'd') + '</td></tr>';
+      }
       var col   = STCOL[r.status] || '#65B2D5';
       return '<tr>' +
         '<td class="agst">' + esc(r.status) + '</td>' +
@@ -194,7 +200,11 @@
       '<b>clears in</b> is how long items took to get through that step over the ' +
       'last ' + a.window_days + ' days. A short clear time with a tall bar is a ' +
       'queue, not a slow step.' +
-      (a.backlog ? ' ' + a.backlog + ' more are in Backlog, not yet pulled into the workflow.' : '') +
+      (a.parked && Object.keys(a.parked).length
+        ? ' Not counted here: ' + Object.keys(a.parked).map(function (k) {
+            return a.parked[k] + ' in ' + esc(k);
+          }).join(', ') + ' — those are backlog layers, not steps in the flow.'
+        : '') +
       '</div>' +
       '<div class="agwrap"><table class="agtab"><thead><tr>' +
       '<th>Status</th><th>Open</th><th>Waiting (median)</th><th>' + a.stale_days +

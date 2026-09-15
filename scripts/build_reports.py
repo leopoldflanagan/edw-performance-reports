@@ -542,9 +542,16 @@ def review_chip(code):
         who = r.get("by", "")
         when = r.get("date", "")
         tail = " · ".join([x for x in (who, when) if x])
-        return f'<span class="revchip ok"><span class="ic">&#10003;</span> Reviewed{(" · " + tail) if tail else ""}</span>'
-    return ('<span class="revchip pend"><span class="ic">&#9679;</span> '
-            'Generated from Jira · pending review</span>')
+        url = r.get("url")
+        chip = f'<span class="revchip ok"><span class="ic">&#10003;</span> Signed off{(" · " + tail) if tail else ""}</span>'
+        return f'<a href="{url}" style="text-decoration:none" title="Sign-off register in Confluence">{chip}</a>' if url else chip
+    # who it is still waiting on, when the register could be read
+    wait = r.get("waiting_on") or []
+    tail = (" · waiting on " + " and ".join(wait)) if wait else ""
+    url  = r.get("url")
+    chip = ('<span class="revchip pend"><span class="ic">&#9679;</span> '
+            f'Generated from Jira · pending sign-off{tail}</span>')
+    return f'<a href="{url}" style="text-decoration:none" title="Sign-off register in Confluence">{chip}</a>' if url else chip
 
 
 def head(title, sub, pill, status, current=None):
@@ -1546,8 +1553,9 @@ BADGE_BG    = {"healthy": ("#e6f6ef", "#1a7f5a"), "warning": ("#fdeee3", "#c0641
 def _card(href, short, year, title, badge, blurb, status=None):
     bg, fg = BADGE_BG.get(status, ("#fdeee3", "#c0641f"))
     r = _review(href)
-    pend = ('<span class="badge" style="background:#eef2f8;color:#5a6577">Pending review</span>'
-            if r.get("status") != "reviewed" else "")
+    pend = ('<span class="badge" style="background:#eef2f8;color:#5a6577">Pending sign-off</span>'
+            if r.get("status") != "reviewed" else
+            '<span class="badge" style="background:#e3fcef;color:#1a6b45">Signed off</span>')
     return f'''<a class="rcard" href="2026/{href}">
 <div class="mo"><span class="m">{short}</span><span class="y">{year}</span></div>
 <div class="body"><h3>{title} <span class="badge" style="background:{bg};color:{fg}">{badge}</span>{pend}</h3>

@@ -280,6 +280,77 @@ def month_so_far(project, window=None, label=None, key=None):
             "people_active": sum(1 for _, c in people.items() if c >= 2)}
 
 
+SIGNOFF_PAGE = (os.environ.get("SIGNOFF_PAGE") or "3746431012").strip()   # EDW register; DS/LL override via env
+
+
+def _soft(path):
+    """A GET that returns None instead of killing the run. Confluence is an input,
+    not a dependency: if it cannot be read the reports stay pending, which is the
+    safe direction to fail in."""
+    try:
+        req = request.Request(BASE + path, headers=HDRS, method="GET")
+        with request.urlopen(req, timeout=30) as r:
+            return json.loads(r.read().decode())
+    except Exception as e:
+        print(f"  note: could not read {path} ({e.__class__.__name__}) - "
+              f"continuing without it", flush=True)
+        return None
+
+
+def signoff(page_id):
+    """Who has signed off which report, read from the Confluence sign-off register.
+
+    A report counts as reviewed only when BOTH tasks in its row are complete: the
+    Scrum Master, who confirms the data is right, and the team owner, who confirms
+    the reading is right.
+
+    The signature is the Confluence account that ticked the box, and the page's own
+    version history is the audit trail. That is the entire reason this does not live
+    in a file in this repository, where the reviewer's name was free text that anyone
+    could type -- that recorded a claim, not a signature.
+    """
+    if not page_id:
+        return None
+    import re
+    p = _soft(f"/wiki/api/v2/pages/{page_id}?body-format=storage")
+    if not p:
+        return None
+    html = (((p.get("body") or {}).get("storage") or {}).get("value")) or ""
+    ver  = (p.get("version") or {})
+    names = {}
+
+    def who(aid):
+        if aid not in names:
+            u = _soft("/wiki/rest/api/user?accountId=" + parse.quote(aid))
+            names[aid] = (u or {}).get("displayName") or "someone"
+        return names[aid]
+
+    out = {}
+    for row in re.split(r"<tr[ >]", html):
+        m = re.search(r"<code>([^<]+\.html)</code>", row)
+        if not m:
+            continue
+        slug   = m.group(1).strip()
+        states = re.findall(r"<ac:task-status>(\w+)</ac:task-status>", row)
+        ids    = re.findall(r'ri:account-id="([^"]+)"', row)
+        done   = [a for a, st in zip(ids, states) if st == "complete"]
+        entry  = {"page": page_id,
+                  "url": f"{BASE}/wiki/spaces/EDW/pages/{page_id}",
+                  "version": ver.get("number"), "checked": len(done), "of": len(states)}
+        if states and len(done) == len(states):
+            entry["status"] = "reviewed"
+            entry["by"]     = " and ".join(who(a) for a in done)
+            entry["date"]   = (ver.get("createdAt") or "")[:10]
+        else:
+            entry["status"] = "pending"
+            entry["waiting_on"] = [who(a) for a, st in zip(ids, states) if st != "complete"]
+        out[slug] = entry
+    print(f"  sign-off register: {sum(1 for v in out.values() if v['status']=='reviewed')}"
+          f" of {len(out)} reports signed by both", flush=True)
+    return out
+
+
+PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
 
@@ -321,13 +392,31 @@ def aging(project, window_days=90):
                  i["key"], (i["fields"].get("summary") or "")[:90],
                  (i["fields"].get("assignee") or {}).get("displayName") or "unassigned"))
 
-    rows, backlog = [], 0
-    for st, xs in open_in.items():
-        if st in QUEUE_OUT:
-            backlog += len(xs); continue
+    # Per the team's own Backlog Organization Guide, Deferred is layer 4 -- archived,
+    # deliberately not mapped to any board column -- and Backlog is layer 3, waiting to
+    # be defined. Neither is work moving through the workflow, and counting them here
+    # buried the real bottleneck under 75 archived items aged 280 days.
+    parked_counts = {}
+    # every status the workflow actually uses, so a step with nothing in it still shows
+    # as a row rather than silently disappearing
+    seen = set(open_in) | set(cleared)
+    rows = []
+    for st in seen:
+        if st in TERMINAL or st in PARKED:
+            if st in open_in:
+                parked_counts[st] = len(open_in[st])
+            continue
+        xs = open_in.get(st) or []
+        cl = cleared.get(st) or []
+        if not xs and not cl:
+            continue
+        if not xs:
+            rows.append({"status": st, "open": 0, "med_age": 0, "max_age": 0,
+                         "worst_key": "", "worst_sum": "", "worst_who": "", "over": 0,
+                         "clear_med": round(_median(cl), 1), "clear_n": len(cl)})
+            continue
         ages  = sorted(x[0] for x in xs)
         worst = max(xs)
-        cl    = cleared.get(st) or []
         rows.append({"status": st, "open": len(xs),
                      "med_age": round(_median(ages), 1), "max_age": worst[0],
                      "worst_key": worst[1], "worst_sum": worst[2], "worst_who": worst[3],
@@ -336,10 +425,11 @@ def aging(project, window_days=90):
                      "clear_n": len(cl)})
     # queue pressure: how many are waiting times how long they have waited
     rows.sort(key=lambda r: -(r["med_age"] * r["open"]))
+    live = [r for r in rows if r["open"]]
     return {"window_days": window_days, "stale_days": STALE_AGE, "rows": rows,
-            "backlog": backlog, "open_total": sum(r["open"] for r in rows),
+            "parked": parked_counts, "open_total": sum(r["open"] for r in rows),
             "stale": sum(r["over"] for r in rows),
-            "worst": rows[0]["status"] if rows else None}
+            "worst": live[0]["status"] if live else None}
 
 
 def cyc_status(c):
@@ -725,6 +815,13 @@ def main():
         blk["kind"] = "month"
     with open(a.month_out, "w") as f:
         json.dump(blk, f, indent=1)
+
+    # the sign-off register. Written here rather than hand-edited, so the only way
+    # a report turns green is that both people ticked their own box in Confluence.
+    sg = signoff(SIGNOFF_PAGE)
+    if sg is not None:
+        with open(os.path.join(os.path.dirname(a.out) or ".", "review.json"), "w") as f:
+            json.dump(sg, f, indent=1, ensure_ascii=False)
     print(f"{a.month_out}: {blk['month']['label']} - {len(blk['SPRINTS'])} sprint(s), "
           f"{blk['month']['closed']} closed, status {blk['month']['status']}, "
           f"month complete: {blk['complete']}")
