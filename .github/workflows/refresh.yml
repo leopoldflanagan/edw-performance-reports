@@ -1,0 +1,52 @@
+name: Refresh live data
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  repository_dispatch:
+    types: [refresh]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch live data from Jira
+        env:
+          JIRA_BASE:  ${{ secrets.JIRA_BASE }}
+          JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        run: |
+          python3 scripts/fetch_jira.py \
+            --team "${{ vars.TEAM_KEY }}" \
+            --board "${{ vars.BOARD_ID }}" \
+            --project "${{ vars.PROJECT_KEY }}" \
+            --out data/live.json
+
+      - name: Commit only if the data actually changed
+        run: |
+          git config user.name  "live-data bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet -- data/live.json; then
+            echo "no change"; exit 0
+          fi
+          if [ "$(git diff -- data/live.json | grep -c '^[+-][^+-]')" -le 2 ]; then
+            echo "only the timestamp moved — skipping commit"
+            git checkout -- data/live.json; exit 0
+          fi
+          git add data/live.json
+          git commit -m "live data: $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push
