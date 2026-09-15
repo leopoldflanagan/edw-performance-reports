@@ -43,6 +43,15 @@ jobs:
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           SELFCHECK:  ${{ github.event.inputs.selfcheck }}
         run: |
+          # two seconds here beats a six-minute round trip through CI for a typo
+          python3 -m py_compile scripts/fetch_jira.py scripts/build_reports.py || {
+            echo "### Refresh - the scripts do not compile" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            python3 -m py_compile scripts/fetch_jira.py scripts/build_reports.py 2>&1 \
+              | tail -n 20 >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            exit 1
+          }
           {
             echo "--- config check -------------------------------------"
             echo "  JIRA_BASE   $JIRA_BASE"
