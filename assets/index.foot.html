@@ -207,7 +207,7 @@
         tile('Story points', m.points, 'delivered so far') +
         tile('Unplanned', (m.unplanned_pct == null ? '&mdash;' : m.unplanned_pct + '%'),
           (m.unplanned_pct == null
-            ? 'the Unplanned label was not applied'
+            ? 'no item carries the Unplanned label or the Urgent Task type'
             : m.unplanned + ' of ' + m.closed + ' items')) +
         tile('Contributors', m.people_active, 'people who closed 2+ items') +
         '</div>' +
