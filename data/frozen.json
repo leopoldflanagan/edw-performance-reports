@@ -1945,7 +1945,8 @@
     ]
    ],
    "status": "warning",
-   "headline": "Throughput nearly doubles the baseline, and the team the baseline describes no longer exists."
+   "headline": "Throughput nearly doubles the baseline, and the team the baseline describes no longer exists.",
+   "note_unp": "Same pattern as May: reporting requests from Finance, Accounting and Sales. The May retro conversation about anticipating these requests is still open."
   },
   "07": {
    "slug": "2026-07-july",
@@ -2032,7 +2033,8 @@
     ]
    ],
    "status": "risk",
-   "headline": "Bugs triple and unplanned work is back in the risk band."
+   "headline": "Bugs triple and unplanned work is back in the risk band.",
+   "note_unp": "Same pattern as May: reporting requests from Finance, Accounting and Sales. The May retro conversation about anticipating these requests is still open."
   },
   "08": {
    "slug": "2026-08-august",
@@ -2066,7 +2068,8 @@
    ],
    "unp_items": [],
    "status": "warning",
-   "headline": "The highest-delivery month of the year, and the one with the least data to read it by."
+   "headline": "The highest-delivery month of the year, and the one with the least data to read it by.",
+   "note_unp": "June had 5 labeled items and July 10. August having zero, in the highest-volume month, does not describe the work: it describes the labeling. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable."
   }
  },
  "MONTH_LABEL": {
