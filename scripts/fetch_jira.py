@@ -473,7 +473,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None, window=None, s
         first = dt.date.fromisoformat(window[0])
         nxt   = dt.date.fromisoformat(window[1]) + dt.timedelta(days=1)
         label = label or ym
-                m     = ym          # a release keys CAP/CYC by its own number, not by month
+        m     = ym          # a release keys CAP/CYC by its own number, not by month
     else:
         y, m = ym.split("-")
         first = dt.date(int(y), int(m), 1)
