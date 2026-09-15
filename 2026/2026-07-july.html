@@ -346,7 +346,7 @@
 </style></head>
 <body>
 <header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; July 2026 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
-<h1>July 2026 Performance Report</h1><div class="sub">Flow and sprint metrics for the month, against June 2026 and the closed quarters of the year: Q1 and Q2 2026.</div>
+<h1>July 2026 Performance Report</h1><div class="sub">Flow and sprint metrics for the month, against June and Q2 2026.</div>
 <div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Flow Health: RISK — Bugs triple and unplanned work is back in the risk band.</div><span class="revchip ok"><span class="ic">&#10003;</span> Reviewed · Polo · 2026-09-14</span></div></div></header>
 <div class="tabs"><div class="wrap">
  <button class="tab active" data-tab="dash">Flow</button>
@@ -354,7 +354,7 @@
  <button class="tab" data-tab="cmp">Comparatives</button>
  <button class="tab" data-tab="act">Findings &amp; Retro</button>
 </div></div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-05-may.html">MAY</a><a class="rp" href="2026-06-june.html">JUN</a><span class="rp on">JUL</span><a class="rp" href="2026-08-august.html">AUG</a><a class="rp" href="2026-09-september.html">SEP</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-05-may.html">MAY</a><a class="rp" href="2026-06-june.html">JUN</a><span class="rp on">JUL</span><a class="rp" href="2026-08-august.html">AUG</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <section class="panel active" id="dash">
   <div class="sectit">Flow metrics — July 2026</div>
@@ -383,7 +383,7 @@
       <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
       <div class="statblock"><div class="sb sb-head"><span></span><span>This month</span><span>vs Q1</span><span>vs Q2</span></div><div class="sb"><span class="sk">Median</span><span class="sv">3.8d</span><span class="sd pos">-39%</span><span class="sd pos">-17%</span></div><div class="sb"><span class="sk">Average</span><span class="sv">5.0d</span><span class="sd pos">-36%</span><span class="sd pos">-46%</span></div></div>
       <div class="ctxline"><span>Measured on <b>67 of 79</b> closed items <i>(85% of the month)</i></span></div>
-      <div class="spark-cap">Median cycle time · May to Aug</div>
+      <div class="spark-cap">Median cycle time · May to August</div>
       <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,3.0 L87.7,21.8 L172.3,31.0 L257.0,19.1" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="172.3" cy="31.0" r="4" fill="#4FA800" stroke="#fff" stroke-width="2"/></svg>
       <div class="infopanel ip-green">Median and average both within target. The gap between 3.8d and 5.0d comes from a few long tickets — the longest this month took 22 days.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -575,8 +575,8 @@
   <div class="cmpgrid">
    <div class="chartbox" style="height:280px"><canvas id="cSpill"></canvas></div>
    <div class="readout">
-    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">37% of everything committed</span><br><b>427 of 1167 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">87% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
+    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">34% of everything committed</span><br><b>385 of 1118 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">94% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
     <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Read it against the commitment, not the burndown</span><br>A sprint that commits to 45 points, grows to 117, closes 69 and drops 48 has not delivered 100% of anything. The honest pair is day-1 commitment and spillover rate, side by side.</div>
    </div>
   </div>
@@ -586,7 +586,7 @@
  <div class="secsub">Every sprint on the board this year.</div>
  <div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr><td>EDW-Sprint 22-26 <span style="color:var(--wf-muted)">in progress</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+0</td><td>7</td><td class="neg">42</td><td>14%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr></tbody>
+  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr></tbody>
  </table></div>
  <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
 
@@ -623,7 +623,7 @@
      <div class="owner">Follow-up by: <b>EDW</b></div></div></div>
   <div class="act"><div class="pri p-amber"></div><div class="inner">
    <div class="atop"><h4>12 items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
-   <p>Of the 79 items closed this month, 12 (15%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 67. In May it was 6 of 39 (15%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
+   <p>Of the 79 items closed this month, 12 (15%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 67. In may it was 6 of 39 (15%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
    <div class="owner">To review with: <b>EDW</b></div></div></div>
   <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
   <div class="retro"><h4>Questions for the team</h4><ul>
@@ -667,14 +667,14 @@ const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
   ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
 new Chart(document.getElementById('cThru'),{type:'bar',
- data:{labels:['Apr','May','Jun','Jul','Aug'],datasets:[{label:'Closed',
-  data:[36,39,74,79,82],backgroundColor:['#c3cdda','#c3cdda','#65B2D5','#007CBC','#65B2D5'],borderRadius:6}]},
- options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:110,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
+ data:{labels:["01", "02", "03", "04", "May", "June", "July", "August"],datasets:[{label:'Closed',
+  data:[44.0, 36.0, 40.0, 36.0, 39.0, 74.0, 79.0, 82.0],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#007CBC", "#65B2D5"],borderRadius:6}]},
+ options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:102,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
  plugins:[thrRef]});
 new Chart(document.getElementById('cCyc'),{type:'bar',
- data:{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[
-  {label:'Median',data:[6.29,4.59,5.18,4.26,3.81,4.39],backgroundColor:BLUE,borderRadius:5},
-  {label:'Average',data:[7.83,9.33,8.04,8.42,5.01,7.91],backgroundColor:BLUEL,borderRadius:5}]},
+ data:{labels:["Q1", "Q2", "may", "June", "July", "August"],datasets:[
+  {label:'Median',data:[6.29, 4.59, 5.18, 4.26, 3.81, 4.39],backgroundColor:BLUE,borderRadius:5},
+  {label:'Average',data:[7.83, 9.33, 8.04, 8.42, 5.01, 7.91],backgroundColor:BLUEL,borderRadius:5}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:11,grid:{color:gridc},title:{display:true,text:'Days'}},x:{grid:{display:false}}}}});
 const bands={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;const z=v=>y.getPixelForValue(v);
  ctx.save();ctx.fillStyle='rgba(79,168,0,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
@@ -693,15 +693,15 @@ const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
  ctx.fillStyle=RED;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText('Baseline 45',right-4,yp-4);ctx.restore();}};
 new Chart(document.getElementById('cVel'),{type:'bar',
- data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[
-  {label:'Committed (day 1)',data:[56, 60, 79, 79, 105, 120, 83, 74, 78, 88, 49],backgroundColor:GREY,borderRadius:5},
-  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78, 7],backgroundColor:BLUE,borderRadius:5}]},
+ data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26"],datasets:[
+  {label:'Committed (day 1)',data:[56, 60, 79, 79, 105, 120, 83, 74, 78, 88],backgroundColor:GREY,borderRadius:5},
+  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78],backgroundColor:BLUE,borderRadius:5}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:115,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false}}}},
  plugins:[velRef]});
 new Chart(document.getElementById('cSplit'),{type:'bar',
- data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S21-26"],datasets:[
-  {label:'Reactive (Unplanned / Urgent)',data:[7, 4, 4, 3, 9, 5, 0],backgroundColor:AMBER,borderRadius:4},
-  {label:'Plannable',data:[5, 21, 31, 37, 28, 34, 14],backgroundColor:RED,borderRadius:4}]},
+ data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26"],datasets:[
+  {label:'Reactive (Unplanned / Urgent)',data:[7, 4, 4, 3, 9, 5],backgroundColor:AMBER,borderRadius:4},
+  {label:'Plannable',data:[5, 21, 31, 37, 28, 34],backgroundColor:RED,borderRadius:4}]},
  options:{plugins:{legend:{position:'top'}},scales:{x:{stacked:true,grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Points added mid-sprint'}}}}});
 const bandRef={id:'bandRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
  const yl=y.getPixelForValue(67.7), yh=y.getPixelForValue(89.0);
@@ -711,16 +711,16 @@ const bandRef={id:'bandRef',afterDraw(c){const{ctx,chartArea:{left,right},scales
  ctx.setLineDash([]);ctx.fillStyle='#4FA800';ctx.font='600 10px DM Sans';ctx.textAlign='right';
  ctx.fillText('expected 68-89',right-4,yh-4);ctx.restore();}};
 new Chart(document.getElementById('cBand'),{type:'bar',
- data:{labels:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],datasets:[{label:'Items closed',data:[44, 36, 40, 36, 39, 74, 79, 82],backgroundColor:["#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#007CBC", "#c3cdda"],borderRadius:6}]},
+ data:{labels:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],datasets:[{label:'Items closed',data:[44.0, 36.0, 40.0, 36.0, 39.0, 74.0, 79.0, 82.0],backgroundColor:["#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#007CBC", "#c3cdda"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
  plugins:[bandRef]});
 const spillRef={id:'spillRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
- const yp=y.getPixelForValue(36.6);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ const yp=y.getPixelForValue(34.4);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
  ctx.fillStyle='#626c84';ctx.font='600 10px DM Sans';ctx.textAlign='right';
- ctx.fillText('series average 37%',right-4,yp-4);ctx.restore();}};
+ ctx.fillText('series average 34%',right-4,yp-4);ctx.restore();}};
 new Chart(document.getElementById('cSpill'),{type:'bar',
- data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 85.7],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
+ data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31"],borderRadius:5}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,grid:{color:gridc},ticks:{callback:v=>v+'%'},title:{display:true,text:'% of points that left the sprint'}},x:{grid:{display:false}}}},
  plugins:[spillRef]});
 new Chart(document.getElementById('bd0'),{type:'line',

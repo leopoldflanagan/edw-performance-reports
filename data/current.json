@@ -1,20 +1,23 @@
 {
- "ym": "2026-09",
+ "ym": "9.08",
  "month": {
-  "slug": "2026-09-september",
-  "label": "September 2026",
-  "short": "SEP",
-  "prev": "August",
-  "prev_closed": 82,
-  "closed": 30,
+  "slug": "2026-r908",
+  "label": "Release 9.08",
+  "short": "9.08",
+  "n_sprints": 2,
+  "start": "2026-08-31",
+  "end": "2026-09-27",
+  "prev": "",
+  "prev_closed": 57,
+  "closed": 51,
   "discarded": 2,
-  "resolved": 32,
+  "resolved": 53,
   "unplanned": 0,
   "unp_pct": 0.0,
   "types": [
    [
     "Story",
-    24
+    45
    ],
    [
     "Bug",
@@ -36,11 +39,11 @@
   "unp_items": [],
   "open": true,
   "day": 15,
-  "days": 30,
+  "days": 28,
   "status": "warning",
-  "headline": "30 items closed in the first 15 days, a pace of about 60 for the month against 82 last month. Running 27% behind last month's pace.",
+  "headline": "51 items closed in the first 15 days, a pace of about 95 for the month against 57 last month. Cycle time average 9.5d against a 5.0d median - a long tail.",
   "notes": [
-   "running 27% behind last month's pace"
+   "cycle time average 9.5d against a 5.0d median - a long tail"
   ]
  },
  "SPRINTS": [
@@ -266,22 +269,24 @@
   ]
  },
  "CAP": {
-  "09": [
-   30,
-   26,
-   78,
-   5
+  "9.08": [
+   51,
+   46,
+   164,
+   6
   ]
  },
  "CYC": {
-  "09": {
-   "med": 4.81,
-   "avg": 8.2,
-   "n": 28,
+  "9.08": {
+   "med": 4.96,
+   "avg": 9.52,
+   "n": 34,
    "mx": 50.15,
-   "nodev": 2,
-   "base": 30
+   "nodev": 17,
+   "base": 51
   }
  },
- "complete": false
+ "complete": false,
+ "kind": "release",
+ "n_sprints": 2
 }
