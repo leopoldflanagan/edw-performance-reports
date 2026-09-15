@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T17:29:15Z",
+ "generated": "2026-09-15T18:00:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -24,7 +24,7 @@
    "out_pts": 0,
    "done_pts": 2.0
   },
-  "spill_rate": 95,
+  "spill_rate": null,
   "dist": {
    "Backlog": 1,
    "Closed": 1,
@@ -41,6 +41,11 @@
    31.0,
    41.0,
    41.0
+  ],
+  "ghost": [
+   31.0,
+   39.0,
+   39.0
   ]
  },
  "next": {
