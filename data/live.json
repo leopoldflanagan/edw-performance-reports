@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T22:32:39Z",
+ "generated": "2026-09-15T23:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -46,7 +46,9 @@
    39.0,
    47.0,
    42.0
-  ]
+  ],
+  "days": 14,
+  "day": 2
  },
  "next": {
   "name": "EDW-Sprint 23-26",
@@ -54,14 +56,22 @@
   "state": "not started"
  },
  "month": {
-  "month": "2026-09",
-  "label": "September 2026",
-  "day": 15,
-  "closed": 30,
-  "points": 78,
+  "month": "9.08",
+  "label": "Release 9.08",
+  "kind": "release",
+  "start": "2026-08-31",
+  "end": "2026-09-27",
+  "day": 16,
+  "days": 28,
+  "closed": 51,
+  "points": 164,
   "unplanned": 0,
   "unplanned_pct": 0.0,
   "access_requests": 0,
-  "people_active": 5
+  "people_active": 6,
+  "sprints": [
+   "EDW-Sprint 21-26",
+   "EDW-Sprint 22-26"
+  ]
  }
 }
