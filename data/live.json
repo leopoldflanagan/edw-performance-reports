@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-15T19:00:26Z",
+ "generated": "2026-09-15T19:14:17Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -26,11 +26,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 6,
+   "In Development": 5,
    "Closed": 3,
-   "Backlog": 1,
-   "Ready for Development": 7,
-   "Won't Do": 1
+   "Ready for Development": 8,
+   "Won't Do": 1,
+   "Awaiting Review": 1
   },
   "burn": [
    39.0,
