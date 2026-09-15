@@ -390,13 +390,36 @@ def _mday(d):      # "Apr 27"
     return f"{MONTH_NAMES[d.month-1][:3]} {d.day}"
 
 def sprints_of_month(mine, ym):
-    """A sprint belongs to the month it ENDS in — the same rule the closed months use."""
+    """A sprint belongs to the month it ENDS in — the rule the closed months use."""
     out = []
     for s in mine:
         e = s.get("completeDate") or s.get("endDate")
         if e and e[:7] == ym and s["state"] != "future":
             out.append(s)
     return sorted(out, key=lambda s: s.get("completeDate") or s["endDate"])
+
+def current_release(frozen_path):
+    """The release whose window contains today, from the calendar in frozen.json.
+    Falls back to the last one when today sits past the end of the table."""
+    try:
+        rel = json.load(open(frozen_path)).get("RELEASES") or {}
+    except Exception:
+        return None
+    if not rel:
+        return None
+    today = dt.date.today().isoformat()
+    for k in sorted(rel):
+        if rel[k]["start"] <= today <= rel[k]["end"]:
+            return k, rel[k]
+    k = sorted(rel)[-1]
+    return k, rel[k]
+
+def sprints_named(mine, names):
+    """The board's sprints matching a release's sprint list, in order, skipping
+    any that have not started."""
+    want = {n: i for i, n in enumerate(names)}
+    out = [s for s in mine if s["name"] in want and s["state"] != "future"]
+    return sorted(out, key=lambda s: want[s["name"]])
 
 def verdict(closed, cyc, unp_pct, prev_closed, day=None, days=None):
     """The health call and its one-line headline, from rules rather than from a person.
@@ -445,14 +468,19 @@ def verdict(closed, cyc, unp_pct, prev_closed, day=None, days=None):
     headline = move + ((". " + notes[0][0].upper() + notes[0][1:] + ".") if notes else ".")
     return status, headline, notes
 
-def month_block(board, project, team, mine, ym, prev_closed=None):
-    y, m = ym.split("-")
-    first = dt.date(int(y), int(m), 1)
-    nxt   = (first + dt.timedelta(days=32)).replace(day=1)
-    label = f"{MONTH_NAMES[int(m)-1]} {y}"
+def month_block(board, project, team, mine, ym, prev_closed=None, window=None, sprint_names=None, label=None):
+    if window:
+        first = dt.date.fromisoformat(window[0])
+        nxt   = dt.date.fromisoformat(window[1]) + dt.timedelta(days=1)
+        label = label or ym
+    else:
+        y, m = ym.split("-")
+        first = dt.date(int(y), int(m), 1)
+        nxt   = (first + dt.timedelta(days=32)).replace(day=1)
+        label = f"{MONTH_NAMES[int(m)-1]} {y}"
 
     rows, spill, split, tis, ghost, names = {}, {}, {}, {}, {}, []
-    for s in sprints_of_month(mine, ym):
+    for s in (sprints_named(mine, sprint_names) if sprint_names else sprints_of_month(mine, ym)):
         d = sprint_detail(board, s, project)
         n = d["name"]; names.append(n)
         st, en = _dtp(s["startDate"]), _dtp(s.get("completeDate") or s["endDate"])
@@ -494,9 +522,13 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
 
     return {
         "ym": ym,
-        "month": {"slug": f"{y}-{m}-{MONTH_NAMES[int(m)-1].lower()}", "label": label,
-                  "short": MONTH_NAMES[int(m)-1][:3].upper(),
-                  "prev": MONTH_NAMES[int(m)-2] if int(m) > 1 else "December",
+        "month": {"slug": (f"2026-r{ym.replace('.','')}" if window
+                           else f"{first.year}-{first:%m}-{MONTH_NAMES[first.month-1].lower()}"),
+                  "label": label,
+                  "short": (ym if window else MONTH_NAMES[first.month-1][:3].upper()),
+                  "n_sprints": len(sprint_names or []) or None,
+                  "start": first.isoformat(), "end": (nxt - dt.timedelta(days=1)).isoformat(),
+                  "prev": MONTH_NAMES[first.month-2] if not window else "",
                   "prev_closed": prev_closed,
                   "closed": cap[0], "discarded": discarded,
                   "resolved": cap[0] + discarded,
@@ -508,7 +540,9 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
         "SPRINTS": [rows[n] for n in names],
         "SPILL": spill, "SPLIT": split, "TIS": tis, "GHOST": ghost,
         "CAP": {m: cap}, "CYC": {m: cyc},
-        "complete": all(s["state"] == "closed" for s in sprints_of_month(mine, ym))
+        "complete": all(s["state"] == "closed"
+                        for s in (sprints_named(mine, sprint_names) if sprint_names
+                                  else sprints_of_month(mine, ym)))
                     and dt.date.today() >= nxt,
     }
 
@@ -554,15 +588,37 @@ def main():
           f"month {out['month']['closed']} closed")
 
     # the month in progress, in the same shape the frozen months use
-    ym = dt.date.today().strftime("%Y-%m")
-    prev_closed = None
-    try:
-        fz = json.load(open(a.frozen))
-        pm = (dt.date.today().replace(day=1) - dt.timedelta(days=1)).strftime("%m")
-        prev_closed = (fz.get("CAP", {}).get(pm) or [None])[0]
-    except Exception:
-        pass
-    blk = month_block(a.board, a.project, a.team, mine, ym, prev_closed)
+    # The period in progress is the release whose window contains today. Falls back
+    # to the calendar month only if the release table is missing.
+    cur = current_release(a.frozen)
+    if cur:
+        rk, r = cur
+        prev_closed = None
+        try:
+            fz = json.load(open(a.frozen))
+            keys = sorted(fz.get("RELEASES", {}))
+            i = keys.index(rk)
+            if i:
+                p = fz["RELEASES"][keys[i-1]]
+                prev_closed = round(p["closed"] / p["n_sprints"] * len(r["sprints"]))
+        except Exception:
+            pass
+        blk = month_block(a.board, a.project, a.team, mine, rk, prev_closed,
+                          window=(r["start"], r["end"]), sprint_names=r["sprints"],
+                          label=f"Release {rk}")
+        blk["kind"] = "release"
+        blk["n_sprints"] = len(r["sprints"])
+    else:
+        ym = dt.date.today().strftime("%Y-%m")
+        prev_closed = None
+        try:
+            fz = json.load(open(a.frozen))
+            pm = (dt.date.today().replace(day=1) - dt.timedelta(days=1)).strftime("%m")
+            prev_closed = (fz.get("CAP", {}).get(pm) or [None])[0]
+        except Exception:
+            pass
+        blk = month_block(a.board, a.project, a.team, mine, ym, prev_closed)
+        blk["kind"] = "month"
     with open(a.month_out, "w") as f:
         json.dump(blk, f, indent=1)
     print(f"{a.month_out}: {blk['month']['label']} - {len(blk['SPRINTS'])} sprint(s), "

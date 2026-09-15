@@ -50,6 +50,11 @@ CURRENT = None
 _cur = os.path.join(REPO, "data", "current.json")
 if os.path.exists(_cur):
     CURRENT = json.load(open(_cur))
+if CURRENT and CURRENT.get("kind") == "release":
+    CURRENT_RELEASE, CURRENT = CURRENT, None      # merged in the release pass below
+else:
+    CURRENT_RELEASE = None
+if CURRENT:
     _mk = CURRENT["ym"].split("-")[1]
     # Frozen wins only for a sprint that belongs to a month already closed. A sprint
     # recorded while it was still open is provisional: the fresh reading replaces it.
@@ -127,7 +132,20 @@ MK_OPEN = CURRENT["ym"].split("-")[1] if CURRENT else None
 MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
 MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3]
 MK_LAST = MK_ALL[-1]
+BASE_KEYS = [k for k in ("01","02","03","04","05") if k in CAP]
 MK_LABS = [MONTH_ABBR[int(k)-1] for k in MK_DONE]
+
+PNORM = {}   # period key -> how many sprints it spans (1 for a month)
+
+def cl(k):
+    """Items closed in period k, on the comparable scale: per sprint for a release,
+    as-is for a month. 9.06 ran three sprints and the rest two; without this the
+    six-week release would look like a spike that never happened."""
+    return CAP[k][0] / PNORM.get(k, 1)
+
+def _plabel(k):
+    """Readable name for a period key, including the 'may' cycle-time key."""
+    return MONTH_LABEL.get(k) or (MONTH_ABBR[int(k)-1] if str(k).isdigit() else str(k).title())
 
 def _sidx(mk):
     """Where this month sits in the historical series - None while it is still running."""
@@ -149,9 +167,11 @@ CYC_ORDER = [_cyckey(k) for k in MK_DONE if _cyckey(k) in CYC]
 # (people with >= 2 closed items that month). Basis: resolution = Done, no sub-tasks/epics.
 
 def cap(keys):
+    """Averages over the given periods, on the comparable scale (see cl)."""
     n=len(keys)
-    it=sum(CAP[k][0] for k in keys); sp=sum(CAP[k][1] for k in keys)
-    pt=sum(CAP[k][2] for k in keys); pe=sum(CAP[k][3] for k in keys)/n
+    nz=lambda k: PNORM.get(k,1)
+    it=sum(CAP[k][0]/nz(k) for k in keys); sp=sum(CAP[k][1]/nz(k) for k in keys)
+    pt=sum(CAP[k][2]/nz(k) for k in keys); pe=sum(CAP[k][3] for k in keys)/n
     return dict(items=it/n, pts=pt/n, size=pt/sp, people=pe, per=(pt/n)/pe)
 
 def band(vals):
@@ -162,8 +182,8 @@ def band(vals):
                 consistency=100*mrbar/mean)
 
 def trend(keys_now, keys_prev):
-    a=sum(CAP[k][0] for k in keys_now)/len(keys_now)
-    b=sum(CAP[k][0] for k in keys_prev)/len(keys_prev)
+    a=sum(cl(k) for k in keys_now)/len(keys_now)
+    b=sum(cl(k) for k in keys_prev)/len(keys_prev)
     return 100*(a/b-1)
 
 # Jira sprint report: completed / not completed at close / removed before close.
@@ -342,9 +362,29 @@ BADGE = {"healthy":("b-green","Healthy","var(--healthy)"),
          "warning":("b-amber","Warning","var(--warning)"),
          "risk":("b-red","Risk","var(--risk)")}
 
+# ---- what a period compares itself against -------------------------------
+# Months and quarters compare against the closed calendar quarters. Releases
+# compare against their own series, because a release is not a month: 9.06 ran
+# six weeks and the rest four, so only a per-sprint figure is comparable.
+REF1_LABEL = "Q1 2026"      # column header
+REF2_LABEL = "Q2 2026"
+REF1_SHORT = "Q1"           # inside "vs Q1"
+REF2_SHORT = "Q2"
+PERIOD_WORD = "month"       # "This month" / "closed · month"
+
+
+def pdelta(cur, ref):
+    """Percent change against a reference, or None when the reference is zero —
+    a period where nobody applied the label is not a 0% baseline to divide by."""
+    try:
+        return 100*(cur-ref)/ref if ref else None
+    except (TypeError, ZeroDivisionError):
+        return None
+
 def sb_rows(rows):
     """Uniform delta block: label | value | vs Q1 | vs Q2. rows = [(label, value_str, d1, d2, better_low)]"""
-    out = ['<div class="statblock"><div class="sb sb-head"><span></span><span>This month</span><span>vs Q1</span><span>vs Q2</span></div>']
+    out = [f'<div class="statblock"><div class="sb sb-head"><span></span><span>This {PERIOD_WORD}</span>'
+           f'<span>vs {REF1_SHORT}</span><span>vs {REF2_SHORT}</span></div>']
     for lab, val, d1, d2, low in rows:
         def cell(d):
             if d is None: return '<span class="sd flat">&mdash;</span>'
@@ -661,7 +701,9 @@ def sprint_card(name, idx, note=""):
  </div>"""
 
 def month_scrum_insight(mk):
-    names = SP_BY_MONTH[mk]
+    names = [n for n in SP_BY_MONTH[mk] if sp(n)]
+    if not names:
+        return ""
     gone_p = sum((spill(n) or dict(open=(0,0),out=(0,0)))["open"][1] +
                  (spill(n) or dict(open=(0,0),out=(0,0)))["out"][1] for n in names)
     rows = [sp(n) for n in names]
@@ -707,8 +749,17 @@ def sprint_table(names, short=False):
 def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of the series, rebuilt from Jira.", intro=""):
     """Monthly page: only this month's sprints. Quarter page: the whole series."""
     if mk and mk in SP_BY_MONTH:
-        names = SP_BY_MONTH[mk]
+        # a period can name a sprint that has not run yet, or one whose data has
+        # not been collected; render what exists rather than failing the page
+        names = [n for n in SP_BY_MONTH[mk] if sp(n)]
+        missing = [n for n in SP_BY_MONTH[mk] if not sp(n)]
         cards = "".join(sprint_card(n, i) for i, n in enumerate(names))
+        if missing:
+            cards += ('<div class="goalbox" style="margin-top:12px">'
+                      + ", ".join(f"<b>{n}</b>" for n in missing)
+                      + (" has" if len(missing) == 1 else " have")
+                      + " not run yet, so " + ("it is" if len(missing)==1 else "they are")
+                      + " not measured here. This period is not complete.</div>")
         extra = ""
         if mk == MK_LAST and ACTIVE and ACTIVE not in names and sp(ACTIVE):
             live_sp = (LIVE or {}).get("sprint") or {}
@@ -758,12 +809,12 @@ def series_block(heading=True):
     """Historical, series-wide Scrum view. Lives in Comparatives on monthly pages."""
     closed = [r[7] for r in SPRINTS if r[0] != ACTIVE]
     avg5 = round(sum(closed[-5:])/5, 1)
-    b  = band([CAP[k][0] for k in MK_L3])
-    b0 = band([CAP[k][0] for k in ["01","02","03","04","05"]])
+    b  = band([cl(k) for k in MK_L3])
+    b0 = band([cl(k) for k in BASE_KEYS]) if BASE_KEYS else b
     ss = spill_series([r[0] for r in SPRINTS])
     tr = trend(MK_L3, MK_P3)
-    now  = sum(CAP[k][0] for k in MK_L3)/len(MK_L3)
-    prev = sum(CAP[k][0] for k in MK_P3)/len(MK_P3)
+    now  = sum(cl(k) for k in MK_L3)/len(MK_L3)
+    prev = sum(cl(k) for k in MK_P3)/len(MK_P3)
     pplnow  = sum(CAP[k][3] for k in MK_L3)/len(MK_L3)
     pplprev = sum(CAP[k][3] for k in MK_P3)/len(MK_P3)
     head = ('<div class="sectit" style="font-size:20px;margin-top:30px">Sprint series — full history</div>'
@@ -846,10 +897,11 @@ new Chart(document.getElementById('cSplit'),{{type:'bar',
   {{label:'Plannable',data:{json.dumps([SPLIT[n]['plan'] for n in sl_names])},backgroundColor:RED,borderRadius:4}}]}},
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{x:{{stacked:true,grid:{{display:false}}}},y:{{stacked:true,beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Points added mid-sprint'}}}}}}}}}});"""
     lst = only if only else (SP_BY_MONTH.get(mk, [r[0] for r in SPRINTS]) if mk else [r[0] for r in SPRINTS])
+    lst = [n for n in lst if sp(n)]
     if not only:
-        b = band([CAP[k][0] for k in MK_L3])
+        b = band([cl(k) for k in MK_L3])
         labs = MK_LABS
-        vals = [CAP[k][0] for k in MK_DONE]
+        vals = [cl(k) for k in MK_DONE]
         cur  = MONTH_LABEL.get(mk,"")[:3] if mk else ""
         cols = json.dumps(['#007CBC' if l==cur else '#c3cdda' for l in labs])
         js += f"""
@@ -904,8 +956,8 @@ new Chart(document.getElementById('bd{i}'),{{type:'line',
 def month_page(mk):
     m = MONTHS[mk]
     cm  = cap([mk]); cq1 = cap(CAP_Q1); cq2 = cap(CAP_Q2)
-    bnd = band([CAP[k][0] for k in MK_L3])
-    in_band = bnd["lo"] <= CAP[mk][0] <= bnd["hi"]
+    bnd = band([cl(k) for k in MK_L3])
+    in_band = bnd["lo"] <= cl(mk) <= bnd["hi"]
     st_thr = "healthy" if in_band else "warning"
     # A month in progress is compared at pace, never as a total: 29 items on day 15
     # is not "29 against 82", it is a run rate. The baselines are cut to the same
@@ -914,8 +966,8 @@ def month_page(mk):
     SHARE = (m.get("day", 30) / m.get("days", 30)) if OPEN else 1.0
     PACE = m["closed"] / SHARE if SHARE else m["closed"]
     pace_note = ('' if not OPEN else
-        f'<div class="ctxline"><span>At this pace the month lands near <b>{PACE:.0f} items</b>. '
-        f'Every comparison below is cut to the same {100*SHARE:.0f}% of a month on both sides.</span></div>')
+        f'<div class="ctxline"><span>At this pace the {PERIOD_WORD} lands near <b>{PACE:.0f} items</b>. '
+        f'Every comparison below is cut to the same {100*SHARE:.0f}% on both sides.</span></div>')
     dev_base = (m["closed"] - Q1["thr_med"]*SHARE) / (Q1["thr_med"]*SHARE) * 100
     dev_q2   = (m["closed"] - Q2["thr_med"]*SHARE) / (Q2["thr_med"]*SHARE) * 100
     dev_prev = (m["closed"] - m["prev_closed"]*SHARE) / (m["prev_closed"]*SHARE) * 100
@@ -925,9 +977,9 @@ def month_page(mk):
     if m["unplanned"] is None:
         unp_card = f"""<div class="card">
       <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
-      <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> {"so far this month" if m.get("open") else "in the whole month"}</div>
+      <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> {"so far this " + PERIOD_WORD if m.get("open") else "in the whole " + PERIOD_WORD}</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
-      <div class="infopanel ip-amber">Zero labels in a month of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
+      <div class="infopanel ip-amber">Zero labels in a {PERIOD_WORD} of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>"""
     else:
@@ -939,7 +991,7 @@ def month_page(mk):
       <div class="bignum {col}">{m['unp_pct']:.1f}<span class="unit">%</span></div>
       <div class="secondary">{m['unplanned']} of {m['closed']} deliveries labeled Unplanned</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
-      {sb_rows([("Unplanned share", f"{m['unp_pct']:.1f}%", 100*(m['unp_pct']-Q1['unp'])/Q1['unp'], 100*(m['unp_pct']-Q2['unp'])/Q2['unp'], True),
+      {sb_rows([("Unplanned share", f"{m['unp_pct']:.1f}%", pdelta(m['unp_pct'],Q1['unp']), pdelta(m['unp_pct'],Q2['unp']), True),
                 ("Items", f"{m['unplanned']}", None, None, True)])}
       <div class="ctxline"><span>Q1 <b>{Q1['unp']}%</b> · Q2 <b>{Q2['unp']}%</b> · May <b>{MAY_UNP}%</b></span></div>
       <div class="infopanel {ip}"><a href="#" class="ip-link" data-goto="act">See the breakdown in Findings &amp; Retro &rarr;</a></div>
@@ -992,7 +1044,7 @@ def month_page(mk):
     else:
         obs_block = f"""<div class="cmpcard">
      <div class="cmphead"><h3>No unplanned-work data</h3></div>
-     <div class="nodata"><span class="big">0 labels</span>across {m['closed']} deliveries {"so far this month" if m.get("open") else "this month"}</div>
+     <div class="nodata"><span class="big">0 labels</span>across {m['closed']} deliveries {"so far this " + PERIOD_WORD if m.get("open") else "this " + PERIOD_WORD}</div>
      <div class="fnote">{m.get("note_unp") or f"Zero labels across {m['closed']} deliveries describes the labeling, not the work. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable."}</div>
    </div>"""
 
@@ -1001,7 +1053,7 @@ def month_page(mk):
         pct_d = 100*m["discarded"]/m["resolved"]
         disc_note = f"""<div class="act"><div class="pri p-grey"></div><div class="inner">
      <div class="atop"><h4>Review the {m['discarded']} discarded items</h4><span class="pill pill-grey">Follow-up</span></div>
-     <p>The official Throughput filter uses <i>resolved</i>, which mixes closed with discarded (Won't Do). This month that is {m['discarded']} of {m['resolved']} resolved ({pct_d:.0f}%), which is why the headline counts only the {m['closed']} closed. Worth looking at in the retro at what was opened and then dropped — it usually signals work that came in without enough definition.</p>
+     <p>The official Throughput filter uses <i>resolved</i>, which mixes closed with discarded (Won't Do). This {PERIOD_WORD} that is {m['discarded']} of {m['resolved']} resolved ({pct_d:.0f}%), which is why the headline counts only the {m['closed']} closed. Worth looking at in the retro at what was opened and then dropped — it usually signals work that came in without enough definition.</p>
      <div class="owner">Follow-up by: <b>EDW</b></div></div></div>"""
 
     ip_thr = {"healthy":"ip-green","warning":"ip-amber","risk":"ip-red"}[st_thr]
@@ -1009,10 +1061,25 @@ def month_page(mk):
     c = CYC[mk]
     cyc_st = cyc_status(c)
     col_cyc = {"healthy":"num-green","warning":"num-amber","risk":"num-red"}[cyc_st]
-    nodev_pct = 100*c["nodev"]/c["base"]
+    nodev_pct = 100*c["nodev"]/c["base"] if c["base"] else 0
+    _ref_k = CYC_ORDER[0] if CYC_ORDER else None
+    _nodev_ref = (f"In {MONTH_LABEL.get(_ref_k, _ref_k)} it was {CYC[_ref_k]['nodev']} of {CYC[_ref_k]['base']} "
+                  f"({100*CYC[_ref_k]['nodev']/CYC[_ref_k]['base']:.0f}%)."
+                  if _ref_k and _ref_k != mk and CYC.get(_ref_k, {}).get("base") else "")
+    # series de comparativas, generadas de los periodos que existen
+    _keys   = [k for k in MK_ALL]
+    _thr_l  = json.dumps([MONTH_LABEL.get(k, k) for k in _keys])
+    _thr_d  = json.dumps([round(cl(k), 1) for k in _keys])
+    _thr_c  = json.dumps(["#007CBC" if k == mk else "#65B2D5" for k in _keys])
+    _thr_max = max([cl(k) for k in _keys] + [1]) * 1.25
+    _ck     = [k for k in CYC_ORDER]
+    _cyc_l  = json.dumps([REF1_SHORT, REF2_SHORT] + [MONTH_LABEL.get(k, k) for k in _ck])
+    _cyc_m  = json.dumps([Q1["cyc_med"], Q2["cyc_med"]] + [CYC[k]["med"] for k in _ck])
+    _cyc_a  = json.dumps([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck])
+    _cyc_max = max([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck] + [1]) * 1.2
 
     html = head(f"{m['label']} Performance Report",
-                f"Flow and sprint metrics for the month, against {m['prev']} 2026 and the closed quarters of the year: Q1 and Q2 2026.",
+                f"Flow and sprint metrics for the {PERIOD_WORD}, against {m['prev']} and {globals().get('REF2_PHRASE', REF2_LABEL)}.",
                 f"Flow Health: {BADGE[m['status']][1].upper()} — {m['headline']}", m["status"], m["short"])
 
     html += f"""
@@ -1022,17 +1089,17 @@ def month_page(mk):
   <div class="grid g3">
     <div class="card">
       <div class="ghead"><span class="gname">Throughput</span>{badge(st_thr)}</div>
-      <div class="bignum {col_thr}">{m['closed']}<span class="unit">{"closed · day " + str(m.get("day")) + " of " + str(m.get("days")) if OPEN else "closed · month"}</span></div>
+      <div class="bignum {col_thr}">{m['closed']}<span class="unit">{"closed · day " + str(m.get("day")) + " of " + str(m.get("days")) if OPEN else "closed · " + PERIOD_WORD}</span></div>
 {pace_note}
       <div class="secondary">{types}</div>
       {sb_rows([("Items closed", f"{cm['items']:.0f}", 100*(cm['items']/(cq1['items']*SHARE)-1), 100*(cm['items']/(cq2['items']*SHARE)-1), False),
                 ("Story points", f"{cm['pts']:.0f}", 100*(cm['pts']/(cq1['pts']*SHARE)-1), 100*(cm['pts']/(cq2['pts']*SHARE)-1), False)])}
-      <div class="ctxline"><span>Average item size <b>{cm['size']:.2f} pts</b> <i>(Q1 {cq1['size']:.2f})</i></span>
-        <span>Team <b>{cm['people']:.0f} active</b> <i>(Q1 {cq1['people']:.1f})</i></span></div>
-      <div class="spark-cap">Items closed · {MK_LABS[0]} to {MK_LABS[-1]}{" · this month is still running and is not plotted" if mk not in MK_DONE else ""}</div>
-      {spark([CAP[k][0] for k in MK_DONE], _sidx(mk))}
+      <div class="ctxline"><span>Average item size <b>{cm['size']:.2f} pts</b> <i>({REF1_SHORT} {cq1['size']:.2f})</i></span>
+        <span>Team <b>{cm['people']:.0f} active</b> <i>({REF1_SHORT} {cq1['people']:.1f})</i></span></div>
+      <div class="spark-cap">Items closed · {MK_LABS[0]} to {MK_LABS[-1]}{" · this " + PERIOD_WORD + " is still running and is not plotted" if mk not in MK_DONE else ""}</div>
+      {spark([cl(k) for k in MK_DONE], _sidx(mk))}
       <div class="infopanel {ip_thr}">On top of the {m['closed']} closed there were <b>{m['discarded']} discarded</b> (Won't Do), which are not deliveries.
-        Items are {"" if OPEN else "up "}{100*(cm['items']/(cq1['items']*SHARE)-1):+.0f}% on Q1 while points are {"" if OPEN else "up "}{100*(cm['pts']/(cq1['pts']*SHARE)-1):+.0f}%{" at the same point in the month" if OPEN else " — the team is larger and the items are smaller"}.
+        Items are {"" if OPEN else "up "}{100*(cm['items']/(cq1['items']*SHARE)-1):+.0f}% on {REF1_SHORT} while points are {"" if OPEN else "up "}{100*(cm['pts']/(cq1['pts']*SHARE)-1):+.0f}%{" at the same point in the month" if OPEN else " — the team is larger and the items are smaller"}.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="{GUIDES['thr']}" target="_blank">Throughput — Team Guide</a>
@@ -1044,8 +1111,8 @@ def month_page(mk):
       <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
       {sb_rows([("Median", f"{c['med']:.1f}d", 100*(c['med']-Q1['cyc_med'])/Q1['cyc_med'], 100*(c['med']-Q2['cyc_med'])/Q2['cyc_med'], True),
                 ("Average", f"{c['avg']:.1f}d", 100*(c['avg']-Q1['cyc_avg'])/Q1['cyc_avg'], 100*(c['avg']-Q2['cyc_avg'])/Q2['cyc_avg'], True)])}
-      <div class="ctxline"><span>Measured on <b>{c['n']} of {c['base']}</b> closed items <i>({100*c['n']/c['base']:.0f}% of the month)</i></span></div>
-      <div class="spark-cap">Median cycle time · May to Aug</div>
+      <div class="ctxline"><span>Measured on <b>{c['n']} of {c['base']}</b> closed items <i>({100*c['n']/c['base']:.0f}% of the {PERIOD_WORD})</i></span></div>
+      <div class="spark-cap">Median cycle time · {_plabel(CYC_ORDER[0]) if CYC_ORDER else ""} to {_plabel(CYC_ORDER[-1]) if CYC_ORDER else ""}</div>
       {spark([CYC[k]['med'] for k in CYC_ORDER], CYC_ORDER.index(_cyckey(mk)) if _cyckey(mk) in CYC_ORDER else None, col="#4FA800")}
       <div class="infopanel ip-green">Median and average both within target. The gap between {c['med']:.1f}d and {c['avg']:.1f}d comes from a few long tickets — the longest this month took {c['mx']:.0f} days.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -1071,7 +1138,7 @@ def month_page(mk):
   <div style="margin-top:26px"></div>
   <div class="sectit" style="font-size:20px">Executive summary</div>
   <div class="tscroll"><table class="exec">
-    <thead><tr><th>Metric</th><th>{m['label'].split()[0]}</th><th>{m['prev']}</th><th>Q1 2026</th><th>Q2 2026</th><th>vs Q1</th><th>vs Q2</th></tr></thead>
+    <thead><tr><th>Metric</th><th>{m['label'].split()[0]}</th><th>{m['prev']}</th><th>{REF1_LABEL}</th><th>{REF2_LABEL}</th><th>vs {REF1_SHORT}</th><th>vs {REF2_SHORT}</th></tr></thead>
     <tbody>
       <tr><td>Throughput (closed)</td><td>{m['closed']}</td><td>{m['prev_closed']}</td><td>{Q1['thr_med']}</td><td>{Q2['thr_med']}</td><td class="{'pos' if dev_base>0 else 'neg'}">{dev_base:+.1f}%</td><td class="{'pos' if dev_q2>0 else 'neg'}">{dev_q2:+.1f}%</td></tr>
       <tr><td>Unplanned work</td>{unp_row}</tr>
@@ -1097,8 +1164,8 @@ def month_page(mk):
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cThru"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs Q1 ({Q1['thr_med']}/mo)</span><br><b>{dev_base:+.1f}%</b> in items — but {100*(cm['per']/cq1['per']-1):+.0f}% once item size and team size are taken out. Most of the gap is a bigger team closing smaller items.</div>
-        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs Q2 ({Q2['thr_med']}/mo)</span><br><b>{dev_q2:+.1f}%</b> — and Q2 is a poor yardstick anyway: its median is set by April and May, under the previous team.</div>
+        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs {REF1_SHORT} ({Q1['thr_med']}{Q1.get('unit','/mo')})</span><br><b>{dev_base:+.1f}%</b> in items — but {100*(cm['per']/cq1['per']-1):+.0f}% once item size and team size are taken out. Most of the gap is a bigger team closing smaller items.</div>
+        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs {REF2_SHORT} ({Q2['thr_med']}{Q2.get('unit','/mo')})</span><br><b>{dev_q2:+.1f}%</b>{Q2.get('note',' — and Q2 is a poor yardstick anyway: its median is set by April and May, under the previous team.')}</div>
         <div class="line"><span class="vs-tag">Reading</span><br>Throughput scales with headcount, so a fixed baseline cannot survive a team change. The status on this page comes from the expected range below, not from the distance to Q1.</div>
       </div>
     </div>
@@ -1150,7 +1217,7 @@ def month_page(mk):
   {disc_note}
   <div class="act"><div class="pri p-amber"></div><div class="inner">
    <div class="atop"><h4>{c['nodev']} items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
-   <p>Of the {c['base']} items closed this month, {c['nodev']} ({nodev_pct:.0f}%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining {c['n']}. In May it was {CYC['may']['nodev']} of 39 ({100*CYC['may']['nodev']/39:.0f}%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
+   <p>Of the {c['base']} items closed this {PERIOD_WORD}, {c['nodev']} ({nodev_pct:.0f}%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining {c['n']}. {_nodev_ref} It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
    <div class="owner">To review with: <b>EDW</b></div></div></div>
   <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
   <div class="retro"><h4>Questions for the team</h4><ul>
@@ -1171,15 +1238,15 @@ const thrRef={{id:'thrRef',afterDraw(c){{const{{ctx,chartArea:{{left,right}},sca
   ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();}});}}}};
 new Chart(document.getElementById('cThru'),{{type:'bar',
- data:{{labels:['Apr','May','Jun','Jul','Aug'],datasets:[{{label:'Closed',
-  data:[{APR},{MAY},74,79,82],backgroundColor:['#c3cdda','#c3cdda','{'#007CBC' if mk=='06' else '#65B2D5'}','{'#007CBC' if mk=='07' else '#65B2D5'}','{'#007CBC' if mk=='08' else '#65B2D5'}'],borderRadius:6}}]}},
- options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:110,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}},
+ data:{{labels:{_thr_l},datasets:[{{label:'Closed',
+  data:{_thr_d},backgroundColor:{_thr_c},borderRadius:6}}]}},
+ options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:{_thr_max:.0f},grid:{{color:gridc}},title:{{display:true,text:'Items closed{" per sprint" if PERIOD_WORD=="release" else ""}'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[thrRef]}});
 new Chart(document.getElementById('cCyc'),{{type:'bar',
- data:{{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[
-  {{label:'Median',data:[{Q1['cyc_med']},{Q2['cyc_med']},{CYC['may']['med']},{CYC['06']['med']},{CYC['07']['med']},{CYC['08']['med']}],backgroundColor:BLUE,borderRadius:5}},
-  {{label:'Average',data:[{Q1['cyc_avg']},{Q2['cyc_avg']},{CYC['may']['avg']},{CYC['06']['avg']},{CYC['07']['avg']},{CYC['08']['avg']}],backgroundColor:BLUEL,borderRadius:5}}]}},
- options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,max:11,grid:{{color:gridc}},title:{{display:true,text:'Days'}}}},x:{{grid:{{display:false}}}}}}}}}});
+ data:{{labels:{_cyc_l},datasets:[
+  {{label:'Median',data:{_cyc_m},backgroundColor:BLUE,borderRadius:5}},
+  {{label:'Average',data:{_cyc_a},backgroundColor:BLUEL,borderRadius:5}}]}},
+ options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,max:{_cyc_max:.0f},grid:{{color:gridc}},title:{{display:true,text:'Days'}}}},x:{{grid:{{display:false}}}}}}}}}});
 const bands={{id:'bands',beforeDraw(c){{const{{ctx,chartArea:{{left,right}},scales:{{y}}}}=c;const z=v=>y.getPixelForValue(v);
  ctx.save();ctx.fillStyle='rgba(79,168,0,.08)';ctx.fillRect(left,z(5),right-left,z(0)-z(5));
  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
@@ -1444,31 +1511,49 @@ def index_page():
     foot = open(os.path.join(REPO, "assets", "index.foot.html")).read()
     idx  = DATA.get("INDEX", {})
 
-    months, quarters = [], []
-    for short, href in REPORTS:
-        meta = dict(idx.get(href, {}))
-        if not meta:                       # a month the job created on its own
-            mk = next((k for k, v in MONTHS.items() if v["slug"] + ".html" == href), None)
-            m  = MONTHS.get(mk, {})
-            meta = {"short": m.get("short", short), "title": f"{m.get('label', short)} Performance Report",
-                    "badge": BADGE_LABEL.get(m.get("status"), "Warning"),
-                    "blurb": m.get("headline", "")}
-        mk = next((k for k, v in MONTHS.items() if v["slug"] + ".html" == href), None)
-        status = MONTHS.get(mk, {}).get("status") if mk else None
-        # the card badge must say what the page's own header says
-        badge = BADGE_LABEL.get(status, meta["badge"]) if status else meta["badge"]
-        card = _card(href, meta["short"], "2026", meta["title"], badge, meta["blurb"], status)
-        (quarters if short.startswith("Q") else months).append((href, card))
+    def card_for(href, meta, status=None, short=None, title=None, blurb=None):
+        meta = meta or {}
+        badge = BADGE_LABEL.get(status, meta.get("badge", "Warning")) if status else meta.get("badge", "")
+        return _card(href, short or meta.get("short", ""), "2026",
+                     title or meta.get("title", ""), badge,
+                     blurb if blurb is not None else meta.get("blurb", ""), status)
 
-    months.sort(key=lambda t: t[0], reverse=True)      # newest first
+    rel, months, quarters = [], [], []
+    for rk, r in sorted(DATA.get("RELEASES", {}).items(), reverse=True):
+        href = r["slug"] + ".html"
+        _ns = [n.split()[-1].split("-")[0] for n in r["sprints"]]
+        sub = (f"Sprint{'s' if len(_ns) > 1 else ''} {', '.join(_ns[:-1]) + ' and ' + _ns[-1] if len(_ns) > 1 else _ns[0]}"
+               f" · {r['start']} to {r['end']} · {r['closed']} closed, {r['per_sprint']} per sprint")
+        rel.append((href, card_for(href, idx.get(href), r.get("status"),
+                                   short=r["short"], title=f"Release {rk} Performance Report",
+                                   blurb=(idx.get(href) or {}).get("blurb") or sub)))
+    for short, href in DATA.get("REPORTS", []):
+        meta = idx.get(href)
+        if short.startswith("Q"):
+            quarters.append((href, card_for(href, meta)))
+        elif meta:
+            mk = next((k for k, v in DATA.get("MONTHS", {}).items() if v["slug"] + ".html" == href), None)
+            st = DATA.get("MONTHS", {}).get(mk, {}).get("status") if mk else None
+            months.append((href, card_for(href, meta, st)))
+
+    months.sort(key=lambda t: t[0], reverse=True)
     quarters.sort(key=lambda t: t[0], reverse=True)
 
-    return (head
-            + '\n<div class="yeartag">2026 · Monthly Reports</div>\n'
-            + "".join(c for _, c in months)
-            + '<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
-            + "".join(c for _, c in quarters)
-            + foot)
+    out = head
+    if rel:
+        out += ('\n<div class="yeartag">2026 · Release Reports</div>\n'
+                '<p style="font-size:13px;color:var(--wf-muted);margin:-6px 0 14px">'
+                'One report per release, covering the sprints that fed it. This is the current series.</p>\n'
+                + "".join(c for _, c in rel))
+    if months:
+        out += ('<div class="yeartag" style="margin-top:30px">2026 · Monthly Reports</div>\n'
+                '<p style="font-size:13px;color:var(--wf-muted);margin:-6px 0 14px">'
+                'Closed series. Reporting moved to the release calendar after August, so these stay as published.</p>\n'
+                + "".join(c for _, c in months))
+    if quarters:
+        out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
+                + "".join(c for _, c in quarters))
+    return out + foot
 
 
 # ---------------------------------------------------------------- month close
@@ -1531,6 +1616,133 @@ open(f"{REPO}/2026/2026-q1.html","w").write(add_tips(q1_page()))
 print("wrote 2026-q1")
 open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips(q2_page()))
 print("wrote 2026-q2-baseline")
+
+
+# ---------------------------------------------------------------- releases
+# Second pass. A release is the same kind of period as a month, so it renders
+# through the same engine; what changes is the window, the span (a release runs
+# two sprints, sometimes three) and what it compares itself against — its own
+# series rather than the calendar quarters, which belong to the quarter pages.
+RELEASES = DATA.get("RELEASES", {})
+if RELEASES:
+    MONTHS       = RELEASES
+    CAP          = DATA["CAP_R"]
+    CYC          = DATA["CYC_R"]
+    SP_BY_MONTH  = DATA["SP_BY_RELEASE"]
+    MONTH_LABEL  = DATA["RELEASE_LABEL"]
+    PNORM        = {k: v["n_sprints"] for k, v in RELEASES.items()}
+    PERIOD_WORD  = "release"
+
+    MK_ALL  = sorted(RELEASES)
+    MK_OPEN = next((k for k, v in RELEASES.items() if v.get("open")), None)
+    MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
+    MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3] or MK_DONE[:1]
+    MK_LAST = MK_ALL[-1]
+    MK_LABS = [MONTH_LABEL[k] for k in MK_DONE]
+    BASE_KEYS = []
+    CYC_ORDER = list(MK_DONE)
+    _FROZEN_MONTHS = set(MK_DONE)
+    _cyckey = lambda k: k
+    _sidx = lambda k: MK_DONE.index(k) if k in MK_DONE else None
+
+    # the release in progress, fresh from Jira, replaces its frozen placeholder
+    if CURRENT_RELEASE:
+        _rk = CURRENT_RELEASE["ym"]
+        _m  = CURRENT_RELEASE["month"]
+        if _rk in RELEASES:
+            _keep = {k: RELEASES[_rk][k] for k in ("slug","label","short","sprints","n_sprints","weeks") if k in RELEASES[_rk]}
+            RELEASES[_rk] = {**_m, **_keep, "open": not CURRENT_RELEASE.get("complete"),
+                             "per_sprint": round(_m["closed"]/max(1,_keep.get("n_sprints",1)), 1)}
+            CAP[_rk] = list(CURRENT_RELEASE["CAP"].values())[0]
+            CYC[_rk] = list(CURRENT_RELEASE["CYC"].values())[0]
+        _final_r = {n for ns in SP_BY_MONTH.values() for n in ns} - set(RELEASES[_rk]["sprints"])
+        _have_r  = {r[0] for r in SPRINTS}
+        SPRINTS[:] = [r for r in SPRINTS if r[0] not in {x[0] for x in CURRENT_RELEASE["SPRINTS"]}]
+        SPRINTS.extend(CURRENT_RELEASE["SPRINTS"])
+        SPRINTS[:] = _ordered(SPRINTS, SP_BY_MONTH)
+        for _src, _dst in ((CURRENT_RELEASE["SPILL"], SPILL), (CURRENT_RELEASE["SPLIT"], SPLIT),
+                           (CURRENT_RELEASE["TIS"], TIS), (CURRENT_RELEASE.get("GHOST") or {}, GHOST)):
+            _dst.update(_src)
+        MK_OPEN = _rk if RELEASES[_rk].get("open") else None
+        MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
+        MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3] or MK_DONE[:1]
+        MK_LABS = [MONTH_LABEL[k] for k in MK_DONE]
+        CYC_ORDER = list(MK_DONE)
+        PNORM = {k: v.get("n_sprints", 1) for k, v in RELEASES.items()}
+
+    _prev = MK_DONE[-1] if MK_DONE else MK_ALL[0]
+    def _unp(k):
+        v = RELEASES[k].get("unp_pct")
+        return v if v is not None else 0
+    REF1_LABEL, REF1_SHORT = MONTH_LABEL[_prev], MONTH_LABEL[_prev]
+    REF2_LABEL, REF2_SHORT = "Last 3 releases", "the band"
+    # subtitle wording
+    globals()["REF2_PHRASE"] = "the band of the last three releases"
+    Q1 = dict(thr_med=round(cl(_prev)), thr_avg=cl(_prev), unit="/sprint",
+              unp=_unp(_prev), cyc_med=CYC[_prev]["med"], cyc_avg=CYC[_prev]["avg"],
+              nodev=CYC[_prev]["nodev"])
+    _b = band([cl(k) for k in MK_L3])
+    Q2 = dict(thr_med=round(_b["mean"]), thr_avg=_b["mean"], unit="/sprint",
+              unp=round(sum(_unp(k) for k in MK_L3)/len(MK_L3), 1),
+              cyc_med=round(sum(CYC[k]["med"] for k in MK_L3)/len(MK_L3), 2),
+              cyc_avg=round(sum(CYC[k]["avg"] for k in MK_L3)/len(MK_L3), 2),
+              nodev=sum(CYC[k]["nodev"] for k in MK_L3),
+              note=" — the band is the team's own range over the last three releases, per sprint.")
+    CAP_Q1, CAP_Q2 = [_prev], list(MK_L3)
+
+    # each release is read against the one before it, put on the same number of
+    # sprints so a six-week release is not compared to a four-week one head-on
+    _rank = ["healthy", "warning", "risk"]
+    for _i, _k in enumerate(MK_ALL):
+        _r = RELEASES[_k]
+        _p = MK_ALL[_i-1] if _i else None
+        _r["prev"] = MONTH_LABEL[_p] if _p else "—"
+        _r["prev_closed"] = round(cl(_p) * _r["n_sprints"]) if _p else _r["closed"]
+        _notes, _st = [], "healthy"
+        if _r.get("unp_pct") is None:
+            _notes.append("the Unplanned label was not applied, so reactive work cannot be measured")
+            _st = "warning"
+        elif _r["unp_pct"] >= 15:
+            _notes.append(f"unplanned work at {_r['unp_pct']}% of everything closed"); _st = "risk"
+        elif _r["unp_pct"] >= 10:
+            _notes.append(f"unplanned work at {_r['unp_pct']}%")
+            _st = max(_st, "warning", key=_rank.index)
+        _cs = cyc_status(CYC[_k])
+        if _cs != "healthy":
+            _notes.append(f"cycle time median {CYC[_k]['med']:.1f}d and average {CYC[_k]['avg']:.1f}d")
+            _st = max(_st, _cs, key=_rank.index)
+        if _r["discarded"] and _r["resolved"] and 100*_r["discarded"]/_r["resolved"] >= 20:
+            _notes.append(f"{_r['discarded']} of {_r['resolved']} resolved items were discarded, not delivered")
+            _st = max(_st, "warning", key=_rank.index)
+        _move = (f"{_r['closed']} items closed over {_r['n_sprints']} sprints, "
+                 f"{_r['per_sprint']} per sprint against {round(cl(_p),1) if _p else _r['per_sprint']}"
+                 f" in {_r['prev']}" if _p else f"{_r['closed']} items closed over {_r['n_sprints']} sprints")
+        _r["status"] = _st
+        _r["headline"] = _move + ((". " + _notes[0][0].upper() + _notes[0][1:] + ".") if _notes else ".")
+        _r["unp_items"] = _r.get("unp_items") or []
+        if _r.get("open"):
+            _a = dt.date.fromisoformat(_r["start"]); _b = dt.date.fromisoformat(_r["end"])
+            _r["days"] = (_b - _a).days + 1
+            _r["day"]  = max(1, min(_r["days"], (dt.date.today() - _a).days + 1))
+
+    REPORTS = [[v["short"], v["slug"] + ".html"] for k, v in sorted(RELEASES.items())]
+    REPORTS += [r for r in DATA["REPORTS"] if r[0].startswith("Q")]
+
+    for rk, r in RELEASES.items():
+        open(f"{REPO}/2026/{r['slug']}.html", "w").write(add_tips(month_page(rk)))
+        print("wrote", r["slug"], f"({r['n_sprints']} sprints, {r['closed']} closed)")
+
+# A page for a period that never froze is left over from before reporting moved
+# to releases: not linked from anywhere, and holding half a period of numbers.
+# Anything the index still lists — including the hand-kept May page — is safe.
+if RELEASES:
+    _keep = {v["slug"] + ".html" for v in DATA.get("RELEASES", {}).values()}
+    _keep |= {h for _, h in DATA.get("REPORTS", [])}
+    _keep |= set(DATA.get("INDEX", {}).keys())
+    for _f in sorted(os.listdir(f"{REPO}/2026")):
+        if _f.endswith(".html") and _f not in _keep:
+            os.remove(f"{REPO}/2026/{_f}")
+            print("removed stale in-progress page:", _f)
 
 open(os.path.join(REPO, "index.html"), "w").write(index_page())
 print("wrote index")
