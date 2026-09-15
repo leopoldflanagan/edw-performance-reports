@@ -256,9 +256,11 @@ def month_so_far(project, window=None, label=None, key=None):
                 if any(l.lower() in ("unplanned", "not planned", "not_planned")
                        for l in i["fields"].get("labels", []))
                 or i["fields"]["issuetype"]["name"] == "Urgent Task")
-    # No label anywhere in the period means the question was never asked. That is
-    # not the same as a period with no reactive work, and must not read as 0%.
-    labelled = any(i["fields"].get("labels") for i in iss) or unp > 0
+    # EDW does not apply the Unplanned label, so "no item carries a reactive
+    # marker" means the question was never asked, not that no reactive work
+    # happened. Reading that as 0% is the false-zero the reports warn about;
+    # any other label being present does not make THIS one measured.
+    labelled = unp > 0
     dar   = sum(1 for i in iss if any("access" in l.lower() for l in i["fields"].get("labels", [])))
     pts   = sum(sp_of(i) for i in iss)
     people = {}
