@@ -50,12 +50,19 @@ _cur = os.path.join(REPO, "data", "current.json")
 if os.path.exists(_cur):
     CURRENT = json.load(open(_cur))
     _mk = CURRENT["ym"].split("-")[1]
-    _have = {r[0] for r in SPRINTS} | {r[0] for r in SPRINTS_Q1}
-    SPRINTS.extend([r for r in CURRENT["SPRINTS"] if r[0] not in _have])
+    # Frozen wins only for a sprint that belongs to a month already closed. A sprint
+    # recorded while it was still open is provisional: the fresh reading replaces it.
+    _final = {n for ns in SP_BY_MONTH.values() for n in ns} | {r[0] for r in SPRINTS_Q1}
+    _fresh = {r[0] for r in CURRENT["SPRINTS"]} - _final
+    SPRINTS[:] = [r for r in SPRINTS if r[0] not in _fresh]
+    SPRINTS.extend([r for r in CURRENT["SPRINTS"] if r[0] not in _final])
     for _src, _dst in ((CURRENT["SPILL"], SPILL), (CURRENT["SPLIT"], SPLIT),
-                       (CURRENT["TIS"], TIS), (CURRENT["CAP"], CAP), (CURRENT["CYC"], CYC)):
+                       (CURRENT["TIS"], TIS)):
         for _k, _v in _src.items():
-            if _k not in _dst: _dst[_k] = _v
+            if _k not in _final: _dst[_k] = _v
+    for _src, _dst in ((CURRENT["CAP"], CAP), (CURRENT["CYC"], CYC)):
+        for _k, _v in _src.items():
+            if _k not in DATA.get("MONTHS", {}): _dst[_k] = _v
     if _mk not in MONTHS:
         MONTHS[_mk] = CURRENT["month"]
         SP_BY_MONTH[_mk] = CURRENT["month"]["sprints"]
@@ -67,12 +74,13 @@ if os.path.exists(_cur):
             REPORTS.insert(_q, _entry)
 
 # the sprint that is open right now, so the tables can tag it "in progress"
+LIVE = None
 try:
-    _live = json.load(open(os.path.join(REPO, "data", "live.json")))
-    if (_live.get("kind") == "active") and _live.get("sprint"):
-        ACTIVE = _live["sprint"]["name"]
+    LIVE = json.load(open(os.path.join(REPO, "data", "live.json")))
+    if (LIVE.get("kind") == "active") and LIVE.get("sprint"):
+        ACTIVE = LIVE["sprint"]["name"]
 except Exception:
-    pass
+    LIVE = None
 
 
 def _review(slug):
@@ -105,6 +113,26 @@ def cyc_status(c):
 def sp(name):
     for r in SPRINTS + SPRINTS_Q1:
         if r[0] == name: return r
+
+
+# ---- month windows, derived instead of written by hand ---------------------
+# The month in progress is deliberately kept OUT of every statistical window:
+# half a month of throughput would drag the band and the trend down for no reason.
+MONTH_ABBR = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+MK_ALL  = sorted(CAP)
+MK_OPEN = CURRENT["ym"].split("-")[1] if CURRENT else None
+MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
+MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3]
+MK_LAST = MK_ALL[-1]
+MK_LABS = [MONTH_ABBR[int(k)-1] for k in MK_DONE]
+
+def _sidx(mk):
+    """Where this month sits in the historical series - None while it is still running."""
+    return MK_DONE.index(mk) if mk in MK_DONE else None
+
+def _cyckey(k):
+    return "may" if k == "05" else k
+CYC_ORDER = [_cyckey(k) for k in MK_DONE if _cyckey(k) in CYC]
 
 
 # ---------------------------------------------------------------- Q1 sprints (board 11)
@@ -331,10 +359,13 @@ def spark(vals, cur_idx, col="#007CBC", low_good=False):
     step = (w - 2*pad) / max(1, n-1)
     pts = [(pad + i*step, pad + (h-2*pad) * (1 - (v-lo)/rng)) for i, v in enumerate(vals)]
     d = " ".join(("M" if i==0 else "L") + f"{x:.1f},{y:.1f}" for i,(x,y) in enumerate(pts))
-    cx, cy = pts[cur_idx]
+    dot = ""
+    if cur_idx is not None and 0 <= cur_idx < n:
+        cx, cy = pts[cur_idx]
+        dot = f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="4" fill="{col}" stroke="#fff" stroke-width="2"/>'
     return (f'<svg class="spark" viewBox="0 0 {w} {h}" preserveAspectRatio="none" role="img" aria-hidden="true">'
             f'<path d="{d}" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
-            f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="4" fill="{col}" stroke="#fff" stroke-width="2"/></svg>')
+            f'{dot}</svg>')
 
 # ---------------------------------------------------------------- sprint detail sections
 import json as _json
@@ -676,10 +707,18 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
         names = SP_BY_MONTH[mk]
         cards = "".join(sprint_card(n, i) for i, n in enumerate(names))
         extra = ""
-        if mk == "08":
-            extra = ('<div class="activewrap"><span class="activetag">Most recent sprint</span>'
-                     '<div class="secsub" style="margin-bottom:10px">Not part of August — EDW-Sprint 21-26 ran into '
-                     'September and closed on Sep 14. No sprint is open on this board right now.</div>'
+        if mk == MK_LAST and ACTIVE and ACTIVE not in names and sp(ACTIVE):
+            live_sp = (LIVE or {}).get("sprint") or {}
+            if (LIVE or {}).get("kind") == "active":
+                tag, note = "Sprint open right now", (
+                    f"Not part of {MONTH_LABEL[mk]} — {ACTIVE} is still running, "
+                    f"{live_sp.get('time_elapsed', 0)}% of its calendar elapsed.")
+            else:
+                tag, note = "Most recent sprint", (
+                    f"Not part of {MONTH_LABEL[mk]} — {ACTIVE} closed on "
+                    f"{live_sp.get('end', '')}. No sprint is open on this board right now.")
+            extra = (f'<div class="activewrap"><span class="activetag">{tag}</span>'
+                     f'<div class="secsub" style="margin-bottom:10px">{note}</div>'
                      + health_block(ACTIVE) + dist_block(ACTIVE) + sprint_card(ACTIVE, 90) + '</div>')
             names = names + [ACTIVE]
         return f"""
@@ -716,14 +755,14 @@ def series_block(heading=True):
     """Historical, series-wide Scrum view. Lives in Comparatives on monthly pages."""
     closed = [r[7] for r in SPRINTS if r[0] != ACTIVE]
     avg5 = round(sum(closed[-5:])/5, 1)
-    b  = band([CAP[k][0] for k in ["06","07","08"]])
+    b  = band([CAP[k][0] for k in MK_L3])
     b0 = band([CAP[k][0] for k in ["01","02","03","04","05"]])
     ss = spill_series([r[0] for r in SPRINTS])
-    tr = trend(["06","07","08"], ["03","04","05"])
-    now  = sum(CAP[k][0] for k in ["06","07","08"])/3
-    prev = sum(CAP[k][0] for k in ["03","04","05"])/3
-    pplnow  = sum(CAP[k][3] for k in ["06","07","08"])/3
-    pplprev = sum(CAP[k][3] for k in ["03","04","05"])/3
+    tr = trend(MK_L3, MK_P3)
+    now  = sum(CAP[k][0] for k in MK_L3)/len(MK_L3)
+    prev = sum(CAP[k][0] for k in MK_P3)/len(MK_P3)
+    pplnow  = sum(CAP[k][3] for k in MK_L3)/len(MK_L3)
+    pplprev = sum(CAP[k][3] for k in MK_P3)/len(MK_P3)
     head = ('<div class="sectit" style="font-size:20px;margin-top:30px">Sprint series — full history</div>'
             '<div class="secsub">Every sprint of 2026 on the board, so the month can be read against the trend.</div>'
             if heading else "")
@@ -805,9 +844,9 @@ new Chart(document.getElementById('cSplit'),{{type:'bar',
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{x:{{stacked:true,grid:{{display:false}}}},y:{{stacked:true,beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Points added mid-sprint'}}}}}}}}}});"""
     lst = only if only else (SP_BY_MONTH.get(mk, [r[0] for r in SPRINTS]) if mk else [r[0] for r in SPRINTS])
     if not only:
-        b = band([CAP[k][0] for k in ["06","07","08"]])
-        labs = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"]
-        vals = [CAP[k][0] for k in ["01","02","03","04","05","06","07","08"]]
+        b = band([CAP[k][0] for k in MK_L3])
+        labs = MK_LABS
+        vals = [CAP[k][0] for k in MK_DONE]
         cur  = MONTH_LABEL.get(mk,"")[:3] if mk else ""
         cols = json.dumps(['#007CBC' if l==cur else '#c3cdda' for l in labs])
         js += f"""
@@ -838,7 +877,7 @@ new Chart(document.getElementById('cSpill'),{{type:'bar',
  plugins:[spillRef]}});"""
 
     pairs = [(n, i) for i, n in enumerate(lst)]
-    if mk == "08":
+    if mk == MK_LAST and ACTIVE and ACTIVE not in lst and sp(ACTIVE):
         pairs.append((ACTIVE, 90))
     for n, i in pairs:
         row = sp(n); burn, scope = row[9], row[10]
@@ -856,19 +895,28 @@ new Chart(document.getElementById('bd{i}'),{{type:'line',
 def month_page(mk):
     m = MONTHS[mk]
     cm  = cap([mk]); cq1 = cap(CAP_Q1); cq2 = cap(CAP_Q2)
-    bnd = band([CAP[k][0] for k in ["06","07","08"]])
+    bnd = band([CAP[k][0] for k in MK_L3])
     in_band = bnd["lo"] <= CAP[mk][0] <= bnd["hi"]
     st_thr = "healthy" if in_band else "warning"
-    dev_base = (m["closed"] - Q1["thr_med"]) / Q1["thr_med"] * 100
-    dev_q2   = (m["closed"] - Q2["thr_med"]) / Q2["thr_med"] * 100
-    dev_prev = (m["closed"] - m["prev_closed"]) / m["prev_closed"] * 100
+    # A month in progress is compared at pace, never as a total: 29 items on day 15
+    # is not "29 against 82", it is a run rate. The baselines are cut to the same
+    # share of the month so the two sides of the comparison cover the same ground.
+    OPEN = bool(m.get("open"))
+    SHARE = (m.get("day", 30) / m.get("days", 30)) if OPEN else 1.0
+    PACE = m["closed"] / SHARE if SHARE else m["closed"]
+    pace_note = ('' if not OPEN else
+        f'<div class="ctxline"><span>At this pace the month lands near <b>{PACE:.0f} items</b>. '
+        f'Every comparison below is cut to the same {100*SHARE:.0f}% of a month on both sides.</span></div>')
+    dev_base = (m["closed"] - Q1["thr_med"]*SHARE) / (Q1["thr_med"]*SHARE) * 100
+    dev_q2   = (m["closed"] - Q2["thr_med"]*SHARE) / (Q2["thr_med"]*SHARE) * 100
+    dev_prev = (m["closed"] - m["prev_closed"]*SHARE) / (m["prev_closed"]*SHARE) * 100
     types = " · ".join(f"{n} {t}" for t,n in m["types"])
 
     # unplanned card
     if m["unplanned"] is None:
         unp_card = f"""<div class="card">
       <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
-      <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> in the whole month</div>
+      <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> {"so far this month" if m.get("open") else "in the whole month"}</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       <div class="infopanel ip-amber">Zero labels in a month of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -890,8 +938,13 @@ def month_page(mk):
       <a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>"""
 
     # WIP card - live only on the latest month
-    if mk == "08":
-        w = WIP
+    if mk == MK_LAST:
+        w = dict(WIP)
+        _d = ((LIVE or {}).get("sprint") or {}).get("dist") or {}
+        if _d:                      # count what is actually in flight right now
+            w["dev"] = _d.get("In Development", 0)
+            w["rev"] = _d.get("Awaiting Review", 0)
+            w["total"] = w["dev"] + w["rev"]
         wip_card = f"""<div class="card wipcard">
       <div class="ghead"><span class="gname">Work In Progress · current snapshot</span>{badge('healthy')}</div>
       <div class="wiptotal"><div class="wt-num">{w['total']}<span class="wt-den">/ {w['lim_tot']}</span></div>
@@ -925,13 +978,13 @@ def month_page(mk):
         obs_block = f"""<div class="cmpcard">
      <div class="cmphead"><h3>The {m['unplanned']} items labeled Unplanned</h3></div>
      {tickets}
-     <div class="fnote">Same pattern as May: reporting requests from Finance, Accounting and Sales. The May retro conversation about anticipating these requests is still open.</div>
+     <div class="fnote">{m.get("note_unp") or f"{m['unplanned']} of the {m['closed']} items closed this month came in labeled Unplanned or typed Urgent Task."}</div>
    </div>"""
     else:
         obs_block = f"""<div class="cmpcard">
      <div class="cmphead"><h3>No unplanned-work data</h3></div>
-     <div class="nodata"><span class="big">0 labels</span>across {m['closed']} deliveries this month</div>
-     <div class="fnote">June had 5 labeled items and July 10. August having zero, in the highest-volume month, does not describe the work: it describes the labeling. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable.</div>
+     <div class="nodata"><span class="big">0 labels</span>across {m['closed']} deliveries {"so far this month" if m.get("open") else "this month"}</div>
+     <div class="fnote">{m.get("note_unp") or f"Zero labels across {m['closed']} deliveries describes the labeling, not the work. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable."}</div>
    </div>"""
 
     disc_note = ""
@@ -960,16 +1013,17 @@ def month_page(mk):
   <div class="grid g3">
     <div class="card">
       <div class="ghead"><span class="gname">Throughput</span>{badge(st_thr)}</div>
-      <div class="bignum {col_thr}">{m['closed']}<span class="unit">closed · month</span></div>
+      <div class="bignum {col_thr}">{m['closed']}<span class="unit">{"closed · day " + str(m.get("day")) + " of " + str(m.get("days")) if OPEN else "closed · month"}</span></div>
+{pace_note}
       <div class="secondary">{types}</div>
-      {sb_rows([("Items closed", f"{cm['items']:.0f}", 100*(cm['items']/cq1['items']-1), 100*(cm['items']/cq2['items']-1), False),
-                ("Story points", f"{cm['pts']:.0f}", 100*(cm['pts']/cq1['pts']-1), 100*(cm['pts']/cq2['pts']-1), False)])}
+      {sb_rows([("Items closed", f"{cm['items']:.0f}", 100*(cm['items']/(cq1['items']*SHARE)-1), 100*(cm['items']/(cq2['items']*SHARE)-1), False),
+                ("Story points", f"{cm['pts']:.0f}", 100*(cm['pts']/(cq1['pts']*SHARE)-1), 100*(cm['pts']/(cq2['pts']*SHARE)-1), False)])}
       <div class="ctxline"><span>Average item size <b>{cm['size']:.2f} pts</b> <i>(Q1 {cq1['size']:.2f})</i></span>
         <span>Team <b>{cm['people']:.0f} active</b> <i>(Q1 {cq1['people']:.1f})</i></span></div>
-      <div class="spark-cap">Items closed · Jan to Aug</div>
-      {spark([CAP[k][0] for k in ["01","02","03","04","05","06","07","08"]], ["01","02","03","04","05","06","07","08"].index(mk))}
+      <div class="spark-cap">Items closed · {MK_LABS[0]} to {MK_LABS[-1]}{" · this month is still running and is not plotted" if mk not in MK_DONE else ""}</div>
+      {spark([CAP[k][0] for k in MK_DONE], _sidx(mk))}
       <div class="infopanel {ip_thr}">On top of the {m['closed']} closed there were <b>{m['discarded']} discarded</b> (Won't Do), which are not deliveries.
-        Items are up {100*(cm['items']/cq1['items']-1):+.0f}% on Q1 while points are up {100*(cm['pts']/cq1['pts']-1):+.0f}% — the team is larger and the items are smaller.
+        Items are {"" if OPEN else "up "}{100*(cm['items']/(cq1['items']*SHARE)-1):+.0f}% on Q1 while points are {"" if OPEN else "up "}{100*(cm['pts']/(cq1['pts']*SHARE)-1):+.0f}%{" at the same point in the month" if OPEN else " — the team is larger and the items are smaller"}.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="{GUIDES['thr']}" target="_blank">Throughput — Team Guide</a>
@@ -983,7 +1037,7 @@ def month_page(mk):
                 ("Average", f"{c['avg']:.1f}d", 100*(c['avg']-Q1['cyc_avg'])/Q1['cyc_avg'], 100*(c['avg']-Q2['cyc_avg'])/Q2['cyc_avg'], True)])}
       <div class="ctxline"><span>Measured on <b>{c['n']} of {c['base']}</b> closed items <i>({100*c['n']/c['base']:.0f}% of the month)</i></span></div>
       <div class="spark-cap">Median cycle time · May to Aug</div>
-      {spark([CYC[k]['med'] for k in ["may","06","07","08"]], ["may","06","07","08"].index(mk if mk!="05" else "may"), col="#4FA800")}
+      {spark([CYC[k]['med'] for k in CYC_ORDER], CYC_ORDER.index(_cyckey(mk)) if _cyckey(mk) in CYC_ORDER else None, col="#4FA800")}
       <div class="infopanel ip-green">Median and average both within target. The gap between {c['med']:.1f}d and {c['avg']:.1f}d comes from a few long tickets — the longest this month took {c['mx']:.0f} days.</div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="{GUIDES['cycle']}" target="_blank">Cycle Time — Team Guide</a>

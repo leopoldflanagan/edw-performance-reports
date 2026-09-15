@@ -363,35 +363,50 @@ def sprints_of_month(mine, ym):
             out.append(s)
     return sorted(out, key=lambda s: s.get("completeDate") or s["endDate"])
 
-def verdict(closed, band_lo, band_hi, cyc, unp_pct, bugs, prev_closed):
-    """The health call and its one-line headline, from rules — not from a person.
-    A reviewer can sharpen the wording later; the call itself is reproducible."""
+def verdict(closed, cyc, unp_pct, prev_closed, day=None, days=None):
+    """The health call and its one-line headline, from rules rather than from a person.
+    A month still running is judged at pace: comparing 29 items on day 15 against a
+    full month would call every open month a collapse."""
     notes, status = [], "healthy"
+    rank = ["healthy", "warning", "risk"]
+    up = lambda a, b: max(a, b, key=rank.index)
+    share = (day / days) if (day and days) else 1.0
+    open_month = share < 1.0
+
     if unp_pct is None:
-        notes.append("the Unplanned label was not applied, so reactive work cannot be measured this month")
-        status = "warning"
+        notes.append("the Unplanned label was not applied, so reactive work cannot be measured")
+        status = up(status, "warning")
     elif unp_pct >= 15:
         notes.append(f"unplanned work at {unp_pct}% of everything closed")
-        status = "risk"
+        status = up(status, "risk")
     elif unp_pct >= 10:
         notes.append(f"unplanned work at {unp_pct}%")
-        status = max(status, "warning", key=["healthy","warning","risk"].index)
+        status = up(status, "warning")
 
     cs = cyc_status(cyc)
     if cs == "risk":
         notes.append(f"cycle time median {cyc['med']:.1f}d and average {cyc['avg']:.1f}d, both past the healthy band")
-        status = "risk"
+        status = up(status, "risk")
     elif cs == "warning":
-        notes.append(f"cycle time average {cyc['avg']:.1f}d against a {cyc['med']:.1f}d median — a long tail")
-        status = max(status, "warning", key=["healthy","warning","risk"].index)
+        notes.append(f"cycle time average {cyc['avg']:.1f}d against a {cyc['med']:.1f}d median - a long tail")
+        status = up(status, "warning")
 
-    if band_lo is not None and closed < band_lo:
-        notes.append(f"{closed} items closed, below the team's own {band_lo:.0f}-{band_hi:.0f} range")
-        status = max(status, "warning", key=["healthy","warning","risk"].index)
-    elif band_hi is not None and closed > band_hi:
-        notes.append(f"{closed} items closed, above the team's own {band_lo:.0f}-{band_hi:.0f} range")
+    if prev_closed:
+        ref = prev_closed * share
+        gap = 100 * (closed - ref) / ref if ref else 0
+        if gap <= -25:
+            notes.insert(0, f"running {abs(gap):.0f}% behind last month's pace")
+            status = up(status, "warning")
 
-    move = f"{closed} items closed against {prev_closed} the month before" if prev_closed else f"{closed} items closed"
+    if open_month:
+        pace = closed / share
+        move = (f"{closed} items closed in the first {day} days, a pace of about {pace:.0f} "
+                f"for the month against {prev_closed} last month" if prev_closed
+                else f"{closed} items closed in the first {day} days")
+    else:
+        move = (f"{closed} items closed against {prev_closed} the month before"
+                if prev_closed else f"{closed} items closed")
+
     headline = move + ((". " + notes[0][0].upper() + notes[0][1:] + ".") if notes else ".")
     return status, headline, notes
 
@@ -422,20 +437,24 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
 
     allres = search(f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
                     f'AND resolved >= "{first}" AND resolved < "{nxt}"',
-                    ["resolution", "issuetype", "labels"], cap=8)
+                    ["resolution", "issuetype", "labels", "summary"], cap=8)
     discarded = sum(1 for i in allres
                     if (i["fields"].get("resolution") or {}).get("name") not in (None, "Done"))
     types, unp_items = {}, []
     for i in allres:
         if (i["fields"].get("resolution") or {}).get("name") != "Done": continue
         t = i["fields"]["issuetype"]["name"]; types[t] = types.get(t, 0) + 1
-        if _is_reactive(i): unp_items.append(i["key"])
+        if _is_reactive(i): unp_items.append([i["key"], i["fields"].get("summary", "")])
     labelled = any(i["fields"].get("labels") for i in allres)
     unp     = len(unp_items) if labelled else None
     unp_pct = round(100*unp/cap[0], 1) if (unp is not None and cap[0]) else None
 
-    status, headline, notes = verdict(cap[0], None, None, cyc, unp_pct,
-                                      types.get("Bug", 0), prev_closed)
+    today = dt.date.today()
+    days  = (nxt - first).days
+    open_month = not (today >= nxt)
+    status, headline, notes = verdict(cap[0], cyc, unp_pct, prev_closed,
+                                      day=(today.day if open_month else None),
+                                      days=(days if open_month else None))
 
     return {
         "ym": ym,
@@ -448,6 +467,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
                   "unplanned": unp, "unp_pct": unp_pct,
                   "types": sorted(types.items(), key=lambda kv: -kv[1]),
                   "sprints": names, "unp_items": unp_items,
+                  "open": open_month, "day": today.day, "days": days,
                   "status": status, "headline": headline, "notes": notes},
         "SPRINTS": [rows[n] for n in names],
         "SPILL": spill, "SPLIT": split, "TIS": tis,
