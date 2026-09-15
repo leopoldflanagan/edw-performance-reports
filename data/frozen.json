@@ -2352,5 +2352,304 @@
    47,
    44
   ]
+ },
+ "RELEASES": {
+  "9.04": {
+   "slug": "2026-r904",
+   "label": "Release 9.04",
+   "short": "9.04",
+   "start": "2026-04-27",
+   "end": "2026-05-24",
+   "sprints": [
+    "EDW-Sprint 12-26",
+    "EDW-Sprint 13-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": 29,
+   "discarded": 0,
+   "resolved": 29,
+   "points": 83,
+   "per_sprint": 14.5,
+   "unplanned": 7,
+   "types": [
+    [
+     "Story",
+     23
+    ],
+    [
+     "Urgent Task",
+     6
+    ]
+   ],
+   "unp_items": [],
+   "open": false,
+   "unp_pct": 24.1
+  },
+  "9.05": {
+   "slug": "2026-r905",
+   "label": "Release 9.05",
+   "short": "9.05",
+   "start": "2026-05-25",
+   "end": "2026-06-21",
+   "sprints": [
+    "EDW-Sprint 14-26",
+    "EDW-Sprint 15-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": 60,
+   "discarded": 4,
+   "resolved": 64,
+   "points": 169,
+   "per_sprint": 30.0,
+   "unplanned": 4,
+   "types": [
+    [
+     "Story",
+     52
+    ],
+    [
+     "Urgent Task",
+     4
+    ],
+    [
+     "Bug",
+     4
+    ]
+   ],
+   "unp_items": [],
+   "open": false,
+   "unp_pct": 6.7
+  },
+  "9.06": {
+   "slug": "2026-r906",
+   "label": "Release 9.06",
+   "short": "9.06",
+   "start": "2026-06-22",
+   "end": "2026-08-02",
+   "sprints": [
+    "EDW-Sprint 16-26",
+    "EDW-Sprint 17-26",
+    "EDW-Sprint 18-26"
+   ],
+   "n_sprints": 3,
+   "weeks": 6,
+   "closed": 114,
+   "discarded": 8,
+   "resolved": 122,
+   "points": 291,
+   "per_sprint": 38.0,
+   "unplanned": 15,
+   "types": [
+    [
+     "Story",
+     78
+    ],
+    [
+     "Bug",
+     16
+    ],
+    [
+     "Urgent Task",
+     11
+    ],
+    [
+     "Task",
+     5
+    ],
+    [
+     "Spike",
+     3
+    ],
+    [
+     "TechDebt",
+     1
+    ]
+   ],
+   "unp_items": [],
+   "open": false,
+   "unp_pct": 13.2
+  },
+  "9.07": {
+   "slug": "2026-r907",
+   "label": "Release 9.07",
+   "short": "9.07",
+   "start": "2026-08-03",
+   "end": "2026-08-30",
+   "sprints": [
+    "EDW-Sprint 19-26",
+    "EDW-Sprint 20-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": 57,
+   "discarded": 19,
+   "resolved": 76,
+   "points": 136,
+   "per_sprint": 28.5,
+   "unplanned": null,
+   "types": [
+    [
+     "Story",
+     38
+    ],
+    [
+     "Task",
+     10
+    ],
+    [
+     "Bug",
+     9
+    ]
+   ],
+   "unp_items": [],
+   "open": false,
+   "unp_pct": null
+  },
+  "9.08": {
+   "slug": "2026-r908",
+   "label": "Release 9.08",
+   "short": "9.08",
+   "start": "2026-08-31",
+   "end": "2026-09-27",
+   "sprints": [
+    "EDW-Sprint 21-26",
+    "EDW-Sprint 22-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": 51,
+   "discarded": 2,
+   "resolved": 53,
+   "points": 164,
+   "per_sprint": 25.5,
+   "unplanned": null,
+   "types": [
+    [
+     "Story",
+     45
+    ],
+    [
+     "Bug",
+     3
+    ],
+    [
+     "Spike",
+     2
+    ],
+    [
+     "Task",
+     1
+    ]
+   ],
+   "unp_items": [],
+   "open": true,
+   "unp_pct": null
+  }
+ },
+ "SP_BY_RELEASE": {
+  "9.04": [
+   "EDW-Sprint 12-26",
+   "EDW-Sprint 13-26"
+  ],
+  "9.05": [
+   "EDW-Sprint 14-26",
+   "EDW-Sprint 15-26"
+  ],
+  "9.06": [
+   "EDW-Sprint 16-26",
+   "EDW-Sprint 17-26",
+   "EDW-Sprint 18-26"
+  ],
+  "9.07": [
+   "EDW-Sprint 19-26",
+   "EDW-Sprint 20-26"
+  ],
+  "9.08": [
+   "EDW-Sprint 21-26",
+   "EDW-Sprint 22-26"
+  ]
+ },
+ "CAP_R": {
+  "9.04": [
+   29,
+   29,
+   83,
+   4
+  ],
+  "9.05": [
+   60,
+   57,
+   169,
+   7
+  ],
+  "9.06": [
+   114,
+   102,
+   291,
+   7
+  ],
+  "9.07": [
+   57,
+   53,
+   136,
+   6
+  ],
+  "9.08": [
+   51,
+   46,
+   164,
+   6
+  ]
+ },
+ "CYC_R": {
+  "9.04": {
+   "med": 4.87,
+   "avg": 7.41,
+   "n": 25,
+   "mx": 23.99,
+   "nodev": 4,
+   "base": 29
+  },
+  "9.05": {
+   "med": 4.65,
+   "avg": 7.05,
+   "n": 54,
+   "mx": 83.99,
+   "nodev": 6,
+   "base": 60
+  },
+  "9.06": {
+   "med": 3.89,
+   "avg": 6.47,
+   "n": 94,
+   "mx": 98.08,
+   "nodev": 20,
+   "base": 114
+  },
+  "9.07": {
+   "med": 4.01,
+   "avg": 7.18,
+   "n": 49,
+   "mx": 41.89,
+   "nodev": 8,
+   "base": 57
+  },
+  "9.08": {
+   "med": 4.96,
+   "avg": 9.52,
+   "n": 34,
+   "mx": 50.15,
+   "nodev": 17,
+   "base": 51
+  }
+ },
+ "RELEASE_LABEL": {
+  "9.04": "R9.04",
+  "9.05": "R9.05",
+  "9.06": "R9.06",
+  "9.07": "R9.07",
+  "9.08": "R9.08"
  }
 }
