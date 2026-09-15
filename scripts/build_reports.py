@@ -25,6 +25,7 @@ ARGS = _ap.parse_args()
 REPO = ARGS.root
 DATA = json.load(open(os.path.join(REPO, "data", "frozen.json")))
 globals().update(DATA)
+GHOST = DATA.setdefault("GHOST", {})
 _FROZEN_MONTHS = set(DATA.get("MONTHS", {}))   # before the merge below mutates it
 
 CSS = open(os.path.join(REPO, "assets", "style.css.html")).read()
@@ -56,6 +57,8 @@ if os.path.exists(_cur):
     _fresh = {r[0] for r in CURRENT["SPRINTS"]} - _final
     SPRINTS[:] = [r for r in SPRINTS if r[0] not in _fresh]
     SPRINTS.extend([r for r in CURRENT["SPRINTS"] if r[0] not in _final])
+    for _k, _v in (CURRENT.get("GHOST") or {}).items():
+        if _k not in _final: GHOST[_k] = _v
     for _src, _dst in ((CURRENT["SPILL"], SPILL), (CURRENT["SPLIT"], SPLIT),
                        (CURRENT["TIS"], TIS)):
         for _k, _v in _src.items():
@@ -631,7 +634,7 @@ def sprint_card(name, idx, note=""):
         spill_html = (f'<div class="spill"><div class="sk">Spillover</div>'
                       f'<div class="sv">{sr["rate"]:.0f}%<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; {gone_p} of {sr["allp"]} pts</span></div>'
                       f'<div class="sn">{gone_i} items — {" · ".join(bits)}. '
-                      f'The burndown reaches zero because this work left the sprint, not because it was finished.</div></div>')
+                      f'{"The dotted line on the burndown is where the sprint would have stood if none of it had been taken out." if GHOST.get(n) else "The burndown drops when this work leaves the sprint, not only when it is finished."}</div></div>')
     else:
         spill_html = ('<div class="spill"><div class="sk">Left the sprint</div>'
                       '<div class="sv" style="color:var(--healthy)">0 pts</div>'
@@ -883,12 +886,18 @@ new Chart(document.getElementById('cSpill'),{{type:'bar',
         row = sp(n); burn, scope = row[9], row[10]
         labels = json.dumps([f"d{d}" for d in range(len(burn))])
         ideal = json.dumps([round(scope[0]*(1-d/(len(burn)-1)),1) for d in range(len(burn))])
+        # the line the sprint would have drawn if nothing had been taken out of it.
+        # The gap between the two is work that left, not work that finished.
+        _g = GHOST.get(n)
+        gh = ("" if not _g or _g[-len(burn):] == burn else
+              ",{label:'Open if nothing had been removed',data:" + json.dumps(_g[:len(burn)]) +
+              ",borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}")
         js += f"""
 new Chart(document.getElementById('bd{i}'),{{type:'line',
  data:{{labels:{labels},datasets:[
   {{label:'Total scope',data:{json.dumps(scope)},borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2}},
   {{label:'Work still open',data:{json.dumps(burn)},borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3}},
-  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:AMBER,borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}]}},
+  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}{gh}]}},
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},x:{{grid:{{display:false}},title:{{display:true,text:'Sprint day'}}}}}}}}}});"""
     return js
 

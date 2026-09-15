@@ -106,8 +106,34 @@ def _entered_sprint(i, name):
                 if t is None or d < t: t = d
     return t
 
+
+def _left_sprint(i, name):
+    """When this issue was last removed from that sprint, if it ever was.
+    This is the event that makes a closed sprint look cleaner than it was:
+    the work leaves, and with it the record that it had been committed."""
+    out = None
+    for h in i.get("changelog", {}).get("histories", []):
+        for it in h["items"]:
+            if it["field"] != "Sprint": continue
+            to  = [x.strip() for x in (it.get("toString")   or "").split(",")]
+            frm = [x.strip() for x in (it.get("fromString") or "").split(",")]
+            d = dt.datetime.fromisoformat(h["created"].replace("Z", "+00:00"))
+            if name in to and name not in frm:
+                out = None            # it came back in
+            elif name in frm and name not in to:
+                if out is None or d > out: out = d
+    return out
+
 def sprint_detail(board, sp, project):
-    """Day-1 commitment from the Sprint-field changelog; completion from status history."""
+    """Rebuilds a sprint from its own history.
+
+    The one thing that makes this different from reading Jira's board: a sprint that
+    is closed keeps only what finished inside it. EDW empties its sprints first, so
+    asking `sprint = N` gives back the completed work and nothing else — which makes
+    the day-1 commitment shrink retroactively along with the scope, and every sprint
+    read as if it had over-delivered. Everything below is computed over the sprint's
+    real membership: what is still in it PLUS what was removed before it closed.
+    """
     sid, name = sp["id"], sp["name"]
     issues = search(f'project = "{project}" AND sprint = {sid}',
                     ["status", "summary", SP_FIELD, "resolutiondate", "labels", "issuetype"],
@@ -131,30 +157,7 @@ def sprint_detail(board, sp, project):
                     if t is None or d < t: t = d
         return t
 
-    rows, committed, final, completed, items_done = [], 0.0, 0.0, 0.0, 0
-    for i in issues:
-        v, e, d = sp_of(i), entered(i), done_at(i)
-        in_d1 = (e is None) or (e <= day1)
-        final += v
-        if in_d1: committed += v
-        if d is not None and d <= horizon:
-            completed += v; items_done += 1
-        rows.append((e or start, v, d))
-
-    days = max(1, int((horizon - start).total_seconds() // 86400) + 1)
-    burn, scope = [], []
-    for k in range(days + 1):
-        t = start + dt.timedelta(days=k)
-        s = sum(v for e, v, _ in rows if e <= t)
-        r = sum(v for e, v, d in rows if e <= t and not (d and d <= t))
-        scope.append(round(s, 1)); burn.append(round(r, 1))
-
-    dist = {}
-    for i in issues:
-        st = i["fields"]["status"]["name"]
-        dist[st] = dist.get(st, 0) + 1
-
-    # Jira's own sprint report: what was removed / left open
+    # ---- Jira's own sprint report, first: it is what names the removed issues
     spill = {"open_items": 0, "open_pts": 0, "out_items": 0, "out_pts": 0, "done_pts": 0}
     punted = []
     try:
@@ -168,10 +171,8 @@ def sprint_detail(board, sp, project):
                  "done_pts":  val(c.get("completedIssuesEstimateSum"))}
         punted = [x.get("key") for x in c.get("puntedIssues", []) if x.get("key")]
     except SystemExit:
-        pass   # closed-sprint report can be unavailable; the rest of the panel still works
+        pass   # a closed-sprint report can be unavailable; the rest still works
 
-    # Issues removed from the sprint before it closed are gone from `sprint = N`, and
-    # they are exactly the ones that were stuck. Pull them back for the flow measures.
     issues_all = list(issues)
     if punted:
         have = {i["key"] for i in issues}
@@ -180,25 +181,59 @@ def sprint_detail(board, sp, project):
                        expand="changelog")
         issues_all += [i for i in extra if i["key"] not in have]
 
+    # ---- the accounting, over the real membership
+    rows, committed, final, completed, items_done = [], 0.0, 0.0, 0.0, 0
+    for i in issues_all:
+        v = sp_of(i)
+        e = entered(i) or start          # no Sprint event = it was there from the start
+        o = _left_sprint(i, name)
+        d = done_at(i)
+        final += v
+        if e <= day1:
+            committed += v               # committed even if it was pulled out later
+        if d is not None and d <= horizon and (o is None or d <= o):
+            completed += v; items_done += 1
+        rows.append((e, v, d, o))
+
+    days = max(1, int((horizon - start).total_seconds() // 86400) + 1)
+    burn, scope, ghost = [], [], []
+    for k in range(days + 1):
+        t = start + dt.timedelta(days=k)
+        inside = lambda e, o: e <= t and (o is None or o > t)
+        scope.append(round(sum(v for e, v, _d, o in rows if inside(e, o)), 1))
+        burn.append(round(sum(v for e, v, d, o in rows
+                              if inside(e, o) and not (d and d <= t)), 1))
+        # what would still be open if nothing had been taken out of the sprint
+        ghost.append(round(sum(v for e, v, d, _o in rows
+                               if e <= t and not (d and d <= t)), 1))
+
+    dist = {}
+    for i in issues:
+        st = i["fields"]["status"]["name"]
+        dist[st] = dist.get(st, 0) + 1
+
     gone = spill["open_pts"] + spill["out_pts"]
     allp = spill["done_pts"] + gone
     elapsed = (now - start).total_seconds() / max(1, (end - start).total_seconds())
+    pct_elapsed = min(100, round(100*elapsed))
 
     return {
         "name": name, "state": sp["state"],
         "start": sp["startDate"][:10], "end": (end_s or "")[:10],
         "goal": (sp.get("goal") or "").strip(),
-        "items": len(issues), "items_done": items_done,
+        "items": len(issues_all), "items_done": items_done,
         "committed": round(committed), "final": round(final), "completed": round(completed),
         "scope_change": round(100*(final-committed)/committed) if committed else None,
         "vs_commitment": round(100*completed/committed) if committed else None,
-        "time_elapsed": min(100, round(100*elapsed)),
-        "spill": spill, "spill_rate": round(100*gone/allp) if allp else None,
-        "dist": dist, "burn": burn, "scope": scope,
+        "time_elapsed": pct_elapsed,
+        "spill": spill,
+        # spillover only means something once the sprint is near its end: three days in,
+        # "95% not finished" is a statement about the calendar, not about the team
+        "spill_rate": (round(100*gone/allp) if allp else None) if pct_elapsed >= 80 else None,
+        "dist": dist, "burn": burn, "scope": scope, "ghost": ghost,
         "_issues": issues, "_issues_all": issues_all,
         "_start": start, "_end": end, "_day1": day1,
     }
-
 def _clean(d):
     """Strip the raw payload the month block needs but the panel must not carry."""
     return {k: v for k, v in d.items() if not k.startswith("_")}
@@ -416,7 +451,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
     nxt   = (first + dt.timedelta(days=32)).replace(day=1)
     label = f"{MONTH_NAMES[int(m)-1]} {y}"
 
-    rows, spill, split, tis, names = {}, {}, {}, {}, []
+    rows, spill, split, tis, ghost, names = {}, {}, {}, {}, {}, []
     for s in sprints_of_month(mine, ym):
         d = sprint_detail(board, s, project)
         n = d["name"]; names.append(n)
@@ -429,6 +464,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
         spill[n] = {"done": [d["items_done"], round(sp_["done_pts"])],
                     "open": [sp_["open_items"], round(sp_["open_pts"])],
                     "out":  [sp_["out_items"],  round(sp_["out_pts"])]}
+        ghost[n] = d["ghost"]
         split[n] = split_of(d["_issues_all"], n, d["_day1"], d["_start"])
         tis[n]   = tis_of(d["_issues_all"], d["_start"], d["_end"], n)
 
@@ -470,7 +506,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None):
                   "open": open_month, "day": today.day, "days": days,
                   "status": status, "headline": headline, "notes": notes},
         "SPRINTS": [rows[n] for n in names],
-        "SPILL": spill, "SPLIT": split, "TIS": tis,
+        "SPILL": spill, "SPLIT": split, "TIS": tis, "GHOST": ghost,
         "CAP": {m: cap}, "CYC": {m: cyc},
         "complete": all(s["state"] == "closed" for s in sprints_of_month(mine, ym))
                     and dt.date.today() >= nxt,
