@@ -2,10 +2,10 @@ name: Refresh live data
 
 on:
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '*/30 * * * *'      # GitHub's own timer: best effort, often late
   repository_dispatch:
-    types: [refresh]
-  workflow_dispatch:
+    types: [refresh]            # what cron-job.org triggers, every 5 minutes
+  workflow_dispatch:            # the "Run workflow" button, for testing
 
 permissions:
   contents: write
@@ -14,32 +14,64 @@ concurrency:
   group: refresh
   cancel-in-progress: true
 
+env:
+  # Not secret, so they live here instead of in repository variables.
+  # The DS repo uses the same file with these three lines changed.
+  JIRA_BASE:   https://wellfit.atlassian.net
+  TEAM_KEY:    EDW
+  BOARD_ID:    "11"
+  PROJECT_KEY: EDW
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: Fetch live data from Jira
         env:
-          JIRA_BASE:  ${{ secrets.JIRA_BASE }}
           JIRA_EMAIL: ${{ secrets.JIRA_EMAIL }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
         run: |
+          {
+            echo "--- config check -------------------------------------"
+            echo "  JIRA_BASE   $JIRA_BASE"
+            echo "  board $BOARD_ID / project $PROJECT_KEY / team $TEAM_KEY"
+            echo "  JIRA_EMAIL  ${#JIRA_EMAIL} characters, after the @: ${JIRA_EMAIL#*@}"
+            echo "  JIRA_TOKEN  ${#JIRA_TOKEN} characters"
+            echo "------------------------------------------------------"
+            if [ -z "$JIRA_EMAIL" ] || [ -z "$JIRA_TOKEN" ]; then
+              echo "CONFIG ERROR: a secret arrived empty."
+              echo "Settings -> Secrets and variables -> Actions -> tab 'Secrets'."
+              echo "The names must be exactly JIRA_EMAIL and JIRA_TOKEN. Anything"
+              echo "created in the 'Variables' tab arrives here as an empty string."
+            fi
+          } | tee /tmp/fetch.log
+          set +e
           python3 scripts/fetch_jira.py \
-            --team "${{ vars.TEAM_KEY }}" \
-            --board "${{ vars.BOARD_ID }}" \
-            --project "${{ vars.PROJECT_KEY }}" \
-            --out data/live.json
+            --team    "$TEAM_KEY" \
+            --board   "$BOARD_ID" \
+            --project "$PROJECT_KEY" \
+            --out     data/live.json 2>&1 | tee -a /tmp/fetch.log
+          code=${PIPESTATUS[0]}
+          {
+            echo "### Jira fetch - exit code $code"
+            echo ''
+            echo '```'
+            tail -n 40 /tmp/fetch.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit $code
 
       - name: Commit only if the data actually changed
         run: |
           git config user.name  "live-data bot"
           git config user.email "actions@github.com"
+          # ignore the timestamp line, so an unchanged sprint makes no commit
           if git diff --quiet -- data/live.json; then
             echo "no change"; exit 0
           fi
