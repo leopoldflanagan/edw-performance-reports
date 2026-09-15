@@ -785,7 +785,11 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
         # commitment" under a heading that said the sprint had closed.
         running = [n for n in names if OPEN_SPRINT(n)]
         names   = [n for n in names if n not in running]
-        cards = "".join(sprint_card(n, i) for i, n in enumerate(names))
+        # the chart JS emits one canvas per sprint of the FULL period, indexed by
+        # position in it. Cards must use that same index or the canvas and the
+        # chart drift apart and the card renders an empty box.
+        CIDX = {n: i for i, n in enumerate([x for x in SP_BY_MONTH[mk] if sp(x)])}
+        cards = "".join(sprint_card(n, CIDX[n]) for n in names)
         if not cards:
             cards = ('<div class="goalbox">No sprint of this period has closed yet. '
                      'The numbers on this page are a position, not a result.</div>')
@@ -804,7 +808,7 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
                      f'<b>day {_d} of {_dn}</b>, with {_left} day{"" if _left == 1 else "s"} to go. '
                      f'It is shown here because it belongs to {MONTH_LABEL[mk]}, but it is '
                      'not in the totals above and gets no verdict until it closes.</div>'
-                     + dist_block(_n) + sprint_card(_n, 90) + '</div>')
+                     + dist_block(_n) + sprint_card(_n, CIDX[_n]) + '</div>')
         elif mk == MK_LAST and ACTIVE and ACTIVE not in names and sp(ACTIVE):
             live_sp = (LIVE or {}).get("sprint") or {}
             if (LIVE or {}).get("kind") == "active":

@@ -71,12 +71,12 @@
   /* The burndown is drawn across the WHOLE sprint, not across the days that have
      happened. Stretching three days over the full width is what made it look like
      a broken chart: the line ended at the right edge as if the sprint were over. */
-  function burndown(s) {
+  function burndown(s, big) {
     var burn = s.burn, scope = s.scope;
     if (!burn || burn.length < 2) return '';
     var days  = s.days || (burn.length - 1);
     var slots = days;                                  // day 0 .. day `days`
-    var W = 640, H = 210, L = 34, R = 12, T = 14, B = 34;
+    var W = 640, H = big ? 360 : 210, L = 34, R = 12, T = 14, B = 34;
     var hi = Math.max.apply(null, (scope || []).concat(burn)) || 1;
     hi = Math.ceil(hi / 10) * 10 || 10;
     // pick a tick count that divides the top of the scale, so the axis reads
@@ -106,9 +106,13 @@
     var ideal = 'M' + X(0).toFixed(1) + ',' + Y(burn[0]).toFixed(1) +
                 ' L' + X(slots).toFixed(1) + ',' + Y(0).toFixed(1);
 
-    return '<div class="sprintsec"><div class="sk">Burndown &middot; story points remaining ' +
-      '&middot; day ' + (s.day || burn.length) + ' of ' + days + '</div>' +
-      '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:210px" ' +
+    return (big ? '<div>' : '<div class="sprintsec">') +
+      (big ? '' : '<div class="sk">Burndown &middot; story points remaining ' +
+        '&middot; day ' + (s.day || burn.length) + ' of ' + days + '</div>') +
+      (big ? '' : '<div class="bdzoom" role="button" tabindex="0" ' +
+        'aria-label="Open the burndown full size">') +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:' +
+      (big ? 'min(62vh,420px)' : '210px') + '" ' +
       'role="img" aria-label="Sprint burndown, story points remaining by day">' +
       grid + lab + area +
       '<path d="' + ideal + '" stroke="#c3cdda" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
@@ -124,12 +128,78 @@
       '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" fill="#626c84">' + day(s.start) + '</text>' +
       '<text x="' + (W - R) + '" y="' + (H - 12) +
       '" text-anchor="end" font-size="10" fill="#626c84">' + day(s.end) + '</text>' +
-      '</svg>' +
+      '</svg>' + (big ? '' : '</div>') +
       '<div class="tiskey" style="margin-top:2px">' +
       '<span><i class="tisdot" style="background:#007CBC"></i>Remaining</span>' +
       '<span><i class="tisdot" style="background:#9aa6b8"></i>Total scope</span>' +
       '<span><i class="tisdot" style="background:#c3cdda"></i>Ideal burn</span>' +
       '</div></div>';
+  }
+
+  /* Same chart, full size, in the same modal shape the release reports use. */
+  function wireZoom(s) {
+    var hook = host.querySelector('.bdzoom');
+    if (!hook) return;
+    var m = document.createElement('div');
+    m.className = 'lvmodal';
+    m.innerHTML = '<div class="lvbox"><div class="lvhead"><h4></h4>' +
+      '<button class="lvclose" aria-label="Close">&times;</button></div>' +
+      '<div class="lvbody"></div></div>';
+    document.body.appendChild(m);
+    m.querySelector('h4').textContent = s.name + ' — burndown, day ' +
+      (s.day || '?') + ' of ' + (s.days || '?');
+    m.querySelector('.lvbody').innerHTML = burndown(s, true);
+    function close() { m.classList.remove('open'); }
+    function open()  { m.classList.add('open'); }
+    hook.addEventListener('click', open);
+    hook.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+    });
+    m.addEventListener('click', function (e) { if (e.target === m) close(); });
+    m.querySelector('.lvclose').addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+  }
+
+  /* Where work is piling up, and how fast each step clears.
+     Two different numbers on purpose: a status can clear in a day and still be
+     the bottleneck if fifteen items are queued behind it. */
+  function agingBlock(a) {
+    if (!a || !a.rows || !a.rows.length) return '';
+    var top = Math.max.apply(null, a.rows.map(function (r) { return r.open; })) || 1;
+    var rows = a.rows.map(function (r) {
+      var stuck = r.over > 0;
+      var col   = STCOL[r.status] || '#65B2D5';
+      return '<tr>' +
+        '<td class="agst">' + esc(r.status) + '</td>' +
+        '<td class="agbar"><i style="width:' + (72 * r.open / top).toFixed(1) +
+          '%;background:' + col + '"></i><b>' + r.open + '</b></td>' +
+        '<td class="agnum"' + (stuck ? ' style="color:#c0392b;font-weight:800"' : '') + '>' +
+          r.med_age + 'd</td>' +
+        '<td class="agnum">' + (r.over || '&mdash;') + '</td>' +
+        '<td class="agsm">' + esc(r.worst_key) + ' &middot; ' + r.max_age + 'd</td>' +
+        '<td class="agnum">' + (r.clear_med == null ? '&mdash;' : r.clear_med + 'd') + '</td>' +
+      '</tr>';
+    }).join('');
+
+    var lead = a.worst
+      ? 'Most of the waiting is in <b>' + esc(a.worst) + '</b>.'
+      : 'Nothing is queued in the workflow right now.';
+
+    return '<div class="sprintsec"><div class="sk">Workflow aging &middot; ' +
+      a.open_total + ' items open' +
+      (a.stale ? ' &middot; ' + a.stale + ' sitting ' + a.stale_days + '+ days' : '') +
+      '</div>' +
+      '<div class="secsub" style="font-size:12.5px;margin:-2px 0 8px">' + lead +
+      ' <b>Waiting</b> is how long the items sitting there now have been there; ' +
+      '<b>clears in</b> is how long items took to get through that step over the ' +
+      'last ' + a.window_days + ' days. A short clear time with a tall bar is a ' +
+      'queue, not a slow step.' +
+      (a.backlog ? ' ' + a.backlog + ' more are in Backlog, not yet pulled into the workflow.' : '') +
+      '</div>' +
+      '<div class="agwrap"><table class="agtab"><thead><tr>' +
+      '<th>Status</th><th>Open</th><th>Waiting (median)</th><th>' + a.stale_days +
+      'd+</th><th>Oldest</th><th>Clears in</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table></div></div>';
   }
 
   function render(d) {
@@ -199,9 +269,14 @@
 
     if (m) {
       var isRel = m.kind === 'release';
-      out += '<div class="sprintsec"><div class="sk">' + esc(m.label) +
-        ' so far &middot; day ' + m.day + (m.days ? ' of ' + m.days : '') +
-        (isRel ? '' : ' &middot; calendar month') + '</div>' +
+      // a release is counted in sprints; only the calendar-month fallback counts days
+      var head = isRel
+        ? esc(m.label) + ' so far &middot; ' + (m.sprints_done == null ? '' :
+            m.sprints_done + ' of ' + m.n_sprints + ' sprints closed &middot; ') +
+          'ends ' + day(m.end)
+        : esc(m.label) + ' so far &middot; day ' + m.day +
+          (m.days ? ' of ' + m.days : '') + ' &middot; calendar month';
+      out += '<div class="sprintsec"><div class="sk">' + head + '</div>' +
         '<div class="healthrow" style="margin-bottom:0">' +
         tile('Closed', m.closed, 'items ' + (isRel ? 'this release' : 'this month')) +
         tile('Story points', m.points, 'delivered so far') +
@@ -216,6 +291,8 @@
         '</div>';
     }
 
+    out += agingBlock(d.aging);
+
     if (d.next) {
       out += '<div class="secsub" style="margin-top:12px;font-size:12.5px">Next up: <b>' +
         esc(d.next.name) + '</b>, starting ' + day(d.next.start) + '.</div>';
@@ -227,6 +304,7 @@
         (stale ? ' &middot; <b style="color:var(--warning)">the refresh job may be stuck</b>' : '')) +
       '</div></div>';
     host.innerHTML = out;
+    if (s) wireZoom(s);
   }
 
   fetch('data/live.json?t=' + Date.now(), { cache: 'no-store' })

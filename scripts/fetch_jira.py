@@ -280,6 +280,68 @@ def month_so_far(project, window=None, label=None, key=None):
             "people_active": sum(1 for _, c in people.items() if c >= 2)}
 
 
+STALE_AGE = 7    # calendar days in one status before open work counts as stuck
+
+
+def aging(project, window_days=90):
+    """Two questions about the same workflow, answered from one pass of changelog.
+
+    aging   - for work that is open RIGHT NOW: how long it has been sitting in the
+              status it is in. This is where work is piling up.
+    clearing- for transitions that already happened in the window: how long items
+              took to get THROUGH each status. This is how fast work moves.
+
+    They are not the same number and the gap between them is the finding: a status
+    that clears in a day but holds fifteen items is a queue, not a slow step.
+    Backlog is reported apart - waiting to be pulled is not a workflow bottleneck.
+    """
+    since_d = (dt.date.today() - dt.timedelta(days=window_days)).isoformat()
+    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
+           f'AND (statusCategory != Done OR resolved >= "{since_d}")')
+    iss = search(jql, ["status", "summary", "created", "issuetype", "assignee"],
+                 expand="changelog", cap=8)
+    now = dt.datetime.now(dt.timezone.utc)
+    open_in, cleared = {}, {}
+    for i in iss:
+        st_now = i["fields"]["status"]["name"]
+        moves = []
+        for h in i.get("changelog", {}).get("histories", []):
+            for it in h["items"]:
+                if it["field"] == "status":
+                    moves.append((_dtp(h["created"]), it.get("fromString"), it.get("toString")))
+        moves.sort()
+        cur   = moves[0][1] if moves else st_now
+        since = _dtp(i["fields"]["created"])
+        for when, _f, to in moves:
+            cleared.setdefault(cur, []).append(max(0.0, (when - since).total_seconds()/86400))
+            cur, since = to, when
+        if st_now not in TERMINAL:
+            open_in.setdefault(st_now, []).append(
+                (round(max(0.0, (now - since).total_seconds()/86400), 1),
+                 i["key"], (i["fields"].get("summary") or "")[:90],
+                 (i["fields"].get("assignee") or {}).get("displayName") or "unassigned"))
+
+    rows, backlog = [], 0
+    for st, xs in open_in.items():
+        if st in QUEUE_OUT:
+            backlog += len(xs); continue
+        ages  = sorted(x[0] for x in xs)
+        worst = max(xs)
+        cl    = cleared.get(st) or []
+        rows.append({"status": st, "open": len(xs),
+                     "med_age": round(_median(ages), 1), "max_age": worst[0],
+                     "worst_key": worst[1], "worst_sum": worst[2], "worst_who": worst[3],
+                     "over": sum(1 for a in ages if a >= STALE_AGE),
+                     "clear_med": round(_median(cl), 1) if cl else None,
+                     "clear_n": len(cl)})
+    # queue pressure: how many are waiting times how long they have waited
+    rows.sort(key=lambda r: -(r["med_age"] * r["open"]))
+    return {"window_days": window_days, "stale_days": STALE_AGE, "rows": rows,
+            "backlog": backlog, "open_total": sum(r["open"] for r in rows),
+            "stale": sum(r["over"] for r in rows),
+            "worst": rows[0]["status"] if rows else None}
+
+
 def cyc_status(c):
     return "healthy" if (c["med"] <= 6 and c["avg"] <= 9) else (
            "warning" if (c["med"] <= 7.2 and c["avg"] <= 10.8) else "risk")
@@ -606,7 +668,12 @@ def main():
         _rk, _r = cur
         period = month_so_far(a.project, window=(_r["start"], _r["end"]),
                               label=_r.get("label") or f"Release {_rk}", key=_rk)
-        period["sprints"] = _r["sprints"]
+        # a release is measured in sprints, not in calendar days: "day 16 of 28"
+        # sitting next to a sprint's "day 2 of 14" reads like a contradiction
+        _state = {x["name"]: x["state"] for x in mine}
+        period["sprints"]      = _r["sprints"]
+        period["n_sprints"]    = len(_r["sprints"])
+        period["sprints_done"] = sum(1 for n in _r["sprints"] if _state.get(n) == "closed")
     else:
         period = month_so_far(a.project)
 
@@ -617,6 +684,7 @@ def main():
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),
         "month": period,
+        "aging": aging(a.project),
     }
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     with open(a.out, "w") as f:

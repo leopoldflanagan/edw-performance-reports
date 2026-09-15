@@ -44,6 +44,32 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,#f4f9fd,var(--card) 90px);margin-bottom:22px}
 .activetag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
  color:#fff;background:var(--wf-blue);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.bdzoom{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s;display:block}
+.bdzoom:hover{background:#f7fafd}
+.bdzoom::after{content:"Expand";position:absolute;top:4px;right:6px;font-size:10.5px;font-weight:700;
+ color:var(--wf-blue-d);background:#e5f2f8;border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;opacity:0;transition:opacity .15s}
+.bdzoom:hover::after,.bdzoom:focus-visible::after{opacity:1}
+.lvmodal{position:fixed;inset:0;z-index:200;background:rgba(20,32,44,.68);display:none;align-items:center;justify-content:center;padding:24px}
+.lvmodal.open{display:flex}
+.lvbox{background:var(--card);border-radius:16px;width:min(1000px,96vw);padding:16px 18px 20px;box-shadow:0 18px 60px rgba(0,0,0,.3)}
+.lvhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.lvhead h4{font-size:16px;font-weight:700;color:var(--wf-blue-d)}
+.lvclose{border:0;background:#eef2f8;color:var(--wf-muted);font-size:20px;line-height:1;width:30px;height:30px;border-radius:9px;cursor:pointer}
+.lvclose:hover{background:#e2e8f0}
+@media(max-width:760px){.lvmodal{padding:12px}.bdzoom::after{display:none}}
+.agwrap{overflow-x:auto}
+.agtab{width:100%;border-collapse:collapse;font-size:12.5px}
+.agtab th{text-align:left;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--wf-muted);
+ font-weight:700;padding:0 10px 6px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+.agtab td{padding:7px 10px 7px 0;border-bottom:1px solid #eef2f8;vertical-align:middle}
+.agtab tr:last-child td{border-bottom:0}
+.agst{font-weight:600;white-space:nowrap}
+.agnum{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.agsm{color:var(--wf-muted);white-space:nowrap;font-size:11.5px}
+.agbar{min-width:130px;position:relative;white-space:nowrap}
+.agbar i{display:inline-block;height:9px;border-radius:5px;vertical-align:middle;min-width:3px}
+.agbar b{margin-left:7px;font-variant-numeric:tabular-nums}
+@media(max-width:640px){.agsm{display:none}}
 </style></head>
 <body>
 <header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse</div><h1>EDW Performance Reports</h1>
