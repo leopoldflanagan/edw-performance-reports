@@ -1,0 +1,2161 @@
+{
+ "Q1": {
+  "closed": 120,
+  "months": [
+   44,
+   36,
+   40
+  ],
+  "thr_med": 40,
+  "thr_avg": 40.0,
+  "rng": "36–44",
+  "unp": 4.9,
+  "cyc_med": 6.29,
+  "cyc_avg": 7.83
+ },
+ "Q2": {
+  "closed": 149,
+  "thr_med": 39,
+  "thr_avg": 49.7,
+  "cyc_med": 4.59,
+  "cyc_avg": 9.33,
+  "unp": 8.72,
+  "unp_n": 13,
+  "wontdo": 7,
+  "nodev": 24
+ },
+ "APR": 36,
+ "MAY": 39,
+ "MAY_UNP": 17.95,
+ "CYC": {
+  "may": {
+   "med": 5.18,
+   "avg": 8.04,
+   "n": 33,
+   "mx": 43.09,
+   "nodev": 6,
+   "base": 39
+  },
+  "06": {
+   "med": 4.26,
+   "avg": 8.42,
+   "n": 63,
+   "mx": 98.08,
+   "nodev": 11,
+   "base": 74
+  },
+  "07": {
+   "med": 3.81,
+   "avg": 5.01,
+   "n": 67,
+   "mx": 22.02,
+   "nodev": 12,
+   "base": 79
+  },
+  "08": {
+   "med": 4.39,
+   "avg": 7.91,
+   "n": 60,
+   "mx": 41.89,
+   "nodev": 22,
+   "base": 82
+  }
+ },
+ "CAP": {
+  "01": [
+   44,
+   44,
+   168,
+   5
+  ],
+  "02": [
+   36,
+   36,
+   115,
+   5
+  ],
+  "03": [
+   40,
+   37,
+   116,
+   4
+  ],
+  "04": [
+   36,
+   35,
+   96,
+   4
+  ],
+  "05": [
+   39,
+   38,
+   111,
+   5
+  ],
+  "06": [
+   74,
+   72,
+   199,
+   7
+  ],
+  "07": [
+   79,
+   74,
+   214,
+   7
+  ],
+  "08": [
+   82,
+   78,
+   228,
+   6
+  ]
+ },
+ "CAP_Q1": [
+  "01",
+  "02",
+  "03"
+ ],
+ "CAP_Q2": [
+  "04",
+  "05",
+  "06"
+ ],
+ "SPILL": {
+  "EDW-Sprint 12-26": {
+   "done": [
+    16,
+    49
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    7,
+    19
+   ]
+  },
+  "EDW-Sprint 13-26": {
+   "done": [
+    18,
+    56
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    8,
+    31
+   ]
+  },
+  "EDW-Sprint 14-26": {
+   "done": [
+    28,
+    83
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    13,
+    39
+   ]
+  },
+  "EDW-Sprint 15-26": {
+   "done": [
+    33,
+    78
+   ],
+   "open": [
+    2,
+    7
+   ],
+   "out": [
+    10,
+    25
+   ]
+  },
+  "EDW-Sprint 16-26": {
+   "done": [
+    33,
+    76
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    17,
+    41
+   ]
+  },
+  "EDW-Sprint 17-26": {
+   "done": [
+    33,
+    87
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    17,
+    52
+   ]
+  },
+  "EDW-Sprint 18-26": {
+   "done": [
+    38,
+    99
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    14,
+    39
+   ]
+  },
+  "EDW-Sprint 19-26": {
+   "done": [
+    20,
+    53
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    23,
+    55
+   ]
+  },
+  "EDW-Sprint 20-26": {
+   "done": [
+    33,
+    83
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    10,
+    29
+   ]
+  },
+  "EDW-Sprint 21-26": {
+   "done": [
+    27,
+    69
+   ],
+   "open": [
+    5,
+    17
+   ],
+   "out": [
+    13,
+    31
+   ]
+  }
+ },
+ "SPILL_Q1": {
+  "EDW-R8.29-S3": {
+   "done": [
+    11,
+    33
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-R9.00-S4": {
+   "done": [
+    17,
+    47
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-R9.00-S5": {
+   "done": [
+    35,
+    111
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-Sprint 6-26": {
+   "done": [
+    16,
+    48
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-Sprint 7-26": {
+   "done": [
+    17,
+    42
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-Sprint 8-27": {
+   "done": [
+    21,
+    59
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  },
+  "EDW-Sprint 9-26": {
+   "done": [
+    12,
+    28
+   ],
+   "open": [
+    0,
+    0
+   ],
+   "out": [
+    0,
+    0
+   ]
+  }
+ },
+ "SPLIT": {
+  "EDW-Sprint 12-26": {
+   "react": 7,
+   "plan": 5,
+   "pct": 58
+  },
+  "EDW-Sprint 13-26": {
+   "react": 4,
+   "plan": 21,
+   "pct": 16
+  },
+  "EDW-Sprint 14-26": {
+   "react": 4,
+   "plan": 31,
+   "pct": 11
+  },
+  "EDW-Sprint 15-26": {
+   "react": 3,
+   "plan": 37,
+   "pct": 8
+  },
+  "EDW-Sprint 16-26": {
+   "react": 9,
+   "plan": 28,
+   "pct": 24
+  },
+  "EDW-Sprint 17-26": {
+   "react": 5,
+   "plan": 34,
+   "pct": 13
+  },
+  "EDW-Sprint 18-26": null,
+  "EDW-Sprint 19-26": null,
+  "EDW-Sprint 20-26": null,
+  "EDW-Sprint 21-26": null
+ },
+ "SPLIT_Q1": {
+  "EDW-R8.29-S3": {
+   "react": 1,
+   "plan": 2,
+   "pct": 33
+  },
+  "EDW-R9.00-S4": {
+   "react": 1,
+   "plan": 6,
+   "pct": 14
+  },
+  "EDW-R9.00-S5": {
+   "react": 0,
+   "plan": 7,
+   "pct": 0
+  },
+  "EDW-Sprint 6-26": null,
+  "EDW-Sprint 7-26": {
+   "react": 1,
+   "plan": 8,
+   "pct": 11
+  },
+  "EDW-Sprint 8-27": {
+   "react": 2,
+   "plan": 5,
+   "pct": 29
+  },
+  "EDW-Sprint 9-26": null
+ },
+ "SPRINTS": [
+  [
+   "EDW-Sprint 12-26",
+   "Apr 27",
+   "May 11",
+   16,
+   15,
+   37,
+   49,
+   46,
+   32,
+   [
+    37,
+    34,
+    31,
+    31,
+    31,
+    28,
+    28,
+    20,
+    25,
+    18,
+    20,
+    16,
+    16,
+    16,
+    3
+   ],
+   [
+    37,
+    37,
+    37,
+    40,
+    40,
+    40,
+    40,
+    40,
+    45,
+    45,
+    47,
+    47,
+    47,
+    47,
+    49
+   ]
+  ],
+  [
+   "EDW-Sprint 13-26",
+   "May 11",
+   "May 26",
+   19,
+   19,
+   33,
+   58,
+   58,
+   76,
+   [
+    31,
+    36,
+    32,
+    32,
+    32,
+    32,
+    32,
+    37,
+    40,
+    42,
+    45,
+    33,
+    26,
+    26,
+    26,
+    8
+   ],
+   [
+    33,
+    42,
+    42,
+    42,
+    45,
+    45,
+    45,
+    50,
+    53,
+    55,
+    58,
+    58,
+    58,
+    58,
+    58,
+    58
+   ]
+  ],
+  [
+   "EDW-Sprint 14-26",
+   "May 26",
+   "Jun 8",
+   29,
+   28,
+   50,
+   85,
+   80,
+   70,
+   [
+    49,
+    46,
+    54,
+    44,
+    44,
+    44,
+    36,
+    31,
+    24,
+    38,
+    36,
+    30,
+    30,
+    15
+   ],
+   [
+    50,
+    51,
+    59,
+    59,
+    60,
+    60,
+    60,
+    60,
+    63,
+    79,
+    85,
+    85,
+    85,
+    85
+   ]
+  ],
+  [
+   "EDW-Sprint 15-26",
+   "Jun 8",
+   "Jun 22",
+   36,
+   34,
+   48,
+   88,
+   81,
+   83,
+   [
+    45,
+    45,
+    53,
+    50,
+    46,
+    44,
+    44,
+    41,
+    46,
+    54,
+    43,
+    29,
+    29,
+    29,
+    7
+   ],
+   [
+    48,
+    48,
+    56,
+    59,
+    66,
+    66,
+    66,
+    66,
+    74,
+    82,
+    84,
+    84,
+    84,
+    84,
+    88
+   ]
+  ],
+  [
+   "EDW-Sprint 16-26",
+   "Jun 22",
+   "Jul 6",
+   34,
+   34,
+   39,
+   76,
+   76,
+   95,
+   [
+    39,
+    34,
+    34,
+    29,
+    28,
+    28,
+    28,
+    29,
+    25,
+    25,
+    26,
+    29,
+    29,
+    29,
+    0
+   ],
+   [
+    39,
+    42,
+    45,
+    48,
+    50,
+    50,
+    50,
+    55,
+    61,
+    64,
+    73,
+    76,
+    76,
+    76,
+    76
+   ]
+  ],
+  [
+   "EDW-Sprint 17-26",
+   "Jul 6",
+   "Jul 20",
+   34,
+   34,
+   51,
+   90,
+   90,
+   76,
+   [
+    51,
+    59,
+    55,
+    47,
+    47,
+    49,
+    49,
+    38,
+    39,
+    40,
+    40,
+    21,
+    21,
+    21,
+    7
+   ],
+   [
+    51,
+    61,
+    61,
+    69,
+    74,
+    76,
+    76,
+    80,
+    82,
+    83,
+    88,
+    90,
+    90,
+    90,
+    90
+   ]
+  ],
+  [
+   "EDW-Sprint 18-26",
+   "Jul 20",
+   "Aug 5",
+   39,
+   39,
+   51,
+   102,
+   102,
+   100,
+   [
+    48,
+    50,
+    48,
+    44,
+    43,
+    41,
+    41,
+    48,
+    46,
+    43,
+    39,
+    25,
+    16,
+    17,
+    9,
+    0,
+    0
+   ],
+   [
+    51,
+    56,
+    61,
+    66,
+    73,
+    73,
+    73,
+    90,
+    90,
+    91,
+    93,
+    95,
+    98,
+    102,
+    102,
+    102,
+    102
+   ]
+  ],
+  [
+   "EDW-Sprint 19-26",
+   "Aug 3",
+   "Aug 17",
+   20,
+   20,
+   14,
+   53,
+   53,
+   279,
+   [
+    14,
+    28,
+    33,
+    26,
+    25,
+    19,
+    19,
+    19,
+    19,
+    14,
+    17,
+    16,
+    13,
+    13,
+    13
+   ],
+   [
+    14,
+    28,
+    36,
+    37,
+    39,
+    39,
+    39,
+    39,
+    39,
+    45,
+    48,
+    53,
+    53,
+    53,
+    53
+   ]
+  ],
+  [
+   "EDW-Sprint 20-26",
+   "Aug 17",
+   "Aug 31",
+   34,
+   34,
+   46,
+   85,
+   85,
+   85,
+   [
+    44,
+    47,
+    45,
+    53,
+    52,
+    40,
+    40,
+    40,
+    36,
+    25,
+    19,
+    18,
+    18,
+    18,
+    0
+   ],
+   [
+    46,
+    63,
+    63,
+    71,
+    73,
+    73,
+    73,
+    79,
+    82,
+    82,
+    85,
+    85,
+    85,
+    85,
+    85
+   ]
+  ],
+  [
+   "EDW-Sprint 21-26",
+   "Aug 31",
+   "Sep 14",
+   38,
+   24,
+   45,
+   96,
+   64,
+   113,
+   [
+    45,
+    62,
+    60,
+    58,
+    45,
+    45,
+    45,
+    45,
+    45,
+    48,
+    43,
+    37,
+    30,
+    30,
+    30
+   ],
+   [
+    45,
+    62,
+    67,
+    67,
+    70,
+    70,
+    70,
+    70,
+    70,
+    81,
+    86,
+    96,
+    96,
+    96,
+    96
+   ]
+  ]
+ ],
+ "SPRINTS_Q1": [
+  [
+   "EDW-R8.29-S3",
+   "Dec 22",
+   "Jan 5",
+   11,
+   11,
+   26,
+   33,
+   33,
+   27,
+   [
+    11,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    16,
+    14,
+    14,
+    14,
+    14,
+    9,
+    9,
+    3,
+    0
+   ],
+   [
+    11,
+    26,
+    26,
+    28,
+    28,
+    30,
+    30,
+    30,
+    33,
+    33,
+    33,
+    33,
+    33,
+    33,
+    33,
+    33
+   ]
+  ],
+  [
+   "EDW-R9.00-S4",
+   "Jan 5",
+   "Jan 19",
+   17,
+   17,
+   31,
+   47,
+   47,
+   52,
+   [
+    26,
+    26,
+    26,
+    21,
+    19,
+    17,
+    17,
+    12,
+    12,
+    7,
+    7,
+    8,
+    7,
+    7,
+    2,
+    0
+   ],
+   [
+    31,
+    31,
+    34,
+    36,
+    39,
+    42,
+    42,
+    42,
+    42,
+    42,
+    42,
+    45,
+    47,
+    47,
+    47,
+    47
+   ]
+  ],
+  [
+   "EDW-R9.00-S5",
+   "Jan 19",
+   "Feb 2",
+   35,
+   35,
+   96,
+   111,
+   111,
+   16,
+   [
+    36,
+    64,
+    64,
+    53,
+    38,
+    38,
+    38,
+    35,
+    33,
+    30,
+    30,
+    31,
+    31,
+    31,
+    28,
+    0
+   ],
+   [
+    63,
+    96,
+    99,
+    99,
+    101,
+    103,
+    103,
+    110,
+    110,
+    110,
+    110,
+    111,
+    111,
+    111,
+    111,
+    111
+   ]
+  ],
+  [
+   "EDW-Sprint 6-26",
+   "Feb 2",
+   "Feb 17",
+   16,
+   16,
+   48,
+   48,
+   48,
+   0,
+   [
+    48,
+    45,
+    45,
+    45,
+    45,
+    45,
+    45,
+    40,
+    28,
+    28,
+    24,
+    18,
+    10,
+    10,
+    10,
+    0,
+    0
+   ],
+   [
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48,
+    48
+   ]
+  ],
+  [
+   "EDW-Sprint 7-26",
+   "Feb 17",
+   "Mar 2",
+   17,
+   17,
+   27,
+   42,
+   42,
+   56,
+   [
+    25,
+    27,
+    27,
+    27,
+    22,
+    22,
+    22,
+    24,
+    22,
+    25,
+    14,
+    14,
+    14,
+    11,
+    0
+   ],
+   [
+    25,
+    27,
+    29,
+    31,
+    31,
+    31,
+    31,
+    33,
+    33,
+    36,
+    36,
+    42,
+    42,
+    42,
+    42
+   ]
+  ],
+  [
+   "EDW-Sprint 8-27",
+   "Mar 2",
+   "Mar 16",
+   21,
+   21,
+   41,
+   59,
+   59,
+   44,
+   [
+    38,
+    37,
+    30,
+    25,
+    27,
+    27,
+    27,
+    25,
+    32,
+    28,
+    23,
+    15,
+    10,
+    10,
+    0,
+    0
+   ],
+   [
+    38,
+    41,
+    41,
+    42,
+    44,
+    44,
+    44,
+    44,
+    51,
+    53,
+    53,
+    53,
+    53,
+    53,
+    59,
+    59
+   ]
+  ],
+  [
+   "EDW-Sprint 9-26",
+   "Mar 16",
+   "Mar 30",
+   12,
+   12,
+   28,
+   28,
+   28,
+   0,
+   [
+    28,
+    28,
+    28,
+    27,
+    26,
+    23,
+    23,
+    18,
+    16,
+    13,
+    13,
+    8,
+    5,
+    5,
+    0,
+    0
+   ],
+   [
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28,
+    28
+   ]
+  ]
+ ],
+ "SPRINT_GOALS": {
+  "EDW-Sprint 12-26": "Jeff &ndash; onboarding solution. Lloyd &ndash; finish finance modeling work. William &ndash; Claim genie for the dev team."
+ },
+ "SPRINT_NOTE_Q1": {
+  "EDW-Sprint 8-27": "Named <b>8-27</b> on the board. By position in the series this is sprint 8 — a naming slip. Database Services has the same pattern with its <i>16-27</i>.",
+  "EDW-R8.29-S3": "Opened Dec 22 and closed Jan 5, so it straddles the year. It is included because it closed inside Q1.",
+  "EDW-R9.00-S5": "96 points committed on day 1 and 111 delivered, against a 26-48 range in every other Q1 sprint. This one sprint carries most of January's throughput."
+ },
+ "SP_BY_MONTH": {
+  "05": [
+   "EDW-Sprint 12-26",
+   "EDW-Sprint 13-26"
+  ],
+  "06": [
+   "EDW-Sprint 14-26",
+   "EDW-Sprint 15-26"
+  ],
+  "07": [
+   "EDW-Sprint 16-26",
+   "EDW-Sprint 17-26"
+  ],
+  "08": [
+   "EDW-Sprint 18-26",
+   "EDW-Sprint 19-26",
+   "EDW-Sprint 20-26"
+  ]
+ },
+ "TIS": {
+  "EDW-Sprint 12-26": {
+   "tis": {
+    "Backlog": {
+     "n": 12,
+     "med": 0
+    },
+    "In Development": {
+     "n": 21,
+     "med": 0.38
+    },
+    "Awaiting Review": {
+     "n": 5,
+     "med": 1.72
+    },
+    "Ready for Development": {
+     "n": 11,
+     "med": 2.01
+    }
+   },
+   "dist": {
+    "Closed": 19
+   },
+   "stalled": 7,
+   "worst": 13.7,
+   "worstSt": "Ready for Development",
+   "items": 19
+  },
+  "EDW-Sprint 13-26": {
+   "tis": {
+    "Backlog": {
+     "n": 9,
+     "med": 0
+    },
+    "In Development": {
+     "n": 18,
+     "med": 1.43
+    },
+    "Awaiting Review": {
+     "n": 8,
+     "med": 5.27
+    },
+    "Ready for Development": {
+     "n": 10,
+     "med": 0.91
+    }
+   },
+   "dist": {
+    "Closed": 20
+   },
+   "stalled": 12,
+   "worst": 15.2,
+   "worstSt": "Ready for Development",
+   "items": 20
+  },
+  "EDW-Sprint 14-26": {
+   "tis": {
+    "Backlog": {
+     "n": 33,
+     "med": 0.08
+    },
+    "In Development": {
+     "n": 33,
+     "med": 1.15
+    },
+    "Awaiting Review": {
+     "n": 19,
+     "med": 0.18
+    },
+    "Ready for Development": {
+     "n": 18,
+     "med": 0.93
+    },
+    "Won't Do": {
+     "n": 2,
+     "med": 11.19
+    }
+   },
+   "dist": {
+    "Closed": 39,
+    "Won't Do": 2
+   },
+   "stalled": 11,
+   "worst": 13.2,
+   "worstSt": "Backlog",
+   "items": 41
+  },
+  "EDW-Sprint 15-26": {
+   "tis": {
+    "Backlog": {
+     "n": 28,
+     "med": 0
+    },
+    "In Development": {
+     "n": 41,
+     "med": 2.08
+    },
+    "Ready for Development": {
+     "n": 32,
+     "med": 1.1
+    },
+    "Awaiting Review": {
+     "n": 20,
+     "med": 1.01
+    },
+    "Won't Do": {
+     "n": 6,
+     "med": 0.2
+    }
+   },
+   "dist": {
+    "Closed": 36,
+    "Won't Do": 6
+   },
+   "stalled": 18,
+   "worst": 14.3,
+   "worstSt": "Backlog",
+   "items": 42
+  },
+  "EDW-Sprint 16-26": {
+   "tis": {
+    "Backlog": {
+     "n": 23,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 23,
+     "med": 0.96
+    },
+    "In Development": {
+     "n": 33,
+     "med": 1.89
+    },
+    "Awaiting Review": {
+     "n": 19,
+     "med": 1.26
+    }
+   },
+   "dist": {
+    "Closed": 38,
+    "Won't Do": 1
+   },
+   "stalled": 12,
+   "worst": 14.5,
+   "worstSt": "Won't Do",
+   "items": 39
+  },
+  "EDW-Sprint 17-26": {
+   "tis": {
+    "Backlog": {
+     "n": 32,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 17,
+     "med": 0.82
+    },
+    "In Development": {
+     "n": 31,
+     "med": 1.99
+    },
+    "Awaiting Review": {
+     "n": 19,
+     "med": 1.99
+    },
+    "Won't Do": {
+     "n": 3,
+     "med": 0.18
+    }
+   },
+   "dist": {
+    "Closed": 43,
+    "Won't Do": 1
+   },
+   "stalled": 12,
+   "worst": 14.5,
+   "worstSt": "Won't Do",
+   "items": 44
+  },
+  "EDW-Sprint 18-26": {
+   "tis": {
+    "Backlog": {
+     "n": 30,
+     "med": 0
+    },
+    "Awaiting Review": {
+     "n": 21,
+     "med": 0.85
+    },
+    "Ready for Development": {
+     "n": 30,
+     "med": 1.07
+    },
+    "In Development": {
+     "n": 35,
+     "med": 1.84
+    },
+    "Won't Do": {
+     "n": 3,
+     "med": 5.88
+    }
+   },
+   "dist": {
+    "Closed": 39,
+    "Won't Do": 3
+   },
+   "stalled": 17,
+   "worst": 16.2,
+   "worstSt": "Won't Do",
+   "items": 42
+  },
+  "EDW-Sprint 19-26": {
+   "tis": {
+    "Backlog": {
+     "n": 22,
+     "med": 0
+    },
+    "In Development": {
+     "n": 24,
+     "med": 0.13
+    },
+    "Awaiting Review": {
+     "n": 16,
+     "med": 1.15
+    },
+    "Ready for Development": {
+     "n": 11,
+     "med": 0.78
+    }
+   },
+   "dist": {
+    "Closed": 26,
+    "Won't Do": 1
+   },
+   "stalled": 8,
+   "worst": 14.3,
+   "worstSt": "In Development",
+   "items": 27
+  },
+  "EDW-Sprint 20-26": {
+   "tis": {
+    "Backlog": {
+     "n": 22,
+     "med": 0
+    },
+    "In Development": {
+     "n": 27,
+     "med": 1.13
+    },
+    "Awaiting Review": {
+     "n": 25,
+     "med": 0.91
+    },
+    "Ready for Development": {
+     "n": 17,
+     "med": 0.89
+    }
+   },
+   "dist": {
+    "Closed": 34,
+    "Won't Do": 1,
+    "To Do": 1,
+    "In Development": 1
+   },
+   "stalled": 10,
+   "worst": 14.5,
+   "worstSt": "In Development",
+   "items": 37
+  },
+  "EDW-Sprint 21-26": {
+   "tis": {
+    "Backlog": {
+     "n": 26,
+     "med": 0.01
+    },
+    "Ready for Development": {
+     "n": 15,
+     "med": 1.15
+    },
+    "In Development": {
+     "n": 29,
+     "med": 1.03
+    },
+    "Awaiting Review": {
+     "n": 22,
+     "med": 0.83
+    },
+    "To Do": {
+     "n": 2,
+     "med": 0
+    }
+   },
+   "dist": {
+    "In Development": 1,
+    "Closed": 33,
+    "Ready for Development": 1,
+    "Won't Do": 1
+   },
+   "stalled": 10,
+   "worst": 12.2,
+   "worstSt": "Ready for Development",
+   "items": 36
+  },
+  "DS-Sprint 12-26": {
+   "tis": {
+    "Backlog": {
+     "n": 21,
+     "med": 0.01
+    },
+    "In Development": {
+     "n": 17,
+     "med": 3.01
+    },
+    "Ready for Development": {
+     "n": 9,
+     "med": 3.86
+    }
+   },
+   "dist": {
+    "Closed": 23,
+    "Ready for Development": 2,
+    "In Development": 2
+   },
+   "stalled": 13,
+   "worst": 14.5,
+   "worstSt": "Ready for Development",
+   "items": 27
+  },
+  "DS-Sprint 13-26": {
+   "tis": {
+    "Backlog": {
+     "n": 29,
+     "med": 0.03
+    },
+    "In Development": {
+     "n": 25,
+     "med": 0.16
+    },
+    "Ready for Development": {
+     "n": 17,
+     "med": 4.99
+    },
+    "Awaiting Review": {
+     "n": 3,
+     "med": 4.99
+    }
+   },
+   "dist": {
+    "Closed": 36,
+    "Ready for Development": 2,
+    "In Development": 2,
+    "Backlog": 1
+   },
+   "stalled": 21,
+   "worst": 15.5,
+   "worstSt": "In Development",
+   "items": 41
+  },
+  "DS-Sprint 14-26": {
+   "tis": {
+    "Backlog": {
+     "n": 28,
+     "med": 0.04
+    },
+    "Ready for Development": {
+     "n": 26,
+     "med": 0.33
+    },
+    "In Development": {
+     "n": 26,
+     "med": 0.64
+    }
+   },
+   "dist": {
+    "Closed": 31,
+    "Ready for Development": 3,
+    "In Development": 2
+   },
+   "stalled": 13,
+   "worst": 13.5,
+   "worstSt": "In Development",
+   "items": 36
+  },
+  "DS-Sprint 15-26": {
+   "tis": {
+    "Backlog": {
+     "n": 25,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 26,
+     "med": 9.59
+    },
+    "In Development": {
+     "n": 13,
+     "med": 4.73
+    }
+   },
+   "dist": {
+    "Closed": 28,
+    "Ready for Development": 4,
+    "In Development": 2
+   },
+   "stalled": 23,
+   "worst": 14.5,
+   "worstSt": "In Development",
+   "items": 34
+  },
+  "DS-Sprint 16-26": {
+   "tis": {
+    "Backlog": {
+     "n": 17,
+     "med": 0.05
+    },
+    "Ready for Development": {
+     "n": 25,
+     "med": 14.37
+    },
+    "In Development": {
+     "n": 13,
+     "med": 1.36
+    },
+    "Awaiting Review": {
+     "n": 3,
+     "med": 0.22
+    }
+   },
+   "dist": {
+    "Closed": 25,
+    "In Development": 3,
+    "Ready for Development": 3
+   },
+   "stalled": 22,
+   "worst": 14.5,
+   "worstSt": "Ready for Development",
+   "items": 31
+  },
+  "DS-Sprint 16-27": {
+   "tis": {
+    "Backlog": {
+     "n": 34,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 39,
+     "med": 1.05
+    },
+    "In Development": {
+     "n": 17,
+     "med": 3.83
+    },
+    "Awaiting Review": {
+     "n": 4,
+     "med": 7.99
+    }
+   },
+   "dist": {
+    "Closed": 45,
+    "In Development": 3,
+    "Ready for Development": 3
+   },
+   "stalled": 23,
+   "worst": 14.5,
+   "worstSt": "Ready for Development",
+   "items": 51
+  },
+  "DS-Sprint 18-26": {
+   "tis": {
+    "Backlog": {
+     "n": 14,
+     "med": 0
+    },
+    "In Development": {
+     "n": 17,
+     "med": 4.04
+    },
+    "Ready for Development": {
+     "n": 20,
+     "med": 2.18
+    },
+    "Awaiting Review": {
+     "n": 4,
+     "med": 8.29
+    }
+   },
+   "dist": {
+    "Closed": 29,
+    "In Development": 1,
+    "Ready for Development": 1
+   },
+   "stalled": 15,
+   "worst": 14.5,
+   "worstSt": "In Development",
+   "items": 31
+  },
+  "DS-Sprint 19-26": {
+   "tis": {
+    "Backlog": {
+     "n": 28,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 20,
+     "med": 0.25
+    },
+    "In Development": {
+     "n": 16,
+     "med": 8.13
+    },
+    "Awaiting Review": {
+     "n": 2,
+     "med": 23.5
+    }
+   },
+   "dist": {
+    "Backlog": 1,
+    "Closed": 31,
+    "Ready for Development": 5,
+    "In Development": 3
+   },
+   "stalled": 19,
+   "worst": 23.5,
+   "worstSt": "In Development",
+   "items": 40
+  },
+  "DS-Sprint 20-26": {
+   "tis": {
+    "Backlog": {
+     "n": 6,
+     "med": 0
+    },
+    "Ready for Development": {
+     "n": 11,
+     "med": 4.18
+    },
+    "In Development": {
+     "n": 10,
+     "med": 4.5
+    },
+    "Awaiting Review": {
+     "n": 2,
+     "med": 4.5
+    }
+   },
+   "dist": {
+    "Backlog": 1,
+    "Closed": 13,
+    "Ready for Development": 7,
+    "In Development": 3
+   },
+   "stalled": 0,
+   "worst": 0,
+   "worstSt": "",
+   "items": 24
+  },
+  "DS-Sprint 21-26": {
+   "tis": {
+    "Backlog": {
+     "n": 10,
+     "med": 0.01
+    },
+    "Ready for Development": {
+     "n": 22,
+     "med": 11.36
+    },
+    "In Development": {
+     "n": 15,
+     "med": 3.25
+    },
+    "Awaiting Review": {
+     "n": 4,
+     "med": 4.13
+    }
+   },
+   "dist": {
+    "Closed": 13,
+    "In Development": 5,
+    "Ready for Development": 14,
+    "Backlog": 1,
+    "Awaiting Review": 1
+   },
+   "stalled": 19,
+   "worst": 11.5,
+   "worstSt": "Ready for Development",
+   "items": 34
+  }
+ },
+ "WIP": {
+  "dev": 7,
+  "rev": 5,
+  "total": 12,
+  "lim_dev": 10,
+  "lim_rev": 5,
+  "lim_tot": 15,
+  "devs": 5
+ },
+ "VEL_BASE": 45,
+ "VEL_LO": 40,
+ "VEL_HI": 50,
+ "Q1_UNP_N": 5,
+ "Q1_UNP_PCT": 4.166666666666667,
+ "Q1_WONTDO": 4,
+ "Q1_CYC_RECALC": {
+  "med": 7.24,
+  "avg": 18.49,
+  "n": 102
+ },
+ "GUIDES": {
+  "cycle": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117",
+  "thr": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3056467970",
+  "unp": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3132620834",
+  "wip": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3023470624",
+  "vel": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3295739916",
+  "dash": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3131736131",
+  "q1": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3291512876"
+ },
+ "REPORTS": [
+  [
+   "MAY",
+   "2026-05-may.html"
+  ],
+  [
+   "JUN",
+   "2026-06-june.html"
+  ],
+  [
+   "JUL",
+   "2026-07-july.html"
+  ],
+  [
+   "AUG",
+   "2026-08-august.html"
+  ],
+  [
+   "Q1",
+   "2026-q1.html"
+  ],
+  [
+   "Q2",
+   "2026-q2-baseline.html"
+  ]
+ ],
+ "MONTHS": {
+  "06": {
+   "slug": "2026-06-june",
+   "label": "June 2026",
+   "short": "JUN",
+   "prev": "May",
+   "prev_closed": 39,
+   "closed": 74,
+   "discarded": 7,
+   "resolved": 81,
+   "unplanned": 5,
+   "unp_pct": 6.76,
+   "types": [
+    [
+     "Story",
+     67
+    ],
+    [
+     "Bug",
+     6
+    ],
+    [
+     "Urgent Task",
+     4
+    ],
+    [
+     "Task",
+     3
+    ],
+    [
+     "Spike",
+     1
+    ]
+   ],
+   "sprints": [
+    "EDW-Sprint 15-26",
+    "EDW-Sprint 16-26"
+   ],
+   "unp_items": [
+    [
+     "EDW-1978",
+     "May CapRaise data model refresh - phase 1"
+    ],
+    [
+     "EDW-1971",
+     "[Sales] Remove Offboarded offices from report"
+    ],
+    [
+     "EDW-2055",
+     "Plans Purchase Detail report update - round 2"
+    ],
+    [
+     "EDW-2030",
+     "Add all DCA users into platform"
+    ],
+    [
+     "EDW-2088",
+     "ADF pipeline for LL data into pre-prod and prod"
+    ]
+   ],
+   "status": "warning",
+   "headline": "Throughput nearly doubles the baseline, and the team the baseline describes no longer exists."
+  },
+  "07": {
+   "slug": "2026-07-july",
+   "label": "July 2026",
+   "short": "JUL",
+   "prev": "June",
+   "prev_closed": 74,
+   "closed": 79,
+   "discarded": 5,
+   "resolved": 84,
+   "unplanned": 10,
+   "unp_pct": 12.66,
+   "types": [
+    [
+     "Story",
+     55
+    ],
+    [
+     "Bug",
+     15
+    ],
+    [
+     "Urgent Task",
+     9
+    ],
+    [
+     "Spike",
+     2
+    ],
+    [
+     "Task",
+     2
+    ],
+    [
+     "TechDebt",
+     1
+    ]
+   ],
+   "sprints": [
+    "EDW-Sprint 16-26",
+    "EDW-Sprint 17-26",
+    "EDW-Sprint 18-26"
+   ],
+   "unp_items": [
+    [
+     "EDW-2110",
+     "Hack WFP report to include Solomon"
+    ],
+    [
+     "EDW-2130",
+     "Office duplicated in Sales Report"
+    ],
+    [
+     "EDW-2134",
+     "Compliance model not refreshing - reduce model size"
+    ],
+    [
+     "EDW-2077",
+     "[Accounting] Plans Purchase Detail report update - round 2.2"
+    ],
+    [
+     "EDW-2137",
+     "Update DataCap model for June"
+    ],
+    [
+     "EDW-2147",
+     "FBO Reconciliation Troubleshoot"
+    ],
+    [
+     "EDW-2164",
+     "Patterson RevShare insert failure - ADF load broke"
+    ],
+    [
+     "EDW-2169",
+     "[Onboarding] Report addition"
+    ],
+    [
+     "EDW-2173",
+     "Update ExistingCreditLine logic in loan transactions report"
+    ],
+    [
+     "EDW-2096",
+     "SOT tables for ll_staging tables"
+    ]
+   ],
+   "status": "risk",
+   "headline": "Bugs triple and unplanned work is back in the risk band."
+  },
+  "08": {
+   "slug": "2026-08-august",
+   "label": "August 2026",
+   "short": "AUG",
+   "prev": "July",
+   "prev_closed": 79,
+   "closed": 82,
+   "discarded": 20,
+   "resolved": 102,
+   "unplanned": null,
+   "unp_pct": null,
+   "types": [
+    [
+     "Story",
+     81
+    ],
+    [
+     "Task",
+     10
+    ],
+    [
+     "Bug",
+     9
+    ]
+   ],
+   "sprints": [
+    "EDW-Sprint 18-26",
+    "EDW-Sprint 19-26",
+    "EDW-Sprint 20-26"
+   ],
+   "unp_items": [],
+   "status": "warning",
+   "headline": "The highest-delivery month of the year, and the one with the least data to read it by."
+  }
+ },
+ "MONTH_LABEL": {
+  "05": "May",
+  "06": "June",
+  "07": "July",
+  "08": "August"
+ },
+ "QUARTERS_CLOSED": [
+  "Q1",
+  "Q2"
+ ],
+ "ACTIVE": "EDW-Sprint 21-26",
+ "FLOW_ST": [
+  "Ready for Development",
+  "In Development",
+  "Awaiting Review"
+ ],
+ "STCOL": {
+  "Ready for Development": "#65B2D5",
+  "In Development": "#007CBC",
+  "Awaiting Review": "#ED7D31",
+  "Backlog": "#c3cdda",
+  "To Do": "#c3cdda",
+  "Closed": "#4FA800",
+  "Won't Do": "#9aa6b8"
+ },
+ "TIPS": {
+  "<th>Committed</th>": "Story points already in the sprint the day it started.",
+  "<th>Added</th>": "Story points pulled into the sprint after it had already started.",
+  "<th>Completed</th>": "Story points that reached a Done status before the sprint closed.",
+  "<th>Left sprint</th>": "Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.",
+  "<th>vs commit</th>": "Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.",
+  "<th>Added: reactive</th>": "Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.",
+  "<th>Added: plannable</th>": "Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.",
+  "<th>% reactive</th>": "Reactive points as a share of everything added after day 1.",
+  "<td>Throughput (closed)</td>": "Items that reached Closed during the month. Sub-tasks and epics excluded; discarded work is not counted.",
+  "<td>Unplanned work</td>": "Share of the month’s closed items labeled Unplanned. Target is 5% or below.",
+  "<td>Cycle Time (median)</td>": "Calendar days from the first entry into In Development until closure, median across the month.",
+  "<td>Closed without entering development</td>": "Items closed without ever recording a transition into In Development. They have no Cycle Time, so they sit outside that metric.",
+  "<td>Discarded (Won't Do)</td>": "Resolved as Won’t Do. Counted separately because discarded work is not delivered work.",
+  "<div class=\"k\">Committed at start</div>": "Story points in the sprint on day 1, before anything was added.",
+  "<div class=\"k\">Added during sprint</div>": "Story points pulled in after the sprint started. For a service team some of this is unavoidable.",
+  "<div class=\"k\">Completed</div>": "Story points closed inside the sprint window.",
+  "<div class=\"k\">vs commitment</div>": "Completed against the day-1 commitment, not against final scope.",
+  "<span class=\"gname\">Throughput</span>": "Items closed per month. Measures delivery capacity, not effort or complexity.",
+  "<span class=\"gname\">Cycle Time</span>": "How long an item takes from the moment work starts until it closes, in calendar days.",
+  "<span class=\"gname\">Planned vs Unplanned</span>": "Share of delivered work that was reactive. Measures predictability, not productivity.",
+  "<span class=\"gname\">Work In Progress · current snapshot</span>": "Items sitting in In Development or Awaiting Review right now. Policy is 2 per developer, with review at half that.",
+  "<span class=\"gname\">Work In Progress</span>": "Items in In Development or Awaiting Review. A point-in-time reading, not a monthly total.",
+  "<span class=\"gname\">Delivered vs discarded</span>": "Closed items against those resolved as Won’t Do in the same month."
+ },
+ "INDEX": {
+  "2026-08-august.html": {
+   "short": "AUG",
+   "title": "August 2026 Performance Report",
+   "badge": "Warning",
+   "blurb": "82 deliveries, the highest month of the year. No unplanned-work data and 20 discards."
+  },
+  "2026-07-july.html": {
+   "short": "JUL",
+   "title": "July 2026 Performance Report",
+   "badge": "Warning",
+   "blurb": "79 deliveries and unplanned work back at 12.66%. Bugs triple."
+  },
+  "2026-06-june.html": {
+   "short": "JUN",
+   "title": "June 2026 Performance Report",
+   "badge": "Warning",
+   "blurb": "74 deliveries, nearly double the baseline. First full month with the 6-dev team."
+  },
+  "2026-05-may.html": {
+   "short": "MAY",
+   "title": "May 2026 Performance Report",
+   "badge": "Warning",
+   "blurb": "Flow metrics healthy; Unplanned work in Risk (17.95%). Dashboard, comparatives and retrospective observations."
+  },
+  "2026-q2-baseline.html": {
+   "short": "Q2",
+   "title": "Q2 2026 Performance Report",
+   "badge": "Quarter report",
+   "blurb": "April–June quarter close: throughput, cycle time and unplanned work for the quarter, against Q1."
+  },
+  "2026-q1.html": {
+   "short": "Q1",
+   "title": "Q1 2026 Performance Report",
+   "badge": "Baseline",
+   "blurb": "January–March: 120 closed, 40 a month. The reference baseline for the year, reconciled September 2026."
+  }
+ },
+ "INTRO": "Monthly snapshots of delivery flow health — Cycle Time, Throughput, WIP and Planned vs Unplanned — plus sprint metrics rebuilt from Jira: day-1 commitment, scope change, velocity and burndown. Quarter reports carry the full sprint series and the baselines each month is measured against."
+}
