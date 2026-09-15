@@ -1,4 +1,244 @@
 </div></main>
 <footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
-<script src="live.js"></script>
+<script>
+/* Live panel — reads data/live.json, written by the scheduled Action.
+   Everything else on the site stays static. If the file is missing or stale,
+   the panel says so instead of showing nothing.
+
+   Two rules this file exists to keep:
+     1. one number for "how far in are we" — day N of M, everywhere;
+     2. nothing that is not knowable yet gets a value. A sprint on day 2 has
+        no spillover and no verdict, so it shows neither. */
+(function () {
+  var host = document.getElementById('livepanel');
+  if (!host) return;
+
+  var STCOL = {
+    'Ready for Development': '#65B2D5', 'In Development': '#007CBC',
+    'Awaiting Review': '#ED7D31', 'Backlog': '#c3cdda', 'To Do': '#c3cdda',
+    'Closed': '#4FA800', "Won't Do": '#9aa6b8'
+  };
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  var esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  };
+  var day = function (iso) {                    // "2026-09-14" -> "Sep 14"
+    if (!iso) return '';
+    var p = String(iso).slice(0, 10).split('-');
+    return p.length === 3 ? MON[+p[1] - 1] + ' ' + (+p[2]) : esc(iso);
+  };
+  var ago = function (iso) {
+    var m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (!isFinite(m)) return '';
+    if (m < 2) return 'less than a minute ago';
+    if (m < 60) return m + ' min ago';
+    var h = Math.round(m / 60);
+    return h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago';
+  };
+  var clock = function (iso) {                  // "22:32 UTC" from the ISO stamp
+    var t = String(iso || '').slice(11, 16);
+    return t ? t + ' UTC' : '';
+  };
+
+  function tile(k, v, n, col) {
+    return '<div class="hcell"><div class="hk">' + k + '</div>' +
+      '<div class="hv"' + (col ? ' style="color:' + col + '"' : '') + '>' + v + '</div>' +
+      '<div class="hn">' + n + '</div></div>';
+  }
+
+  function bar(dist) {
+    var tot = 0, k;
+    for (k in dist) tot += dist[k];
+    if (!tot) return '';
+    var pairs = Object.keys(dist).map(function (s) { return [s, dist[s]]; })
+      .sort(function (a, b) { return b[1] - a[1]; });
+    var bars = '', keys = '';
+    pairs.forEach(function (p) {
+      var pct = 100 * p[1] / tot, col = STCOL[p[0]] || '#c3cdda';
+      bars += '<span style="width:' + pct.toFixed(1) + '%;background:' + col + '">' +
+        (pct > 7 ? p[1] : '') + '</span>';
+      keys += '<span><i class="tisdot" style="background:' + col + '"></i>' +
+        esc(p[0]) + ' <b>' + p[1] + '</b></span>';
+    });
+    return '<div class="sprintsec"><div class="sk">Work distribution &middot; ' + tot +
+      ' items</div><div class="tisbar">' + bars + '</div>' +
+      '<div class="tiskey">' + keys + '</div></div>';
+  }
+
+  /* The burndown is drawn across the WHOLE sprint, not across the days that have
+     happened. Stretching three days over the full width is what made it look like
+     a broken chart: the line ended at the right edge as if the sprint were over. */
+  function burndown(s) {
+    var burn = s.burn, scope = s.scope;
+    if (!burn || burn.length < 2) return '';
+    var days  = s.days || (burn.length - 1);
+    var slots = days;                                  // day 0 .. day `days`
+    var W = 640, H = 210, L = 34, R = 12, T = 14, B = 34;
+    var hi = Math.max.apply(null, (scope || []).concat(burn)) || 1;
+    hi = Math.ceil(hi / 10) * 10 || 10;
+    // pick a tick count that divides the top of the scale, so the axis reads
+    // 0-10-20-30-40-50 instead of 0-13-25-38-50
+    var ticks = 4, tk;
+    for (tk = 0; tk < 4; tk++) { var c = [5, 4, 6, 3][tk]; if (hi % c === 0) { ticks = c; break; } }
+    var step = (W - L - R) / slots;
+    var X = function (i) { return L + i * step; };
+    var Y = function (v) { return T + (H - T - B) * (1 - v / hi); };
+    var path = function (arr) {
+      return arr.map(function (v, i) {
+        return (i ? 'L' : 'M') + X(i).toFixed(1) + ',' + Y(v).toFixed(1);
+      }).join(' ');
+    };
+    var grid = '', lab = '', g;
+    for (g = 0; g <= ticks; g++) {
+      var v = hi * g / ticks, y = Y(v).toFixed(1);
+      grid += '<line x1="' + L + '" y1="' + y + '" x2="' + (W - R) + '" y2="' + y +
+        '" stroke="#e2e8f0" stroke-width="1"/>';
+      lab += '<text x="' + (L - 6) + '" y="' + (+y + 3.5) +
+        '" text-anchor="end" font-size="10" fill="#626c84">' + Math.round(v) + '</text>';
+    }
+    var todayX = X(burn.length - 1);
+    var area = (scope && scope.length)
+      ? '<path d="' + path(scope) + ' L' + todayX.toFixed(1) + ',' + Y(0) +
+        ' L' + X(0).toFixed(1) + ',' + Y(0) + ' Z" fill="rgba(195,205,218,.25)"/>' : '';
+    var ideal = 'M' + X(0).toFixed(1) + ',' + Y(burn[0]).toFixed(1) +
+                ' L' + X(slots).toFixed(1) + ',' + Y(0).toFixed(1);
+
+    return '<div class="sprintsec"><div class="sk">Burndown &middot; story points remaining ' +
+      '&middot; day ' + (s.day || burn.length) + ' of ' + days + '</div>' +
+      '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:210px" ' +
+      'role="img" aria-label="Sprint burndown, story points remaining by day">' +
+      grid + lab + area +
+      '<path d="' + ideal + '" stroke="#c3cdda" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
+      (scope && scope.length ? '<path d="' + path(scope) +
+        '" stroke="#9aa6b8" stroke-width="2" fill="none"/>' : '') +
+      '<path d="' + path(burn) + '" stroke="#007CBC" stroke-width="3" fill="none" stroke-linejoin="round"/>' +
+      '<line x1="' + todayX.toFixed(1) + '" y1="' + T + '" x2="' + todayX.toFixed(1) +
+      '" y2="' + Y(0) + '" stroke="#ED7D31" stroke-width="1" stroke-dasharray="3 3"/>' +
+      '<text x="' + (todayX + 4).toFixed(1) + '" y="' + (T + 9) +
+      '" font-size="10" fill="#ED7D31" font-weight="700">today</text>' +
+      '<line x1="' + L + '" y1="' + Y(0) + '" x2="' + (W - R) + '" y2="' + Y(0) +
+      '" stroke="#c3cdda" stroke-width="1"/>' +
+      '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" fill="#626c84">' + day(s.start) + '</text>' +
+      '<text x="' + (W - R) + '" y="' + (H - 12) +
+      '" text-anchor="end" font-size="10" fill="#626c84">' + day(s.end) + '</text>' +
+      '</svg>' +
+      '<div class="tiskey" style="margin-top:2px">' +
+      '<span><i class="tisdot" style="background:#007CBC"></i>Remaining</span>' +
+      '<span><i class="tisdot" style="background:#9aa6b8"></i>Total scope</span>' +
+      '<span><i class="tisdot" style="background:#c3cdda"></i>Ideal burn</span>' +
+      '</div></div>';
+  }
+
+  function render(d) {
+    var s = d.sprint, m = d.month, out = '';
+    var first = !d.generated || d.generated.slice(0, 4) === '1970';
+    var stale = !first && (Date.now() - new Date(d.generated).getTime()) > 45 * 60000;
+    var live  = d.kind === 'active';
+
+    var tag = live
+      ? '<span class="activetag">&#9679; Active sprint</span>'
+      : (d.kind === 'recent'
+        ? '<span class="activetag" style="background:var(--wf-muted)">Most recent sprint</span>'
+        : '<span class="activetag" style="background:var(--wf-muted)">No sprint open</span>');
+
+    out += '<div class="activewrap">' + tag;
+
+    if (s) {
+      // the sprint being reported on is the headline, not the one after it
+      out += '<div style="font-size:22px;font-weight:800;color:var(--wf-blue-d);line-height:1.2">' +
+        esc(s.name) + '</div>' +
+        '<div class="secsub" style="margin:2px 0 12px;font-size:13px;color:var(--wf-muted)">' +
+        day(s.start) + ' &rarr; ' + day(s.end) +
+        (s.day ? ' &middot; <b>day ' + s.day + ' of ' + s.days + '</b>' : '') +
+        (live ? '' : ' &middot; closed') + '</div>';
+    }
+
+    if (!s) {
+      out += '<div class="secsub" style="margin-bottom:10px">No sprint is open on this board right now.' +
+        (d.next ? ' <b>' + esc(d.next.name) + '</b> is created with a start date of ' +
+          esc(day(d.next.start)) + ' and has not been started.' : '') + '</div>';
+    }
+
+    if (s) {
+      var pace = (s.day && s.days) ? Math.round(100 * s.day / s.days) : null;
+      var openPts = Math.round((s.spill ? s.spill.open_pts + s.spill.out_pts : 0));
+      var openIt  = s.spill ? s.spill.open_items + s.spill.out_items : 0;
+
+      out += '<div class="healthrow">' +
+        tile('Work complete', (s.vs_commitment == null ? '&mdash;' : s.vs_commitment + '%'),
+          s.completed + ' of ' + s.committed + ' pts committed') +
+        tile('Sprint elapsed', (s.day ? 'Day ' + s.day : '&mdash;'),
+          (s.days ? 'of ' + s.days + (pace == null ? '' : ' &middot; ' + pace + '% of the sprint') : '')) +
+        tile('Scope change', (s.scope_change == null ? '&mdash;' : '+' + s.scope_change + '%'),
+          s.committed + ' &rarr; ' + s.final + ' pts',
+          s.scope_change ? 'var(--warning)' : null) +
+        (live
+          // during a sprint nothing has spilled over yet: it is still open work
+          ? tile('Still open', openPts + ' pts',
+              openIt + ' items &middot; spillover is known when the sprint closes ' + day(s.end))
+          : tile('Spillover', (s.spill_rate == null ? '&mdash;' : s.spill_rate + '%'),
+              openPts + ' pts carried out of the sprint', 'var(--risk)')) +
+        '</div>';
+
+      if (live) {
+        out += '<div class="goalbox" style="margin:0 0 12px">This sprint is <b>in progress</b>. ' +
+          'The numbers above are a position on day ' + (s.day || 1) + ' of ' + (s.days || '?') +
+          ', not a result &mdash; it gets a verdict in the release report once it closes.</div>';
+      }
+
+      out += bar(s.dist);
+      out += burndown(s);
+      out += '<div class="goalbox" style="margin-top:12px">' + (s.goal
+        ? '<b>Sprint goal.</b> ' + esc(s.goal)
+        : '<b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count.') +
+        '</div>';
+    }
+
+    if (m) {
+      var isRel = m.kind === 'release';
+      out += '<div class="sprintsec"><div class="sk">' + esc(m.label) +
+        ' so far &middot; day ' + m.day + (m.days ? ' of ' + m.days : '') +
+        (isRel ? '' : ' &middot; calendar month') + '</div>' +
+        '<div class="healthrow" style="margin-bottom:0">' +
+        tile('Closed', m.closed, 'items ' + (isRel ? 'this release' : 'this month')) +
+        tile('Story points', m.points, 'delivered so far') +
+        tile('Unplanned', (m.unplanned_pct == null ? '&mdash;' : m.unplanned_pct + '%'),
+          (m.unplanned_pct == null
+            ? 'the Unplanned label was not applied'
+            : m.unplanned + ' of ' + m.closed + ' items')) +
+        tile('Contributors', m.people_active, 'people who closed 2+ items') +
+        '</div>' +
+        (isRel && m.sprints ? '<div class="secsub" style="margin-top:8px;font-size:12px">' +
+          'Sprints in this release: ' + m.sprints.map(esc).join(', ') + '</div>' : '') +
+        '</div>';
+    }
+
+    if (d.next) {
+      out += '<div class="secsub" style="margin-top:12px;font-size:12.5px">Next up: <b>' +
+        esc(d.next.name) + '</b>, starting ' + day(d.next.start) + '.</div>';
+    }
+
+    out += '<div class="secsub" style="margin-top:6px;font-size:12.5px">' + (first
+      ? 'Waiting for the first refresh &mdash; the scheduled job has not run yet.'
+      : 'Live from Jira &middot; last refresh ' + clock(d.generated) + ' &middot; ' + ago(d.generated) +
+        (stale ? ' &middot; <b style="color:var(--warning)">the refresh job may be stuck</b>' : '')) +
+      '</div></div>';
+    host.innerHTML = out;
+  }
+
+  fetch('data/live.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function () {
+      host.innerHTML = '<div class="activewrap"><span class="activetag" ' +
+        'style="background:var(--wf-muted)">Live panel</span>' +
+        '<div class="goalbox">Live data is not available yet. Once the refresh job has run ' +
+        'at least once, the current sprint and the release in progress appear here.</div></div>';
+    });
+})();
+
+</script>
 </body></html>
