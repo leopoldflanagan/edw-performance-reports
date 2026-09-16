@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T18:20:01Z",
+ "generated": "2026-09-16T18:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -227,7 +227,7 @@
   "goals": {
    "EDW-Sprint 22-26": {
     "goal": "The 9.8 reporting dashboards render correctly - axes, date ranges and empty states all behave, and nothing in Wellfit Reporting reaches the 9.08 release with a visible chart defect.",
-    "committed": 51.0,
+    "committed": null,
     "notes": "Covers EDW-2337, 2332, 2327, 2336 and 2354, all under the Wellfit Reporting - future release scope 9.8 epic. Separate decision for this sprint: EDW-1878 leaves sprint 22 either finished or closed as Won't Do. It has ridden 10 consecutive sprints, entered development on 13 May and came back out on 10 June. It does not move to sprint 23."
    }
   },
@@ -592,8 +592,8 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "The 9.8 reporting dashboards render correctly - axes, date ranges and empty states all behave, and nothing in Wellfit Reporting reaches the 9.08 release with a visible chart defect.",
-  "items": 19,
-  "items_done": 3,
+  "items": 21,
+  "items_done": 4,
   "committed": 49,
   "final": 51,
   "completed": 7,
@@ -615,8 +615,9 @@
   },
   "spill_rate": null,
   "dist": {
+   "Backlog": 1,
+   "Closed": 4,
    "In Development": 7,
-   "Closed": 3,
    "Ready for Development": 7,
    "Won't Do": 1,
    "Awaiting Review": 1
@@ -653,8 +654,7 @@
    "risk": "\ud83d\udfe2",
    "planned": false
   },
-  "goal_src": "capacity page",
-  "committed_planned": 51.0
+  "goal_src": "capacity page"
  },
  "next": {
   "name": "EDW-Sprint 23-26",
@@ -711,7 +711,7 @@
     "clear_n": 243
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -719,8 +719,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "PR Created",
@@ -735,18 +735,6 @@
     "clear_n": 1
    },
    {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -757,6 +745,18 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -784,8 +784,8 @@
    }
   ],
   "parked": {
-   "Backlog": 68,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 68
   },
   "open_total": 29,
   "stale": 18,

@@ -98,8 +98,8 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   19,
-   3,
+   21,
+   4,
    49,
    51,
    7,
@@ -141,7 +141,7 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    3,
+    4,
     7
    ],
    "open": [
@@ -224,8 +224,12 @@
   "EDW-Sprint 22-26": {
    "tis": {
     "Backlog": {
-     "n": 9,
-     "med": 0.28
+     "n": 11,
+     "med": 1.17
+    },
+    "Closed": {
+     "n": 5,
+     "med": 12.52
     },
     "In Development": {
      "n": 11,
@@ -234,10 +238,6 @@
     "Awaiting Review": {
      "n": 3,
      "med": 0.0
-    },
-    "Closed": {
-     "n": 4,
-     "med": 12.52
     },
     "Ready for Development": {
      "n": 11,
@@ -249,16 +249,17 @@
     }
    },
    "dist": {
+    "Backlog": 1,
+    "Closed": 4,
     "In Development": 7,
-    "Closed": 3,
     "Ready for Development": 7,
     "Won't Do": 1,
     "Awaiting Review": 1
    },
-   "stalled": 15,
+   "stalled": 16,
    "worst": 13.5,
    "worstSt": "Ready for Development",
-   "items": 19
+   "items": 21
   }
  },
  "GHOST": {
@@ -529,7 +530,7 @@
  "GOALS": {
   "EDW-Sprint 22-26": {
    "goal": "The 9.8 reporting dashboards render correctly - axes, date ranges and empty states all behave, and nothing in Wellfit Reporting reaches the 9.08 release with a visible chart defect.",
-   "committed": 51.0,
+   "committed": null,
    "notes": "Covers EDW-2337, 2332, 2327, 2336 and 2354, all under the Wellfit Reporting - future release scope 9.8 epic. Separate decision for this sprint: EDW-1878 leaves sprint 22 either finished or closed as Won't Do. It has ridden 10 consecutive sprints, entered development on 13 May and came back out on 10 June. It does not move to sprint 23."
   }
  },
