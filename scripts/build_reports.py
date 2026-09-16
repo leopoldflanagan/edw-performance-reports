@@ -2014,6 +2014,10 @@ SPRINTCSS = """
  /* the live blocks carry their own rule above them; as the first thing in a card
     that line reads as a stray divider */
  .cardbody>.sprintsec:first-child{margin-top:0;padding-top:0;border-top:none}
+ .gsrc{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:12px;
+   color:var(--wf-muted);line-height:1.5}
+ .goalbox a{color:var(--wf-blue);font-weight:600;text-decoration:none;border-bottom:1px solid #bcdcec}
+ .goalbox a:hover{border-color:var(--wf-blue)}
  #livehead .liverow{justify-content:flex-start;gap:10px}
  #livehead .activetag{vertical-align:middle}
  @media(max-width:700px){

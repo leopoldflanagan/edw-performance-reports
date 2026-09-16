@@ -329,13 +329,44 @@
       '</div>';
   }
 
-  function goalBlock(s) {
-    var out = '<div class="goalbox">' + (s.goal
-      ? '<b>Sprint goal.</b> ' + esc(s.goal) +
-        (s.goal_src ? '<div class="hs" style="margin-top:6px">Recorded on the ' +
-          esc(s.goal_src) + ', not in Jira.</div>' : '')
-      : '<b>No sprint goal recorded</b>, in Jira or on the capacity page. Without one ' +
-        'there is nothing to measure delivery against beyond the point count.') + '</div>';
+  function goalBlock(s, d, live) {
+    // The card is titled "Sprint goal"; repeating the words inside it made the
+    // sentence read as a label rather than as the goal. And the line saying where
+    // it lives was set in the same type as the goal itself, so the two looked
+    // equally important. It is a footnote, so it is set like one -- and it points
+    // at the page instead of naming it.
+    var capUrl = d.capacity && d.capacity.url;
+    var out = '<div class="goalbox">';
+    if (!s.goal) {
+      out += '<b>No sprint goal recorded</b>, in Jira or on the capacity page. Without one ' +
+        'there is nothing to measure delivery against beyond the point count.</div>';
+      return out;
+    }
+    out += '<div style="font-size:15px;color:var(--wf-ink);line-height:1.45">' +
+      esc(s.goal) + '</div>' +
+      '<div class="gsrc">Kept on the ' +
+      (capUrl ? '<a href="' + esc(capUrl) + '" target="_blank" rel="noopener">sprint capacity ' +
+        'page</a>' : 'sprint capacity page') +
+      ' in Confluence. The sprint in Jira carries no goal field, so this is the only ' +
+      'place it is written down.</div></div>';
+
+    // A sentence is not a number and Jira does not score it. Saying so out loud is
+    // better than implying the point count is the goal, or leaving the reader to
+    // guess whether anyone is tracking it.
+    var pr = d.projection;
+    out += '<div class="goalbox" style="margin-top:8px"><b>How it is tracking.</b> ' +
+      'Nothing in Jira scores a sentence, so the board can only report the position ' +
+      'behind it: ' +
+      (live
+        ? 'on day ' + (s.day || 1) + ' of ' + (s.days || '?') + ', ' + s.completed + ' of the ' +
+          s.committed + ' committed points are done' +
+          (pr && !pr.too_early ? ', and the sprint is on course to close at ' + pr.lo +
+            '&ndash;' + pr.hi + ' pts' : '') + '. ' +
+          'Whether the goal itself was met is a call for the sprint review.'
+        : s.completed + ' of the ' + s.committed + ' committed points closed. ' +
+          'Whether the goal itself was met is the review\'s call, and the verdict on the ' +
+          'sprint is in the release report.') +
+      '</div>';
 
     // Two commitments only deserve a paragraph when they actually disagree. A point
     // or two apart is rounding, and explaining it every sprint teaches people to
@@ -425,8 +456,8 @@
       prog += card('Burndown', 'Story points remaining, against the ideal line and the scope ' +
         'as it moved. The grey band is total scope; the gap between the two lines is work ' +
         'added after day 1.', burndown(s, false, true));
-      prog += card('Sprint goal', 'What this sprint set out to achieve, and where it was ' +
-        'written down.', goalBlock(s));
+      prog += card('Sprint goal', 'What this sprint set out to achieve, and how far the ' +
+        'numbers behind it have got.', goalBlock(s, d, live));
 
       var nItems = 0, _k;
       for (_k in (s.dist || {})) nItems += s.dist[_k];
