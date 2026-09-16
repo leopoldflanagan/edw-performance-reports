@@ -109,6 +109,29 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  color:var(--wf-muted);text-decoration:none;border:1px solid var(--line);background:var(--card);
  padding:6px 12px;border-radius:999px;margin-top:14px;transition:.15s}
 .adminlink:hover{border-color:var(--wf-blue-l);color:var(--wf-blue-d)}
+
+/* The index had no layout for a phone. Four stat tiles at 1fr each cannot fit in
+   390px, so the page grew a horizontal scrollbar and the header ran off the edge. */
+@media(max-width:700px){
+ .wrap{padding:0 16px}
+ header{padding:34px 0 30px}
+ header h1{font-size:28px}
+ header .sub{font-size:14px}
+ .healthrow{grid-template-columns:repeat(2,1fr)}
+ .rcard{gap:13px;padding:15px 16px}
+ .rcard .mo{width:52px;height:52px}
+ .rcard .body h3{font-size:16px}
+ .bh{gap:12px}
+ .bh .hero{min-width:0}
+ .bhband{min-width:100%}
+ .ck{gap:10px;padding:10px 12px}
+ .ck .cn{min-width:28px;font-size:17px}
+}
+@media(max-width:430px){
+ .healthrow{grid-template-columns:1fr}
+ .hcell .hv{font-size:20px}
+ .rcard .body p{font-size:12.5px}
+}
 </style></head>
 <body>
 <header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse</div><h1>EDW Performance Reports</h1>

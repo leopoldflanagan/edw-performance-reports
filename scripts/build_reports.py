@@ -235,6 +235,29 @@ RESPCSS = """
  @media(max-width:430px){ .wrap{padding:0 16px} .rp{padding:5px 10px;font-size:11.5px} }
 """
 
+RESIZEJS = r'''
+// A chart built inside a hidden panel measures 0x0 and stays that way until
+// something tells it to measure again. Tabs, collapsibles and the modal all hide
+// charts, and each one used to need its own resize call -- which is why a section
+// could open onto what looked like a chart that failed to load. One observer
+// watches every chart box instead, so anything that reveals one is covered,
+// including whatever gets added later.
+(function(){
+  if(typeof Chart==='undefined'||typeof ResizeObserver==='undefined') return;
+  var ro=new ResizeObserver(function(entries){
+    entries.forEach(function(e){
+      var w=e.contentRect.width;
+      if(!w) return;                         // still hidden
+      var cv=e.target.querySelector('canvas');
+      if(!cv) return;
+      var ch=Chart.getChart(cv);
+      if(ch && Math.abs(ch.width-w)>1) ch.resize();
+    });
+  });
+  document.querySelectorAll('.chartbox').forEach(function(b){ ro.observe(b); });
+})();
+'''
+
 ZOOMJS = r'''
 // --- click a chart to open it full size -------------------------------------
 (function(){
@@ -1616,7 +1639,7 @@ new Chart(document.getElementById('cUnp'),{{type:'line',
   scales:{{y:{{beginAtZero:true,max:20,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[bands]}});
 {charts_scrum(mk)}""" + _tis_js
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + TIPJS)
+    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 def q2_page():
     apr, may, jun = APR, MAY, 74
@@ -1705,7 +1728,7 @@ new Chart(document.getElementById('cQ'),{{type:'bar',
    backgroundColor:['#c3cdda','#c3cdda','#c3cdda','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:110,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}}}});
 {charts_scrum()}"""
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + TIPJS)
+    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 def q1_page():
     q1n = [r[0] for r in SPRINTS_Q1]
@@ -1843,7 +1866,7 @@ new Chart(document.getElementById('cQ1'),{{type:'bar',
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:55,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[q1Ref]}});
 {charts_scrum(only=q1n)}"""
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + TIPJS)
+    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 
 # ---------------------------------------------------------------- index page
