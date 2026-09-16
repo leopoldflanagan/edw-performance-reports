@@ -560,6 +560,143 @@ def backlog(project, frozen_path):
     }
 
 
+F_TARGET_END = os.environ.get("JIRA_TARGET_END", "customfield_10023")
+ADHOC        = "8-AdHoc"
+LONG_HAUL    = 4          # sprints an item can ride before it is worth naming
+
+
+def admin(project, live_sp, cap_page):
+    """Administrative hygiene, split by what it actually costs.
+
+    BLOCKING is the Definition of Ready exactly as the team's Backlog Organization
+    Guide writes it. The gate is not the sprint, it is *Ready for Development*: an
+    item that reaches that status without meeting DoR is a planning problem one
+    step before anyone notices it in a sprint.
+
+    DEBT is everything that helps reporting but does not stop the sprint.
+
+    One rule keeps this honest: a field missing on nearly every item is reported as
+    a field the team does not use, not as N separate warnings. A check that is
+    always red is not a check, and a page where everything is red says nothing.
+    """
+    active = (live_sp or {}).get("name")
+    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) AND ('
+           f'status = "{READY_STATUS}"'
+           + (f' OR sprint = "{active}"' if active else "") + ")")
+    iss = search(jql, ["status", "summary", "assignee", "fixVersions", "timetracking",
+                       "labels", "issuetype", "issuelinks", SP_FIELD, GROOM_FIELD,
+                       F_TARGET_END, "sprint"], cap=6)
+    if not iss:
+        return None
+
+    def groom(i):
+        v = i["fields"].get(GROOM_FIELD)
+        if isinstance(v, dict): v = v.get("value")
+        return (v or "").strip()
+
+    def in_sprint(i):
+        return active and any((s or {}).get("name") == active
+                              for s in (i["fields"].get("sprint") or []))
+
+    roster = {p["name"] for p in ((cap_page or {}).get("roster") or [])
+              if not (p.get("status") or "").lower().startswith("left")}
+
+    def ref(i):
+        return {"key": i["key"], "summary": (i["fields"].get("summary") or "")[:80]}
+
+    B, D = [], []          # blocking, debt
+    def add(bucket, rule, why, items, total=None):
+        if items:
+            bucket.append({"rule": rule, "why": why, "n": total or len(items),
+                           "items": [ref(i) for i in items[:8]]})
+
+    ready = [i for i in iss if i["fields"]["status"]["name"] == READY_STATUS]
+    sprint = [i for i in iss if in_sprint(i)]
+    gate = {i["key"]: i for i in ready + sprint}.values()
+
+    # ---- blocking: the Definition of Ready ---------------------------------
+    add(B, "No estimate",
+        "the guide: a Groomed item must be estimated. Ready for Development without "
+        "story points means planning is committing to an unknown.",
+        [i for i in gate if i["fields"].get(SP_FIELD) is None])
+    add(B, "No Grooming Status",
+        "an item in Ready for Development with no grooming status has not been through "
+        "refinement, whatever its column says.",
+        [i for i in ready if not groom(i)])
+    add(B, "Idea/Draft in Ready for Development",
+        "the guide does not allow it: it counts as ready to pull when it is not defined.",
+        [i for i in ready if groom(i).startswith("1")])
+    add(B, "AdHoc without the unplanned label",
+        "the guide does not allow it. Unlabelled reactive work is why the reactive "
+        "share cannot be measured.",
+        [i for i in gate if groom(i).startswith("8")
+         and not any(l.lower() == "unplanned" for l in i["fields"].get("labels", []))])
+    add(B, "No assignee in the active sprint",
+        "work in the sprint that nobody owns.",
+        [i for i in sprint if not i["fields"].get("assignee")])
+    _blocked = [i for i in gate
+                if any("block" in (l.get("type", {}).get("name", "")).lower()
+                       and ((l.get("inwardIssue") or l.get("outwardIssue") or {})
+                            .get("fields", {}).get("status", {})
+                            .get("statusCategory", {}).get("key") != "done")
+                       for l in (i["fields"].get("issuelinks") or []))]
+    add(B, "Open dependency", "the guide: Definition of Ready means no open dependencies.", _blocked)
+    add(B, "Still in Backlog inside the sprint",
+        "in the sprint but never pulled into the flow.",
+        [i for i in sprint if i["fields"]["status"]["name"] == "Backlog"])
+
+    # ---- debt: useful, not blocking ----------------------------------------
+    def coverage(items, ok):
+        """A field nobody fills is one finding, not many."""
+        bad = [i for i in items if not ok(i)]
+        return bad, (len(bad) / len(items) if items else 0)
+
+    for rule, why, ok in (
+        ("No fix version", "the release a delivery belongs to cannot be traced without it.",
+         lambda i: i["fields"].get("fixVersions")),
+        ("No original estimate", "time tracking is empty, so effort cannot be compared to points.",
+         lambda i: (i["fields"].get("timetracking") or {}).get("originalEstimate")),
+        ("No Target end date", "there is no expected date to measure a slip against.",
+         lambda i: i["fields"].get(F_TARGET_END)),
+    ):
+        bad, share = coverage(list(gate), ok)
+        if share >= 0.8:
+            D.append({"rule": rule.replace("No ", "").capitalize() + " is not in use",
+                      "why": f"missing on {len(bad)} of {len(list(gate))} items. This reads as a "
+                             f"field the team does not use rather than {len(bad)} oversights. "
+                             f"Worth deciding: adopt it or stop asking for it.",
+                      "n": len(bad), "items": []})
+        else:
+            add(D, rule, why, bad)
+
+    if roster:
+        add(D, "Assignee is not on the roster",
+            "the capacity page lists the team; this work is assigned outside it.",
+            [i for i in sprint
+             if (i["fields"].get("assignee") or {}).get("displayName")
+             and (i["fields"]["assignee"]["displayName"]) not in roster])
+
+    add(D, f"Riding {LONG_HAUL}+ sprints",
+        "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
+        [i for i in gate if len(i["fields"].get("sprint") or []) >= LONG_HAUL])
+
+    # ---- sprint-level ------------------------------------------------------
+    setup = []
+    if live_sp and not (live_sp.get("goal") or "").strip():
+        setup.append({"rule": "The active sprint has no goal",
+                      "why": "neither Jira nor the capacity page records one, so delivery "
+                             "can only be measured in points.", "n": 1, "items": []})
+    if cap_page and active and active not in (cap_page.get("sprints") or {}):
+        setup.append({"rule": "The sprint is missing from the capacity page",
+                      "why": "the planning record and Jira have drifted apart.",
+                      "n": 1, "items": []})
+
+    print(f"  admin checks: {sum(x['n'] for x in B)} blocking, "
+          f"{sum(x['n'] for x in D)} debt, {len(setup)} sprint setup", flush=True)
+    return {"scope": {"ready": len(ready), "sprint": len(sprint), "sprint_name": active},
+            "blocking": B, "debt": D, "setup": setup}
+
+
 PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
@@ -995,6 +1132,7 @@ def main():
         "team": a.team, "board": a.board, "kind": kind,
         "capacity": cap_page,
         "backlog": backlog(a.project, a.frozen),
+        "admin": admin(a.project, live_sp, cap_page),
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),

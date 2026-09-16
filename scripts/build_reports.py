@@ -1600,6 +1600,25 @@ def _card(href, short, year, title, badge, blurb, status=None):
 <div class="arrow">&rarr;</div></a>
 '''
 
+def admin_page():
+    """The board-hygiene page. Same shell as the index, different audience: this one
+    is for whoever keeps Jira honest, so it is linked from the index rather than
+    listed on it."""
+    head = open(os.path.join(REPO, "assets", "index.head.html")).read()
+    foot = open(os.path.join(REPO, "assets", "admin.foot.html")).read()
+    head = head.replace("<title>EDW Performance Reports</title>",
+                        "<title>EDW &middot; Board hygiene</title>")
+    head = head.replace('<div class="eyebrow">Enterprise Data Warehouse</div>',
+                        '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
+    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>Board hygiene</h1>")
+    _i, _j = head.find('<div class="sub">'), head.find("</div></div></header>")
+    head = head[:_i] + ('<div class="sub">Everything on this page is fixable by editing Jira. '
+                        'It is kept away from the reports on purpose: the reports are for '
+                        'stakeholders, this is for whoever keeps the board honest.</div>') + head[_j:]
+    head = head.replace('<div id="livepanel"></div>', '<div id="adminpanel"></div>')
+    return head + foot
+
+
 def index_page():
     head = open(os.path.join(REPO, "assets", "index.head.html")).read()
     foot = open(os.path.join(REPO, "assets", "index.foot.html")).read()
@@ -1650,6 +1669,8 @@ def index_page():
     if quarters:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
                 + "".join(c for _, c in quarters))
+    out += ('<a class="adminlink" href="admin.html">&#9881;&#65039; Board hygiene '
+            '&mdash; Definition of Ready, backlog health and field checks</a>\n')
     return out + foot
 
 
@@ -1709,6 +1730,8 @@ os.makedirs(f"{REPO}/2026", exist_ok=True)
 for mk, m in MONTHS.items():
     open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips(month_page(mk)))
     print("wrote", m["slug"])
+open(f"{REPO}/admin.html","w").write(admin_page())
+print("wrote admin")
 open(f"{REPO}/2026/2026-q1.html","w").write(add_tips(q1_page()))
 print("wrote 2026-q1")
 open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips(q2_page()))
