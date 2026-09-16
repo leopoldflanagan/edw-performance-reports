@@ -191,6 +191,8 @@ def sprint_detail(board, sp, project):
         final += v
         if e <= day1:
             committed += v               # committed even if it was pulled out later
+            if prev and _entered_sprint(i, prev) is not None:
+                recv_items += 1; recv_pts += v
         if d is not None and d <= horizon and (o is None or d <= o):
             completed += v; items_done += 1
         rows.append((e, v, d, o))
@@ -999,7 +1001,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None, window=None, s
 
     rows, spill, split, tis, ghost, names = {}, {}, {}, {}, {}, []
     for s in (sprints_named(mine, sprint_names) if sprint_names else sprints_of_month(mine, ym)):
-        d = sprint_detail(board, s, project)
+        d = sprint_detail(board, s, project, prev=_prev_sprint(mine, s))
         n = d["name"]; names.append(n)
         st, en = _dtp(s["startDate"]), _dtp(s.get("completeDate") or s["endDate"])
         rows[n] = [n, _mday(st), _mday(en), d["items"], d["items_done"],
@@ -1007,9 +1009,13 @@ def month_block(board, project, team, mine, ym, prev_closed=None, window=None, s
                    d["scope_change"] if d["scope_change"] is not None else 0,
                    d["burn"], d["scope"]]
         sp_ = d["spill"]
+        _rc = d.get("recv") or {}
         spill[n] = {"done": [d["items_done"], round(sp_["done_pts"])],
                     "open": [sp_["open_items"], round(sp_["open_pts"])],
-                    "out":  [sp_["out_items"],  round(sp_["out_pts"])]}
+                    "out":  [sp_["out_items"],  round(sp_["out_pts"])],
+                    # the other side of the transfer: what this sprint inherited
+                    "in":   [_rc.get("items", 0), _rc.get("pts", 0)],
+                    "in_pct": _rc.get("pct"), "in_from": _rc.get("from")}
         ghost[n] = d["ghost"]
         split[n] = split_of(d["_issues_all"], n, d["_day1"], d["_start"])
         tis[n]   = tis_of(d["_issues_all"], d["_start"], d["_end"], n)
@@ -1090,7 +1096,7 @@ def main():
     elif closed:    sp, kind = closed[-1], "recent"
     else:           sp, kind = None, "none"
 
-    det = sprint_detail(a.board, sp, a.project) if sp else None
+    det = sprint_detail(a.board, sp, a.project, prev=_prev_sprint(mine, sp)) if sp else None
     live_sp = _clean(det) if det else None
     if live_sp and live_sp.get("start") and live_sp.get("end"):
         # one number for "how far in are we", used by the tiles and the burndown
@@ -1209,7 +1215,7 @@ def selfcheck(a, mine):
     s = next((x for x in mine if x["name"] == want), None)
     if s is None:
         sys.exit(f"{want} is not a sprint on board {a.board}")
-    d = sprint_detail(a.board, s, a.project)
+    d = sprint_detail(a.board, s, a.project, prev=_prev_sprint(mine, s))
     fields = [("items", 3), ("items_done", 4), ("committed", 5), ("final", 6), ("completed", 7)]
     print(f"--- selfcheck {want} ------------------------------------")
     print(f"{'field':<12}{'frozen':>9}{'now':>9}   verdict")

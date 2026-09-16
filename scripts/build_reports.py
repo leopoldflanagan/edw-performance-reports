@@ -685,6 +685,74 @@ __CHARTS__
 {ZOOMJS}
 </script></body></html>"""
 
+def recv_card():
+    """Spillover has two ends. The series has always shown only the giving one."""
+    rows = [(n, spill(n)) for n in [r[0] for r in SPRINTS]]
+    rows = [(n, sl) for n, sl in rows if sl and sl.get("in") is not None]
+    if not rows:
+        return ""
+    got  = sum(sl["in"][1] for _, sl in rows)
+    gave = sum(sl["open"][1] + sl["out"][1] for _, sl in rows)
+    comm = sum(sp(n)[5] for n, _ in rows if sp(n))
+    share = round(100 * got / comm) if comm else 0
+    worst = max(rows, key=lambda r: r[1]["in"][1])
+    wfrom = worst[1].get("in_from") or "the sprint before"
+    net = got - gave
+    if abs(net) <= 0.15 * max(got, gave, 1):
+        verdict = "takes in about as much as it hands on, which is what a queue looks like"
+    elif net < 0:
+        verdict = "hands on more than it takes in, so the carry-over is still growing"
+    else:
+        verdict = "takes in more than it hands on, so it is working the backlog down"
+    return (
+     '<div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint '
+     'takes in and what it hands on</h3></div>'
+     '<div class="secsub" style="margin-bottom:10px">Inherited is work already open in the '
+     'previous sprint that arrived inside the day-1 commitment. It is capacity spent before the '
+     'sprint began.</div>'
+     '<div class="cmpgrid">'
+     '<div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div>'
+     '<div class="readout">'
+     '<div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">'
+     + str(share) + '% of everything committed was inherited</span><br><b>' + str(got) + ' of '
+     + str(comm) + ' points</b> across the series were already open when the sprint started. '
+     'Planning that treats the whole commitment as new work is planning with room the team '
+     'does not have.</div>'
+     '<div class="line" style="border-color:var(--warning)"><span class="vs-tag">'
+     + str(got) + ' in, ' + str(gave) + ' out</span><br>Over the series the team ' + verdict + '.</div>'
+     '<div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: '
+     + worst[0] + '</span><br>Started with <b>' + str(worst[1]["in"][1]) + ' points</b> already '
+     'open, inherited from ' + wfrom + '.</div>'
+     '</div></div>'
+     '<div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled '
+     'in mid-sprint from an older sprint is scope change, not inheritance, and shows in the '
+     'Added column instead.</div></div>')
+
+
+def recv_line(n, comm):
+    """What the sprint inherited. A sprint that starts a third full has a third less
+    room than its capacity suggests, and until now the reports only showed the giving
+    end of that transfer."""
+    sl = spill(n) or {}
+    got = sl.get("in")
+    if not got or not got[0]:
+        return ""
+    items, pts = got[0], got[1]
+    pct = sl.get("in_pct")
+    if pct is None and comm:
+        pct = round(100 * pts / comm)
+    frm = sl.get("in_from")
+    style = ' style="color:var(--warning)"' if (pct or 0) >= 30 else ''
+    pcttxt = f" &middot; {pct}% of the day-1 commitment" if pct is not None else ""
+    src = frm or "the previous sprint"
+    return ('<div class="spill"><div class="sk">Inherited from the sprint before</div>'
+            f'<div class="sv"{style}>{pts} pts'
+            '<span style="font-size:14px;color:var(--wf-muted);font-weight:600">'
+            f' &middot; {items} items{pcttxt}</span></div>'
+            f'<div class="sn">Work that was already open in <b>{src}</b> and came in with the '
+            'commitment. It is capacity that was spent before the sprint started.</div></div>')
+
+
 def cap_line(n):
     """What this sprint was planned with, from the capacity page. Planned capacity
     and delivered points are different questions, so this sits beside the burndown
@@ -721,6 +789,7 @@ def sprint_card(name, idx, note=""):
     gone_p = sl["open"][1] + sl["out"][1]
     run = OPEN_SPRINT(n)
     cap_html = cap_line(n)
+    recv_html = recv_line(n, comm)
     if run:
         # mid-sprint there is no spillover and no result: open work is just open
         spill_html = ('<div class="spill"><div class="sk">Still open</div>'
@@ -755,6 +824,7 @@ def sprint_card(name, idx, note=""):
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd{idx}"></canvas></div>
    {cap_html}
+   {recv_html}
    {spill_html}
    {goal_box(n)}
    {tis_block(n)}
@@ -962,6 +1032,7 @@ def series_block(heading=True):
   </div>
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
+ {recv_card()}
  <div class="sectit" style="font-size:20px;margin-top:22px">Committed vs Completed — full series</div>
  <div class="secsub">Every sprint on the board this year.</div>
  {sprint_table([r[0] for r in SPRINTS])}
@@ -1023,6 +1094,23 @@ new Chart(document.getElementById('cSpill'),{{type:'bar',
  data:{{labels:{_lb},datasets:[{{label:'Spillover rate',data:{_rt},backgroundColor:{_cl},borderRadius:5}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:100,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}},title:{{display:true,text:'% of points that left the sprint'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[spillRef]}});"""
+
+        # Received against handed on: same unit, one axis. A team that takes in as
+        # much as it gives out is running a queue, and the trend is the point.
+        _flow = [(n, (spill(n) or {})) for n, _ in ss2["rows"]]
+        _flow = [(n, sl) for n, sl in _flow if sl.get("in") is not None]
+        if _flow:
+            _fl = json.dumps([n.replace("EDW-Sprint ", "S") for n, _ in _flow])
+            _in = json.dumps([sl["in"][1] for _, sl in _flow])
+            _ou = json.dumps([sl["open"][1] + sl["out"][1] for _, sl in _flow])
+            js += f"""
+new Chart(document.getElementById('cRecv'),{{type:'bar',
+ data:{{labels:{_fl},datasets:[
+  {{label:'Inherited at day 1',data:{_in},backgroundColor:BLUEL,borderRadius:4}},
+  {{label:'Handed to the next sprint',data:{_ou},backgroundColor:AMBER,borderRadius:4}}]}},
+ options:{{plugins:{{legend:{{position:'top'}}}},scales:{{
+  y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},
+  x:{{grid:{{display:false}}}}}}}}}});"""
 
     pairs = [(n, i) for i, n in enumerate(lst)]
     if mk == MK_LAST and ACTIVE and ACTIVE not in lst and sp(ACTIVE):
