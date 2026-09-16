@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T06:00:29Z",
+ "generated": "2026-09-16T06:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -83,8 +83,8 @@
    {
     "status": "Deferred",
     "open": 75,
-    "med_age": 280.3,
-    "max_age": 813.5,
+    "med_age": 280.4,
+    "max_age": 813.6,
     "worst_key": "EDW-293",
     "worst_sum": "Provider Portal: Still shows ' Daily Deposit' report if user doesn't have a 'PDS Provider/",
     "worst_who": "unassigned",
