@@ -147,8 +147,7 @@ def sprint_detail(board, sp, project, prev=None):
     """
     sid, name = sp["id"], sp["name"]
     issues = search(f'project = "{project}" AND sprint = {sid}',
-                    ["status", "summary", SP_FIELD, "resolutiondate", "labels", "issuetype",
-                     "parent"],
+                    ["status", "summary", SP_FIELD, "resolutiondate", "labels", "issuetype"],
                     expand="changelog")
     start = dt.datetime.fromisoformat(sp["startDate"].replace("Z", "+00:00"))
     end_s = sp.get("completeDate") or sp.get("endDate")
@@ -258,70 +257,6 @@ def sprint_detail(board, sp, project, prev=None):
         "_issues": issues, "_issues_all": issues_all,
         "_start": start, "_end": end, "_day1": day1,
     }
-def themes(detail):
-    """What the sprint is made of, grouped by epic.
-
-    This is NOT a sprint goal and the report must never present it as one. A goal is
-    a commitment somebody makes at planning, before the work starts; this is a reading
-    of what happens to be in the sprint, taken after the fact. They answer different
-    questions, and a tool that derives the second and calls it the first lets a team
-    measure itself against its own contents, which always passes.
-
-    What it is good for: saying in one line what the sprint is mostly about, and
-    showing when the answer is "nothing in particular" -- items with no epic are their
-    own group here, deliberately, because that group being the largest is the finding.
-
-    An item's epic is its parent when the parent is an epic, and its parent's parent
-    when the item hangs off another work item (a sub-task of a bug, say).
-    """
-    iss = detail.get("_issues") or []
-    if not iss:
-        return None
-
-    direct, need = {}, set()
-    for i in iss:
-        par = (i.get("fields") or {}).get("parent")
-        if not par:
-            continue
-        pf = par.get("fields") or {}
-        if ((pf.get("issuetype") or {}).get("name") or "") == "Epic":
-            direct[i["key"]] = (par["key"], (pf.get("summary") or par["key"]).strip())
-        else:
-            need.add(par["key"])
-
-    up = {}
-    if need:
-        # one extra call, for the handful of items that hang off another item
-        for x in search("key in (" + ", ".join(sorted(need)) + ")", ["parent"]):
-            xp = (x.get("fields") or {}).get("parent")
-            xf = (xp or {}).get("fields") or {}
-            if xp and ((xf.get("issuetype") or {}).get("name") or "") == "Epic":
-                up[x["key"]] = (xp["key"], (xf.get("summary") or xp["key"]).strip())
-
-    groups = {}
-    for i in iss:
-        f   = i.get("fields") or {}
-        par = f.get("parent")
-        ep  = direct.get(i["key"]) or (up.get(par["key"]) if par else None)
-        k, label = ep if ep else (None, None)
-        g = groups.setdefault(k, {"epic": k, "label": label, "items": 0, "pts": 0.0})
-        g["items"] += 1
-        try:
-            g["pts"] += float(f.get(SP_FIELD) or 0)
-        except (TypeError, ValueError):
-            pass
-
-    rows = sorted(groups.values(), key=lambda g: (-g["pts"], -g["items"]))
-    for g in rows:
-        g["pts"] = round(g["pts"], 1)
-    tot_i = sum(g["items"] for g in rows)
-    tot_p = round(sum(g["pts"] for g in rows), 1)
-    for g in rows:
-        g["pct"] = round(100 * g["pts"] / tot_p) if tot_p else None
-    return {"rows": rows, "items": tot_i, "pts": tot_p,
-            "unclassified": next((g for g in rows if g["epic"] is None), None)}
-
-
 def _clean(d):
     """Strip the raw payload the month block needs but the panel must not carry."""
     return {k: v for k, v in d.items() if not k.startswith("_")}
@@ -1318,11 +1253,6 @@ def main():
             live_sp["goal_src"] = "capacity page"
         if _g.get("committed") is not None:
             live_sp["committed_planned"] = _g["committed"]
-
-    if live_sp:
-        # kept in its own key, never merged into "goal": the report shows the two
-        # separately on purpose
-        live_sp["themes"] = themes(live_sp)
 
     out = {
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
