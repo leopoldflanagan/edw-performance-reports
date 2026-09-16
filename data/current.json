@@ -131,7 +131,13 @@
    "out": [
     16,
     42
-   ]
+   ],
+   "in": [
+    10,
+    24
+   ],
+   "in_pct": 27,
+   "in_from": "EDW-Sprint 20-26"
   },
   "EDW-Sprint 22-26": {
    "done": [
@@ -145,7 +151,13 @@
    "out": [
     0,
     0
-   ]
+   ],
+   "in": [
+    5,
+    12
+   ],
+   "in_pct": 24,
+   "in_from": "EDW-Sprint 21-26"
   }
  },
  "SPLIT": {
@@ -514,35 +526,61 @@
    "planned": true
   }
  },
- "GOALS": {},
+ "GOALS": {
+  "EDW-Sprint 22-26": {
+   "goal": "The 9.8 reporting dashboards render correctly - axes, date ranges and empty states all behave, and nothing in Wellfit Reporting reaches the 9.08 release with a visible chart defect.",
+   "committed": 51.0,
+   "notes": "Covers EDW-2337, 2332, 2327, 2336 and 2354, all under the Wellfit Reporting - future release scope 9.8 epic. Separate decision for this sprint: EDW-1878 leaves sprint 22 either finished or closed as Won't Do. It has ridden 10 consecutive sprints, entered development on 13 May and came back out on 10 June. It does not move to sprint 23."
+  }
+ },
  "ROSTER": [
   {
-   "name": "Shruti Kulkarni",
-   "status": "Active"
-  },
-  {
-   "name": "Emmanuel Rodriguez",
+   "name": "Lloyd Tokerud",
+   "role": "Team lead",
    "status": "Active"
   },
   {
    "name": "Jeff Schniederjan",
+   "role": "Developer",
    "status": "Active"
   },
   {
-   "name": "Lloyd Tokerud",
+   "name": "Shruti Kulkarni",
+   "role": "Developer",
+   "status": "Active"
+  },
+  {
+   "name": "Emmanuel Rodriguez",
+   "role": "Developer",
    "status": "Active"
   },
   {
    "name": "Harisha Pallacheruvu",
-   "status": "Left - last activity Sep"
+   "role": "Developer",
+   "status": "Former - last activity Sep"
   },
   {
    "name": "William Ikwogo",
-   "status": "Left - no activity since Aug"
+   "role": "Developer",
+   "status": "Former - no activity since Aug"
   },
   {
    "name": "Dipika Premsagar",
-   "status": "Left - no activity since Jul"
+   "role": "Developer",
+   "status": "Former - no activity since Jul"
+  }
+ ],
+ "CHANGES": [
+  {
+   "sprint": "EDW-Sprint 22-26",
+   "date": "2026-09-14",
+   "what": "Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover.",
+   "affects": [
+    "spillover",
+    "commitment",
+    "vs commitment"
+   ],
+   "effect": "Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it."
   }
  ],
  "CAP_URL": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305"

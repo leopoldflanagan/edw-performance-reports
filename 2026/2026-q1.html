@@ -257,6 +257,21 @@
  color:#005f91;background:#e5f2f8;border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;margin-left:7px;vertical-align:1px}
 .runrow td{background:#f8fbfe}
 .runrow td:first-child{box-shadow:inset 3px 0 0 var(--wf-blue)}
+
+ /* The tab strip is sticky and was wider than a phone: the last tabs sat off-screen
+    with no way to reach them. It scrolls sideways now, and keeps its sticky header. */
+ @media(max-width:700px){
+  .tabs .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tab{padding:14px 14px;font-size:14px;white-space:nowrap;flex:0 0 auto}
+  .tisbar{height:22px}
+  .tiskey{font-size:11px}
+ }
+ .findkey{display:flex;flex-wrap:wrap;gap:8px 20px;margin:2px 0 14px;font-size:12px;color:var(--wf-muted)}
+ .findkey span{display:inline-flex;align-items:center;gap:7px}
+ .findkey b{color:var(--wf-text,#32373c);font-weight:700}
+ .findkey .fk{width:4px;height:15px;border-radius:2px;display:inline-block}
+ @media(max-width:640px){.findkey{gap:6px 14px;font-size:11.5px}}
 </style>
 
 <style>
@@ -351,14 +366,14 @@
 <body>
 <header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; Q1 2026 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
 <h1>Q1 2026 Performance Report</h1><div class="sub">Quarter close for January-March 2026 — the reference baseline for the year.</div>
-<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Baseline quarter — reconciled September 2026</div><a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3746431012" style="text-decoration:none" title="Sign-off register in Confluence"><span class="revchip pend"><span class="ic">&#9679;</span> Generated from Jira · pending sign-off · waiting on Leopoldo Flanagan and Lloyd Tokerud</span></a></div></div></header>
+<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Baseline quarter — reconciled September 2026</div><span class="revchip" style="background:#f1f3f7;color:#6b7383"><span class="ic">&#128220;</span> Historical record &middot; published before the sign-off register</span></div></div></header>
 <div class="tabs"><div class="wrap">
  <button class="tab active" data-tab="dash">Flow</button>
  <button class="tab" data-tab="scrum">Sprints</button>
  <button class="tab" data-tab="cmp">Comparatives</button>
  <button class="tab" data-tab="act">Findings &amp; Retro</button>
 </div></div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-05-may.html">MAY</a><a class="rp" href="2026-06-june.html">JUN</a><a class="rp" href="2026-07-july.html">JUL</a><a class="rp" href="2026-08-august.html">AUG</a><span class="rsep"></span><span class="rp on">Q1</span><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><span class="ry">2026</span><span class="rsep"></span><span class="rp on">Q1</span><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <section class="panel active" id="dash">
   <div class="sectit">Q1 2026 — January to March</div>
@@ -429,6 +444,7 @@
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd0"></canvas></div>
    
+   
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
    <div class="sprintsec"><div class="sk">Time in status</div><div class="goalbox">Not enough status history in this sprint to measure it.</div></div>
@@ -448,6 +464,7 @@
      <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">152%</div><div class="n">completed against day-1 scope</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd1"></canvas></div>
+   
    
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
@@ -469,6 +486,7 @@
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd2"></canvas></div>
    
+   
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
    <div class="sprintsec"><div class="sk">Time in status</div><div class="goalbox">Not enough status history in this sprint to measure it.</div></div>
@@ -488,6 +506,7 @@
      <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">100%</div><div class="n">completed against day-1 scope</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd3"></canvas></div>
+   
    
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
@@ -509,6 +528,7 @@
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd4"></canvas></div>
    
+   
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
    <div class="sprintsec"><div class="sk">Time in status</div><div class="goalbox">Not enough status history in this sprint to measure it.</div></div>
@@ -529,6 +549,7 @@
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd5"></canvas></div>
    
+   
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
    <div class="sprintsec"><div class="sk">Time in status</div><div class="goalbox">Not enough status history in this sprint to measure it.</div></div>
@@ -548,6 +569,7 @@
      <div class="sh"><div class="k"><span data-tip="Completed against the day-1 commitment, not against final scope.">vs commitment</span></div><div class="v">100%</div><div class="n">completed against day-1 scope</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd6"></canvas></div>
+   
    
    <div class="spill"><div class="sk">Left the sprint</div><div class="sv" style="color:var(--healthy)">0 pts</div><div class="sn">Nothing removed and nothing left open at close.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
@@ -585,7 +607,24 @@
    <h2>Q1 was a stable quarter. The reason nobody could tell is that three different numbers were circulating for the same metric.</h2>
    <p>40 deliveries a month with an 8-item spread, unplanned work comfortably under target and cycle time close to it.
    As a baseline it holds — with the caveat that it describes a 4-developer team, which EDW no longer is.</p></div>
-  <div class="act"><div class="pri p-grey"></div><div class="inner">
+  <div class="findkey"><span><i class="fk p-red"></i><b>Risk</b> &mdash; needs a decision now</span><span><i class="fk p-amber"></i><b>Action</b> &mdash; someone has to do something</span><span><i class="fk p-blue"></i><b>Discuss</b> &mdash; bring it to the team; no owner yet</span><span><i class="fk p-grey"></i><b>Context</b> &mdash; background for the numbers above</span></div><div class="act"><div class="pri p-red"></div><div class="inner">
+   <div class="atop"><h4>Retire one of the two throughput filters</h4><span class="pill pill-red">Action</span></div>
+   <p>The dashboard gadget reads <i>EDW – Throughput – Previous Month (Resolved)</i> (id 14345), which has no
+   <code>resolution</code> clause and counts Won't Do items — Q1 gives 124. <i>EDW – Throughput – Last Month</i>
+   (id 14344) restricts to <code>issuetype in (Bug, Story)</code> — Q1 gives 122. The clean definition gives 120.
+   While all three exist, the same metric reports a different number depending on where it is read. Database Services
+   has the identical duplicated pair (ids 15837 and 16212).</p>
+   <div class="owner">For action by: <b>EDW + DS</b></div></div></div><div class="act"><div class="pri p-amber"></div><div class="inner">
+   <div class="atop"><h4>Decide what Cycle Time counts</h4><span class="pill pill-amber">Discuss</span></div>
+   <p>The published 6.29d / 7.83d and the recalculated 7.24d /
+   18.49d come from the same data read two ways. The monthly reports use the second method, so until
+   this is settled, Q1 is not strictly comparable to the months that follow it.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div><div class="act"><div class="pri p-blue"></div><div class="inner">
+   <div class="atop"><h4>Commit to something closer to what gets delivered</h4><span class="pill pill-blue">Discuss</span></div>
+   <p>Five of the seven Q1 sprints closed above 110% of their day-1 commitment. Reading that as over-performance is
+   tempting and wrong: it means the sprint is planned after it starts. It is mild here and severe by August, so Q1 is
+   where the habit is visible without the noise.</p>
+   <div class="owner">For discussion with: <b>EDW</b></div></div></div><div class="act"><div class="pri p-grey"></div><div class="inner">
    <div class="atop"><h4>How these figures were reconciled</h4><span class="pill pill-grey">Method</span></div>
    <p>The Q1 report published in Confluence carried two different throughput figures: 41 items/month in its executive
    summary, and 100 closed / 33.3 per month (10 &rarr; 45 &rarr; 45) in its detail section. Neither could be reproduced
@@ -594,28 +633,7 @@
    <i>In Development</i>, and the Cycle Time section is built on 99 issues. The same denominator explains the unplanned
    figure: the published 4.9% is 5 items over 102, where over 120 it is 4.17%. Both sit
    under target, so that status is unchanged. The Confluence page now carries the corrected figures.</p>
-   <div class="owner">Reconciled: <b>September 2026</b></div></div></div>
-  <div class="act"><div class="pri p-red"></div><div class="inner">
-   <div class="atop"><h4>Retire one of the two throughput filters</h4><span class="pill pill-red">Action</span></div>
-   <p>The dashboard gadget reads <i>EDW – Throughput – Previous Month (Resolved)</i> (id 14345), which has no
-   <code>resolution</code> clause and counts Won't Do items — Q1 gives 124. <i>EDW – Throughput – Last Month</i>
-   (id 14344) restricts to <code>issuetype in (Bug, Story)</code> — Q1 gives 122. The clean definition gives 120.
-   While all three exist, the same metric reports a different number depending on where it is read. Database Services
-   has the identical duplicated pair (ids 15837 and 16212).</p>
-   <div class="owner">For action by: <b>EDW + DS</b></div></div></div>
-  <div class="act"><div class="pri p-amber"></div><div class="inner">
-   <div class="atop"><h4>Decide what Cycle Time counts</h4><span class="pill pill-amber">Discuss</span></div>
-   <p>The published 6.29d / 7.83d and the recalculated 7.24d /
-   18.49d come from the same data read two ways. The monthly reports use the second method, so until
-   this is settled, Q1 is not strictly comparable to the months that follow it.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
-  <div class="act"><div class="pri p-blue"></div><div class="inner">
-   <div class="atop"><h4>Commit to something closer to what gets delivered</h4><span class="pill pill-blue">Discuss</span></div>
-   <p>Five of the seven Q1 sprints closed above 110% of their day-1 commitment. Reading that as over-performance is
-   tempting and wrong: it means the sprint is planned after it starts. It is mild here and severe by August, so Q1 is
-   where the habit is visible without the noise.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
-  <div class="act"><div class="pri p-grey"></div><div class="inner">
+   <div class="owner">Reconciled: <b>September 2026</b></div></div></div><div class="act"><div class="pri p-grey"></div><div class="inner">
    <div class="atop"><h4>Fix the sprint naming</h4><span class="pill pill-grey">Follow-up</span></div>
    <p><i>EDW-Sprint 8-27</i> should be 8-26. Cheap to fix, and it is the same slip DS has with <i>16-27</i> — worth a
    shared naming convention rather than two separate corrections.</p>
@@ -803,6 +821,27 @@ new Chart(document.getElementById('bd6'),{type:'line',
     box.classList.add('zoomable');
     box.addEventListener('click',()=>open(ch,box));
   });
+})();
+
+// A chart built inside a hidden panel measures 0x0 and stays that way until
+// something tells it to measure again. Tabs, collapsibles and the modal all hide
+// charts, and each one used to need its own resize call -- which is why a section
+// could open onto what looked like a chart that failed to load. One observer
+// watches every chart box instead, so anything that reveals one is covered,
+// including whatever gets added later.
+(function(){
+  if(typeof Chart==='undefined'||typeof ResizeObserver==='undefined') return;
+  var ro=new ResizeObserver(function(entries){
+    entries.forEach(function(e){
+      var w=e.contentRect.width;
+      if(!w) return;                         // still hidden
+      var cv=e.target.querySelector('canvas');
+      if(!cv) return;
+      var ch=Chart.getChart(cv);
+      if(ch && Math.abs(ch.width-w)>1) ch.resize();
+    });
+  });
+  document.querySelectorAll('.chartbox').forEach(function(b){ ro.observe(b); });
 })();
 
 // --- hover tooltips ---------------------------------------------------------

@@ -109,6 +109,46 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  color:var(--wf-muted);text-decoration:none;border:1px solid var(--line);background:var(--card);
  padding:6px 12px;border-radius:999px;margin-top:14px;transition:.15s}
 .adminlink:hover{border-color:var(--wf-blue-l);color:var(--wf-blue-d)}
+
+/* The index had no layout for a phone. Four stat tiles at 1fr each cannot fit in
+   390px, so the page grew a horizontal scrollbar and the header ran off the edge. */
+@media(max-width:700px){
+ .wrap{padding:0 16px}
+ header{padding:34px 0 30px}
+ header h1{font-size:28px}
+ header .sub{font-size:14px}
+ .healthrow{grid-template-columns:repeat(2,1fr)}
+ .rcard{gap:13px;padding:15px 16px}
+ .rcard .mo{width:52px;height:52px}
+ .rcard .body h3{font-size:16px}
+ .bh{gap:12px}
+ .bh .hero{min-width:0}
+ .bhband{min-width:100%}
+ .ck{gap:10px;padding:10px 12px}
+ .ck .cn{min-width:28px;font-size:17px}
+}
+@media(max-width:430px){
+ .healthrow{grid-template-columns:1fr}
+ .hcell .hv{font-size:20px}
+ .rcard .body p{font-size:12.5px}
+}
+
+.liverow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.fresh{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:5px 11px;
+ border-radius:999px;white-space:nowrap}
+.fresh i{width:7px;height:7px;border-radius:50%;display:block}
+.fresh b{font-weight:700}
+.fresh-ok{background:#eaf7e3;color:#2f6a12}      .fresh-ok i{background:var(--healthy)}
+.fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
+.fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
+.fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
+.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
+ color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
+.fulllink:hover{border-color:var(--wf-blue)}
+@media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
+.projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+ padding:3px 9px;border-radius:999px}
 </style></head>
 <body>
 <header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>Board hygiene</h1>
@@ -143,6 +183,17 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
     return h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago';
   };
   var JIRA = 'https://wellfit.atlassian.net/browse/';
+  function freshness(iso) {
+    if (!iso || iso.slice(0, 4) === '1970') {
+      return '<span class="fresh fresh-wait"><i></i>Waiting for the first refresh</span>';
+    }
+    var mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    var when = new Date(iso).toLocaleString(undefined, { month: 'short', day: 'numeric',
+                                                         hour: 'numeric', minute: '2-digit' });
+    var cls = mins > 90 ? 'fresh-bad' : (mins > 45 ? 'fresh-warn' : 'fresh-ok');
+    var say = mins > 90 ? 'Data may be stale' : (mins > 45 ? 'Refresh running late' : 'Data up to date');
+    return '<span class="fresh ' + cls + '"><i></i>' + say + ' <b>&middot; ' + esc(when) + '</b></span>';
+  }
   /* Backlog health. One number with bands, so it is a stat with a scale rather
      than a chart: how many sprints of ready work are waiting. State is shown as a
      labelled lozenge, never by colour alone. */
@@ -225,8 +276,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
     var nd = (a.debt || []).reduce(function (s, c) { return s + c.n; }, 0);
 
     out += '<div class="activewrap">' +
+      '<div class="liverow">' +
       '<span class="activetag"' + (nb ? '' : ' style="background:var(--healthy)"') + '>' +
       (nb ? nb + ' blocking' : 'Nothing blocking') + '</span>' +
+      freshness(d.generated) + '</div>' +
       '<div style="font-size:21px;font-weight:800;color:var(--wf-blue-d);line-height:1.2">' +
         'Definition of Ready</div>' +
       '<div class="secsub" style="margin:2px 0 12px;font-size:13px">' +
@@ -250,9 +303,9 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       'the team does not use, not as one warning per item.</div>' +
       checks(a.debt, 'debt') + '</div>';
 
-    out += '<div class="secsub" style="margin-top:16px;font-size:12.5px">Live from Jira &middot; ' +
-      (d.generated ? ago(d.generated) : '') + ' &middot; ' +
-      '<a href="index.html">back to the reports</a></div>';
+    out += '<div class="secsub" style="margin-top:16px;font-size:12.5px">' +
+      '<a href="index.html">&larr; back to the reports</a> &middot; ' +
+      '<a href="sprint.html">active sprint</a></div>';
     host.innerHTML = out;
   }
 
