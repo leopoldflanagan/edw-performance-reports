@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T16:30:23Z",
+ "generated": "2026-09-16T16:39:53Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -84,18 +84,6 @@
   "stale_days": 7,
   "rows": [
    {
-    "status": "Deferred",
-    "open": 75,
-    "med_age": 280.8,
-    "max_age": 814.0,
-    "worst_key": "EDW-293",
-    "worst_sum": "Provider Portal: Still shows ' Daily Deposit' report if user doesn't have a 'PDS Provider/",
-    "worst_who": "unassigned",
-    "over": 71,
-    "clear_med": 51.0,
-    "clear_n": 4
-   },
-   {
     "status": "Ready for Development",
     "open": 21,
     "med_age": 13.9,
@@ -118,11 +106,86 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 243
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 139
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    }
   ],
-  "backlog": 68,
-  "open_total": 104,
-  "stale": 89,
-  "worst": "Deferred"
+  "parked": {
+   "Deferred": 75,
+   "Backlog": 68
+  },
+  "open_total": 29,
+  "stale": 18,
+  "worst": "Ready for Development"
  }
 }
