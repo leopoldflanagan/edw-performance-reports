@@ -429,7 +429,7 @@ def capacity(page_id):
         return None
 
     out = {"page": page_id, "url": f"{BASE}/wiki/spaces/EDW/pages/{page_id}",
-           "sprints": {}, "goals": {}, "roster": [], "config": {}}
+           "sprints": {}, "goals": {}, "roster": [], "config": {}, "changes": []}
 
     cap = find("Sprint", "Capacity %")
     for r in (cap or {}).get("rows", []):
@@ -463,6 +463,17 @@ def capacity(page_id):
         if who:
             out["roster"].append({"name": who, "status": (r.get("Status") or "").strip()})
 
+    ch = find("From sprint", "What changed")
+    for r in (ch or {}).get("rows", []):
+        n = _sprint_name(r.get("From sprint"))
+        what = (r.get("What changed") or "").strip()
+        if n and what:
+            out.setdefault("changes", []).append({
+                "sprint": n, "date": (r.get("Date") or "").strip() or None,
+                "what": what,
+                "affects": [x.strip().lower() for x in (r.get("Affects") or "").split(",") if x.strip()],
+                "effect": (r.get("Expected effect on the numbers") or "").strip() or None})
+
     cfg = find("Variable", "Value")
     for r in (cfg or {}).get("rows", []):
         k = (r.get("Variable") or "").strip()
@@ -470,7 +481,8 @@ def capacity(page_id):
             out["config"][k] = (r.get("Value") or "").strip()
 
     print(f"  capacity page: {len(out['sprints'])} sprint rows, "
-          f"{len(out['goals'])} goal(s), {len(out['roster'])} people", flush=True)
+          f"{len(out['goals'])} goal(s), {len(out['roster'])} people, "
+          f"{len(out['changes'])} practice change(s)", flush=True)
     return out
 
 
@@ -1177,6 +1189,7 @@ def main():
             blk["CAPACITY"] = cap_page["sprints"]
             blk["GOALS"]    = cap_page["goals"]
             blk["ROSTER"]   = cap_page["roster"]
+            blk["CHANGES"]  = cap_page["changes"]
             blk["CAP_URL"]  = cap_page["url"]
     else:
         ym = dt.date.today().strftime("%Y-%m")

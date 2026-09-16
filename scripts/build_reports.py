@@ -62,6 +62,10 @@ _capsrc    = CURRENT_RELEASE or CURRENT or {}
 CAPACITY   = _capsrc.get("CAPACITY") or {}
 GOALS_PAGE = _capsrc.get("GOALS") or {}
 CAP_URL    = _capsrc.get("CAP_URL")
+# Working-agreement changes, with the sprint they took effect. A change in practice
+# moves the numbers, and without saying so the charts read it as a change in
+# performance -- which is exactly backwards when the change was an improvement.
+CHANGES    = _capsrc.get("CHANGES") or []
 if CURRENT:
     _mk = CURRENT["ym"].split("-")[1]
     # Frozen wins only for a sprint that belongs to a month already closed. A sprint
@@ -685,6 +689,53 @@ __CHARTS__
 {ZOOMJS}
 </script></body></html>"""
 
+def changes_for(topic):
+    """Practice changes that touch this metric."""
+    t = topic.lower()
+    return [c for c in CHANGES if not c.get("affects") or any(t in a for a in c["affects"])]
+
+
+def change_note(topic):
+    """The panel that stops an improvement from reading as a decline."""
+    cs = changes_for(topic)
+    if not cs:
+        return ""
+    out = []
+    for c in cs:
+        when = f' on {c["date"]}' if c.get("date") else ""
+        eff = f' {c["effect"]}' if c.get("effect") else ""
+        out.append('<div class="infopanel ip-amber"><b>The team changed how it works at '
+                   f'{c["sprint"]}{when}.</b> {c["what"]}{eff} '
+                   f'<a href="{CAP_URL}" style="color:inherit">Practice changes &rarr;</a></div>'
+                   if CAP_URL else
+                   '<div class="infopanel ip-amber"><b>The team changed how it works at '
+                   f'{c["sprint"]}{when}.</b> {c["what"]}{eff}</div>')
+    return "".join(out)
+
+
+def change_marks(labels, topic):
+    """A Chart.js plugin that draws the change as a line on the series, so the break
+    is visible on the chart and not only in the prose beside it."""
+    cs = changes_for(topic)
+    marks = []
+    for c in cs:
+        short = c["sprint"].replace("EDW-Sprint ", "S")
+        if short in labels:
+            marks.append({"i": labels.index(short), "t": "practice changed"})
+    if not marks:
+        return "", ""
+    change_marks.n = getattr(change_marks, "n", 0) + 1
+    name = f"chg{change_marks.n}"     # one per chart: two charts cannot share a const
+    js = (f"const {name}={{id:'{name}',afterDraw(c){{const{{ctx,chartArea:{{top,bottom}},"
+          "scales:{x}}=c;" + json.dumps(marks) +
+          ".forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;"
+          "ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);"
+          "ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);"
+          "ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';"
+          "ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};")
+    return js, name
+
+
 def recv_card():
     """Spillover has two ends. The series has always shown only the giving one."""
     rows = [(n, spill(n)) for n in [r[0] for r in SPRINTS]]
@@ -724,6 +775,7 @@ def recv_card():
      + worst[0] + '</span><br>Started with <b>' + str(worst[1]["in"][1]) + ' points</b> already '
      'open, inherited from ' + wfrom + '.</div>'
      '</div></div>'
+     + change_note("spillover") +
      '<div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled '
      'in mid-sprint from an older sprint is scope change, not inheritance, and shows in the '
      'Added column instead.</div></div>')
@@ -1030,6 +1082,7 @@ def series_block(heading=True):
     <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Read it against the commitment, not the burndown</span><br>A sprint that commits to 45 points, grows to 117, closes 69 and drops 48 has not delivered 100% of anything. The honest pair is day-1 commitment and spillover rate, side by side.</div>
    </div>
   </div>
+  {change_note("spillover")}
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
  {recv_card()}
@@ -1094,6 +1147,10 @@ new Chart(document.getElementById('cSpill'),{{type:'bar',
  data:{{labels:{_lb},datasets:[{{label:'Spillover rate',data:{_rt},backgroundColor:{_cl},borderRadius:5}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:100,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}},title:{{display:true,text:'% of points that left the sprint'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[spillRef]}});"""
+        _cjs, _cnm = change_marks(json.loads(_lb), "spillover")
+        if _cjs:
+            js = js.replace("plugins:[spillRef]}});", "plugins:[spillRef," + _cnm + "]}});")
+            js = js.replace("const spillRef=", _cjs + "\nconst spillRef=")
 
         # Received against handed on: same unit, one axis. A team that takes in as
         # much as it gives out is running a queue, and the trend is the point.
@@ -1111,6 +1168,12 @@ new Chart(document.getElementById('cRecv'),{{type:'bar',
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{
   y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},
   x:{{grid:{{display:false}}}}}}}}}});"""
+            _cjs2, _cnm2 = change_marks(json.loads(_fl), "spillover")
+            if _cjs2:
+                js = js.replace("new Chart(document.getElementById('cRecv')",
+                                _cjs2 + "\nnew Chart(document.getElementById('cRecv')")
+                js = js.replace("  x:{grid:{display:false}}}}});",
+                                "  x:{grid:{display:false}}}},plugins:[" + _cnm2 + "]});")
 
     pairs = [(n, i) for i, n in enumerate(lst)]
     if mk == MK_LAST and ACTIVE and ACTIVE not in lst and sp(ACTIVE):
