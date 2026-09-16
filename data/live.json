@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T22:45:17Z",
+ "generated": "2026-09-16T23:00:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -701,7 +701,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 1.2,
+    "med_age": 1.3,
     "max_age": 19.2,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -747,7 +747,7 @@
     "clear_n": 140
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -755,8 +755,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "PR Created",
@@ -771,7 +771,7 @@
     "clear_n": 1
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -779,13 +779,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 214.9,
+    "clear_n": 15
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 68
+   "Backlog": 68,
+   "Deferred": 75
   },
   "open_total": 29,
   "stale": 18,
