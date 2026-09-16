@@ -789,12 +789,12 @@ def review_chip(code):
         url = r.get("url")
         chip = f'<span class="revchip ok"><span class="ic">&#10003;</span> Signed off{(" · " + tail) if tail else ""}</span>'
         return f'<a href="{url}" style="text-decoration:none" title="Sign-off register in Confluence">{chip}</a>' if url else chip
-    # who it is still waiting on, when the register could be read
-    wait = r.get("waiting_on") or []
-    tail = (" · waiting on " + " and ".join(wait)) if wait else ""
+    # No names. "Pending sign-off" is the state a reader needs; who still owes a
+    # signature is between the people in the register, and putting it in a public
+    # header turns a process state into a callout.
     url  = r.get("url")
     chip = ('<span class="revchip pend"><span class="ic">&#9679;</span> '
-            f'Generated from Jira · pending sign-off{tail}</span>')
+            'Generated from Jira · pending sign-off</span>')
     return f'<a href="{url}" style="text-decoration:none" title="Sign-off register in Confluence">{chip}</a>' if url else chip
 
 
@@ -1269,23 +1269,10 @@ def series_block(heading=True):
             if heading else "")
     return f"""
  {head}
- <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
-  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
-  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
- </div>
- <div class="cmpcard">
-  <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
-  <div class="cmpgrid">
-   <div class="chartbox" style="height:280px"><canvas id="cSplit"></canvas></div>
-   <div class="readout">
-    <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Reactive, as expected</span><br>A handful of points a sprint arrive labeled <i>Unplanned</i> or as <i>Urgent Task</i>. That is the service load, and outside 12-26 it is smaller than it feels.</div>
-    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">Plannable, added anyway</span><br>Most of the mid-sprint additions carry no reactive marker — dashboard tabs, E2E testing, table-layout fixes. This is the planning gap.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Not measurable from 18-26</span><br>The label stopped being applied, so those sprints show as no data, not as zero reactive work.</div>
-   </div>
-  </div>
-  <div class="infopanel ip-amber">One caveat on method: the label lives on the ticket, not on the moment. If someone added it after the fact, the item still counts as reactive here.</div>
- </div>
- <div class="cmpcard">
+ <div class="sectit" style="font-size:20px;margin-top:4px">Committed vs Completed — full series</div>
+ <div class="secsub">Every sprint on the board this year.</div>
+ {sprint_table([r[0] for r in SPRINTS])}
+ <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div> <div class="cmpcard">
   <div class="cmphead"><h3>Velocity per sprint</h3></div>
   <div class="secsub" style="margin-bottom:8px">Points completed against the day-1 commitment, and against the documented baseline of {VEL_BASE} (range {VEL_LO}-{VEL_HI}).</div>
   <div class="chartbox" style="height:300px"><canvas id="cVel"></canvas></div>
@@ -1318,10 +1305,23 @@ def series_block(heading=True):
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
  {recv_card()}
- <div class="sectit" style="font-size:20px;margin-top:22px">Committed vs Completed — full series</div>
- <div class="secsub">Every sprint on the board this year.</div>
- {sprint_table([r[0] for r in SPRINTS])}
- <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
+ <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
+  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
+  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
+ </div>
+ <div class="cmpcard">
+  <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
+  <div class="cmpgrid">
+   <div class="chartbox" style="height:280px"><canvas id="cSplit"></canvas></div>
+   <div class="readout">
+    <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Reactive, as expected</span><br>A handful of points a sprint arrive labeled <i>Unplanned</i> or as <i>Urgent Task</i>. That is the service load, and outside 12-26 it is smaller than it feels.</div>
+    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">Plannable, added anyway</span><br>Most of the mid-sprint additions carry no reactive marker — dashboard tabs, E2E testing, table-layout fixes. This is the planning gap.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Not measurable from 18-26</span><br>The label stopped being applied, so those sprints show as no data, not as zero reactive work.</div>
+   </div>
+  </div>
+  <div class="infopanel ip-amber">One caveat on method: the label lives on the ticket, not on the moment. If someone added it after the fact, the item still counts as reactive here.</div>
+ </div>
+
 """
 
 def charts_scrum(mk=None, only=None):
@@ -1636,8 +1636,7 @@ def month_page(mk):
 {scrum_tab(mk)}
 <section class="panel" id="cmp">
   <div class="sectit">Comparatives</div>
-  <div class="secsub">The full series from the baseline, so the trend shows and not just the month.</div>
-  {_tis_card}
+  <div class="secsub">The full series from the baseline, so the trend shows and not just the month. Same order as the Flow tab: what came out, how long it took, where that time went, and how much of it was reactive.</div>
   <div class="cmpcard">
     <div class="cmphead"><h3><span class="st-dot" style="background:{BADGE[st_thr][2]};width:13px;height:13px"></span> Throughput</h3>{badge(st_thr)}</div>
     <div class="cmpgrid">
@@ -1659,8 +1658,9 @@ def month_page(mk):
       </div>
     </div>
   </div>
+  {_tis_card}
   <div class="cmpcard">
-    <div class="cmphead"><h3>Unplanned work</h3></div>
+    <div class="cmphead"><h3>Planned vs Unplanned</h3></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
