@@ -371,6 +371,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
         '<div class="secsub" style="margin:2px 0 12px;font-size:13px;color:var(--wf-muted)">' +
         day(s.start) + ' &rarr; ' + day(s.end) +
         (s.day ? ' &middot; <b>day ' + s.day + ' of ' + s.days + '</b>' : '') +
+        // planned capacity, from the page the Scrum Master fills at planning
+        (s.capacity && s.capacity.members
+          ? ' &middot; ' + s.capacity.members + ' people' +
+            (s.capacity.pct != null ? ' &middot; capacity ' + s.capacity.pct + '%' : '') +
+            (s.capacity.pto ? ' (' + s.capacity.pto + 'd PTO)' : '') +
+            (s.capacity.holidays ? ' (' + s.capacity.holidays + ' holiday' +
+              (s.capacity.holidays > 1 ? 's' : '') + ')' : '')
+          : '') +
         (live ? '' : ' &middot; closed') + '</div>';
     }
 
@@ -410,8 +418,13 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       out += bar(s.dist);
       out += burndown(s);
       out += '<div class="goalbox" style="margin-top:12px">' + (s.goal
-        ? '<b>Sprint goal.</b> ' + esc(s.goal)
-        : '<b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count.') +
+        ? '<b>Sprint goal' + (s.goal_src ? ' (from the ' + esc(s.goal_src) + ')' : '') +
+          '.</b> ' + esc(s.goal) +
+          (s.committed_planned != null && s.committed_planned !== s.committed
+            ? ' <span style="color:var(--wf-muted)">Planning recorded ' + s.committed_planned +
+              ' pts committed; Jira reconstructs ' + s.committed + '. The gap is what moved after planning.</span>'
+            : '')
+        : '<b>No goal recorded in Jira or on the capacity page for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count.') +
         '</div>';
     }
 

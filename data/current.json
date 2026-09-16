@@ -295,5 +295,255 @@
  },
  "complete": false,
  "kind": "release",
- "n_sprints": 2
+ "n_sprints": 2,
+ "CAPACITY": {
+  "EDW-Sprint 12-26": {
+   "release": "9.04",
+   "start": "2026-04-27",
+   "end": "2026-05-10",
+   "members": 7.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 70.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 13-26": {
+   "release": "9.04",
+   "start": "2026-05-11",
+   "end": "2026-05-24",
+   "members": 7.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 70.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 14-26": {
+   "release": "9.05",
+   "start": "2026-05-25",
+   "end": "2026-06-07",
+   "members": 7.0,
+   "holidays": 1.0,
+   "pto": null,
+   "eff_days": 63.0,
+   "pct": 90.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 15-26": {
+   "release": "9.05",
+   "start": "2026-06-08",
+   "end": "2026-06-21",
+   "members": 7.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 70.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 16-26": {
+   "release": "9.06",
+   "start": "2026-06-22",
+   "end": "2026-07-05",
+   "members": 7.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 70.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 17-26": {
+   "release": "9.06",
+   "start": "2026-07-06",
+   "end": "2026-07-19",
+   "members": 7.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 70.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 18-26": {
+   "release": "9.06",
+   "start": "2026-07-20",
+   "end": "2026-08-02",
+   "members": 6.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 60.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 19-26": {
+   "release": "9.07",
+   "start": "2026-08-03",
+   "end": "2026-08-16",
+   "members": 6.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 60.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 20-26": {
+   "release": "9.07",
+   "start": "2026-08-17",
+   "end": "2026-08-30",
+   "members": 6.0,
+   "holidays": 0.0,
+   "pto": null,
+   "eff_days": 60.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 21-26": {
+   "release": "9.08",
+   "start": "2026-08-31",
+   "end": "2026-09-13",
+   "members": 5.0,
+   "holidays": 1.0,
+   "pto": null,
+   "eff_days": 45.0,
+   "pct": 90.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 22-26": {
+   "release": "9.08",
+   "start": "2026-09-14",
+   "end": "2026-09-27",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 23-26": {
+   "release": "9.09",
+   "start": "2026-09-28",
+   "end": "2026-10-11",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 24-26": {
+   "release": "9.09",
+   "start": "2026-10-12",
+   "end": "2026-10-25",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": false
+  },
+  "EDW-Sprint 25-26": {
+   "release": "9.10",
+   "start": "2026-10-26",
+   "end": "2026-11-08",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": true
+  },
+  "EDW-Sprint 26-26": {
+   "release": "9.10",
+   "start": "2026-11-09",
+   "end": "2026-11-22",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": true
+  },
+  "EDW-Sprint 27-26": {
+   "release": "-",
+   "start": "2026-11-23",
+   "end": "2026-12-06",
+   "members": 4.0,
+   "holidays": 2.0,
+   "pto": 0.0,
+   "eff_days": 32.0,
+   "pct": 80.0,
+   "risk": "\ud83d\udfe1",
+   "planned": true
+  },
+  "EDW-Sprint 28-26": {
+   "release": "-",
+   "start": "2026-12-07",
+   "end": "2026-12-20",
+   "members": 4.0,
+   "holidays": 0.0,
+   "pto": 0.0,
+   "eff_days": 40.0,
+   "pct": 100.0,
+   "risk": "\ud83d\udfe2",
+   "planned": true
+  },
+  "EDW-Sprint 29-26": {
+   "release": "-",
+   "start": "2026-12-21",
+   "end": "2027-01-03",
+   "members": 4.0,
+   "holidays": 1.0,
+   "pto": 0.0,
+   "eff_days": 36.0,
+   "pct": 90.0,
+   "risk": "\ud83d\udfe2",
+   "planned": true
+  }
+ },
+ "GOALS": {},
+ "ROSTER": [
+  {
+   "name": "Shruti Kulkarni",
+   "status": "Active"
+  },
+  {
+   "name": "Emmanuel Rodriguez",
+   "status": "Active"
+  },
+  {
+   "name": "Jeff Schniederjan",
+   "status": "Active"
+  },
+  {
+   "name": "Lloyd Tokerud",
+   "status": "Active"
+  },
+  {
+   "name": "Harisha Pallacheruvu",
+   "status": "Left - last activity Sep"
+  },
+  {
+   "name": "William Ikwogo",
+   "status": "Left - no activity since Aug"
+  },
+  {
+   "name": "Dipika Premsagar",
+   "status": "Left - no activity since Jul"
+  }
+ ],
+ "CAP_URL": "https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305"
 }
