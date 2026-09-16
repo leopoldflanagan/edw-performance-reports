@@ -130,6 +130,15 @@ def _review(slug):
 # filter variant; 100 matches the Cycle Time population (items that entered In Development), not throughput.
 # Cycle Time reconstruido del changelog: primera entrada a "In Development" -> resolutiondate,
 # dias calendario, solo items cerrados. "nodev" = cerrados que nunca pasaron por In Development.
+def _fmt_day(iso):
+    """2026-09-27 -> Sep 27."""
+    try:
+        d = dt.date.fromisoformat(str(iso)[:10])
+        return f"{MONTH_ABBR[d.month - 1]} {d.day}"
+    except Exception:
+        return str(iso)
+
+
 def cyc_status(c):
     return "healthy" if (c["med"] <= 6 and c["avg"] <= 9) else (
            "warning" if (c["med"] <= 7.2 and c["avg"] <= 10.8) else "risk")
@@ -501,7 +510,9 @@ def _add_tips(html):
 
 BADGE = {"healthy":("b-green","Healthy","var(--healthy)"),
          "warning":("b-amber","Warning","var(--warning)"),
-         "risk":("b-red","Risk","var(--risk)")}
+         "risk":("b-red","Risk","var(--risk)"),
+         # a period still running is not healthy, warning or risk: it is unfinished
+         "open":("b-grey","In progress","var(--wf-muted)")}
 
 # ---- what a period compares itself against -------------------------------
 # Months and quarters compare against the closed calendar quarters. Releases
@@ -1555,9 +1566,25 @@ def month_page(mk):
     _cyc_a  = json.dumps([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck])
     _cyc_max = max([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck] + [1]) * 1.2
 
+    # A release that has not closed gets no flow-health verdict. Every number on the
+    # page is still moving -- items keep closing, cycle time is computed over the
+    # subset that has finished -- and a verdict on a partial period is a verdict on
+    # the calendar. It is the same rule the sprint page already keeps.
+    if m.get("open"):
+        _done = m.get("sprints_done")
+        _pill = ("Release in progress"
+                 + (f" — {_done} of {m['n_sprints']} sprints closed" if _done is not None
+                    else f" — {m['n_sprints']} sprints")
+                 + f" · ends {_fmt_day(m['end'])}. The numbers move until it closes, so this "
+                   "page carries no flow-health verdict yet.")
+        _pst = "open"
+    else:
+        _pill = f"Flow Health: {BADGE[m['status']][1].upper()} — {m['headline']}"
+        _pst  = m["status"]
+
     html = head(f"{m['label']} Performance Report",
                 f"Flow and sprint metrics for the {PERIOD_WORD}, against {m['prev']} and {globals().get('REF2_PHRASE', REF2_LABEL)}.",
-                f"Flow Health: {BADGE[m['status']][1].upper()} — {m['headline']}", m["status"], m["short"])
+                _pill, _pst, m["short"])
 
     html += f"""
 <section class="panel active" id="dash">
@@ -1969,9 +1996,10 @@ new Chart(document.getElementById('cQ1'),{{type:'bar',
 
 
 # ---------------------------------------------------------------- index page
-BADGE_LABEL = {"healthy": "Healthy", "warning": "Warning", "risk": "Risk"}
+BADGE_LABEL = {"healthy": "Healthy", "warning": "Warning", "risk": "Risk",
+               "open": "In progress"}
 BADGE_BG    = {"healthy": ("#e6f6ef", "#1a7f5a"), "warning": ("#fdeee3", "#c0641f"),
-               "risk": ("#fdeaea", "#b3261e")}
+               "risk": ("#fdeaea", "#b3261e"), "open": ("#eef2f8", "#5a6577")}
 
 def _card(href, short, year, title, badge, blurb, status=None):
     bg, fg = BADGE_BG.get(status, ("#fdeee3", "#c0641f"))
@@ -2156,7 +2184,7 @@ def index_page():
         _ns = [n.split()[-1].split("-")[0] for n in r["sprints"]]
         sub = (f"Sprint{'s' if len(_ns) > 1 else ''} {', '.join(_ns[:-1]) + ' and ' + _ns[-1] if len(_ns) > 1 else _ns[0]}"
                f" · {r['start']} to {r['end']} · {r['closed']} closed, {r['per_sprint']} per sprint")
-        rel.append((href, card_for(href, idx.get(href), r.get("status"),
+        rel.append((href, card_for(href, idx.get(href), "open" if r.get("open") else r.get("status"),
                                    short=r["short"], title=f"Release {rk} Performance Report",
                                    blurb=(idx.get(href) or {}).get("blurb") or sub)))
     for short, href in DATA.get("REPORTS", []):
@@ -2354,6 +2382,15 @@ if RELEASES:
         _r["status"] = _st
         _r["headline"] = _move + ((". " + _notes[0][0].upper() + _notes[0][1:] + ".") if _notes else ".")
         _r["unp_items"] = _r.get("unp_items") or []
+        if _r.get("open") and _r.get("sprints_done") is None:
+            # a release is counted in sprints, so say how many of its own are done.
+            # The collector already answers this from Jira's own sprint states; the
+            # fallback is every sprint of the release except the one running.
+            _lm = (LIVE or {}).get("month") or {}
+            _r["sprints_done"] = (_lm.get("sprints_done")
+                                  if _lm.get("label") == _r.get("label")
+                                     and _lm.get("sprints_done") is not None
+                                  else sum(1 for n in _r["sprints"] if n != ACTIVE))
         if _r.get("open"):
             _a = dt.date.fromisoformat(_r["start"]); _b = dt.date.fromisoformat(_r["end"])
             _r["days"] = (_b - _a).days + 1
