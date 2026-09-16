@@ -142,9 +142,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
 .fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
 .fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
-.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
- color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
-.fulllink:hover{border-color:var(--wf-blue)}
+/* This was a 13px underlined link at the foot of the card, and it was the only way
+   into the sprint page. It is the most-used destination on the site, so it looks
+   like a destination now. */
+.fulllink{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-size:14.5px;
+ font-weight:700;color:#fff;background:var(--wf-blue);text-decoration:none;
+ padding:11px 20px;border-radius:11px;box-shadow:0 1px 3px rgba(0,124,188,.28);transition:.15s}
+.fulllink:hover{background:var(--wf-blue-d);box-shadow:0 3px 10px rgba(0,124,188,.28)}
+.fulllink .ar{font-size:16px;line-height:1}
 @media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
 .projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;

@@ -373,23 +373,47 @@ NAVCSS = """
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
  .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
  .rhome:hover{text-decoration:underline}
- @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
+ /* With the active sprint in it the strip no longer fits a phone. It scrolls
+    sideways rather than wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
 """
 
-def repnav(current):
-    out = []
+def repnav(current, root=False):
+    """The strip that moves you between periods.
+
+    The active sprint is in it. It used to be reachable only from one small link on
+    the index, and a chip click from the sprint page was a one-way door: the strip
+    took you to a report that had no way back. A page that is in the strip can
+    always be returned to, which is the whole point of having one.
+
+    `root` is for the pages that sit at the top of the site rather than in 2026/.
+    """
+    up   = "" if root else "../"
+    into = "2026/" if root else ""
+    live = ('<span class="rp live on"><i></i>Active sprint</span>' if current == "live"
+            else f'<a class="rp live" href="{up}sprint.html"><i></i>Active sprint</a>')
+    out = [live, '<span class="rsep"></span>', '<span class="ry">2026</span>']
     for code, href in REPORTS:
         if code == "Q1":
             out.append('<span class="rsep"></span>')
         if code == current:
             out.append(f'<span class="rp on">{code}</span>')
         else:
-            out.append(f'<a class="rp" href="{href}">{code}</a>')
-    return ('<div class="repnav"><div class="wrap"><span class="ry">2026</span>'
+            out.append(f'<a class="rp" href="{into}{href}">{code}</a>')
+    return ('<div class="repnav"><div class="wrap">'
             + "".join(out)
-            + '<a class="rhome" href="../index.html">&larr; All reports</a></div></div>')
+            + f'<a class="rhome" href="{up}index.html">&larr; All reports</a></div></div>')
 
 
 
@@ -826,7 +850,7 @@ document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',
  e.preventDefault();showTab(l.dataset.goto,true);});});
 // carry the open tab across reports: the month/quarter pills keep you where you were
 function currentTab(){const a=document.querySelector('.tab.active');return a?a.dataset.tab:'';}
-document.querySelectorAll('.repnav a.rp').forEach(a=>{a.addEventListener('click',e=>{
+document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListener('click',e=>{
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
@@ -1982,7 +2006,7 @@ def _live_foot(mode):
     return shell.replace("__LIVE__", _live_core(mode))
 
 
-SPRINTCSS = """
+SHELLCSS = """
  .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
@@ -1993,8 +2017,25 @@ SPRINTCSS = """
      text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
  .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
  .rhome:hover{text-decoration:underline}
+ /* The strip is longer now that the active sprint is in it. On a phone it scrolls
+    sideways instead of wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
+"""
+
+# Only the pages built on the index shell need this: the report pages get the tab
+# machinery from their own stylesheet.
+SPRINTCSS = """
  .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
    border-bottom:1px solid var(--line)}
  .tabs .wrap{display:flex;gap:4px}
@@ -2027,7 +2068,6 @@ SPRINTCSS = """
   .cmpcard{padding:16px}
   .sectit{font-size:20px}
  }
- @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
 """
 
 
@@ -2042,19 +2082,12 @@ def sprint_page():
     _b = head.find("</style>")
     css = head[_a:_b]
 
-    nav = []
-    for code, href in REPORTS:
-        if code == "Q1":
-            nav.append('<span class="rsep"></span>')
-        nav.append(f'<a class="rp" href="2026/{href}">{code}</a>')
-    repnav = ('<div class="repnav"><div class="wrap"><span class="ry">2026</span>'
-              + "".join(nav)
-              + '<a class="rhome" href="index.html">&larr; All reports</a></div></div>')
+    strip = repnav("live", root=True)
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EDW &middot; Active sprint</title>
-<style>{css}{SPRINTCSS}</style></head>
+<style>{css}{SHELLCSS}{SPRINTCSS}</style></head>
 <body>
 <header><div class="wrap">
 <div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Active sprint</div>
@@ -2069,7 +2102,7 @@ every refresh. It gets a verdict in the release report once it closes, not befor
  <button class="tab" data-tab="flow">Workflow</button>
  <button class="tab" data-tab="rel">Release</button>
 </div></div>
-{repnav}
+{strip}
 <main><div class="wrap">
 <div id="livepanel"></div>
 </div></main>
@@ -2095,6 +2128,13 @@ def admin_page():
                         'It is kept away from the reports on purpose: the reports are for '
                         'stakeholders, this is for whoever keeps the board honest.</div>') + head[_j:]
     head = head.replace('<div id="livepanel"></div>', '<div id="adminpanel"></div>')
+    # the strip, so this page can be left the same way every other page can
+    head = head.replace("</style>", SHELLCSS + "</style>")
+    head = head.replace('<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>',
+                        '<div class="crumb"><a href="index.html">EDW Performance Reports</a> '
+                        '&rsaquo; Board hygiene</div>'
+                        '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
+    head = head.replace('<main><div class="wrap">', repnav(None, root=True) + '\n<main><div class="wrap">')
     return head + foot
 
 

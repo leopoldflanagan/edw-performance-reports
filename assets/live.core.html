@@ -428,7 +428,9 @@
       out += tiles(s, live);
       if (live) out += projBlock(d.projection, true);
     }
-    out += '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a></div>';
+    out += '<a class="fulllink" href="sprint.html">' +
+      (s ? 'Open the active sprint' : 'Open the sprint page') +
+      ' <span class="ar">&rarr;</span></a></div>';
     host.innerHTML = out;
   }
 
