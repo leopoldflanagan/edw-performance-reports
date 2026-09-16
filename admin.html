@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDW &middot; Board hygiene</title>
+<title>EDW &middot; What to fix in Jira</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
 :root{--wf-blue:#007CBC;--wf-blue-d:#005f91;--wf-blue-l:#65B2D5;--wf-blue-bg:#e5f2f8;--wf-ink:#32373c;--wf-muted:#626c84;--line:#e2e8f0;--bg:#f5f8fb;--card:#fff;--shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);--healthy:#4FA800;--warning:#ED7D31;--risk:#d64550}
@@ -155,6 +155,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
  padding:3px 9px;border-radius:999px}
 
+ /* The reports lay out at 1180 and these pages were at 880, so moving between
+    them shifted the whole page. They carry the same strip too, which does not fit
+    880 once it has both buttons on it. */
+ .wrap{max-width:1180px}
  .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
@@ -169,21 +173,27 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
- .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
- .rhome:hover{text-decoration:underline}
+ /* These were a 12.5px bare link pushed to the edge. They are the way off the
+    page, so they are sized like the pills they sit next to. */
+ .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+ .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
+   padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
+   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+ .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
+ .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* The strip is longer now that the active sprint is in it. On a phone it scrolls
     sideways instead of wrapping into three lines. */
  @media(max-width:700px){
   .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
   .repnav .wrap::-webkit-scrollbar{display:none}
   .rp,.ry{flex:0 0 auto}
-  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+  .rgroup{margin-left:12px;padding-top:0}
  }
 </style></head>
 <body>
-<header><div class="wrap"><div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Board hygiene</div><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>Board hygiene</h1>
-<div class="sub">Everything on this page is fixable by editing Jira. It is kept away from the reports on purpose: the reports are for stakeholders, this is for whoever keeps the board honest.</div></div></div></header>
-<div class="repnav"><div class="wrap"><a class="rp live" href="sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="ry">2026</span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><a class="rhome" href="index.html">&larr; All reports</a></div></div>
+<header><div class="wrap"><div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; What to fix in Jira</div><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>What to fix in Jira</h1>
+<div class="sub">Everything on this page is fixable by editing Jira. It is kept away from the reports on purpose: the reports are for stakeholders, this is the list of things somebody has to go and fix.</div></div></div></header>
+<div class="repnav"><div class="wrap"><a class="rp live" href="sprint.html"><i></i>Active sprint</a><span class="rsep"></span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><span class="rgroup"><span class="rutil on">What to fix in Jira</span><a class="rutil" href="index.html">&larr; All reports</a></span></div></div>
 <main><div class="wrap">
 <div id="adminpanel"></div></div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit</footer>

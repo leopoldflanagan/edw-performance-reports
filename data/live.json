@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T19:45:20Z",
+ "generated": "2026-09-16T19:50:18Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,8 +314,8 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 4,
-   "points": 11
+   "items": 3,
+   "points": 8
   },
   "misfiled": {
    "items": 15,
@@ -358,17 +358,17 @@
   "days": 14,
   "n": 10,
   "done_now": 12,
-  "committed": 49,
+  "committed": 51,
   "lo": 41,
   "mid": 52,
   "hi": 59,
-  "pct": 106,
+  "pct": 102,
   "verdict": "on track for the commitment",
   "share_mid": 0.23
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 20,
    "sprint": 18,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -451,7 +451,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 24,
+    "n": 23,
     "items": [
      {
       "key": "EDW-2360",
@@ -460,10 +460,6 @@
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
-     },
-     {
-      "key": "EDW-2351",
-      "summary": "Add  UserId columns to .Net Plans reporting"
      },
      {
       "key": "EDW-2326",
@@ -484,13 +480,17 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 29 of 32 items. This reads as a field the team does not use rather than 29 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 29,
+    "why": "missing on 28 of 32 items. This reads as a field the team does not use rather than 28 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 28,
     "items": []
    },
    {
@@ -593,17 +593,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 22,
+  "items": 27,
   "items_done": 7,
-  "committed": 49,
-  "final": 51,
+  "committed": 51,
+  "final": 53,
   "completed": 12,
   "scope_change": 4,
   "vs_commitment": 24,
   "time_elapsed": 16,
   "spill": {
    "open_items": 14,
-   "open_pts": 39.0,
+   "open_pts": 41.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 12.0
@@ -616,29 +616,30 @@
   },
   "spill_rate": null,
   "dist": {
+   "Backlog": 4,
+   "In Development": 8,
    "Closed": 7,
-   "In Development": 6,
    "Awaiting Review": 1,
-   "Ready for Development": 7,
-   "Won't Do": 1
+   "Won't Do": 1,
+   "Ready for Development": 6
   },
   "burn": [
-   39.0,
-   47.0,
-   42.0,
-   39.0
+   41.0,
+   49.0,
+   44.0,
+   41.0
   ],
   "scope": [
-   39.0,
-   49.0,
-   49.0,
-   51.0
+   41.0,
+   51.0,
+   51.0,
+   53.0
   ],
   "ghost": [
-   39.0,
-   47.0,
-   42.0,
-   39.0
+   41.0,
+   49.0,
+   44.0,
+   41.0
   ],
   "days": 14,
   "day": 3,
@@ -687,20 +688,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 14.0,
+    "open": 20,
+    "med_age": 14.5,
     "max_age": 191.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 2.9,
-    "clear_n": 199
+    "clear_n": 200
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 1.2,
+    "open": 8,
+    "med_age": 1.1,
     "max_age": 19.1,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -708,6 +709,18 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 244
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -720,6 +733,18 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 140
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "New",
@@ -746,18 +771,6 @@
     "clear_n": 1
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -768,23 +781,11 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 68,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 68
   },
   "open_total": 28,
   "stale": 18,

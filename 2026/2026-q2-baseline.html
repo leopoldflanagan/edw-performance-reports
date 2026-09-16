@@ -43,8 +43,10 @@
   .secsub{color:var(--wf-muted);font-size:14px;margin-bottom:20px}
 
   .grid{display:grid;gap:18px}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .g2{grid-template-columns:repeat(2,1fr)}
+  /* minmax(0,1fr), not 1fr: a grid track's default minimum is min-content, so one
+     card with an unbreakable string pushes the row past the page. */
+  .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
   @media(max-width:860px){.g3,.g2{grid-template-columns:1fr}}
 
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow);position:relative}
@@ -302,15 +304,21 @@
  .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
- .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
- .rhome:hover{text-decoration:underline}
+ /* These were a 12.5px bare link pushed to the edge. They are the way off the
+    page, so they are sized like the pills they sit next to. */
+ .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+ .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
+   padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
+   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+ .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
+ .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* With the active sprint in it the strip no longer fits a phone. It scrolls
     sideways rather than wrapping into three lines. */
  @media(max-width:700px){
   .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
   .repnav .wrap::-webkit-scrollbar{display:none}
   .rp,.ry{flex:0 0 auto}
-  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+  .rgroup{margin-left:12px;padding-top:0}
  }
 
  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
@@ -384,7 +392,7 @@
  <button class="tab" data-tab="cmp">Comparatives</button>
  <button class="tab" data-tab="act">Findings &amp; Retro</button>
 </div></div>
-<div class="repnav"><div class="wrap"><a class="rp live" href="../sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="ry">2026</span><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><span class="rp on">Q2</span><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><a class="rp live" href="../sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><span class="rp on">Q2</span><span class="rgroup"><a class="rutil" href="../admin.html">What to fix in Jira</a><a class="rutil" href="../index.html">&larr; All reports</a></span></div></div>
 <main><div class="wrap">
 <section class="panel active" id="dash">
   <div class="sectit">Q2 2026 — April to June</div>

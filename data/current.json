@@ -98,23 +98,23 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   22,
+   27,
    7,
-   49,
    51,
+   53,
    12,
    4,
    [
-    39.0,
-    47.0,
-    42.0,
-    39.0
+    41.0,
+    49.0,
+    44.0,
+    41.0
    ],
    [
-    39.0,
-    49.0,
-    49.0,
-    51.0
+    41.0,
+    51.0,
+    51.0,
+    53.0
    ]
   ]
  ],
@@ -146,7 +146,7 @@
    ],
    "open": [
     14,
-    39
+    41
    ],
    "out": [
     0,
@@ -224,12 +224,12 @@
   "EDW-Sprint 22-26": {
    "tis": {
     "Backlog": {
-     "n": 12,
-     "med": 1.17
+     "n": 17,
+     "med": 1.2
     },
     "In Development": {
-     "n": 12,
-     "med": 6.43
+     "n": 14,
+     "med": 11.47
     },
     "Closed": {
      "n": 8,
@@ -249,16 +249,17 @@
     }
    },
    "dist": {
+    "Backlog": 4,
+    "In Development": 8,
     "Closed": 7,
-    "In Development": 6,
     "Awaiting Review": 1,
-    "Ready for Development": 7,
-    "Won't Do": 1
+    "Won't Do": 1,
+    "Ready for Development": 6
    },
-   "stalled": 14,
+   "stalled": 19,
    "worst": 13.5,
    "worstSt": "Ready for Development",
-   "items": 22
+   "items": 27
   }
  },
  "GHOST": {
@@ -281,10 +282,10 @@
    44.0
   ],
   "EDW-Sprint 22-26": [
-   39.0,
-   47.0,
-   42.0,
-   39.0
+   41.0,
+   49.0,
+   44.0,
+   41.0
   ]
  },
  "CAP": {
