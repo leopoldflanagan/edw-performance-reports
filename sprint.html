@@ -117,11 +117,13 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .adminlink.has-warn .fixdot{background:var(--warning)}
 .adminlink.has-none .fixdot{background:var(--healthy)}
 .adminlink .fixn{flex:1;min-width:0}
+.adminlink .fixtop{color:#8b95a8;font-size:12.5px;margin-left:10px}
 .adminlink .fixn .fixb{color:var(--risk);font-weight:700}
 .adminlink .fixar{color:var(--wf-blue);font-size:18px;font-weight:700;flex:0 0 auto}
 @media(max-width:560px){
  .adminlink{align-items:flex-start;flex-wrap:wrap;gap:8px;font-size:12.5px}
  .adminlink .fixn{flex:1 0 100%}
+ .adminlink .fixtop{display:block;margin:4px 0 0}
  .adminlink .fixar{margin-left:auto}
 }
 
@@ -255,7 +257,7 @@ every refresh. It gets a verdict in the release report once it closes, not befor
 <div class="repnav"><div class="wrap"><span class="rp live on"><i></i>Active sprint</span><span class="rsep"></span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><span class="rgroup"><a class="rutil" href="index.html">&larr; All reports</a></span></div></div>
 <main><div class="wrap">
 <div id="livepanel"></div>
-<a class="adminlink" id="fixlink" href="admin.html"><i class="fixdot"></i><b>What to fix in Jira</b><span class="fixn">Definition of Ready, backlog health and the fields the reports depend on</span><span class="fixar">&rarr;</span></a>
+<a class="adminlink" id="fixlink" href="admin.html"><i class="fixdot"></i><b>What to fix in Jira</b><span class="fixn">Counting&hellip;</span><span class="fixar">&rarr;</span></a>
 </div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
 <a href="admin.html" style="color:inherit">what to fix in Jira</a></footer>
@@ -781,33 +783,53 @@ every refresh. It gets a verdict in the release report once it closes, not befor
     if (!h || !show(h, false)) show(tabs[0].dataset.tab, false);
   }
 
-  // The fix-list link is a status line, so it says how much there is. Blocking and
-  // administrative are counted apart because they mean different things: one stops
-  // planning being trustworthy, the other only costs the reports a field.
+  // The fix-list link is a status line, so every word after the page's own name
+  // comes out of the data. The version before this one ended with a hand-written
+  // list -- "Definition of Ready, backlog health and the fields the reports depend
+  // on" -- which is a description of the checks written in a second place. The day
+  // a check is added, renamed or dropped, that sentence is wrong and nothing tells
+  // anyone. A status element renders its state; it does not describe it from memory.
   function fixLink(a) {
     var el = document.getElementById('fixlink');
-    if (!el) return;
-    var n = function (list) {
-      return (list || []).reduce(function (s, c) { return s + (c.n || 0); }, 0);
-    };
-    var nb = n(a && a.blocking) + n(a && a.setup), nd = n(a && a.debt);
+    if (!el || !a) return;                 // no data: the static text still links
     var body = el.querySelector('.fixn');
-    if (!a) return;                                   // no data: leave the static text
+    if (!body) return;
+
+    // Buckets come from the payload, not from a list kept here. `debt` is the one
+    // that does not stop anything; anything else the collector starts reporting is
+    // counted as blocking, because a status line that quietly drops a new category
+    // is worse than one that over-reports it.
+    var SOFT = { debt: 1 }, hard = [], soft = [];
+    Object.keys(a).forEach(function (k) {
+      if (!Array.isArray(a[k])) return;
+      (SOFT[k] ? soft : hard).push.apply(SOFT[k] ? soft : hard, a[k]);
+    });
+    var sum = function (l) {
+      return l.reduce(function (s, c) { return s + (c.n || 0); }, 0);
+    };
+    var top = function (l) {
+      return l.reduce(function (b, c) {
+        return (c.n || 0) > ((b && b.n) || 0) ? c : b;
+      }, null);
+    };
+    var nh = sum(hard), ns = sum(soft);
+    var lead = nh ? top(hard) : top(soft);
+
     el.classList.remove('has-risk', 'has-warn', 'has-none');
-    if (nb) {
-      el.classList.add('has-risk');
-      if (body) body.innerHTML = '<span class="fixb">' + nb + ' blocking</span>' +
-        (nd ? ' &middot; ' + nd + ' administrative' : '') +
-        ' &mdash; Definition of Ready' + (nd ? ' and the fields the reports need' : '');
-    } else if (nd) {
-      el.classList.add('has-warn');
-      if (body) body.innerHTML = '<b style="color:var(--wf-ink)">Nothing blocking</b> &middot; ' +
-        nd + ' administrative &mdash; the fields the reports need';
-    } else {
+    if (!nh && !ns) {
       el.classList.add('has-none');
-      if (body) body.innerHTML = 'Nothing to fix. Everything meets the Definition of ' +
-        'Ready and the reporting fields are filled in.';
+      body.innerHTML = 'Nothing to fix.';
+      return;
     }
+    el.classList.add(nh ? 'has-risk' : 'has-warn');
+    body.innerHTML =
+      (nh ? '<span class="fixb">' + nh + ' blocking</span>'
+          : '<b style="color:var(--wf-ink)">Nothing blocking</b>') +
+      (ns ? ' &middot; ' + ns + ' administrative' : '') +
+      (lead && lead.rule
+        ? '<span class="fixtop">Biggest: ' + esc(lead.rule) +
+          ' (' + (lead.n || 0) + ')</span>'
+        : '');
   }
 
   function render(d) {
