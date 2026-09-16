@@ -93,6 +93,17 @@ def sp_of(issue):
     except (TypeError, ValueError): return 0.0
 
 
+def _prev_sprint(mine, sp):
+    """The sprint that ran before this one on the same board, by start date.
+    Spillover has a direction: without knowing which sprint came first you can see
+    what left a sprint but never what arrived in it."""
+    started = sorted([x for x in mine if x.get("startDate")], key=lambda x: x["startDate"])
+    for n, x in enumerate(started):
+        if x["id"] == sp["id"]:
+            return started[n-1]["name"] if n else None
+    return None
+
+
 def _entered_sprint(i, name):
     """When this issue first joined that sprint, per the Sprint-field changelog."""
     t = None
@@ -124,7 +135,7 @@ def _left_sprint(i, name):
                 if out is None or d > out: out = d
     return out
 
-def sprint_detail(board, sp, project):
+def sprint_detail(board, sp, project, prev=None):
     """Rebuilds a sprint from its own history.
 
     The one thing that makes this different from reading Jira's board: a sprint that
@@ -181,6 +192,13 @@ def sprint_detail(board, sp, project):
                        expand="changelog")
         issues_all += [i for i in extra if i["key"] not in have]
 
+    # ---- what this sprint INHERITED ----------------------------------------
+    # Committed on day 1 and already a member of the sprint before: work that did
+    # not finish there and was carried forward. The reports have always shown what
+    # a sprint gave away; this is the other side of the same transfer, and the one
+    # that explains why a sprint starts with less room than its capacity suggests.
+    recv_items, recv_pts = 0, 0.0
+
     # ---- the accounting, over the real membership
     rows, committed, final, completed, items_done = [], 0.0, 0.0, 0.0, 0
     for i in issues_all:
@@ -231,6 +249,9 @@ def sprint_detail(board, sp, project):
         "spill": spill,
         # spillover only means something once the sprint is near its end: three days in,
         # "95% not finished" is a statement about the calendar, not about the team
+        "recv": {"items": recv_items, "pts": round(recv_pts),
+                 "pct": round(100*recv_pts/committed) if committed else None,
+                 "from": prev},
         "spill_rate": (round(100*gone/allp) if allp else None) if pct_elapsed >= 80 else None,
         "dist": dist, "burn": burn, "scope": scope, "ghost": ghost,
         "_issues": issues, "_issues_all": issues_all,
@@ -578,6 +599,7 @@ def backlog(project, frozen_path):
 
 
 F_TARGET_END = os.environ.get("JIRA_TARGET_END", "customfield_10023")
+F_SPRINT     = os.environ.get("JIRA_SPRINT_FIELD", "customfield_10020")   # Sprint
 ADHOC        = "8-AdHoc"
 LONG_HAUL    = 4          # sprints an item can ride before it is worth naming
 
@@ -600,9 +622,12 @@ def admin(project, live_sp, cap_page):
     jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) AND ('
            f'status = "{READY_STATUS}"'
            + (f' OR sprint = "{active}"' if active else "") + ")")
+    # "sprint" is not a field name Jira answers to -- the Sprint field is a custom
+    # field, and asking for the wrong name fails silently rather than erroring, which
+    # is how every sprint-scoped check here quietly found nothing.
     iss = search(jql, ["status", "summary", "assignee", "fixVersions", "timetracking",
                        "labels", "issuetype", "issuelinks", SP_FIELD, GROOM_FIELD,
-                       F_TARGET_END, "sprint"], cap=6)
+                       F_TARGET_END, F_SPRINT], expand="changelog", cap=6)
     if not iss:
         return None
 
@@ -612,8 +637,20 @@ def admin(project, live_sp, cap_page):
         return (v or "").strip()
 
     def in_sprint(i):
-        return active and any((s or {}).get("name") == active
-                              for s in (i["fields"].get("sprint") or []))
+        return bool(active) and any((s or {}).get("name") == active
+                                    for s in (i["fields"].get(F_SPRINT) or []))
+
+    def sprints_ridden(i):
+        """How many sprints this item has been in. The Sprint field only keeps the
+        ones it is in NOW, so the count has to come from the changelog."""
+        seen = set()
+        for h in i.get("changelog", {}).get("histories", []):
+            for it in h["items"]:
+                if it["field"] == "Sprint":
+                    for x in (it.get("toString") or "").split(","):
+                        if x.strip():
+                            seen.add(x.strip())
+        return len(seen) or len(i["fields"].get(F_SPRINT) or [])
 
     roster = {p["name"] for p in ((cap_page or {}).get("roster") or [])
               if not (p.get("status") or "").lower().startswith("left")}
@@ -695,7 +732,7 @@ def admin(project, live_sp, cap_page):
 
     add(D, f"Riding {LONG_HAUL}+ sprints",
         "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-        [i for i in gate if len(i["fields"].get("sprint") or []) >= LONG_HAUL])
+        [i for i in gate if sprints_ridden(i) >= LONG_HAUL])
 
     # ---- sprint-level ------------------------------------------------------
     setup = []
