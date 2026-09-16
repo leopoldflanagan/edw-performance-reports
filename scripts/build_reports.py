@@ -1897,6 +1897,29 @@ def _card(href, short, year, title, badge, blurb, status=None):
 <div class="arrow">&rarr;</div></a>
 '''
 
+def _live_foot(mode):
+    """One live script, two pages. The shell and the script are separate files so
+    the card and the full page cannot drift apart."""
+    shell = open(os.path.join(REPO, "assets", "foot.shell.html")).read()
+    core  = open(os.path.join(REPO, "assets", "live.core.html")).read()
+    return shell.replace("__LIVE__",
+                         f"<script>window.__LIVE_MODE__={json.dumps(mode)};</script>\n" + core)
+
+
+def sprint_page():
+    """The active sprint in full. The index card is the five-second read; this is
+    where the detail behind it lives, so the card can stay a card."""
+    head = open(os.path.join(REPO, "assets", "index.head.html")).read()
+    head = head.replace("<title>EDW Performance Reports</title>",
+                        "<title>EDW &middot; Active sprint</title>")
+    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>Active sprint</h1>")
+    _i, _j = head.find('<div class="sub">'), head.find("</div></div></header>")
+    head = head[:_i] + ('<div class="sub">Everything the reports know about the sprint running '
+                        'right now, rebuilt from Jira on every refresh. It gets a verdict in the '
+                        'release report once it closes, not before.</div>') + head[_j:]
+    return head + _live_foot("full")
+
+
 def admin_page():
     """The board-hygiene page. Same shell as the index, different audience: this one
     is for whoever keeps Jira honest, so it is linked from the index rather than
@@ -1918,7 +1941,7 @@ def admin_page():
 
 def index_page():
     head = open(os.path.join(REPO, "assets", "index.head.html")).read()
-    foot = open(os.path.join(REPO, "assets", "index.foot.html")).read()
+    foot = _live_foot("compact")
     idx  = DATA.get("INDEX", {})
 
     def card_for(href, meta, status=None, short=None, title=None, blurb=None):
@@ -2025,7 +2048,8 @@ if not DATA.get("RELEASES"):
         open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips(month_page(mk)))
         print("wrote", m["slug"])
 open(f"{REPO}/admin.html","w").write(admin_page())
-print("wrote admin")
+open(f"{REPO}/sprint.html","w").write(sprint_page())
+print("wrote admin + sprint")
 open(f"{REPO}/2026/2026-q1.html","w").write(add_tips(q1_page()))
 print("wrote 2026-q1")
 open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips(q2_page()))

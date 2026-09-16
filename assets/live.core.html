@@ -1,5 +1,3 @@
-</div></main>
-<footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
 <script>
 /* Live panel — reads data/live.json, written by the scheduled Action.
    Everything else on the site stays static. If the file is missing or stale,
@@ -12,6 +10,10 @@
 (function () {
   var host = document.getElementById('livepanel');
   if (!host) return;
+  // One script, two pages. The index shows a card you can read in five seconds;
+  // sprint.html shows everything. Duplicating the rendering would guarantee the
+  // two drift apart, which is exactly what a summary must never do.
+  var FULL = (window.__LIVE_MODE__ === 'full');
 
   var STCOL = {
     'Ready for Development': '#65B2D5', 'In Development': '#007CBC',
@@ -42,6 +44,23 @@
     var t = String(iso || '').slice(11, 16);
     return t ? t + ' UTC' : '';
   };
+
+  /* The old line at the foot said "updated 18 min ago" in body text, which is easy
+     to miss and says nothing about whether that is fine. This states the verdict
+     first and the time second. */
+  function freshness(iso) {
+    if (!iso || iso.slice(0, 4) === '1970') {
+      return '<span class="fresh fresh-wait"><i></i>Waiting for the first refresh</span>';
+    }
+    var mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    var d = new Date(iso);
+    var when = d.toLocaleString(undefined, { month: 'short', day: 'numeric',
+                                             hour: 'numeric', minute: '2-digit' });
+    var cls = mins > 90 ? 'fresh-bad' : (mins > 45 ? 'fresh-warn' : 'fresh-ok');
+    var say = mins > 90 ? 'Data may be stale' : (mins > 45 ? 'Refresh running late' : 'Data up to date');
+    return '<span class="fresh ' + cls + '" title="Last refresh ' + esc(iso) + '"><i></i>' +
+      say + ' <b>&middot; ' + esc(when) + '</b></span>';
+  }
 
   function tile(k, v, n, col) {
     return '<div class="hcell"><div class="hk">' + k + '</div>' +
@@ -225,7 +244,8 @@
         ? '<span class="activetag" style="background:var(--wf-muted)">Most recent sprint</span>'
         : '<span class="activetag" style="background:var(--wf-muted)">No sprint open</span>');
 
-    out += '<div class="activewrap">' + tag;
+    out += '<div class="activewrap">' +
+      '<div class="liverow">' + tag + freshness(d.generated) + '</div>';
 
     if (s) {
       // the sprint being reported on is the headline, not the one after it
@@ -272,15 +292,17 @@
               openPts + ' pts carried out of the sprint', 'var(--risk)')) +
         '</div>';
 
-      if (live) {
+      if (live && FULL) {
         out += '<div class="goalbox" style="margin:0 0 12px">This sprint is <b>in progress</b>. ' +
           'The numbers above are a position on day ' + (s.day || 1) + ' of ' + (s.days || '?') +
           ', not a result &mdash; it gets a verdict in the release report once it closes.</div>';
       }
 
-      out += bar(s.dist);
-      out += burndown(s);
-      out += '<div class="goalbox" style="margin-top:12px">' + (s.goal
+      if (FULL) {
+        out += bar(s.dist);
+        out += burndown(s);
+      }
+      if (FULL) out += '<div class="goalbox" style="margin-top:12px">' + (s.goal
         ? '<b>Sprint goal' + (s.goal_src ? ' (from the ' + esc(s.goal_src) + ')' : '') +
           '.</b> ' + esc(s.goal) +
           (s.committed_planned != null && s.committed_planned !== s.committed
@@ -291,7 +313,7 @@
         '</div>';
     }
 
-    if (m) {
+    if (m && FULL) {
       var isRel = m.kind === 'release';
       // a release is counted in sprints; only the calendar-month fallback counts days
       var head = isRel
@@ -320,18 +342,19 @@
         '</div>';
     }
 
-    out += agingBlock(d.aging);
+    if (FULL) out += agingBlock(d.aging);
 
-    if (d.next) {
+    if (d.next && FULL) {
       out += '<div class="secsub" style="margin-top:12px;font-size:12.5px">Next up: <b>' +
         esc(d.next.name) + '</b>, starting ' + day(d.next.start) + '.</div>';
     }
 
-    out += '<div class="secsub" style="margin-top:6px;font-size:12.5px">' + (first
-      ? 'Waiting for the first refresh &mdash; the scheduled job has not run yet.'
-      : 'Live from Jira &middot; last refresh ' + clock(d.generated) + ' &middot; ' + ago(d.generated) +
-        (stale ? ' &middot; <b style="color:var(--warning)">the refresh job may be stuck</b>' : '')) +
-      '</div></div>';
+    out += (FULL
+      ? '<div class="secsub" style="margin-top:14px;font-size:12.5px">' +
+        '<a href="index.html">&larr; back to the reports</a> &middot; ' +
+        '<a href="admin.html">board hygiene</a></div>'
+      : '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a>');
+    out += '</div>';
     host.innerHTML = out;
     if (s) wireZoom(s);
   }
@@ -348,4 +371,3 @@
 })();
 
 </script>
-</body></html>

@@ -27,6 +27,17 @@
     return h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago';
   };
   var JIRA = 'https://wellfit.atlassian.net/browse/';
+  function freshness(iso) {
+    if (!iso || iso.slice(0, 4) === '1970') {
+      return '<span class="fresh fresh-wait"><i></i>Waiting for the first refresh</span>';
+    }
+    var mins = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    var when = new Date(iso).toLocaleString(undefined, { month: 'short', day: 'numeric',
+                                                         hour: 'numeric', minute: '2-digit' });
+    var cls = mins > 90 ? 'fresh-bad' : (mins > 45 ? 'fresh-warn' : 'fresh-ok');
+    var say = mins > 90 ? 'Data may be stale' : (mins > 45 ? 'Refresh running late' : 'Data up to date');
+    return '<span class="fresh ' + cls + '"><i></i>' + say + ' <b>&middot; ' + esc(when) + '</b></span>';
+  }
   /* Backlog health. One number with bands, so it is a stat with a scale rather
      than a chart: how many sprints of ready work are waiting. State is shown as a
      labelled lozenge, never by colour alone. */
@@ -109,8 +120,10 @@
     var nd = (a.debt || []).reduce(function (s, c) { return s + c.n; }, 0);
 
     out += '<div class="activewrap">' +
+      '<div class="liverow">' +
       '<span class="activetag"' + (nb ? '' : ' style="background:var(--healthy)"') + '>' +
       (nb ? nb + ' blocking' : 'Nothing blocking') + '</span>' +
+      freshness(d.generated) + '</div>' +
       '<div style="font-size:21px;font-weight:800;color:var(--wf-blue-d);line-height:1.2">' +
         'Definition of Ready</div>' +
       '<div class="secsub" style="margin:2px 0 12px;font-size:13px">' +
@@ -134,9 +147,9 @@
       'the team does not use, not as one warning per item.</div>' +
       checks(a.debt, 'debt') + '</div>';
 
-    out += '<div class="secsub" style="margin-top:16px;font-size:12.5px">Live from Jira &middot; ' +
-      (d.generated ? ago(d.generated) : '') + ' &middot; ' +
-      '<a href="index.html">back to the reports</a></div>';
+    out += '<div class="secsub" style="margin-top:16px;font-size:12.5px">' +
+      '<a href="index.html">&larr; back to the reports</a> &middot; ' +
+      '<a href="sprint.html">active sprint</a></div>';
     host.innerHTML = out;
   }
 

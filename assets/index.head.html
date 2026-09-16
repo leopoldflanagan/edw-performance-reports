@@ -132,6 +132,20 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  .hcell .hv{font-size:20px}
  .rcard .body p{font-size:12.5px}
 }
+
+.liverow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.fresh{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:5px 11px;
+ border-radius:999px;white-space:nowrap}
+.fresh i{width:7px;height:7px;border-radius:50%;display:block}
+.fresh b{font-weight:700}
+.fresh-ok{background:#eaf7e3;color:#2f6a12}      .fresh-ok i{background:var(--healthy)}
+.fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
+.fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
+.fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
+.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
+ color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
+.fulllink:hover{border-color:var(--wf-blue)}
+@media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
 </style></head>
 <body>
 <header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse</div><h1>EDW Performance Reports</h1>
