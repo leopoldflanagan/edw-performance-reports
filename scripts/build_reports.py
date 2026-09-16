@@ -465,6 +465,116 @@ def tis_block(name):
             f'<div class="tisbar">{bars}</div><div class="tiskey">{keys}</div>'
             f'<div class="secsub" style="margin-top:7px">{note}</div></div>')
 
+def tis_period(mk):
+    """Time in status for a whole period, pooled from its sprints.
+
+    Only the per-sprint medians survive in frozen history, so the pooled figure is
+    a mean of those medians weighted by how many items each sprint measured. It is
+    an approximation and the page says so: it is right about where the time goes,
+    and should not be quoted to two decimals.
+    """
+    names = [n for n in SP_BY_MONTH.get(mk, []) if n in TIS]
+    if not names:
+        return None
+    acc = {}
+    for n in names:
+        for st, v in (TIS[n].get("tis") or {}).items():
+            if not v.get("n"):
+                continue
+            a = acc.setdefault(st, {"num": 0.0, "n": 0})
+            a["num"] += v["med"] * v["n"]
+            a["n"] += v["n"]
+    out = {st: {"med": a["num"] / a["n"], "n": a["n"]} for st, a in acc.items() if a["n"]}
+    stalled = sum(TIS[n].get("stalled", 0) for n in names)
+    items = sum(TIS[n].get("items", 0) for n in names)
+    return {"tis": out, "sprints": names, "stalled": stalled, "items": items}
+
+
+def tis_flow_block(mk):
+    """Where the time goes in this period, as one bar. Cycle Time says how long an
+    item took; this says which step it spent that time in, which is the only one of
+    the two anybody can act on."""
+    d = tis_period(mk)
+    if not d:
+        return ""
+    parts = [(st, d["tis"][st]["med"], d["tis"][st]["n"])
+             for st in FLOW_ST if st in d["tis"] and d["tis"][st]["med"] > 0]
+    if not parts:
+        return ""
+    total = sum(p[1] for p in parts)
+    bars, keys = "", ""
+    for st, med, n in parts:
+        pct = 100 * med / total
+        bars += ('<span style="width:%.1f%%;background:%s">%s</span>'
+                 % (pct, STCOL.get(st, "#c3cdda"), (f"{med:.1f}d" if pct > 11 else "")))
+        keys += ('<span><i class="tisdot" style="background:%s"></i>%s <b>%.1fd</b> '
+                 '<i style="font-style:normal;color:#9aa6b8">(%d items)</i></span>'
+                 % (STCOL.get(st, "#c3cdda"), st, med, n))
+    slow = max(parts, key=lambda x: x[1])
+    share = 100 * slow[1] / total
+    if slow[0] == "Ready for Development":
+        read = (f"<b>{share:.0f}% of the time an item spends in the flow is spent waiting to be "
+                f"picked up</b>, a median of {slow[1]:.1f} days in <i>Ready for Development</i>. "
+                "That is a queue in front of the team, not the team being slow.")
+    else:
+        read = (f"The longest step is <i>{slow[0]}</i> at a median of {slow[1]:.1f} days, "
+                f"{share:.0f}% of the time an item spends in the flow.")
+    stall = ""
+    if d["stalled"]:
+        stall = (f" {d['stalled']} of {d['items']} items sat more than five days in a single "
+                 "status somewhere in this period.")
+    return f'''
+ <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; where the time actually goes</h3></div>
+  <div class="secsub" style="margin-bottom:10px">Pooled across {len(d["sprints"])} sprint(s) of this {PERIOD_WORD}. Cycle Time says how long an item took; this says which step it spent that time in.</div>
+  <div class="tisbar">{bars}</div><div class="tiskey">{keys}</div>
+  <div class="secsub" style="margin-top:9px">{read}{stall}</div>
+  <div class="infopanel ip-amber">Pooled from each sprint's median, weighted by how many items that sprint measured. It is right about where the time goes; it is not precise to the decimal.</div>
+ </div>'''
+
+
+def tis_trend_card():
+    """The same breakdown across the series, so a step getting slower is visible
+    before it becomes a cycle-time problem."""
+    ks = [k for k in MK_DONE if tis_period(k)]
+    if len(ks) < 2:
+        return "", ""
+    rows = {k: tis_period(k)["tis"] for k in ks}
+    labs = json.dumps([MONTH_LABEL.get(k, k) for k in ks])
+    ds = []
+    for st in FLOW_ST:
+        vals = [round(rows[k].get(st, {}).get("med", 0), 2) for k in ks]
+        if not any(vals):
+            continue
+        ds.append("{label:%s,data:%s,backgroundColor:'%s',borderRadius:3}"
+                  % (json.dumps(st), json.dumps(vals), STCOL.get(st, "#c3cdda")))
+    if not ds:
+        return "", ""
+    js = f"""
+new Chart(document.getElementById('cTis'),{{type:'bar',
+ data:{{labels:{labs},datasets:[{','.join(ds)}]}},
+ options:{{plugins:{{legend:{{position:'top'}}}},scales:{{
+  x:{{stacked:true,grid:{{display:false}}}},
+  y:{{stacked:true,beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Median days per item'}}}}}}}}}});"""
+    first, last = ks[0], ks[-1]
+    tot = lambda k: sum(rows[k].get(st, {}).get("med", 0) for st in FLOW_ST)
+    d0, d1 = tot(first), tot(last)
+    move = (f"from {d0:.1f}d to {d1:.1f}d" if abs(d1 - d0) > 0.2 else f"flat at about {d1:.1f}d")
+    worst = max(FLOW_ST, key=lambda st: rows[last].get(st, {}).get("med", 0))
+    card = f'''
+ <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; the trend</h3></div>
+  <div class="secsub" style="margin-bottom:10px">The same breakdown for every closed {PERIOD_WORD}, stacked. What matters is the shape, not the height: which step is growing.</div>
+  <div class="cmpgrid">
+   <div class="chartbox" style="height:280px"><canvas id="cTis"></canvas></div>
+   <div class="readout">
+    <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Total time in the flow</span><br>Moved {move} between {MONTH_LABEL.get(first, first)} and {MONTH_LABEL.get(last, last)}, per item.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Biggest step now</span><br><i>{worst}</i>, at a median of <b>{rows[last].get(worst, {}).get("med", 0):.1f}d</b>. A step that grows while the others hold is the one to look at, whatever the total does.</div>
+    <div class="line"><span class="vs-tag">Read it with Cycle Time</span><br>Cycle Time can stay flat while the composition changes underneath. That is the case this chart exists to catch.</div>
+   </div>
+  </div>
+ </div>'''
+    return card, js
+
+
 def stalled_block(name):
     d = TIS.get(name, {})
     st, worst, wst = d.get("stalled", 0), d.get("worst", 0), d.get("worstSt", "")
@@ -1199,6 +1309,7 @@ new Chart(document.getElementById('bd{i}'),{{type:'line',
 
 def month_page(mk):
     m = MONTHS[mk]
+    _tis_card, _tis_js = tis_trend_card()
     cm  = cap([mk]); cq1 = cap(CAP_Q1); cq2 = cap(CAP_Q2)
     bnd = band([cl(k) for k in MK_L3])
     in_band = bnd["lo"] <= cl(mk) <= bnd["hi"]
@@ -1391,6 +1502,7 @@ def month_page(mk):
     </tbody>
   </table></div>
   <div class="fnote">Comparatives use the closed quarters of the year: Q1 and Q2. Q3 joins this table once September closes and its report is created. Q1's monthly detail is under review — the figure used here is the one published in Confluence.</div>
+  {tis_flow_block(mk)}
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
     <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
     <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
@@ -1403,6 +1515,7 @@ def month_page(mk):
 <section class="panel" id="cmp">
   <div class="sectit">Comparatives</div>
   <div class="secsub">The full series from the baseline, so the trend shows and not just the month.</div>
+  {_tis_card}
   <div class="cmpcard">
     <div class="cmphead"><h3><span class="st-dot" style="background:{BADGE[st_thr][2]};width:13px;height:13px"></span> Throughput</h3>{badge(st_thr)}</div>
     <div class="cmpgrid">
@@ -1502,7 +1615,7 @@ new Chart(document.getElementById('cUnp'),{{type:'line',
  options:{{plugins:{{legend:{{display:false}},tooltip:{{callbacks:{{label:c=>c.raw==null?' no data':` ${{c.raw}}% unplanned`}}}}}},
   scales:{{y:{{beginAtZero:true,max:20,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[bands]}});
-{charts_scrum(mk)}"""
+{charts_scrum(mk)}""" + _tis_js
     return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + TIPJS)
 
 def q2_page():
