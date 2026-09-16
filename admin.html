@@ -105,10 +105,25 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .ck-blocking .cn{color:var(--risk)}
 .ck-debt{border-left:4px solid var(--warning)}
 .ck-debt .cn{color:var(--warning)}
-.adminlink{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
- color:var(--wf-muted);text-decoration:none;border:1px solid var(--line);background:var(--card);
- padding:6px 12px;border-radius:999px;margin-top:14px;transition:.15s}
-.adminlink:hover{border-color:var(--wf-blue-l);color:var(--wf-blue-d)}
+/* Not a nav item: a status line. It carries its own count, so you can tell from
+   here whether it is worth opening, and it goes green and quiet when it is empty. */
+.adminlink{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--wf-muted);
+ text-decoration:none;border:1px solid var(--line);background:var(--card);
+ padding:13px 18px;border-radius:12px;margin-top:22px;transition:.15s;box-shadow:var(--shadow)}
+.adminlink:hover{border-color:var(--wf-blue-l);box-shadow:0 3px 12px rgba(0,124,188,.12)}
+.adminlink b{color:var(--wf-blue-d);font-weight:700;white-space:nowrap}
+.adminlink .fixdot{width:9px;height:9px;border-radius:50%;background:#c3cdda;flex:0 0 auto}
+.adminlink.has-risk .fixdot{background:var(--risk)}
+.adminlink.has-warn .fixdot{background:var(--warning)}
+.adminlink.has-none .fixdot{background:var(--healthy)}
+.adminlink .fixn{flex:1;min-width:0}
+.adminlink .fixn .fixb{color:var(--risk);font-weight:700}
+.adminlink .fixar{color:var(--wf-blue);font-size:18px;font-weight:700;flex:0 0 auto}
+@media(max-width:560px){
+ .adminlink{align-items:flex-start;flex-wrap:wrap;gap:8px;font-size:12.5px}
+ .adminlink .fixn{flex:1 0 100%}
+ .adminlink .fixar{margin-left:auto}
+}
 
 /* The index had no layout for a phone. Four stat tiles at 1fr each cannot fit in
    390px, so the page grew a horizontal scrollbar and the header ran off the edge. */
@@ -193,7 +208,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 <body>
 <header><div class="wrap"><div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; What to fix in Jira</div><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>What to fix in Jira</h1>
 <div class="sub">Everything on this page is fixable by editing Jira. It is kept away from the reports on purpose: the reports are for stakeholders, this is the list of things somebody has to go and fix.</div></div></div></header>
-<div class="repnav"><div class="wrap"><a class="rp live" href="sprint.html"><i></i>Active sprint</a><span class="rsep"></span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><span class="rgroup"><span class="rutil on">What to fix in Jira</span><a class="rutil" href="index.html">&larr; All reports</a></span></div></div>
+<div class="repnav"><div class="wrap"><a class="rp live" href="sprint.html"><i></i>Active sprint</a><span class="rsep"></span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><span class="rgroup"><a class="rutil" href="index.html">&larr; All reports</a></span></div></div>
 <main><div class="wrap">
 <div id="adminpanel"></div></div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit</footer>
