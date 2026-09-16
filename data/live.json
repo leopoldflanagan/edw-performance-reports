@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T04:30:23Z",
+ "generated": "2026-09-16T06:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -95,8 +95,8 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 12.9,
-    "max_age": 190.4,
+    "med_age": 13.0,
+    "max_age": 190.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -107,7 +107,7 @@
    {
     "status": "In Development",
     "open": 7,
-    "med_age": 0.6,
+    "med_age": 0.7,
     "max_age": 18.5,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
