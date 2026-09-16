@@ -149,13 +149,73 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
  padding:3px 9px;border-radius:999px}
+
+ .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+ .crumb a:hover{border-color:#fff}
+ .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+ .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
+ .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
+     text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
+ .rp:hover{background:var(--wf-blue-l);color:#fff}
+ .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
+ .rhome:hover{text-decoration:underline}
+ .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
+   border-bottom:1px solid var(--line)}
+ .tabs .wrap{display:flex;gap:4px}
+ .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;
+   color:var(--wf-muted);padding:17px 22px;cursor:pointer;position:relative;transition:color .2s}
+ .tab:hover{color:var(--wf-ink)}
+ .tab.active{color:var(--wf-blue)}
+ .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;
+   background:var(--wf-blue);border-radius:3px 3px 0 0}
+ .panel{display:none;animation:fade .4s ease}
+ .panel.active{display:block}
+ @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+ .sectit{font-weight:800;font-size:24px;color:var(--wf-blue-d);margin:6px 0 2px;letter-spacing:-.01em}
+ .secsub{color:var(--wf-muted);font-size:14px;margin-bottom:20px}
+ .cmpcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;
+   box-shadow:var(--shadow);margin-bottom:18px}
+ /* the live blocks carry their own rule above them; as the first thing in a card
+    that line reads as a stray divider */
+ .cardbody>.sprintsec:first-child{margin-top:0;padding-top:0;border-top:none}
+ .gsrc{margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:12px;
+   color:var(--wf-muted);line-height:1.5}
+ .goalbox a{color:var(--wf-blue);font-weight:600;text-decoration:none;border-bottom:1px solid #bcdcec}
+ .goalbox a:hover{border-color:var(--wf-blue)}
+ #livehead .liverow{justify-content:flex-start;gap:10px}
+ #livehead .activetag{vertical-align:middle}
+ @media(max-width:700px){
+  .tabs .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tab{padding:14px 14px;font-size:14px;white-space:nowrap;flex:0 0 auto}
+  .cmpcard{padding:16px}
+  .sectit{font-size:20px}
+ }
+ @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
 </style></head>
 <body>
-<header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse</div><h1>Active sprint</h1>
-<div class="sub">Everything the reports know about the sprint running right now, rebuilt from Jira on every refresh. It gets a verdict in the release report once it closes, not before.</div></div></div></header>
+<header><div class="wrap">
+<div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Active sprint</div>
+<div class="eyebrow">Enterprise Data Warehouse &middot; Live from Jira</div>
+<h1>Active sprint</h1>
+<div class="sub">Everything the reports know about the sprint running right now, rebuilt from Jira on
+every refresh. It gets a verdict in the release report once it closes, not before.</div>
+<div id="livehead" style="margin-top:22px"></div>
+</div></header>
+<div class="tabs"><div class="wrap">
+ <button class="tab active" data-tab="prog">Progress</button>
+ <button class="tab" data-tab="flow">Workflow</button>
+ <button class="tab" data-tab="rel">Release</button>
+</div></div>
+<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><a class="rhome" href="index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
-<div id="livepanel"></div></div></main>
-<footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
+<div id="livepanel"></div>
+</div></main>
+<footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
+<a href="admin.html" style="color:inherit">board hygiene</a></footer>
 <script>window.__LIVE_MODE__="full";</script>
 <script>
 /* Live panel — reads data/live.json, written by the scheduled Action.
@@ -227,7 +287,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       '<div class="hn">' + n + '</div></div>';
   }
 
-  function bar(dist) {
+  function bar(dist, nohead) {
     var tot = 0, k;
     for (k in dist) tot += dist[k];
     if (!tot) return '';
@@ -241,20 +301,24 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       keys += '<span><i class="tisdot" style="background:' + col + '"></i>' +
         esc(p[0]) + ' <b>' + p[1] + '</b></span>';
     });
-    return '<div class="sprintsec"><div class="sk">Work distribution &middot; ' + tot +
-      ' items</div><div class="tisbar">' + bars + '</div>' +
+    return '<div class="sprintsec">' +
+      (nohead ? '' : '<div class="sk">Work distribution &middot; ' + tot + ' items</div>') +
+      '<div class="tisbar">' + bars + '</div>' +
       '<div class="tiskey">' + keys + '</div></div>';
   }
 
   /* The burndown is drawn across the WHOLE sprint, not across the days that have
      happened. Stretching three days over the full width is what made it look like
      a broken chart: the line ended at the right edge as if the sprint were over. */
-  function burndown(s, big) {
+  function burndown(s, big, nohead) {
     var burn = s.burn, scope = s.scope;
     if (!burn || burn.length < 2) return '';
     var days  = s.days || (burn.length - 1);
     var slots = days;                                  // day 0 .. day `days`
-    var W = 640, H = big ? 360 : 210, L = 34, R = 12, T = 14, B = 34;
+    // on the page the chart scales with the width, so on a phone a 640x210 box
+    // would draw a 100px-tall chart. A taller box keeps it readable there.
+    var narrow = (window.innerWidth || 1000) < 640;
+    var W = 640, H = big ? 360 : (nohead && narrow ? 330 : 210), L = 34, R = 12, T = 14, B = 34;
     var hi = Math.max.apply(null, (scope || []).concat(burn)) || 1;
     hi = Math.ceil(hi / 10) * 10 || 10;
     // pick a tick count that divides the top of the scale, so the axis reads
@@ -285,12 +349,12 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
                 ' L' + X(slots).toFixed(1) + ',' + Y(0).toFixed(1);
 
     return (big ? '<div>' : '<div class="sprintsec">') +
-      (big ? '' : '<div class="sk">Burndown &middot; story points remaining ' +
+      (big || nohead ? '' : '<div class="sk">Burndown &middot; story points remaining ' +
         '&middot; day ' + (s.day || burn.length) + ' of ' + days + '</div>') +
       (big ? '' : '<div class="bdzoom" role="button" tabindex="0" ' +
         'aria-label="Open the burndown full size">') +
       '<svg viewBox="0 0 ' + W + ' ' + H + '" style="width:100%;height:' +
-      (big ? 'min(62vh,420px)' : '210px') + '" ' +
+      (big ? 'min(62vh,420px)' : (nohead ? 'auto' : '210px')) + '" ' +
       'role="img" aria-label="Sprint burndown, story points remaining by day">' +
       grid + lab + area +
       '<path d="' + ideal + '" stroke="#c3cdda" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
@@ -425,133 +489,255 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       '</div></div>';
   }
 
-  function render(d) {
-    var s = d.sprint, m = d.month, out = '';
-    var first = !d.generated || d.generated.slice(0, 4) === '1970';
-    var stale = !first && (Date.now() - new Date(d.generated).getTime()) > 45 * 60000;
-    var live  = d.kind === 'active';
+  // A card on the index, a report page on sprint.html. Same numbers, same code;
+  // only the arrangement differs, so the two can never disagree.
+  function card(title, note, body) {
+    if (!body) return '';
+    return '<div class="cmpcard"><div class="sectit" style="font-size:19px">' + title + '</div>' +
+      (note ? '<div class="secsub" style="margin-bottom:14px">' + note + '</div>'
+            : '<div style="height:8px"></div>') +
+      '<div class="cardbody">' + body + '</div></div>';
+  }
 
+  function headline(d, s, live) {
     var tag = live
       ? '<span class="activetag">&#9679; Active sprint</span>'
       : (d.kind === 'recent'
         ? '<span class="activetag" style="background:var(--wf-muted)">Most recent sprint</span>'
         : '<span class="activetag" style="background:var(--wf-muted)">No sprint open</span>');
+    return tag + freshness(d.generated);
+  }
 
-    out += '<div class="activewrap">' +
-      '<div class="liverow">' + tag + freshness(d.generated) + '</div>';
+  function sprintTitle(s, live, big) {
+    // the sprint being reported on is the headline, not the one after it
+    return '<div style="font-size:' + (big ? 26 : 22) + 'px;font-weight:800;color:' +
+      (big ? '#fff' : 'var(--wf-blue-d)') + ';line-height:1.2">' + esc(s.name) + '</div>' +
+      '<div class="secsub" style="margin:2px 0 0;font-size:13px;color:' +
+      (big ? '#cfe7f3' : 'var(--wf-muted)') + '">' +
+      day(s.start) + ' &rarr; ' + day(s.end) +
+      (s.day ? ' &middot; <b>day ' + s.day + ' of ' + s.days + '</b>' : '') +
+      // planned capacity, from the page the Scrum Master fills at planning
+      (s.capacity && s.capacity.members
+        ? ' &middot; ' + s.capacity.members + ' people' +
+          (s.capacity.pct != null ? ' &middot; capacity ' + s.capacity.pct + '%' : '') +
+          (s.capacity.pto ? ' (' + s.capacity.pto + 'd PTO)' : '') +
+          (s.capacity.holidays ? ' (' + s.capacity.holidays + ' holiday' +
+            (s.capacity.holidays > 1 ? 's' : '') + ')' : '')
+        : '') +
+      (live ? '' : ' &middot; closed') + '</div>';
+  }
 
-    if (s) {
-      // the sprint being reported on is the headline, not the one after it
-      out += '<div style="font-size:22px;font-weight:800;color:var(--wf-blue-d);line-height:1.2">' +
-        esc(s.name) + '</div>' +
-        '<div class="secsub" style="margin:2px 0 12px;font-size:13px;color:var(--wf-muted)">' +
-        day(s.start) + ' &rarr; ' + day(s.end) +
-        (s.day ? ' &middot; <b>day ' + s.day + ' of ' + s.days + '</b>' : '') +
-        // planned capacity, from the page the Scrum Master fills at planning
-        (s.capacity && s.capacity.members
-          ? ' &middot; ' + s.capacity.members + ' people' +
-            (s.capacity.pct != null ? ' &middot; capacity ' + s.capacity.pct + '%' : '') +
-            (s.capacity.pto ? ' (' + s.capacity.pto + 'd PTO)' : '') +
-            (s.capacity.holidays ? ' (' + s.capacity.holidays + ' holiday' +
-              (s.capacity.holidays > 1 ? 's' : '') + ')' : '')
-          : '') +
-        (live ? '' : ' &middot; closed') + '</div>';
+  function tiles(s, live) {
+    var pace = (s.day && s.days) ? Math.round(100 * s.day / s.days) : null;
+    var openPts = Math.round((s.spill ? s.spill.open_pts + s.spill.out_pts : 0));
+    var openIt  = s.spill ? s.spill.open_items + s.spill.out_items : 0;
+    return '<div class="healthrow">' +
+      tile('Work complete', (s.vs_commitment == null ? '&mdash;' : s.vs_commitment + '%'),
+        s.completed + ' of ' + s.committed + ' pts committed') +
+      tile('Sprint elapsed', (s.day ? 'Day ' + s.day : '&mdash;'),
+        (s.days ? 'of ' + s.days + (pace == null ? '' : ' &middot; ' + pace + '% of the sprint') : '')) +
+      tile('Scope change', (s.scope_change == null ? '&mdash;' : '+' + s.scope_change + '%'),
+        s.committed + ' &rarr; ' + s.final + ' pts',
+        s.scope_change ? 'var(--warning)' : null) +
+      (live
+        // during a sprint nothing has spilled over yet: it is still open work
+        ? tile('Still open', openPts + ' pts',
+            openIt + ' items &middot; spillover is known when the sprint closes ' + day(s.end))
+        : tile('Spillover', (s.spill_rate == null ? '&mdash;' : s.spill_rate + '%'),
+            openPts + ' pts carried out of the sprint', 'var(--risk)')) +
+      '</div>';
+  }
+
+  function goalBlock(s, d, live) {
+    // The card is titled "Sprint goal"; repeating the words inside it made the
+    // sentence read as a label rather than as the goal. And the line saying where
+    // it lives was set in the same type as the goal itself, so the two looked
+    // equally important. It is a footnote, so it is set like one -- and it points
+    // at the page instead of naming it.
+    var capUrl = d.capacity && d.capacity.url;
+    var out = '<div class="goalbox">';
+    if (!s.goal) {
+      out += '<b>No sprint goal recorded</b>, in Jira or on the capacity page. Without one ' +
+        'there is nothing to measure delivery against beyond the point count.</div>';
+      return out;
     }
+    out += '<div style="font-size:15px;color:var(--wf-ink);line-height:1.45">' +
+      esc(s.goal) + '</div>' +
+      '<div class="gsrc">Kept on the ' +
+      (capUrl ? '<a href="' + esc(capUrl) + '" target="_blank" rel="noopener">sprint capacity ' +
+        'page</a>' : 'sprint capacity page') +
+      ' in Confluence. The sprint in Jira carries no goal field, so this is the only ' +
+      'place it is written down.</div></div>';
+
+    // A sentence is not a number and Jira does not score it. Saying so out loud is
+    // better than implying the point count is the goal, or leaving the reader to
+    // guess whether anyone is tracking it.
+    var pr = d.projection;
+    out += '<div class="goalbox" style="margin-top:8px"><b>How it is tracking.</b> ' +
+      'Nothing in Jira scores a sentence, so the board can only report the position ' +
+      'behind it: ' +
+      (live
+        ? 'on day ' + (s.day || 1) + ' of ' + (s.days || '?') + ', ' + s.completed + ' of the ' +
+          s.committed + ' committed points are done' +
+          (pr && !pr.too_early ? ', and the sprint is on course to close at ' + pr.lo +
+            '&ndash;' + pr.hi + ' pts' : '') + '. ' +
+          'Whether the goal itself was met is a call for the sprint review.'
+        : s.completed + ' of the ' + s.committed + ' committed points closed. ' +
+          'Whether the goal itself was met is the review\'s call, and the verdict on the ' +
+          'sprint is in the release report.') +
+      '</div>';
+
+    // Two commitments only deserve a paragraph when they actually disagree. A point
+    // or two apart is rounding, and explaining it every sprint teaches people to
+    // skip the box.
+    var gap = (s.committed_planned != null && s.committed != null)
+      ? Math.abs(s.committed_planned - s.committed) : 0;
+    if (gap >= 5 || (s.committed && gap / s.committed >= 0.1)) {
+      out += '<div class="goalbox" style="margin-top:8px">' +
+        '<b>The commitment moved after planning.</b> Planning recorded <b>' +
+        s.committed_planned + ' pts</b>; rebuilt from Jira, what was in the sprint on day 1 ' +
+        'comes to <b>' + s.committed + '</b>. The difference is work that joined or left ' +
+        'between the planning meeting and the first day.</div>';
+    }
+    return out;
+  }
+
+  function releaseBlock(d, m) {
+    var isRel = m.kind === 'release';
+    // a release is counted in sprints; only the calendar-month fallback counts days
+    var head = isRel
+      ? esc(m.label) + ' so far &middot; ' + (m.sprints_done == null ? '' :
+          m.sprints_done + ' of ' + m.n_sprints + ' sprints closed &middot; ') +
+        'ends ' + day(m.end)
+      : esc(m.label) + ' so far &middot; day ' + m.day +
+        (m.days ? ' of ' + m.days : '') + ' &middot; calendar month';
+    return '<div class="sprintsec"><div class="sk">' + head + '</div>' +
+      '<div class="healthrow" style="margin-bottom:0">' +
+      tile('Closed', m.closed, 'items ' + (isRel ? 'this release' : 'this month')) +
+      tile('Story points', m.points, 'delivered so far') +
+      tile('Unplanned', (m.unplanned_pct == null ? '&mdash;' : m.unplanned_pct + '%'),
+        (m.unplanned_pct == null
+          ? 'no item carries the Unplanned label or the Urgent Task type'
+          : m.unplanned + ' of ' + m.closed + ' items')) +
+      tile('Team', (d.capacity && d.capacity.team ? d.capacity.team.length : '—'),
+        // the roster and who actually closed work are different questions, and the
+        // gap between them is the interesting part
+        (d.capacity && d.capacity.team
+          ? 'on the roster &middot; ' + m.people_active + ' closed work'
+          : m.people_active + ' closed 2+ items')) +
+      '</div>' +
+      (isRel && m.sprints ? '<div class="secsub" style="margin-top:8px;font-size:12px">' +
+        'Sprints in this release: ' + m.sprints.map(esc).join(', ') + '</div>' : '') +
+      '</div>';
+  }
+
+  function noSprintNote(d) {
+    return '<div class="secsub" style="margin-bottom:10px">No sprint is open on this board right now.' +
+      (d.next ? ' <b>' + esc(d.next.name) + '</b> is created with a start date of ' +
+        esc(day(d.next.start)) + ' and has not been started.' : '') + '</div>';
+  }
+
+  // --------------------------------------------------------------- the card
+  function renderCard(d) {
+    var s = d.sprint, live = d.kind === 'active', out = '';
+    out += '<div class="activewrap"><div class="liverow">' + headline(d, s, live) + '</div>';
+    if (s) out += sprintTitle(s, live, false) + '<div style="height:12px"></div>';
+    else   out += noSprintNote(d);
+    if (s) {
+      out += tiles(s, live);
+      if (live) out += projBlock(d.projection, true);
+    }
+    out += '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a></div>';
+    host.innerHTML = out;
+  }
+
+  // --------------------------------------------------------- the full page
+  function renderPage(d) {
+    var s = d.sprint, m = d.month, live = d.kind === 'active';
+
+    var hd = document.getElementById('livehead');
+    if (hd) {
+      hd.innerHTML = (s ? sprintTitle(s, live, true) : '') +
+        '<div class="liverow" style="margin-top:14px">' + headline(d, s, live) + '</div>';
+    }
+
+    var prog = '', flow = '', rel = '';
 
     if (!s) {
-      out += '<div class="secsub" style="margin-bottom:10px">No sprint is open on this board right now.' +
-        (d.next ? ' <b>' + esc(d.next.name) + '</b> is created with a start date of ' +
-          esc(day(d.next.start)) + ' and has not been started.' : '') + '</div>';
+      prog += '<div class="cmpcard">' + noSprintNote(d) + '</div>';
+    } else {
+      var note = live
+        ? 'A position on day ' + (s.day || 1) + ' of ' + (s.days || '?') + ', not a result. ' +
+          'The sprint gets a verdict in the release report once it closes, not before.'
+        : 'This sprint is closed. The release report it belongs to carries the verdict.';
+      prog += card('Where the sprint stands', note,
+        tiles(s, live) + (live ? projBlock(d.projection, false) : ''));
+      prog += card('Burndown', 'Story points remaining, against the ideal line and the scope ' +
+        'as it moved. The grey band is total scope; the gap between the two lines is work ' +
+        'added after day 1.', burndown(s, false, true));
+      prog += card('Sprint goal', 'What this sprint set out to achieve, and how far the ' +
+        'numbers behind it have got.', goalBlock(s, d, live));
+
+      var nItems = 0, _k;
+      for (_k in (s.dist || {})) nItems += s.dist[_k];
+      flow += card('Work distribution',
+        'Where the ' + nItems + ' item' + (nItems === 1 ? '' : 's') +
+        ' in this sprint are sitting right now.', bar(s.dist, true));
     }
 
-    if (s) {
-      var pace = (s.day && s.days) ? Math.round(100 * s.day / s.days) : null;
-      var openPts = Math.round((s.spill ? s.spill.open_pts + s.spill.out_pts : 0));
-      var openIt  = s.spill ? s.spill.open_items + s.spill.out_items : 0;
+    flow += card('How long work waits, by status',
+      'Two readings per status: how long what is open now has been waiting, and how long ' +
+      'work historically takes to clear it. A queue that clears fast but is deep today is ' +
+      'a different problem from one that is always slow.', agingBlock(d.aging));
 
-      out += '<div class="healthrow">' +
-        tile('Work complete', (s.vs_commitment == null ? '&mdash;' : s.vs_commitment + '%'),
-          s.completed + ' of ' + s.committed + ' pts committed') +
-        tile('Sprint elapsed', (s.day ? 'Day ' + s.day : '&mdash;'),
-          (s.days ? 'of ' + s.days + (pace == null ? '' : ' &middot; ' + pace + '% of the sprint') : '')) +
-        tile('Scope change', (s.scope_change == null ? '&mdash;' : '+' + s.scope_change + '%'),
-          s.committed + ' &rarr; ' + s.final + ' pts',
-          s.scope_change ? 'var(--warning)' : null) +
-        (live
-          // during a sprint nothing has spilled over yet: it is still open work
-          ? tile('Still open', openPts + ' pts',
-              openIt + ' items &middot; spillover is known when the sprint closes ' + day(s.end))
-          : tile('Spillover', (s.spill_rate == null ? '&mdash;' : s.spill_rate + '%'),
-              openPts + ' pts carried out of the sprint', 'var(--risk)')) +
-        '</div>';
-
-      if (live && !FULL) out += projBlock(d.projection, true);
-      if (live && FULL) {
-        out += projBlock(d.projection, false);
-        out += '<div class="goalbox" style="margin:0 0 12px">This sprint is <b>in progress</b>. ' +
-          'The numbers above are a position on day ' + (s.day || 1) + ' of ' + (s.days || '?') +
-          ', not a result &mdash; it gets a verdict in the release report once it closes.</div>';
-      }
-
-      if (FULL) {
-        out += bar(s.dist);
-        out += burndown(s);
-      }
-      if (FULL) out += '<div class="goalbox" style="margin-top:12px">' + (s.goal
-        ? '<b>Sprint goal' + (s.goal_src ? ' (from the ' + esc(s.goal_src) + ')' : '') +
-          '.</b> ' + esc(s.goal) +
-          (s.committed_planned != null && s.committed_planned !== s.committed
-            ? ' <span style="color:var(--wf-muted)">Planning recorded ' + s.committed_planned +
-              ' pts committed; Jira reconstructs ' + s.committed + '. The gap is what moved after planning.</span>'
-            : '')
-        : '<b>No goal recorded in Jira or on the capacity page for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count.') +
-        '</div>';
+    if (m) {
+      rel += card(m.kind === 'release' ? 'The release so far' : 'The month so far',
+        'The period this sprint belongs to, counted from work already closed.',
+        releaseBlock(d, m));
     }
-
-    if (m && FULL) {
-      var isRel = m.kind === 'release';
-      // a release is counted in sprints; only the calendar-month fallback counts days
-      var head = isRel
-        ? esc(m.label) + ' so far &middot; ' + (m.sprints_done == null ? '' :
-            m.sprints_done + ' of ' + m.n_sprints + ' sprints closed &middot; ') +
-          'ends ' + day(m.end)
-        : esc(m.label) + ' so far &middot; day ' + m.day +
-          (m.days ? ' of ' + m.days : '') + ' &middot; calendar month';
-      out += '<div class="sprintsec"><div class="sk">' + head + '</div>' +
-        '<div class="healthrow" style="margin-bottom:0">' +
-        tile('Closed', m.closed, 'items ' + (isRel ? 'this release' : 'this month')) +
-        tile('Story points', m.points, 'delivered so far') +
-        tile('Unplanned', (m.unplanned_pct == null ? '&mdash;' : m.unplanned_pct + '%'),
-          (m.unplanned_pct == null
-            ? 'no item carries the Unplanned label or the Urgent Task type'
-            : m.unplanned + ' of ' + m.closed + ' items')) +
-        tile('Team', (d.capacity && d.capacity.team ? d.capacity.team.length : '\u2014'),
-          // the roster and who actually closed work are different questions, and the
-          // gap between them is the interesting part
-          (d.capacity && d.capacity.team
-            ? 'on the roster &middot; ' + m.people_active + ' closed work'
-            : m.people_active + ' closed 2+ items')) +
-        '</div>' +
-        (isRel && m.sprints ? '<div class="secsub" style="margin-top:8px;font-size:12px">' +
-          'Sprints in this release: ' + m.sprints.map(esc).join(', ') + '</div>' : '') +
-        '</div>';
+    if (d.next) {
+      rel += '<div class="cmpcard"><b>Next up:</b> ' + esc(d.next.name) +
+        ', starting ' + day(d.next.start) + '.</div>';
     }
+    if (!rel) rel = '<div class="cmpcard"><div class="secsub" style="margin:0">No release or ' +
+      'month period is in progress for this board.</div></div>';
 
-    if (FULL) out += agingBlock(d.aging);
+    host.innerHTML =
+      '<section class="panel" id="prog">' + prog + '</section>' +
+      '<section class="panel" id="flow">' + flow + '</section>' +
+      '<section class="panel" id="rel">'  + rel  + '</section>';
 
-    if (d.next && FULL) {
-      out += '<div class="secsub" style="margin-top:12px;font-size:12.5px">Next up: <b>' +
-        esc(d.next.name) + '</b>, starting ' + day(d.next.start) + '.</div>';
-    }
-
-    out += (FULL
-      ? '<div class="secsub" style="margin-top:14px;font-size:12.5px">' +
-        '<a href="index.html">&larr; back to the reports</a> &middot; ' +
-        '<a href="admin.html">board hygiene</a></div>'
-      : '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a>');
-    out += '</div>';
-    host.innerHTML = out;
+    wireTabs();
     if (s) wireZoom(s);
+  }
+
+  // Tabs are in the static page, panels arrive with the data. Wiring them here
+  // keeps the page from showing an empty tab strip while the fetch is in flight.
+  function wireTabs() {
+    var tabs = [].slice.call(document.querySelectorAll('.tab'));
+    if (!tabs.length) return;
+    function show(id, scroll) {
+      var t = document.querySelector('.tab[data-tab="' + id + '"]'),
+          p = document.getElementById(id);
+      if (!t || !p) return false;
+      tabs.forEach(function (x) { x.classList.remove('active'); });
+      [].slice.call(document.querySelectorAll('.panel')).forEach(function (x) {
+        x.classList.remove('active');
+      });
+      t.classList.add('active'); p.classList.add('active');
+      try { history.replaceState(null, '', '#t=' + id); } catch (e) {}
+      if (scroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+      return true;
+    }
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () { show(t.dataset.tab, true); });
+    });
+    var h = (location.hash || '').replace(/^#/, '').replace(/^t=/, '');
+    if (!h || !show(h, false)) show(tabs[0].dataset.tab, false);
+  }
+
+  function render(d) {
+    if (FULL) renderPage(d); else renderCard(d);
   }
 
   fetch('data/live.json?t=' + Date.now(), { cache: 'no-store' })
