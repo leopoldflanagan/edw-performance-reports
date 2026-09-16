@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T04:00:25Z",
+ "generated": "2026-09-16T04:15:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -16,7 +16,7 @@
   "completed": 7,
   "scope_change": 0,
   "vs_commitment": 14,
-  "time_elapsed": 11,
+  "time_elapsed": 12,
   "spill": {
    "open_items": 14,
    "open_pts": 42.0,
