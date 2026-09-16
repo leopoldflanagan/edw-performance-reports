@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T07:30:24Z",
+ "generated": "2026-09-16T08:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -95,7 +95,7 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 13.0,
+    "med_age": 13.1,
     "max_age": 190.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
