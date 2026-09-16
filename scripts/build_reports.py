@@ -2196,8 +2196,7 @@ def fixlink():
     return ('<a class="adminlink" id="fixlink" href="admin.html">'
             '<i class="fixdot"></i>'
             '<b>What to fix in Jira</b>'
-            '<span class="fixn">Definition of Ready, backlog health and the fields '
-            'the reports depend on</span>'
+            '<span class="fixn">Counting&hellip;</span>'
             '<span class="fixar">&rarr;</span></a>\n')
 
 
