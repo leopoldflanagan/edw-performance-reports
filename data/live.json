@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T09:15:24Z",
+ "generated": "2026-09-16T10:45:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -16,7 +16,7 @@
   "completed": 7,
   "scope_change": 0,
   "vs_commitment": 14,
-  "time_elapsed": 13,
+  "time_elapsed": 14,
   "spill": {
    "open_items": 14,
    "open_pts": 42.0,
@@ -95,8 +95,8 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 13.1,
-    "max_age": 190.6,
+    "med_age": 13.2,
+    "max_age": 190.7,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
