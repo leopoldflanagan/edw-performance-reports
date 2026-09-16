@@ -472,6 +472,94 @@ def capacity(page_id):
     return out
 
 
+GROOM_FIELD = os.environ.get("JIRA_GROOM_FIELD", "customfield_10176")   # Grooming Status
+READY_STATUS = "Ready for Development"
+GROOMED      = "7-Groomed"
+
+
+def backlog(project, frozen_path):
+    """How much ready work is waiting, measured in sprints of runway.
+
+    Layer 2 of the team's Backlog Organization Guide is the definition: status
+    'Ready for Development' AND Grooming Status '7-Groomed' AND not already in an
+    open sprint. The guide also forbids certain combinations, so the same pass
+    checks them -- the rule and its own violations come from one source.
+
+    Everything is computed here from ONE query rather than several JQL counts,
+    because the dropdown's JQL name is easy to get subtly wrong and a miscounted
+    backlog is worse than none.
+    """
+    iss = search(f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
+                 f'AND statusCategory != Done',
+                 ["status", SP_FIELD, GROOM_FIELD, "summary"], cap=6)
+    if not iss:
+        return None
+
+    def groom(i):
+        v = i["fields"].get(GROOM_FIELD)
+        if isinstance(v, dict): v = v.get("value")
+        return (v or "").strip()
+
+    def pts(i):
+        return sp_of(i)
+
+    ready, misfiled, draft_in_ready, groomed_gone, no_est = [], [], [], [], []
+    for i in iss:
+        st, g = i["fields"]["status"]["name"], groom(i)
+        if st == READY_STATUS and g.startswith("7"):
+            ready.append(i)
+            if i["fields"].get(SP_FIELD) is None: no_est.append(i)
+        elif st == "Backlog" and g.startswith("7"):
+            misfiled.append(i)          # the guide: an item cannot be Groomed and stay in Backlog
+        elif st == READY_STATUS and g.startswith("1"):
+            draft_in_ready.append(i)    # the guide: Idea/Draft cannot be Ready for Development
+        if st == "Deferred" and g.startswith("7"):
+            groomed_gone.append(i)      # groomed work that was archived
+
+    # the denominator: points actually delivered per sprint, from the closed releases
+    per = None
+    try:
+        fz = json.load(open(frozen_path))
+        rel = [v for k, v in sorted(fz.get("RELEASES", {}).items()) if not v.get("open")]
+        rates = [v["points"] / v["n_sprints"] for v in rel[-3:]
+                 if v.get("points") and v.get("n_sprints")]
+        per = round(sum(rates) / len(rates), 1) if rates else None
+    except Exception:
+        per = None
+
+    P = lambda xs: round(sum(pts(i) for i in xs))
+    ready_p, mis_p = P(ready), P(misfiled)
+    run     = round(ready_p / per, 1) if per else None
+    run_fix = round((ready_p + mis_p) / per, 1) if per else None
+
+    def band(r):
+        if r is None: return None
+        return "Skinny" if r < 1.5 else ("In shape" if r <= 2.5 else "Fat")
+
+    return {
+        "per_sprint_pts": per,
+        "bands": {"skinny": "< 1.5 sprints", "in_shape": "1.5 to 2.5 sprints", "fat": "> 2.5 sprints"},
+        "ready":    {"items": len(ready), "points": ready_p},
+        "misfiled": {"items": len(misfiled), "points": mis_p},
+        "runway": run, "runway_if_fixed": run_fix,
+        "state": band(run), "state_if_fixed": band(run_fix),
+        "violations": [
+            {"rule": "Groomed but still in Backlog", "n": len(misfiled), "points": mis_p,
+             "why": "the guide: an item cannot be Groomed and remain in Backlog. "
+                    "This work is ready and invisible to planning."},
+            {"rule": "Idea/Draft sitting in Ready for Development", "n": len(draft_in_ready),
+             "points": P(draft_in_ready),
+             "why": "the guide: Idea/Draft cannot be Ready for Development. "
+                    "It counts as ready to pull when it is not defined."},
+            {"rule": "Groomed items with no estimate", "n": len(no_est), "points": 0,
+             "why": "the guide: a Groomed item must be estimated."},
+            {"rule": "Groomed work archived as Deferred", "n": len(groomed_gone),
+             "points": P(groomed_gone),
+             "why": "work that met Definition of Ready and was then parked."},
+        ],
+    }
+
+
 PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
@@ -906,6 +994,7 @@ def main():
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "team": a.team, "board": a.board, "kind": kind,
         "capacity": cap_page,
+        "backlog": backlog(a.project, a.frozen),
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),

@@ -212,6 +212,63 @@
       '</tr></thead><tbody>' + rows + '</tbody></table></div></div>';
   }
 
+  /* Backlog health. One number with bands, so it is a stat with a scale rather
+     than a chart: how many sprints of ready work are waiting. State is shown as a
+     labelled lozenge, never by colour alone. */
+  function backlogBlock(b) {
+    if (!b || b.runway == null) return '';
+    var spr = function (n) { return n + ' sprint' + (n === 1 ? '' : 's'); };
+    var st = b.state || '';
+    var cls = st === 'In shape' ? 'bh-shape' : (st === 'Fat' ? 'bh-fat' : 'bh-skinny');
+    var ic  = st === 'In shape' ? '&#10003;' : (st === 'Fat' ? '&#9679;' : '&#9888;');
+
+    // the band runs 0 to 4 sprints; zones are 1.5 and 2.5
+    var MAX = 4, pos = Math.min(b.runway, MAX) / MAX * 100;
+    var zones = '<div class="bhzones">' +
+      '<i style="width:37.5%;background:#f3b9bf"></i>' +
+      '<i style="width:25%;background:#bfe3a8"></i>' +
+      '<i style="width:37.5%;background:#f8d3b4"></i></div>' +
+      '<div class="bhmark"><b style="left:' + pos.toFixed(1) + '%"></b></div>' +
+      '<div class="bhticks"><span>0 &middot; Skinny</span><span>1.5</span>' +
+      '<span>2.5</span><span>4+ &middot; Fat</span></div>';
+
+    var fix = '';
+    if (b.misfiled && b.misfiled.items && b.runway_if_fixed != null) {
+      fix = '<div class="goalbox" style="margin-top:10px">' +
+        '<b>' + b.misfiled.points + ' more points are ready but filed wrong.</b> ' +
+        b.misfiled.items + ' items are marked <i>Groomed</i> and still sit in <i>Backlog</i>, ' +
+        'which the Backlog Organization Guide does not allow. Planning cannot see them. ' +
+        'Corrected, the runway would be <b>' + spr(b.runway_if_fixed) + '</b>' +
+        (b.state_if_fixed && b.state_if_fixed !== st ? ' &mdash; ' + b.state_if_fixed : ' &mdash; still ' + st) +
+        '.</div>';
+    }
+
+    var rows = (b.violations || []).filter(function (v) { return v.n > 0; })
+      .map(function (v) {
+        return '<div class="drow"><span class="dn">' + v.n + ' item' + (v.n === 1 ? '' : 's') +
+          (v.points ? ' &middot; ' + v.points + ' pts' : '') + '</span>' +
+          '<span><b>' + esc(v.rule) + '</b><br><span class="dwhy">' + esc(v.why) + '</span></span></div>';
+      }).join('');
+    var dor = rows
+      ? '<div class="sk" style="margin-top:14px">Definition of Ready &middot; what the guide does not allow</div>' +
+        '<div class="dor">' + rows + '</div>'
+      : '<div class="goalbox" style="margin-top:10px"><span class="ok">&#10003;</span> ' +
+        'No Definition of Ready violations.</div>';
+
+    return '<div class="sprintsec"><div class="sk">Backlog health</div>' +
+      '<div class="bh">' +
+        '<div class="hero"><div class="bhstate ' + cls + '"><span class="ic">' + ic + '</span>' +
+          esc(st) + '</div>' +
+          '<div class="hv">' + b.runway + ' <span style="font-size:15px;font-weight:600">sprints</span></div>' +
+          '<div class="hs">of ready work waiting</div></div>' +
+        '<div class="bhband">' + zones +
+          '<div class="hs" style="margin-top:8px">' + b.ready.points + ' pts groomed and ready to pull' +
+          (b.per_sprint_pts ? ', against <b>' + b.per_sprint_pts + ' pts</b> delivered per sprint' : '') +
+          '. Two sprints is one release, so that is the target.</div>' +
+        '</div>' +
+      '</div>' + fix + dor + '</div>';
+  }
+
   function render(d) {
     var s = d.sprint, m = d.month, out = '';
     var first = !d.generated || d.generated.slice(0, 4) === '1970';
@@ -314,6 +371,7 @@
         '</div>';
     }
 
+    out += backlogBlock(d.backlog);
     out += agingBlock(d.aging);
 
     if (d.next) {
