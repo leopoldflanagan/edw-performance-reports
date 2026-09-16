@@ -232,6 +232,40 @@
   }
 
 
+  /* Where the sprint lands. A range, because the spread between past sprints is the
+     uncertainty and a single number would hide it. */
+  function projBlock(pr, compact) {
+    if (!pr) return '';
+    if (pr.too_early) {
+      return compact ? '' :
+        '<div class="goalbox" style="margin-top:12px"><b>Too early to project.</b> ' +
+        esc(pr.why) + '.</div>';
+    }
+    var cls = pr.pct >= 95 ? 'bh-shape' : (pr.pct >= 80 ? 'bh-fat' : 'bh-skinny');
+    if (compact) {
+      return '<div class="projline"><b>Projected close ' + pr.lo + '&ndash;' + pr.hi +
+        ' pts</b> <span class="projpill ' + cls + '">' + pr.pct + '% of the ' +
+        pr.committed + ' committed</span></div>';
+    }
+    return '<div class="sprintsec"><div class="sk">Projected close</div>' +
+      '<div class="bh"><div class="hero">' +
+        '<div class="bhstate ' + cls + '">' + esc(pr.verdict || '') + '</div>' +
+        '<div class="hv">' + pr.lo + ' &ndash; ' + pr.hi +
+          ' <span style="font-size:15px;font-weight:600">pts</span></div>' +
+        '<div class="hs">most likely <b>' + pr.mid + '</b>' +
+          (pr.pct != null ? ' &middot; ' + pr.pct + '% of the ' + pr.committed + ' committed' : '') +
+        '</div></div>' +
+        '<div class="bhband"><div class="hs">Built from where the team&rsquo;s last ' + pr.n +
+        ' sprints stood at this same point of the way through &mdash; day ' + pr.day + ' of ' +
+        pr.days + '. At that point they had finished a median of ' +
+        Math.round(pr.share_mid * 100) + '% of what they would finish in total, and ' +
+        pr.done_now + ' pts are done here.</div>' +
+        '<div class="hs" style="margin-top:6px">The range is the spread between those ' +
+        'sprints, not a margin of error: it is how differently this team has finished ' +
+        'from the same position before.</div></div>' +
+      '</div></div>';
+  }
+
   function render(d) {
     var s = d.sprint, m = d.month, out = '';
     var first = !d.generated || d.generated.slice(0, 4) === '1970';
@@ -292,7 +326,9 @@
               openPts + ' pts carried out of the sprint', 'var(--risk)')) +
         '</div>';
 
+      if (live && !FULL) out += projBlock(d.projection, true);
       if (live && FULL) {
+        out += projBlock(d.projection, false);
         out += '<div class="goalbox" style="margin:0 0 12px">This sprint is <b>in progress</b>. ' +
           'The numbers above are a position on day ' + (s.day || 1) + ' of ' + (s.days || '?') +
           ', not a result &mdash; it gets a verdict in the release report once it closes.</div>';

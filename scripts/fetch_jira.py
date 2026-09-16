@@ -714,6 +714,75 @@ def admin(project, live_sp, cap_page):
             "blocking": B, "debt": D, "setup": setup}
 
 
+def projection(live_sp, frozen_path):
+    """Where this sprint is likely to land, from the team's own history.
+
+    A straight line through the burndown is worthless early on: at day 3 it reads
+    whatever those three days happened to be and multiplies it by five. So instead,
+    for every past sprint we work out what share of its FINAL completion had already
+    happened at this same point of the way through, and apply that spread to where
+    this sprint stands now.
+
+    Two deliberate choices. Sprints are compared by fraction elapsed rather than by
+    day number, because they are not all the same length. And the answer is a range,
+    not a number: the spread between past sprints IS the uncertainty, and hiding it
+    behind a single figure with a decimal point would be a guess in a costume.
+    """
+    if not live_sp or not live_sp.get("days"):
+        return None
+    day, days = live_sp.get("day") or 1, live_sp["days"]
+    frac = min(1.0, day / days)
+    done_now = live_sp.get("completed") or 0
+    try:
+        fz = json.load(open(frozen_path))
+        hist = fz.get("SPRINTS", [])
+    except Exception:
+        return None
+
+    shares = []
+    for r in hist:
+        burn, scope = (r[9] or []), (r[10] or [])
+        if len(burn) < 4 or len(burn) != len(scope):
+            continue
+        done = [scope[i] - burn[i] for i in range(len(burn))]
+        final = done[-1]
+        if final <= 0:
+            continue
+        # where this past sprint stood at the same fraction of the way through
+        x = frac * (len(done) - 1)
+        lo_i, hi_i = int(x), min(int(x) + 1, len(done) - 1)
+        at = done[lo_i] + (done[hi_i] - done[lo_i]) * (x - lo_i)
+        shares.append(max(0.0, at / final))
+
+    if len(shares) < 3:
+        return {"too_early": True, "why": "not enough closed sprints to compare against yet"}
+    shares.sort()
+    def q(p):
+        i = p * (len(shares) - 1)
+        lo_i, hi_i = int(i), min(int(i) + 1, len(shares) - 1)
+        return shares[lo_i] + (shares[hi_i] - shares[lo_i]) * (i - lo_i)
+
+    mid_s, lo_s, hi_s = q(0.5), q(0.75), q(0.25)   # a bigger share -> a smaller projection
+    if mid_s < 0.12 or done_now <= 0:
+        return {"too_early": True, "day": day, "days": days, "n": len(shares),
+                "why": ("this early, past sprints had finished too little of their work for the "
+                        "comparison to say anything" if mid_s < 0.12 else
+                        "nothing has closed yet, so there is no rate to project from")}
+
+    proj = lambda sh: int(round(done_now / sh)) if sh > 0 else None
+    mid, lo, hi = proj(mid_s), proj(lo_s), proj(hi_s)
+    comm = live_sp.get("committed") or 0
+    pct = round(100 * mid / comm) if comm else None
+    if pct is None:            verdict = None
+    elif pct >= 95:            verdict = "on track for the commitment"
+    elif pct >= 80:            verdict = "a little short of the commitment"
+    else:                      verdict = "well short of the commitment"
+    return {"too_early": False, "day": day, "days": days, "n": len(shares),
+            "done_now": round(done_now), "committed": round(comm),
+            "lo": lo, "mid": mid, "hi": hi, "pct": pct, "verdict": verdict,
+            "share_mid": round(mid_s, 3)}
+
+
 PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
@@ -1153,6 +1222,7 @@ def main():
         "team": a.team, "board": a.board, "kind": kind,
         "capacity": cap_page,
         "backlog": backlog(a.project, a.frozen),
+        "projection": projection(live_sp, a.frozen),
         "admin": admin(a.project, live_sp, cap_page),
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
