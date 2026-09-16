@@ -519,8 +519,38 @@
     if (!h || !show(h, false)) show(tabs[0].dataset.tab, false);
   }
 
+  // The fix-list link is a status line, so it says how much there is. Blocking and
+  // administrative are counted apart because they mean different things: one stops
+  // planning being trustworthy, the other only costs the reports a field.
+  function fixLink(a) {
+    var el = document.getElementById('fixlink');
+    if (!el) return;
+    var n = function (list) {
+      return (list || []).reduce(function (s, c) { return s + (c.n || 0); }, 0);
+    };
+    var nb = n(a && a.blocking) + n(a && a.setup), nd = n(a && a.debt);
+    var body = el.querySelector('.fixn');
+    if (!a) return;                                   // no data: leave the static text
+    el.classList.remove('has-risk', 'has-warn', 'has-none');
+    if (nb) {
+      el.classList.add('has-risk');
+      if (body) body.innerHTML = '<span class="fixb">' + nb + ' blocking</span>' +
+        (nd ? ' &middot; ' + nd + ' administrative' : '') +
+        ' &mdash; Definition of Ready' + (nd ? ' and the fields the reports need' : '');
+    } else if (nd) {
+      el.classList.add('has-warn');
+      if (body) body.innerHTML = '<b style="color:var(--wf-ink)">Nothing blocking</b> &middot; ' +
+        nd + ' administrative &mdash; the fields the reports need';
+    } else {
+      el.classList.add('has-none');
+      if (body) body.innerHTML = 'Nothing to fix. Everything meets the Definition of ' +
+        'Ready and the reporting fields are filled in.';
+    }
+  }
+
   function render(d) {
     if (FULL) renderPage(d); else renderCard(d);
+    fixLink(d.admin);
   }
 
   fetch('data/live.json?t=' + Date.now(), { cache: 'no-store' })

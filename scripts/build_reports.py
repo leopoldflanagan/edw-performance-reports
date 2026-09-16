@@ -426,14 +426,13 @@ def repnav(current, root=False):
             out.append(f'<span class="rp on">{code}</span>')
         else:
             out.append(f'<a class="rp" href="{into}{href}">{code}</a>')
-    # Left: what you are reading. Right: where else you can go. The fix-list is not
-    # a period, so it does not belong among the pills -- but it does belong on every
-    # page, or it stays reachable only from one grey link at the foot of the index.
-    fix = ('<span class="rutil on">What to fix in Jira</span>' if current == "fix"
-           else f'<a class="rutil" href="{up}admin.html">What to fix in Jira</a>')
+    # The fix-list is not in here. It is not a period, and it is not for the people
+    # reading a release report -- the page itself says it is kept away from them.
+    # It lives on the two pages whoever maintains the board actually uses, carrying
+    # its count, which a nav pill could never do.
     return ('<div class="repnav"><div class="wrap">'
             + "".join(out)
-            + '<span class="rgroup">' + fix
+            + '<span class="rgroup">'
             + f'<a class="rutil" href="{up}index.html">&larr; All reports</a>'
             + '</span></div></div>')
 
@@ -2156,7 +2155,7 @@ every refresh. It gets a verdict in the release report once it closes, not befor
 {strip}
 <main><div class="wrap">
 <div id="livepanel"></div>
-</div></main>
+{fixlink()}</div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
 <a href="admin.html" style="color:inherit">what to fix in Jira</a></footer>
 {_live_core("full")}
@@ -2188,6 +2187,18 @@ def admin_page():
                         '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
     head = head.replace('<main><div class="wrap">', repnav("fix", root=True) + '\n<main><div class="wrap">')
     return head + foot
+
+
+def fixlink():
+    """The way into the fix-list. A status indicator, not a nav item: it carries the
+    count, and it goes quiet when there is nothing to do. Only on the pages whoever
+    keeps the board honest is already looking at."""
+    return ('<a class="adminlink" id="fixlink" href="admin.html">'
+            '<i class="fixdot"></i>'
+            '<b>What to fix in Jira</b>'
+            '<span class="fixn">Definition of Ready, backlog health and the fields '
+            'the reports depend on</span>'
+            '<span class="fixar">&rarr;</span></a>\n')
 
 
 def index_page():
@@ -2232,9 +2243,9 @@ def index_page():
     if quarters:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
                 + "".join(c for _, c in quarters))
-    out += ('<a class="adminlink" href="admin.html">&#128295; What to fix in Jira '
-            '&mdash; Definition of Ready, backlog health and the fields the reports '
-            'depend on</a>\n')
+    # The count is filled in by the live script. Until it lands the link still
+    # works and still says what it is; it just cannot say how much yet.
+    out += fixlink()
     return out + foot
 
 

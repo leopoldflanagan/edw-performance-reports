@@ -105,10 +105,25 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .ck-blocking .cn{color:var(--risk)}
 .ck-debt{border-left:4px solid var(--warning)}
 .ck-debt .cn{color:var(--warning)}
-.adminlink{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
- color:var(--wf-muted);text-decoration:none;border:1px solid var(--line);background:var(--card);
- padding:6px 12px;border-radius:999px;margin-top:14px;transition:.15s}
-.adminlink:hover{border-color:var(--wf-blue-l);color:var(--wf-blue-d)}
+/* Not a nav item: a status line. It carries its own count, so you can tell from
+   here whether it is worth opening, and it goes green and quiet when it is empty. */
+.adminlink{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--wf-muted);
+ text-decoration:none;border:1px solid var(--line);background:var(--card);
+ padding:13px 18px;border-radius:12px;margin-top:22px;transition:.15s;box-shadow:var(--shadow)}
+.adminlink:hover{border-color:var(--wf-blue-l);box-shadow:0 3px 12px rgba(0,124,188,.12)}
+.adminlink b{color:var(--wf-blue-d);font-weight:700;white-space:nowrap}
+.adminlink .fixdot{width:9px;height:9px;border-radius:50%;background:#c3cdda;flex:0 0 auto}
+.adminlink.has-risk .fixdot{background:var(--risk)}
+.adminlink.has-warn .fixdot{background:var(--warning)}
+.adminlink.has-none .fixdot{background:var(--healthy)}
+.adminlink .fixn{flex:1;min-width:0}
+.adminlink .fixn .fixb{color:var(--risk);font-weight:700}
+.adminlink .fixar{color:var(--wf-blue);font-size:18px;font-weight:700;flex:0 0 auto}
+@media(max-width:560px){
+ .adminlink{align-items:flex-start;flex-wrap:wrap;gap:8px;font-size:12.5px}
+ .adminlink .fixn{flex:1 0 100%}
+ .adminlink .fixar{margin-left:auto}
+}
 
 /* The index had no layout for a phone. Four stat tiles at 1fr each cannot fit in
    390px, so the page grew a horizontal scrollbar and the header ran off the edge. */
