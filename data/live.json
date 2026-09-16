@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T11:00:28Z",
+ "generated": "2026-09-16T11:38:46Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -108,7 +108,7 @@
     "status": "In Development",
     "open": 7,
     "med_age": 0.9,
-    "max_age": 18.7,
+    "max_age": 18.8,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
     "worst_who": "Jeff Schniederjan",
