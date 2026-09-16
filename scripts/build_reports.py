@@ -393,7 +393,78 @@ def repnav(current):
 
 
 
-def add_tips(html):
+# What the stripe on a findings card means. It was never written down anywhere, so
+# the colours were decoration: a reader had no way to tell "someone must do this"
+# from "worth a conversation". Rank is also the order they are shown in -- the
+# cards used to lead with the discussion items and bury the actions underneath.
+FIND_RANK = [
+    ("p-red",   "Risk",    "needs a decision now"),
+    ("p-amber", "Action",  "someone has to do something"),
+    ("p-blue",  "Discuss", "bring it to the team; no owner yet"),
+    ("p-green", "Working", "going well, worth protecting"),
+    ("p-grey",  "Context", "background for the numbers above"),
+]
+
+
+def _act_blocks(html, start):
+    """Every findings card from `start`, with its span, by matching div depth.
+    Regex cannot do this: the cards nest three levels deep."""
+    out, i = [], start
+    while True:
+        a = html.find('<div class="act">', i)
+        if a < 0:
+            break
+        j, depth = a, 0
+        while j < len(html):
+            nxt_o = html.find("<div", j)
+            nxt_c = html.find("</div>", j)
+            if nxt_c < 0:
+                return out
+            if nxt_o != -1 and nxt_o < nxt_c:
+                depth += 1; j = nxt_o + 4
+            else:
+                depth -= 1; j = nxt_c + 6
+                if depth == 0:
+                    break
+        out.append((a, j))
+        i = j
+        if html[j:j+400].find('<div class="act">') < 0:
+            break          # end of this run of cards
+    return out
+
+
+def order_findings(html):
+    """Put the cards that need doing first, and say what the colours mean.
+
+    Done after the page is built rather than at each of the twelve places a card is
+    written, so every page gets the same treatment and a new card cannot be added in
+    the wrong order by accident.
+    """
+    rank = {c: i for i, (c, _, _) in enumerate(FIND_RANK)}
+    out, pos = [], 0
+    while True:
+        runs = _act_blocks(html, pos)
+        if len(runs) < 2:
+            out.append(html[pos:]); break
+        first, last = runs[0][0], runs[-1][1]
+        cards = [html[a:b] for a, b in runs]
+        keyed = sorted(enumerate(cards),
+                       key=lambda t: (next((rank[c] for c in rank if c in t[1][:120]), 9), t[0]))
+        used = [c for c in rank if any(c in x[:120] for x in cards)]
+        legend = ('<div class="findkey">' +
+                  "".join(f'<span><i class="fk {c}"></i><b>{lab}</b> &mdash; {why}</span>'
+                          for c, lab, why in FIND_RANK if c in used) +
+                  '</div>')
+        out.append(html[pos:first] + legend + "".join(c for _, c in keyed))
+        pos = last
+    return "".join(out)
+
+
+def add_tips2(html):
+    return order_findings(_add_tips(html))
+
+
+def _add_tips(html):
     import re as _re
     for frag, tip in TIPS.items():
         if frag not in html: continue
@@ -2045,14 +2116,14 @@ os.makedirs(f"{REPO}/2026", exist_ok=True)
 # pages are no longer generated, and the cleanup below removes the published ones.
 if not DATA.get("RELEASES"):
     for mk, m in MONTHS.items():
-        open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips(month_page(mk)))
+        open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips2(month_page(mk)))
         print("wrote", m["slug"])
 open(f"{REPO}/admin.html","w").write(admin_page())
 open(f"{REPO}/sprint.html","w").write(sprint_page())
 print("wrote admin + sprint")
-open(f"{REPO}/2026/2026-q1.html","w").write(add_tips(q1_page()))
+open(f"{REPO}/2026/2026-q1.html","w").write(add_tips2(q1_page()))
 print("wrote 2026-q1")
-open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips(q2_page()))
+open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips2(q2_page()))
 print("wrote 2026-q2-baseline")
 
 
@@ -2167,7 +2238,7 @@ if RELEASES:
     REPORTS += [r for r in DATA["REPORTS"] if r[0].startswith("Q")]
 
     for rk, r in RELEASES.items():
-        open(f"{REPO}/2026/{r['slug']}.html", "w").write(add_tips(month_page(rk)))
+        open(f"{REPO}/2026/{r['slug']}.html", "w").write(add_tips2(month_page(rk)))
         print("wrote", r["slug"], f"({r['n_sprints']} sprints, {r['closed']} closed)")
 
 # A page for a period that never froze is left over from before reporting moved
