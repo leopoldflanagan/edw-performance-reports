@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDW &middot; Board hygiene</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
+:root{--wf-blue:#007CBC;--wf-blue-d:#005f91;--wf-blue-l:#65B2D5;--wf-blue-bg:#e5f2f8;--wf-ink:#32373c;--wf-muted:#626c84;--line:#e2e8f0;--bg:#f5f8fb;--card:#fff;--shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);--healthy:#4FA800;--warning:#ED7D31;--risk:#d64550}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55}
+.wrap{max-width:880px;margin:0 auto;padding:0 24px}
+header{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;padding:46px 0 40px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+header h1{font-weight:800;font-size:38px;margin:8px 0 6px;letter-spacing:-.02em}
+header .sub{color:#cfe7f3;font-size:15px;max-width:560px}
+main{padding:40px 0 70px}
+.yeartag{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wf-muted);margin:8px 0 14px}
+.rcard{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;text-decoration:none;color:inherit;transition:.15s}
+.rcard:hover{border-color:var(--wf-blue-l);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,124,188,.12)}
+.rcard .mo{width:64px;height:64px;border-radius:12px;background:var(--wf-blue-bg);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.rcard .mo .m{font-size:18px;font-weight:800;color:var(--wf-blue-d);line-height:1}
+.rcard .mo .y{font-size:11px;color:var(--wf-muted);font-weight:600;margin-top:2px}
+.rcard .body{flex:1}.rcard .body h3{font-size:18px;font-weight:700;color:var(--wf-blue-d)}
+.rcard .body p{font-size:13.5px;color:var(--wf-muted);margin-top:3px}
+.rcard .arrow{color:var(--wf-blue);font-size:22px;font-weight:700}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;background:#fdeee3;color:#c0641f}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);font-size:12px;text-align:center}
+
+.sprintsec{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+.sprintsec>.sk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:7px}
+.tisbar{display:flex;height:26px;border-radius:7px;overflow:hidden;background:#eef2f8;margin:4px 0 8px}
+.tisbar span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;min-width:2px;
+ border-right:2px solid var(--card);white-space:nowrap;overflow:hidden}
+.tisbar span:last-child{border-right:0}
+.tiskey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--wf-muted)}
+.tiskey b{color:var(--wf-text)}
+.tisdot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.goalbox{border:1px dashed var(--line);border-radius:10px;padding:11px 13px;background:#fbfcfe;font-size:13px;color:var(--wf-muted)}
+.goalbox b{color:var(--wf-text)}
+.healthrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 14px}
+.hcell{background:#f6f9fd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.hcell .hk{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+.hcell .hv{font-size:23px;font-weight:800;line-height:1.25;color:var(--wf-blue-d)}
+.hcell .hn{font-size:11.5px;color:var(--wf-muted)}
+.activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,#f4f9fd,var(--card) 90px);margin-bottom:22px}
+.activetag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
+ color:#fff;background:var(--wf-blue);padding:4px 10px;border-radius:999px;margin-bottom:10px}
+.bdzoom{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s;display:block}
+.bdzoom:hover{background:#f7fafd}
+.bdzoom::after{content:"Expand";position:absolute;top:4px;right:6px;font-size:10.5px;font-weight:700;
+ color:var(--wf-blue-d);background:#e5f2f8;border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;opacity:0;transition:opacity .15s}
+.bdzoom:hover::after,.bdzoom:focus-visible::after{opacity:1}
+.lvmodal{position:fixed;inset:0;z-index:200;background:rgba(20,32,44,.68);display:none;align-items:center;justify-content:center;padding:24px}
+.lvmodal.open{display:flex}
+.lvbox{background:var(--card);border-radius:16px;width:min(1000px,96vw);padding:16px 18px 20px;box-shadow:0 18px 60px rgba(0,0,0,.3)}
+.lvhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.lvhead h4{font-size:16px;font-weight:700;color:var(--wf-blue-d)}
+.lvclose{border:0;background:#eef2f8;color:var(--wf-muted);font-size:20px;line-height:1;width:30px;height:30px;border-radius:9px;cursor:pointer}
+.lvclose:hover{background:#e2e8f0}
+@media(max-width:760px){.lvmodal{padding:12px}.bdzoom::after{display:none}}
+.agwrap{overflow-x:auto}
+.agtab{width:100%;border-collapse:collapse;font-size:12.5px}
+.agtab th{text-align:left;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--wf-muted);
+ font-weight:700;padding:0 10px 6px 0;border-bottom:1px solid var(--line);white-space:nowrap}
+.agtab td{padding:7px 10px 7px 0;border-bottom:1px solid #eef2f8;vertical-align:middle}
+.agtab tr:last-child td{border-bottom:0}
+.agst{font-weight:600;white-space:nowrap}
+.agnum{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.agsm{color:var(--wf-muted);white-space:nowrap;font-size:11.5px}
+.agbar{min-width:130px;position:relative;white-space:nowrap}
+.agbar i{display:inline-block;height:9px;border-radius:5px;vertical-align:middle;min-width:3px}
+.agbar b{margin-left:7px;font-variant-numeric:tabular-nums}
+@media(max-width:640px){.agsm{display:none}}
+.bh{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;margin:6px 0 10px}
+.bh .hero{min-width:150px}
+.bh .hv{font-size:34px;font-weight:800;line-height:1.05;color:var(--wf-blue-d)}
+.bh .hs{font-size:12px;color:var(--wf-muted);margin-top:2px}
+.bhstate{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.06em;
+ text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:6px}
+.bhstate .ic{font-size:12px;line-height:1}
+.bh-skinny{background:#fdecee;color:#a32b38}
+.bh-shape{background:#eaf7e3;color:#2f6a12}
+.bh-fat{background:#fdeee3;color:#b2601d}
+.bhband{flex:1;min-width:240px}
+.bhzones{display:flex;height:12px;border-radius:7px;overflow:hidden;background:#eef2f8}
+.bhzones i{display:block;height:100%;border-right:2px solid var(--card)}
+.bhzones i:last-child{border-right:0}
+.bhmark{position:relative;height:16px;margin-top:-14px}
+.bhmark b{position:absolute;top:0;transform:translateX(-50%);width:3px;height:16px;border-radius:2px;
+ background:var(--wf-ink);box-shadow:0 0 0 2px var(--card)}
+.bhticks{display:flex;justify-content:space-between;font-size:10.5px;color:var(--wf-muted);margin-top:6px}
+.dor{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:10px}
+.dor .drow{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-bottom:1px solid #eef2f8;font-size:12.5px}
+.dor .drow:last-child{border-bottom:0}
+.dor .dn{font-weight:800;min-width:74px;font-variant-numeric:tabular-nums}
+.dor .dwhy{color:var(--wf-muted);font-size:11.5px}
+.dor .ok{color:var(--healthy)}
+.ck{display:flex;gap:14px;align-items:flex-start;padding:11px 14px;border:1px solid var(--line);
+ border-radius:11px;margin-bottom:8px;background:var(--card)}
+.ck .cn{font-size:20px;font-weight:800;min-width:34px;text-align:right;font-variant-numeric:tabular-nums;line-height:1.3}
+.ck .cr{font-weight:700;font-size:14px}
+.ck .cw{font-size:12.5px;color:var(--wf-muted);margin-top:2px}
+.ck .ci{font-size:12px;margin-top:6px}
+.ck .ci a{color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec}
+.ck-blocking{border-left:4px solid var(--risk)}
+.ck-blocking .cn{color:var(--risk)}
+.ck-debt{border-left:4px solid var(--warning)}
+.ck-debt .cn{color:var(--warning)}
+.adminlink{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+ color:var(--wf-muted);text-decoration:none;border:1px solid var(--line);background:var(--card);
+ padding:6px 12px;border-radius:999px;margin-top:14px;transition:.15s}
+.adminlink:hover{border-color:var(--wf-blue-l);color:var(--wf-blue-d)}
+</style></head>
+<body>
+<header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>Board hygiene</h1>
+<div class="sub">Everything on this page is fixable by editing Jira. It is kept away from the reports on purpose: the reports are for stakeholders, this is for whoever keeps the board honest.</div></div></div></header>
+<main><div class="wrap">
+<div id="adminpanel"></div></div></main>
+<footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit</footer>
+<script>
+/* Admin dashboard. Everything here is fixable by editing Jira, which is why it
+   lives away from the reports: the index is for stakeholders, this is for whoever
+   keeps the board honest. Two severities only, because a page where everything is
+   red says nothing:
+
+     Blocking  - the Definition of Ready, as the team's own Backlog Organization
+                 Guide writes it. The gate is Ready for Development, not the sprint.
+     Debt      - useful for reporting, does not stop the sprint. */
+(function () {
+  var host = document.getElementById('adminpanel');
+  if (!host) return;
+
+  var esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  };
+  var ago = function (iso) {
+    var m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+    if (!isFinite(m)) return '';
+    if (m < 2) return 'less than a minute ago';
+    if (m < 60) return m + ' min ago';
+    var h = Math.round(m / 60);
+    return h < 24 ? h + 'h ago' : Math.round(h / 24) + 'd ago';
+  };
+  var JIRA = 'https://wellfit.atlassian.net/browse/';
+  /* Backlog health. One number with bands, so it is a stat with a scale rather
+     than a chart: how many sprints of ready work are waiting. State is shown as a
+     labelled lozenge, never by colour alone. */
+  function backlogBlock(b) {
+    if (!b || b.runway == null) return '';
+    var spr = function (n) { return n + ' sprint' + (n === 1 ? '' : 's'); };
+    var st = b.state || '';
+    var cls = st === 'In shape' ? 'bh-shape' : (st === 'Fat' ? 'bh-fat' : 'bh-skinny');
+    var ic  = st === 'In shape' ? '&#10003;' : (st === 'Fat' ? '&#9679;' : '&#9888;');
+
+    // the band runs 0 to 4 sprints; zones are 1.5 and 2.5
+    var MAX = 4, pos = Math.min(b.runway, MAX) / MAX * 100;
+    var zones = '<div class="bhzones">' +
+      '<i style="width:37.5%;background:#f3b9bf"></i>' +
+      '<i style="width:25%;background:#bfe3a8"></i>' +
+      '<i style="width:37.5%;background:#f8d3b4"></i></div>' +
+      '<div class="bhmark"><b style="left:' + pos.toFixed(1) + '%"></b></div>' +
+      '<div class="bhticks"><span>0 &middot; Skinny</span><span>1.5</span>' +
+      '<span>2.5</span><span>4+ &middot; Fat</span></div>';
+
+    var fix = '';
+    if (b.misfiled && b.misfiled.items && b.runway_if_fixed != null) {
+      fix = '<div class="goalbox" style="margin-top:10px">' +
+        '<b>' + b.misfiled.points + ' more points are ready but filed wrong.</b> ' +
+        b.misfiled.items + ' items are marked <i>Groomed</i> and still sit in <i>Backlog</i>, ' +
+        'which the Backlog Organization Guide does not allow. Planning cannot see them. ' +
+        'Corrected, the runway would be <b>' + spr(b.runway_if_fixed) + '</b>' +
+        (b.state_if_fixed && b.state_if_fixed !== st ? ' &mdash; ' + b.state_if_fixed : ' &mdash; still ' + st) +
+        '.</div>';
+    }
+
+    var rows = (b.violations || []).filter(function (v) { return v.n > 0; })
+      .map(function (v) {
+        return '<div class="drow"><span class="dn">' + v.n + ' item' + (v.n === 1 ? '' : 's') +
+          (v.points ? ' &middot; ' + v.points + ' pts' : '') + '</span>' +
+          '<span><b>' + esc(v.rule) + '</b><br><span class="dwhy">' + esc(v.why) + '</span></span></div>';
+      }).join('');
+    var dor = rows
+      ? '<div class="sk" style="margin-top:14px">Definition of Ready &middot; what the guide does not allow</div>' +
+        '<div class="dor">' + rows + '</div>'
+      : '<div class="goalbox" style="margin-top:10px"><span class="ok">&#10003;</span> ' +
+        'No Definition of Ready violations.</div>';
+
+    return '<div class="sprintsec"><div class="sk">Backlog health</div>' +
+      '<div class="bh">' +
+        '<div class="hero"><div class="bhstate ' + cls + '"><span class="ic">' + ic + '</span>' +
+          esc(st) + '</div>' +
+          '<div class="hv">' + b.runway + ' <span style="font-size:15px;font-weight:600">sprints</span></div>' +
+          '<div class="hs">of ready work waiting</div></div>' +
+        '<div class="bhband">' + zones +
+          '<div class="hs" style="margin-top:8px">' + b.ready.points + ' pts groomed and ready to pull' +
+          (b.per_sprint_pts ? ', against <b>' + b.per_sprint_pts + ' pts</b> delivered per sprint' : '') +
+          '. Two sprints is one release, so that is the target.</div>' +
+        '</div>' +
+      '</div>' + fix + dor + '</div>';
+  }
+
+  function checks(list, kind) {
+    if (!list || !list.length) {
+      return '<div class="goalbox"><span style="color:var(--healthy)">&#10003;</span> ' +
+        'Nothing ' + (kind === 'blocking' ? 'blocking' : 'outstanding') + ' right now.</div>';
+    }
+    return list.map(function (c) {
+      var keys = (c.items || []).map(function (i) {
+        return '<a href="' + JIRA + i.key + '" title="' + esc(i.summary) + '">' + esc(i.key) + '</a>';
+      }).join(', ');
+      var more = c.items && c.n > c.items.length ? ' and ' + (c.n - c.items.length) + ' more' : '';
+      return '<div class="ck ck-' + kind + '">' +
+        '<div class="cn">' + c.n + '</div>' +
+        '<div><div class="cr">' + esc(c.rule) + '</div>' +
+        '<div class="cw">' + esc(c.why) + '</div>' +
+        (keys ? '<div class="ci">' + keys + more + '</div>' : '') +
+        '</div></div>';
+    }).join('');
+  }
+
+  function render(d) {
+    var a = d.admin || {}, out = '';
+    var nb = (a.blocking || []).reduce(function (s, c) { return s + c.n; }, 0);
+    var nd = (a.debt || []).reduce(function (s, c) { return s + c.n; }, 0);
+
+    out += '<div class="activewrap">' +
+      '<span class="activetag"' + (nb ? '' : ' style="background:var(--healthy)"') + '>' +
+      (nb ? nb + ' blocking' : 'Nothing blocking') + '</span>' +
+      '<div style="font-size:21px;font-weight:800;color:var(--wf-blue-d);line-height:1.2">' +
+        'Definition of Ready</div>' +
+      '<div class="secsub" style="margin:2px 0 12px;font-size:13px">' +
+        'Checked on everything in <b>Ready for Development</b> and in <b>' +
+        esc((a.scope && a.scope.sprint_name) || 'the active sprint') + '</b>. ' +
+        'The gate is Ready for Development, not the sprint &mdash; an item that gets that far ' +
+        'without meeting DoR is a planning problem one step before anyone sees it.</div>' +
+      checks(a.blocking, 'blocking') + '</div>';
+
+    if (a.setup && a.setup.length) {
+      out += '<div class="sprintsec"><div class="sk">Sprint setup</div>' +
+        checks(a.setup, 'blocking') + '</div>';
+    }
+
+    out += backlogBlock(d.backlog);
+
+    out += '<div class="sprintsec"><div class="sk">Administrative debt &middot; ' + nd +
+      ' item' + (nd === 1 ? '' : 's') + '</div>' +
+      '<div class="secsub" style="font-size:12.5px;margin:-2px 0 8px">Useful for reporting, ' +
+      'does not stop the sprint. A field missing on nearly everything is reported as a field ' +
+      'the team does not use, not as one warning per item.</div>' +
+      checks(a.debt, 'debt') + '</div>';
+
+    out += '<div class="secsub" style="margin-top:16px;font-size:12.5px">Live from Jira &middot; ' +
+      (d.generated ? ago(d.generated) : '') + ' &middot; ' +
+      '<a href="index.html">back to the reports</a></div>';
+    host.innerHTML = out;
+  }
+
+  fetch('data/live.json?t=' + Date.now(), { cache: 'no-store' })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(render)
+    .catch(function () {
+      host.innerHTML = '<div class="goalbox">Live data is not available yet.</div>';
+    });
+})();
+</script>
+</body></html>

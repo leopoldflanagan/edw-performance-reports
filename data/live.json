@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-16T17:15:18Z",
+ "generated": "2026-09-16T17:30:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -264,6 +264,180 @@
    "Team effective days per sprint": "40"
   }
  },
+ "backlog": {
+  "per_sprint_pts": 83.2,
+  "bands": {
+   "skinny": "< 1.5 sprints",
+   "in_shape": "1.5 to 2.5 sprints",
+   "fat": "> 2.5 sprints"
+  },
+  "ready": {
+   "items": 4,
+   "points": 11
+  },
+  "misfiled": {
+   "items": 15,
+   "points": 72
+  },
+  "runway": 0.1,
+  "runway_if_fixed": 1.0,
+  "state": "Skinny",
+  "state_if_fixed": "Skinny",
+  "violations": [
+   {
+    "rule": "Groomed but still in Backlog",
+    "n": 15,
+    "points": 72,
+    "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
+   },
+   {
+    "rule": "Idea/Draft sitting in Ready for Development",
+    "n": 16,
+    "points": 48,
+    "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
+   },
+   {
+    "rule": "Groomed items with no estimate",
+    "n": 0,
+    "points": 0,
+    "why": "the guide: a Groomed item must be estimated."
+   },
+   {
+    "rule": "Groomed work archived as Deferred",
+    "n": 8,
+    "points": 31,
+    "why": "work that met Definition of Ready and was then parked."
+   }
+  ]
+ },
+ "admin": {
+  "scope": {
+   "ready": 21,
+   "sprint": 0,
+   "sprint_name": "EDW-Sprint 22-26"
+  },
+  "blocking": [
+   {
+    "rule": "No estimate",
+    "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
+    "n": 3,
+    "items": [
+     {
+      "key": "EDW-2355",
+      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+     },
+     {
+      "key": "EDW-2347",
+      "summary": "PRODUCTION - Office Assignment"
+     },
+     {
+      "key": "EDW-2332",
+      "summary": "Renewals by Month - Fix X-axis values to display properly"
+     }
+    ]
+   },
+   {
+    "rule": "Idea/Draft in Ready for Development",
+    "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
+    "n": 16,
+    "items": [
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2355",
+      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+     },
+     {
+      "key": "EDW-2347",
+      "summary": "PRODUCTION - Office Assignment"
+     },
+     {
+      "key": "EDW-2336",
+      "summary": "Rework Storybook controls and mocked data"
+     },
+     {
+      "key": "EDW-2332",
+      "summary": "Renewals by Month - Fix X-axis values to display properly"
+     },
+     {
+      "key": "EDW-2327",
+      "summary": "Loan Activity page - No Data Available"
+     },
+     {
+      "key": "EDW-2310",
+      "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
+     },
+     {
+      "key": "EDW-2308",
+      "summary": "ACH - ACH purchase returns (Declines) Not Visible in Plan Sales Report "
+     }
+    ]
+   }
+  ],
+  "debt": [
+   {
+    "rule": "No fix version",
+    "why": "the release a delivery belongs to cannot be traced without it.",
+    "n": 16,
+    "items": [
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2355",
+      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+     },
+     {
+      "key": "EDW-2351",
+      "summary": "Add  UserId columns to .Net Plans reporting"
+     },
+     {
+      "key": "EDW-2326",
+      "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
+     },
+     {
+      "key": "EDW-2310",
+      "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
+     },
+     {
+      "key": "EDW-2214",
+      "summary": "Update CI eligibility file"
+     },
+     {
+      "key": "EDW-2209",
+      "summary": "LL backfill non-annual plan records"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     }
+    ]
+   },
+   {
+    "rule": "Original estimate is not in use",
+    "why": "missing on 20 of 21 items. This reads as a field the team does not use rather than 20 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 20,
+    "items": []
+   },
+   {
+    "rule": "Target end date is not in use",
+    "why": "missing on 21 of 21 items. This reads as a field the team does not use rather than 21 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 21,
+    "items": []
+   }
+  ],
+  "setup": [
+   {
+    "rule": "The active sprint has no goal",
+    "why": "neither Jira nor the capacity page records one, so delivery can only be measured in points.",
+    "n": 1,
+    "items": []
+   }
+  ]
+ },
  "sprint": {
   "name": "EDW-Sprint 22-26",
   "state": "active",
@@ -277,7 +451,7 @@
   "completed": 7,
   "scope_change": 4,
   "vs_commitment": 14,
-  "time_elapsed": 15,
+  "time_elapsed": 16,
   "spill": {
    "open_items": 15,
    "open_pts": 44.0,
@@ -371,7 +545,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 1.0,
+    "med_age": 1.1,
     "max_age": 19.0,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -379,18 +553,6 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 243
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
    },
    {
     "status": "PR Created",
@@ -417,7 +579,7 @@
     "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -425,8 +587,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "On Hold",
@@ -451,6 +613,18 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 139
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
