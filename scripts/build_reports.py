@@ -682,6 +682,10 @@ REVCSS = """
 def review_chip(code):
     """Amber-free, header-safe chip. Pending until a human signs the page off."""
     slug = dict(REPORTS).get(code, "")
+    if slug in DATA.get("HISTORICAL", []):
+        return ('<span class="revchip" style="background:#f1f3f7;color:#6b7383">'
+                '<span class="ic">&#128220;</span> Historical record &middot; '
+                'published before the sign-off register</span>')
     r = _review(slug)
     if r.get("status") == "reviewed":
         who = r.get("by", "")
@@ -1877,9 +1881,15 @@ BADGE_BG    = {"healthy": ("#e6f6ef", "#1a7f5a"), "warning": ("#fdeee3", "#c0641
 def _card(href, short, year, title, badge, blurb, status=None):
     bg, fg = BADGE_BG.get(status, ("#fdeee3", "#c0641f"))
     r = _review(href)
-    pend = ('<span class="badge" style="background:#eef2f8;color:#5a6577">Pending sign-off</span>'
-            if r.get("status") != "reviewed" else
-            '<span class="badge" style="background:#e3fcef;color:#1a6b45">Signed off</span>')
+    if href in DATA.get("HISTORICAL", []):
+        # closed before the sign-off register existed. Saying "pending" would imply
+        # somebody still owes a signature on a period nobody can re-live.
+        pend = ('<span class="badge" style="background:#f1f3f7;color:#6b7383" '
+                'title="Published before the sign-off register existed">Historical record</span>')
+    elif r.get("status") == "reviewed":
+        pend = '<span class="badge" style="background:#e3fcef;color:#1a6b45">Signed off</span>'
+    else:
+        pend = '<span class="badge" style="background:#eef2f8;color:#5a6577">Pending sign-off</span>' 
     return f'''<a class="rcard" href="2026/{href}">
 <div class="mo"><span class="m">{short}</span><span class="y">{year}</span></div>
 <div class="body"><h3>{title} <span class="badge" style="background:{bg};color:{fg}">{badge}</span>{pend}</h3>
@@ -1945,14 +1955,6 @@ def index_page():
                 '<p style="font-size:13px;color:var(--wf-muted);margin:-6px 0 14px">'
                 'One report per release, covering the sprints that fed it. This is the current series.</p>\n'
                 + "".join(c for _, c in rel))
-    if months:
-        out += ('<div class="yeartag" style="margin-top:30px">2026 · Monthly Reports</div>\n'
-                '<p style="font-size:13px;color:var(--wf-muted);margin:-6px 0 14px">'
-                'Closed series. Reporting moved to the release calendar after August, so these stay as published. '
-                'They cut the work by calendar month; the release reports cut it by release window, which is why '
-                'August reads 82 items here and R9.07 reads 57 for Aug 3&ndash;30. Both are right, and the two '
-                'numbers are not meant to be added or compared.</p>\n'
-                + "".join(c for _, c in months))
     if quarters:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
                 + "".join(c for _, c in quarters))
@@ -2014,9 +2016,14 @@ def quarter_ready():
 
 # ---------------------------------------------------------------- write
 os.makedirs(f"{REPO}/2026", exist_ok=True)
-for mk, m in MONTHS.items():
-    open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips(month_page(mk)))
-    print("wrote", m["slug"])
+# The monthly series is retired: reporting moved to the release calendar and a
+# second measurement path was being maintained and run in CI for a closed series.
+# The frozen month data stays -- the quarter pages are built from it -- but the
+# pages are no longer generated, and the cleanup below removes the published ones.
+if not DATA.get("RELEASES"):
+    for mk, m in MONTHS.items():
+        open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips(month_page(mk)))
+        print("wrote", m["slug"])
 open(f"{REPO}/admin.html","w").write(admin_page())
 print("wrote admin")
 open(f"{REPO}/2026/2026-q1.html","w").write(add_tips(q1_page()))

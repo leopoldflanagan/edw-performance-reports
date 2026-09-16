@@ -461,7 +461,10 @@ def capacity(page_id):
     for r in (ros or {}).get("rows", []):
         who = (r.get("Person") or "").strip()
         if who:
-            out["roster"].append({"name": who, "status": (r.get("Status") or "").strip()})
+            out["roster"].append({"name": who, "role": (r.get("Role") or "").strip() or None,
+                                  "status": (r.get("Status") or "").strip()})
+    out["team"] = [p for p in out["roster"]
+                   if not (p["status"] or "").lower().startswith(("former", "left"))]
 
     ch = find("From sprint", "What changed")
     for r in (ch or {}).get("rows", []):

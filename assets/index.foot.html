@@ -308,7 +308,12 @@
           (m.unplanned_pct == null
             ? 'no item carries the Unplanned label or the Urgent Task type'
             : m.unplanned + ' of ' + m.closed + ' items')) +
-        tile('Contributors', m.people_active, 'people who closed 2+ items') +
+        tile('Team', (d.capacity && d.capacity.team ? d.capacity.team.length : '\u2014'),
+          // the roster and who actually closed work are different questions, and the
+          // gap between them is the interesting part
+          (d.capacity && d.capacity.team
+            ? 'on the roster &middot; ' + m.people_active + ' closed work'
+            : m.people_active + ' closed 2+ items')) +
         '</div>' +
         (isRel && m.sprints ? '<div class="secsub" style="margin-top:8px;font-size:12px">' +
           'Sprints in this release: ' + m.sprints.map(esc).join(', ') + '</div>' : '') +

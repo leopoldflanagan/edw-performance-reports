@@ -1872,22 +1872,6 @@
  },
  "REPORTS": [
   [
-   "MAY",
-   "2026-05-may.html"
-  ],
-  [
-   "JUN",
-   "2026-06-june.html"
-  ],
-  [
-   "JUL",
-   "2026-07-july.html"
-  ],
-  [
-   "AUG",
-   "2026-08-august.html"
-  ],
-  [
    "Q1",
    "2026-q1.html"
   ],
@@ -2135,30 +2119,6 @@
   "<span class=\"gname\">Delivered vs discarded</span>": "Closed items against those resolved as Won’t Do in the same month."
  },
  "INDEX": {
-  "2026-08-august.html": {
-   "short": "AUG",
-   "title": "August 2026 Performance Report",
-   "badge": "Warning",
-   "blurb": "82 deliveries, the highest month of the year. No unplanned-work data and 20 discards."
-  },
-  "2026-07-july.html": {
-   "short": "JUL",
-   "title": "July 2026 Performance Report",
-   "badge": "Warning",
-   "blurb": "79 deliveries and unplanned work back at 12.66%. Bugs triple."
-  },
-  "2026-06-june.html": {
-   "short": "JUN",
-   "title": "June 2026 Performance Report",
-   "badge": "Warning",
-   "blurb": "74 deliveries, nearly double the baseline. First full month with the 6-dev team."
-  },
-  "2026-05-may.html": {
-   "short": "MAY",
-   "title": "May 2026 Performance Report",
-   "badge": "Warning",
-   "blurb": "Flow metrics healthy; Unplanned work in Risk (17.95%). Dashboard, comparatives and retrospective observations."
-  },
   "2026-q2-baseline.html": {
    "short": "Q2",
    "title": "Q2 2026 Performance Report",
@@ -2651,5 +2611,13 @@
   "9.06": "R9.06",
   "9.07": "R9.07",
   "9.08": "R9.08"
- }
+ },
+ "HISTORICAL": [
+  "2026-q1.html",
+  "2026-q2-baseline.html",
+  "2026-r904.html",
+  "2026-r905.html",
+  "2026-r906.html",
+  "2026-r907.html"
+ ]
 }
