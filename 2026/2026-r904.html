@@ -542,19 +542,7 @@
 </section>
 <section class="panel" id="cmp">
   <div class="sectit">Comparatives</div>
-  <div class="secsub">The full series from the baseline, so the trend shows and not just the month.</div>
-  
- <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; the trend</h3></div>
-  <div class="secsub" style="margin-bottom:10px">The same breakdown for every closed release, stacked. What matters is the shape, not the height: which step is growing.</div>
-  <div class="cmpgrid">
-   <div class="chartbox" style="height:280px"><canvas id="cTis"></canvas></div>
-   <div class="readout">
-    <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Total time in the flow</span><br>Moved from 6.3d to 2.5d between R9.04 and R9.07, per item.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Biggest step now</span><br><i>Awaiting Review</i>, at a median of <b>1.0d</b>. A step that grows while the others hold is the one to look at, whatever the total does.</div>
-    <div class="line"><span class="vs-tag">Read it with Cycle Time</span><br>Cycle Time can stay flat while the composition changes underneath. That is the case this chart exists to catch.</div>
-   </div>
-  </div>
- </div>
+  <div class="secsub">The full series from the baseline, so the trend shows and not just the month. Same order as the Flow tab: what came out, how long it took, where that time went, and how much of it was reactive.</div>
   <div class="cmpcard">
     <div class="cmphead"><h3><span class="st-dot" style="background:var(--healthy);width:13px;height:13px"></span> Throughput</h3><span class="badge b-green"><span class="d"></span>Healthy</span></div>
     <div class="cmpgrid">
@@ -576,8 +564,20 @@
       </div>
     </div>
   </div>
+  
+ <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; the trend</h3></div>
+  <div class="secsub" style="margin-bottom:10px">The same breakdown for every closed release, stacked. What matters is the shape, not the height: which step is growing.</div>
+  <div class="cmpgrid">
+   <div class="chartbox" style="height:280px"><canvas id="cTis"></canvas></div>
+   <div class="readout">
+    <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Total time in the flow</span><br>Moved from 6.3d to 2.5d between R9.04 and R9.07, per item.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Biggest step now</span><br><i>Awaiting Review</i>, at a median of <b>1.0d</b>. A step that grows while the others hold is the one to look at, whatever the total does.</div>
+    <div class="line"><span class="vs-tag">Read it with Cycle Time</span><br>Cycle Time can stay flat while the composition changes underneath. That is the case this chart exists to catch.</div>
+   </div>
+  </div>
+ </div>
   <div class="cmpcard">
-    <div class="cmphead"><h3>Unplanned work</h3></div>
+    <div class="cmphead"><h3>Planned vs Unplanned</h3></div>
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
@@ -588,23 +588,13 @@
   </div>
   
  <div class="sectit" style="font-size:20px;margin-top:30px">Sprint series — full history</div><div class="secsub">Every sprint of 2026 on the board, so the month can be read against the trend.</div>
- <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
-  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
-  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
- </div>
- <div class="cmpcard">
-  <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
-  <div class="cmpgrid">
-   <div class="chartbox" style="height:280px"><canvas id="cSplit"></canvas></div>
-   <div class="readout">
-    <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Reactive, as expected</span><br>A handful of points a sprint arrive labeled <i>Unplanned</i> or as <i>Urgent Task</i>. That is the service load, and outside 12-26 it is smaller than it feels.</div>
-    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">Plannable, added anyway</span><br>Most of the mid-sprint additions carry no reactive marker — dashboard tabs, E2E testing, table-layout fixes. This is the planning gap.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Not measurable from 18-26</span><br>The label stopped being applied, so those sprints show as no data, not as zero reactive work.</div>
-   </div>
-  </div>
-  <div class="infopanel ip-amber">One caveat on method: the label lives on the ticket, not on the moment. If someone added it after the fact, the item still counts as reactive here.</div>
- </div>
- <div class="cmpcard">
+ <div class="sectit" style="font-size:20px;margin-top:4px">Committed vs Completed — full series</div>
+ <div class="secsub">Every sprint on the board this year.</div>
+ <div class="tscroll"><table class="exec">
+  <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
+  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>12</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
+ </table></div>
+ <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div> <div class="cmpcard">
   <div class="cmphead"><h3>Velocity per sprint</h3></div>
   <div class="secsub" style="margin-bottom:8px">Points completed against the day-1 commitment, and against the documented baseline of 45 (range 40-50).</div>
   <div class="chartbox" style="height:300px"><canvas id="cVel"></canvas></div>
@@ -637,13 +627,23 @@
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
  <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 137 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 87 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
- <div class="sectit" style="font-size:20px;margin-top:22px">Committed vs Completed — full series</div>
- <div class="secsub">Every sprint on the board this year.</div>
- <div class="tscroll"><table class="exec">
-  <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>12</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
- </table></div>
- <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
+ <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
+  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
+  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
+ </div>
+ <div class="cmpcard">
+  <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
+  <div class="cmpgrid">
+   <div class="chartbox" style="height:280px"><canvas id="cSplit"></canvas></div>
+   <div class="readout">
+    <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Reactive, as expected</span><br>A handful of points a sprint arrive labeled <i>Unplanned</i> or as <i>Urgent Task</i>. That is the service load, and outside 12-26 it is smaller than it feels.</div>
+    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">Plannable, added anyway</span><br>Most of the mid-sprint additions carry no reactive marker — dashboard tabs, E2E testing, table-layout fixes. This is the planning gap.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Not measurable from 18-26</span><br>The label stopped being applied, so those sprints show as no data, not as zero reactive work.</div>
+   </div>
+  </div>
+  <div class="infopanel ip-amber">One caveat on method: the label lives on the ticket, not on the moment. If someone added it after the fact, the item still counts as reactive here.</div>
+ </div>
+
 
 </section>
 <section class="panel" id="act">
