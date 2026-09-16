@@ -386,15 +386,21 @@ NAVCSS = """
  .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
- .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
- .rhome:hover{text-decoration:underline}
+ /* These were a 12.5px bare link pushed to the edge. They are the way off the
+    page, so they are sized like the pills they sit next to. */
+ .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+ .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
+   padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
+   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+ .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
+ .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* With the active sprint in it the strip no longer fits a phone. It scrolls
     sideways rather than wrapping into three lines. */
  @media(max-width:700px){
   .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
   .repnav .wrap::-webkit-scrollbar{display:none}
   .rp,.ry{flex:0 0 auto}
-  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+  .rgroup{margin-left:12px;padding-top:0}
  }
 """
 
@@ -412,7 +418,7 @@ def repnav(current, root=False):
     into = "2026/" if root else ""
     live = ('<span class="rp live on"><i></i>Active sprint</span>' if current == "live"
             else f'<a class="rp live" href="{up}sprint.html"><i></i>Active sprint</a>')
-    out = [live, '<span class="rsep"></span>', '<span class="ry">2026</span>']
+    out = [live, '<span class="rsep"></span>']
     for code, href in REPORTS:
         if code == "Q1":
             out.append('<span class="rsep"></span>')
@@ -420,9 +426,16 @@ def repnav(current, root=False):
             out.append(f'<span class="rp on">{code}</span>')
         else:
             out.append(f'<a class="rp" href="{into}{href}">{code}</a>')
+    # Left: what you are reading. Right: where else you can go. The fix-list is not
+    # a period, so it does not belong among the pills -- but it does belong on every
+    # page, or it stays reachable only from one grey link at the foot of the index.
+    fix = ('<span class="rutil on">What to fix in Jira</span>' if current == "fix"
+           else f'<a class="rutil" href="{up}admin.html">What to fix in Jira</a>')
     return ('<div class="repnav"><div class="wrap">'
             + "".join(out)
-            + f'<a class="rhome" href="{up}index.html">&larr; All reports</a></div></div>')
+            + '<span class="rgroup">' + fix
+            + f'<a class="rutil" href="{up}index.html">&larr; All reports</a>'
+            + '</span></div></div>')
 
 
 
@@ -2035,6 +2048,10 @@ def _live_foot(mode):
 
 
 SHELLCSS = """
+ /* The reports lay out at 1180 and these pages were at 880, so moving between
+    them shifted the whole page. They carry the same strip too, which does not fit
+    880 once it has both buttons on it. */
+ .wrap{max-width:1180px}
  .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
@@ -2049,15 +2066,21 @@ SHELLCSS = """
  .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
- .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
- .rhome:hover{text-decoration:underline}
+ /* These were a 12.5px bare link pushed to the edge. They are the way off the
+    page, so they are sized like the pills they sit next to. */
+ .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+ .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
+   padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
+   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+ .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
+ .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* The strip is longer now that the active sprint is in it. On a phone it scrolls
     sideways instead of wrapping into three lines. */
  @media(max-width:700px){
   .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
   .repnav .wrap::-webkit-scrollbar{display:none}
   .rp,.ry{flex:0 0 auto}
-  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+  .rgroup{margin-left:12px;padding-top:0}
  }
 """
 
@@ -2135,34 +2158,35 @@ every refresh. It gets a verdict in the release report once it closes, not befor
 <div id="livepanel"></div>
 </div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
-<a href="admin.html" style="color:inherit">board hygiene</a></footer>
+<a href="admin.html" style="color:inherit">what to fix in Jira</a></footer>
 {_live_core("full")}
 </body></html>"""
 
 
 def admin_page():
-    """The board-hygiene page. Same shell as the index, different audience: this one
-    is for whoever keeps Jira honest, so it is linked from the index rather than
-    listed on it."""
+    """The fix-list. Same shell as the index, different audience: the reports are
+    for stakeholders, this is for whoever keeps Jira honest. Every item on it is
+    fixed by editing Jira, which is where the name comes from -- it is not only
+    about the board, and half of it is the backlog."""
     head = open(os.path.join(REPO, "assets", "index.head.html")).read()
     foot = open(os.path.join(REPO, "assets", "admin.foot.html")).read()
     head = head.replace("<title>EDW Performance Reports</title>",
-                        "<title>EDW &middot; Board hygiene</title>")
+                        "<title>EDW &middot; What to fix in Jira</title>")
     head = head.replace('<div class="eyebrow">Enterprise Data Warehouse</div>',
                         '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
-    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>Board hygiene</h1>")
+    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>What to fix in Jira</h1>")
     _i, _j = head.find('<div class="sub">'), head.find("</div></div></header>")
     head = head[:_i] + ('<div class="sub">Everything on this page is fixable by editing Jira. '
                         'It is kept away from the reports on purpose: the reports are for '
-                        'stakeholders, this is for whoever keeps the board honest.</div>') + head[_j:]
+                        'stakeholders, this is the list of things somebody has to go and fix.</div>') + head[_j:]
     head = head.replace('<div id="livepanel"></div>', '<div id="adminpanel"></div>')
     # the strip, so this page can be left the same way every other page can
     head = head.replace("</style>", SHELLCSS + "</style>")
     head = head.replace('<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>',
                         '<div class="crumb"><a href="index.html">EDW Performance Reports</a> '
-                        '&rsaquo; Board hygiene</div>'
+                        '&rsaquo; What to fix in Jira</div>'
                         '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
-    head = head.replace('<main><div class="wrap">', repnav(None, root=True) + '\n<main><div class="wrap">')
+    head = head.replace('<main><div class="wrap">', repnav("fix", root=True) + '\n<main><div class="wrap">')
     return head + foot
 
 
@@ -2208,8 +2232,9 @@ def index_page():
     if quarters:
         out += ('<div class="yeartag" style="margin-top:30px">2026 · Quarter Reports</div>\n'
                 + "".join(c for _, c in quarters))
-    out += ('<a class="adminlink" href="admin.html">&#9881;&#65039; Board hygiene '
-            '&mdash; Definition of Ready, backlog health and field checks</a>\n')
+    out += ('<a class="adminlink" href="admin.html">&#128295; What to fix in Jira '
+            '&mdash; Definition of Ready, backlog health and the fields the reports '
+            'depend on</a>\n')
     return out + foot
 
 
