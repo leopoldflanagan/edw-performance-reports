@@ -1968,27 +1968,111 @@ def _card(href, short, year, title, badge, blurb, status=None):
 <div class="arrow">&rarr;</div></a>
 '''
 
+def _live_core(mode):
+    """The live script itself, with the mode switch in front of it. One file, two
+    pages: the index card and the sprint page render from the same code so they
+    cannot drift apart."""
+    core = open(os.path.join(REPO, "assets", "live.core.html")).read()
+    return f"<script>window.__LIVE_MODE__={json.dumps(mode)};</script>\n" + core
+
+
 def _live_foot(mode):
-    """One live script, two pages. The shell and the script are separate files so
-    the card and the full page cannot drift apart."""
+    """The live script wrapped in the index's closing shell."""
     shell = open(os.path.join(REPO, "assets", "foot.shell.html")).read()
-    core  = open(os.path.join(REPO, "assets", "live.core.html")).read()
-    return shell.replace("__LIVE__",
-                         f"<script>window.__LIVE_MODE__={json.dumps(mode)};</script>\n" + core)
+    return shell.replace("__LIVE__", _live_core(mode))
+
+
+SPRINTCSS = """
+ .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+ .crumb a:hover{border-color:#fff}
+ .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+ .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
+ .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
+     text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
+ .rp:hover{background:var(--wf-blue-l);color:#fff}
+ .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
+ .rhome:hover{text-decoration:underline}
+ .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
+   border-bottom:1px solid var(--line)}
+ .tabs .wrap{display:flex;gap:4px}
+ .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;
+   color:var(--wf-muted);padding:17px 22px;cursor:pointer;position:relative;transition:color .2s}
+ .tab:hover{color:var(--wf-ink)}
+ .tab.active{color:var(--wf-blue)}
+ .tab.active::after{content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:3px;
+   background:var(--wf-blue);border-radius:3px 3px 0 0}
+ .panel{display:none;animation:fade .4s ease}
+ .panel.active{display:block}
+ @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+ .sectit{font-weight:800;font-size:24px;color:var(--wf-blue-d);margin:6px 0 2px;letter-spacing:-.01em}
+ .secsub{color:var(--wf-muted);font-size:14px;margin-bottom:20px}
+ .cmpcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;
+   box-shadow:var(--shadow);margin-bottom:18px}
+ /* the live blocks carry their own rule above them; as the first thing in a card
+    that line reads as a stray divider */
+ .cardbody>.sprintsec:first-child{margin-top:0;padding-top:0;border-top:none}
+ #livehead .liverow{justify-content:flex-start;gap:10px}
+ #livehead .activetag{vertical-align:middle}
+ @media(max-width:700px){
+  .tabs .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:0}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tab{padding:14px 14px;font-size:14px;white-space:nowrap;flex:0 0 auto}
+  .cmpcard{padding:16px}
+  .sectit{font-size:20px}
+ }
+ @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
+"""
 
 
 def sprint_page():
-    """The active sprint in full. The index card is the five-second read; this is
-    where the detail behind it lives, so the card can stay a card."""
+    """The active sprint, laid out like the reports it feeds: same header, same
+    tab strip, same cards. The index card is the five-second read; this is the
+    page behind it, and it should not look like a different site."""
     head = open(os.path.join(REPO, "assets", "index.head.html")).read()
-    head = head.replace("<title>EDW Performance Reports</title>",
-                        "<title>EDW &middot; Active sprint</title>")
-    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>Active sprint</h1>")
-    _i, _j = head.find('<div class="sub">'), head.find("</div></div></header>")
-    head = head[:_i] + ('<div class="sub">Everything the reports know about the sprint running '
-                        'right now, rebuilt from Jira on every refresh. It gets a verdict in the '
-                        'release report once it closes, not before.</div>') + head[_j:]
-    return head + _live_foot("full")
+    # reuse the index stylesheet verbatim -- the live blocks are styled there, and
+    # a second copy would drift
+    _a = head.find("<style>") + len("<style>")
+    _b = head.find("</style>")
+    css = head[_a:_b]
+
+    nav = []
+    for code, href in REPORTS:
+        if code == "Q1":
+            nav.append('<span class="rsep"></span>')
+        nav.append(f'<a class="rp" href="2026/{href}">{code}</a>')
+    repnav = ('<div class="repnav"><div class="wrap"><span class="ry">2026</span>'
+              + "".join(nav)
+              + '<a class="rhome" href="index.html">&larr; All reports</a></div></div>')
+
+    return f"""<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDW &middot; Active sprint</title>
+<style>{css}{SPRINTCSS}</style></head>
+<body>
+<header><div class="wrap">
+<div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Active sprint</div>
+<div class="eyebrow">Enterprise Data Warehouse &middot; Live from Jira</div>
+<h1>Active sprint</h1>
+<div class="sub">Everything the reports know about the sprint running right now, rebuilt from Jira on
+every refresh. It gets a verdict in the release report once it closes, not before.</div>
+<div id="livehead" style="margin-top:22px"></div>
+</div></header>
+<div class="tabs"><div class="wrap">
+ <button class="tab active" data-tab="prog">Progress</button>
+ <button class="tab" data-tab="flow">Workflow</button>
+ <button class="tab" data-tab="rel">Release</button>
+</div></div>
+{repnav}
+<main><div class="wrap">
+<div id="livepanel"></div>
+</div></main>
+<footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
+<a href="admin.html" style="color:inherit">board hygiene</a></footer>
+{_live_core("full")}
+</body></html>"""
 
 
 def admin_page():
@@ -2118,9 +2202,6 @@ if not DATA.get("RELEASES"):
     for mk, m in MONTHS.items():
         open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips2(month_page(mk)))
         print("wrote", m["slug"])
-open(f"{REPO}/admin.html","w").write(admin_page())
-open(f"{REPO}/sprint.html","w").write(sprint_page())
-print("wrote admin + sprint")
 open(f"{REPO}/2026/2026-q1.html","w").write(add_tips2(q1_page()))
 print("wrote 2026-q1")
 open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips2(q2_page()))
@@ -2252,6 +2333,12 @@ if RELEASES:
         if _f.endswith(".html") and _f not in _keep:
             os.remove(f"{REPO}/2026/{_f}")
             print("removed stale in-progress page:", _f)
+
+# after the report pages: the sprint page carries the same report strip they do,
+# and REPORTS is only complete once the releases have been built
+open(f"{REPO}/admin.html","w").write(admin_page())
+open(f"{REPO}/sprint.html","w").write(sprint_page())
+print("wrote admin + sprint")
 
 open(os.path.join(REPO, "index.html"), "w").write(index_page())
 print("wrote index")
