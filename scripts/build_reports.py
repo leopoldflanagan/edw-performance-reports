@@ -54,6 +54,14 @@ if CURRENT and CURRENT.get("kind") == "release":
     CURRENT_RELEASE, CURRENT = CURRENT, None      # merged in the release pass below
 else:
     CURRENT_RELEASE = None
+
+# What the Scrum Master recorded at planning, from the Confluence capacity page.
+# It covers every sprint the page lists, closed ones included, so an old report can
+# still show what its sprints were planned with.
+_capsrc    = CURRENT_RELEASE or CURRENT or {}
+CAPACITY   = _capsrc.get("CAPACITY") or {}
+GOALS_PAGE = _capsrc.get("GOALS") or {}
+CAP_URL    = _capsrc.get("CAP_URL")
 if CURRENT:
     _mk = CURRENT["ym"].split("-")[1]
     # Frozen wins only for a sprint that belongs to a month already closed. A sprint
@@ -677,6 +685,33 @@ __CHARTS__
 {ZOOMJS}
 </script></body></html>"""
 
+def cap_line(n):
+    """What this sprint was planned with, from the capacity page. Planned capacity
+    and delivered points are different questions, so this sits beside the burndown
+    rather than being folded into it."""
+    c = CAPACITY.get(n)
+    g = GOALS_PAGE.get(n) or {}
+    if not c and not g:
+        return ""
+    bits = []
+    if c:
+        if c.get("members"):  bits.append(f"<b>{int(c['members'])}</b> people")
+        if c.get("pct") is not None: bits.append(f"capacity <b>{int(c['pct'])}%</b>")
+        if c.get("eff_days"): bits.append(f"{int(c['eff_days'])} effective days")
+        if c.get("pto"):      bits.append(f"{int(c['pto'])}d PTO")
+        if c.get("holidays"): bits.append(f"{int(c['holidays'])} holiday" + ("s" if c["holidays"] > 1 else ""))
+    tail = ""
+    if g.get("committed") is not None:
+        _,_,_,_,_,comm,_,_,_,_,_ = sp(n)
+        tail = (f" Planning recorded <b>{int(g['committed'])} pts</b> committed; Jira reconstructs "
+                f"<b>{comm}</b>." + (" The gap is what moved after planning."
+                                     if int(g["committed"]) != comm else ""))
+    src = f' <a href="{CAP_URL}" style="color:var(--wf-muted)">capacity page &rarr;</a>' if CAP_URL else ""
+    return ('<div class="spill"><div class="sk">Planned capacity</div>'
+            f'<div class="sn" style="margin-top:2px">{" &middot; ".join(bits) if bits else "Not recorded for this sprint."}'
+            f'{tail}{src}</div></div>')
+
+
 def sprint_card(name, idx, note=""):
     n,st,en,items,done,comm,final,comp,chg,burn,scope = sp(name)
     pct = round(100*comp/comm) if comm else 0
@@ -685,6 +720,7 @@ def sprint_card(name, idx, note=""):
     gone_i = sl["open"][0] + sl["out"][0]
     gone_p = sl["open"][1] + sl["out"][1]
     run = OPEN_SPRINT(n)
+    cap_html = cap_line(n)
     if run:
         # mid-sprint there is no spillover and no result: open work is just open
         spill_html = ('<div class="spill"><div class="sk">Still open</div>'
@@ -718,6 +754,7 @@ def sprint_card(name, idx, note=""):
      {f'<div class="sh"><div class="k">Sprint elapsed</div><div class="v">Day {run[0]}</div><div class="n">of {run[1]} — no verdict until it closes</div></div>' if run else f'<div class="sh"><div class="k">vs commitment</div><div class="v">{pct}%</div><div class="n">completed against day-1 scope</div></div>'}
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd{idx}"></canvas></div>
+   {cap_html}
    {spill_html}
    {goal_box(n)}
    {tis_block(n)}

@@ -350,6 +350,128 @@ def signoff(page_id):
     return out
 
 
+CAPACITY_PAGE = (os.environ.get("CAPACITY_PAGE") or "3747938305").strip()   # EDW; DS/LL override via env
+
+_ENT = {"&nbsp;": " ", "&mdash;": "-", "&ndash;": "-", "&amp;": "&", "&lt;": "<",
+        "&gt;": ">", "&quot;": '"', "&#39;": "'", "&iacute;": "i", "&oacute;": "o",
+        "&aacute;": "a", "&eacute;": "e", "&uacute;": "u", "&ntilde;": "n"}
+
+
+def _cell(x):
+    """One table cell as plain text. A Confluence date node keeps its ISO value
+    rather than the way it happens to be displayed."""
+    import re as _re
+    x = _re.sub(r'<time[^>]*datetime="([^"]+)"[^>]*/?>', r"\1", x)
+    x = _re.sub(r"<[^>]+>", "", x)
+    for k, v in _ENT.items():
+        x = x.replace(k, v)
+    return x.strip()
+
+
+def _tables(html):
+    """Every table on a Confluence page as a list of header-keyed rows.
+
+    Cells are matched by HEADER NAME, never by position. That promise is written
+    on the capacity page itself, so someone can add or reorder a column there
+    without anyone touching this file.
+    """
+    import re as _re
+    out = []
+    for t in html.split("<table")[1:]:
+        rows = [[_cell(c) for c in _re.findall(r"<t[hd][^>]*>([\s\S]*?)</t[hd]>", r)]
+                for r in _re.findall(r"<tr[^>]*>([\s\S]*?)</tr>", t)]
+        rows = [r for r in rows if r]
+        if not rows:
+            continue
+        hdr = rows[0]
+        out.append({"headers": hdr,
+                    "rows": [{k: (r[i] if i < len(r) else "") for i, k in enumerate(hdr)}
+                             for r in rows[1:]]})
+    return out
+
+
+def _num(x):
+    try:
+        return float(str(x).replace("%", "").strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def _sprint_name(x):
+    """'EDW-Sprint 25-26 (not in Jira yet)' -> 'EDW-Sprint 25-26'."""
+    import re as _re
+    m = _re.search(r"[A-Za-z]+-Sprint\s+\d+-\d+", x or "")
+    return m.group(0) if m else None
+
+
+def capacity(page_id):
+    """Team capacity, sprint goals and the roster, from the Confluence page.
+
+    This is the one input to the reports that a human maintains, so it is read
+    forgivingly: a missing page, a renamed column or an empty cell costs that one
+    fact and nothing else. The reports have always been able to render without
+    capacity, and they still can.
+    """
+    if not page_id:
+        return None
+    p = _soft(f"/wiki/api/v2/pages/{page_id}?body-format=storage")
+    if not p:
+        return None
+    html = (((p.get("body") or {}).get("storage") or {}).get("value")) or ""
+    T = _tables(html)
+
+    def find(*must):
+        for t in T:
+            if all(any(m.lower() in h.lower() for h in t["headers"]) for m in must):
+                return t
+        return None
+
+    out = {"page": page_id, "url": f"{BASE}/wiki/spaces/EDW/pages/{page_id}",
+           "sprints": {}, "goals": {}, "roster": [], "config": {}}
+
+    cap = find("Sprint", "Capacity %")
+    for r in (cap or {}).get("rows", []):
+        n = _sprint_name(r.get("Sprint"))
+        if not n:
+            continue
+        out["sprints"][n] = {
+            "release":   (r.get("Release") or "").strip() or None,
+            "start":     r.get("Start") or None, "end": r.get("End") or None,
+            "members":   _num(r.get("Team members")),
+            "holidays":  _num(r.get("Holidays")),
+            "pto":       _num(r.get("Team PTO (days)")),
+            "eff_days":  _num(r.get("Effective days")),
+            "pct":       _num(r.get("Team Capacity %")),
+            "risk":      (r.get("Capacity Risk") or "").strip() or None,
+            "planned":   "not in Jira yet" in (r.get("Sprint") or ""),
+        }
+
+    gl = find("Sprint", "Sprint Goal")
+    for r in (gl or {}).get("rows", []):
+        n = _sprint_name(r.get("Sprint"))
+        g = (r.get("Sprint Goal") or "").strip()
+        c = _num(r.get("Committed (pts)"))
+        if n and (g or c is not None):
+            out["goals"][n] = {"goal": g or None, "committed": c,
+                               "notes": (r.get("Notes") or "").strip() or None}
+
+    ros = find("Person")
+    for r in (ros or {}).get("rows", []):
+        who = (r.get("Person") or "").strip()
+        if who:
+            out["roster"].append({"name": who, "status": (r.get("Status") or "").strip()})
+
+    cfg = find("Variable", "Value")
+    for r in (cfg or {}).get("rows", []):
+        k = (r.get("Variable") or "").strip()
+        if k:
+            out["config"][k] = (r.get("Value") or "").strip()
+
+    print(f"  capacity page: {len(out['sprints'])} sprint rows, "
+          f"{len(out['goals'])} goal(s), {len(out['roster'])} people", flush=True)
+    return out
+
+
 PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
@@ -767,9 +889,23 @@ def main():
     else:
         period = month_so_far(a.project)
 
+    cap_page = capacity(CAPACITY_PAGE)
+    if live_sp and cap_page:
+        # the page is the planning record; Jira is the execution record. Where Jira
+        # has no goal, the one agreed at planning is better than nothing, and it is
+        # labelled so nobody mistakes where it came from.
+        live_sp["capacity"] = (cap_page["sprints"] or {}).get(live_sp["name"])
+        _g = (cap_page["goals"] or {}).get(live_sp["name"]) or {}
+        if not live_sp.get("goal") and _g.get("goal"):
+            live_sp["goal"] = _g["goal"]
+            live_sp["goal_src"] = "capacity page"
+        if _g.get("committed") is not None:
+            live_sp["committed_planned"] = _g["committed"]
+
     out = {
         "generated": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "team": a.team, "board": a.board, "kind": kind,
+        "capacity": cap_page,
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),
@@ -802,6 +938,13 @@ def main():
                           label=f"Release {rk}")
         blk["kind"] = "release"
         blk["n_sprints"] = len(r["sprints"])
+        if cap_page:
+            # every sprint the page knows, not only this release's: a closed sprint
+            # on an older report should still be able to show what it was planned with
+            blk["CAPACITY"] = cap_page["sprints"]
+            blk["GOALS"]    = cap_page["goals"]
+            blk["ROSTER"]   = cap_page["roster"]
+            blk["CAP_URL"]  = cap_page["url"]
     else:
         ym = dt.date.today().strftime("%Y-%m")
         prev_closed = None
@@ -818,6 +961,7 @@ def main():
 
     # the sign-off register. Written here rather than hand-edited, so the only way
     # a report turns green is that both people ticked their own box in Confluence.
+    # (capacity is attached to the block above, see main())
     sg = signoff(SIGNOFF_PAGE)
     if sg is not None:
         with open(os.path.join(os.path.dirname(a.out) or ".", "review.json"), "w") as f:
