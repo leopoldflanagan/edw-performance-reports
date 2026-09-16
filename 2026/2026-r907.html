@@ -298,9 +298,20 @@
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
  .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
  .rhome:hover{text-decoration:underline}
- @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
+ /* With the active sprint in it the strip no longer fits a phone. It scrolls
+    sideways rather than wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
 
  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
  .tscroll table.exec{min-width:660px}
@@ -373,7 +384,7 @@
  <button class="tab" data-tab="cmp">Comparatives</button>
  <button class="tab" data-tab="act">Findings &amp; Retro</button>
 </div></div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-r904.html">9.04</a><a class="rp" href="2026-r905.html">9.05</a><a class="rp" href="2026-r906.html">9.06</a><span class="rp on">9.07</span><a class="rp" href="2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><a class="rp live" href="../sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="ry">2026</span><a class="rp" href="2026-r904.html">9.04</a><a class="rp" href="2026-r905.html">9.05</a><a class="rp" href="2026-r906.html">9.06</a><span class="rp on">9.07</span><a class="rp" href="2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <section class="panel active" id="dash">
   <div class="sectit">Flow metrics — Release 9.07</div>
@@ -614,20 +625,20 @@
   <div class="cmpgrid">
    <div class="chartbox" style="height:280px"><canvas id="cSpill"></canvas></div>
    <div class="readout">
-    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">37% of everything committed</span><br><b>429 of 1169 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">87% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
+    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">36% of everything committed</span><br><b>424 of 1169 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">88% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
     <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Read it against the commitment, not the burndown</span><br>A sprint that commits to 45 points, grows to 117, closes 69 and drops 48 has not delivered 100% of anything. The honest pair is day-1 commitment and spillover rate, side by side.</div>
    </div>
   </div>
   <div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div>
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
- <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 137 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 92 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
+ <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 137 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 87 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
  <div class="sectit" style="font-size:20px;margin-top:22px">Committed vs Completed — full series</div>
  <div class="secsub">Every sprint on the board this year.</div>
  <div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>7</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
+  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>12</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
  </table></div>
  <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
 
@@ -687,7 +698,7 @@ document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',
  e.preventDefault();showTab(l.dataset.goto,true);});});
 // carry the open tab across reports: the month/quarter pills keep you where you were
 function currentTab(){const a=document.querySelector('.tab.active');return a?a.dataset.tab:'';}
-document.querySelectorAll('.repnav a.rp').forEach(a=>{a.addEventListener('click',e=>{
+document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListener('click',e=>{
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
@@ -705,7 +716,7 @@ const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
 new Chart(document.getElementById('cThru'),{type:'bar',
  data:{labels:["R9.04", "R9.05", "R9.06", "R9.07", "R9.08"],datasets:[{label:'Closed',
-  data:[14.5, 30.0, 38.0, 28.5, 25.5],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#007CBC", "#65B2D5"],borderRadius:6}]},
+  data:[14.5, 30.0, 38.0, 28.5, 26.0],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#007CBC", "#65B2D5"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:48,grid:{color:gridc},title:{display:true,text:'Items closed per sprint'}},x:{grid:{display:false}}}},
  plugins:[thrRef]});
 new Chart(document.getElementById('cCyc'),{type:'bar',
@@ -732,7 +743,7 @@ const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
 new Chart(document.getElementById('cVel'),{type:'bar',
  data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[
   {label:'Committed (day 1)',data:[56, 60, 79, 79, 105, 120, 83, 74, 78, 88, 49],backgroundColor:GREY,borderRadius:5},
-  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78, 7],backgroundColor:BLUE,borderRadius:5}]},
+  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78, 12],backgroundColor:BLUE,borderRadius:5}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:115,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false}}}},
  plugins:[velRef]});
 new Chart(document.getElementById('cSplit'),{type:'bar',
@@ -753,19 +764,19 @@ new Chart(document.getElementById('cBand'),{type:'bar',
  plugins:[bandRef]});
 const chg7={id:'chg7',afterDraw(c){const{ctx,chartArea:{top,bottom},scales:{x}}=c;[{"i": 10, "t": "practice changed"}].forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};
 const spillRef={id:'spillRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
- const yp=y.getPixelForValue(36.7);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ const yp=y.getPixelForValue(36.3);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
  ctx.fillStyle='#626c84';ctx.font='600 10px DM Sans';ctx.textAlign='right';
- ctx.fillText('series average 37%',right-4,yp-4);ctx.restore();}};
+ ctx.fillText('series average 36%',right-4,yp-4);ctx.restore();}};
 new Chart(document.getElementById('cSpill'),{type:'bar',
- data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 86.3],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
+ data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 76.5],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,grid:{color:gridc},ticks:{callback:v=>v+'%'},title:{display:true,text:'% of points that left the sprint'}},x:{grid:{display:false}}}},
  plugins:[spillRef]});
 const chg8={id:'chg8',afterDraw(c){const{ctx,chartArea:{top,bottom},scales:{x}}=c;[{"i": 1, "t": "practice changed"}].forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};
 new Chart(document.getElementById('cRecv'),{type:'bar',
  data:{labels:["S21-26", "S22-26"],datasets:[
   {label:'Inherited at day 1',data:[24, 12],backgroundColor:BLUEL,borderRadius:4},
-  {label:'Handed to the next sprint',data:[48, 44],backgroundColor:AMBER,borderRadius:4}]},
+  {label:'Handed to the next sprint',data:[48, 39],backgroundColor:AMBER,borderRadius:4}]},
  options:{plugins:{legend:{position:'top'}},scales:{
   y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},
   x:{grid:{display:false}}}},plugins:[chg8]});

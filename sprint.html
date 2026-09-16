@@ -142,9 +142,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
 .fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
 .fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
-.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
- color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
-.fulllink:hover{border-color:var(--wf-blue)}
+/* This was a 13px underlined link at the foot of the card, and it was the only way
+   into the sprint page. It is the most-used destination on the site, so it looks
+   like a destination now. */
+.fulllink{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-size:14.5px;
+ font-weight:700;color:#fff;background:var(--wf-blue);text-decoration:none;
+ padding:11px 20px;border-radius:11px;box-shadow:0 1px 3px rgba(0,124,188,.28);transition:.15s}
+.fulllink:hover{background:var(--wf-blue-d);box-shadow:0 3px 10px rgba(0,124,188,.28)}
+.fulllink .ar{font-size:16px;line-height:1}
 @media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
 .projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
@@ -160,8 +165,21 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
      text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
  .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
  .rhome:hover{text-decoration:underline}
+ /* The strip is longer now that the active sprint is in it. On a phone it scrolls
+    sideways instead of wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
+
  .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
    border-bottom:1px solid var(--line)}
  .tabs .wrap{display:flex;gap:4px}
@@ -194,7 +212,6 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
   .cmpcard{padding:16px}
   .sectit{font-size:20px}
  }
- @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
 </style></head>
 <body>
 <header><div class="wrap">
@@ -210,7 +227,7 @@ every refresh. It gets a verdict in the release report once it closes, not befor
  <button class="tab" data-tab="flow">Workflow</button>
  <button class="tab" data-tab="rel">Release</button>
 </div></div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><a class="rhome" href="index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><span class="rp live on"><i></i>Active sprint</span><span class="rsep"></span><span class="ry">2026</span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><a class="rhome" href="index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <div id="livepanel"></div>
 </div></main>
@@ -647,7 +664,9 @@ every refresh. It gets a verdict in the release report once it closes, not befor
       out += tiles(s, live);
       if (live) out += projBlock(d.projection, true);
     }
-    out += '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a></div>';
+    out += '<a class="fulllink" href="sprint.html">' +
+      (s ? 'Open the active sprint' : 'Open the sprint page') +
+      ' <span class="ar">&rarr;</span></a></div>';
     host.innerHTML = out;
   }
 

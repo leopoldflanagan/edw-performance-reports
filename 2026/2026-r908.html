@@ -298,9 +298,20 @@
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
  .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
  .rhome:hover{text-decoration:underline}
- @media(max-width:640px){.rhome{margin-left:0;width:100%;padding-top:4px}}
+ /* With the active sprint in it the strip no longer fits a phone. It scrolls
+    sideways rather than wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
 
  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:14px}
  .tscroll table.exec{min-width:660px}
@@ -366,14 +377,14 @@
 <body>
 <header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; Release 9.08 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
 <h1>Release 9.08 Performance Report</h1><div class="sub">Flow and sprint metrics for the release, against R9.07 and the band of the last three releases.</div>
-<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Flow Health: WARNING — 51 items closed over 2 sprints, 25.5 per sprint against 28.5 in R9.07. Cycle time median 5.0d and average 9.5d.</div><a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3746431012" style="text-decoration:none" title="Sign-off register in Confluence"><span class="revchip pend"><span class="ic">&#9679;</span> Generated from Jira · pending sign-off · waiting on Leopoldo Flanagan and Lloyd Tokerud</span></a></div></div></header>
+<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Flow Health: WARNING — 52 items closed over 2 sprints, 26.0 per sprint against 28.5 in R9.07. Cycle time median 5.0d and average 9.4d.</div><a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3746431012" style="text-decoration:none" title="Sign-off register in Confluence"><span class="revchip pend"><span class="ic">&#9679;</span> Generated from Jira · pending sign-off · waiting on Leopoldo Flanagan and Lloyd Tokerud</span></a></div></div></header>
 <div class="tabs"><div class="wrap">
  <button class="tab active" data-tab="dash">Flow</button>
  <button class="tab" data-tab="scrum">Sprints</button>
  <button class="tab" data-tab="cmp">Comparatives</button>
  <button class="tab" data-tab="act">Findings &amp; Retro</button>
 </div></div>
-<div class="repnav"><div class="wrap"><span class="ry">2026</span><a class="rp" href="2026-r904.html">9.04</a><a class="rp" href="2026-r905.html">9.05</a><a class="rp" href="2026-r906.html">9.06</a><a class="rp" href="2026-r907.html">9.07</a><span class="rp on">9.08</span><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
+<div class="repnav"><div class="wrap"><a class="rp live" href="../sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="ry">2026</span><a class="rp" href="2026-r904.html">9.04</a><a class="rp" href="2026-r905.html">9.05</a><a class="rp" href="2026-r906.html">9.06</a><a class="rp" href="2026-r907.html">9.07</a><span class="rp on">9.08</span><span class="rsep"></span><a class="rp" href="2026-q1.html">Q1</a><a class="rp" href="2026-q2-baseline.html">Q2</a><a class="rhome" href="../index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <section class="panel active" id="dash">
   <div class="sectit">Flow metrics — Release 9.08</div>
@@ -381,37 +392,37 @@
   <div class="grid g3">
     <div class="card">
       <div class="ghead"><span class="gname"><span data-tip="Items closed per month. Measures delivery capacity, not effort or complexity.">Throughput</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="bignum num-green">51<span class="unit">closed · day 17 of 28</span></div>
-<div class="ctxline"><span>At this pace the release lands near <b>84 items</b>. Every comparison below is cut to the same 61% on both sides.</span></div>
-      <div class="secondary">45 Story · 3 Bug · 2 Spike · 1 Task</div>
-      <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Items closed</span><span class="sv">26</span><span class="sd pos">+47%</span><span class="sd pos">+31%</span></div><div class="sb"><span class="sk">Story points</span><span class="sv">82</span><span class="sd pos">+99%</span><span class="sd pos">+62%</span></div></div>
-      <div class="ctxline"><span>Average item size <b>3.57 pts</b> <i>(R9.07 2.57)</i></span>
+      <div class="bignum num-green">52<span class="unit">closed · day 17 of 28</span></div>
+<div class="ctxline"><span>At this pace the release lands near <b>86 items</b>. Every comparison below is cut to the same 61% on both sides.</span></div>
+      <div class="secondary">45 Story · 3 Bug · 2 Task · 2 Spike</div>
+      <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Items closed</span><span class="sv">26</span><span class="sd pos">+50%</span><span class="sd pos">+33%</span></div><div class="sb"><span class="sk">Story points</span><span class="sv">84</span><span class="sd pos">+105%</span><span class="sd pos">+67%</span></div></div>
+      <div class="ctxline"><span>Average item size <b>3.60 pts</b> <i>(R9.07 2.57)</i></span>
         <span>Team <b>6 active</b> <i>(R9.07 6.0)</i></span></div>
       <div class="spark-cap">Items closed · R9.04 to R9.07 · this release is still running and is not plotted</div>
       <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,31.0 L87.7,12.5 L172.3,3.0 L257.0,14.3" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-      <div class="infopanel ip-green">On top of the 51 closed there were <b>2 discarded</b> (Won't Do), which are not deliveries.
-        Items are +47% on R9.07 while points are +99% at the same point in the month.
+      <div class="infopanel ip-green">On top of the 52 closed there were <b>2 discarded</b> (Won't Do), which are not deliveries.
+        Items are +50% on R9.07 while points are +105% at the same point in the month.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3056467970" target="_blank">Throughput — Team Guide</a>
     </div>
     <div class="card">
       <div class="ghead"><span class="gname"><span data-tip="How long an item takes from the moment work starts until it closes, in calendar days.">Cycle Time</span></span><span class="badge b-amber"><span class="d"></span>Warning</span></div>
-      <div class="bignum num-amber">4.96<span class="unit">d median</span></div>
-      <div class="secondary">34 issues measured · longest 50d</div>
+      <div class="bignum num-amber">4.98<span class="unit">d median</span></div>
+      <div class="secondary">35 issues measured · longest 50d</div>
       <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
-      <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Median</span><span class="sv">5.0d</span><span class="sd neg">+24%</span><span class="sd neg">+19%</span></div><div class="sb"><span class="sk">Average</span><span class="sv">9.5d</span><span class="sd neg">+33%</span><span class="sd neg">+38%</span></div></div>
-      <div class="ctxline"><span>Measured on <b>34 of 51</b> closed items <i>(67% of the release)</i></span></div>
+      <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Median</span><span class="sv">5.0d</span><span class="sd neg">+24%</span><span class="sd neg">+19%</span></div><div class="sb"><span class="sk">Average</span><span class="sv">9.4d</span><span class="sd neg">+31%</span><span class="sd neg">+36%</span></div></div>
+      <div class="ctxline"><span>Measured on <b>35 of 52</b> closed items <i>(67% of the release)</i></span></div>
       <div class="spark-cap">Median cycle time · R9.04 to R9.07</div>
       <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,3.0 L87.7,9.3 L172.3,31.0 L257.0,27.6" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-      <div class="infopanel ip-green">Median and average both within target. The gap between 5.0d and 9.5d comes from a few long tickets — the longest this month took 50 days.</div>
+      <div class="infopanel ip-green">Median and average both within target. The gap between 5.0d and 9.4d comes from a few long tickets — the longest this month took 50 days.</div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117" target="_blank">Cycle Time — Team Guide</a>
     </div>
     <div class="card">
       <div class="ghead"><span class="gname"><span data-tip="Share of delivered work that was reactive. Measures predictability, not productivity.">Planned vs Unplanned</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
       <div class="bignum num-green">0.0<span class="unit">%</span></div>
-      <div class="secondary">0 of 51 deliveries labeled Unplanned</div>
+      <div class="secondary">0 of 52 deliveries labeled Unplanned</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Unplanned share</span><span class="sv">0.0%</span><span class="sd flat">&mdash;</span><span class="sd pos">-100%</span></div><div class="sb"><span class="sk">Items</span><span class="sv">0</span><span class="sd flat">&mdash;</span><span class="sd flat">&mdash;</span></div></div>
       <div class="ctxline"><span>Q1 <b>0%</b> · Q2 <b>6.6%</b> · May <b>17.95%</b></span></div>
@@ -423,9 +434,9 @@
     <div class="card mixcard">
       <div class="ghead" style="width:100%"><span class="gname"><span data-tip="Closed items against those resolved as Won’t Do in the same month.">Delivered vs discarded</span></span></div>
       <div class="mixbody"><div class="donutwrap"><canvas id="donut"></canvas>
-        <div class="donutctr"><div class="dc-num">51</div><div class="dc-lbl">of 53<br>closed</div></div></div>
+        <div class="donutctr"><div class="dc-num">52</div><div class="dc-lbl">of 54<br>closed</div></div></div>
         <div class="mixlegend">
-          <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">51</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">52</span></div>
           <div class="ml-row"><span class="ml-sw" style="background:#c3cdda"></span><span class="ml-nm">Won't Do</span><span class="ml-val">2</span></div>
         </div></div>
       <div class="infopanel ip-amber">May closed 39 without a single discard. From June on, discards show up every month.</div>
@@ -433,11 +444,11 @@
     </div>
     <div class="card wipcard">
       <div class="ghead"><span class="gname"><span data-tip="Items sitting in In Development or Awaiting Review right now. Policy is 2 per developer, with review at half that.">Work In Progress · current snapshot</span></span><span class="badge b-green"><span class="d"></span>Healthy</span></div>
-      <div class="wiptotal"><div class="wt-num">8<span class="wt-den">/ 15</span></div>
-      <div class="wt-lbl">items in progress<br><b>53% of the limit</b></div></div>
+      <div class="wiptotal"><div class="wt-num">7<span class="wt-den">/ 15</span></div>
+      <div class="wt-lbl">items in progress<br><b>46% of the limit</b></div></div>
       <div class="wipwrap">
         <div class="wiprow"><span class="nm">In Development</span><div class="wipbar"><div class="wipfill" style="width:60%">6</div></div><span class="wiplim">/ &le;10</span></div>
-        <div class="wiprow"><span class="nm">Awaiting Review</span><div class="wipbar"><div class="wipfill" style="width:40%">2</div></div><span class="wiplim">/ &le;5</span></div>
+        <div class="wiprow"><span class="nm">Awaiting Review</span><div class="wipbar"><div class="wipfill" style="width:20%">1</div></div><span class="wiplim">/ &le;5</span></div>
       </div>
       <div class="infopanel ip-amber"><b>Limits recalculated.</b> With Dipika leaving, the team went from 6 to 5 devs, so the 2-per-dev policy drops from 12/6/18 to 10/5/15. Measured against the old limits this would look roomier than it really is.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -449,9 +460,9 @@
   <div class="tscroll"><table class="exec">
     <thead><tr><th>Metric</th><th>Release</th><th>R9.07</th><th>R9.07</th><th>Last 3 releases</th><th>vs R9.07</th><th>vs the band</th></tr></thead>
     <tbody>
-      <tr><td><span data-tip="Items that reached Closed during the month. Sub-tasks and epics excluded; discarded work is not counted.">Throughput (closed)</span></td><td>51</td><td>57</td><td>28</td><td>32</td><td class="pos">+200.0%</td><td class="pos">+162.5%</td></tr>
+      <tr><td><span data-tip="Items that reached Closed during the month. Sub-tasks and epics excluded; discarded work is not counted.">Throughput (closed)</span></td><td>52</td><td>57</td><td>28</td><td>32</td><td class="pos">+205.9%</td><td class="pos">+167.6%</td></tr>
       <tr><td><span data-tip="Share of the month’s closed items labeled Unplanned. Target is 5% or below.">Unplanned work</span></td><td>0.00%</td><td class="flat">—</td><td>0%</td><td>6.6%</td><td class="neg">+0.0 pp</td><td class="pos">-6.6 pp</td></tr>
-      <tr><td><span data-tip="Calendar days from the first entry into In Development until closure, median across the month.">Cycle Time (median)</span></td><td>4.96d</td><td class="flat">—</td><td>4.01d</td><td>4.18d</td><td class="neg">+23.7%</td><td class="neg">+18.7%</td></tr>
+      <tr><td><span data-tip="Calendar days from the first entry into In Development until closure, median across the month.">Cycle Time (median)</span></td><td>4.98d</td><td class="flat">—</td><td>4.01d</td><td>4.18d</td><td class="neg">+24.2%</td><td class="neg">+19.1%</td></tr>
       <tr><td><span data-tip="Items closed without ever recording a transition into In Development. They have no Cycle Time, so they sit outside that metric.">Closed without entering development</span></td><td>17 (33%)</td><td class="flat">—</td><td class="flat">—</td><td>34</td><td class="flat">—</td><td class="flat">—</td></tr>
     </tbody>
   </table></div>
@@ -459,8 +470,8 @@
   
  <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; where the time actually goes</h3></div>
   <div class="secsub" style="margin-bottom:10px">Pooled across 2 sprint(s) of this release. Cycle Time says how long an item took; this says which step it spent that time in.</div>
-  <div class="tisbar"><span style="width:61.4%;background:#65B2D5">6.2d</span><span style="width:23.9%;background:#007CBC">2.4d</span><span style="width:14.8%;background:#ED7D31">1.5d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>6.2d</b> <i style="font-style:normal;color:#9aa6b8">(36 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>2.4d</b> <i style="font-style:normal;color:#9aa6b8">(47 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>1.5d</b> <i style="font-style:normal;color:#9aa6b8">(28 items)</i></span></div>
-  <div class="secsub" style="margin-top:9px"><b>61% of the time an item spends in the flow is spent waiting to be picked up</b>, a median of 6.2 days in <i>Ready for Development</i>. That is a queue in front of the team, not the team being slow. 27 of 75 items sat more than five days in a single status somewhere in this period.</div>
+  <div class="tisbar"><span style="width:66.3%;background:#65B2D5">6.2d</span><span style="width:25.8%;background:#007CBC">2.4d</span><span style="width:7.9%;background:#ED7D31"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>6.2d</b> <i style="font-style:normal;color:#9aa6b8">(36 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>2.4d</b> <i style="font-style:normal;color:#9aa6b8">(47 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.7d</b> <i style="font-style:normal;color:#9aa6b8">(28 items)</i></span></div>
+  <div class="secsub" style="margin-top:9px"><b>66% of the time an item spends in the flow is spent waiting to be picked up</b>, a median of 6.2 days in <i>Ready for Development</i>. That is a queue in front of the team, not the team being slow. 26 of 75 items sat more than five days in a single status somewhere in this period.</div>
   <div class="infopanel ip-amber">Pooled from each sprint's median, weighted by how many items that sprint measured. It is right about where the time goes; it is not precise to the decimal.</div>
  </div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
@@ -481,7 +492,7 @@
   <p>Of everything added after day 1, <span class="stat">0%</span> carried a reactive marker — labeled <i>Unplanned</i> or typed <i>Urgent Task</i>. The rest came in as ordinary planned work. The series-wide view — velocity, scope-change trend and the full sprint table — lives in the
   <a href="#" class="ip-link" data-goto="cmp" style="color:#fff;border-bottom:1px solid rgba(255,255,255,.5)">Comparatives tab</a>.</p>
  </div>
- <div class="activewrap"><span class="activetag">Sprint open right now</span><div class="secsub" style="margin-bottom:10px"><b>EDW-Sprint 22-26</b> is on <b>day 3 of 14</b>, with 11 days to go. It is shown here because it belongs to R9.08, but it is not in the totals above and gets no verdict until it closes.</div><div class="sprintsec"><div class="sk">Work distribution &middot; 22 items</div><div class="tisbar"><span style="width:31.8%;background:#65B2D5">7</span><span style="width:27.3%;background:#4FA800">6</span><span style="width:27.3%;background:#007CBC">6</span><span style="width:9.1%;background:#ED7D31">2</span><span style="width:4.5%;background:#9aa6b8"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>7</b></span><span><i class="tisdot" style="background:#4FA800"></i>Closed <b>6</b></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>6</b></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>2</b></span><span><i class="tisdot" style="background:#9aa6b8"></i>Won't Do <b>1</b></span></div></div>
+ <div class="activewrap"><span class="activetag">Sprint open right now</span><div class="secsub" style="margin-bottom:10px"><b>EDW-Sprint 22-26</b> is on <b>day 3 of 14</b>, with 11 days to go. It is shown here because it belongs to R9.08, but it is not in the totals above and gets no verdict until it closes.</div><div class="sprintsec"><div class="sk">Work distribution &middot; 22 items</div><div class="tisbar"><span style="width:31.8%;background:#4FA800">7</span><span style="width:31.8%;background:#65B2D5">7</span><span style="width:27.3%;background:#007CBC">6</span><span style="width:4.5%;background:#ED7D31"></span><span style="width:4.5%;background:#9aa6b8"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#4FA800"></i>Closed <b>7</b></span><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>7</b></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>6</b></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>1</b></span><span><i class="tisdot" style="background:#9aa6b8"></i>Won't Do <b>1</b></span></div></div>
  <div class="cmpcard">
    <div class="cmphead sprinthead">
      <h3>EDW-Sprint 22-26</h3>
@@ -491,16 +502,16 @@
    <div class="scrumgrid">
      <div class="sh"><div class="k"><span data-tip="Story points in the sprint on day 1, before anything was added.">Committed at start</span></div><div class="v">49</div><div class="n">story points in scope on day 1</div></div>
      <div class="sh"><div class="k"><span data-tip="Story points pulled in after the sprint started. For a service team some of this is unavoidable.">Added during sprint</span></div><div class="v">+2</div><div class="n">final scope 51 points</div></div>
-     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">7</div><div class="n">6 of 22 items · still open 44 pts</div></div>
+     <div class="sh"><div class="k"><span data-tip="Story points closed inside the sprint window.">Completed</span></div><div class="v">12</div><div class="n">7 of 22 items · still open 39 pts</div></div>
      <div class="sh"><div class="k">Sprint elapsed</div><div class="v">Day 3</div><div class="n">of 14 — no verdict until it closes</div></div>
    </div>
    <div class="chartbox" style="height:310px"><canvas id="bd1"></canvas></div>
    <div class="spill"><div class="sk">Planned capacity</div><div class="sn" style="margin-top:2px"><b>4</b> people &middot; capacity <b>100%</b> &middot; 40 effective days <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:var(--wf-muted)">capacity page &rarr;</a></div></div>
    <div class="spill"><div class="sk">Inherited from the sprint before</div><div class="sv">12 pts<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; 5 items &middot; 24% of the day-1 commitment</span></div><div class="sn">Work that was already open in <b>EDW-Sprint 21-26</b> and came in with the commitment. It is capacity that was spent before the sprint started.</div></div>
-   <div class="spill"><div class="sk">Still open</div><div class="sv">44 pts<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; 15 items</span></div><div class="sn">Work in flight on day 3 of 14. Whatever is still open on Sep 28 becomes the spillover into the next sprint — not before.</div></div>
+   <div class="spill"><div class="sk">Still open</div><div class="sv">39 pts<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; 14 items</span></div><div class="sn">Work in flight on day 3 of 14. Whatever is still open on Sep 28 becomes the spillover into the next sprint — not before.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
-   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:52.6%;background:#65B2D5">13.5d</span><span style="width:25.0%;background:#007CBC">6.4d</span><span style="width:22.4%;background:#ED7D31">5.8d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>13.5d</b> <i style="font-style:normal;color:#9aa6b8">(11 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>6.4d</b> <i style="font-style:normal;color:#9aa6b8">(12 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>5.8d</b> <i style="font-style:normal;color:#9aa6b8">(4 items)</i></span></div><div class="secsub" style="margin-top:7px">The queue before development is where items wait longest — a median of 13.5 days in <i>Ready for Development</i>.</div></div>
-   <div class="sprintsec"><div class="sk">Stalled items</div><div class="goalbox"><b>15 items</b> spent more than 5 days without moving; the worst sat <b>13.5 days</b> in <i>Ready for Development</i>. Neither team uses the <i>Flagged</i> field or a <i>Blocked</i> status, so this is the closest measurable read on what was stuck.</div></div>
+   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:66.0%;background:#65B2D5">13.5d</span><span style="width:31.5%;background:#007CBC">6.4d</span><span style="width:2.5%;background:#ED7D31"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>13.5d</b> <i style="font-style:normal;color:#9aa6b8">(11 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>6.4d</b> <i style="font-style:normal;color:#9aa6b8">(12 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.5d</b> <i style="font-style:normal;color:#9aa6b8">(4 items)</i></span></div><div class="secsub" style="margin-top:7px">The queue before development is where items wait longest — a median of 13.5 days in <i>Ready for Development</i>.</div></div>
+   <div class="sprintsec"><div class="sk">Stalled items</div><div class="goalbox"><b>14 items</b> spent more than 5 days without moving; the worst sat <b>13.5 days</b> in <i>Ready for Development</i>. Neither team uses the <i>Flagged</i> field or a <i>Blocked</i> status, so this is the closest measurable read on what was stuck.</div></div>
    
  </div></div>
  <div class="sectit" style="font-size:20px;margin-top:28px">Sprints that closed in R9.08</div>
@@ -531,7 +542,7 @@
  <div class="secsub">Day-1 commitment against what was added mid-sprint and what actually closed.</div>
  <div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>7</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
+  <tbody><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>12</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
  </table></div>
 </section>
 <section class="panel" id="cmp">
@@ -554,8 +565,8 @@
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cThru"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs R9.07 (28/sprint)</span><br><b>+200.0%</b> in items — but +21% once item size and team size are taken out. Most of the gap is a bigger team closing smaller items.</div>
-        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs the band (32/sprint)</span><br><b>+162.5%</b> — the band is the team's own range over the last three releases, per sprint.</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs R9.07 (28/sprint)</span><br><b>+205.9%</b> in items — but +24% once item size and team size are taken out. Most of the gap is a bigger team closing smaller items.</div>
+        <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">vs the band (32/sprint)</span><br><b>+167.6%</b> — the band is the team's own range over the last three releases, per sprint.</div>
         <div class="line"><span class="vs-tag">Reading</span><br>Throughput scales with headcount, so a fixed baseline cannot survive a team change. The status on this page comes from the expected range below, not from the distance to Q1.</div>
       </div>
     </div>
@@ -622,20 +633,20 @@
   <div class="cmpgrid">
    <div class="chartbox" style="height:280px"><canvas id="cSpill"></canvas></div>
    <div class="readout">
-    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">37% of everything committed</span><br><b>429 of 1169 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">87% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
+    <div class="line" style="border-color:var(--risk)"><span class="vs-tag">36% of everything committed</span><br><b>424 of 1169 points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">88% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
     <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Read it against the commitment, not the burndown</span><br>A sprint that commits to 45 points, grows to 117, closes 69 and drops 48 has not delivered 100% of anything. The honest pair is day-1 commitment and spillover rate, side by side.</div>
    </div>
   </div>
   <div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div>
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
- <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 137 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 92 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
+ <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 137 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 87 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
  <div class="sectit" style="font-size:20px;margin-top:22px">Committed vs Completed — full series</div>
  <div class="secsub">Every sprint on the board this year.</div>
  <div class="tscroll"><table class="exec">
   <thead><tr><th>Sprint</th><th>Dates</th><th><span data-tip="Story points already in the sprint the day it started.">Committed</span></th><th><span data-tip="Story points pulled into the sprint after it had already started.">Added</span></th><th><span data-tip="Story points that reached a Done status before the sprint closed.">Completed</span></th><th><span data-tip="Story points that did not finish inside the sprint: removed before it closed, or still open at close. Jira moves them out, which is why the burndown can reach zero.">Left sprint</span></th><th><span data-tip="Completed divided by the day-1 commitment. Above 100% means the sprint delivered more than it set out to.">vs commit</span></th><th><span data-tip="Points added mid-sprint carrying a reactive marker: labeled Unplanned, or typed Urgent Task.">Added: reactive</span></th><th><span data-tip="Points added mid-sprint with no reactive marker — work that could have been planned in from day 1.">Added: plannable</span></th><th><span data-tip="Reactive points as a share of everything added after day 1.">% reactive</span></th></tr></thead>
-  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>7</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
+  <tbody><tr><td>EDW-Sprint 12-26</td><td>Apr 27 - May 11</td><td>56</td><td>+12</td><td>49</td><td class="neg">19</td><td>88%</td><td>7</td><td class="neg">5</td><td>58%</td></tr><tr><td>EDW-Sprint 13-26</td><td>May 11 - May 26</td><td>60</td><td>+21</td><td>63</td><td class="neg">31</td><td>105%</td><td>4</td><td class="neg">21</td><td>16%</td></tr><tr><td>EDW-Sprint 14-26</td><td>May 26 - Jun 8</td><td>79</td><td>+40</td><td>88</td><td class="neg">39</td><td>111%</td><td>4</td><td class="neg">31</td><td>11%</td></tr><tr><td>EDW-Sprint 15-26</td><td>Jun 8 - Jun 22</td><td>79</td><td>+63</td><td>89</td><td class="neg">32</td><td>113%</td><td>3</td><td class="neg">37</td><td>8%</td></tr><tr><td>EDW-Sprint 16-26</td><td>Jun 22 - Jul 6</td><td>105</td><td>+50</td><td>78</td><td class="neg">41</td><td>74%</td><td>9</td><td class="neg">28</td><td>24%</td></tr><tr><td>EDW-Sprint 17-26</td><td>Jul 6 - Jul 20</td><td>120</td><td>+43</td><td>102</td><td class="neg">52</td><td>85%</td><td>5</td><td class="neg">34</td><td>13%</td></tr><tr><td>EDW-Sprint 18-26</td><td>Jul 20 - Aug 5</td><td>83</td><td>+58</td><td>99</td><td class="neg">39</td><td>119%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 19-26</td><td>Aug 3 - Aug 17</td><td>74</td><td>+36</td><td>55</td><td class="neg">55</td><td>74%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 20-26</td><td>Aug 17 - Aug 31</td><td>78</td><td>+31</td><td>82</td><td class="neg">29</td><td>105%</td><td class="flat">no data</td><td class="flat">no data</td><td class="flat">—</td></tr><tr><td>EDW-Sprint 21-26</td><td>Aug 31 - Sep 14</td><td>88</td><td>+34</td><td>78</td><td class="neg">48</td><td>89%</td><td>0</td><td class="neg">14</td><td>0%</td></tr><tr class="runrow"><td>EDW-Sprint 22-26 <span class="runtag">day 3 of 14</span></td><td>Sep 14 - Sep 28</td><td>49</td><td>+2</td><td>12</td><td class="flat">&mdash;</td><td class="flat">still running</td><td>0</td><td class="neg">1</td><td>0%</td></tr></tbody>
  </table></div>
  <div class="fnote">Carry-over between sprints is close to zero, which at first looks like exceptional planning. The added column explains it: little carries over because little is committed up front — the sprint is filled in as it runs. For a service team part of that is unavoidable, but the reactive split shows most of the filling is plannable work. Two separate conversations for the retro: how much service load to reserve capacity for, and why plannable work is not on the board on day 1.</div>
 
@@ -644,13 +655,13 @@
   <div class="sectit">Findings &amp; retro</div>
   <div class="secsub">What the data shows, as input for the team's conversation.</div>
   <div class="insightbox"><div class="k">Observation of the month</div>
-   <h2>51 items closed over 2 sprints, 25.5 per sprint against 28.5 in R9.07. Cycle time median 5.0d and average 9.5d.</h2>
+   <h2>52 items closed over 2 sprints, 26.0 per sprint against 28.5 in R9.07. Cycle time median 5.0d and average 9.4d.</h2>
    <p>The references we measure against — 28 deliveries a month, 45 points a sprint, WIP of 12/6/18 — were set with a 4-dev team in Q1. Since then Harisha and Shruti joined and Dipika left. Comparing against those figures says more about the baseline than about the team.</p>
   </div>
   <div class="cmpcard">
      <div class="cmphead"><h3>No unplanned-work data</h3></div>
-     <div class="nodata"><span class="big">0 labels</span>across 51 deliveries so far this release</div>
-     <div class="fnote">Zero labels across 51 deliveries describes the labeling, not the work. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable.</div>
+     <div class="nodata"><span class="big">0 labels</span>across 52 deliveries so far this release</div>
+     <div class="fnote">Zero labels across 52 deliveries describes the labeling, not the work. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable.</div>
    </div>
   <div class="sectit" style="font-size:20px;margin-top:28px">Directions to explore</div>
   <div class="secsub">Ideas to validate, adapt or set aside depending on the real context.</div>
@@ -659,7 +670,7 @@
    <p>Without it there is no predictability metric. It is the same follow-up left open in the May retro, and in August it cut the series entirely.</p>
    <div class="owner">Follow-up by: <b>EDW</b></div></div></div><div class="act"><div class="pri p-amber"></div><div class="inner">
    <div class="atop"><h4>17 items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
-   <p>Of the 51 items closed this release, 17 (33%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 34. In R9.04 it was 4 of 29 (14%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
+   <p>Of the 52 items closed this release, 17 (33%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 35. In R9.04 it was 4 of 29 (14%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
    <div class="owner">To review with: <b>EDW</b></div></div></div><div class="act"><div class="pri p-blue"></div><div class="inner">
    <div class="atop"><h4>Recalculate the baselines with the current team</h4><span class="pill pill-blue">Discuss</span></div>
    <p>Throughput and Velocity have been out of range for months, and WIP has already been recalculated to 5 devs. The guide asks for a quarterly review; the Q2 report in this series proposes the new starting point.</p>
@@ -692,7 +703,7 @@ document.querySelectorAll('[data-goto]').forEach(l=>{l.addEventListener('click',
  e.preventDefault();showTab(l.dataset.goto,true);});});
 // carry the open tab across reports: the month/quarter pills keep you where you were
 function currentTab(){const a=document.querySelector('.tab.active');return a?a.dataset.tab:'';}
-document.querySelectorAll('.repnav a.rp').forEach(a=>{a.addEventListener('click',e=>{
+document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListener('click',e=>{
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
@@ -701,7 +712,7 @@ const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7
 const gridc='#eef2f8';
 
 new Chart(document.getElementById('donut'),{type:'doughnut',
- data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[51,2],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
+ data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[52,2],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
  options:{cutout:'68%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
 const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
  [{v:28,t:'Q1 28',col:BLUED},{v:32,t:'Q2 32',col:AMBER}].forEach(r=>{
@@ -710,7 +721,7 @@ const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
 new Chart(document.getElementById('cThru'),{type:'bar',
  data:{labels:["R9.04", "R9.05", "R9.06", "R9.07", "R9.08"],datasets:[{label:'Closed',
-  data:[14.5, 30.0, 38.0, 28.5, 25.5],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#007CBC"],borderRadius:6}]},
+  data:[14.5, 30.0, 38.0, 28.5, 26.0],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#007CBC"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:48,grid:{color:gridc},title:{display:true,text:'Items closed per sprint'}},x:{grid:{display:false}}}},
  plugins:[thrRef]});
 new Chart(document.getElementById('cCyc'),{type:'bar',
@@ -737,7 +748,7 @@ const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
 new Chart(document.getElementById('cVel'),{type:'bar',
  data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[
   {label:'Committed (day 1)',data:[56, 60, 79, 79, 105, 120, 83, 74, 78, 88, 49],backgroundColor:GREY,borderRadius:5},
-  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78, 7],backgroundColor:BLUE,borderRadius:5}]},
+  {label:'Completed',data:[49, 63, 88, 89, 78, 102, 99, 55, 82, 78, 12],backgroundColor:BLUE,borderRadius:5}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,max:115,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false}}}},
  plugins:[velRef]});
 new Chart(document.getElementById('cSplit'),{type:'bar',
@@ -758,19 +769,19 @@ new Chart(document.getElementById('cBand'),{type:'bar',
  plugins:[bandRef]});
 const chg9={id:'chg9',afterDraw(c){const{ctx,chartArea:{top,bottom},scales:{x}}=c;[{"i": 10, "t": "practice changed"}].forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};
 const spillRef={id:'spillRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
- const yp=y.getPixelForValue(36.7);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ const yp=y.getPixelForValue(36.3);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
  ctx.fillStyle='#626c84';ctx.font='600 10px DM Sans';ctx.textAlign='right';
- ctx.fillText('series average 37%',right-4,yp-4);ctx.restore();}};
+ ctx.fillText('series average 36%',right-4,yp-4);ctx.restore();}};
 new Chart(document.getElementById('cSpill'),{type:'bar',
- data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 86.3],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
+ data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 76.5],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:100,grid:{color:gridc},ticks:{callback:v=>v+'%'},title:{display:true,text:'% of points that left the sprint'}},x:{grid:{display:false}}}},
  plugins:[spillRef]});
 const chg10={id:'chg10',afterDraw(c){const{ctx,chartArea:{top,bottom},scales:{x}}=c;[{"i": 1, "t": "practice changed"}].forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};
 new Chart(document.getElementById('cRecv'),{type:'bar',
  data:{labels:["S21-26", "S22-26"],datasets:[
   {label:'Inherited at day 1',data:[24, 12],backgroundColor:BLUEL,borderRadius:4},
-  {label:'Handed to the next sprint',data:[48, 44],backgroundColor:AMBER,borderRadius:4}]},
+  {label:'Handed to the next sprint',data:[48, 39],backgroundColor:AMBER,borderRadius:4}]},
  options:{plugins:{legend:{position:'top'}},scales:{
   y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},
   x:{grid:{display:false}}}},plugins:[chg10]});
@@ -783,7 +794,7 @@ new Chart(document.getElementById('bd0'),{type:'line',
 new Chart(document.getElementById('bd1'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3"],datasets:[
   {label:'Total scope',data:[39.0, 49.0, 49.0, 51.0],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
-  {label:'Work still open',data:[39.0, 47.0, 42.0, 44.0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Work still open',data:[39.0, 47.0, 42.0, 39.0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
   {label:'Ideal from day-1 commitment',data:[39.0, 26.0, 13.0, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('cTis'),{type:'bar',

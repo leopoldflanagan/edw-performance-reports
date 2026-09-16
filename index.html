@@ -142,9 +142,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
 .fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
 .fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
-.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
- color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
-.fulllink:hover{border-color:var(--wf-blue)}
+/* This was a 13px underlined link at the foot of the card, and it was the only way
+   into the sprint page. It is the most-used destination on the site, so it looks
+   like a destination now. */
+.fulllink{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-size:14.5px;
+ font-weight:700;color:#fff;background:var(--wf-blue);text-decoration:none;
+ padding:11px 20px;border-radius:11px;box-shadow:0 1px 3px rgba(0,124,188,.28);transition:.15s}
+.fulllink:hover{background:var(--wf-blue-d);box-shadow:0 3px 10px rgba(0,124,188,.28)}
+.fulllink .ar{font-size:16px;line-height:1}
 @media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
 .projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
@@ -160,7 +165,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 <a class="rcard" href="2026/2026-r908.html">
 <div class="mo"><span class="m">9.08</span><span class="y">2026</span></div>
 <div class="body"><h3>Release 9.08 Performance Report <span class="badge" style="background:#fdeee3;color:#c0641f">Warning</span><span class="badge" style="background:#eef2f8;color:#5a6577">Pending sign-off</span></h3>
-<p>Sprints 21 and 22 · 2026-08-31 to 2026-09-27 · 51 closed, 25.5 per sprint</p></div>
+<p>Sprints 21 and 22 · 2026-08-31 to 2026-09-27 · 52 closed, 26.0 per sprint</p></div>
 <div class="arrow">&rarr;</div></a>
 <a class="rcard" href="2026/2026-r907.html">
 <div class="mo"><span class="m">9.07</span><span class="y">2026</span></div>
@@ -627,7 +632,9 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
       out += tiles(s, live);
       if (live) out += projBlock(d.projection, true);
     }
-    out += '<a class="fulllink" href="sprint.html">See the full sprint &rarr;</a></div>';
+    out += '<a class="fulllink" href="sprint.html">' +
+      (s ? 'Open the active sprint' : 'Open the sprint page') +
+      ' <span class="ar">&rarr;</span></a></div>';
     host.innerHTML = out;
   }
 

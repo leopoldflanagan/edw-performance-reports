@@ -142,17 +142,48 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
 .fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
 .fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
-.fulllink{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:13px;font-weight:700;
- color:var(--wf-blue-d);text-decoration:none;border-bottom:1px solid #bcdcec;padding-bottom:1px}
-.fulllink:hover{border-color:var(--wf-blue)}
+/* This was a 13px underlined link at the foot of the card, and it was the only way
+   into the sprint page. It is the most-used destination on the site, so it looks
+   like a destination now. */
+.fulllink{display:inline-flex;align-items:center;gap:9px;margin-top:16px;font-size:14.5px;
+ font-weight:700;color:#fff;background:var(--wf-blue);text-decoration:none;
+ padding:11px 20px;border-radius:11px;box-shadow:0 1px 3px rgba(0,124,188,.28);transition:.15s}
+.fulllink:hover{background:var(--wf-blue-d);box-shadow:0 3px 10px rgba(0,124,188,.28)}
+.fulllink .ar{font-size:16px;line-height:1}
 @media(max-width:430px){.fresh{font-size:11px;padding:4px 9px}}
 .projline{margin:2px 0 6px;font-size:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
  padding:3px 9px;border-radius:999px}
+
+ .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
+ .crumb a:hover{border-color:#fff}
+ .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
+ .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
+ .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
+     text-decoration:none;color:var(--wf-blue-d);background:var(--wf-blue-bg);transition:.15s}
+ .rp:hover{background:var(--wf-blue-l);color:#fff}
+ .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
+ .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live:hover{background:var(--wf-blue-d);color:#fff}
+ .rp.live.on{background:var(--wf-blue-d);cursor:default}
+ .rhome{margin-left:auto;font-size:12.5px;font-weight:600;color:var(--wf-blue);text-decoration:none;white-space:nowrap}
+ .rhome:hover{text-decoration:underline}
+ /* The strip is longer now that the active sprint is in it. On a phone it scrolls
+    sideways instead of wrapping into three lines. */
+ @media(max-width:700px){
+  .repnav .wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap}
+  .repnav .wrap::-webkit-scrollbar{display:none}
+  .rp,.ry{flex:0 0 auto}
+  .rhome{margin-left:12px;width:auto;padding-top:0;flex:0 0 auto}
+ }
 </style></head>
 <body>
-<header><div class="wrap"><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>Board hygiene</h1>
+<header><div class="wrap"><div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Board hygiene</div><div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div><h1>Board hygiene</h1>
 <div class="sub">Everything on this page is fixable by editing Jira. It is kept away from the reports on purpose: the reports are for stakeholders, this is for whoever keeps the board honest.</div></div></div></header>
+<div class="repnav"><div class="wrap"><a class="rp live" href="sprint.html"><i></i>Active sprint</a><span class="rsep"></span><span class="ry">2026</span><a class="rp" href="2026/2026-r904.html">9.04</a><a class="rp" href="2026/2026-r905.html">9.05</a><a class="rp" href="2026/2026-r906.html">9.06</a><a class="rp" href="2026/2026-r907.html">9.07</a><a class="rp" href="2026/2026-r908.html">9.08</a><span class="rsep"></span><a class="rp" href="2026/2026-q1.html">Q1</a><a class="rp" href="2026/2026-q2-baseline.html">Q2</a><a class="rhome" href="index.html">&larr; All reports</a></div></div>
 <main><div class="wrap">
 <div id="adminpanel"></div></div></main>
 <footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit</footer>
