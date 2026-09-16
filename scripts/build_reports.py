@@ -2018,6 +2018,18 @@ SPRINTCSS = """
    color:var(--wf-muted);line-height:1.5}
  .goalbox a{color:var(--wf-blue);font-weight:600;text-decoration:none;border-bottom:1px solid #bcdcec}
  .goalbox a:hover{border-color:var(--wf-blue)}
+ .thm{width:100%;border-collapse:collapse;font-size:13px}
+ .thm th{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);
+   font-weight:700;text-align:left;padding:0 8px 6px 0;border-bottom:1px solid var(--line)}
+ .thm td{padding:8px 8px 8px 0;border-bottom:1px solid #f0f3f8;vertical-align:middle}
+ .thm .thl{color:var(--wf-ink);font-weight:600;line-height:1.35}
+ .thm .thk{font-size:11px;color:var(--wf-muted);font-weight:500}
+ .thm .thn{text-align:right;white-space:nowrap;color:var(--wf-muted);width:1%;padding-right:16px}
+ .thm .thb{width:34%;padding-right:10px}
+ .thm .thb i{display:block;height:8px;border-radius:5px;background:var(--wf-blue-l);min-width:2px}
+ .thm .thnone .thl{color:var(--risk)}
+ .thm .thnone .thb i{background:var(--risk)}
+ @media(max-width:560px){.thm .thb{display:none}}
  #livehead .liverow{justify-content:flex-start;gap:10px}
  #livehead .activetag{vertical-align:middle}
  @media(max-width:700px){

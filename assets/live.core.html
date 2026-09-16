@@ -383,6 +383,51 @@
     return out;
   }
 
+  // What the sprint is made of, by epic. Deliberately not called a goal and
+  // deliberately shown under one: a reading of the contents can say what the sprint
+  // is about, but it can never say what the team set out to do. When the two get
+  // merged, a sprint is measured against its own contents and always passes.
+  function themeBlock(t) {
+    if (!t || !t.rows || !t.rows.length) return '';
+    // identity does not survive JSON, so ask the row itself rather than comparing
+    // it with the unclassified pointer
+    var top = t.rows[0], un = top.epic === null ? top : null;
+    var lead;
+    if (un && t.pts) {
+      lead = 'The largest group in this sprint <b>has no epic</b>: ' + un.items +
+        ' item' + (un.items === 1 ? '' : 's') + ', ' + un.pts + ' pts, ' + un.pct +
+        '% of the estimated work. Until those are filed, the board cannot say what ' +
+        'this sprint is for.';
+    } else if (top.label) {
+      lead = 'Mostly <b>' + esc(top.label) + '</b> &mdash; ' + top.items + ' item' +
+        (top.items === 1 ? '' : 's') + ', ' + top.pts + ' pts' +
+        (top.pct == null ? '' : ', ' + top.pct + '% of the estimated work') + '.';
+    } else {
+      lead = '';
+    }
+
+    var rows = t.rows.map(function (g) {
+      var none = g.epic === null;
+      return '<tr' + (none ? ' class="thnone"' : '') + '>' +
+        '<td class="thl">' + (none ? 'No epic' : esc(g.label)) +
+          (none ? '' : ' <span class="thk">' + esc(g.epic) + '</span>') + '</td>' +
+        '<td class="thn">' + g.items + '</td>' +
+        '<td class="thn">' + g.pts + '</td>' +
+        '<td class="thb"><i style="width:' + (g.pct || 0) + '%"></i></td>' +
+        '<td class="thn">' + (g.pct == null ? '&mdash;' : g.pct + '%') + '</td></tr>';
+    }).join('');
+
+    return '<div class="sprintsec"><div class="sk">What the sprint is made of &middot; ' +
+      t.items + ' items &middot; ' + t.pts + ' pts</div>' +
+      (lead ? '<div class="secsub" style="margin:0 0 10px;font-size:13px">' + lead + '</div>' : '') +
+      '<table class="thm"><thead><tr><th>Epic</th><th class="thn">Items</th>' +
+      '<th class="thn">Pts</th><th class="thb"></th><th class="thn">Share</th></tr></thead>' +
+      '<tbody>' + rows + '</tbody></table>' +
+      '<div class="gsrc" style="margin-top:8px">Grouped from the epic each item hangs ' +
+      'off, at every refresh. This is what the sprint contains, not what anyone ' +
+      'committed to achieve &mdash; only the goal above is that.</div></div>';
+  }
+
   function releaseBlock(d, m) {
     var isRel = m.kind === 'release';
     // a release is counted in sprints; only the calendar-month fallback counts days
@@ -456,8 +501,9 @@
       prog += card('Burndown', 'Story points remaining, against the ideal line and the scope ' +
         'as it moved. The grey band is total scope; the gap between the two lines is work ' +
         'added after day 1.', burndown(s, false, true));
-      prog += card('Sprint goal', 'What this sprint set out to achieve, and how far the ' +
-        'numbers behind it have got.', goalBlock(s, d, live));
+      prog += card('Sprint goal', 'What this sprint set out to achieve, how far the ' +
+        'numbers behind it have got, and what the board says the sprint is actually ' +
+        'made of.', goalBlock(s, d, live) + themeBlock(s.themes));
 
       var nItems = 0, _k;
       for (_k in (s.dist || {})) nItems += s.dist[_k];
