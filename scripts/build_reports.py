@@ -56,6 +56,35 @@ def _fill(head):
                 .replace("__ORG__", TEAM["org"]))
 
 
+def doclink(key, label):
+    """Link to a team guide, when the team has written that guide. A team that has
+    not gets no link -- the same rule as the dashboard: a document belongs to the
+    team that wrote it, and pointing a second team at the first one's guide is how
+    one team ends up reading another team's definitions as its own."""
+    url = (GUIDES.get(key) or "").strip()
+    return (f'<a class="doclink" href="{url}" target="_blank">{label}</a>'
+            if url else "")
+
+
+def rlink(key, icon, label):
+    """Same rule, for the Resources list at the foot of a report."""
+    url = (GUIDES.get(key) or "").strip()
+    return (f'<a class="rlink" href="{url}" target="_blank">'
+            f'<span class="ico">{icon}</span> {label}</a>') if url else ""
+
+
+def dashlink():
+    """The team's Jira dashboard, when it has one. A team that has not set one
+    gets no link at all -- pointing it at another team's dashboard is the same
+    class of mistake as reading another team's capacity page."""
+    url = (TEAM.get("dashboard") or "").strip()
+    if not url:
+        return ""
+    lab = (TEAM.get("dashboard_label") or "").strip() or f'{TEAM["key"]} board'
+    return (f'<a class="rlink" href="{url}" target="_blank">'
+            f'<span class="ico">&#128200;</span> {lab}</a>')
+
+
 def short_sprint(n):
     """'EDW-Sprint 14-26' -> 'S14-26'. Any team's prefix, then the generic one."""
     n = str(n)
@@ -199,7 +228,11 @@ MK_ALL  = sorted(CAP)
 MK_OPEN = CURRENT["ym"].split("-")[1] if CURRENT else None
 MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
 MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3]
-MK_LAST = MK_ALL[-1]
+# A team whose reporting starts on the release calendar has no frozen monthly
+# series at all. The month pass below is then dead code -- the release pass
+# overwrites every one of these -- so it has to survive being empty rather than
+# die on an index. EDW, which has the months, is unaffected.
+MK_LAST = MK_ALL[-1] if MK_ALL else None
 BASE_KEYS = [k for k in ("01","02","03","04","05") if k in CAP]
 MK_LABS = [MONTH_ABBR[int(k)-1] for k in MK_DONE]
 
@@ -235,19 +268,32 @@ CYC_ORDER = [_cyckey(k) for k in MK_DONE if _cyckey(k) in CYC]
 # (people with >= 2 closed items that month). Basis: resolution = Done, no sub-tasks/epics.
 
 def cap(keys):
-    """Averages over the given periods, on the comparable scale (see cl)."""
-    n=len(keys)
+    """Averages over the given periods, on the comparable scale (see cl).
+
+    Two of these are ratios and both have a real zero denominator: a team that
+    does not estimate closes items with no story points on them, and a period
+    with nobody recorded as active has no per-person figure. Those come back as
+    None -- the caller decides what to print -- instead of ending the build."""
+    n=len(keys) or 1
     nz=lambda k: PNORM.get(k,1)
     it=sum(CAP[k][0]/nz(k) for k in keys); sp=sum(CAP[k][1]/nz(k) for k in keys)
     pt=sum(CAP[k][2]/nz(k) for k in keys); pe=sum(CAP[k][3] for k in keys)/n
-    return dict(items=it/n, pts=pt/n, size=pt/sp, people=pe, per=(pt/n)/pe)
+    return dict(items=it/n, pts=pt/n, size=(pt/sp if sp else None), people=pe,
+                per=((pt/n)/pe if pe else None))
 
 def band(vals):
-    """Expected range from the series' own month-to-month movement (XmR)."""
+    """Expected range from the series' own month-to-month movement (XmR).
+
+    A series of one period has no movement to measure, and a mean of zero has no
+    percentage to express consistency against. Both are real states for a team
+    whose series is just starting, so they come back as a band with no width
+    rather than as a crash."""
     mr=[abs(vals[i]-vals[i-1]) for i in range(1,len(vals))]
-    mrbar=sum(mr)/len(mr); mean=sum(vals)/len(vals); half=2.66*mrbar
+    mrbar=sum(mr)/len(mr) if mr else 0.0
+    mean=sum(vals)/len(vals) if vals else 0.0
+    half=2.66*mrbar
     return dict(lo=max(0,mean-half), hi=mean+half, mean=mean, move=mrbar,
-                consistency=100*mrbar/mean)
+                consistency=(100*mrbar/mean) if mean else None)
 
 def trend(keys_now, keys_prev):
     a=sum(cl(k) for k in keys_now)/len(keys_now)
@@ -1572,9 +1618,16 @@ def month_page(mk):
     pace_note = ('' if not OPEN else
         f'<div class="ctxline"><span>At this pace the {PERIOD_WORD} lands near <b>{PACE:.0f} items</b>. '
         f'Every comparison below is cut to the same {100*SHARE:.0f}% on both sides.</span></div>')
-    dev_base = (m["closed"] - Q1["thr_med"]*SHARE) / (Q1["thr_med"]*SHARE) * 100
-    dev_q2   = (m["closed"] - Q2["thr_med"]*SHARE) / (Q2["thr_med"]*SHARE) * 100
-    dev_prev = (m["closed"] - m["prev_closed"]*SHARE) / (m["prev_closed"]*SHARE) * 100
+    # A reference of zero has no percentage to be off by. It happens at the head of
+    # a series -- the first release has no previous one -- and it would happen again
+    # for any period that closed nothing. Zero comes back as no deviation rather
+    # than as a crash; the number itself is still printed beside it.
+    def _dev(now, ref):
+        ref = (ref or 0) * SHARE
+        return ((now - ref) / ref * 100) if ref else 0.0
+    dev_base = _dev(m["closed"], Q1["thr_med"])
+    dev_q2   = _dev(m["closed"], Q2["thr_med"])
+    dev_prev = _dev(m["closed"], m["prev_closed"])
     types = " · ".join(f"{n} {t}" for t,n in m["types"])
 
     # unplanned card
@@ -1585,7 +1638,7 @@ def month_page(mk):
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       <div class="infopanel ip-amber">Zero labels in a {PERIOD_WORD} of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>"""
+      {doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>"""
     else:
         ust = "healthy" if m["unp_pct"] <= 5 else ("warning" if m["unp_pct"] <= 10 else "risk")
         ip = {"healthy":"ip-green","warning":"ip-amber","risk":"ip-red"}[ust]
@@ -1597,13 +1650,16 @@ def month_page(mk):
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       {sb_rows([("Unplanned share", f"{m['unp_pct']:.1f}%", pdelta(m['unp_pct'],Q1['unp']), pdelta(m['unp_pct'],Q2['unp']), True),
                 ("Items", f"{m['unplanned']}", None, None, True)])}
-      <div class="ctxline"><span>Q1 <b>{Q1['unp']}%</b> · Q2 <b>{Q2['unp']}%</b> · May <b>{MAY_UNP}%</b></span></div>
+      <div class="ctxline"><span>{REF1_SHORT} <b>{Q1['unp']}%</b> · {REF2_SHORT} <b>{Q2['unp']}%</b></span></div>
       <div class="infopanel {ip}"><a href="#" class="ip-link" data-goto="act">See the breakdown in Findings &amp; Retro &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>"""
+      {doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>"""
 
-    # WIP card - live only on the latest month
-    if mk == MK_LAST:
+    # WIP card - live only on the latest month, and only where a snapshot exists.
+    # WIP is the one metric no job can reconstruct: it is a reading taken at a
+    # moment, and a team that has never taken one has no WIP, which is a different
+    # statement from WIP being zero. Without it the card says so.
+    if mk == MK_LAST and WIP:
         w = dict(WIP)
         _d = ((LIVE or {}).get("sprint") or {}).get("dist") or {}
         if _d:                      # count what is actually in flight right now
@@ -1620,14 +1676,14 @@ def month_page(mk):
       </div>
       <div class="infopanel ip-amber"><b>Limits recalculated.</b> With Dipika leaving, the team went from 6 to {w['devs']} devs, so the 2-per-dev policy drops from 12/6/18 to {w['lim_dev']}/{w['lim_rev']}/{w['lim_tot']}. Measured against the old limits this would look roomier than it really is.</div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['wip']}" target="_blank">WIP — Team Guide</a></div>"""
+      {doclink('wip', 'WIP — Team Guide')}</div>"""
     else:
         wip_card = f"""<div class="card wipcard">
       <div class="ghead"><span class="gname">Work In Progress</span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
       <div class="nodata" style="margin:10px 0"><span class="big">—</span>historical snapshot not captured</div>
-      <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of {m['label'].split()[0]}, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the August report.</div>
+      <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of {m['label'].split()[0]}, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram.{" The current snapshot lives in the latest report." if WIP else ""}</div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['wip']}" target="_blank">WIP — Team Guide</a></div>"""
+      {doclink('wip', 'WIP — Team Guide')}</div>"""
 
     if m["unplanned"] is None:
         unp_row = (f'<td class="flat">no data</td><td class="flat">—</td><td>{Q1["unp"]}%</td>'
@@ -1681,6 +1737,20 @@ def month_page(mk):
     _cyc_m  = json.dumps([Q1["cyc_med"], Q2["cyc_med"]] + [CYC[k]["med"] for k in _ck])
     _cyc_a  = json.dumps([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck])
     _cyc_max = max([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck] + [1]) * 1.2
+    # Unplanned had a hand-written series here -- fixed labels and two figures typed
+    # into the code. It described EDW's Jun/Jul and nothing else, so a second team
+    # would have published EDW's reactive work as its own. Derived like the two
+    # charts above now: the periods that exist, and null where the label was not
+    # applied, so the line breaks instead of reading as zero.
+    _unp_v  = [(RELEASES.get(k) or {}).get("unp_pct") if RELEASES else None for k in _keys]
+    _unp_l  = json.dumps([MONTH_LABEL.get(k, k) for k in _keys])
+    _unp_d  = json.dumps(_unp_v)
+    # the dot colours are JS constants, so they go in as bare identifiers; a
+    # json.dumps here would quote them and Chart.js would draw nothing
+    _unp_c  = "[" + ",".join("GREY" if v is None else
+                             "GREEN" if v <= 5 else "AMBER" if v <= 10 else "RED"
+                             for v in _unp_v) + "]"
+    _unp_max = max([v for v in _unp_v if v is not None] + [15]) * 1.25
 
     # A release that has not closed gets no flow-health verdict. Every number on the
     # page is still moving -- items keep closing, cycle time is computed over the
@@ -1722,7 +1792,7 @@ def month_page(mk):
         Items are {"" if OPEN else "up "}{100*(cm['items']/(cq1['items']*SHARE)-1):+.0f}% on {REF1_SHORT} while points are {"" if OPEN else "up "}{100*(cm['pts']/(cq1['pts']*SHARE)-1):+.0f}%{" at the same point in the month" if OPEN else " — the team is larger and the items are smaller"}.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['thr']}" target="_blank">Throughput — Team Guide</a>
+      {doclink('thr', 'Throughput — Team Guide')}
     </div>
     <div class="card">
       <div class="ghead"><span class="gname">Cycle Time</span>{badge(cyc_st)}</div>
@@ -1736,7 +1806,7 @@ def month_page(mk):
       {spark([CYC[k]['med'] for k in CYC_ORDER], CYC_ORDER.index(_cyckey(mk)) if _cyckey(mk) in CYC_ORDER else None, col="#4FA800")}
       <div class="infopanel ip-green">Median and average both within target. The gap between {c['med']:.1f}d and {c['avg']:.1f}d comes from a few long tickets — the longest this month took {c['mx']:.0f} days.</div>
       <div class="cardfill"></div><hr class="docsep">
-      <a class="doclink" href="{GUIDES['cycle']}" target="_blank">Cycle Time — Team Guide</a>
+      {doclink('cycle', 'Cycle Time — Team Guide')}
     </div>
     {unp_card}
   </div>
@@ -1769,10 +1839,10 @@ def month_page(mk):
   <div class="fnote">Comparatives use the closed quarters of the year: Q1 and Q2. Q3 joins this table once September closes and its report is created. Q1's monthly detail is under review — the figure used here is the one published in Confluence.</div>
   {tis_flow_block(mk)}
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
+    {rlink('dash', '&#128216;', 'How to read the dashboard')}
+    {rlink('q1', '&#128208;', 'Q1 2026 Baseline')}
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
-    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
+    {dashlink()}
   </div></div>
 </section>
 
@@ -1840,11 +1910,11 @@ const bands={{id:'bands',beforeDraw(c){{const{{ctx,chartArea:{{left,right}},scal
  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
  ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));ctx.restore();}}}};
 new Chart(document.getElementById('cUnp'),{{type:'line',
- data:{{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[{{data:[{Q1['unp']},{Q2['unp']},{MAY_UNP},6.76,12.66,null],
+ data:{{labels:{_unp_l},datasets:[{{data:{_unp_d},
   borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,borderWidth:3,spanGaps:false,
-  pointBackgroundColor:[GREEN,AMBER,RED,AMBER,RED,GREY]}}]}},
+  pointBackgroundColor:{_unp_c}}}]}},
  options:{{plugins:{{legend:{{display:false}},tooltip:{{callbacks:{{label:c=>c.raw==null?' no data':` ${{c.raw}}% unplanned`}}}}}},
-  scales:{{y:{{beginAtZero:true,max:20,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}}}},x:{{grid:{{display:false}}}}}}}},
+  scales:{{y:{{beginAtZero:true,max:{_unp_max:.0f},grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[bands]}});
 {charts_scrum(mk)}""" + _tis_js
     return html + _fill(FOOT).replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
@@ -1867,7 +1937,7 @@ def q2_page():
       <div class="secondary">{tot} closed in the quarter · average {avg}</div>
       <div class="targetline"><span class="tl">Q1</span> median {Q1['thr_med']} · average {Q1['thr_avg']}</div>
       <div class="infopanel ip-amber">Q2's median ({med}) lands almost on top of Q1's ({Q1['thr_med']}), but it hides the break: April and May ran at 36 and 39, and June jumped to 74. The quarter mixes two different teams.</div>
-      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['thr']}" target="_blank">Throughput — Team Guide</a></div>
+      <div class="cardfill"></div><hr class="docsep">{doclink('thr', 'Throughput — Team Guide')}</div>
     <div class="card"><div class="ghead"><span class="gname">Team composition</span></div>
       <div class="bignum num-blue">4 &rarr; 6 &rarr; 5<span class="unit">devs</span></div>
       <div class="secondary">Q1 · May-July · from August</div>
@@ -1878,13 +1948,13 @@ def q2_page():
       <div class="secondary">{Q2['unp_n']} of {Q2['closed']} closed · April 2.78% · May 17.95% · June 6.76%</div>
       <div class="targetline"><span class="tl">Q1</span> {Q1['unp']}% · <span class="tl">Target</span> &le;5%</div>
       <div class="infopanel ip-red">Q2 nearly doubles Q1 and with far more variance. May is the peak; June comes down but stays above target. The percentage is over the quarter total, not the average of the three months.</div>
-      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>
+      <div class="cardfill"></div><hr class="docsep">{doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>
   </div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
-    <a class="rlink" href="{GUIDES['thr']}" target="_blank"><span class="ico">&#128202;</span> Throughput — Team Guide</a>
-    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
+    {rlink('dash', '&#128216;', 'How to read the dashboard')}
+    {rlink('q1', '&#128208;', 'Q1 2026 Baseline')}
+    {rlink('thr', '&#128202;', 'Throughput — Team Guide')}
+    {dashlink()}
   </div></div>
   <div class="fnote">Two caveats on this baseline: August has no unplanned-work data, and all three months include discards (Won't Do) that did not appear before. The Q1 row is now the reconciled figure: recalculated with the official filter, Q1 closed <b>120</b> items (44/36/40), an average of 40 a month. The 100 (10/45/45) published in the Confluence report could not be reproduced under any filter variant and has been corrected at the source — see the recalculation notice on that page.</div>
 </section>
@@ -1968,14 +2038,14 @@ def q1_page():
       <div class="infopanel ip-green">A flat quarter: the spread between the best and the worst month is 8 items, which
       is what makes it usable as a baseline. On top of the {Q1['closed']} closed there were <b>{Q1_WONTDO} discarded</b>
       (Won't Do), which are not deliveries. Note that this baseline describes a 4-developer team.</div>
-      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['thr']}" target="_blank">Throughput — Team Guide</a></div>
+      <div class="cardfill"></div><hr class="docsep">{doclink('thr', 'Throughput — Team Guide')}</div>
     <div class="card"><div class="ghead"><span class="gname">Planned vs Unplanned</span>{badge('healthy')}</div>
       <div class="bignum num-green">{Q1_UNP_PCT:.2f}<span class="unit">%</span></div>
       <div class="secondary">{Q1_UNP_N} of {Q1['closed']} closed · Jan 1 · Feb 2 · Mar 2</div>
       <div class="targetline"><span class="tl">Target</span> &le;5%</div>
       <div class="infopanel ip-green">Comfortably inside target and the most stable metric of the quarter: never more
       than 2 unplanned items in a month. This is the reference the later months are measured against.</div>
-      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>
+      <div class="cardfill"></div><hr class="docsep">{doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>
     <div class="card"><div class="ghead"><span class="gname">Cycle Time</span>{badge('warning')}</div>
       <div class="bignum num-amber">{Q1['cyc_med']}<span class="unit">d median</span></div>
       <div class="secondary">Average <b>{Q1['cyc_avg']}d</b> · 99 issues</div>
@@ -1983,14 +2053,14 @@ def q1_page():
       <div class="infopanel ip-amber">The median sits just above the 6-day target while the average is comfortably
       inside the 9-day one — the quarter's only metric not fully in the green. Measured from first entry into
       <i>In Development</i> to resolution, in calendar days, excluding sub-tasks.</div>
-      <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['cycle']}" target="_blank">Cycle Time — Team Guide</a></div>
+      <div class="cardfill"></div><hr class="docsep">{doclink('cycle', 'Cycle Time — Team Guide')}</div>
   </div>
   <div style="margin-top:24px"></div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
+    {rlink('q1', '&#128208;', 'Q1 2026 Report in Confluence')}
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
+    {rlink('dash', '&#128216;', 'How to read the dashboard')}
+    {dashlink()}
   </div></div>
   <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
   over each month's resolution date, which excludes discarded work. Figures reconciled in September 2026 — the method

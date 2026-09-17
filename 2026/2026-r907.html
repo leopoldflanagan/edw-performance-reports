@@ -532,7 +532,7 @@
     <div class="card wipcard">
       <div class="ghead"><span class="gname"><span data-tip="Items in In Development or Awaiting Review. A point-in-time reading, not a monthly total.">Work In Progress</span></span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
       <div class="nodata" style="margin:10px 0"><span class="big">—</span>historical snapshot not captured</div>
-      <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of Release, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the August report.</div>
+      <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of Release, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the latest report.</div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3023470624" target="_blank">WIP — Team Guide</a></div>
   </div>
@@ -804,11 +804,11 @@ const bands={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y
  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
  ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));ctx.restore();}};
 new Chart(document.getElementById('cUnp'),{type:'line',
- data:{labels:['Q1','Q2','May','Jun','Jul','Aug'],datasets:[{data:[0,6.6,17.95,6.76,12.66,null],
+ data:{labels:["R9.04", "R9.05", "R9.06", "R9.07", "R9.08"],datasets:[{data:[24.1, 6.7, 13.2, null, 1.8],
   borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,borderWidth:3,spanGaps:false,
-  pointBackgroundColor:[GREEN,AMBER,RED,AMBER,RED,GREY]}]},
+  pointBackgroundColor:[RED,AMBER,RED,GREY,GREEN]}]},
  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw==null?' no data':` ${c.raw}% unplanned`}}},
-  scales:{y:{beginAtZero:true,max:20,grid:{color:gridc},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}},
+  scales:{y:{beginAtZero:true,max:30,grid:{color:gridc},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}},
  plugins:[bands]});
 
 const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
