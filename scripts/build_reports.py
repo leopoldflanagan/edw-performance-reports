@@ -897,7 +897,7 @@ def head(title, sub, pill, status, current=None):
 <main><div class="wrap">"""
 
 FOOT = """</div></main>
-<footer>{TSITE} · {TEAM["name"]} · {TEAM["org"]}</footer>
+<footer>__SITE__ · __TEAMNAME__ · __ORG__</footer>
 <script>
 function showTab(id,scroll){
  const tab=document.querySelector(`.tab[data-tab="${id}"]`), panel=document.getElementById(id);
@@ -1769,8 +1769,8 @@ def month_page(mk):
   <div class="fnote">Comparatives use the closed quarters of the year: Q1 and Q2. Q3 joins this table once September closes and its report is created. Q1's monthly detail is under review — the figure used here is the one published in Confluence.</div>
   {tis_flow_block(mk)}
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Baseline</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
@@ -1847,7 +1847,7 @@ new Chart(document.getElementById('cUnp'),{{type:'line',
   scales:{{y:{{beginAtZero:true,max:20,grid:{{color:gridc}},ticks:{{callback:v=>v+'%'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[bands]}});
 {charts_scrum(mk)}""" + _tis_js
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
+    return html + _fill(FOOT).replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 def q2_page():
     apr, may, jun = APR, MAY, 74
@@ -1881,8 +1881,8 @@ def q2_page():
       <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>
   </div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Baseline</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
     <a class="rlink" href="{GUIDES['thr']}" target="_blank"><span class="ico">&#128202;</span> Throughput — Team Guide</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
@@ -1936,7 +1936,7 @@ new Chart(document.getElementById('cQ'),{{type:'bar',
    backgroundColor:['var(--edge)','var(--edge)','var(--edge)','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:110,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}}}});
 {charts_scrum()}"""
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
+    return html + _fill(FOOT).replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 def q1_page():
     q1n = [r[0] for r in SPRINTS_Q1]
@@ -1987,9 +1987,9 @@ def q1_page():
   </div>
   <div style="margin-top:24px"></div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Report in Confluence</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
   <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
@@ -2074,7 +2074,7 @@ new Chart(document.getElementById('cQ1'),{{type:'bar',
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:55,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[q1Ref]}});
 {charts_scrum(only=q1n)}"""
-    return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
+    return html + _fill(FOOT).replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
 
 
 

@@ -11,7 +11,39 @@
     --line:#e2e8f0; --bg:#f5f8fb; --card:#ffffff;
     --shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);
     --healthy:#4FA800; --warning:#ED7D31; --risk:#d64550;
-    --healthy-bg:#eef7e3; --warning-bg:#fdeee3; --risk-bg:#fbeced;
+    --healthy-bg:var(--healthy-bg); --warning-bg:var(--warning-bg); --risk-bg:var(--risk-bg);
+    /* surfaces and rules that used to be literals */
+    --card2:#f6f9fd;      /* tiles, table stripes, the inset panels */
+    --card3:#f4f6fa;      /* the flat "no data" blocks */
+    --tint:#fbfcfe;       /* goal boxes, dashed insets */
+    --line2:#f0f3f8;      /* the faint row rule inside tables */
+    --edge:#c3cdda;       /* chart axes, disabled chips, dashed guides */
+    --grid:#eef2f8;       /* chart gridlines and the palest chips */
+    --muted3:#8b95a8;     /* the third level of grey */
+    --muted4:#9aa6b8;     /* and the fourth */
+    --onbrand:#ffffff;    /* text that sits on the brand blue, both themes */
+    --hdr-sub:#cfe7f3;    /* the header's own subdued text */
+    --pillbg:#eef1f6; --pillfg:#5a6577;
+    color-scheme: light;
+  }
+  /* Dark is the same report with the surfaces inverted and the brand kept. The
+     status colours are lifted, not changed: the same green, amber and red read
+     darker on a dark ground, so each gets a touch more light and its tint goes
+     from a pale wash to a deep one. */
+  :root[data-theme="dark"]{
+    --wf-blue:#3aa3dd; --wf-blue-d:#8fd0f2; --wf-blue-l:#4f8db0; --wf-blue-bg:#16394e;
+    --wf-green:#6cc32a; --wf-ink:#e6ebf2; --wf-muted:#a3aec2; --wf-muted2:#939eb2;
+    --line:#2b3546; --bg:#121722; --card:#1a2130;
+    --shadow:0 1px 3px rgba(0,0,0,.35),0 6px 22px rgba(0,0,0,.30);
+    --healthy:#6cc32a; --warning:#f39c3d; --risk:#f0636f;
+    --healthy-bg:#1d3318; --warning-bg:#3a2a17; --risk-bg:#3a1f22;
+    --healthy-fg:#9ade5e; --warning-fg:#f0ab5e; --risk-fg:#ff9aa4;
+    --card2:#212a3b; --card3:#222b3d; --tint:#1e2636;
+    --line2:#252e40; --edge:#3c4759; --grid:#242d3e;
+    --muted3:#8792a6; --muted4:#7b8698;
+    --onbrand:#0d1420; --hdr-sub:#bcd9ea;
+    --pillbg:#26303f; --pillfg:#a3aec2;
+    color-scheme: dark;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -23,11 +55,11 @@
   header::after{content:"";position:absolute;right:-90px;top:-90px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
   .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
   header h1{font-weight:800;font-size:40px;line-height:1.05;margin:8px 0 6px;letter-spacing:-.02em}
-  header .sub{color:#cfe7f3;font-size:15px;max-width:660px}
-  .statuspill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;background:rgba(237,125,49,.22);border:1px solid rgba(237,125,49,.55);color:#ffd9bf;padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
+  header .sub{color:var(--hdr-sub);font-size:15px;max-width:660px}
+  .statuspill{display:inline-flex;align-items:center;gap:9px;margin-top:18px;background:rgba(237,125,49,.22);border:1px solid rgba(237,125,49,.55);color:var(--warning-bg);padding:8px 16px;border-radius:999px;font-weight:600;font-size:14px}
   .statuspill .dot{width:10px;height:10px;border-radius:50%;background:var(--warning);box-shadow:0 0 0 4px rgba(237,125,49,.28)}
 
-  .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tabs{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .tabs .wrap{display:flex;gap:4px}
   .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;color:var(--wf-muted);padding:17px 22px;cursor:pointer;position:relative;transition:color .2s}
   .tab:hover{color:var(--wf-ink)}
@@ -58,14 +90,14 @@
   .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
   .badge .d{width:7px;height:7px;border-radius:50%}
   .b-green{background:var(--healthy-bg);color:#3a7d00}.b-green .d{background:var(--healthy)}
-  .b-amber{background:var(--warning-bg);color:#a9760a}.b-amber .d{background:var(--warning)}
-  .b-red{background:var(--risk-bg);color:#b3303b}.b-red .d{background:var(--risk)}
+  .b-amber{background:var(--warning-bg);color:var(--warning-fg)}.b-amber .d{background:var(--warning)}
+  .b-red{background:var(--risk-bg);color:var(--risk-fg)}.b-red .d{background:var(--risk)}
 
   .bignum{font-weight:800;font-size:40px;font-variant-numeric:proportional-nums;line-height:1;color:var(--wf-blue-d);letter-spacing:-.02em}
   .bignum .unit{font-size:15px;color:var(--wf-muted);font-weight:600;margin-left:4px}
   .secondary{font-size:13px;color:var(--wf-muted);margin-top:7px}
   .secondary b{color:var(--wf-ink)}
-  .targetline{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;background:#f0f4f8;border:1px solid var(--line);padding:4px 10px;border-radius:7px;color:var(--wf-muted2)}
+  .targetline{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;background:var(--card2);border:1px solid var(--line);padding:4px 10px;border-radius:7px;color:var(--wf-muted2)}
   .targetline .tl{font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--wf-blue);font-size:10px}
 
   .deltarow{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
@@ -74,9 +106,9 @@
   .pos{color:var(--healthy);font-weight:700}.neg{color:var(--risk);font-weight:700}.flat{color:var(--wf-muted);font-weight:700}
 
   .infopanel{margin-top:14px;border-radius:10px;padding:11px 13px;font-size:12.5px;line-height:1.45}
-  .infopanel.ip-green{background:var(--healthy-bg);border-left:3px solid var(--healthy);color:#36631a}
-  .infopanel.ip-amber{background:var(--warning-bg);border-left:3px solid var(--warning);color:#8a6200}
-  .infopanel.ip-red{background:var(--risk-bg);border-left:3px solid var(--risk);color:#9c2a34}
+  .infopanel.ip-green{background:var(--healthy-bg);border-left:3px solid var(--healthy);color:var(--healthy-fg)}
+  .infopanel.ip-amber{background:var(--warning-bg);border-left:3px solid var(--warning);color:var(--warning-fg)}
+  .infopanel.ip-red{background:var(--risk-bg);border-left:3px solid var(--risk);color:var(--risk-fg)}
   .infopanel b{font-weight:700}
   .ip-link{font-weight:700;color:inherit;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
   .ip-link:hover{opacity:.75}
@@ -106,14 +138,14 @@
 
   .wipwrap{width:100%;margin:14px 0 0}
   .wipcard{display:flex;flex-direction:column}
-  .wiptotal{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#f3f9fc,#e8f3f9);border:1px solid var(--wf-blue-bg);border-radius:12px;padding:14px 18px;margin-bottom:4px}
+  .wiptotal{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,var(--card2),var(--wf-blue-bg));border:1px solid var(--wf-blue-bg);border-radius:12px;padding:14px 18px;margin-bottom:4px}
   .wt-num{font-size:38px;font-weight:800;color:var(--wf-blue-d);line-height:1}
   .wt-den{font-size:18px;color:var(--wf-muted);font-weight:600;margin-left:2px}
   .wt-lbl{font-size:12.5px;color:var(--wf-muted);line-height:1.4}
   .wt-lbl b{color:var(--healthy)}
   .wiprow{display:flex;align-items:center;gap:10px;margin:9px 0}
   .wiprow .nm{width:120px;font-size:13px;font-weight:600;color:var(--wf-ink)}
-  .wipbar{flex:1;height:22px;background:#eef2f8;border-radius:6px;position:relative;overflow:hidden}
+  .wipbar{flex:1;height:22px;background:var(--grid);border-radius:6px;position:relative;overflow:hidden}
   .wipfill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--wf-blue),var(--wf-blue-l));display:flex;align-items:center;justify-content:flex-end;padding-right:7px;color:#fff;font-size:11px;font-weight:700}
   .wiplim{width:50px;text-align:right;font-size:12px;color:var(--wf-muted);font-weight:600}
 
@@ -126,7 +158,7 @@
   table.exec td{padding:13px 14px;text-align:center;font-size:14px;border-bottom:1px solid var(--line)}
   table.exec td:first-child{text-align:left;font-weight:700;color:var(--wf-blue-d)}
   table.exec tr:last-child td{border-bottom:none}
-  table.exec tr:nth-child(even) td{background:#f8fbfd}
+  table.exec tr:nth-child(even) td{background:var(--card2)}
   .st-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
 
   .cmpcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
@@ -145,7 +177,7 @@
   .originbar .top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px}
   .originbar .top .nm{font-weight:600;color:var(--wf-ink)}
   .originbar .top .pct{font-weight:700;color:var(--wf-blue-d)}
-  .obtrack{height:14px;background:#eef2f8;border-radius:7px;overflow:hidden}
+  .obtrack{height:14px;background:var(--grid);border-radius:7px;overflow:hidden}
   .obfill{height:100%;border-radius:7px}
 
   .ticket{display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:flex-start}
@@ -153,15 +185,15 @@
   .tkey{font-weight:700;color:var(--wf-blue);min-width:78px}
   .tdesc{flex:1;color:#33425c}
   .ttag{font-size:10px;font-weight:700;padding:3px 8px;border-radius:6px;white-space:nowrap;align-self:center}
-  .tg-rec{background:var(--warning-bg);color:#a9760a}
+  .tg-rec{background:var(--warning-bg);color:var(--warning-fg)}
   .tg-pred{background:var(--wf-blue-bg);color:#1d6a93}
-  .tg-real{background:var(--risk-bg);color:#b3303b}
+  .tg-real{background:var(--risk-bg);color:var(--risk-fg)}
 
   .insightbox{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;border-radius:18px;padding:26px 28px;margin:8px 0 26px;position:relative;overflow:hidden}
   .insightbox::after{content:"";position:absolute;right:-40px;bottom:-60px;width:230px;height:230px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
   .insightbox .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
   .insightbox h2{font-weight:800;font-size:25px;margin:8px 0 10px;line-height:1.2;letter-spacing:-.01em}
-  .insightbox p{color:#d4ebf5;font-size:15px;max-width:780px}
+  .insightbox p{color:var(--wf-blue-bg);font-size:15px;max-width:780px}
   .insightbox .stat{display:inline-block;font-weight:800;color:#fff;border-bottom:2px solid var(--wf-green)}
 
   .act{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden;display:flex}
@@ -173,10 +205,10 @@
   .act p{font-size:14px;color:#33425c}
   .act .owner{font-size:12px;color:var(--wf-muted);margin-top:8px}
   .act .owner b{color:var(--wf-blue-d)}
-  .p-red{background:var(--risk)}.p-amber{background:var(--warning)}.p-blue{background:var(--wf-blue)}.p-green{background:var(--healthy)}.p-grey{background:#9aa6b8}
-  .pill-red{background:var(--risk-bg);color:#b3303b}.pill-amber{background:var(--warning-bg);color:#a9760a}.pill-blue{background:var(--wf-blue-bg);color:#1d6a93}.pill-green{background:var(--healthy-bg);color:#3a7d00}.pill-grey{background:#eef1f6;color:#5a6678}
+  .p-red{background:var(--risk)}.p-amber{background:var(--warning)}.p-blue{background:var(--wf-blue)}.p-green{background:var(--healthy)}.p-grey{background:var(--muted4)}
+  .pill-red{background:var(--risk-bg);color:var(--risk-fg)}.pill-amber{background:var(--warning-bg);color:var(--warning-fg)}.pill-blue{background:var(--wf-blue-bg);color:#1d6a93}.pill-green{background:var(--healthy-bg);color:#3a7d00}.pill-grey{background:var(--pillbg);color:#5a6678}
 
-  .retro{background:#fff;border:2px dashed var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
+  .retro{background:var(--card);border:2px dashed var(--line);border-radius:14px;padding:20px 22px;margin-top:8px}
   .retro h4{color:var(--wf-blue-d);font-size:18px;margin-bottom:10px;font-weight:700}
   .retro li{margin:8px 0 8px 18px;font-size:14px;color:#33425c}
   .retro li b{color:var(--wf-blue-d)}
@@ -185,7 +217,7 @@
   .reslinks .rt{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:12px}
   .reslinks .rgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
   @media(max-width:860px){.reslinks .rgrid{grid-template-columns:1fr}}
-  .rlink{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--wf-blue-d);transition:.15s;background:#fbfdfe}
+  .rlink{display:flex;align-items:center;gap:10px;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--wf-blue-d);transition:.15s;background:var(--card2)}
   .rlink:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg);text-decoration:none}
   .rlink .ico{width:30px;height:30px;border-radius:8px;background:var(--wf-blue-bg);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 
@@ -196,17 +228,17 @@
 
 .statblock{margin:14px 0 12px;padding-top:12px;border-top:1px solid var(--line)}
 .sb{display:grid;grid-template-columns:1fr auto auto auto;gap:4px 10px;align-items:baseline;font-size:13px;padding:5px 0}
-.sb+.sb{border-top:1px dashed #eef2f8}
+.sb+.sb{border-top:1px dashed var(--grid)}
 .sb-head{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;padding-bottom:0}
 .sb-head span:not(:first-child){text-align:right;min-width:52px}
 .sb .sk{color:var(--wf-text)}
 .sb .sv{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;min-width:52px}
 .sb .sd{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;min-width:52px;font-size:12.5px}
 .ctxline{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:12px;color:var(--wf-muted);margin:0 0 12px}
-.ctxline i{font-style:normal;color:#9aa6b8}
+.ctxline i{font-style:normal;color:var(--muted4)}
 .spark{height:34px;margin:2px 0 12px;display:block;width:100%}
 .spark-cap{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:3px}
-.spill{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:#fbfcfe}
+.spill{margin-top:12px;border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:var(--tint)}
 .spill .sk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
 .spill .sv{font-size:22px;font-weight:800;color:var(--risk);font-variant-numeric:tabular-nums;line-height:1.2;text-align:left}
 .spill .sn{font-size:12px;color:var(--wf-muted)}
@@ -215,21 +247,21 @@
 
 .sprintsec{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line)}
 .sprintsec>.sk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:7px}
-.tisbar{display:flex;height:26px;border-radius:7px;overflow:hidden;background:#eef2f8;margin:4px 0 8px}
+.tisbar{display:flex;height:26px;border-radius:7px;overflow:hidden;background:var(--grid);margin:4px 0 8px}
 .tisbar span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;min-width:2px;
  border-right:2px solid var(--card);white-space:nowrap;overflow:hidden}
 .tisbar span:last-child{border-right:0}
 .tiskey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--wf-muted)}
 .tiskey b{color:var(--wf-text)}
 .tisdot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-.goalbox{border:1px dashed var(--line);border-radius:10px;padding:11px 13px;background:#fbfcfe;font-size:13px;color:var(--wf-muted)}
+.goalbox{border:1px dashed var(--line);border-radius:10px;padding:11px 13px;background:var(--tint);font-size:13px;color:var(--wf-muted)}
 .goalbox b{color:var(--wf-text)}
 .healthrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 14px}
-.hcell{background:#f6f9fd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.hcell{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .hcell .hk{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
 .hcell .hv{font-size:23px;font-weight:800;line-height:1.25;color:var(--wf-blue-d)}
 .hcell .hn{font-size:11.5px;color:var(--wf-muted)}
-.activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,#f4f9fd,var(--card) 90px);margin-bottom:22px}
+.activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,var(--card2),var(--card) 90px);margin-bottom:22px}
 .activetag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
  color:#fff;background:var(--wf-blue);padding:4px 10px;border-radius:999px;margin-bottom:10px}
 
@@ -237,17 +269,17 @@
 #scrum .cmpcard.spc{padding:0;overflow:hidden;transition:border-color .15s ease,box-shadow .15s ease}
 #scrum .cmpcard.spc>.sprinthead{cursor:pointer;margin:0;padding:14px 18px;user-select:none;
  display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-radius:14px;transition:background .15s ease}
-#scrum .cmpcard.spc:not(.open)>.sprinthead:hover{background:#f2f7fc}
+#scrum .cmpcard.spc:not(.open)>.sprinthead:hover{background:var(--card2)}
 #scrum .cmpcard.spc:not(.open):hover{border-color:var(--wf-blue);box-shadow:0 2px 10px rgba(0,124,188,.10)}
 #scrum .cmpcard.spc>.sprinthead h3{margin:0;font-size:17px}
 #scrum .cmpcard.spc .sprintdates{margin-left:auto;font-size:12.5px;color:var(--wf-muted);white-space:nowrap}
 #scrum .spc .spcsum{font-size:12.5px;color:var(--wf-muted);white-space:nowrap}
 #scrum .spc.open .spcsum{display:none}
 #scrum .spc .spctoggle{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--wf-blue);
- background:#eaf4fb;border:1px solid #cfe5f4;border-radius:999px;padding:5px 12px;white-space:nowrap}
+ background:var(--wf-blue-bg);border:1px solid var(--wf-blue-bg);border-radius:999px;padding:5px 12px;white-space:nowrap}
 #scrum .spc:not(.open)>.sprinthead:hover .spctoggle{background:var(--wf-blue);border-color:var(--wf-blue);color:#fff}
 #scrum .spc .spctoggle .cv{transition:transform .18s ease;font-size:10px}
-#scrum .spc.open .spctoggle{background:#f0f4f8;border-color:var(--line);color:var(--wf-muted)}
+#scrum .spc.open .spctoggle{background:var(--card2);border-color:var(--line);color:var(--wf-muted)}
 #scrum .spc.open .spctoggle .cv{transform:rotate(180deg)}
 #scrum .spc .spcbody{display:none;padding:0 18px 18px}
 #scrum .spc.open .spcbody{display:block}
@@ -256,8 +288,8 @@
  #scrum .spc .spcsum{white-space:normal}}
 @media(max-width:640px){.healthrow{grid-template-columns:repeat(2,1fr)}}
 .runtag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
- color:#005f91;background:#e5f2f8;border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;margin-left:7px;vertical-align:1px}
-.runrow td{background:#f8fbfe}
+ color:var(--wf-blue-d);background:var(--wf-blue-bg);border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;margin-left:7px;vertical-align:1px}
+.runrow td{background:var(--card2)}
 .runrow td:first-child{box-shadow:inset 3px 0 0 var(--wf-blue)}
 
  /* The tab strip is sticky and was wider than a phone: the last tabs sat off-screen
@@ -271,9 +303,18 @@
  }
  .findkey{display:flex;flex-wrap:wrap;gap:8px 20px;margin:2px 0 14px;font-size:12px;color:var(--wf-muted)}
  .findkey span{display:inline-flex;align-items:center;gap:7px}
- .findkey b{color:var(--wf-text,#32373c);font-weight:700}
+ .findkey b{color:var(--wf-text,var(--wf-ink));font-weight:700}
  .findkey .fk{width:4px;height:15px;border-radius:2px;display:inline-block}
  @media(max-width:640px){.findkey{gap:6px 14px;font-size:11.5px}}
+
+ /* Theme + language switch. Sits in the header, top right, on every page. */
+ .prefs{position:absolute;top:18px;right:24px;display:flex;gap:8px;z-index:5}
+ .prefbtn{appearance:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);
+   color:#fff;font-family:'DM Sans';font-size:12px;font-weight:700;letter-spacing:.04em;
+   padding:6px 12px;border-radius:999px;cursor:pointer;transition:.15s;display:inline-flex;
+   align-items:center;gap:6px;backdrop-filter:blur(6px)}
+ .prefbtn:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.6)}
+ @media(max-width:700px){.prefs{top:12px;right:16px}.prefbtn{padding:5px 10px;font-size:11px}}
 </style>
 
 <style>
@@ -285,14 +326,14 @@
  .sh .n{font-size:12.5px;color:var(--wf-muted);margin-top:4px}
  .progbar{display:flex;height:30px;border-radius:8px;overflow:hidden;margin:6px 0 10px}
  .progbar span{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
- .nodata{background:#f4f6fa;border:1px dashed #c3cdda;border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}
- .nodata .big{font-size:26px;font-weight:800;color:#8b95a8;display:block;margin-bottom:4px}
+ .nodata{background:var(--card3);border:1px dashed var(--edge);border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}
+ .nodata .big{font-size:26px;font-weight:800;color:var(--muted3);display:block;margin-bottom:4px}
  .fnote{font-size:12.5px;color:var(--wf-muted);border-left:3px solid var(--warning);padding-left:12px;margin-top:14px}
 
- .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb{font-size:12.5px;color:var(--hdr-sub);margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
- .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav{background:var(--card);border-bottom:1px solid var(--line)}
  .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
  .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
  .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
@@ -301,7 +342,7 @@
  .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
  .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
- .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:var(--card);display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
  /* These were a 12.5px bare link pushed to the edge. They are the way off the
@@ -309,7 +350,7 @@
  .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
  .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
    padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
-   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+   background:var(--card);border:1px solid var(--line);white-space:nowrap;transition:.15s}
  .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
  .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* With the active sprint in it the strip no longer fits a phone. It scrolls
@@ -347,21 +388,21 @@
  @media(max-width:640px){.sprintdates{margin-left:0;width:100%;white-space:normal}}
 
  .chartbox.zoomable{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s}
- .chartbox.zoomable:hover{background:#f7fafd}
+ .chartbox.zoomable:hover{background:var(--card2)}
  .chartbox.zoomable::after{content:"Expand";position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:700;
-   letter-spacing:.08em;text-transform:uppercase;color:var(--wf-blue);background:#fff;border:1px solid var(--line);
+   letter-spacing:.08em;text-transform:uppercase;color:var(--wf-blue);background:var(--card);border:1px solid var(--line);
    border-radius:999px;padding:3px 9px;opacity:0;transition:opacity .15s;pointer-events:none}
  .chartbox.zoomable:hover::after{opacity:1}
  .cmodal{position:fixed;inset:0;z-index:200;background:rgba(20,32,44,.68);display:none;
    align-items:center;justify-content:center;padding:28px}
  .cmodal.open{display:flex}
- .cmbox{background:#fff;border-radius:18px;width:min(1180px,100%);height:min(78vh,760px);
+ .cmbox{background:var(--card);border-radius:18px;width:min(1180px,100%);height:min(78vh,760px);
    display:flex;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden}
  .cmhead{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
  .cmhead h4{font-size:17px;font-weight:700;color:var(--wf-blue-d);flex:1;line-height:1.3}
- .cmclose{appearance:none;border:1px solid var(--line);background:#fff;border-radius:9px;width:34px;height:34px;
+ .cmclose{appearance:none;border:1px solid var(--line);background:var(--card);border-radius:9px;width:34px;height:34px;
    font-size:19px;line-height:1;color:var(--wf-muted);cursor:pointer;flex-shrink:0}
- .cmclose:hover{background:#f4f6fa;color:var(--wf-ink)}
+ .cmclose:hover{background:var(--card3);color:var(--wf-ink)}
  .cmbody{flex:1;padding:18px 20px 22px;min-height:0}
  @media(max-width:760px){.cmodal{padding:12px}.cmbox{height:min(88vh,620px)}.chartbox.zoomable::after{display:none}}
 
@@ -376,16 +417,57 @@
  .revchip{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;
           font-weight:700;font-size:13.5px;letter-spacing:.01em;line-height:1}
  .revchip .ic{font-size:13px;line-height:1}
- .revchip.pend{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:#e9f4fa}
- .revchip.ok{background:rgba(126,217,181,.20);border:1px solid rgba(126,217,181,.55);color:#d6f5e8}
+ .revchip.pend{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:var(--wf-blue-bg)}
+ .revchip.ok{background:rgba(126,217,181,.20);border:1px solid rgba(126,217,181,.55);color:var(--healthy-bg)}
  .revnote{font-size:12.5px;color:var(--wf-muted);margin:-6px 0 18px}
  @media(max-width:600px){.revchip{font-size:12.5px;padding:7px 12px}}
 
 </style></head>
 <body>
-<header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; Release 9.05 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
+<script>
+/* Theme switch. The report is one token set; dark is those tokens redefined, so the
+   only thing this does is set an attribute and remember the choice. It follows the
+   operating system until somebody chooses, and then it stops following it -- a person
+   who picked light at 9pm meant it. */
+(function () {
+  var KEY = 'edwTheme';
+  var root = document.documentElement;
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function sysDark() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function apply(t, save) {
+    root.setAttribute('data-theme', t);
+    if (save) { try { localStorage.setItem(KEY, t); } catch (e) {} }
+    var b = document.getElementById('themebtn');
+    if (b) {
+      b.innerHTML = (t === 'dark' ? '\u2600\ufe0e Light' : '\u263D\ufe0e Dark');
+      b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    // charts and hand-drawn SVG read the tokens once, so they are told to redraw
+    if (window.__themeRedraw) { try { window.__themeRedraw(); } catch (e) {} }
+  }
+  apply(stored() || (sysDark() ? 'dark' : 'light'), false);
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var onSys = function (e) { if (!stored()) apply(e.matches ? 'dark' : 'light', false); };
+    if (mq.addEventListener) mq.addEventListener('change', onSys);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('#themebtn');
+    if (!b) return;
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+  });
+  // tokens, for anything that draws rather than styles
+  window.__tok = function (name, fallback) {
+    var v = getComputedStyle(root).getPropertyValue(name);
+    return (v && v.trim()) || fallback;
+  };
+})();
+</script>
+<header><div class="wrap"><div class="prefs"><button class="prefbtn" id="themebtn" type="button">&#9789;&#65038; Dark</button></div><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; Release 9.05 Performance Report</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
 <h1>Release 9.05 Performance Report</h1><div class="sub">Flow and sprint metrics for the release, against R9.04 and the band of the last three releases.</div>
-<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Flow Health: HEALTHY — 60 items closed over 2 sprints, 30.0 per sprint against 14.5 in R9.04.</div><span class="revchip" style="background:#f1f3f7;color:#6b7383"><span class="ic">&#128220;</span> Historical record &middot; published before the sign-off register</span></div></div></header>
+<div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> Flow Health: HEALTHY — 60 items closed over 2 sprints, 30.0 per sprint against 14.5 in R9.04.</div><span class="revchip" style="background:var(--pillbg);color:#6b7383"><span class="ic">&#128220;</span> Historical record &middot; published before the sign-off register</span></div></div></header>
 <div class="tabs"><div class="wrap">
  <button class="tab active" data-tab="dash">Flow</button>
  <button class="tab" data-tab="scrum">Sprints</button>
@@ -407,7 +489,7 @@
       <div class="ctxline"><span>Average item size <b>2.96 pts</b> <i>(R9.07 2.57)</i></span>
         <span>Team <b>7 active</b> <i>(R9.07 6.0)</i></span></div>
       <div class="spark-cap">Items closed · R9.04 to R9.07</div>
-      <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,31.0 L87.7,12.5 L172.3,3.0 L257.0,14.3" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="87.7" cy="12.5" r="4" fill="#007CBC" stroke="#fff" stroke-width="2"/></svg>
+      <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,31.0 L87.7,12.5 L172.3,3.0 L257.0,14.3" fill="none" style="stroke:var(--edge)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="87.7" cy="12.5" r="4" fill="#007CBC" style="stroke:var(--card)" stroke-width="2"/></svg>
       <div class="infopanel ip-green">On top of the 60 closed there were <b>4 discarded</b> (Won't Do), which are not deliveries.
         Items are up +5% on R9.07 while points are up +24% — the team is larger and the items are smaller.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
@@ -422,7 +504,7 @@
       <div class="statblock"><div class="sb sb-head"><span></span><span>This release</span><span>vs R9.07</span><span>vs the band</span></div><div class="sb"><span class="sk">Median</span><span class="sv">4.7d</span><span class="sd neg">+16%</span><span class="sd neg">+11%</span></div><div class="sb"><span class="sk">Average</span><span class="sv">7.0d</span><span class="sd pos">-2%</span><span class="sd neg">+2%</span></div></div>
       <div class="ctxline"><span>Measured on <b>54 of 60</b> closed items <i>(90% of the release)</i></span></div>
       <div class="spark-cap">Median cycle time · R9.04 to R9.07</div>
-      <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,3.0 L87.7,9.3 L172.3,31.0 L257.0,27.6" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="87.7" cy="9.3" r="4" fill="#4FA800" stroke="#fff" stroke-width="2"/></svg>
+      <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,3.0 L87.7,9.3 L172.3,31.0 L257.0,27.6" fill="none" style="stroke:var(--edge)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="87.7" cy="9.3" r="4" fill="#4FA800" style="stroke:var(--card)" stroke-width="2"/></svg>
       <div class="infopanel ip-green">Median and average both within target. The gap between 4.7d and 7.0d comes from a few long tickets — the longest this month took 84 days.</div>
       <div class="cardfill"></div><hr class="docsep">
       <a class="doclink" href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3046146117" target="_blank">Cycle Time — Team Guide</a>
@@ -445,13 +527,13 @@
         <div class="donutctr"><div class="dc-num">60</div><div class="dc-lbl">of 64<br>closed</div></div></div>
         <div class="mixlegend">
           <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">60</span></div>
-          <div class="ml-row"><span class="ml-sw" style="background:#c3cdda"></span><span class="ml-nm">Won't Do</span><span class="ml-val">4</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:var(--edge)"></span><span class="ml-nm">Won't Do</span><span class="ml-val">4</span></div>
         </div></div>
       <div class="infopanel ip-amber">May closed 39 without a single discard. From June on, discards show up every month.</div>
       <div class="cardfill"></div>
     </div>
     <div class="card wipcard">
-      <div class="ghead"><span class="gname"><span data-tip="Items in In Development or Awaiting Review. A point-in-time reading, not a monthly total.">Work In Progress</span></span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
+      <div class="ghead"><span class="gname"><span data-tip="Items in In Development or Awaiting Review. A point-in-time reading, not a monthly total.">Work In Progress</span></span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
       <div class="nodata" style="margin:10px 0"><span class="big">—</span>historical snapshot not captured</div>
       <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of Release, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the August report.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -473,7 +555,7 @@
   
  <div class="cmpcard"><div class="cmphead"><h3>Time in status &mdash; where the time actually goes</h3></div>
   <div class="secsub" style="margin-bottom:10px">Pooled across 2 sprint(s) of this release. Cycle Time says how long an item took; this says which step it spent that time in.</div>
-  <div class="tisbar"><span style="width:31.4%;background:#65B2D5">1.0d</span><span style="width:50.3%;background:#007CBC">1.7d</span><span style="width:18.3%;background:#ED7D31">0.6d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>1.0d</b> <i style="font-style:normal;color:#9aa6b8">(50 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>1.7d</b> <i style="font-style:normal;color:#9aa6b8">(74 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.6d</b> <i style="font-style:normal;color:#9aa6b8">(39 items)</i></span></div>
+  <div class="tisbar"><span style="width:31.4%;background:#65B2D5">1.0d</span><span style="width:50.3%;background:#007CBC">1.7d</span><span style="width:18.3%;background:#ED7D31">0.6d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>1.0d</b> <i style="font-style:normal;color:var(--muted4)">(50 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>1.7d</b> <i style="font-style:normal;color:var(--muted4)">(74 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.6d</b> <i style="font-style:normal;color:var(--muted4)">(39 items)</i></span></div>
   <div class="secsub" style="margin-top:9px">The longest step is <i>In Development</i> at a median of 1.7 days, 50% of the time an item spends in the flow. 29 of 83 items sat more than five days in a single status somewhere in this period.</div>
   <div class="infopanel ip-amber">Pooled from each sprint's median, weighted by how many items that sprint measured. It is right about where the time goes; it is not precise to the decimal.</div>
  </div>
@@ -516,7 +598,7 @@
    
    <div class="spill"><div class="sk">Spillover</div><div class="sv">32%<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; 39 of 122 pts</span></div><div class="sn">13 items — 13 removed before the sprint closed. The dotted line on the burndown is where the sprint would have stood if none of it had been taken out.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
-   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:41.2%;background:#65B2D5">0.9d</span><span style="width:50.9%;background:#007CBC">1.1d</span><span style="width:8.0%;background:#ED7D31"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>0.9d</b> <i style="font-style:normal;color:#9aa6b8">(18 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>1.1d</b> <i style="font-style:normal;color:#9aa6b8">(33 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.2d</b> <i style="font-style:normal;color:#9aa6b8">(19 items)</i></span></div><div class="secsub" style="margin-top:7px">Longest median sits in <i>In Development</i> at 1.1 days.</div></div>
+   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:41.2%;background:#65B2D5">0.9d</span><span style="width:50.9%;background:#007CBC">1.1d</span><span style="width:8.0%;background:#ED7D31"></span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>0.9d</b> <i style="font-style:normal;color:var(--muted4)">(18 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>1.1d</b> <i style="font-style:normal;color:var(--muted4)">(33 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>0.2d</b> <i style="font-style:normal;color:var(--muted4)">(19 items)</i></span></div><div class="secsub" style="margin-top:7px">Longest median sits in <i>In Development</i> at 1.1 days.</div></div>
    <div class="sprintsec"><div class="sk">Stalled items</div><div class="goalbox"><b>11 items</b> spent more than 5 days without moving; the worst sat <b>13.2 days</b> in <i>Backlog</i>. Neither team uses the <i>Flagged</i> field or a <i>Blocked</i> status, so this is the closest measurable read on what was stuck.</div></div>
    
  </div>
@@ -537,7 +619,7 @@
    
    <div class="spill"><div class="sk">Spillover</div><div class="sv">29%<span style="font-size:14px;color:var(--wf-muted);font-weight:600"> &middot; 32 of 110 pts</span></div><div class="sn">12 items — 10 removed before the sprint closed · 2 still open at close. The dotted line on the burndown is where the sprint would have stood if none of it had been taken out.</div></div>
    <div class="goalbox"><b>No goal recorded in Jira for this sprint.</b> Without one there is nothing to measure delivery against beyond the point count, and no way to say whether the sprint achieved what it set out to do.</div>
-   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:26.3%;background:#65B2D5">1.1d</span><span style="width:49.6%;background:#007CBC">2.1d</span><span style="width:24.1%;background:#ED7D31">1.0d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>1.1d</b> <i style="font-style:normal;color:#9aa6b8">(32 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>2.1d</b> <i style="font-style:normal;color:#9aa6b8">(41 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>1.0d</b> <i style="font-style:normal;color:#9aa6b8">(20 items)</i></span></div><div class="secsub" style="margin-top:7px">Longest median sits in <i>In Development</i> at 2.1 days.</div></div>
+   <div class="sprintsec"><div class="sk">Time in status &middot; median per item</div><div class="tisbar"><span style="width:26.3%;background:#65B2D5">1.1d</span><span style="width:49.6%;background:#007CBC">2.1d</span><span style="width:24.1%;background:#ED7D31">1.0d</span></div><div class="tiskey"><span><i class="tisdot" style="background:#65B2D5"></i>Ready for Development <b>1.1d</b> <i style="font-style:normal;color:var(--muted4)">(32 items)</i></span><span><i class="tisdot" style="background:#007CBC"></i>In Development <b>2.1d</b> <i style="font-style:normal;color:var(--muted4)">(41 items)</i></span><span><i class="tisdot" style="background:#ED7D31"></i>Awaiting Review <b>1.0d</b> <i style="font-style:normal;color:var(--muted4)">(20 items)</i></span></div><div class="secsub" style="margin-top:7px">Longest median sits in <i>In Development</i> at 2.1 days.</div></div>
    <div class="sprintsec"><div class="sk">Stalled items</div><div class="goalbox"><b>18 items</b> spent more than 5 days without moving; the worst sat <b>14.3 days</b> in <i>Backlog</i>. Neither team uses the <i>Flagged</i> field or a <i>Blocked</i> status, so this is the closest measurable read on what was stuck.</div></div>
    
  </div>
@@ -635,10 +717,7 @@
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
  <div class="cmpcard"><div class="cmphead"><h3>Spillover, both ends &mdash; what a sprint takes in and what it hands on</h3></div><div class="secsub" style="margin-bottom:10px">Inherited is work already open in the previous sprint that arrived inside the day-1 commitment. It is capacity spent before the sprint began.</div><div class="cmpgrid"><div class="chartbox" style="height:280px"><canvas id="cRecv"></canvas></div><div class="readout"><div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">26% of everything committed was inherited</span><br><b>36 of 139 points</b> across the series were already open when the sprint started. Planning that treats the whole commitment as new work is planning with room the team does not have.</div><div class="line" style="border-color:var(--warning)"><span class="vs-tag">36 in, 88 out</span><br>Over the series the team hands on more than it takes in, so the carry-over is still growing.</div><div class="line" style="border-color:var(--risk)"><span class="vs-tag">Heaviest: EDW-Sprint 21-26</span><br>Started with <b>24 points</b> already open, inherited from EDW-Sprint 20-26.</div></div></div><div class="infopanel ip-amber"><b>The team changed how it works at EDW-Sprint 22-26 on 2026-09-14.</b> Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover. Spillover rises from this sprint on. That is the measurement being corrected, not delivery getting worse: the same work was always unfinished, it was just leaving the sprint before anyone counted it. <a href="https://wellfit.atlassian.net/wiki/spaces/EDW/pages/3747938305" style="color:inherit">Practice changes &rarr;</a></div><div class="infopanel ip-amber">Inherited work is counted at day 1 only. Something pulled in mid-sprint from an older sprint is scope change, not inheritance, and shows in the Added column instead.</div></div>
- <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
-  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
-  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
- </div>
+ <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div><h2>Scope grows <b>1.45×</b> between day 1 and the end of a sprint, and most of what arrives is not reactive work.</h2><p>A service team cannot plan every request: urgent work lands mid-sprint, which is exactly what Planned vs Unplanned exists to measure, so some scope growth is expected. The question is how much of it was genuinely unplannable. Over the <b>8</b> sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">0% to 58%</span> of everything added after day 1, with a median of <b>14%</b>. The rest could have been on the board from the start.</p></div>
  <div class="cmpcard">
   <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
   <div class="cmpgrid">
@@ -655,39 +734,10 @@
 
 </section>
 <section class="panel" id="act">
-  <div class="sectit">Findings &amp; retro</div>
-  <div class="secsub">What the data shows, as input for the team's conversation.</div>
-  <div class="insightbox"><div class="k">Observation of the month</div>
-   <h2>60 items closed over 2 sprints, 30.0 per sprint against 14.5 in R9.04.</h2>
-   <p>The references we measure against — 28 deliveries a month, 45 points a sprint, WIP of 12/6/18 — were set with a 4-dev team in Q1. Since then Harisha and Shruti joined and Dipika left. Comparing against those figures says more about the baseline than about the team.</p>
-  </div>
-  <div class="cmpcard">
-     <div class="cmphead"><h3>No unplanned-work data</h3></div>
-     <div class="nodata"><span class="big">0 labels</span>across 60 deliveries this release</div>
-     <div class="fnote">Zero labels across 60 deliveries describes the labeling, not the work. Without this label the predictability metric stops existing, and it is the only one that explains why a month with good throughput can still be unstable.</div>
-   </div>
-  <div class="sectit" style="font-size:20px;margin-top:28px">Directions to explore</div>
-  <div class="secsub">Ideas to validate, adapt or set aside depending on the real context.</div>
-  <div class="findkey"><span><i class="fk p-amber"></i><b>Action</b> &mdash; someone has to do something</span><span><i class="fk p-blue"></i><b>Discuss</b> &mdash; bring it to the team; no owner yet</span></div><div class="act"><div class="pri p-amber"></div><div class="inner">
-   <div class="atop"><h4>Bring back the Unplanned label</h4><span class="pill pill-amber">Action</span></div>
-   <p>Without it there is no predictability metric. It is the same follow-up left open in the May retro, and in August it cut the series entirely.</p>
-   <div class="owner">Follow-up by: <b>EDW</b></div></div></div><div class="act"><div class="pri p-amber"></div><div class="inner">
-   <div class="atop"><h4>6 items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
-   <p>Of the 60 items closed this release, 6 (10%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining 54. In R9.04 it was 4 of 29 (14%). It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
-   <div class="owner">To review with: <b>EDW</b></div></div></div><div class="act"><div class="pri p-blue"></div><div class="inner">
-   <div class="atop"><h4>Recalculate the baselines with the current team</h4><span class="pill pill-blue">Discuss</span></div>
-   <p>Throughput and Velocity have been out of range for months, and WIP has already been recalculated to 5 devs. The guide asks for a quarterly review; the Q2 report in this series proposes the new starting point.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div><div class="act"><div class="pri p-blue"></div><div class="inner">
-   <div class="atop"><h4>Look at the sustained 100% completion</h4><span class="pill pill-blue">Discuss</span></div>
-   <p>Five sprints in a row closing everything committed, with no spillover. It could be conservative planning, or tickets closed right at the sprint edge. The team is the one who knows which, and the answer changes how reliable Velocity is for planning.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
-  <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
-  <div class="retro"><h4>Questions for the team</h4><ul>
-   <li>Do we close at 100% because we commit to less, or because we close tickets to make the sprint cut-off?</li>
-   <li>With 5 devs today, how many deliveries a month and how many points a sprint are a realistic commitment?</li>
-   <li>What did we open this month that ended as Won't Do, and what was missing when it came in?</li>
-   <li>What would make the <i>Unplanned</i> label get applied on its own, without depending on someone remembering?</li>
-  </ul></div>
+<div class="sectit">Findings &amp; retro</div>
+<div class="secsub">Each finding below is a rule over the series, not a note written for this page. It appears when it becomes true, carries the release it first became true in, and disappears when the team fixes it. Evaluated as of R9.05, so this page says what was true then.</div>
+<div class="act"><div class="pri p-red"></div><div class="inner"><div class="atop"><h4>A third of committed work never finishes in its sprint</h4><span class="pill pill-red">Risk</span></div><p>Every sprint reads as complete because the work is taken out before the sprint closes, not because it was done. The burndown cannot show this and the commitment number cannot either.</p><div class="owner" style="font-weight:400">Points that left the sprint over every point it held: <b>31%</b>.</div><div class="owner">first true in R9.04 · 2 releases running</div></div></div>
+<div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div><div class="secsub">One question per finding above. When a finding clears, its question stops being asked.</div><div class="retro"><h4>Questions for the team</h4><ul><li>Do we close at 100% because we commit to less, or because work leaves the sprint before anyone counts it?</li></ul></div>
 </section></div></main>
 <footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
 <script>
@@ -709,10 +759,30 @@ function currentTab(){const a=document.querySelector('.tab.active');return a?a.d
 document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListener('click',e=>{
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
-Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
+Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;
+Chart.defaults.color=__tok('--wf-muted','var(--wf-muted)');
 Chart.defaults.maintainAspectRatio=false;
 const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
-const gridc='#eef2f8';
+let gridc=__tok('--grid','var(--grid)');
+/* A chart is drawn once with the colours it read. When the theme changes it has to
+   read them again, so every instance is re-tinted and redrawn in place rather than
+   rebuilt -- rebuilding would lose the zoom state and the tooltips. */
+window.__themeRedraw=function(){
+  if(!window.Chart||!Chart.instances)return;
+  const mut=__tok('--wf-muted','var(--wf-muted)'), grd=__tok('--grid','var(--grid)');
+  Chart.defaults.color=mut; gridc=grd;
+  Object.values(Chart.instances).forEach(c=>{
+    const sc=(c.options&&c.options.scales)||{};
+    Object.values(sc).forEach(a=>{
+      if(a&&a.grid&&a.grid.color)a.grid.color=grd;
+      if(a&&a.ticks)a.ticks.color=mut;
+      if(a&&a.title)a.title.color=mut;
+    });
+    if(c.options&&c.options.plugins&&c.options.plugins.legend&&c.options.plugins.legend.labels)
+      c.options.plugins.legend.labels.color=mut;
+    c.update('none');
+  });
+};
 
 new Chart(document.getElementById('donut'),{type:'doughnut',
  data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[60,4],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
@@ -767,14 +837,14 @@ const bandRef={id:'bandRef',afterDraw(c){const{ctx,chartArea:{left,right},scales
  ctx.setLineDash([]);ctx.fillStyle='#4FA800';ctx.font='600 10px DM Sans';ctx.textAlign='right';
  ctx.fillText('expected 9-55',right-4,yh-4);ctx.restore();}};
 new Chart(document.getElementById('cBand'),{type:'bar',
- data:{labels:["R9.04", "R9.05", "R9.06", "R9.07"],datasets:[{label:'Items closed',data:[14.5, 30.0, 38.0, 28.5],backgroundColor:["#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda"],borderRadius:6}]},
+ data:{labels:["R9.04", "R9.05", "R9.06", "R9.07"],datasets:[{label:'Items closed',data:[14.5, 30.0, 38.0, 28.5],backgroundColor:["var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
  plugins:[bandRef]});
 const chg3={id:'chg3',afterDraw(c){const{ctx,chartArea:{top,bottom},scales:{x}}=c;[{"i": 10, "t": "practice changed"}].forEach(m=>{const xp=x.getPixelForValue(m.i)-x.width/x.ticks.length/2;ctx.save();ctx.strokeStyle='#ED7D31';ctx.lineWidth=1.5;ctx.setLineDash([4,3]);ctx.beginPath();ctx.moveTo(xp,top);ctx.lineTo(xp,bottom);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#ED7D31';ctx.font='700 9.5px DM Sans';ctx.textAlign='left';ctx.fillText(m.t,xp+4,top+10);ctx.restore();});}};
 const spillRef={id:'spillRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
- const yp=y.getPixelForValue(36.2);ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ const yp=y.getPixelForValue(36.2);ctx.save();ctx.strokeStyle='var(--wf-muted)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
- ctx.fillStyle='#626c84';ctx.font='600 10px DM Sans';ctx.textAlign='right';
+ ctx.fillStyle='var(--wf-muted)';ctx.font='600 10px DM Sans';ctx.textAlign='right';
  ctx.fillText('series average 36%',right-4,yp-4);ctx.restore();}};
 new Chart(document.getElementById('cSpill'),{type:'bar',
  data:{labels:["S12-26", "S13-26", "S14-26", "S15-26", "S16-26", "S17-26", "S18-26", "S19-26", "S20-26", "S21-26", "S22-26"],datasets:[{label:'Spillover rate',data:[27.9, 35.6, 32.0, 29.1, 35.0, 37.4, 28.3, 50.9, 25.9, 41.0, 71.4],backgroundColor:["#65B2D5", "#ED7D31", "#65B2D5", "#65B2D5", "#ED7D31", "#ED7D31", "#65B2D5", "#d64550", "#65B2D5", "#ED7D31", "#d64550"],borderRadius:5}]},
@@ -792,13 +862,13 @@ new Chart(document.getElementById('bd0'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[70, 74, 82, 82, 83, 83, 83, 78, 81, 98, 106, 101, 101, 104, 104],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[64, 61, 69, 57, 57, 57, 49, 39, 37, 54, 54, 43, 43, 31, 16],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[70.0, 65.0, 60.0, 55.0, 50.0, 45.0, 40.0, 35.0, 30.0, 25.0, 20.0, 15.0, 10.0, 5.0, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[69, 66, 74, 62, 62, 62, 54, 49, 42, 59, 59, 53, 53, 41, 26],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[70.0, 65.0, 60.0, 55.0, 50.0, 45.0, 40.0, 35.0, 30.0, 25.0, 20.0, 15.0, 10.0, 5.0, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[69, 66, 74, 62, 62, 62, 54, 49, 42, 59, 59, 53, 53, 41, 26],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd1'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[71, 71, 79, 87, 97, 97, 97, 97, 108, 116, 121, 124, 124, 124, 134],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[58, 58, 66, 69, 63, 61, 61, 58, 66, 74, 66, 55, 55, 55, 45],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[71.0, 65.9, 60.9, 55.8, 50.7, 45.6, 40.6, 35.5, 30.4, 25.4, 20.3, 15.2, 10.1, 5.1, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[66, 66, 74, 77, 68, 66, 66, 63, 71, 79, 71, 60, 60, 60, 45],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[71.0, 65.9, 60.9, 55.8, 50.7, 45.6, 40.6, 35.5, 30.4, 25.4, 20.3, 15.2, 10.1, 5.1, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[66, 66, 74, 77, 68, 66, 66, 63, 71, 79, 71, 60, 60, 60, 45],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('cTis'),{type:'bar',
  data:{labels:["R9.04", "R9.05", "R9.06", "R9.07"],datasets:[{label:"Ready for Development",data:[1.49, 1.04, 0.97, 0.85],backgroundColor:'#65B2D5',borderRadius:3},{label:"In Development",data:[0.86, 1.67, 1.9, 0.66],backgroundColor:'#007CBC',borderRadius:3},{label:"Awaiting Review",data:[3.9, 0.61, 1.35, 1.0],backgroundColor:'#ED7D31',borderRadius:3}]},

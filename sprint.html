@@ -3,7 +3,46 @@
 <title>EDW &middot; Active sprint</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
-:root{--wf-blue:#007CBC;--wf-blue-d:#005f91;--wf-blue-l:#65B2D5;--wf-blue-bg:#e5f2f8;--wf-ink:#32373c;--wf-muted:#626c84;--line:#e2e8f0;--bg:#f5f8fb;--card:#fff;--shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);--healthy:#4FA800;--warning:#ED7D31;--risk:#d64550}
+:root{
+    --wf-blue:#007CBC; --wf-blue-d:#005f91; --wf-blue-l:#65B2D5; --wf-blue-bg:#e5f2f8;
+    --wf-green:#4FA800; --wf-ink:#32373c; --wf-muted:#626c84; --wf-muted2:#69727d;
+    --line:#e2e8f0; --bg:#f5f8fb; --card:#ffffff;
+    --shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);
+    --healthy:#4FA800; --warning:#ED7D31; --risk:#d64550;
+    --healthy-bg:var(--healthy-bg); --warning-bg:var(--warning-bg); --risk-bg:var(--risk-bg);
+    /* surfaces and rules that used to be literals */
+    --card2:#f6f9fd;      /* tiles, table stripes, the inset panels */
+    --card3:#f4f6fa;      /* the flat "no data" blocks */
+    --tint:#fbfcfe;       /* goal boxes, dashed insets */
+    --line2:#f0f3f8;      /* the faint row rule inside tables */
+    --edge:#c3cdda;       /* chart axes, disabled chips, dashed guides */
+    --grid:#eef2f8;       /* chart gridlines and the palest chips */
+    --muted3:#8b95a8;     /* the third level of grey */
+    --muted4:#9aa6b8;     /* and the fourth */
+    --onbrand:#ffffff;    /* text that sits on the brand blue, both themes */
+    --hdr-sub:#cfe7f3;    /* the header's own subdued text */
+    --pillbg:#eef1f6; --pillfg:#5a6577;
+    color-scheme: light;
+  }
+  /* Dark is the same report with the surfaces inverted and the brand kept. The
+     status colours are lifted, not changed: the same green, amber and red read
+     darker on a dark ground, so each gets a touch more light and its tint goes
+     from a pale wash to a deep one. */
+  :root[data-theme="dark"]{
+    --wf-blue:#3aa3dd; --wf-blue-d:#8fd0f2; --wf-blue-l:#4f8db0; --wf-blue-bg:#16394e;
+    --wf-green:#6cc32a; --wf-ink:#e6ebf2; --wf-muted:#a3aec2; --wf-muted2:#939eb2;
+    --line:#2b3546; --bg:#121722; --card:#1a2130;
+    --shadow:0 1px 3px rgba(0,0,0,.35),0 6px 22px rgba(0,0,0,.30);
+    --healthy:#6cc32a; --warning:#f39c3d; --risk:#f0636f;
+    --healthy-bg:#1d3318; --warning-bg:#3a2a17; --risk-bg:#3a1f22;
+    --healthy-fg:#9ade5e; --warning-fg:#f0ab5e; --risk-fg:#ff9aa4;
+    --card2:#212a3b; --card3:#222b3d; --tint:#1e2636;
+    --line2:#252e40; --edge:#3c4759; --grid:#242d3e;
+    --muted3:#8792a6; --muted4:#7b8698;
+    --onbrand:#0d1420; --hdr-sub:#bcd9ea;
+    --pillbg:#26303f; --pillfg:#a3aec2;
+    color-scheme: dark;
+  }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55}
 .wrap{max-width:880px;margin:0 auto;padding:0 24px}
@@ -11,7 +50,7 @@ header{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;padding:46p
 header::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
 .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
 header h1{font-weight:800;font-size:38px;margin:8px 0 6px;letter-spacing:-.02em}
-header .sub{color:#cfe7f3;font-size:15px;max-width:560px}
+header .sub{color:var(--hdr-sub);font-size:15px;max-width:560px}
 main{padding:40px 0 70px}
 .yeartag{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--wf-muted);margin:8px 0 14px}
 .rcard{display:flex;align-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;box-shadow:var(--shadow);margin-bottom:14px;text-decoration:none;color:inherit;transition:.15s}
@@ -22,30 +61,30 @@ main{padding:40px 0 70px}
 .rcard .body{flex:1}.rcard .body h3{font-size:18px;font-weight:700;color:var(--wf-blue-d)}
 .rcard .body p{font-size:13.5px;color:var(--wf-muted);margin-top:3px}
 .rcard .arrow{color:var(--wf-blue);font-size:22px;font-weight:700}
-.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;background:#fdeee3;color:#c0641f}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;background:var(--warning-bg);color:var(--warning-fg)}
 footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);font-size:12px;text-align:center}
 
 .sprintsec{margin:14px 0 0;padding-top:12px;border-top:1px solid var(--line)}
 .sprintsec>.sk{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;margin-bottom:7px}
-.tisbar{display:flex;height:26px;border-radius:7px;overflow:hidden;background:#eef2f8;margin:4px 0 8px}
+.tisbar{display:flex;height:26px;border-radius:7px;overflow:hidden;background:var(--grid);margin:4px 0 8px}
 .tisbar span{display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;min-width:2px;
  border-right:2px solid var(--card);white-space:nowrap;overflow:hidden}
 .tisbar span:last-child{border-right:0}
 .tiskey{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:11.5px;color:var(--wf-muted)}
 .tiskey b{color:var(--wf-text)}
 .tisdot{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
-.goalbox{border:1px dashed var(--line);border-radius:10px;padding:11px 13px;background:#fbfcfe;font-size:13px;color:var(--wf-muted)}
+.goalbox{border:1px dashed var(--line);border-radius:10px;padding:11px 13px;background:var(--tint);font-size:13px;color:var(--wf-muted)}
 .goalbox b{color:var(--wf-text)}
 .healthrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:8px 0 14px}
-.hcell{background:#f6f9fd;border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.hcell{background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .hcell .hk{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
 .hcell .hv{font-size:23px;font-weight:800;line-height:1.25;color:var(--wf-blue-d)}
 .hcell .hn{font-size:11.5px;color:var(--wf-muted)}
-.activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,#f4f9fd,var(--card) 90px);margin-bottom:22px}
+.activewrap{border:2px solid var(--wf-blue);border-radius:16px;padding:16px;background:linear-gradient(180deg,var(--card2),var(--card) 90px);margin-bottom:22px}
 .activetag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;
  color:#fff;background:var(--wf-blue);padding:4px 10px;border-radius:999px;margin-bottom:10px}
 .bdzoom{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s;display:block}
-.bdzoom:hover{background:#f7fafd}
+.bdzoom:hover{background:var(--card2)}
 .bdzoom::after{content:"Expand";position:absolute;top:4px;right:6px;font-size:10.5px;font-weight:700;
  color:var(--wf-blue-d);background:#e5f2f8;border:1px solid #bcdcec;padding:2px 7px;border-radius:999px;opacity:0;transition:opacity .15s}
 .bdzoom:hover::after,.bdzoom:focus-visible::after{opacity:1}
@@ -54,14 +93,14 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .lvbox{background:var(--card);border-radius:16px;width:min(1000px,96vw);padding:16px 18px 20px;box-shadow:0 18px 60px rgba(0,0,0,.3)}
 .lvhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .lvhead h4{font-size:16px;font-weight:700;color:var(--wf-blue-d)}
-.lvclose{border:0;background:#eef2f8;color:var(--wf-muted);font-size:20px;line-height:1;width:30px;height:30px;border-radius:9px;cursor:pointer}
-.lvclose:hover{background:#e2e8f0}
+.lvclose{border:0;background:var(--grid);color:var(--wf-muted);font-size:20px;line-height:1;width:30px;height:30px;border-radius:9px;cursor:pointer}
+.lvclose:hover{background:var(--line)}
 @media(max-width:760px){.lvmodal{padding:12px}.bdzoom::after{display:none}}
 .agwrap{overflow-x:auto}
 .agtab{width:100%;border-collapse:collapse;font-size:12.5px}
 .agtab th{text-align:left;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--wf-muted);
  font-weight:700;padding:0 10px 6px 0;border-bottom:1px solid var(--line);white-space:nowrap}
-.agtab td{padding:7px 10px 7px 0;border-bottom:1px solid #eef2f8;vertical-align:middle}
+.agtab td{padding:7px 10px 7px 0;border-bottom:1px solid var(--grid);vertical-align:middle}
 .agtab tr:last-child td{border-bottom:0}
 .agst{font-weight:600;white-space:nowrap}
 .agnum{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
@@ -77,11 +116,11 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .bhstate{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:800;letter-spacing:.06em;
  text-transform:uppercase;padding:3px 10px;border-radius:999px;margin-bottom:6px}
 .bhstate .ic{font-size:12px;line-height:1}
-.bh-skinny{background:#fdecee;color:#a32b38}
-.bh-shape{background:#eaf7e3;color:#2f6a12}
-.bh-fat{background:#fdeee3;color:#b2601d}
+.bh-skinny{background:var(--risk-bg);color:var(--risk-fg)}
+.bh-shape{background:var(--healthy-bg);color:var(--healthy-fg)}
+.bh-fat{background:var(--warning-bg);color:var(--warning-fg)}
 .bhband{flex:1;min-width:240px}
-.bhzones{display:flex;height:12px;border-radius:7px;overflow:hidden;background:#eef2f8}
+.bhzones{display:flex;height:12px;border-radius:7px;overflow:hidden;background:var(--grid)}
 .bhzones i{display:block;height:100%;border-right:2px solid var(--card)}
 .bhzones i:last-child{border-right:0}
 .bhmark{position:relative;height:16px;margin-top:-14px}
@@ -89,7 +128,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  background:var(--wf-ink);box-shadow:0 0 0 2px var(--card)}
 .bhticks{display:flex;justify-content:space-between;font-size:10.5px;color:var(--wf-muted);margin-top:6px}
 .dor{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:10px}
-.dor .drow{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-bottom:1px solid #eef2f8;font-size:12.5px}
+.dor .drow{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-bottom:1px solid var(--grid);font-size:12.5px}
 .dor .drow:last-child{border-bottom:0}
 .dor .dn{font-weight:800;min-width:74px;font-variant-numeric:tabular-nums}
 .dor .dwhy{color:var(--wf-muted);font-size:11.5px}
@@ -112,12 +151,12 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  padding:13px 18px;border-radius:12px;margin-top:22px;transition:.15s;box-shadow:var(--shadow)}
 .adminlink:hover{border-color:var(--wf-blue-l);box-shadow:0 3px 12px rgba(0,124,188,.12)}
 .adminlink b{color:var(--wf-blue-d);font-weight:700;white-space:nowrap}
-.adminlink .fixdot{width:9px;height:9px;border-radius:50%;background:#c3cdda;flex:0 0 auto}
+.adminlink .fixdot{width:9px;height:9px;border-radius:50%;background:var(--edge);flex:0 0 auto}
 .adminlink.has-risk .fixdot{background:var(--risk)}
 .adminlink.has-warn .fixdot{background:var(--warning)}
 .adminlink.has-none .fixdot{background:var(--healthy)}
 .adminlink .fixn{flex:1;min-width:0}
-.adminlink .fixtop{color:#8b95a8;font-size:12.5px;margin-left:10px}
+.adminlink .fixtop{color:var(--muted3);font-size:12.5px;margin-left:10px}
 .adminlink .fixn .fixb{color:var(--risk);font-weight:700}
 .adminlink .fixar{color:var(--wf-blue);font-size:18px;font-weight:700;flex:0 0 auto}
 @media(max-width:560px){
@@ -155,10 +194,10 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  border-radius:999px;white-space:nowrap}
 .fresh i{width:7px;height:7px;border-radius:50%;display:block}
 .fresh b{font-weight:700}
-.fresh-ok{background:#eaf7e3;color:#2f6a12}      .fresh-ok i{background:var(--healthy)}
-.fresh-warn{background:#fdeee3;color:#b2601d}    .fresh-warn i{background:var(--warning)}
-.fresh-bad{background:#fdecee;color:#a32b38}     .fresh-bad i{background:var(--risk)}
-.fresh-wait{background:#eef2f8;color:#5a6577}    .fresh-wait i{background:#9aa6b8}
+.fresh-ok{background:var(--healthy-bg);color:var(--healthy-fg)}      .fresh-ok i{background:var(--healthy)}
+.fresh-warn{background:var(--warning-bg);color:var(--warning-fg)}    .fresh-warn i{background:var(--warning)}
+.fresh-bad{background:var(--risk-bg);color:var(--risk-fg)}     .fresh-bad i{background:var(--risk)}
+.fresh-wait{background:var(--grid);color:var(--pillfg)}    .fresh-wait i{background:var(--muted4)}
 /* This was a 13px underlined link at the foot of the card, and it was the only way
    into the sprint page. It is the most-used destination on the site, so it looks
    like a destination now. */
@@ -172,14 +211,23 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
 .projpill{font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
  padding:3px 9px;border-radius:999px}
 
+ /* Theme + language switch. Sits in the header, top right, on every page. */
+ .prefs{position:absolute;top:18px;right:24px;display:flex;gap:8px;z-index:5}
+ .prefbtn{appearance:none;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.12);
+   color:#fff;font-family:'DM Sans';font-size:12px;font-weight:700;letter-spacing:.04em;
+   padding:6px 12px;border-radius:999px;cursor:pointer;transition:.15s;display:inline-flex;
+   align-items:center;gap:6px;backdrop-filter:blur(6px)}
+ .prefbtn:hover{background:rgba(255,255,255,.24);border-color:rgba(255,255,255,.6)}
+ @media(max-width:700px){.prefs{top:12px;right:16px}.prefbtn{padding:5px 10px;font-size:11px}}
+
  /* The reports lay out at 1180 and these pages were at 880, so moving between
     them shifted the whole page. They carry the same strip too, which does not fit
     880 once it has both buttons on it. */
  .wrap{max-width:1180px}
- .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb{font-size:12.5px;color:var(--hdr-sub);margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
- .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav{background:var(--card);border-bottom:1px solid var(--line)}
  .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
  .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
  .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
@@ -187,7 +235,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
  .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
- .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:var(--card);display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
  /* These were a 12.5px bare link pushed to the edge. They are the way off the
@@ -195,7 +243,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
  .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
    padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
-   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+   background:var(--card);border:1px solid var(--line);white-space:nowrap;transition:.15s}
  .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
  .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* The strip is longer now that the active sprint is in it. On a phone it scrolls
@@ -207,7 +255,7 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
   .rgroup{margin-left:12px;padding-top:0}
  }
 
- .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
+ .tabs{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);
    border-bottom:1px solid var(--line)}
  .tabs .wrap{display:flex;gap:4px}
  .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;
@@ -241,7 +289,48 @@ footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);fon
  }
 </style></head>
 <body>
-<header><div class="wrap">
+<script>
+/* Theme switch. The report is one token set; dark is those tokens redefined, so the
+   only thing this does is set an attribute and remember the choice. It follows the
+   operating system until somebody chooses, and then it stops following it -- a person
+   who picked light at 9pm meant it. */
+(function () {
+  var KEY = 'edwTheme';
+  var root = document.documentElement;
+  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function sysDark() {
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }
+  function apply(t, save) {
+    root.setAttribute('data-theme', t);
+    if (save) { try { localStorage.setItem(KEY, t); } catch (e) {} }
+    var b = document.getElementById('themebtn');
+    if (b) {
+      b.innerHTML = (t === 'dark' ? '\u2600\ufe0e Light' : '\u263D\ufe0e Dark');
+      b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+    }
+    // charts and hand-drawn SVG read the tokens once, so they are told to redraw
+    if (window.__themeRedraw) { try { window.__themeRedraw(); } catch (e) {} }
+  }
+  apply(stored() || (sysDark() ? 'dark' : 'light'), false);
+  if (window.matchMedia) {
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var onSys = function (e) { if (!stored()) apply(e.matches ? 'dark' : 'light', false); };
+    if (mq.addEventListener) mq.addEventListener('change', onSys);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest && e.target.closest('#themebtn');
+    if (!b) return;
+    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);
+  });
+  // tokens, for anything that draws rather than styles
+  window.__tok = function (name, fallback) {
+    var v = getComputedStyle(root).getPropertyValue(name);
+    return (v && v.trim()) || fallback;
+  };
+})();
+</script>
+<header><div class="wrap"><div class="prefs"><button class="prefbtn" id="themebtn" type="button">&#9789;&#65038; Dark</button></div>
 <div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Active sprint</div>
 <div class="eyebrow">Enterprise Data Warehouse &middot; Live from Jira</div>
 <h1>Active sprint</h1>
@@ -382,14 +471,14 @@ every refresh. It gets a verdict in the release report once it closes, not befor
     for (g = 0; g <= ticks; g++) {
       var v = hi * g / ticks, y = Y(v).toFixed(1);
       grid += '<line x1="' + L + '" y1="' + y + '" x2="' + (W - R) + '" y2="' + y +
-        '" stroke="#e2e8f0" stroke-width="1"/>';
+        '" style="stroke:var(--line)" stroke-width="1"/>';
       lab += '<text x="' + (L - 6) + '" y="' + (+y + 3.5) +
-        '" text-anchor="end" font-size="10" fill="#626c84">' + Math.round(v) + '</text>';
+        '" text-anchor="end" font-size="10" style="fill:var(--wf-muted)">' + Math.round(v) + '</text>';
     }
     var todayX = X(burn.length - 1);
     var area = (scope && scope.length)
       ? '<path d="' + path(scope) + ' L' + todayX.toFixed(1) + ',' + Y(0) +
-        ' L' + X(0).toFixed(1) + ',' + Y(0) + ' Z" fill="rgba(195,205,218,.25)"/>' : '';
+        ' L' + X(0).toFixed(1) + ',' + Y(0) + ' Z" style="fill:color-mix(in srgb, var(--edge) 28%, transparent)"/>' : '';
     var ideal = 'M' + X(0).toFixed(1) + ',' + Y(burn[0]).toFixed(1) +
                 ' L' + X(slots).toFixed(1) + ',' + Y(0).toFixed(1);
 
@@ -402,24 +491,24 @@ every refresh. It gets a verdict in the release report once it closes, not befor
       (big ? 'min(62vh,420px)' : (nohead ? 'auto' : '210px')) + '" ' +
       'role="img" aria-label="Sprint burndown, story points remaining by day">' +
       grid + lab + area +
-      '<path d="' + ideal + '" stroke="#c3cdda" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
+      '<path d="' + ideal + '" style="stroke:var(--edge)" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
       (scope && scope.length ? '<path d="' + path(scope) +
-        '" stroke="#9aa6b8" stroke-width="2" fill="none"/>' : '') +
+        '" style="stroke:var(--muted4)" stroke-width="2" fill="none"/>' : '') +
       '<path d="' + path(burn) + '" stroke="#007CBC" stroke-width="3" fill="none" stroke-linejoin="round"/>' +
       '<line x1="' + todayX.toFixed(1) + '" y1="' + T + '" x2="' + todayX.toFixed(1) +
       '" y2="' + Y(0) + '" stroke="#ED7D31" stroke-width="1" stroke-dasharray="3 3"/>' +
       '<text x="' + (todayX + 4).toFixed(1) + '" y="' + (T + 9) +
       '" font-size="10" fill="#ED7D31" font-weight="700">today</text>' +
       '<line x1="' + L + '" y1="' + Y(0) + '" x2="' + (W - R) + '" y2="' + Y(0) +
-      '" stroke="#c3cdda" stroke-width="1"/>' +
-      '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" fill="#626c84">' + day(s.start) + '</text>' +
+      '" style="stroke:var(--edge)" stroke-width="1"/>' +
+      '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" style="fill:var(--wf-muted)">' + day(s.start) + '</text>' +
       '<text x="' + (W - R) + '" y="' + (H - 12) +
-      '" text-anchor="end" font-size="10" fill="#626c84">' + day(s.end) + '</text>' +
+      '" text-anchor="end" font-size="10" style="fill:var(--wf-muted)">' + day(s.end) + '</text>' +
       '</svg>' + (big ? '' : '</div>') +
       '<div class="tiskey" style="margin-top:2px">' +
       '<span><i class="tisdot" style="background:#007CBC"></i>Remaining</span>' +
-      '<span><i class="tisdot" style="background:#9aa6b8"></i>Total scope</span>' +
-      '<span><i class="tisdot" style="background:#c3cdda"></i>Ideal burn</span>' +
+      '<span><i class="tisdot" style="background:var(--muted4)"></i>Total scope</span>' +
+      '<span><i class="tisdot" style="background:var(--edge)"></i>Ideal burn</span>' +
       '</div></div>';
   }
 
