@@ -74,15 +74,25 @@ def rlink(key, icon, label):
 
 
 def dashlink():
-    """The team's Jira dashboard, when it has one. A team that has not set one
-    gets no link at all -- pointing it at another team's dashboard is the same
-    class of mistake as reading another team's capacity page."""
-    url = (TEAM.get("dashboard") or "").strip()
-    if not url:
-        return ""
-    lab = (TEAM.get("dashboard_label") or "").strip() or f'{TEAM["key"]} board'
-    return (f'<a class="rlink" href="{url}" target="_blank">'
-            f'<span class="ico">&#128200;</span> {lab}</a>')
+    """The team's Jira dashboards. A team that has set none gets no link at all --
+    pointing it at another team's dashboard is the same class of mistake as reading
+    another team's capacity page. A team with more than one gets one link each:
+    DS, for instance, watches flow on a Kanban board and plans on a Scrum board,
+    and collapsing that into a single "the dashboard" would be a lie about how the
+    team works. TEAM["dashboards"] is a list of {url, label}; the older single
+    dashboard/dashboard_label pair still works and is read as a list of one."""
+    ds = list(TEAM.get("dashboards") or [])
+    if not ds and (TEAM.get("dashboard") or "").strip():
+        ds = [{"url": TEAM["dashboard"], "label": TEAM.get("dashboard_label")}]
+    out = []
+    for d in ds:
+        url = (d.get("url") or "").strip()
+        if not url:
+            continue
+        lab = (d.get("label") or "").strip() or f'{TEAM["key"]} board'
+        out.append(f'<a class="rlink" href="{url}" target="_blank">'
+                   f'<span class="ico">&#128200;</span> {lab}</a>')
+    return "\n    ".join(out)
 
 
 def short_sprint(n):
