@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T15:30:23Z",
+ "generated": "2026-09-17T15:38:50Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,13 +357,13 @@
   "day": 4,
   "days": 14,
   "n": 10,
-  "done_now": 13,
+  "done_now": 16,
   "committed": 51,
-  "lo": 36,
-  "mid": 43,
-  "hi": 47,
-  "pct": 84,
-  "verdict": "a little short of the commitment",
+  "lo": 45,
+  "mid": 53,
+  "hi": 57,
+  "pct": 104,
+  "verdict": "on track for the commitment",
   "share_mid": 0.299
  },
  "admin": {
@@ -594,19 +594,19 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 29,
-  "items_done": 8,
+  "items_done": 9,
   "committed": 51,
   "final": 56,
-  "completed": 13,
+  "completed": 16,
   "scope_change": 10,
-  "vs_commitment": 25,
+  "vs_commitment": 31,
   "time_elapsed": 22,
   "spill": {
-   "open_items": 14,
-   "open_pts": 41.0,
+   "open_items": 13,
+   "open_pts": 38.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 13.0
+   "done_pts": 16.0
   },
   "recv": {
    "items": 5,
@@ -616,10 +616,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 8,
+   "Closed": 9,
    "Backlog": 4,
    "In Development": 8,
-   "Awaiting Review": 1,
    "Won't Do": 1,
    "Ready for Development": 6
   },
@@ -628,7 +627,7 @@
    49.0,
    44.0,
    43.0,
-   43.0
+   40.0
   ],
   "scope": [
    41.0,
@@ -642,7 +641,7 @@
    49.0,
    44.0,
    43.0,
-   43.0
+   40.0
   ],
   "days": 14,
   "day": 4,
@@ -672,8 +671,8 @@
   "end": "2026-09-27",
   "day": 18,
   "days": 28,
-  "closed": 53,
-  "points": 170,
+  "closed": 54,
+  "points": 173,
   "unplanned": 1,
   "unplanned_pct": 1.9,
   "access_requests": 0,
@@ -692,29 +691,29 @@
    {
     "status": "Ready for Development",
     "open": 21,
-    "med_age": 14.8,
-    "max_age": 191.8,
+    "med_age": 14.9,
+    "max_age": 191.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 2.9,
-    "clear_n": 198
+    "clear_n": 199
    },
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 1.9,
+    "med_age": 2.0,
     "max_age": 19.9,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
     "worst_who": "Jeff Schniederjan",
     "over": 2,
     "clear_med": 2.2,
-    "clear_n": 239
+    "clear_n": 240
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -722,32 +721,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 136
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "WAITING REVIEW",
@@ -762,7 +737,7 @@
     "clear_n": 1
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -770,8 +745,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 1.0,
+    "clear_n": 137
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "In Progress",
