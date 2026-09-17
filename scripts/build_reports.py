@@ -387,30 +387,30 @@ ZOOMCSS = """
  @media(max-width:640px){.sprintdates{margin-left:0;width:100%;white-space:normal}}
 
  .chartbox.zoomable{position:relative;cursor:zoom-in;border-radius:10px;transition:background .15s}
- .chartbox.zoomable:hover{background:#f7fafd}
+ .chartbox.zoomable:hover{background:var(--card2)}
  .chartbox.zoomable::after{content:"Expand";position:absolute;top:6px;right:8px;font-size:10.5px;font-weight:700;
-   letter-spacing:.08em;text-transform:uppercase;color:var(--wf-blue);background:#fff;border:1px solid var(--line);
+   letter-spacing:.08em;text-transform:uppercase;color:var(--wf-blue);background:var(--card);border:1px solid var(--line);
    border-radius:999px;padding:3px 9px;opacity:0;transition:opacity .15s;pointer-events:none}
  .chartbox.zoomable:hover::after{opacity:1}
  .cmodal{position:fixed;inset:0;z-index:200;background:rgba(20,32,44,.68);display:none;
    align-items:center;justify-content:center;padding:28px}
  .cmodal.open{display:flex}
- .cmbox{background:#fff;border-radius:18px;width:min(1180px,100%);height:min(78vh,760px);
+ .cmbox{background:var(--card);border-radius:18px;width:min(1180px,100%);height:min(78vh,760px);
    display:flex;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden}
  .cmhead{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line)}
  .cmhead h4{font-size:17px;font-weight:700;color:var(--wf-blue-d);flex:1;line-height:1.3}
- .cmclose{appearance:none;border:1px solid var(--line);background:#fff;border-radius:9px;width:34px;height:34px;
+ .cmclose{appearance:none;border:1px solid var(--line);background:var(--card);border-radius:9px;width:34px;height:34px;
    font-size:19px;line-height:1;color:var(--wf-muted);cursor:pointer;flex-shrink:0}
- .cmclose:hover{background:#f4f6fa;color:var(--wf-ink)}
+ .cmclose:hover{background:var(--card3);color:var(--wf-ink)}
  .cmbody{flex:1;padding:18px 20px 22px;min-height:0}
  @media(max-width:760px){.cmodal{padding:12px}.cmbox{height:min(88vh,620px)}.chartbox.zoomable::after{display:none}}
 """
 
 NAVCSS = """
- .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb{font-size:12.5px;color:var(--hdr-sub);margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
- .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav{background:var(--card);border-bottom:1px solid var(--line)}
  .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
  .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
  .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
@@ -419,7 +419,7 @@ NAVCSS = """
  .rp.on{background:var(--wf-blue-d);color:#fff;cursor:default}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
  .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
- .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:var(--card);display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
  /* These were a 12.5px bare link pushed to the edge. They are the way off the
@@ -427,7 +427,7 @@ NAVCSS = """
  .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
  .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
    padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
-   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+   background:var(--card);border:1px solid var(--line);white-space:nowrap;transition:.15s}
  .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
  .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* With the active sprint in it the strip no longer fits a phone. It scrolls
@@ -605,9 +605,9 @@ def spark(vals, cur_idx, col="#007CBC", low_good=False):
     dot = ""
     if cur_idx is not None and 0 <= cur_idx < n:
         cx, cy = pts[cur_idx]
-        dot = f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="4" fill="{col}" stroke="#fff" stroke-width="2"/>'
+        dot = f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="4" fill="{col}" style="stroke:var(--card)" stroke-width="2"/>'
     return (f'<svg class="spark" viewBox="0 0 {w} {h}" preserveAspectRatio="none" role="img" aria-hidden="true">'
-            f'<path d="{d}" fill="none" stroke="#c3cdda" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
+            f'<path d="{d}" fill="none" style="stroke:var(--edge)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>'
             f'{dot}</svg>')
 
 # ---------------------------------------------------------------- sprint detail sections
@@ -633,7 +633,7 @@ def tis_block(name):
         pct = 100*med/total
         label = f"{med:.1f}d" if pct > 11 else ""
         bars += f'<span style="width:{pct:.1f}%;background:{STCOL[st]}">{label}</span>'
-        keys += f'<span><i class="tisdot" style="background:{STCOL[st]}"></i>{st} <b>{med:.1f}d</b> <i style="font-style:normal;color:#9aa6b8">({n} items)</i></span>'
+        keys += f'<span><i class="tisdot" style="background:{STCOL[st]}"></i>{st} <b>{med:.1f}d</b> <i style="font-style:normal;color:var(--muted4)">({n} items)</i></span>'
     slow = max(parts, key=lambda x: x[1])
     note = (f'The queue before development is where items wait longest — a median of {slow[1]:.1f} days in <i>{slow[0]}</i>.'
             if slow[0] == "Ready for Development" else
@@ -683,10 +683,10 @@ def tis_flow_block(mk):
     for st, med, n in parts:
         pct = 100 * med / total
         bars += ('<span style="width:%.1f%%;background:%s">%s</span>'
-                 % (pct, STCOL.get(st, "#c3cdda"), (f"{med:.1f}d" if pct > 11 else "")))
+                 % (pct, STCOL.get(st, "var(--edge)"), (f"{med:.1f}d" if pct > 11 else "")))
         keys += ('<span><i class="tisdot" style="background:%s"></i>%s <b>%.1fd</b> '
-                 '<i style="font-style:normal;color:#9aa6b8">(%d items)</i></span>'
-                 % (STCOL.get(st, "#c3cdda"), st, med, n))
+                 '<i style="font-style:normal;color:var(--muted4)">(%d items)</i></span>'
+                 % (STCOL.get(st, "var(--edge)"), st, med, n))
     slow = max(parts, key=lambda x: x[1])
     share = 100 * slow[1] / total
     if slow[0] == "Ready for Development":
@@ -723,7 +723,7 @@ def tis_trend_card():
         if not any(vals):
             continue
         ds.append("{label:%s,data:%s,backgroundColor:'%s',borderRadius:3}"
-                  % (json.dumps(st), json.dumps(vals), STCOL.get(st, "#c3cdda")))
+                  % (json.dumps(st), json.dumps(vals), STCOL.get(st, "var(--edge)")))
     if not ds:
         return "", ""
     js = f"""
@@ -771,7 +771,7 @@ def dist_block(name):
     bars, keys = "", ""
     for st, n in order:
         pct = 100*n/tot
-        col = STCOL.get(st, "#c3cdda")
+        col = STCOL.get(st, "var(--edge)")
         bars += f'<span style="width:{pct:.1f}%;background:{col}">{n if pct>7 else ""}</span>'
         keys += f'<span><i class="tisdot" style="background:{col}"></i>{st} <b>{n}</b></span>'
     return (f'<div class="sprintsec"><div class="sk">Work distribution &middot; {tot} items</div>'
@@ -827,8 +827,8 @@ REVCSS = """
  .revchip{display:inline-flex;align-items:center;gap:8px;padding:8px 15px;border-radius:999px;
           font-weight:700;font-size:13.5px;letter-spacing:.01em;line-height:1}
  .revchip .ic{font-size:13px;line-height:1}
- .revchip.pend{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:#e9f4fa}
- .revchip.ok{background:rgba(126,217,181,.20);border:1px solid rgba(126,217,181,.55);color:#d6f5e8}
+ .revchip.pend{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.34);color:var(--wf-blue-bg)}
+ .revchip.ok{background:rgba(126,217,181,.20);border:1px solid rgba(126,217,181,.55);color:var(--healthy-bg)}
  .revnote{font-size:12.5px;color:var(--wf-muted);margin:-6px 0 18px}
  @media(max-width:600px){.revchip{font-size:12.5px;padding:7px 12px}}
 """
@@ -837,7 +837,7 @@ def review_chip(code):
     """Amber-free, header-safe chip. Pending until a human signs the page off."""
     slug = dict(REPORTS).get(code, "")
     if slug in DATA.get("HISTORICAL", []):
-        return ('<span class="revchip" style="background:#f1f3f7;color:#6b7383">'
+        return ('<span class="revchip" style="background:var(--pillbg);color:#6b7383">'
                 '<span class="ic">&#128220;</span> Historical record &middot; '
                 'published before the sign-off register</span>')
     r = _review(slug)
@@ -857,6 +857,10 @@ def review_chip(code):
     return f'<a href="{url}" style="text-decoration:none" title="Sign-off register in Confluence">{chip}</a>' if url else chip
 
 
+THEMEJS = "<script>\n/* Theme switch. The report is one token set; dark is those tokens redefined, so the\n   only thing this does is set an attribute and remember the choice. It follows the\n   operating system until somebody chooses, and then it stops following it -- a person\n   who picked light at 9pm meant it. */\n(function () {\n  var KEY = 'edwTheme';\n  var root = document.documentElement;\n  function stored() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }\n  function sysDark() {\n    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;\n  }\n  function apply(t, save) {\n    root.setAttribute('data-theme', t);\n    if (save) { try { localStorage.setItem(KEY, t); } catch (e) {} }\n    var b = document.getElementById('themebtn');\n    if (b) {\n      b.innerHTML = (t === 'dark' ? '\\u2600\\ufe0e Light' : '\\u263D\\ufe0e Dark');\n      b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');\n    }\n    // charts and hand-drawn SVG read the tokens once, so they are told to redraw\n    if (window.__themeRedraw) { try { window.__themeRedraw(); } catch (e) {} }\n  }\n  apply(stored() || (sysDark() ? 'dark' : 'light'), false);\n  if (window.matchMedia) {\n    var mq = window.matchMedia('(prefers-color-scheme: dark)');\n    var onSys = function (e) { if (!stored()) apply(e.matches ? 'dark' : 'light', false); };\n    if (mq.addEventListener) mq.addEventListener('change', onSys);\n  }\n  document.addEventListener('click', function (e) {\n    var b = e.target.closest && e.target.closest('#themebtn');\n    if (!b) return;\n    apply(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark', true);\n  });\n  // tokens, for anything that draws rather than styles\n  window.__tok = function (name, fallback) {\n    var v = getComputedStyle(root).getPropertyValue(name);\n    return (v && v.trim()) || fallback;\n  };\n})();\n</script>"
+PREFBTN = '<div class="prefs"><button class="prefbtn" id="themebtn" type="button">&#9789;&#65038; Dark</button></div>'
+
+
 def head(title, sub, pill, status, current=None):
     _,_,col = BADGE[status]
     return f"""<!DOCTYPE html>
@@ -873,13 +877,14 @@ def head(title, sub, pill, status, current=None):
  .sh .n{{font-size:12.5px;color:var(--wf-muted);margin-top:4px}}
  .progbar{{display:flex;height:30px;border-radius:8px;overflow:hidden;margin:6px 0 10px}}
  .progbar span{{display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}}
- .nodata{{background:#f4f6fa;border:1px dashed #c3cdda;border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}}
- .nodata .big{{font-size:26px;font-weight:800;color:#8b95a8;display:block;margin-bottom:4px}}
+ .nodata{{background:var(--card3);border:1px dashed var(--edge);border-radius:12px;padding:18px;text-align:center;color:var(--wf-muted)}}
+ .nodata .big{{font-size:26px;font-weight:800;color:var(--muted3);display:block;margin-bottom:4px}}
  .fnote{{font-size:12.5px;color:var(--wf-muted);border-left:3px solid var(--warning);padding-left:12px;margin-top:14px}}
 {NAVCSS}{RESPCSS}{ZOOMCSS}{TIPCSS}{REVCSS}
 </style></head>
 <body>
-<header><div class="wrap"><div class="crumb"><a href="../index.html">{TSITE}</a> &rsaquo; {title}</div><div class="eyebrow">{TEAM["eyebrow"]}</div>
+{THEMEJS}
+<header><div class="wrap">{PREFBTN}<div class="crumb"><a href="../index.html">{TSITE}</a> &rsaquo; {title}</div><div class="eyebrow">{TEAM["eyebrow"]}</div>
 <h1>{title}</h1><div class="sub">{sub}</div>
 <div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> {pill}</div>{review_chip(current)}</div></div></header>
 <div class="tabs"><div class="wrap">
@@ -912,10 +917,30 @@ function currentTab(){const a=document.querySelector('.tab.active');return a?a.d
 document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListener('click',e=>{
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
-Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;Chart.defaults.color='#626c84';
+Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;
+Chart.defaults.color=__tok('--wf-muted','var(--wf-muted)');
 Chart.defaults.maintainAspectRatio=false;
 const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
-const gridc='#eef2f8';
+let gridc=__tok('--grid','var(--grid)');
+/* A chart is drawn once with the colours it read. When the theme changes it has to
+   read them again, so every instance is re-tinted and redrawn in place rather than
+   rebuilt -- rebuilding would lose the zoom state and the tooltips. */
+window.__themeRedraw=function(){
+  if(!window.Chart||!Chart.instances)return;
+  const mut=__tok('--wf-muted','var(--wf-muted)'), grd=__tok('--grid','var(--grid)');
+  Chart.defaults.color=mut; gridc=grd;
+  Object.values(Chart.instances).forEach(c=>{
+    const sc=(c.options&&c.options.scales)||{};
+    Object.values(sc).forEach(a=>{
+      if(a&&a.grid&&a.grid.color)a.grid.color=grd;
+      if(a&&a.ticks)a.ticks.color=mut;
+      if(a&&a.title)a.title.color=mut;
+    });
+    if(c.options&&c.options.plugins&&c.options.plugins.legend&&c.options.plugins.legend.labels)
+      c.options.plugins.legend.labels.color=mut;
+    c.update('none');
+  });
+};
 __CHARTS__
 /* Sprints tab: newest first, collapsible cards */
 (function(){
@@ -1454,7 +1479,7 @@ new Chart(document.getElementById('cSplit'),{{type:'bar',
         labs = MK_LABS
         vals = [cl(k) for k in MK_DONE]
         cur  = MONTH_LABEL.get(mk,"")[:3] if mk else ""
-        cols = json.dumps(['#007CBC' if l==cur else '#c3cdda' for l in labs])
+        cols = json.dumps(['#007CBC' if l==cur else 'var(--edge)' for l in labs])
         js += f"""
 const bandRef={{id:'bandRef',afterDraw(c){{const{{ctx,chartArea:{{left,right}},scales:{{y}}}}=c;
  const yl=y.getPixelForValue({b['lo']:.1f}), yh=y.getPixelForValue({b['hi']:.1f});
@@ -1473,9 +1498,9 @@ new Chart(document.getElementById('cBand'),{{type:'bar',
         _cl = json.dumps(["#d64550" if r["rate"]>=50 else ("#ED7D31" if r["rate"]>=33 else "#65B2D5") for _,r in ss2["rows"]])
         js += f"""
 const spillRef={{id:'spillRef',afterDraw(c){{const{{ctx,chartArea:{{left,right}},scales:{{y}}}}=c;
- const yp=y.getPixelForValue({ss2['rate']:.1f});ctx.save();ctx.strokeStyle='#626c84';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
+ const yp=y.getPixelForValue({ss2['rate']:.1f});ctx.save();ctx.strokeStyle='var(--wf-muted)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);
  ctx.beginPath();ctx.moveTo(left,yp);ctx.lineTo(right,yp);ctx.stroke();ctx.setLineDash([]);
- ctx.fillStyle='#626c84';ctx.font='600 10px DM Sans';ctx.textAlign='right';
+ ctx.fillStyle='var(--wf-muted)';ctx.font='600 10px DM Sans';ctx.textAlign='right';
  ctx.fillText('series average {ss2['rate']:.0f}%',right-4,yp-4);ctx.restore();}}}};
 new Chart(document.getElementById('cSpill'),{{type:'bar',
  data:{{labels:{_lb},datasets:[{{label:'Spillover rate',data:{_rt},backgroundColor:{_cl},borderRadius:5}}]}},
@@ -1527,7 +1552,7 @@ new Chart(document.getElementById('bd{i}'),{{type:'line',
  data:{{labels:{labels},datasets:[
   {{label:'Total scope',data:{json.dumps(scope)},borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2}},
   {{label:'Work still open',data:{json.dumps(burn)},borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3}},
-  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}{gh}]}},
+  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}{gh}]}},
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},x:{{grid:{{display:false}},title:{{display:true,text:'Sprint day'}}}}}}}}}});"""
     return js
 
@@ -1555,7 +1580,7 @@ def month_page(mk):
     # unplanned card
     if m["unplanned"] is None:
         unp_card = f"""<div class="card">
-      <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
+      <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
       <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> {"so far this " + PERIOD_WORD if m.get("open") else "in the whole " + PERIOD_WORD}</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       <div class="infopanel ip-amber">Zero labels in a {PERIOD_WORD} of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
@@ -1598,7 +1623,7 @@ def month_page(mk):
       <a class="doclink" href="{GUIDES['wip']}" target="_blank">WIP — Team Guide</a></div>"""
     else:
         wip_card = f"""<div class="card wipcard">
-      <div class="ghead"><span class="gname">Work In Progress</span><span class="badge" style="background:#eef1f6;color:#69727d"><span class="d" style="background:#8b95a8"></span>No data</span></div>
+      <div class="ghead"><span class="gname">Work In Progress</span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
       <div class="nodata" style="margin:10px 0"><span class="big">—</span>historical snapshot not captured</div>
       <div class="infopanel ip-amber">WIP is a point-in-time reading, not a monthly aggregate. It was not captured at the close of {m['label'].split()[0]}, and Jira cannot rebuild it backwards without the Cumulative Flow Diagram. The current snapshot lives in the August report.</div>
       <div class="cardfill"></div><hr class="docsep">
@@ -1722,7 +1747,7 @@ def month_page(mk):
         <div class="donutctr"><div class="dc-num">{m['closed']}</div><div class="dc-lbl">of {m['resolved']}<br>closed</div></div></div>
         <div class="mixlegend">
           <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">{m['closed']}</span></div>
-          <div class="ml-row"><span class="ml-sw" style="background:#c3cdda"></span><span class="ml-nm">Won't Do</span><span class="ml-val">{m['discarded']}</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:var(--edge)"></span><span class="ml-nm">Won't Do</span><span class="ml-val">{m['discarded']}</span></div>
         </div></div>
       <div class="infopanel ip-amber">May closed 39 without a single discard. From June on, discards show up every month.</div>
       <div class="cardfill"></div>
@@ -1744,8 +1769,8 @@ def month_page(mk):
   <div class="fnote">Comparatives use the closed quarters of the year: Q1 and Q2. Q3 joins this table once September closes and its report is created. Q1's monthly detail is under review — the figure used here is the one published in Confluence.</div>
   {tis_flow_block(mk)}
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Baseline</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
@@ -1856,8 +1881,8 @@ def q2_page():
       <div class="cardfill"></div><hr class="docsep"><a class="doclink" href="{GUIDES['unp']}" target="_blank">Planned vs Unplanned — Team Guide</a></div>
   </div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Baseline</a>
     <a class="rlink" href="{GUIDES['thr']}" target="_blank"><span class="ico">&#128202;</span> Throughput — Team Guide</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
@@ -1908,7 +1933,7 @@ def q2_page():
 new Chart(document.getElementById('cQ'),{{type:'bar',
  data:{{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
   datasets:[{{label:'Items closed',data:[44,36,40,{APR},{MAY},74,79,82],
-   backgroundColor:['#c3cdda','#c3cdda','#c3cdda','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
+   backgroundColor:['var(--edge)','var(--edge)','var(--edge)','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:110,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}}}});
 {charts_scrum()}"""
     return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
@@ -1962,9 +1987,9 @@ def q1_page():
   </div>
   <div style="margin-top:24px"></div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
-    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
+    <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> Q1 2026 Report in Confluence</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
-    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
+    <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&var(--healthy-fg);</span> How to read the dashboard</a>
     <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
   <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
@@ -2279,21 +2304,21 @@ def findings_panel(mk):
 # ---------------------------------------------------------------- index page
 BADGE_LABEL = {"healthy": "Healthy", "warning": "Warning", "risk": "Risk",
                "open": "In progress"}
-BADGE_BG    = {"healthy": ("#e6f6ef", "#1a7f5a"), "warning": ("#fdeee3", "#c0641f"),
-               "risk": ("#fdeaea", "#b3261e"), "open": ("#eef2f8", "#5a6577")}
+BADGE_BG    = {"healthy": ("var(--healthy-bg)", "var(--healthy-fg)"), "warning": ("var(--warning-bg)", "var(--warning-fg)"),
+               "risk": ("var(--risk-bg)", "var(--risk-fg)"), "open": ("var(--grid)", "var(--pillfg)")}
 
 def _card(href, short, year, title, badge, blurb, status=None):
-    bg, fg = BADGE_BG.get(status, ("#fdeee3", "#c0641f"))
+    bg, fg = BADGE_BG.get(status, ("var(--warning-bg)", "var(--warning-fg)"))
     r = _review(href)
     if href in DATA.get("HISTORICAL", []):
         # closed before the sign-off register existed. Saying "pending" would imply
         # somebody still owes a signature on a period nobody can re-live.
-        pend = ('<span class="badge" style="background:#f1f3f7;color:#6b7383" '
+        pend = ('<span class="badge" style="background:var(--pillbg);color:#6b7383" '
                 'title="Published before the sign-off register existed">Historical record</span>')
     elif r.get("status") == "reviewed":
-        pend = '<span class="badge" style="background:#e3fcef;color:#1a6b45">Signed off</span>'
+        pend = '<span class="badge" style="background:var(--healthy-bg);color:var(--healthy-fg)">Signed off</span>'
     else:
-        pend = '<span class="badge" style="background:#eef2f8;color:#5a6577">Pending sign-off</span>' 
+        pend = '<span class="badge" style="background:var(--grid);color:var(--pillfg)">Pending sign-off</span>' 
     return f'''<a class="rcard" href="2026/{href}">
 <div class="mo"><span class="m">{short}</span><span class="y">{year}</span></div>
 <div class="body"><h3>{title} <span class="badge" style="background:{bg};color:{fg}">{badge}</span>{pend}</h3>
@@ -2320,10 +2345,10 @@ SHELLCSS = """
     them shifted the whole page. They carry the same strip too, which does not fit
     880 once it has both buttons on it. */
  .wrap{max-width:1180px}
- .crumb{font-size:12.5px;color:#cfe7f3;margin-bottom:12px}
+ .crumb{font-size:12.5px;color:var(--hdr-sub);margin-bottom:12px}
  .crumb a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35)}
  .crumb a:hover{border-color:#fff}
- .repnav{background:#fff;border-bottom:1px solid var(--line)}
+ .repnav{background:var(--card);border-bottom:1px solid var(--line)}
  .repnav .wrap{display:flex;align-items:center;gap:8px;padding-top:11px;padding-bottom:11px;flex-wrap:wrap}
  .repnav .ry{font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--wf-muted);margin-right:2px}
  .rp{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.06em;padding:5px 13px;border-radius:999px;
@@ -2331,7 +2356,7 @@ SHELLCSS = """
  .rp:hover{background:var(--wf-blue-l);color:#fff}
  .rsep{width:1px;height:18px;background:var(--line);margin:0 5px}
  .rp.live{background:var(--wf-blue);color:#fff;display:inline-flex;align-items:center;gap:7px}
- .rp.live i{width:6px;height:6px;border-radius:50%;background:#fff;display:block;flex:0 0 auto}
+ .rp.live i{width:6px;height:6px;border-radius:50%;background:var(--card);display:block;flex:0 0 auto}
  .rp.live:hover{background:var(--wf-blue-d);color:#fff}
  .rp.live.on{background:var(--wf-blue-d);cursor:default}
  /* These were a 12.5px bare link pushed to the edge. They are the way off the
@@ -2339,7 +2364,7 @@ SHELLCSS = """
  .rgroup{margin-left:auto;display:flex;align-items:center;gap:8px;flex:0 0 auto}
  .rutil{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;
    padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--wf-blue-d);
-   background:#fff;border:1px solid var(--line);white-space:nowrap;transition:.15s}
+   background:var(--card);border:1px solid var(--line);white-space:nowrap;transition:.15s}
  .rutil:hover{border-color:var(--wf-blue-l);background:var(--wf-blue-bg)}
  .rutil.on{background:var(--wf-blue-d);border-color:var(--wf-blue-d);color:#fff;cursor:default}
  /* The strip is longer now that the active sprint is in it. On a phone it scrolls
@@ -2355,7 +2380,7 @@ SHELLCSS = """
 # Only the pages built on the index shell need this: the report pages get the tab
 # machinery from their own stylesheet.
 SPRINTCSS = """
- .tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.92);backdrop-filter:blur(10px);
+ .tabs{position:sticky;top:0;z-index:30;background:color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter:blur(10px);
    border-bottom:1px solid var(--line)}
  .tabs .wrap{display:flex;gap:4px}
  .tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;
@@ -2408,7 +2433,8 @@ def sprint_page():
 <title>{TKEY} &middot; Active sprint</title>
 <style>{css}{SHELLCSS}{SPRINTCSS}</style></head>
 <body>
-<header><div class="wrap">
+{THEMEJS}
+<header><div class="wrap">{PREFBTN}
 <div class="crumb"><a href="index.html">{TSITE}</a> &rsaquo; Active sprint</div>
 <div class="eyebrow">{TEAM["name"]} &middot; Live from Jira</div>
 <h1>Active sprint</h1>

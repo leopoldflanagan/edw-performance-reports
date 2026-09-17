@@ -118,14 +118,14 @@
     for (g = 0; g <= ticks; g++) {
       var v = hi * g / ticks, y = Y(v).toFixed(1);
       grid += '<line x1="' + L + '" y1="' + y + '" x2="' + (W - R) + '" y2="' + y +
-        '" stroke="#e2e8f0" stroke-width="1"/>';
+        '" style="stroke:var(--line)" stroke-width="1"/>';
       lab += '<text x="' + (L - 6) + '" y="' + (+y + 3.5) +
-        '" text-anchor="end" font-size="10" fill="#626c84">' + Math.round(v) + '</text>';
+        '" text-anchor="end" font-size="10" style="fill:var(--wf-muted)">' + Math.round(v) + '</text>';
     }
     var todayX = X(burn.length - 1);
     var area = (scope && scope.length)
       ? '<path d="' + path(scope) + ' L' + todayX.toFixed(1) + ',' + Y(0) +
-        ' L' + X(0).toFixed(1) + ',' + Y(0) + ' Z" fill="rgba(195,205,218,.25)"/>' : '';
+        ' L' + X(0).toFixed(1) + ',' + Y(0) + ' Z" style="fill:color-mix(in srgb, var(--edge) 28%, transparent)"/>' : '';
     var ideal = 'M' + X(0).toFixed(1) + ',' + Y(burn[0]).toFixed(1) +
                 ' L' + X(slots).toFixed(1) + ',' + Y(0).toFixed(1);
 
@@ -138,24 +138,24 @@
       (big ? 'min(62vh,420px)' : (nohead ? 'auto' : '210px')) + '" ' +
       'role="img" aria-label="Sprint burndown, story points remaining by day">' +
       grid + lab + area +
-      '<path d="' + ideal + '" stroke="#c3cdda" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
+      '<path d="' + ideal + '" style="stroke:var(--edge)" stroke-dasharray="5 4" stroke-width="2" fill="none"/>' +
       (scope && scope.length ? '<path d="' + path(scope) +
-        '" stroke="#9aa6b8" stroke-width="2" fill="none"/>' : '') +
+        '" style="stroke:var(--muted4)" stroke-width="2" fill="none"/>' : '') +
       '<path d="' + path(burn) + '" stroke="#007CBC" stroke-width="3" fill="none" stroke-linejoin="round"/>' +
       '<line x1="' + todayX.toFixed(1) + '" y1="' + T + '" x2="' + todayX.toFixed(1) +
       '" y2="' + Y(0) + '" stroke="#ED7D31" stroke-width="1" stroke-dasharray="3 3"/>' +
       '<text x="' + (todayX + 4).toFixed(1) + '" y="' + (T + 9) +
       '" font-size="10" fill="#ED7D31" font-weight="700">today</text>' +
       '<line x1="' + L + '" y1="' + Y(0) + '" x2="' + (W - R) + '" y2="' + Y(0) +
-      '" stroke="#c3cdda" stroke-width="1"/>' +
-      '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" fill="#626c84">' + day(s.start) + '</text>' +
+      '" style="stroke:var(--edge)" stroke-width="1"/>' +
+      '<text x="' + L + '" y="' + (H - 12) + '" font-size="10" style="fill:var(--wf-muted)">' + day(s.start) + '</text>' +
       '<text x="' + (W - R) + '" y="' + (H - 12) +
-      '" text-anchor="end" font-size="10" fill="#626c84">' + day(s.end) + '</text>' +
+      '" text-anchor="end" font-size="10" style="fill:var(--wf-muted)">' + day(s.end) + '</text>' +
       '</svg>' + (big ? '' : '</div>') +
       '<div class="tiskey" style="margin-top:2px">' +
       '<span><i class="tisdot" style="background:#007CBC"></i>Remaining</span>' +
-      '<span><i class="tisdot" style="background:#9aa6b8"></i>Total scope</span>' +
-      '<span><i class="tisdot" style="background:#c3cdda"></i>Ideal burn</span>' +
+      '<span><i class="tisdot" style="background:var(--muted4)"></i>Total scope</span>' +
+      '<span><i class="tisdot" style="background:var(--edge)"></i>Ideal burn</span>' +
       '</div></div>';
   }
 
