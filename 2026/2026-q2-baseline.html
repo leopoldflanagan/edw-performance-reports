@@ -841,16 +841,16 @@ document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListe
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;
-Chart.defaults.color=__tok('--wf-muted','var(--wf-muted)');
+Chart.defaults.color=__tok('--wf-muted','#626c84');
 Chart.defaults.maintainAspectRatio=false;
 const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
-let gridc=__tok('--grid','var(--grid)');
+let gridc=__tok('--grid','#eef2f8');
 /* A chart is drawn once with the colours it read. When the theme changes it has to
    read them again, so every instance is re-tinted and redrawn in place rather than
    rebuilt -- rebuilding would lose the zoom state and the tooltips. */
 window.__themeRedraw=function(){
   if(!window.Chart||!Chart.instances)return;
-  const mut=__tok('--wf-muted','var(--wf-muted)'), grd=__tok('--grid','var(--grid)');
+  const mut=__tok('--wf-muted','#626c84'), grd=__tok('--grid','#eef2f8');
   Chart.defaults.color=mut; gridc=grd;
   Object.values(Chart.instances).forEach(c=>{
     const sc=(c.options&&c.options.scales)||{};
@@ -868,7 +868,7 @@ window.__themeRedraw=function(){
 new Chart(document.getElementById('cQ'),{type:'bar',
  data:{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
   datasets:[{label:'Items closed',data:[44,36,40,36,39,74,79,82],
-   backgroundColor:['var(--edge)','var(--edge)','var(--edge)','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}]},
+   backgroundColor:['#c3cdda','#c3cdda','#c3cdda','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:110,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}}});
 
 const velRef={id:'velRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
@@ -894,7 +894,7 @@ const bandRef={id:'bandRef',afterDraw(c){const{ctx,chartArea:{left,right},scales
  ctx.setLineDash([]);ctx.fillStyle='#4FA800';ctx.font='600 10px DM Sans';ctx.textAlign='right';
  ctx.fillText('expected 68-89',right-4,yh-4);ctx.restore();}};
 new Chart(document.getElementById('cBand'),{type:'bar',
- data:{labels:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],datasets:[{label:'Items closed',data:[44.0, 36.0, 40.0, 36.0, 39.0, 74.0, 79.0, 82.0],backgroundColor:["var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)", "var(--edge)"],borderRadius:6}]},
+ data:{labels:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],datasets:[{label:'Items closed',data:[44.0, 36.0, 40.0, 36.0, 39.0, 74.0, 79.0, 82.0],backgroundColor:["#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda", "#c3cdda"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Items closed'}},x:{grid:{display:false}}}},
  plugins:[bandRef]});
 const spillRef={id:'spillRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
@@ -910,61 +910,61 @@ new Chart(document.getElementById('bd0'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[56, 56, 56, 59, 59, 59, 59, 56, 61, 61, 60, 60, 60, 60, 49],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[54, 53, 50, 50, 50, 47, 47, 36, 41, 34, 33, 29, 29, 29, 0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[56.0, 52.0, 48.0, 44.0, 40.0, 36.0, 32.0, 28.0, 24.0, 20.0, 16.0, 12.0, 8.0, 4.0, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[54, 53, 50, 50, 50, 47, 47, 39, 44, 37, 39, 35, 35, 35, 19],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[56.0, 52.0, 48.0, 44.0, 40.0, 36.0, 32.0, 28.0, 24.0, 20.0, 16.0, 12.0, 8.0, 4.0, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[54, 53, 50, 50, 50, 47, 47, 39, 44, 37, 39, 35, 35, 35, 19],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd1'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15", "d16"],datasets:[
   {label:'Total scope',data:[51, 60, 60, 60, 63, 63, 63, 68, 71, 73, 76, 80, 80, 80, 80, 80, 80],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[49, 54, 50, 50, 47, 47, 47, 52, 55, 57, 60, 47, 40, 40, 40, 22, 17],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[51.0, 47.8, 44.6, 41.4, 38.2, 35.1, 31.9, 28.7, 25.5, 22.3, 19.1, 15.9, 12.8, 9.6, 6.4, 3.2, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[49, 54, 50, 50, 47, 47, 47, 52, 55, 57, 60, 48, 41, 41, 41, 23, 18],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[51.0, 47.8, 44.6, 41.4, 38.2, 35.1, 31.9, 28.7, 25.5, 22.3, 19.1, 15.9, 12.8, 9.6, 6.4, 3.2, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[49, 54, 50, 50, 47, 47, 47, 52, 55, 57, 60, 48, 41, 41, 41, 23, 18],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd2'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[70, 74, 82, 82, 83, 83, 83, 78, 81, 98, 106, 101, 101, 104, 104],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[64, 61, 69, 57, 57, 57, 49, 39, 37, 54, 54, 43, 43, 31, 16],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[70.0, 65.0, 60.0, 55.0, 50.0, 45.0, 40.0, 35.0, 30.0, 25.0, 20.0, 15.0, 10.0, 5.0, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[69, 66, 74, 62, 62, 62, 54, 49, 42, 59, 59, 53, 53, 41, 26],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[70.0, 65.0, 60.0, 55.0, 50.0, 45.0, 40.0, 35.0, 30.0, 25.0, 20.0, 15.0, 10.0, 5.0, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[69, 66, 74, 62, 62, 62, 54, 49, 42, 59, 59, 53, 53, 41, 26],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd3'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[71, 71, 79, 87, 97, 97, 97, 97, 108, 116, 121, 124, 124, 124, 134],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[58, 58, 66, 69, 63, 61, 61, 58, 66, 74, 66, 55, 55, 55, 45],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[71.0, 65.9, 60.9, 55.8, 50.7, 45.6, 40.6, 35.5, 30.4, 25.4, 20.3, 15.2, 10.1, 5.1, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[66, 66, 74, 77, 68, 66, 66, 63, 71, 79, 71, 60, 60, 60, 45],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[71.0, 65.9, 60.9, 55.8, 50.7, 45.6, 40.6, 35.5, 30.4, 25.4, 20.3, 15.2, 10.1, 5.1, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[66, 66, 74, 77, 68, 66, 66, 63, 71, 79, 71, 60, 60, 60, 45],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd4'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14"],datasets:[
   {label:'Total scope',data:[78, 81, 92, 95, 97, 97, 97, 104, 112, 117, 126, 129, 129, 129, 104],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[65, 60, 68, 71, 70, 70, 70, 73, 71, 73, 74, 77, 77, 77, 26],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[78.0, 72.4, 66.9, 61.3, 55.7, 50.1, 44.6, 39.0, 33.4, 27.9, 22.3, 16.7, 11.1, 5.6, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[89, 79, 84, 79, 78, 78, 78, 81, 79, 81, 82, 85, 85, 85, 58],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[78.0, 72.4, 66.9, 61.3, 55.7, 50.1, 44.6, 39.0, 33.4, 27.9, 22.3, 16.7, 11.1, 5.6, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[89, 79, 84, 79, 78, 78, 78, 81, 79, 81, 82, 85, 85, 85, 58],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd5'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
   {label:'Total scope',data:[106, 116, 119, 124, 134, 138, 138, 142, 144, 148, 153, 152, 152, 152, 140, 140],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[104, 112, 106, 87, 97, 101, 101, 93, 87, 91, 91, 69, 69, 69, 45, 38],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[106.0, 98.9, 91.9, 84.8, 77.7, 70.7, 63.6, 56.5, 49.5, 42.4, 35.3, 28.3, 21.2, 14.1, 7.1, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[108, 116, 110, 92, 102, 106, 106, 98, 92, 96, 96, 77, 77, 77, 64, 54],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[106.0, 98.9, 91.9, 84.8, 77.7, 70.7, 63.6, 56.5, 49.5, 42.4, 35.3, 28.3, 21.2, 14.1, 7.1, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[108, 116, 110, 92, 102, 106, 106, 98, 92, 96, 96, 77, 77, 77, 64, 54],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd6'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15", "d16"],datasets:[
   {label:'Total scope',data:[75, 83, 91, 96, 106, 106, 106, 123, 126, 127, 129, 131, 134, 138, 138, 136, 136],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[75, 80, 81, 77, 79, 77, 77, 84, 85, 82, 78, 67, 58, 59, 48, 37, 34],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[75.0, 70.3, 65.6, 60.9, 56.2, 51.6, 46.9, 42.2, 37.5, 32.8, 28.1, 23.4, 18.8, 14.1, 9.4, 4.7, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[75, 80, 81, 77, 79, 77, 77, 84, 85, 82, 78, 67, 58, 59, 48, 42, 39],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[75.0, 70.3, 65.6, 60.9, 56.2, 51.6, 46.9, 42.2, 37.5, 32.8, 28.1, 23.4, 18.8, 14.1, 9.4, 4.7, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[75, 80, 81, 77, 79, 77, 77, 84, 85, 82, 78, 67, 58, 59, 48, 42, 39],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd7'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
   {label:'Total scope',data:[46, 71, 83, 86, 88, 88, 88, 88, 86, 92, 95, 102, 102, 102, 102, 99],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[46, 68, 80, 75, 74, 68, 68, 68, 66, 64, 65, 63, 60, 60, 60, 44],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[46.0, 42.9, 39.9, 36.8, 33.7, 30.7, 27.6, 24.5, 21.5, 18.4, 15.3, 12.3, 9.2, 6.1, 3.1, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[49, 71, 86, 81, 80, 74, 74, 74, 74, 69, 70, 68, 65, 65, 65, 52],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[46.0, 42.9, 39.9, 36.8, 33.7, 30.7, 27.6, 24.5, 21.5, 18.4, 15.3, 12.3, 9.2, 6.1, 3.1, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[49, 71, 86, 81, 80, 74, 74, 74, 74, 69, 70, 68, 65, 65, 65, 52],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd8'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
   {label:'Total scope',data:[56, 76, 76, 84, 86, 86, 86, 92, 95, 95, 107, 107, 107, 107, 103, 103],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[54, 59, 57, 65, 64, 54, 54, 54, 50, 39, 45, 44, 44, 44, 21, 21],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[56.0, 52.3, 48.5, 44.8, 41.1, 37.3, 33.6, 29.9, 26.1, 22.4, 18.7, 14.9, 11.2, 7.5, 3.7, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[56, 61, 59, 67, 66, 54, 54, 54, 50, 39, 45, 44, 44, 44, 25, 25],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[56.0, 52.3, 48.5, 44.8, 41.1, 37.3, 33.6, 29.9, 26.1, 22.4, 18.7, 14.9, 11.2, 7.5, 3.7, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[56, 61, 59, 67, 66, 54, 54, 54, 50, 39, 45, 44, 44, 44, 25, 25],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd9'),{type:'line',
  data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10", "d11", "d12", "d13", "d14", "d15"],datasets:[
   {label:'Total scope',data:[67, 88, 93, 93, 96, 96, 96, 96, 96, 107, 109, 119, 119, 119, 119, 113],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
   {label:'Work still open',data:[64, 79, 77, 73, 62, 62, 62, 62, 62, 65, 57, 51, 44, 44, 44, 35],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[67.0, 62.5, 58.1, 53.6, 49.1, 44.7, 40.2, 35.7, 31.3, 26.8, 22.3, 17.9, 13.4, 8.9, 4.5, 0.0],borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[64, 79, 77, 73, 62, 62, 62, 62, 62, 65, 60, 54, 47, 47, 47, 44],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
+  {label:'Ideal from day-1 commitment',data:[67.0, 62.5, 58.1, 53.6, 49.1, 44.7, 40.2, 35.7, 31.3, 26.8, 22.3, 17.9, 13.4, 8.9, 4.5, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[64, 79, 77, 73, 62, 62, 62, 62, 62, 65, 60, 54, 47, 47, 47, 44],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 /* Sprints tab: newest first, collapsible cards */
 (function(){
