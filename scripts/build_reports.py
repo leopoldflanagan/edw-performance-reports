@@ -73,6 +73,14 @@ def rlink(key, icon, label):
             f'<span class="ico">{icon}</span> {label}</a>') if url else ""
 
 
+def _plist(names):
+    """'A', 'A and B', 'A, B and C' -- so a sentence about the periods with no data
+    reads as a sentence however many of them there are."""
+    if len(names) <= 1:
+        return names[0] if names else ""
+    return ", ".join(names[:-1]) + " and " + names[-1]
+
+
 def quarterlink():
     """The published quarter baseline, for the teams that have one. These pages are
     hand-written historical records, so a team without them gets no link rather than
@@ -1771,6 +1779,19 @@ def month_page(mk):
                              "GREEN" if v <= 5 else "AMBER" if v <= 10 else "RED"
                              for v in _unp_v) + "]"
     _unp_max = max([v for v in _unp_v if v is not None] + [15]) * 1.25
+    # the readout under the chart said the same thing in prose, and it was typed in:
+    # a fixed Q1/Q2/May/Jun/Jul/Aug series with EDW's figures. It now reads off the
+    # same list the chart plots, so the two cannot drift apart, and the warning
+    # names whichever periods are missing the label instead of naming August.
+    _unp_series = " &rarr; ".join(
+        f"{MONTH_LABEL.get(k, k)} {'no data' if v is None else f'{v}%'}"
+        for k, v in zip(_keys, _unp_v)) + "."
+    _gapn = [MONTH_LABEL.get(k, k) for k, v in zip(_keys, _unp_v) if v is None]
+    _unp_gap = ('<div class="line" style="border-color:var(--warning)">'
+                '<span class="vs-tag">Careful</span><br>'
+                + ("The break at " + _plist(_gapn) + " is not a drop to zero, it is "
+                   "missing labeling. The line is interrupted on purpose.")
+                + '</div>') if _gapn else ""
 
     # A release that has not closed gets no flow-health verdict. Every number on the
     # page is still moving -- items keep closing, cycle time is computed over the
@@ -1897,8 +1918,8 @@ def month_page(mk):
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
-        <div class="line"><span class="vs-tag">The series</span><br>Q1 {Q1['unp']}% &rarr; Q2 {Q2['unp']}% &rarr; May 17.95% &rarr; June 6.76% &rarr; July 12.66% &rarr; August no data.</div>
-        <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Careful</span><br>August's break is not a drop to zero, it is missing labeling. The line is interrupted on purpose.</div>
+        <div class="line"><span class="vs-tag">The series</span><br>{_unp_series}</div>
+        {_unp_gap}
       </div>
     </div>
   </div>
