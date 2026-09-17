@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T19:45:25Z",
+ "generated": "2026-09-17T20:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -358,18 +358,18 @@
   "days": 14,
   "n": 10,
   "done_now": 16,
-  "committed": 51,
+  "committed": 53,
   "lo": 45,
   "mid": 53,
   "hi": 57,
-  "pct": 104,
+  "pct": 100,
   "verdict": "on track for the commitment",
   "share_mid": 0.299
  },
  "admin": {
   "scope": {
    "ready": 21,
-   "sprint": 19,
+   "sprint": 20,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -451,7 +451,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 25,
+    "n": 26,
     "items": [
      {
       "key": "EDW-2369",
@@ -489,21 +489,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 30 of 34 items. This reads as a field the team does not use rather than 30 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 30,
+    "why": "missing on 31 of 35 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 31,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 34 of 34 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 34,
+    "why": "missing on 35 of 35 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 35,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 8,
+    "n": 9,
     "items": [
+     {
+      "key": "EDW-2371",
+      "summary": "Fixing the Systems setting table code for DCA WFP"
+     },
      {
       "key": "EDW-2358",
       "summary": "Analyzing the Bottleneck on PBI Pipelines "
@@ -531,10 +535,6 @@
      {
       "key": "EDW-2336",
       "summary": "Rework Storybook controls and mocked data"
-     },
-     {
-      "key": "EDW-2332",
-      "summary": "Renewals by Month - Fix X-axis values to display properly"
      }
     ]
    },
@@ -593,17 +593,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 29,
-  "items_done": 11,
-  "committed": 51,
-  "final": 56,
+  "items": 30,
+  "items_done": 12,
+  "committed": 53,
+  "final": 58,
   "completed": 16,
-  "scope_change": 10,
-  "vs_commitment": 31,
+  "scope_change": 9,
+  "vs_commitment": 30,
   "time_elapsed": 24,
   "spill": {
-   "open_items": 13,
-   "open_pts": 38.0,
+   "open_items": 14,
+   "open_pts": 40.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 16.0
@@ -611,36 +611,36 @@
   "recv": {
    "items": 5,
    "pts": 12,
-   "pct": 24,
+   "pct": 23,
    "from": "EDW-Sprint 21-26"
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 11,
-   "Ready for Development": 8,
-   "In Development": 8,
+   "In Development": 9,
+   "Closed": 12,
+   "Ready for Development": 7,
    "Won't Do": 1
   },
   "burn": [
-   41.0,
-   49.0,
-   44.0,
    43.0,
-   40.0
+   51.0,
+   46.0,
+   45.0,
+   42.0
   ],
   "scope": [
-   41.0,
-   51.0,
-   51.0,
-   56.0,
-   56.0
+   43.0,
+   53.0,
+   53.0,
+   58.0,
+   58.0
   ],
   "ghost": [
-   41.0,
-   49.0,
-   44.0,
    43.0,
-   40.0
+   51.0,
+   46.0,
+   45.0,
+   42.0
   ],
   "days": 14,
   "day": 4,
@@ -709,7 +709,43 @@
     "worst_who": "Jeff Schniederjan",
     "over": 2,
     "clear_med": 2.2,
-    "clear_n": 240
+    "clear_n": 241
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 138
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "In Progress",
@@ -734,42 +770,6 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 137
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
    },
    {
     "status": "PR Created",
