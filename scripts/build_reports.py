@@ -927,8 +927,10 @@ def tis_trend_card():
         vals = [round(rows[k].get(st, {}).get("med", 0), 2) for k in ks]
         if not any(vals):
             continue
+        # a literal colour: this one goes into a canvas, where var(--edge) is not
+        # a colour at all and Chart.js falls back to black
         ds.append("{label:%s,data:%s,backgroundColor:'%s',borderRadius:3}"
-                  % (json.dumps(st), json.dumps(vals), STCOL.get(st, "var(--edge)")))
+                  % (json.dumps(st), json.dumps(vals), STCOL.get(st, "#c3cdda")))
     if not ds:
         return "", ""
     js = f"""
@@ -1123,16 +1125,16 @@ document.querySelectorAll('.repnav a.rp:not(.live)').forEach(a=>{a.addEventListe
  const t=currentTab(); if(t){e.preventDefault();location.href=a.getAttribute('href')+'#t='+t;}});});
 (function(){var h=(location.hash||'').replace(/^#/,'').replace(/^t=/,'');if(h&&!showTab(h,false)){var f=document.querySelector('.tab');if(f)showTab(f.dataset.tab,false);}window.scrollTo(0,0);})();
 Chart.defaults.font.family="'DM Sans', sans-serif";Chart.defaults.font.size=11;
-Chart.defaults.color=__tok('--wf-muted','var(--wf-muted)');
+Chart.defaults.color=__tok('--wf-muted','#626c84');
 Chart.defaults.maintainAspectRatio=false;
 const BLUE='#007CBC',BLUED='#005f91',BLUEL='#65B2D5',GREEN='#4FA800',AMBER='#ED7D31',RED='#d64550',GREY='#c3cdda';
-let gridc=__tok('--grid','var(--grid)');
+let gridc=__tok('--grid','#eef2f8');
 /* A chart is drawn once with the colours it read. When the theme changes it has to
    read them again, so every instance is re-tinted and redrawn in place rather than
    rebuilt -- rebuilding would lose the zoom state and the tooltips. */
 window.__themeRedraw=function(){
   if(!window.Chart||!Chart.instances)return;
-  const mut=__tok('--wf-muted','var(--wf-muted)'), grd=__tok('--grid','var(--grid)');
+  const mut=__tok('--wf-muted','#626c84'), grd=__tok('--grid','#eef2f8');
   Chart.defaults.color=mut; gridc=grd;
   Object.values(Chart.instances).forEach(c=>{
     const sc=(c.options&&c.options.scales)||{};
@@ -1683,8 +1685,12 @@ new Chart(document.getElementById('cSplit'),{{type:'bar',
         b = band([cl(k) for k in MK_L3])
         labs = MK_LABS
         vals = [cl(k) for k in MK_DONE]
-        cur  = MONTH_LABEL.get(mk,"")[:3] if mk else ""
-        cols = json.dumps(['#007CBC' if l==cur else 'var(--edge)' for l in labs])
+        # The bar for the period being reported on is highlighted. The label is
+        # three letters for a month ("May") and the whole thing for a release
+        # ("R9.07"), so truncating to three characters made every release page
+        # compare "R9." against "R9.04" and highlight nothing.
+        cur  = MONTH_LABEL.get(mk,"") if mk else ""
+        cols = json.dumps(['#007CBC' if l in (cur, cur[:3]) else '#c3cdda' for l in labs])
         js += f"""
 const bandRef={{id:'bandRef',afterDraw(c){{const{{ctx,chartArea:{{left,right}},scales:{{y}}}}=c;
  const yl=y.getPixelForValue({b['lo']:.1f}), yh=y.getPixelForValue({b['hi']:.1f});
@@ -1757,7 +1763,7 @@ new Chart(document.getElementById('bd{i}'),{{type:'line',
  data:{{labels:{labels},datasets:[
   {{label:'Total scope',data:{json.dumps(scope)},borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2}},
   {{label:'Work still open',data:{json.dumps(burn)},borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3}},
-  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:'var(--edge)',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}{gh}]}},
+  {{label:'Ideal from day-1 commitment',data:{ideal},borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}}{gh}]}},
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},x:{{grid:{{display:false}},title:{{display:true,text:'Sprint day'}}}}}}}}}});"""
     return js
 
@@ -2189,7 +2195,7 @@ def q2_page():
 new Chart(document.getElementById('cQ'),{{type:'bar',
  data:{{labels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug'],
   datasets:[{{label:'Items closed',data:[44,36,40,{APR},{MAY},74,79,82],
-   backgroundColor:['var(--edge)','var(--edge)','var(--edge)','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
+   backgroundColor:['#c3cdda','#c3cdda','#c3cdda','#65B2D5','#65B2D5','#007CBC','#007CBC','#007CBC'],borderRadius:6}}]}},
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,max:110,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}}}});
 {charts_scrum()}"""
     return html + _fill(FOOT).replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
