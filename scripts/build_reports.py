@@ -73,6 +73,116 @@ def rlink(key, icon, label):
             f'<span class="ico">{icon}</span> {label}</a>') if url else ""
 
 
+def _thr_vs_line(cm, cq1, share, open_):
+    """The sentence comparing this period's items and points against the reference.
+    With no reference it is not written at all: a team's first period has nothing
+    to be up or down on, and inventing a baseline of zero would read as infinite
+    improvement."""
+    di = _vs(cm["items"], cq1["items"], share)
+    dp = _vs(cm["pts"], cq1["pts"], share)
+    if di is None or dp is None:
+        return ("        There is no earlier period to compare this one against yet, "
+                "so the figures above stand on their own.")
+    up = "" if open_ else "up "
+    tail = (" at the same point in the month" if open_
+            else " \u2014 the team is larger and the items are smaller")
+    return (f"        Items are {up}{di:+.0f}% on {REF1_SHORT} while points are "
+            f"{up}{dp:+.0f}%{tail}.")
+
+
+def _vs(now, ref, share=1.0):
+    """Percentage difference against a reference period, or None when there is no
+    reference to differ from. A team's first period has nothing behind it, and a
+    period whose figures have not been computed yet reads as zero -- in both cases
+    the honest output is no comparison, not a number divided by nothing."""
+    ref = (ref or 0) * share
+    return (100 * (now / ref - 1)) if ref else None
+
+
+def _spark_cap(mk):
+    """Caption for the little series line. With nothing closed yet there is no
+    series to caption."""
+    if not MK_DONE:
+        return ("Items closed &middot; nothing closed yet, so there is no series to "
+                "plot")
+    tail = (" &middot; this " + PERIOD_WORD + " is still running and is not plotted"
+            if mk not in MK_DONE else "")
+    return f"Items closed &middot; {MK_LABS[0]} to {MK_LABS[-1]}{tail}"
+
+
+def _consistency_line(b, b0):
+    """How much throughput moves period to period, as a share of its own level.
+
+    Two things here used to be written by hand: the comparison against the
+    baseline band, and the size of the team that band describes. The headcount is
+    read from the baseline periods now, and the whole comparison disappears when
+    there is no baseline to make it against -- which is every team's first months."""
+    if b.get("consistency") is None:
+        return ('<div class="line" style="border-color:var(--warning)">'
+                '<span class="vs-tag">Consistency</span><br>Not measurable yet: it '
+                'needs more than one closed period to see how much throughput moves '
+                'between them.</div>')
+    tail = ""
+    if BASE_KEYS and b0.get("consistency") is not None and b0 is not b:
+        ppl = sum(CAP[k][3] for k in BASE_KEYS) / len(BASE_KEYS)
+        tail = (f" Earlier in the year, on the {ppl:.0f}-person team, that figure "
+                f"was {b0['consistency']:.0f}%.")
+    return ('<div class="line" style="border-color:var(--warning)">'
+            f'<span class="vs-tag">Consistency {b["consistency"]:.0f}%</span><br>'
+            f'Throughput moves <b>{b["move"]:.1f} items</b> from one month to the '
+            f'next on average, {b["consistency"]:.0f}% of the level.{tail}</div>')
+
+
+def _trend_line(tr, now, prev, pplprev, pplnow):
+    """The trend readout. Until the series is long enough to have two windows, it
+    says that rather than printing a movement it cannot have measured."""
+    if tr is None:
+        return ('<div class="line" style="border-color:var(--wf-blue)">'
+                '<span class="vs-tag">Trend</span><br>Not enough closed periods yet '
+                'to measure a trend. It appears once the series has two windows to '
+                'compare.</div>')
+    return ('<div class="line" style="border-color:var(--wf-blue)">'
+            f'<span class="vs-tag">Trend {tr:+.0f}%</span><br>Average of the last '
+            f'three months against the three before them: {now:.0f} vs {prev:.0f} '
+            f'items. Team went from {pplprev:.1f} to {pplnow:.1f} people over the '
+            'same stretch, so read the two together.</div>')
+
+
+def _per_clause(cm, cq1):
+    """The 'once item size and team size are taken out' clause. It only exists when
+    both sides have a points-per-person figure to divide -- a team that does not
+    estimate, or a reference period with nobody recorded, has no such number, and
+    the sentence ends at the item count instead of claiming one."""
+    a, b = cm.get("per"), cq1.get("per")
+    if not a or not b:
+        return "."
+    return (f" &mdash; but {100*(a/b-1):+.0f}% once item size and team size are taken "
+            "out. Most of the gap is a bigger team closing smaller items.")
+
+
+def _pcell(now, ref, lower_is_better=False):
+    """One comparison cell of the summary table. With no reference figure the cell
+    is a flat dash -- the same thing the table already prints where a comparison
+    does not apply -- instead of a percentage against nothing."""
+    d = _dv(now, ref)
+    if d is None:
+        return '<td class="flat">&mdash;</td>'
+    good = (d <= 0) if lower_is_better else (d > 0)   # equal is not worse
+    return f'<td class="{"pos" if good else "neg"}">{d:+.1f}%</td>'
+
+
+def _dv(now, ref):
+    """Delta against a reference figure, or None when the reference is absent.
+    Used where the two sides are already in the same unit (days), so the
+    comparison is a difference expressed as a percentage of the reference."""
+    return (100 * (now - ref) / ref) if ref else None
+
+
+def _num(v, fmt="{:.2f}", dash="&mdash;"):
+    """Format a figure that may legitimately not exist."""
+    return dash if v is None else fmt.format(v)
+
+
 def _plist(names):
     """'A', 'A and B', 'A, B and C' -- so a sentence about the periods with no data
     reads as a sentence however many of them there are."""
@@ -324,9 +434,14 @@ def band(vals):
                 consistency=(100*mrbar/mean) if mean else None)
 
 def trend(keys_now, keys_prev):
+    """Movement between two windows of the series. A series too short to have a
+    window behind it has no trend yet -- that comes back as None, not as a
+    percentage against an empty half."""
+    if not keys_now or not keys_prev:
+        return None
     a=sum(cl(k) for k in keys_now)/len(keys_now)
     b=sum(cl(k) for k in keys_prev)/len(keys_prev)
-    return 100*(a/b-1)
+    return (100*(a/b-1)) if b else None
 
 # Jira sprint report: completed / not completed at close / removed before close.
 # items, points for each. "Removed" is where EDW's spillover hides.
@@ -668,7 +783,12 @@ def sb_rows(rows):
     return "".join(out) + '</div>'
 
 def spark(vals, cur_idx, col="#007CBC", low_good=False):
-    """12-point sparkline, de-emphasised history with the current period in the accent."""
+    """12-point sparkline, de-emphasised history with the current period in the accent.
+
+    An empty series draws nothing. A team in its first period has no history to
+    de-emphasise, and a flat line at zero would read as a measured result."""
+    if not vals:
+        return ""
     w, h, pad = 260, 34, 3
     lo, hi = min(vals), max(vals)
     rng = (hi - lo) or 1
@@ -892,7 +1012,7 @@ def badge(st):
     return f'<span class="badge {c}"><span class="d"></span>{t}</span>'
 
 def thr_status(closed):
-    dev = abs(closed - Q1["thr_med"]) / Q1["thr_med"] * 100
+    dev = (abs(closed - Q1["thr_med"]) / Q1["thr_med"] * 100) if Q1["thr_med"] else 0.0
     return "healthy" if dev <= 15 else ("warning" if dev <= 30 else "risk")
 
 REVCSS = """
@@ -1464,10 +1584,10 @@ def series_block(heading=True):
     b0 = band([cl(k) for k in BASE_KEYS]) if BASE_KEYS else b
     ss = spill_series([r[0] for r in SPRINTS])
     tr = trend(MK_L3, MK_P3)
-    now  = sum(cl(k) for k in MK_L3)/len(MK_L3)
-    prev = sum(cl(k) for k in MK_P3)/len(MK_P3)
-    pplnow  = sum(CAP[k][3] for k in MK_L3)/len(MK_L3)
-    pplprev = sum(CAP[k][3] for k in MK_P3)/len(MK_P3)
+    now  = sum(cl(k) for k in MK_L3)/len(MK_L3) if MK_L3 else 0
+    prev = sum(cl(k) for k in MK_P3)/len(MK_P3) if MK_P3 else 0
+    pplnow  = sum(CAP[k][3] for k in MK_L3)/len(MK_L3) if MK_L3 else 0
+    pplprev = sum(CAP[k][3] for k in MK_P3)/len(MK_P3) if MK_P3 else 0
     head = ('<div class="sectit" style="font-size:20px;margin-top:30px">Sprint series — full history</div>'
             '<div class="secsub">Every sprint of 2026 on the board, so the month can be read against the trend.</div>'
             if heading else "")
@@ -1488,9 +1608,9 @@ def series_block(heading=True):
   <div class="cmpgrid">
    <div class="chartbox" style="height:280px"><canvas id="cBand"></canvas></div>
    <div class="readout">
-    <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Trend {tr:+.0f}%</span><br>Average of the last three months against the three before them: {now:.0f} vs {prev:.0f} items. Team went from {pplprev:.1f} to {pplnow:.1f} people over the same stretch, so read the two together.</div>
+    {_trend_line(tr, now, prev, pplprev, pplnow)}
     <div class="line" style="border-color:var(--healthy)"><span class="vs-tag">Expected range {b['lo']:.0f} - {b['hi']:.0f}</span><br>Built from the team's own month-to-month movement, not from a target. A month outside it means something changed; a month inside is normal variation.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Consistency {b['consistency']:.0f}%</span><br>Throughput moves <b>{b['move']:.1f} items</b> from one month to the next on average, {b['consistency']:.0f}% of the level. Earlier in the year, on the 4-person team, that figure was {b0['consistency']:.0f}%.</div>
+    {_consistency_line(b, b0)}
    </div>
   </div>
   <div class="infopanel ip-amber">The range re-centres only after a signal has been explained — a team change, a workflow change, or a change in how work arrives. It does not drift quietly along with the numbers.</div>
@@ -1738,7 +1858,7 @@ def month_page(mk):
 
     disc_note = ""
     if m["discarded"] >= 5:
-        pct_d = 100*m["discarded"]/m["resolved"]
+        pct_d = (100*m["discarded"]/m["resolved"]) if m["resolved"] else 0.0
         disc_note = f"""<div class="act"><div class="pri p-grey"></div><div class="inner">
      <div class="atop"><h4>Review the {m['discarded']} discarded items</h4><span class="pill pill-grey">Follow-up</span></div>
      <p>The official Throughput filter uses <i>resolved</i>, which mixes closed with discarded (Won't Do). This {PERIOD_WORD} that is {m['discarded']} of {m['resolved']} resolved ({pct_d:.0f}%), which is why the headline counts only the {m['closed']} closed. Worth looking at in the retro at what was opened and then dropped — it usually signals work that came in without enough definition.</p>
@@ -1760,11 +1880,16 @@ def month_page(mk):
     _thr_d  = json.dumps([round(cl(k), 1) for k in _keys])
     _thr_c  = json.dumps(["#007CBC" if k == mk else "#65B2D5" for k in _keys])
     _thr_max = max([cl(k) for k in _keys] + [1]) * 1.25
+    # A reference with no figure is dropped from the chart rather than plotted as
+    # zero: an absent median is not a fast one.
     _ck     = [k for k in CYC_ORDER]
-    _cyc_l  = json.dumps([REF1_SHORT, REF2_SHORT] + [MONTH_LABEL.get(k, k) for k in _ck])
-    _cyc_m  = json.dumps([Q1["cyc_med"], Q2["cyc_med"]] + [CYC[k]["med"] for k in _ck])
-    _cyc_a  = json.dumps([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck])
-    _cyc_max = max([Q1["cyc_avg"], Q2["cyc_avg"]] + [CYC[k]["avg"] for k in _ck] + [1]) * 1.2
+    _refs   = [(lab, Q["cyc_med"], Q["cyc_avg"])
+               for lab, Q in ((REF1_SHORT, Q1), (REF2_SHORT, Q2))
+               if Q["cyc_med"] is not None and Q["cyc_avg"] is not None]
+    _cyc_l  = json.dumps([r[0] for r in _refs] + [MONTH_LABEL.get(k, k) for k in _ck])
+    _cyc_m  = json.dumps([r[1] for r in _refs] + [CYC[k]["med"] for k in _ck])
+    _cyc_a  = json.dumps([r[2] for r in _refs] + [CYC[k]["avg"] for k in _ck])
+    _cyc_max = max([r[2] for r in _refs] + [CYC[k]["avg"] for k in _ck] + [1]) * 1.2
     # Unplanned had a hand-written series here -- fixed labels and two figures typed
     # into the code. It described EDW's Jun/Jul and nothing else, so a second team
     # would have published EDW's reactive work as its own. Derived like the two
@@ -1823,14 +1948,14 @@ def month_page(mk):
       <div class="bignum {col_thr}">{m['closed']}<span class="unit">{"closed · day " + str(m.get("day")) + " of " + str(m.get("days")) if OPEN else "closed · " + PERIOD_WORD}</span></div>
 {pace_note}
       <div class="secondary">{types}</div>
-      {sb_rows([("Items closed", f"{cm['items']:.0f}", 100*(cm['items']/(cq1['items']*SHARE)-1), 100*(cm['items']/(cq2['items']*SHARE)-1), False),
-                ("Story points", f"{cm['pts']:.0f}", 100*(cm['pts']/(cq1['pts']*SHARE)-1), 100*(cm['pts']/(cq2['pts']*SHARE)-1), False)])}
-      <div class="ctxline"><span>Average item size <b>{cm['size']:.2f} pts</b> <i>({REF1_SHORT} {cq1['size']:.2f})</i></span>
-        <span>Team <b>{cm['people']:.0f} active</b> <i>({REF1_SHORT} {cq1['people']:.1f})</i></span></div>
-      <div class="spark-cap">Items closed · {MK_LABS[0]} to {MK_LABS[-1]}{" · this " + PERIOD_WORD + " is still running and is not plotted" if mk not in MK_DONE else ""}</div>
-      {spark([cl(k) for k in MK_DONE], _sidx(mk))}
+      {sb_rows([("Items closed", f"{cm['items']:.0f}", _vs(cm['items'], cq1['items'], SHARE), _vs(cm['items'], cq2['items'], SHARE), False),
+                ("Story points", f"{cm['pts']:.0f}", _vs(cm['pts'], cq1['pts'], SHARE), _vs(cm['pts'], cq2['pts'], SHARE), False)])}
+      <div class="ctxline"><span>Average item size <b>{_num(cm['size'])} pts</b> <i>({REF1_SHORT} {_num(cq1['size'])})</i></span>
+        <span>Team <b>{cm['people']:.0f} active</b> <i>({REF1_SHORT} {_num(cq1['people'], "{:.1f}")})</i></span></div>
+      <div class="spark-cap">{_spark_cap(mk)}</div>
+      {spark([cl(k) for k in MK_DONE], _sidx(mk)) if MK_DONE else ""}
       <div class="infopanel {ip_thr}">On top of the {m['closed']} closed there were <b>{m['discarded']} discarded</b> (Won't Do), which are not deliveries.
-        Items are {"" if OPEN else "up "}{100*(cm['items']/(cq1['items']*SHARE)-1):+.0f}% on {REF1_SHORT} while points are {"" if OPEN else "up "}{100*(cm['pts']/(cq1['pts']*SHARE)-1):+.0f}%{" at the same point in the month" if OPEN else " — the team is larger and the items are smaller"}.
+{_thr_vs_line(cm, cq1, SHARE, OPEN)}
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
       {doclink('thr', 'Throughput — Team Guide')}
@@ -1840,9 +1965,9 @@ def month_page(mk):
       <div class="bignum {col_cyc}">{c['med']:.2f}<span class="unit">d median</span></div>
       <div class="secondary">{c['n']} issues measured · longest {c['mx']:.0f}d</div>
       <div class="targetline"><span class="tl">Target</span> &le;6d median · &le;9d average</div>
-      {sb_rows([("Median", f"{c['med']:.1f}d", 100*(c['med']-Q1['cyc_med'])/Q1['cyc_med'], 100*(c['med']-Q2['cyc_med'])/Q2['cyc_med'], True),
-                ("Average", f"{c['avg']:.1f}d", 100*(c['avg']-Q1['cyc_avg'])/Q1['cyc_avg'], 100*(c['avg']-Q2['cyc_avg'])/Q2['cyc_avg'], True)])}
-      <div class="ctxline"><span>Measured on <b>{c['n']} of {c['base']}</b> closed items <i>({100*c['n']/c['base']:.0f}% of the {PERIOD_WORD})</i></span></div>
+      {sb_rows([("Median", f"{c['med']:.1f}d", _dv(c['med'], Q1['cyc_med']), _dv(c['med'], Q2['cyc_med']), True),
+                ("Average", f"{c['avg']:.1f}d", _dv(c['avg'], Q1['cyc_avg']), _dv(c['avg'], Q2['cyc_avg']), True)])}
+      <div class="ctxline"><span>Measured on <b>{c['n']} of {c['base']}</b> closed items <i>({_num(100*c['n']/c['base'] if c['base'] else None, "{:.0f}")}% of the {PERIOD_WORD})</i></span></div>
       <div class="spark-cap">Median cycle time · {_plabel(CYC_ORDER[0]) if CYC_ORDER else ""} to {_plabel(CYC_ORDER[-1]) if CYC_ORDER else ""}</div>
       {spark([CYC[k]['med'] for k in CYC_ORDER], CYC_ORDER.index(_cyckey(mk)) if _cyckey(mk) in CYC_ORDER else None, col="#4FA800")}
       <div class="infopanel ip-green">Median and average both within target. The gap between {c['med']:.1f}d and {c['avg']:.1f}d comes from a few long tickets — the longest this month took {c['mx']:.0f} days.</div>
@@ -1873,7 +1998,7 @@ def month_page(mk):
     <tbody>
       <tr><td>Throughput (closed)</td><td>{m['closed']}</td><td>{m['prev_closed']}</td><td>{Q1['thr_med']}</td><td>{Q2['thr_med']}</td><td class="{'pos' if dev_base>0 else 'neg'}">{dev_base:+.1f}%</td><td class="{'pos' if dev_q2>0 else 'neg'}">{dev_q2:+.1f}%</td></tr>
       <tr><td>Unplanned work</td>{unp_row}</tr>
-      <tr><td>Cycle Time (median)</td><td>{c['med']:.2f}d</td><td class="flat">—</td><td>{Q1['cyc_med']}d</td><td>{Q2['cyc_med']}d</td><td class="{'neg' if c['med']>Q1['cyc_med'] else 'pos'}">{100*(c['med']-Q1['cyc_med'])/Q1['cyc_med']:+.1f}%</td><td class="{'neg' if c['med']>Q2['cyc_med'] else 'pos'}">{100*(c['med']-Q2['cyc_med'])/Q2['cyc_med']:+.1f}%</td></tr>
+      <tr><td>Cycle Time (median)</td><td>{c['med']:.2f}d</td><td class="flat">—</td><td>{Q1['cyc_med']}d</td><td>{Q2['cyc_med']}d</td>{_pcell(c['med'], Q1['cyc_med'], True)}{_pcell(c['med'], Q2['cyc_med'], True)}</tr>
       <tr><td>Closed without entering development</td><td>{c['nodev']} ({nodev_pct:.0f}%)</td><td class="flat">—</td><td class="flat">—</td><td>{Q2['nodev']}</td><td class="flat">—</td><td class="flat">—</td></tr>
     </tbody>
   </table></div>
@@ -1896,7 +2021,7 @@ def month_page(mk):
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cThru"></canvas></div>
       <div class="readout">
-        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs {REF1_SHORT} ({Q1['thr_med']}{Q1.get('unit','/mo')})</span><br><b>{dev_base:+.1f}%</b> in items — but {100*(cm['per']/cq1['per']-1):+.0f}% once item size and team size are taken out. Most of the gap is a bigger team closing smaller items.</div>
+        <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs {REF1_SHORT} ({Q1['thr_med']}{Q1.get('unit','/mo')})</span><br><b>{dev_base:+.1f}%</b> in items{_per_clause(cm, cq1)}</div>
         <div class="line" style="border-color:{BADGE[st_thr][2]}"><span class="vs-tag">vs {REF2_SHORT} ({Q2['thr_med']}{Q2.get('unit','/mo')})</span><br><b>{dev_q2:+.1f}%</b>{Q2.get('note',' — and Q2 is a poor yardstick anyway: its median is set by April and May, under the previous team.')}</div>
         <div class="line"><span class="vs-tag">Reading</span><br>Throughput scales with headcount, so a fixed baseline cannot survive a team change. The status on this page comes from the expected range below, not from the distance to Q1.</div>
       </div>
@@ -2788,11 +2913,17 @@ if RELEASES:
     Q1 = dict(thr_med=round(cl(_prev)), thr_avg=cl(_prev), unit="/sprint",
               unp=_unp(_prev), cyc_med=CYC[_prev]["med"], cyc_avg=CYC[_prev]["avg"],
               nodev=CYC[_prev]["nodev"])
-    _b = band([cl(k) for k in MK_L3])
+    # The band needs closed releases to be a band. A team whose first release is
+    # still open has none, and every figure derived from it is then absent rather
+    # than zero -- the pages read that as "no comparison yet" and say so.
+    _n3 = len(MK_L3)
+    _b = band([cl(k) for k in MK_L3]) if _n3 else dict(lo=0, hi=0, mean=0, move=0,
+                                                       consistency=None)
+    _avg = lambda f, nd=2: (round(sum(f(k) for k in MK_L3)/_n3, nd) if _n3 else None)
     Q2 = dict(thr_med=round(_b["mean"]), thr_avg=_b["mean"], unit="/sprint",
-              unp=round(sum(_unp(k) for k in MK_L3)/len(MK_L3), 1),
-              cyc_med=round(sum(CYC[k]["med"] for k in MK_L3)/len(MK_L3), 2),
-              cyc_avg=round(sum(CYC[k]["avg"] for k in MK_L3)/len(MK_L3), 2),
+              unp=_avg(_unp, 1),
+              cyc_med=_avg(lambda k: CYC[k]["med"]),
+              cyc_avg=_avg(lambda k: CYC[k]["avg"]),
               nodev=sum(CYC[k]["nodev"] for k in MK_L3),
               note=" — the band is the team's own range over the last three releases, per sprint.")
     CAP_Q1, CAP_Q2 = [_prev], list(MK_L3)
