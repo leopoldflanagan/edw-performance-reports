@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Builds the EDW Performance Report pages.
+Builds the delivery report pages. The team is configured, not hardcoded: see TEAM.
 
 Everything the pages need comes from two files, never from constants in here:
 
@@ -29,6 +29,42 @@ GHOST = DATA.setdefault("GHOST", {})
 _FROZEN_MONTHS = set(DATA.get("MONTHS", {}))   # before the merge below mutates it
 
 CSS = open(os.path.join(REPO, "assets", "style.css.html")).read()
+
+# ------------------------------------------------------------------- the team
+# One codebase, more than one team. Everything that used to say "EDW" in the page
+# chrome reads from here instead, so pointing the build at another board is a data
+# change rather than a find-and-replace. Defaults are EDW's, so an existing
+# frozen.json without a TEAM block keeps building exactly as before.
+TEAM = {
+    "key":    "EDW",
+    "name":   "Enterprise Data Warehouse",
+    "site":   "EDW Performance Reports",
+    "org":    "Wellfit",
+    "prefix": "EDW-Sprint ",           # stripped to "S<n>" on the chart axes
+    "eyebrow": "Enterprise Data Warehouse \u00b7 Flow &amp; Sprint Metrics",
+    "dashboard": "https://wellfit.atlassian.net/jira/dashboards/11272",
+    "dashboard_label": "EDW ScrumBan Dashboard",
+}
+TEAM.update(DATA.get("TEAM") or {})
+TKEY, TSITE = TEAM["key"], TEAM["site"]
+
+
+def _fill(head):
+    """The index head is a template shared by every page built on it."""
+    return (head.replace("__SITE__", TSITE)
+                .replace("__TEAMNAME__", TEAM["name"])
+                .replace("__ORG__", TEAM["org"]))
+
+
+def short_sprint(n):
+    """'EDW-Sprint 14-26' -> 'S14-26'. Any team's prefix, then the generic one."""
+    n = str(n)
+    for pre in (TEAM["prefix"], "EDW-Sprint ", "DS-Sprint "):
+        if pre and n.startswith(pre):
+            return "S" + n[len(pre):]
+    return n
+
+
 
 def _order_sprints(rows, by_month):
     """Chronological order: month by month, in the order each month lists them.
@@ -825,7 +861,7 @@ def head(title, sub, pill, status, current=None):
     _,_,col = BADGE[status]
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDW · {title}</title>
+<title>{TKEY} · {title}</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 {CSS}
 <style>
@@ -843,7 +879,7 @@ def head(title, sub, pill, status, current=None):
 {NAVCSS}{RESPCSS}{ZOOMCSS}{TIPCSS}{REVCSS}
 </style></head>
 <body>
-<header><div class="wrap"><div class="crumb"><a href="../index.html">EDW Performance Reports</a> &rsaquo; {title}</div><div class="eyebrow">Enterprise Data Warehouse · Flow &amp; Sprint Metrics</div>
+<header><div class="wrap"><div class="crumb"><a href="../index.html">{TSITE}</a> &rsaquo; {title}</div><div class="eyebrow">{TEAM["eyebrow"]}</div>
 <h1>{title}</h1><div class="sub">{sub}</div>
 <div class="pillrow" style="margin-top:18px"><div class="statuspill"><span class="dot"></span> {pill}</div>{review_chip(current)}</div></div></header>
 <div class="tabs"><div class="wrap">
@@ -856,7 +892,7 @@ def head(title, sub, pill, status, current=None):
 <main><div class="wrap">"""
 
 FOOT = """</div></main>
-<footer>EDW Performance Reports · Enterprise Data Warehouse · Wellfit</footer>
+<footer>{TSITE} · {TEAM["name"]} · {TEAM["org"]}</footer>
 <script>
 function showTab(id,scroll){
  const tab=document.querySelector(`.tab[data-tab="${id}"]`), panel=document.getElementById(id);
@@ -974,7 +1010,7 @@ def change_marks(labels, topic):
     cs = changes_for(topic)
     marks = []
     for c in cs:
-        short = c["sprint"].replace("EDW-Sprint ", "S")
+        short = short_sprint(c["sprint"])
         if short in labels:
             marks.append({"i": labels.index(short), "t": "practice changed"})
     if not marks:
@@ -1275,6 +1311,52 @@ def scrum_tab(mk=None, names=None, title="Sprint metrics", sub="Every sprint of 
  {'<div class="sectit" style="font-size:20px;margin-top:28px">Committed vs Completed</div><div class="secsub">Day-1 commitment against what was added mid-sprint and what closed.</div>' + sprint_table(allnames) if names else ''}
 </section>"""
 
+
+def _split_range():
+    """The reactive share of mid-sprint additions, over the sprints where the label
+    was still being applied. Written by hand once as "8% to 58%"; it is read from the
+    data now, because the next team's range is not this team's."""
+    v = sorted(x["pct"] for x in SPLIT.values() if x and x.get("pct") is not None)
+    if not v:
+        return None
+    mid = v[len(v)//2] if len(v) % 2 else (v[len(v)//2-1] + v[len(v)//2]) / 2
+    return {"lo": v[0], "hi": v[-1], "mid": mid, "n": len(v)}
+
+
+def _scope_growth():
+    """Final scope over day-1 commitment, across every sprint in the series."""
+    c = f = 0.0
+    for r in SPRINTS:
+        c += r[5]; f += r[6]
+    return (f / c) if c else None
+
+
+def _burndown_insight():
+    """What the burndowns show, with the numbers read rather than remembered."""
+    g, r = _scope_growth(), _split_range()
+    if not g:
+        return ""
+    head = (f"Scope grows <b>{g:.2f}\u00d7</b> between day 1 and the end of a sprint"
+            + (f", and most of what arrives is not reactive work."
+               if r and r["mid"] < 50 else "." if not r else
+               ", and most of what arrives is reactive work."))
+    body = (f"A service team cannot plan every request: urgent work lands mid-sprint, "
+            f"which is exactly what Planned vs Unplanned exists to measure, so some scope "
+            f"growth is expected. The question is how much of it was genuinely "
+            f"unplannable. ")
+    if r:
+        body += (f"Over the <b>{r['n']}</b> sprint{'s' if r['n'] != 1 else ''} where the "
+                 f"<i>Unplanned</i> label was still being applied, reactive work accounts for "
+                 f"<span class=\"stat\">{r['lo']:.0f}% to {r['hi']:.0f}%</span> of everything "
+                 f"added after day 1, with a median of <b>{r['mid']:.0f}%</b>. The rest could "
+                 f"have been on the board from the start.")
+    else:
+        body += ("The <i>Unplanned</i> label is not being applied on any sprint in this "
+                 "series, so the split cannot be measured at all.")
+    return ('<div class="insightbox" style="margin-bottom:24px">'
+            '<div class="k">What the burndowns show</div>'
+            f'<h2>{head}</h2><p>{body}</p></div>')
+
 def series_block(heading=True):
     """Historical, series-wide Scrum view. Lives in Comparatives on monthly pages."""
     closed = [r[7] for r in SPRINTS if r[0] != ACTIVE]
@@ -1320,7 +1402,7 @@ def series_block(heading=True):
    <div class="chartbox" style="height:280px"><canvas id="cSpill"></canvas></div>
    <div class="readout">
     <div class="line" style="border-color:var(--risk)"><span class="vs-tag">{ss['rate']:.0f}% of everything committed</span><br><b>{ss['gone']} of {ss['allp']} points</b> across the series did not finish in the sprint they were in. That is a third of the work, every sprint, and it is invisible in the burndown.</div>
-    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">{ss['out_share']:.0f}% of it is removed, not carried</span><br>EDW takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
+    <div class="line" style="border-color:var(--warning)"><span class="vs-tag">{ss['out_share']:.0f}% of it is removed, not carried</span><br>{TKEY} takes work <i>out</i> of the sprint before closing it rather than letting it show as incomplete. That is why every sprint reads 100% complete — the sprint empties before it closes.</div>
     <div class="line" style="border-color:var(--wf-blue)"><span class="vs-tag">Read it against the commitment, not the burndown</span><br>A sprint that commits to 45 points, grows to 117, closes 69 and drops 48 has not delivered 100% of anything. The honest pair is day-1 commitment and spillover rate, side by side.</div>
    </div>
   </div>
@@ -1328,10 +1410,7 @@ def series_block(heading=True):
   <div class="infopanel ip-amber">There is no sprint goal recorded on any of these sprints, so spillover cannot be read against what the sprint set out to achieve — only against the points. Recording a goal is what would make the difference between "we dropped 48 points" and "we dropped 48 points and still got there".</div>
  </div>
  {recv_card()}
- <div class="insightbox" style="margin-bottom:24px"><div class="k">What the burndowns show</div>
-  <h2>Scope roughly doubles mid-sprint, and most of what comes in was not reactive work.</h2>
-  <p>EDW runs ScrumBan because it is a service team: urgent requests land mid-sprint and cannot be planned, which is exactly what Planned vs Unplanned exists to measure. So scope growth is expected here. The question is how much of it is genuinely unplannable. In the sprints where the <i>Unplanned</i> label was still being applied, reactive work accounts for <span class="stat">8% to 58%</span> of everything added after day 1, and in most of them it sits near the low end. The remainder is feature, QA and dashboard work — the kind that could have been on the board from the start.</p>
- </div>
+ {_burndown_insight()}
  <div class="cmpcard">
   <div class="cmphead"><h3>Where the mid-sprint work comes from</h3></div>
   <div class="cmpgrid">
@@ -1348,7 +1427,7 @@ def series_block(heading=True):
 """
 
 def charts_scrum(mk=None, only=None):
-    names = json.dumps([r[0].replace("EDW-Sprint ","S") for r in SPRINTS])
+    names = json.dumps([short_sprint(r[0]) for r in SPRINTS])
     comp  = json.dumps([r[7] for r in SPRINTS])
     comm  = json.dumps([r[5] for r in SPRINTS])
     sl_names = [n for n in SPLIT if SPLIT[n]]
@@ -1364,7 +1443,7 @@ new Chart(document.getElementById('cVel'),{{type:'bar',
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{y:{{beginAtZero:true,max:115,grid:{{color:gridc}},title:{{display:true,text:'Story points'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[velRef]}});
 new Chart(document.getElementById('cSplit'),{{type:'bar',
- data:{{labels:{json.dumps([n.replace('EDW-Sprint ','S') for n in sl_names])},datasets:[
+ data:{{labels:{json.dumps([short_sprint(n) for n in sl_names])},datasets:[
   {{label:'Reactive (Unplanned / Urgent)',data:{json.dumps([SPLIT[n]['react'] for n in sl_names])},backgroundColor:AMBER,borderRadius:4}},
   {{label:'Plannable',data:{json.dumps([SPLIT[n]['plan'] for n in sl_names])},backgroundColor:RED,borderRadius:4}}]}},
  options:{{plugins:{{legend:{{position:'top'}}}},scales:{{x:{{stacked:true,grid:{{display:false}}}},y:{{stacked:true,beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Points added mid-sprint'}}}}}}}}}});"""
@@ -1389,7 +1468,7 @@ new Chart(document.getElementById('cBand'),{{type:'bar',
  options:{{plugins:{{legend:{{display:false}}}},scales:{{y:{{beginAtZero:true,grid:{{color:gridc}},title:{{display:true,text:'Items closed'}}}},x:{{grid:{{display:false}}}}}}}},
  plugins:[bandRef]}});"""
         ss2 = spill_series([r[0] for r in SPRINTS])
-        _lb = json.dumps([n.replace("EDW-Sprint ","S").replace("DS-Sprint ","S") for n,_ in ss2["rows"]])
+        _lb = json.dumps([short_sprint(n) for n,_ in ss2["rows"]])
         _rt = json.dumps([round(r["rate"],1) for _,r in ss2["rows"]])
         _cl = json.dumps(["#d64550" if r["rate"]>=50 else ("#ED7D31" if r["rate"]>=33 else "#65B2D5") for _,r in ss2["rows"]])
         js += f"""
@@ -1412,7 +1491,7 @@ new Chart(document.getElementById('cSpill'),{{type:'bar',
         _flow = [(n, (spill(n) or {})) for n, _ in ss2["rows"]]
         _flow = [(n, sl) for n, sl in _flow if sl.get("in") is not None]
         if _flow:
-            _fl = json.dumps([n.replace("EDW-Sprint ", "S") for n, _ in _flow])
+            _fl = json.dumps([short_sprint(n) for n, _ in _flow])
             _in = json.dumps([sl["in"][1] for _, sl in _flow])
             _ou = json.dumps([sl["open"][1] + sl["out"][1] for _, sl in _flow])
             js += f"""
@@ -1554,7 +1633,7 @@ def month_page(mk):
         disc_note = f"""<div class="act"><div class="pri p-grey"></div><div class="inner">
      <div class="atop"><h4>Review the {m['discarded']} discarded items</h4><span class="pill pill-grey">Follow-up</span></div>
      <p>The official Throughput filter uses <i>resolved</i>, which mixes closed with discarded (Won't Do). This {PERIOD_WORD} that is {m['discarded']} of {m['resolved']} resolved ({pct_d:.0f}%), which is why the headline counts only the {m['closed']} closed. Worth looking at in the retro at what was opened and then dropped — it usually signals work that came in without enough definition.</p>
-     <div class="owner">Follow-up by: <b>EDW</b></div></div></div>"""
+     <div class="owner">Follow-up by: <b>{TKEY}</b></div></div></div>"""
 
     ip_thr = {"healthy":"ip-green","warning":"ip-amber","risk":"ip-red"}[st_thr]
     col_thr = {"healthy":"num-green","warning":"num-amber","risk":"num-red"}[st_thr]
@@ -1668,7 +1747,7 @@ def month_page(mk):
     <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
     <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
-    <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">&#128200;</span> EDW ScrumBan Dashboard</a>
+    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
 </section>
 
@@ -1780,7 +1859,7 @@ def q2_page():
     <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
     <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Baseline</a>
     <a class="rlink" href="{GUIDES['thr']}" target="_blank"><span class="ico">&#128202;</span> Throughput — Team Guide</a>
-    <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">&#128200;</span> EDW ScrumBan Dashboard</a>
+    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
   <div class="fnote">Two caveats on this baseline: August has no unplanned-work data, and all three months include discards (Won't Do) that did not appear before. The Q1 row is now the reconciled figure: recalculated with the official filter, Q1 closed <b>120</b> items (44/36/40), an average of 40 a month. The 100 (10/45/45) published in the Confluence report could not be reproduced under any filter variant and has been corrected at the source — see the recalculation notice on that page.</div>
 </section>
@@ -1886,7 +1965,7 @@ def q1_page():
     <a class="rlink" href="{GUIDES['q1']}" target="_blank"><span class="ico">&#128208;</span> Q1 2026 Report in Confluence</a>
     <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
     <a class="rlink" href="{GUIDES['dash']}" target="_blank"><span class="ico">&#128216;</span> How to read the dashboard</a>
-    <a class="rlink" href="https://wellfit.atlassian.net/jira/dashboards/11272" target="_blank"><span class="ico">&#128200;</span> EDW ScrumBan Dashboard</a>
+    <a class="rlink" href="{TEAM["dashboard"]}" target="_blank"><span class="ico">&#128200;</span> {TEAM["dashboard_label"]}</a>
   </div></div>
   <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
   over each month's resolution date, which excludes discarded work. Figures reconciled in September 2026 — the method
@@ -2232,7 +2311,7 @@ def _live_core(mode):
 
 def _live_foot(mode):
     """The live script wrapped in the index's closing shell."""
-    shell = open(os.path.join(REPO, "assets", "foot.shell.html")).read()
+    shell = _fill(open(os.path.join(REPO, "assets", "foot.shell.html")).read())
     return shell.replace("__LIVE__", _live_core(mode))
 
 
@@ -2315,7 +2394,7 @@ def sprint_page():
     """The active sprint, laid out like the reports it feeds: same header, same
     tab strip, same cards. The index card is the five-second read; this is the
     page behind it, and it should not look like a different site."""
-    head = open(os.path.join(REPO, "assets", "index.head.html")).read()
+    head = _fill(open(os.path.join(REPO, "assets", "index.head.html")).read())
     # reuse the index stylesheet verbatim -- the live blocks are styled there, and
     # a second copy would drift
     _a = head.find("<style>") + len("<style>")
@@ -2326,12 +2405,12 @@ def sprint_page():
 
     return f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EDW &middot; Active sprint</title>
+<title>{TKEY} &middot; Active sprint</title>
 <style>{css}{SHELLCSS}{SPRINTCSS}</style></head>
 <body>
 <header><div class="wrap">
-<div class="crumb"><a href="index.html">EDW Performance Reports</a> &rsaquo; Active sprint</div>
-<div class="eyebrow">Enterprise Data Warehouse &middot; Live from Jira</div>
+<div class="crumb"><a href="index.html">{TSITE}</a> &rsaquo; Active sprint</div>
+<div class="eyebrow">{TEAM["name"]} &middot; Live from Jira</div>
 <h1>Active sprint</h1>
 <div class="sub">Everything the reports know about the sprint running right now, rebuilt from Jira on
 every refresh. It gets a verdict in the release report once it closes, not before.</div>
@@ -2346,7 +2425,7 @@ every refresh. It gets a verdict in the release report once it closes, not befor
 <main><div class="wrap">
 <div id="livepanel"></div>
 {fixlink()}</div></main>
-<footer>EDW Performance Reports &middot; Enterprise Data Warehouse &middot; Wellfit &middot;
+<footer>{TSITE} &middot; {TEAM["name"]} &middot; {TEAM["org"]} &middot;
 <a href="admin.html" style="color:inherit">what to fix in Jira</a></footer>
 {_live_core("full")}
 </body></html>"""
@@ -2357,13 +2436,13 @@ def admin_page():
     for stakeholders, this is for whoever keeps Jira honest. Every item on it is
     fixed by editing Jira, which is where the name comes from -- it is not only
     about the board, and half of it is the backlog."""
-    head = open(os.path.join(REPO, "assets", "index.head.html")).read()
-    foot = open(os.path.join(REPO, "assets", "admin.foot.html")).read()
-    head = head.replace("<title>EDW Performance Reports</title>",
-                        "<title>EDW &middot; What to fix in Jira</title>")
-    head = head.replace('<div class="eyebrow">Enterprise Data Warehouse</div>',
-                        '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
-    head = head.replace("<h1>EDW Performance Reports</h1>", "<h1>What to fix in Jira</h1>")
+    head = _fill(open(os.path.join(REPO, "assets", "index.head.html")).read())
+    foot = _fill(open(os.path.join(REPO, "assets", "admin.foot.html")).read())
+    head = head.replace(f"<title>{TSITE}</title>",
+                        f"<title>{TKEY} &middot; What to fix in Jira</title>")
+    head = head.replace(f'<div class="eyebrow">{TEAM["name"]}</div>',
+                        f'<div class="eyebrow">{TEAM["name"]} &middot; Admin</div>')
+    head = head.replace(f"<h1>{TSITE}</h1>", "<h1>What to fix in Jira</h1>")
     _i, _j = head.find('<div class="sub">'), head.find("</div></div></header>")
     head = head[:_i] + ('<div class="sub">Everything on this page is fixable by editing Jira. '
                         'It is kept away from the reports on purpose: the reports are for '
@@ -2371,8 +2450,8 @@ def admin_page():
     head = head.replace('<div id="livepanel"></div>', '<div id="adminpanel"></div>')
     # the strip, so this page can be left the same way every other page can
     head = head.replace("</style>", SHELLCSS + "</style>")
-    head = head.replace('<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>',
-                        '<div class="crumb"><a href="index.html">EDW Performance Reports</a> '
+    head = head.replace(f'<div class="eyebrow">{TEAM["name"]} &middot; Admin</div>',
+                        f'<div class="crumb"><a href="index.html">{TSITE}</a> '
                         '&rsaquo; What to fix in Jira</div>'
                         '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
     head = head.replace('<main><div class="wrap">', repnav("fix", root=True) + '\n<main><div class="wrap">')
@@ -2391,7 +2470,7 @@ def fixlink():
 
 
 def index_page():
-    head = open(os.path.join(REPO, "assets", "index.head.html")).read()
+    head = _fill(open(os.path.join(REPO, "assets", "index.head.html")).read())
     foot = _live_foot("compact")
     idx  = DATA.get("INDEX", {})
 
@@ -2499,10 +2578,14 @@ if not DATA.get("RELEASES"):
     for mk, m in MONTHS.items():
         open(f"{REPO}/2026/{m['slug']}.html","w").write(add_tips2(month_page(mk)))
         print("wrote", m["slug"])
-open(f"{REPO}/2026/2026-q1.html","w").write(add_tips2(q1_page()))
-print("wrote 2026-q1")
-open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips2(q2_page()))
-print("wrote 2026-q2-baseline")
+# The quarter pages are EDW's published baselines: hand-written historical records
+# of how the Q1 figures were derived and why Q2 does not work as a baseline. A team
+# without them in frozen.json simply does not get them, rather than getting EDW's.
+if DATA.get("QUARTERS_CLOSED"):
+    open(f"{REPO}/2026/2026-q1.html","w").write(add_tips2(q1_page()))
+    print("wrote 2026-q1")
+    open(f"{REPO}/2026/2026-q2-baseline.html","w").write(add_tips2(q2_page()))
+    print("wrote 2026-q2-baseline")
 
 
 # ---------------------------------------------------------------- releases
