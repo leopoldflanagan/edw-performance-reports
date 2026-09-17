@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T21:45:18Z",
+ "generated": "2026-09-17T22:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 22,
    "sprint": 20,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -451,8 +451,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 26,
+    "n": 27,
     "items": [
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
+     },
      {
       "key": "EDW-2369",
       "summary": "ONESMILE NV/WA & Essential Smiles - Data Report"
@@ -480,23 +484,19 @@
      {
       "key": "EDW-2209",
       "summary": "LL backfill non-annual plan records"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 31 of 35 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 31,
+    "why": "missing on 32 of 36 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 32,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 35 of 35 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 35,
+    "why": "missing on 36 of 36 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 36,
     "items": []
    },
    {
@@ -594,7 +594,7 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 30,
-  "items_done": 14,
+  "items_done": 15,
   "committed": 52,
   "final": 57,
   "completed": 18,
@@ -616,11 +616,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 14,
-   "Ready for Development": 7,
-   "In Development": 6,
-   "Awaiting Review": 1,
-   "Won't Do": 1
+   "Closed": 15,
+   "In Development": 5,
+   "Awaiting Review": 2,
+   "Won't Do": 1,
+   "Ready for Development": 6
   },
   "burn": [
    42.0,
@@ -690,8 +690,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 15.1,
+    "open": 22,
+    "med_age": 14.6,
     "max_age": 192.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -702,8 +702,8 @@
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 2.3,
+    "open": 6,
+    "med_age": 2.8,
     "max_age": 20.2,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -711,18 +711,6 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 241
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -737,6 +725,18 @@
     "clear_n": 5
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -749,7 +749,7 @@
     "clear_n": 138
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -757,8 +757,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -773,7 +773,7 @@
     "clear_n": 63
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,13 +781,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
     "clear_n": 1
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 28,
   "stale": 18,
