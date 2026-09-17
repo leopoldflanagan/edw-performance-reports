@@ -104,7 +104,7 @@
    "Sep 14",
    "Sep 28",
    29,
-   9,
+   10,
    51,
    56,
    16,
@@ -148,7 +148,7 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    9,
+    10,
     16
    ],
    "open": [
@@ -231,8 +231,8 @@
   "EDW-Sprint 22-26": {
    "tis": {
     "Closed": {
-     "n": 10,
-     "med": 11.51
+     "n": 11,
+     "med": 11.5
     },
     "Backlog": {
      "n": 17,
@@ -240,7 +240,7 @@
     },
     "In Development": {
      "n": 14,
-     "med": 11.47
+     "med": 6.33
     },
     "Awaiting Review": {
      "n": 4,
@@ -256,13 +256,13 @@
     }
    },
    "dist": {
-    "Closed": 9,
+    "Closed": 10,
     "Backlog": 4,
-    "In Development": 8,
+    "In Development": 7,
     "Won't Do": 1,
     "Ready for Development": 7
    },
-   "stalled": 19,
+   "stalled": 18,
    "worst": 12.48,
    "worstSt": "Ready for Development",
    "items": 29
