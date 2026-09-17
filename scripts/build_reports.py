@@ -73,6 +73,16 @@ def rlink(key, icon, label):
             f'<span class="ico">{icon}</span> {label}</a>') if url else ""
 
 
+def quarterlink():
+    """The published quarter baseline, for the teams that have one. These pages are
+    hand-written historical records, so a team without them gets no link rather than
+    a link into another team's history -- or, worse, a 404 that looks like a bug in
+    its own site."""
+    return ('<a class="rlink" href="2026-q2-baseline.html">'
+            '<span class="ico">&#128202;</span> Q2 2026 Report</a>'
+            if DATA.get("QUARTERS_CLOSED") else "")
+
+
 def dashlink():
     """The team's Jira dashboards. A team that has set none gets no link at all --
     pointing it at another team's dashboard is the same class of mistake as reading
@@ -1851,7 +1861,7 @@ def month_page(mk):
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
     {rlink('dash', '&#128216;', 'How to read the dashboard')}
     {rlink('q1', '&#128208;', 'Q1 2026 Baseline')}
-    <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
+    {quarterlink()}
     {dashlink()}
   </div></div>
 </section>
@@ -2068,7 +2078,7 @@ def q1_page():
   <div style="margin-top:24px"></div>
   <div class="reslinks"><div class="rt">Resources</div><div class="rgrid">
     {rlink('q1', '&#128208;', 'Q1 2026 Report in Confluence')}
-    <a class="rlink" href="2026-q2-baseline.html"><span class="ico">&#128202;</span> Q2 2026 Report</a>
+    {quarterlink()}
     {rlink('dash', '&#128216;', 'How to read the dashboard')}
     {dashlink()}
   </div></div>
