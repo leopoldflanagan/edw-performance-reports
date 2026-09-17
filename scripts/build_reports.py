@@ -2736,7 +2736,7 @@ def admin_page():
     head = head.replace(f'<div class="eyebrow">{TEAM["name"]} &middot; Admin</div>',
                         f'<div class="crumb"><a href="index.html">{TSITE}</a> '
                         '&rsaquo; What to fix in Jira</div>'
-                        '<div class="eyebrow">Enterprise Data Warehouse &middot; Admin</div>')
+                        f'<div class="eyebrow">{TEAM["name"]} &middot; Admin</div>')
     head = head.replace('<main><div class="wrap">', repnav("fix", root=True) + '\n<main><div class="wrap">')
     return head + foot
 
@@ -3028,11 +3028,17 @@ if RELEASES:
 
 # after the report pages: the sprint page carries the same report strip they do,
 # and REPORTS is only complete once the releases have been built
-open(f"{REPO}/admin.html","w").write(admin_page())
-open(f"{REPO}/sprint.html","w").write(sprint_page())
+# Every page is rendered BEFORE any file is opened. `open(path, "w")` truncates
+# immediately, so the old shape -- open(...).write(page()) -- emptied the file and
+# then raised, publishing a blank page. The site should survive a build error with
+# the last good pages intact rather than with holes in it.
+_admin, _sprint = admin_page(), sprint_page()
+open(f"{REPO}/admin.html","w").write(_admin)
+open(f"{REPO}/sprint.html","w").write(_sprint)
 print("wrote admin + sprint")
 
-open(os.path.join(REPO, "index.html"), "w").write(index_page())
+_index = index_page()
+open(os.path.join(REPO, "index.html"), "w").write(_index)
 print("wrote index")
 
 _froze = freeze_month()
