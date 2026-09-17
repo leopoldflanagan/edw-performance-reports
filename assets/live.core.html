@@ -289,11 +289,10 @@
     return tag + freshness(d.generated);
   }
 
-  function sprintTitle(s, live, big) {
-    // the sprint being reported on is the headline, not the one after it
-    return '<div style="font-size:' + (big ? 26 : 22) + 'px;font-weight:800;color:' +
-      (big ? '#fff' : 'var(--wf-blue-d)') + ';line-height:1.2">' + esc(s.name) + '</div>' +
-      '<div class="secsub" style="margin:2px 0 0;font-size:13px;color:' +
+  function sprintMeta(s, live, big) {
+    // dates, position and planned capacity -- everything about the sprint except
+    // its name, which on the sprint page is the page's own heading
+    return '<div class="secsub" style="margin:2px 0 0;font-size:13px;color:' +
       (big ? '#cfe7f3' : 'var(--wf-muted)') + '">' +
       day(s.start) + ' &rarr; ' + day(s.end) +
       (s.day ? ' &middot; <b>day ' + s.day + ' of ' + s.days + '</b>' : '') +
@@ -306,6 +305,13 @@
             (s.capacity.holidays > 1 ? 's' : '') + ')' : '')
         : '') +
       (live ? '' : ' &middot; closed') + '</div>';
+  }
+
+  function sprintTitle(s, live, big) {
+    // the sprint being reported on is the headline, not the one after it
+    return '<div style="font-size:' + (big ? 26 : 22) + 'px;font-weight:800;color:' +
+      (big ? '#fff' : 'var(--wf-blue-d)') + ';line-height:1.2">' + esc(s.name) + '</div>' +
+      sprintMeta(s, live, big);
   }
 
   function tiles(s, live) {
@@ -438,10 +444,17 @@
   function renderPage(d) {
     var s = d.sprint, m = d.month, live = d.kind === 'active';
 
+    // The page's heading is the sprint, not the word "Active sprint" -- that is
+    // already the crumb, the tab and the nav pill. Saying it a fourth time in the
+    // h1 pushed the one thing the reader came for into a subtitle.
+    var h1 = document.getElementById('livetitle');
+    if (h1 && s) h1.textContent = s.name;
     var hd = document.getElementById('livehead');
     if (hd) {
-      hd.innerHTML = (s ? sprintTitle(s, live, true) : '') +
-        '<div class="liverow" style="margin-top:14px">' + headline(d, s, live) + '</div>';
+      // the status tag only says something when the sprint is NOT the live one
+      hd.innerHTML = (s ? sprintMeta(s, live, true) : '') +
+        '<div class="liverow" style="margin-top:14px">' +
+        (live ? freshness(d.generated) : headline(d, s, live)) + '</div>';
     }
 
     var prog = '', flow = '', rel = '';

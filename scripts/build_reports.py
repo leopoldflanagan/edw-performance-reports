@@ -2693,10 +2693,11 @@ def sprint_page():
 <header><div class="wrap">{PREFBTN}
 <div class="crumb"><a href="index.html">{TSITE}</a> &rsaquo; Active sprint</div>
 <div class="eyebrow">{TEAM["name"]} &middot; Live from Jira</div>
-<h1>Active sprint</h1>
-<div class="sub">Everything the reports know about the sprint running right now, rebuilt from Jira on
-every refresh. It gets a verdict in the release report once it closes, not before.</div>
-<div id="livehead" style="margin-top:22px"></div>
+<h1 id="livetitle">Active sprint</h1>
+<div id="livehead" style="margin-top:6px"></div>
+<div class="sub" style="margin-top:18px;max-width:52ch">Everything the reports know about the
+sprint running right now, rebuilt from Jira on every refresh. It gets a verdict in the release
+report once it closes, not before.</div>
 </div></header>
 <div class="tabs"><div class="wrap">
  <button class="tab active" data-tab="prog">Progress</button>
