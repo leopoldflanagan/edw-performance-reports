@@ -99,6 +99,17 @@ def _vs(now, ref, share=1.0):
     return (100 * (now / ref - 1)) if ref else None
 
 
+def _pct(v):
+    """A percentage, or a dash where there is no figure. Printing None with a
+    per-cent sign after it is how 'we could not measure this' turns into text that
+    looks like a measurement."""
+    return "&mdash;" if v is None else f"{v}%"
+
+
+def _days(v):
+    return "&mdash;" if v is None else f"{v}d"
+
+
 def _spark_cap(mk):
     """Caption for the little series line. With nothing closed yet there is no
     series to caption."""
@@ -1798,7 +1809,7 @@ def month_page(mk):
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
       {sb_rows([("Unplanned share", f"{m['unp_pct']:.1f}%", pdelta(m['unp_pct'],Q1['unp']), pdelta(m['unp_pct'],Q2['unp']), True),
                 ("Items", f"{m['unplanned']}", None, None, True)])}
-      <div class="ctxline"><span>{REF1_SHORT} <b>{Q1['unp']}%</b> · {REF2_SHORT} <b>{Q2['unp']}%</b></span></div>
+      <div class="ctxline"><span>{REF1_SHORT} <b>{_pct(Q1['unp'])}</b> &middot; {REF2_SHORT} <b>{_pct(Q2['unp'])}</b></span></div>
       <div class="infopanel {ip}"><a href="#" class="ip-link" data-goto="act">See the breakdown in Findings &amp; Retro &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
       {doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>"""
@@ -1833,13 +1844,22 @@ def month_page(mk):
       <div class="cardfill"></div><hr class="docsep">
       {doclink('wip', 'WIP — Team Guide')}</div>"""
 
+    # Every cell here can be absent on its own: the period may carry no label at
+    # all, and either reference may not exist yet. A percentage-point difference
+    # against a reference that is not there is not zero, it is nothing.
+    def _pp(now, ref):
+        if ref is None:
+            return '<td class="flat">\u2014</td>'
+        d = now - ref
+        return f'<td class="{"pos" if d < 0 else "neg"}">{d:+.1f} pp</td>'
+    _r1 = f'{Q1["unp"]}%' if Q1["unp"] is not None else "\u2014"
+    _r2 = f'{Q2["unp"]}%' if Q2["unp"] is not None else "\u2014"
     if m["unplanned"] is None:
-        unp_row = (f'<td class="flat">no data</td><td class="flat">—</td><td>{Q1["unp"]}%</td>'
-                   f'<td>{Q2["unp"]}%</td><td class="flat">—</td><td class="flat">—</td>')
+        unp_row = (f'<td class="flat">no data</td><td class="flat">\u2014</td><td>{_r1}</td>'
+                   f'<td>{_r2}</td><td class="flat">\u2014</td><td class="flat">\u2014</td>')
     else:
-        unp_row = (f'<td>{m["unp_pct"]:.2f}%</td><td class="flat">—</td><td>{Q1["unp"]}%</td><td>{Q2["unp"]}%</td>'
-                   f'<td class="neg">+{m["unp_pct"]-Q1["unp"]:.1f} pp</td>'
-                   f'<td class="{"pos" if m["unp_pct"]<Q2["unp"] else "neg"}">{m["unp_pct"]-Q2["unp"]:+.1f} pp</td>')
+        unp_row = (f'<td>{m["unp_pct"]:.2f}%</td><td class="flat">\u2014</td><td>{_r1}</td><td>{_r2}</td>'
+                   + _pp(m["unp_pct"], Q1["unp"]) + _pp(m["unp_pct"], Q2["unp"]))
 
     tickets = "".join(f'<div class="ticket"><span class="tkey">{k}</span><span class="tdesc">{s}</span></div>'
                       for k,s in m["unp_items"])
@@ -1998,7 +2018,7 @@ def month_page(mk):
     <tbody>
       <tr><td>Throughput (closed)</td><td>{m['closed']}</td><td>{m['prev_closed']}</td><td>{Q1['thr_med']}</td><td>{Q2['thr_med']}</td><td class="{'pos' if dev_base>0 else 'neg'}">{dev_base:+.1f}%</td><td class="{'pos' if dev_q2>0 else 'neg'}">{dev_q2:+.1f}%</td></tr>
       <tr><td>Unplanned work</td>{unp_row}</tr>
-      <tr><td>Cycle Time (median)</td><td>{c['med']:.2f}d</td><td class="flat">—</td><td>{Q1['cyc_med']}d</td><td>{Q2['cyc_med']}d</td>{_pcell(c['med'], Q1['cyc_med'], True)}{_pcell(c['med'], Q2['cyc_med'], True)}</tr>
+      <tr><td>Cycle Time (median)</td><td>{c['med']:.2f}d</td><td class="flat">—</td><td>{_days(Q1['cyc_med'])}</td><td>{_days(Q2['cyc_med'])}</td>{_pcell(c['med'], Q1['cyc_med'], True)}{_pcell(c['med'], Q2['cyc_med'], True)}</tr>
       <tr><td>Closed without entering development</td><td>{c['nodev']} ({nodev_pct:.0f}%)</td><td class="flat">—</td><td class="flat">—</td><td>{Q2['nodev']}</td><td class="flat">—</td><td class="flat">—</td></tr>
     </tbody>
   </table></div>
