@@ -303,7 +303,27 @@ def month_so_far(project, window=None, label=None, key=None):
             "people_active": sum(1 for _, c in people.items() if c >= 2)}
 
 
-SIGNOFF_PAGE = (os.environ.get("SIGNOFF_PAGE") or "3746431012").strip()   # EDW register; DS/LL override via env
+# The two Confluence pages are per-team input, and a wrong default is the worst
+# kind of bug here: it does not fail, it quietly reports another team's plan as
+# this team's. So there is no cross-team fallback -- a team that is not in the
+# table must pass the id in the environment, or the run stops.
+_PAGES = {
+    "EDW": {"signoff": "3746431012", "capacity": "3747938305"},
+}
+
+
+def page_id(kind, team):
+    env = (os.environ.get(kind.upper() + "_PAGE") or "").strip()
+    if env:
+        return env
+    known = _PAGES.get(team.upper(), {}).get(kind)
+    if known:
+        return known
+    raise SystemExit(
+        f"CONFIG ERROR: no {kind} page for team {team}.\n"
+        f"  Set {kind.upper()}_PAGE in the workflow's env block to this team's\n"
+        f"  Confluence page id. Refusing to fall back to another team's page.")
+
 
 
 def _soft(path):
@@ -372,8 +392,6 @@ def signoff(page_id):
           f" of {len(out)} reports signed by both", flush=True)
     return out
 
-
-CAPACITY_PAGE = (os.environ.get("CAPACITY_PAGE") or "3747938305").strip()   # EDW; DS/LL override via env
 
 _ENT = {"&nbsp;": " ", "&mdash;": "-", "&ndash;": "-", "&amp;": "&", "&lt;": "<",
         "&gt;": ">", "&quot;": '"', "&#39;": "'", "&iacute;": "i", "&oacute;": "o",
@@ -1241,7 +1259,7 @@ def main():
     else:
         period = month_so_far(a.project)
 
-    cap_page = capacity(CAPACITY_PAGE)
+    cap_page = capacity(page_id("capacity", a.team))
     if live_sp and cap_page:
         # the page is the planning record; Jira is the execution record. Where Jira
         # has no goal, the one agreed at planning is better than nothing, and it is
@@ -1318,7 +1336,7 @@ def main():
     # the sign-off register. Written here rather than hand-edited, so the only way
     # a report turns green is that both people ticked their own box in Confluence.
     # (capacity is attached to the block above, see main())
-    sg = signoff(SIGNOFF_PAGE)
+    sg = signoff(page_id("signoff", a.team))
     if sg is not None:
         with open(os.path.join(os.path.dirname(a.out) or ".", "review.json"), "w") as f:
             json.dump(sg, f, indent=1, ensure_ascii=False)
