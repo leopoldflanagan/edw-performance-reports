@@ -2764,7 +2764,11 @@ def index_page():
                      blurb if blurb is not None else meta.get("blurb", ""), status)
 
     rel, months, quarters = [], [], []
-    for rk, r in sorted(DATA.get("RELEASES", {}).items(), reverse=True):
+    # the measured ones only: an unmeasured release has no figures to put in a
+    # card, and a card with no figures is a claim that there was nothing to show
+    for rk, r in sorted(((k, v) for k, v in (DATA.get("RELEASES") or {}).items()
+                         if v.get("closed") is not None or v.get("open")),
+                        reverse=True):
         href = r["slug"] + ".html"
         _ns = [n.split()[-1].split("-")[0] for n in r["sprints"]]
         sub = (f"Sprint{'s' if len(_ns) > 1 else ''} {', '.join(_ns[:-1]) + ' and ' + _ns[-1] if len(_ns) > 1 else _ns[0]}"
@@ -2875,7 +2879,17 @@ if DATA.get("QUARTERS_CLOSED"):
 # through the same engine; what changes is the window, the span (a release runs
 # two sprints, sometimes three) and what it compares itself against — its own
 # series rather than the calendar quarters, which belong to the quarter pages.
-RELEASES = DATA.get("RELEASES", {})
+# A release is rendered once it has been measured. Before that it is a window and
+# a list of sprints -- a fact about the calendar, not a result -- and publishing it
+# would state that the team delivered nothing. scripts/backfill.py computes the
+# closed ones from Jira; the refresh job measures the open one. Either way a page
+# appears when there is something true to put on it.
+RELEASES = {k: v for k, v in (DATA.get("RELEASES") or {}).items()
+            if v.get("closed") is not None or v.get("open")}
+_UNMEASURED = sorted(set(DATA.get("RELEASES") or {}) - set(RELEASES))
+if _UNMEASURED:
+    print("not measured yet, so not rendered:", ", ".join(_UNMEASURED),
+          "-- run scripts/backfill.py for these")
 if RELEASES:
     MONTHS       = RELEASES
     CAP          = DATA["CAP_R"]
