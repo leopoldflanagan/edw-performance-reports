@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EDW Reports &middot; prototype</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
+:root{--wf-blue:#007CBC;--wf-blue-d:#005f91;--wf-blue-l:#65B2D5;--wf-blue-bg:#e5f2f8;--wf-ink:#32373c;
+ --wf-muted:#626c84;--line:#e2e8f0;--bg:#f5f8fb;--card:#fff;--shadow:0 1px 3px rgba(0,124,188,.05),0 6px 22px rgba(50,55,60,.06);
+ --healthy:#4FA800;--warning:#ED7D31;--risk:#d64550}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--wf-ink);line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{background:linear-gradient(135deg,#005f91,#007CBC);color:#fff;padding:40px 0 34px;position:relative;overflow:hidden}
+header::after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(101,178,213,.35),transparent 70%)}
+.eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--wf-blue-l);font-weight:700}
+header h1{font-weight:800;font-size:36px;margin:8px 0 6px;letter-spacing:-.02em}
+header .sub{color:#cfe7f3;font-size:15px;max-width:720px}
+.protobar{display:inline-flex;align-items:center;gap:9px;background:#fff3cd;color:#7a5600;font-weight:800;
+ font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:7px 14px;border-radius:999px;margin-bottom:14px}
+.protobar i{width:8px;height:8px;border-radius:50%;background:#c8860d;display:block}
+main{padding:34px 0 80px}
+.tabs{position:sticky;top:0;z-index:30;background:rgba(245,248,251,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs .wrap::-webkit-scrollbar{display:none}
+.tab{appearance:none;background:none;border:none;font-family:'DM Sans';font-weight:600;font-size:15px;color:var(--wf-muted);
+ padding:16px 20px;cursor:pointer;position:relative;transition:color .2s;white-space:nowrap;flex:0 0 auto}
+.tab:hover{color:var(--wf-ink)}.tab.active{color:var(--wf-blue)}
+.tab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:-1px;height:3px;background:var(--wf-blue);border-radius:3px 3px 0 0}
+.panel{display:none;animation:fade .35s ease}.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.sectit{font-weight:800;font-size:25px;color:var(--wf-blue-d);margin:4px 0 4px;letter-spacing:-.01em}
+.secsub{color:var(--wf-muted);font-size:14.5px;margin-bottom:20px;max-width:820px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+.card h3{font-size:19px;font-weight:700;color:var(--wf-blue-d);margin-bottom:3px}
+.card .h3sub{font-size:13.5px;color:var(--wf-muted);margin-bottom:16px;max-width:760px}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:6px 0 4px}
+.tile{background:#f6f9fd;border:1px solid var(--line);border-radius:11px;padding:12px 14px}
+.tile .k{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700}
+.tile .v{font-size:26px;font-weight:800;line-height:1.2;color:var(--wf-blue-d);margin-top:3px}
+.tile .n{font-size:12px;color:var(--wf-muted);margin-top:2px}
+.note{border:1px dashed var(--line);border-radius:11px;padding:12px 14px;background:#fbfcfe;font-size:13px;color:var(--wf-muted);margin-top:14px}
+.note b{color:var(--wf-ink)}
+.warnbox{border-left:3px solid var(--warning);background:#fdf6ef;border-radius:0 10px 10px 0;padding:11px 14px;font-size:13px;color:#7a5600;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--wf-muted);font-weight:700;text-align:left;padding:0 10px 7px 0;border-bottom:1px solid var(--line)}
+td{padding:9px 10px 9px 0;border-bottom:1px solid #f0f3f8;vertical-align:middle}
+td.num,th.num{text-align:right;white-space:nowrap}
+tr.sel td{background:var(--wf-blue-bg)}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:#f6f9fd}
+.k2{font-weight:700;color:var(--wf-blue-d);white-space:nowrap}
+.mono{font-variant-numeric:tabular-nums}
+.ctl{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:#f6f9fd;border:1px solid var(--line);
+ border-radius:11px;padding:12px 15px;margin:4px 0 16px}
+.ctl label{font-size:12.5px;font-weight:700;color:var(--wf-ink)}
+.ctl input[type=range]{flex:1;min-width:160px;accent-color:var(--wf-blue)}
+.ctl .val{font-weight:800;color:var(--wf-blue-d);font-size:15px;min-width:54px;text-align:right}
+.ctl .hint{font-size:12px;color:var(--wf-muted);flex:1 0 100%}
+.pill{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.p-red{background:#fdeaea;color:#b3261e}.p-amber{background:#fdeee3;color:#c0641f}
+.p-green{background:#e6f6ef;color:#1a7f5a}.p-grey{background:#eef2f8;color:#5a6577}
+.rule{border:1px solid var(--line);border-left-width:4px;border-radius:0 12px 12px 0;padding:14px 16px;margin-bottom:12px;background:#fff}
+.rule.sev-risk{border-left-color:var(--risk)}.rule.sev-warn{border-left-color:var(--warning)}
+.rule.sev-gone{border-left-color:var(--healthy);opacity:.75}
+.rule h4{font-size:15.5px;font-weight:700;color:var(--wf-ink);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.rule p{font-size:13.5px;color:var(--wf-muted);margin-top:5px}
+.rule .ev{font-size:12.5px;color:var(--wf-muted);margin-top:8px;font-variant-numeric:tabular-nums}
+.rule .ev b{color:var(--wf-ink)}
+.since{font-size:11.5px;color:var(--wf-muted);font-weight:600}
+svg{display:block;max-width:100%}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--wf-muted);margin-top:8px}
+.legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:5px}
+footer{border-top:1px solid var(--line);padding:22px 0;color:var(--wf-muted);font-size:12px;text-align:center}
+@media(max-width:700px){.wrap{padding:0 16px}header h1{font-size:27px}.sectit{font-size:21px}.card{padding:16px}}
+</style></head>
+<body>
+<header><div class="wrap">
+<div class="protobar"><i></i> Prototype &middot; not deployed</div>
+<div class="eyebrow">Enterprise Data Warehouse &middot; four ideas on real data</div>
+<h1>What the reports could also do</h1>
+<div class="sub">Four additions to the EDW delivery reports, running on the board&rsquo;s real numbers so they can be judged
+rather than imagined. Nothing here is published and nothing writes to Jira or Confluence. Every figure comes from the
+same sources the live reports use; where a number is an assumption, the page says so and lets you move it.</div>
+</div></header>
+<div class="tabs"><div class="wrap">
+ <button class="tab active" data-tab="fc">1 &middot; Forecast</button>
+ <button class="tab" data-tab="ld">2 &middot; The other clock</button>
+ <button class="tab" data-tab="fi">3 &middot; Findings as rules</button>
+ <button class="tab" data-tab="lp">4 &middot; Did it work?</button>
+</div></div>
+<main><div class="wrap">
+<section class="panel active" id="fc">
+  <div class="sectit">Forecast the backlog, not the sprint</div>
+  <div class="secsub">The live page projects how the running sprint closes. Nobody can ask it the question
+  stakeholders actually ask: <b>when do I get the thing I asked for?</b> This answers it from the team&rsquo;s own
+  history &mdash; no velocity target, no estimate of the item, no promise. Ten thousand simulated futures, and the
+  spread between them is the answer.</div>
+
+  <div class="card">
+    <h3>The two assumptions, in the open</h3>
+    <div class="h3sub">A forecast is only as honest as its assumptions, so both of them are dials rather than
+    numbers buried in code. Move them and every date below moves.</div>
+    <div class="ctl">
+      <label for="drain">Share of a sprint&rsquo;s closures that come off this ordered backlog</label>
+      <input type="range" id="drain" min="5" max="100" step="1" value="27">
+      <span class="val" id="drainv">27%</span>
+      <span class="hint" id="drainhint"></span>
+    </div>
+    <div class="ctl">
+      <label for="pace">Pace, against the team&rsquo;s own last ten sprints</label>
+      <input type="range" id="pace" min="50" max="150" step="5" value="100">
+      <span class="val" id="pacev">100%</span>
+      <span class="hint">At 100% the simulation draws from what this team actually closed, sprint by sprint. Drag it to
+      ask what a smaller or larger team would change &mdash; this is the arithmetic that scope conversations usually
+      do by feel.</span>
+    </div>
+    <div class="row" id="fcstats"></div>
+    <div class="note" id="fcmethod"></div>
+  </div>
+
+  <div class="card" id="fcaudit"></div>
+
+  <div class="card">
+    <h3>The backlog, in the order Jira has it</h3>
+    <div class="h3sub">Click a row to see its distribution. Dates come from the sprint calendar on the capacity page,
+    including the holidays in sprints 27 and 29, so a forecast in sprints becomes a forecast in days off.</div>
+    <div style="overflow-x:auto">
+      <table id="bltab"><thead><tr>
+        <th class="num">#</th><th>Item</th><th class="num">Waiting</th><th class="num">Pts</th>
+        <th class="num">Likely (50%)</th><th class="num">Safe (85%)</th><th class="num">Sprints</th>
+      </tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="card" id="fcdetail"></div>
+</section>
+
+<section class="panel" id="ld">
+  <div class="sectit">The clock the person who asked is watching</div>
+  <div class="secsub">Cycle time starts when an item enters <i>In Development</i>. The person who filed it started
+  counting when they filed it. Everything between those two moments &mdash; grooming, prioritising, waiting &mdash;
+  is invisible in every chart the reports draw today.</div>
+
+  <div class="card">
+    <h3>Two clocks on the same work</h3>
+    <div class="h3sub">Same items, two start lines. The team&rsquo;s clock is the one already on the reports; the
+    request&rsquo;s clock is created to closed.</div>
+    <div class="row" id="ldstats"></div>
+    <div id="ldbars"></div>
+    <div class="note" id="ldnote"></div>
+  </div>
+
+  <div class="card">
+    <h3>Where the waiting actually is</h3>
+    <div class="h3sub">Every closed item in the sample, by how long it took from the day it was filed. The bar at the
+    far right is not an outlier to be trimmed &mdash; it is the experience of whoever filed those.</div>
+    <div id="ldhist"></div>
+    <div class="legend"><span><i style="background:#65B2D5"></i>Within a sprint (&le;14d)</span>
+      <span><i style="background:#ED7D31"></i>One to four sprints</span>
+      <span><i style="background:#d64550"></i>Longer than four sprints</span></div>
+    <div class="warnbox" id="ldwarn"></div>
+  </div>
+</section>
+
+<section class="panel" id="fi">
+  <div class="sectit">Findings that expire on their own</div>
+  <div class="secsub">The <i>Findings &amp; Retro</i> tab is prose written for one period. When the next release closes
+  it still talks about the last one, and nothing tells anybody. Here each finding is a rule over the data: it appears
+  when it becomes true, carries the release it first appeared in, and <b>disappears when the team fixes it</b>. A
+  finding that has survived four releases is a stronger statement than any paragraph.</div>
+  <div class="row" id="fistats"></div>
+  <div id="firules"></div>
+  <div class="card">
+    <h3>Rules that are not firing</h3>
+    <div class="h3sub">The other half of the idea. A rule that stopped being true is the only evidence a team ever
+    gets that something they changed worked.</div>
+    <div id="figone"></div>
+  </div>
+</section>
+
+<section class="panel" id="lp">
+  <div class="sectit">Did the thing we changed work?</div>
+  <div class="secsub">The capacity page already records what the team changed about how it works, and from which
+  sprint. One column is missing: <b>which number it was supposed to move</b>. With that, the report can read the
+  before and the after by itself, two periods later, and say whether it happened. This is the shortest path from a
+  retro to evidence, and almost no team has it.</div>
+  <div id="loop"></div>
+  <div class="card">
+    <h3>What this needs from you</h3>
+    <div class="h3sub">Nothing technical. Two extra columns on the <i>Practice changes</i> table that already exists.</div>
+    <div style="overflow-x:auto"><table><thead><tr>
+      <th>Column</th><th>What goes in it</th><th>Why the report needs it</th></tr></thead><tbody>
+      <tr><td class="k2">Metric</td><td>One of the numbers the reports already compute &mdash; spillover rate,
+        items per sprint, cycle time median, unplanned share.</td>
+        <td>So the report knows which series to read. Without it, it can mark the charts but not grade the change.</td></tr>
+      <tr><td class="k2">Expected direction</td><td>Up, down, or steady.</td>
+        <td>So a result can be wrong. A change with no expected direction cannot fail, which means it cannot teach
+        anybody anything.</td></tr>
+    </tbody></table></div>
+    <div class="note">The rest is already there: the sprint the change took effect and what changed, both of which the
+    reports read today to annotate the charts.</div>
+  </div>
+</section>
+</div></main>
+<footer>EDW Performance Reports &middot; prototype &middot; real data, nothing published</footer>
+<script>
+var D = {"generated": "2026-09-15T22:32:39Z", "sprints": [{"name": "EDW-Sprint 12-26", "short": "12-26", "start": "Apr 27", "end": "May 11", "items": 26, "done": 19, "committed": 56, "final": 68, "sp": 49}, {"name": "EDW-Sprint 13-26", "short": "13-26", "start": "May 11", "end": "May 26", "items": 28, "done": 21, "committed": 60, "final": 81, "sp": 63}, {"name": "EDW-Sprint 14-26", "short": "14-26", "start": "May 26", "end": "Jun 8", "items": 54, "done": 40, "committed": 79, "final": 119, "sp": 88}, {"name": "EDW-Sprint 15-26", "short": "15-26", "start": "Jun 8", "end": "Jun 22", "items": 52, "done": 33, "committed": 79, "final": 142, "sp": 89}, {"name": "EDW-Sprint 16-26", "short": "16-26", "start": "Jun 22", "end": "Jul 6", "items": 56, "done": 32, "committed": 105, "final": 155, "sp": 78}, {"name": "EDW-Sprint 17-26", "short": "17-26", "start": "Jul 6", "end": "Jul 20", "items": 61, "done": 41, "committed": 120, "final": 163, "sp": 102}, {"name": "EDW-Sprint 18-26", "short": "18-26", "start": "Jul 20", "end": "Aug 5", "items": 56, "done": 40, "committed": 83, "final": 141, "sp": 99}, {"name": "EDW-Sprint 19-26", "short": "19-26", "start": "Aug 3", "end": "Aug 17", "items": 50, "done": 27, "committed": 74, "final": 110, "sp": 55}, {"name": "EDW-Sprint 20-26", "short": "20-26", "start": "Aug 17", "end": "Aug 31", "items": 45, "done": 34, "committed": 78, "final": 109, "sp": 82}, {"name": "EDW-Sprint 21-26", "short": "21-26", "start": "Aug 31", "end": "Sep 14", "items": 52, "done": 35, "committed": 88, "final": 122, "sp": 78}], "calendar": [{"name": "EDW-Sprint 22-26", "start": "2026-09-14", "end": "2026-09-27", "cap": 100}, {"name": "EDW-Sprint 23-26", "start": "2026-09-28", "end": "2026-10-11", "cap": 100}, {"name": "EDW-Sprint 24-26", "start": "2026-10-12", "end": "2026-10-25", "cap": 100}, {"name": "EDW-Sprint 25-26", "start": "2026-10-26", "end": "2026-11-08", "cap": 100}, {"name": "EDW-Sprint 26-26", "start": "2026-11-09", "end": "2026-11-22", "cap": 100}, {"name": "EDW-Sprint 27-26", "start": "2026-11-23", "end": "2026-12-06", "cap": 80}, {"name": "EDW-Sprint 28-26", "start": "2026-12-07", "end": "2026-12-20", "cap": 100}, {"name": "EDW-Sprint 29-26", "start": "2026-12-21", "end": "2027-01-03", "cap": 90}], "spill": {"EDW-Sprint 12-26": {"done": [16, 49], "open": [0, 0], "out": [7, 19]}, "EDW-Sprint 13-26": {"done": [18, 56], "open": [0, 0], "out": [8, 31]}, "EDW-Sprint 14-26": {"done": [28, 83], "open": [0, 0], "out": [13, 39]}, "EDW-Sprint 15-26": {"done": [33, 78], "open": [2, 7], "out": [10, 25]}, "EDW-Sprint 16-26": {"done": [33, 76], "open": [0, 0], "out": [17, 41]}, "EDW-Sprint 17-26": {"done": [33, 87], "open": [0, 0], "out": [17, 52]}, "EDW-Sprint 18-26": {"done": [38, 99], "open": [0, 0], "out": [14, 39]}, "EDW-Sprint 19-26": {"done": [20, 53], "open": [0, 0], "out": [23, 55]}, "EDW-Sprint 20-26": {"done": [33, 83], "open": [0, 0], "out": [10, 29]}, "EDW-Sprint 21-26": {"done": [27, 69], "open": [5, 17], "out": [13, 31]}}, "releases": {"9.04": {"label": "R9.04", "closed": 29, "discarded": 0, "resolved": 29, "n_sprints": 2, "per_sprint": 14.5, "unp_pct": 24.1, "sprints": ["EDW-Sprint 12-26", "EDW-Sprint 13-26"], "open": false, "start": "2026-04-27", "end": "2026-05-24", "cyc_med": 4.87, "cyc_avg": 7.41, "nodev": 4, "cyc_n": 25, "cyc_base": 29, "cyc_max": 23.99, "people": 4}, "9.05": {"label": "R9.05", "closed": 60, "discarded": 4, "resolved": 64, "n_sprints": 2, "per_sprint": 30.0, "unp_pct": 6.7, "sprints": ["EDW-Sprint 14-26", "EDW-Sprint 15-26"], "open": false, "start": "2026-05-25", "end": "2026-06-21", "cyc_med": 4.65, "cyc_avg": 7.05, "nodev": 6, "cyc_n": 54, "cyc_base": 60, "cyc_max": 83.99, "people": 7}, "9.06": {"label": "R9.06", "closed": 114, "discarded": 8, "resolved": 122, "n_sprints": 3, "per_sprint": 38.0, "unp_pct": 13.2, "sprints": ["EDW-Sprint 16-26", "EDW-Sprint 17-26", "EDW-Sprint 18-26"], "open": false, "start": "2026-06-22", "end": "2026-08-02", "cyc_med": 3.89, "cyc_avg": 6.47, "nodev": 20, "cyc_n": 94, "cyc_base": 114, "cyc_max": 98.08, "people": 7}, "9.07": {"label": "R9.07", "closed": 57, "discarded": 19, "resolved": 76, "n_sprints": 2, "per_sprint": 28.5, "unp_pct": null, "sprints": ["EDW-Sprint 19-26", "EDW-Sprint 20-26"], "open": false, "start": "2026-08-03", "end": "2026-08-30", "cyc_med": 4.01, "cyc_avg": 7.18, "nodev": 8, "cyc_n": 49, "cyc_base": 57, "cyc_max": 41.89, "people": 6}, "9.08": {"label": "R9.08", "closed": 51, "discarded": 2, "resolved": 53, "n_sprints": 2, "per_sprint": 25.5, "unp_pct": null, "sprints": ["EDW-Sprint 21-26", "EDW-Sprint 22-26"], "open": true, "start": "2026-08-31", "end": "2026-09-27", "cyc_med": 4.96, "cyc_avg": 9.52, "nodev": 17, "cyc_n": 34, "cyc_base": 51, "cyc_max": 50.15, "people": 6}}, "backlog_live": {"per_sprint_pts": 78.8, "bands": {"skinny": "< 1.5 sprints", "in_shape": "1.5 to 2.5 sprints", "fat": "> 2.5 sprints"}, "ready": {"items": 4, "points": 11}, "misfiled": {"items": 14, "points": 64}, "runway": 0.1, "runway_if_fixed": 1.0, "state": "Skinny", "state_if_fixed": "Skinny", "violations": [{"rule": "Groomed but still in Backlog", "n": 14, "points": 64, "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."}, {"rule": "Idea/Draft sitting in Ready for Development", "n": 16, "points": 48, "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."}, {"rule": "Groomed items with no estimate", "n": 0, "points": 0, "why": "the guide: a Groomed item must be estimated."}, {"rule": "Groomed work archived as Deferred", "n": 7, "points": 26, "why": "work that met Definition of Ready and was then parked."}]}, "admin": {"scope": {"ready": 21, "sprint": 19, "sprint_name": "EDW-Sprint 22-26"}, "blocking": [{"rule": "No estimate", "n": 3, "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.", "items": [{"key": "EDW-2201", "summary": "Retry policy for ingest failures"}, {"key": "EDW-2188", "summary": "Partition pruning follow-up"}, {"key": "EDW-2170", "summary": "Legacy view cleanup"}]}, {"rule": "Idea/Draft in Ready for Development", "n": 16, "why": "the guide does not allow it: it counts as ready to pull when it is not defined.", "items": [{"key": "EDW-1599", "summary": "Commission remap"}, {"key": "EDW-2044", "summary": "Schema drift alerting"}]}, {"rule": "No assignee in the active sprint", "n": 2, "why": "work in the sprint that nobody owns.", "items": [{"key": "EDW-2168", "summary": "Backfill audit table"}, {"key": "EDW-2190", "summary": "Vendor feed reconciliation"}]}], "debt": [{"rule": "Original estimate is not in use", "n": 16, "why": "missing on 16 of 19 items. This reads as a field the team does not use rather than 16 oversights. Worth deciding: adopt it or stop asking for it.", "items": []}, {"rule": "Target end date is not in use", "n": 18, "why": "missing on 18 of 19 items. This reads as a field the team does not use rather than 18 oversights. Worth deciding: adopt it or stop asking for it.", "items": []}, {"rule": "No fix version", "n": 12, "why": "the release a delivery belongs to cannot be traced without it.", "items": [{"key": "EDW-2168", "summary": "Backfill audit table"}, {"key": "EDW-2190", "summary": "Vendor feed reconciliation"}]}, {"rule": "Riding 4+ sprints", "n": 1, "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.", "items": [{"key": "EDW-1878", "summary": "[Launch Loyalty Commissions] Remap onto platform"}]}], "setup": [{"rule": "The active sprint has no goal", "n": 1, "why": "neither Jira nor the capacity page records one, so delivery can only be measured in points.", "items": []}]}, "aging": {"window_days": 90, "stale_days": 7, "backlog": 38, "open_total": 23, "stale": 9, "worst": "Ready for Development", "rows": [{"status": "Ready for Development", "open": 11, "med_age": 9.4, "max_age": 41.2, "worst_key": "EDW-1878", "worst_sum": "[Launch Loyalty Commissions] Remap onto platform", "worst_who": "unassigned", "over": 6, "clear_med": 1.2, "clear_n": 88}, {"status": "In Development", "open": 7, "med_age": 4.1, "max_age": 12.8, "worst_key": "EDW-1902", "worst_sum": "Ingest retries", "worst_who": "A. Dev", "over": 2, "clear_med": 2.6, "clear_n": 91}, {"status": "Awaiting Review", "open": 4, "med_age": 2.2, "max_age": 6.0, "worst_key": "EDW-1915", "worst_sum": "Partition pruning", "worst_who": "B. Dev", "over": 0, "clear_med": 0.8, "clear_n": 84}, {"status": "To Do", "open": 1, "med_age": 15.0, "max_age": 15.0, "worst_key": "EDW-1840", "worst_sum": "Legacy view cleanup", "worst_who": "unassigned", "over": 1, "clear_med": null, "clear_n": 0}]}, "live_sprint": {"name": "EDW-Sprint 22-26", "start": "2026-09-14", "end": "2026-09-28", "day": 3, "days": 14, "committed": 49, "final": 49, "completed": 7, "dist": {"In Development": 6, "Closed": 3, "Ready for Development": 7, "Won't Do": 1, "Awaiting Review": 1}}, "lead": [{"key": "EDW-2362", "lead": 0.0, "type": "Sub-task", "sp": 0, "res": "2026-09-16"}, {"key": "EDW-2361", "lead": 0.0, "type": "Sub-task", "sp": 0, "res": "2026-09-16"}, {"key": "EDW-2357", "lead": 0.0, "type": "Sub-task", "sp": null, "res": "2026-09-15"}, {"key": "EDW-2353", "lead": 0.0, "type": "Story", "sp": 2, "res": "2026-09-14"}, {"key": "EDW-2329", "lead": 0.0, "type": "Story", "sp": 2, "res": "2026-09-03"}, {"key": "EDW-2363", "lead": 0.02, "type": "Sub-task", "sp": 0, "res": "2026-09-16"}, {"key": "EDW-2342", "lead": 1.03, "type": "Task", "sp": 2, "res": "2026-09-11"}, {"key": "EDW-2335", "lead": 1.89, "type": "Story", "sp": 3, "res": "2026-09-10"}, {"key": "EDW-2314", "lead": 2.01, "type": "Story", "sp": 2, "res": "2026-09-02"}, {"key": "EDW-2334", "lead": 2.95, "type": "Story", "sp": 5, "res": "2026-09-11"}, {"key": "EDW-2320", "lead": 2.95, "type": "Bug", "sp": 1, "res": "2026-09-03"}, {"key": "EDW-2321", "lead": 3.01, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2322", "lead": 3.01, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2319", "lead": 3.06, "type": "Story", "sp": 5, "res": "2026-09-03"}, {"key": "EDW-2316", "lead": 3.08, "type": "Story", "sp": 2, "res": "2026-09-03"}, {"key": "EDW-2317", "lead": 3.08, "type": "Story", "sp": 2, "res": "2026-09-03"}, {"key": "EDW-2311", "lead": 3.96, "type": "Story", "sp": 2, "res": "2026-09-01"}, {"key": "EDW-2313", "lead": 4.04, "type": "Story", "sp": 2, "res": "2026-09-01"}, {"key": "EDW-2340", "lead": 4.71, "type": "Bug", "sp": null, "res": "2026-09-14"}, {"key": "EDW-2303", "lead": 4.84, "type": "Story", "sp": 3, "res": "2026-09-01"}, {"key": "EDW-2328", "lead": 4.88, "type": "Story", "sp": null, "res": "2026-09-08"}, {"key": "EDW-2338", "lead": 5.12, "type": "Story", "sp": 3, "res": "2026-09-14"}, {"key": "EDW-2331", "lead": 5.85, "type": "Story", "sp": 3, "res": "2026-09-08"}, {"key": "EDW-2333", "lead": 6.2, "type": "Story", "sp": null, "res": "2026-09-14"}, {"key": "EDW-2330", "lead": 6.89, "type": "Story", "sp": 2, "res": "2026-09-10"}, {"key": "EDW-2306", "lead": 7.07, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2307", "lead": 7.07, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2337", "lead": 7.93, "type": "Task", "sp": 5, "res": "2026-09-16"}, {"key": "EDW-2297", "lead": 8.01, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2298", "lead": 8.01, "type": "Sub-task", "sp": 0, "res": "2026-09-03"}, {"key": "EDW-2296", "lead": 8.03, "type": "Bug", "sp": 1, "res": "2026-09-03"}, {"key": "EDW-2324", "lead": 8.07, "type": "Story", "sp": 5, "res": "2026-09-09"}, {"key": "EDW-2318", "lead": 8.94, "type": "Story", "sp": 5, "res": "2026-09-09"}, {"key": "EDW-2302", "lead": 8.96, "type": "Story", "sp": 3, "res": "2026-09-03"}, {"key": "EDW-2304", "lead": 11.7, "type": "Story", "sp": null, "res": "2026-09-08"}, {"key": "EDW-2344", "lead": 11.97, "type": "Story", "sp": 5, "res": "2026-09-15"}, {"key": "EDW-2278", "lead": 11.98, "type": "Spike", "sp": 0, "res": "2026-09-01"}, {"key": "EDW-2279", "lead": 13.18, "type": "Sub-task", "sp": 2, "res": "2026-09-02"}, {"key": "EDW-2193", "lead": 42.15, "type": "Epic", "sp": null, "res": "2026-09-01"}, {"key": "EDW-2199", "lead": 44.04, "type": "Epic", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2198", "lead": 49.19, "type": "Story", "sp": 5, "res": "2026-09-08"}, {"key": "EDW-2211", "lead": 50.16, "type": "Sub-task", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2210", "lead": 55.92, "type": "Bug", "sp": 2, "res": "2026-09-03"}, {"key": "EDW-2153", "lead": 55.96, "type": "Epic", "sp": null, "res": "2026-09-03"}, {"key": "EDW-2234", "lead": 56.17, "type": "Story", "sp": 3, "res": "2026-09-10"}, {"key": "EDW-2235", "lead": 56.86, "type": "Sub-task", "sp": 0, "res": "2026-09-11"}, {"key": "EDW-2301", "lead": 61.96, "type": "Story", "sp": 5, "res": "2026-09-10"}, {"key": "EDW-2135", "lead": 66.06, "type": "Spike", "sp": 3, "res": "2026-09-10"}, {"key": "EDW-2128", "lead": 76.92, "type": "Epic", "sp": 26, "res": "2026-08-31"}, {"key": "EDW-2058", "lead": 77.13, "type": "Story", "sp": 3, "res": "2026-09-03"}], "changes": [{"id": "spill-22", "from_sprint": "EDW-Sprint 22-26", "date": "2026-09-14", "what": "Unfinished work is no longer removed from a sprint before closing it. It stays in the sprint and shows as spillover.", "metric": "spillover_rate", "direction": "up", "expected": "Spillover rises from this sprint on. The same work was always unfinished; it was leaving the sprint before anyone counted it.", "source": "Practice changes table"}, {"id": "team-7-4", "from_sprint": "EDW-Sprint 19-26", "date": "2026-08-03", "what": "The team went from seven people to four over the quarter (Dipika, William and Harisha stop appearing).", "metric": "items_per_sprint", "direction": "down", "expected": "Throughput falls roughly with headcount. This is the reason a fixed baseline cannot survive.", "source": "Team roster"}], "backlog": [{"rank": 1, "key": "EDW-2293", "summary": "validation of Innovation Fabric data vs EDW", "sp": null, "created": "2026-08-25", "age_days": 22}, {"rank": 2, "key": "EDW-2037", "summary": "Collaborate with sales team to drive self-service and process optimization", "sp": 3, "created": "2026-06-15", "age_days": 93}, {"rank": 3, "key": "EDW-1765", "summary": "Load Relationship/Contacts", "sp": 3, "created": "2026-02-19", "age_days": 209}, {"rank": 4, "key": "EDW-2103", "summary": "REVENUE SHARE REPORT: Add Effective Date to the current Revenue Share Reports for LL", "sp": null, "created": "2026-06-29", "age_days": 79}, {"rank": 5, "key": "EDW-2214", "summary": "Update CI eligibility file", "sp": 3, "created": "2026-07-23", "age_days": 55}, {"rank": 6, "key": "EDW-2272", "summary": "Accounting display of admin fee split for LL", "sp": null, "created": "2026-08-17", "age_days": 30}, {"rank": 7, "key": "EDW-1686", "summary": "Supplemental Payment Reporting & TPA Treatment Reporting", "sp": null, "created": "2025-12-31", "age_days": 259}, {"rank": 8, "key": "EDW-1733", "summary": "EDW-CREG TPA Reporting", "sp": null, "created": "2025-12-31", "age_days": 259}, {"rank": 9, "key": "EDW-1843", "summary": "Requirement Gathering and Connector Setup for Dynamic 365 in Databricks", "sp": 2, "created": "2026-04-06", "age_days": 163}, {"rank": 10, "key": "EDW-1798", "summary": "EDW - PMP Cancellation Report - Filtering and Drill-Down", "sp": null, "created": "2026-02-17", "age_days": 211}, {"rank": 11, "key": "EDW-1791", "summary": "EDW - PMP Cancellation Report - Summary and Breakdown", "sp": null, "created": "2026-02-17", "age_days": 211}, {"rank": 12, "key": "EDW-1752", "summary": "Launch Loyalty DSO Report (internal)", "sp": 5, "created": "2026-02-12", "age_days": 216}, {"rank": 13, "key": "EDW-1599", "summary": "LL Commission Model 5 - ADF pipeline", "sp": 5, "created": "2025-12-02", "age_days": 288}, {"rank": 14, "key": "EDW-1601", "summary": "LL Commission Model 6 - production plan", "sp": 5, "created": "2025-12-02", "age_days": 288}, {"rank": 15, "key": "EDW-1666", "summary": "EDW - Plans Marketplace Plans Share Report Dashboard View", "sp": null, "created": "2026-01-02", "age_days": 257}, {"rank": 16, "key": "EDW-1668", "summary": "EDW - Plans Marketplace & Provider - Plans Revenue Share Report", "sp": null, "created": "2026-01-02", "age_days": 257}, {"rank": 17, "key": "EDW-1662", "summary": "Refactor 'ADF' table objects in analytics database", "sp": 8, "created": "2025-12-30", "age_days": 260}, {"rank": 18, "key": "EDW-1344", "summary": "Reporting Check for ADHA Plan", "sp": 1, "created": "2025-06-16", "age_days": 457}, {"rank": 19, "key": "EDW-975", "summary": "Accounting Fields for Disable Flow", "sp": null, "created": "2024-06-03", "age_days": 835}, {"rank": 20, "key": "EDW-707", "summary": "EDW end-to-end process of PDS Plans/FMP daily extracts", "sp": 5, "created": "2024-11-06", "age_days": 679}, {"rank": 21, "key": "EDW-557", "summary": "Growth Forecasting", "sp": 8, "created": "2024-08-31", "age_days": 746}, {"rank": 22, "key": "EDW-558", "summary": "Predictive Maintenance and Risk Management", "sp": 8, "created": "2024-08-31", "age_days": 746}, {"rank": 23, "key": "EDW-1457", "summary": "ADHA - EDW provide payment data to DS from NS", "sp": 5, "created": "2025-09-02", "age_days": 379}, {"rank": 24, "key": "EDW-1639", "summary": "Monthly Gross Settlement Report", "sp": 3, "created": "2025-12-12", "age_days": 278}, {"rank": 25, "key": "EDW-1637", "summary": "CSA Quarterly Standards Tracker", "sp": 5, "created": "2025-12-12", "age_days": 278}, {"rank": 26, "key": "EDW-910", "summary": "Treatment Revenue Display", "sp": 3, "created": "2024-12-04", "age_days": 651}, {"rank": 27, "key": "EDW-604", "summary": "Report Auto-Renewals Turned Off at Purchase", "sp": null, "created": "2024-08-08", "age_days": 769}, {"rank": 28, "key": "EDW-465", "summary": "EDW Report Taxes for Accounting", "sp": 3, "created": "2024-08-05", "age_days": 772}, {"rank": 29, "key": "EDW-125", "summary": "Write-Back of Paid Invoice", "sp": 5, "created": "2024-04-17", "age_days": 882}, {"rank": 30, "key": "EDW-174", "summary": "Capture Pay Later in PR009/Promo Code Capture", "sp": 5, "created": "2024-05-24", "age_days": 845}, {"rank": 31, "key": "EDW-689", "summary": "Plans Tax report flat file", "sp": null, "created": "2024-10-28", "age_days": 688}, {"rank": 32, "key": "EDW-1450", "summary": "Accounting Chargeback report", "sp": null, "created": "2025-08-26", "age_days": 386}, {"rank": 33, "key": "EDW-1363", "summary": "Accounting - Append Patterson Revenue Share report with dynamics data", "sp": null, "created": "2025-07-22", "age_days": 421}, {"rank": 34, "key": "EDW-1345", "summary": "EDW table journey", "sp": null, "created": "2025-07-10", "age_days": 433}, {"rank": 35, "key": "EDW-2243", "summary": "sales-pipeline-report - Power BI Dashboard - Full Report & Analytics", "sp": 31, "created": "2026-04-22", "age_days": 147}, {"rank": 36, "key": "EDW-108", "summary": "DW: Treatment Summary Report", "sp": 5, "created": "2024-04-29", "age_days": 870}, {"rank": 37, "key": "EDW-110", "summary": "DW: Cancelled Plans Report", "sp": 5, "created": "2024-04-29", "age_days": 870}, {"rank": 38, "key": "EDW-1640", "summary": "LL Commission Model", "sp": null, "created": "2025-12-15", "age_days": 275}, {"rank": 39, "key": "EDW-1647", "summary": "LL Data Ingestion to Platform", "sp": null, "created": "2025-12-19", "age_days": 271}, {"rank": 40, "key": "EDW-1335", "summary": "8.26 Finance Reporting", "sp": null, "created": "2025-07-08", "age_days": 435}], "today": "2026-09-16", "queue_evidence": {"sample": 37, "queued": 10, "share": 0.27}};
+
+/* ---------------------------------------------------------------- helpers */
+var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+  return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var day = function (iso) { var p = String(iso).slice(0,10).split('-');
+  return p.length === 3 ? MON[+p[1]-1] + ' ' + (+p[2]) + (p[0] !== '2026' ? ', ' + p[0] : '') : iso; };
+var pct = function (x) { return Math.round(100 * x) + '%'; };
+var med = function (a) { var s = a.slice().sort(function(x,y){return x-y;});
+  return s.length ? (s.length % 2 ? s[(s.length-1)/2] : (s[s.length/2-1]+s[s.length/2])/2) : null; };
+var pk = function (a, p) { var s = a.slice().sort(function(x,y){return x-y;});
+  return s.length ? s[Math.min(s.length-1, Math.floor(p * s.length))] : null; };
+var mean = function (a) { return a.length ? a.reduce(function(s,x){return s+x;},0)/a.length : null; };
+var tile = function (k, v, n) { return '<div class="tile"><div class="k">'+k+'</div><div class="v">'+v+
+  '</div><div class="n">'+(n||'')+'</div></div>'; };
+
+/* ============================================================ 1. FORECAST */
+var THR = D.sprints.map(function (s) { return s.done; });     // items closed per sprint
+var LIVE = D.live_sprint || {};
+var REMAIN = (LIVE.day && LIVE.days) ? Math.max(0.05, (LIVE.days - LIVE.day) / LIVE.days) : 1;
+var RUNS = 10000;
+var selRank = 13;
+
+function weights() {
+  return D.calendar.map(function (c, i) { return (c.cap / 100) * (i === 0 ? REMAIN : 1); });
+}
+
+// One run: draw a sprint's throughput at random from what this team actually did,
+// scale it by the two visible assumptions and by that sprint's own capacity, and
+// see which sprint the target falls in. Sampling with replacement from the real
+// series is the point -- it keeps the team's own bad sprints in the distribution
+// instead of averaging them away.
+function simulate(target, drain, pace) {
+  var w = weights(), out = [], i, r, done, s;
+  for (r = 0; r < RUNS; r++) {
+    done = 0;
+    for (i = 0; i < w.length; i++) {
+      done += THR[(Math.random() * THR.length) | 0] * drain * pace * w[i];
+      if (done >= target) break;
+    }
+    out.push(i);                                   // w.length means "past the calendar"
+  }
+  return out;
+}
+
+function landing(idx) {
+  if (idx >= D.calendar.length) return { txt: 'beyond ' + day(D.calendar[D.calendar.length-1].end), out: true };
+  return { txt: day(D.calendar[idx].end), sprint: D.calendar[idx].name.split(' ').pop(), out: false };
+}
+
+function fcParams() {
+  return { drain: +document.getElementById('drain').value / 100,
+           pace:  +document.getElementById('pace').value / 100 };
+}
+
+function renderForecast() {
+  var p = fcParams();
+  var eff = mean(THR) * p.drain * p.pace;
+  var q = D.queue_evidence;
+  document.getElementById('drainv').textContent = Math.round(p.drain*100) + '%';
+  document.getElementById('pacev').textContent  = Math.round(p.pace*100) + '%';
+  document.getElementById('drainhint').innerHTML =
+    'The team closes about ' + Math.round(mean(THR)) + ' items a sprint, but most of them were never in this list. ' +
+    'Of the last <b>' + q.sample + '</b> closed items, only <b>' + q.queued + '</b> — ' + pct(q.share) +
+    ' — had waited longer than a single sprint from the day they were filed. The rest were created and ' +
+    'closed inside two weeks: they jumped the queue, or there was no queue for them. So the default here is <b>' +
+    pct(q.share) + '</b>, measured, not chosen.';
+
+  document.getElementById('fcstats').innerHTML =
+    tile('History', THR.length + ' sprints', 'closures per sprint: ' + Math.min.apply(null,THR) + ' to ' + Math.max.apply(null,THR)) +
+    tile('Typical sprint', Math.round(mean(THR)) + ' items', 'median ' + med(THR) + ' &middot; the raw series') +
+    tile('Draining this backlog', eff.toFixed(1) + ' items', 'per sprint, after both assumptions') +
+    tile('Calendar reaches', day(D.calendar[D.calendar.length-1].end),
+         D.calendar.length + ' sprints on the capacity page');
+
+  document.getElementById('fcmethod').innerHTML =
+    '<b>Method.</b> Ten thousand runs. Each run walks the sprint calendar and draws a sprint’s closures at random, ' +
+    'with replacement, from the ' + THR.length + ' sprints this team actually delivered — so its bad sprints stay in ' +
+    'the distribution instead of being averaged away. No estimate of the item is used: items, not points, because ' +
+    (D.backlog.filter(function(b){return b.sp==null;}).length) + ' of the ' + D.backlog.length +
+    ' items in this list carry no estimate at all, and a forecast that needed them would simply refuse to run. ' +
+    'Sprint 27 and 29 are scaled to 80% and 90% for the holidays already recorded on the capacity page.';
+
+  var tb = document.querySelector('#bltab tbody'), rows = '';
+  D.backlog.forEach(function (b) {
+    var sims = simulate(b.rank, p.drain, p.pace);
+    var l50 = landing(pk(sims, 0.50)), l85 = landing(pk(sims, 0.85));
+    b._sims = sims;
+    rows += '<tr data-rank="' + b.rank + '"' + (b.rank === selRank ? ' class="sel"' : '') + '>' +
+      '<td class="num mono">' + b.rank + '</td>' +
+      '<td><span class="k2">' + esc(b.key) + '</span> <span style="color:var(--wf-muted)">' +
+        esc(b.summary.length > 62 ? b.summary.slice(0,62) + '…' : b.summary) + '</span></td>' +
+      '<td class="num mono" style="color:' + (b.age_days > 365 ? 'var(--risk)' : 'var(--wf-muted)') + '">' +
+        ageTxt(b.age_days) + '</td>' +
+      '<td class="num mono" style="color:' + (b.sp==null?'var(--risk)':'var(--wf-muted)') + '">' +
+        (b.sp == null ? '—' : b.sp) + '</td>' +
+      '<td class="num mono">' + l50.txt + '</td>' +
+      '<td class="num mono" style="color:' + (l85.out ? 'var(--risk)' : 'inherit') + '">' + l85.txt + '</td>' +
+      '<td class="num mono" style="color:var(--wf-muted)">' + (pk(sims,0.50)+1) + '–' + (pk(sims,0.85)+1) + '</td></tr>';
+  });
+  tb.innerHTML = rows;
+  [].slice.call(tb.querySelectorAll('tr')).forEach(function (tr) {
+    tr.addEventListener('click', function () { selRank = +tr.dataset.rank; renderForecast(); });
+  });
+  renderAudit();
+  renderDetail();
+}
+
+function ageTxt(d) {
+  if (d == null) return '-';
+  if (d < 60) return d + 'd';
+  if (d < 730) return (d/30.4).toFixed(0) + 'mo';
+  return (d/365).toFixed(1) + 'y';
+}
+
+// A forecast off a ranked list assumes the list is a queue: that rank 30 is waiting
+// for rank 29. That is a claim about the board, and the only evidence available to
+// test it is how long each item has already waited. Where an item has sat far longer
+// than the model says the whole queue ahead of it still needs, the ranking is not
+// what decides what gets done, and the dates are arithmetic about a fiction.
+function renderAudit() {
+  var SPRINT_D = 14, bad = [], fine = [];
+  D.backlog.forEach(function (b) {
+    if (!b._sims || b.age_days == null) return;
+    var predicted = pk(b._sims, 0.50) + 1;
+    var waited = b.age_days / SPRINT_D;
+    (waited > 3 * predicted ? bad : fine).push({ b: b, predicted: predicted, waited: waited });
+  });
+  var n = bad.length + fine.length, share = n ? bad.length / n : 0;
+  var worst = bad.slice().sort(function (x, y) { return y.waited - x.waited; })[0];
+  var ages = D.backlog.map(function (b) { return b.age_days; }).filter(function (v) { return v != null; });
+  var broken = share >= 0.5;
+
+  document.getElementById('fcaudit').innerHTML =
+    '<h3>Does this board behave like a queue?</h3>' +
+    '<div class="h3sub">Every date above rests on one assumption: that rank 30 is waiting for rank 29. That is a ' +
+    'claim about the board, and it can be tested against how long each item has already waited.</div>' +
+    '<div class="row">' +
+      tile('Median age in the list', ageTxt(med(ages)), 'since somebody filed it') +
+      tile('Older than a year', ages.filter(function(a){return a>365;}).length + ' of ' + ages.length,
+           'oldest: ' + ageTxt(Math.max.apply(null, ages))) +
+      tile('Contradicted by history', bad.length + ' of ' + n, 'waited over 3x longer than the model says is left') +
+      tile('Verdict', broken ? 'Not a queue' : 'Queue-like',
+           broken ? 'the dates above are fiction' : 'the forecast holds') +
+    '</div>' +
+    (broken
+      ? '<div class="warnbox"><b>The forecast above does not hold on this board, and that is the finding.</b> ' +
+        pct(share) + ' of these items have already waited more than three times longer than the model says the whole ' +
+        'queue ahead of them still needs. ' +
+        (worst ? '<b>' + esc(worst.b.key) + '</b> sits at rank ' + worst.b.rank + ', which the simulation clears in ' +
+          worst.predicted + ' sprint' + (worst.predicted===1?'':'s') + ', and it has been waiting <b>' +
+          ageTxt(worst.b.age_days) + '</b>. ' : '') +
+        'Rank is not what decides what gets worked on here. Until it is, the useful output of a forecast is not a date ' +
+        'but this sentence.</div>' +
+        '<div class="note"><b>Which is the argument for building it.</b> Nobody sets out to keep a fake queue; it ' +
+        'happens because new, urgent and visible work enters at the top and the bottom is never revisited. A page that ' +
+        'says so every fifteen minutes is the cheapest way to find out. And on the day the board does start behaving ' +
+        'like a queue, the same page begins producing dates worth promising, with nothing new to build.</div>'
+      : '<div class="note">Ages are consistent with the ranking, so the dates above can be read as forecasts rather ' +
+        'than as arithmetic.</div>');
+}
+
+function renderDetail() {
+  var b = D.backlog.filter(function (x) { return x.rank === selRank; })[0];
+  if (!b || !b._sims) return;
+  var sims = b._sims, n = D.calendar.length + 1, counts = new Array(n).fill(0);
+  sims.forEach(function (i) { counts[i]++; });
+  var p50 = pk(sims,0.50), p85 = pk(sims,0.85), p95 = pk(sims,0.95);
+  var hi = Math.max.apply(null, counts) || 1;
+
+  var W = 760, H = 210, L = 8, B = 46, step = (W - L*2) / n, bars = '', lab = '';
+  counts.forEach(function (c, i) {
+    var h = (H - B) * c / hi, x = L + i*step + 3, y = (H - B) - h;
+    var col = i <= p50 ? '#007CBC' : (i <= p85 ? '#65B2D5' : '#c3cdda');
+    bars += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(step-6).toFixed(1)+'" height="'+Math.max(1,h).toFixed(1)+
+      '" rx="3" fill="'+col+'"/>';
+    if (c) bars += '<text x="'+(x+(step-6)/2).toFixed(1)+'" y="'+(y-5).toFixed(1)+'" text-anchor="middle" font-size="10" fill="#626c84">'+
+      (100*c/sims.length).toFixed(0)+'%</text>';
+    var nm = i < D.calendar.length ? D.calendar[i].name.split(' ').pop() : 'later';
+    lab += '<text x="'+(x+(step-6)/2).toFixed(1)+'" y="'+(H-B+16)+'" text-anchor="middle" font-size="10.5" fill="#32373c" font-weight="600">'+nm+'</text>';
+    if (i < D.calendar.length) lab += '<text x="'+(x+(step-6)/2).toFixed(1)+'" y="'+(H-B+31)+'" text-anchor="middle" font-size="9.5" fill="#8b95a8">'+
+      day(D.calendar[i].end)+'</text>';
+  });
+
+  var l50 = landing(p50), l85 = landing(p85), l95 = landing(p95);
+  document.getElementById('fcdetail').innerHTML =
+    '<h3>' + esc(b.key) + ' &middot; ' + esc(b.summary) + '</h3>' +
+    '<div class="h3sub">Rank ' + b.rank + ' in the backlog, so ' + b.rank + ' item' + (b.rank===1?'':'s') +
+      ' have to close before it does. Each bar is the share of the ten thousand runs that finished in that sprint.</div>' +
+    '<div class="row">' +
+      tile('Likely', l50.txt, 'half the runs finished by here') +
+      tile('Safe', l85.txt, '85% of runs &middot; the one to promise') +
+      tile('Pessimistic', l95.txt, '95% of runs') +
+      tile('Spread', (p95 - p50) + ' sprints', 'between likely and pessimistic') +
+    '</div>' +
+    '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:210px" role="img" aria-label="Distribution of simulated finish sprints">' +
+      bars + lab +
+      '<line x1="'+L+'" y1="'+(H-B)+'" x2="'+(W-L)+'" y2="'+(H-B)+'" stroke="#c3cdda" stroke-width="1"/>' +
+    '</svg>' +
+    '<div class="legend"><span><i style="background:#007CBC"></i>Up to the likely date</span>' +
+      '<span><i style="background:#65B2D5"></i>Up to the safe date</span>' +
+      '<span><i style="background:#c3cdda"></i>Later than that</span></div>' +
+    (l85.out
+      ? '<div class="warnbox"><b>The honest answer here is &ldquo;not this year&rdquo;.</b> In 15% or more of the runs ' +
+        'this item does not finish inside the sprint calendar that exists. A date would be a guess dressed as a number.</div>'
+      : '<div class="note"><b>How to read it.</b> The spread is not a margin of error, it is how differently this team ' +
+        'has performed from the same starting point. On a board whose ranking is respected you promise the <b>safe</b> ' +
+        'date and you are right about six times in seven. On this one, read the queue check above first: ' +
+        (b.age_days != null && b.age_days / 14 > 3 * (pk(sims,0.50)+1)
+          ? 'this item has already waited <b>' + ageTxt(b.age_days) + '</b>, far longer than the model says it still ' +
+            'needs. Its date is arithmetic, not a forecast.'
+          : 'this item\u2019s age is consistent with its rank, so its date is worth something.') + '</div>');
+}
+
+/* ========================================================== 2. LEAD TIME */
+function renderLead() {
+  var rows = D.lead.filter(function (r) { return r.type !== 'Sub-task'; });
+  var L = rows.map(function (r) { return r.lead; });
+  var r908 = D.releases['9.08'] || {};
+  var lm = med(L), la = mean(L), l85 = pk(L, 0.85);
+
+  document.getElementById('ldstats').innerHTML =
+    tile('Team clock &middot; median', (r908.cyc_med != null ? r908.cyc_med.toFixed(1) : '—') + 'd',
+         'In Development to closed &mdash; on the reports today') +
+    tile('Request clock &middot; median', lm.toFixed(1) + 'd', 'created to closed') +
+    tile('Request clock &middot; average', la.toFixed(1) + 'd',
+         'against ' + (r908.cyc_avg != null ? r908.cyc_avg.toFixed(1) + 'd' : '—') + ' on the team clock') +
+    tile('Slowest sixth waits', l85.toFixed(0) + 'd', '85th percentile, created to closed');
+
+  var W = 760, H = 120, pad = 120, maxv = Math.max(la, r908.cyc_avg || 0, 1) * 1.15;
+  var bar = function (y, v, col, name, sub) {
+    var w = (W - pad - 30) * v / maxv;
+    return '<text x="0" y="'+(y+13)+'" font-size="12.5" font-weight="700" fill="#32373c">'+name+'</text>' +
+      '<text x="0" y="'+(y+28)+'" font-size="11" fill="#8b95a8">'+sub+'</text>' +
+      '<rect x="'+pad+'" y="'+y+'" width="'+Math.max(2,w).toFixed(1)+'" height="22" rx="5" fill="'+col+'"/>' +
+      '<text x="'+(pad+w+8).toFixed(1)+'" y="'+(y+16)+'" font-size="12" font-weight="700" fill="'+col+'">'+v.toFixed(1)+'d</text>';
+  };
+  document.getElementById('ldbars').innerHTML =
+    '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:120px" role="img" aria-label="Team clock against request clock">' +
+      bar(8,  r908.cyc_med || 0, '#65B2D5', 'Team clock',    'median, In Development → closed') +
+      bar(52, lm,                '#007CBC', 'Request clock', 'median, created → closed') +
+      bar(96 - 8, la,            '#d64550', 'Request clock', 'average, created → closed') +
+    '</svg>';
+
+  var gapMed = lm - (r908.cyc_med || 0), gapAvg = la - (r908.cyc_avg || 0);
+  document.getElementById('ldnote').innerHTML =
+    '<b>The gap is the part nobody owns.</b> For the typical item it is about <b>' + gapMed.toFixed(1) +
+    ' days</b> of waiting before anyone starts — annoying, survivable. On the average it is <b>' + gapAvg.toFixed(1) +
+    ' days</b>, because the wait is not spread evenly: a few requests sit for months while most move in a week. ' +
+    'The reports currently draw only the first bar, which is the flattering one, and they draw it honestly — it is ' +
+    'simply answering a different question from the one the requester is asking.';
+
+  // distribution
+  var B = [[0,1],[1,3],[3,7],[7,14],[14,28],[28,56],[56,1e9]];
+  var names = ['<1d','1-3d','3-7d','1-2w','2-4w','1-2m','>2m'];
+  var counts = B.map(function (b) { return L.filter(function (v) { return v >= b[0] && v < b[1]; }).length; });
+  var hi = Math.max.apply(null, counts) || 1;
+  var W2 = 760, H2 = 200, step = (W2 - 20) / B.length, bars2 = '';
+  counts.forEach(function (c, i) {
+    var h = (H2 - 52) * c / hi, x = 10 + i*step + 5, y = (H2 - 52) - h;
+    var col = B[i][1] <= 14 ? '#65B2D5' : (B[i][0] >= 56 ? '#d64550' : '#ED7D31');
+    bars2 += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(step-10).toFixed(1)+'" height="'+Math.max(1,h).toFixed(1)+'" rx="4" fill="'+col+'"/>' +
+      '<text x="'+(x+(step-10)/2).toFixed(1)+'" y="'+(y-5).toFixed(1)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#32373c">'+c+'</text>' +
+      '<text x="'+(x+(step-10)/2).toFixed(1)+'" y="'+(H2-32)+'" text-anchor="middle" font-size="11" fill="#626c84">'+names[i]+'</text>';
+  });
+  document.getElementById('ldhist').innerHTML =
+    '<svg viewBox="0 0 '+W2+' '+H2+'" style="width:100%;height:200px" role="img" aria-label="Lead time distribution">' +
+      bars2 + '<line x1="10" y1="'+(H2-52)+'" x2="'+(W2-10)+'" y2="'+(H2-52)+'" stroke="#c3cdda" stroke-width="1"/></svg>';
+
+  var slow = L.filter(function (v) { return v > 56; }).length;
+  document.getElementById('ldwarn').innerHTML =
+    '<b>Sample.</b> The last ' + rows.length + ' closed items on the board, sub-tasks excluded, created and resolved ' +
+    'dates straight from Jira. ' + slow + ' of them — ' + pct(slow/rows.length) + ' — took longer than four ' +
+    'sprints from the day somebody filed them. In production this would run over the whole series, the same way cycle ' +
+    'time already does, and split by the step where the waiting happened.';
+}
+
+/* ====================================================== 3. FINDINGS RULES */
+function spillRate(relKey) {
+  var r = D.releases[relKey], done = 0, gone = 0;
+  (r.sprints || []).forEach(function (n) {
+    var s = D.spill[n]; if (!s) return;
+    done += s.done[1]; gone += s.open[1] + s.out[1];
+  });
+  return (done + gone) ? gone / (done + gone) : null;
+}
+
+var RULES = [
+  { id:'spill', sev:'risk', title:'A third of committed work never finishes in its sprint',
+    test:function (k) { var v = spillRate(k); return v != null && v >= 0.30; },
+    ev:function (k) { var v = spillRate(k);
+      return 'Points that left the sprint over every point it held: <b>' + pct(v) + '</b>.'; },
+    why:'Every sprint reads as complete because the work is taken out before the sprint closes, not because it was done.' },
+  { id:'unp', sev:'warn', title:'Reactive work cannot be measured at all',
+    test:function (k) { return D.releases[k].unp_pct == null; },
+    ev:function (k) { return 'No item in <b>' + D.releases[k].label + '</b> carries the Unplanned label or the Urgent Task type.'; },
+    why:'Planned against unplanned is the one metric a service team cannot do without, and it is dark.' },
+  { id:'tail', sev:'warn', title:'The cycle-time tail is pulling away from the median',
+    test:function (k) { var r = D.releases[k]; return r.cyc_avg && r.cyc_med && r.cyc_avg / r.cyc_med >= 1.8; },
+    ev:function (k) { var r = D.releases[k];
+      return 'Average <b>' + r.cyc_avg.toFixed(2) + 'd</b> against a median of <b>' + r.cyc_med.toFixed(2) +
+        'd</b> — ratio ' + (r.cyc_avg/r.cyc_med).toFixed(2) + ', longest item ' + Math.round(r.cyc_max) + 'd.'; },
+    why:'The middle of the work flows fine. A few items are stuck for weeks, and only the average sees them.' },
+  { id:'nodev', sev:'warn', title:'Work closes without ever entering development',
+    test:function (k) { var r = D.releases[k]; return r.nodev && r.cyc_base && r.nodev / r.cyc_base >= 0.20; },
+    ev:function (k) { var r = D.releases[k];
+      return '<b>' + r.nodev + ' of ' + r.cyc_base + '</b> closed items (' + pct(r.nodev/r.cyc_base) +
+        ') recorded no transition into In Development, so cycle time is computed over the other ' + r.cyc_n + '.'; },
+    why:'Either the work was trivial, or the board is not being moved. The two have very different consequences.' },
+  { id:'discard', sev:'warn', title:'A tenth of resolved work is discarded, not delivered',
+    test:function (k) { var r = D.releases[k]; return r.resolved && r.discarded / r.resolved >= 0.10; },
+    ev:function (k) { var r = D.releases[k];
+      return '<b>' + r.discarded + ' of ' + r.resolved + '</b> resolved items ended as Won’t Do (' +
+        pct(r.discarded/r.resolved) + ').'; },
+    why:'Work that reaches the board and is then thrown away was refined, estimated and planned first.' },
+  { id:'shrink', sev:'warn', title:'The team is smaller than it was',
+    test:function (k, prev) { return prev && D.releases[k].people && D.releases[prev].people &&
+      D.releases[k].people < D.releases[prev].people; },
+    ev:function (k, prev) { return 'People closing work went from <b>' + D.releases[prev].people + '</b> in ' +
+      D.releases[prev].label + ' to <b>' + D.releases[k].people + '</b> in ' + D.releases[k].label + '.'; },
+    why:'Every fixed baseline on the reports was set with a different team. This is why they are read as ranges now.' }
+];
+
+function renderFindings() {
+  var keys = Object.keys(D.releases).sort();
+  var live = [], gone = [];
+  RULES.forEach(function (rule) {
+    var fired = keys.map(function (k, i) { return rule.test(k, i ? keys[i-1] : null) ? k : null; });
+    var lastKey = keys[keys.length-1];
+    var isNow = fired[fired.length-1] === lastKey;
+    // how far back the current run of "true" goes
+    var streak = 0, first = null, i;
+    for (i = fired.length - 1; i >= 0; i--) { if (fired[i]) { streak++; first = keys[i]; } else break; }
+    var everFired = fired.filter(Boolean);
+    if (!everFired.length) return;
+    var prevKey = keys[keys.indexOf(first) - 1] || null;
+    var rec = { rule: rule, first: first, streak: streak, prev: prevKey,
+                lastTrue: everFired[everFired.length-1],
+                stoppedAt: keys[keys.indexOf(everFired[everFired.length-1]) + 1] };
+    (isNow ? live : gone).push(rec);
+  });
+
+  document.getElementById('fistats').innerHTML =
+    tile('Rules evaluated', RULES.length, 'over ' + keys.length + ' releases, every refresh') +
+    tile('Firing now', live.length, 'each one carries when it started') +
+    tile('Stopped firing', gone.length, 'the only proof a change worked') +
+    tile('Longest running', (live.length ? Math.max.apply(null, live.map(function(r){return r.streak;})) : 0) + ' releases',
+         'a finding nobody has closed');
+
+  var order = { risk: 0, warn: 1 };
+  live.sort(function (a, b) { return (order[a.rule.sev]-order[b.rule.sev]) || (b.streak-a.streak); });
+
+  document.getElementById('firules').innerHTML = live.map(function (r) {
+    var k = Object.keys(D.releases).sort().pop();
+    return '<div class="rule sev-' + (r.rule.sev === 'risk' ? 'risk' : 'warn') + '">' +
+      '<h4>' + esc(r.rule.title) +
+      '<span class="pill ' + (r.rule.sev === 'risk' ? 'p-red' : 'p-amber') + '">' +
+        (r.rule.sev === 'risk' ? 'Risk' : 'Warning') + '</span>' +
+      '<span class="since">First true in ' + esc(D.releases[r.first].label) + ' &middot; ' + r.streak +
+        ' release' + (r.streak===1?'':'s') + ' running</span></h4>' +
+      '<p>' + esc(r.rule.why) + '</p>' +
+      '<div class="ev">' + r.rule.ev(k, Object.keys(D.releases).sort().slice(-2)[0]) + '</div></div>';
+  }).join('') || '<div class="card"><b>No rule is firing.</b></div>';
+
+  document.getElementById('figone').innerHTML = gone.length ? gone.map(function (r) {
+    return '<div class="rule sev-gone">' +
+      '<h4>' + esc(r.rule.title) + '<span class="pill p-green">Cleared</span>' +
+      '<span class="since">True through ' + esc(D.releases[r.lastTrue].label) +
+      (r.stoppedAt ? ', gone by ' + esc(D.releases[r.stoppedAt].label) : '') + '</span></h4>' +
+      '<p>' + esc(r.rule.why) + '</p></div>';
+  }).join('') :
+    '<div class="note">Nothing has cleared yet in this series. That is itself the finding: over five releases, ' +
+    'not one of the rules above has stopped being true.</div>';
+}
+
+/* ======================================================= 4. DID IT WORK? */
+function seriesFor(metric) {
+  if (metric === 'items_per_sprint')
+    return D.sprints.map(function (s) { return { name: s.name, v: s.done }; });
+  if (metric === 'spillover_rate')
+    return D.sprints.map(function (s) {
+      var x = D.spill[s.name]; if (!x) return { name: s.name, v: null };
+      var done = x.done[1], gone = x.open[1] + x.out[1];
+      return { name: s.name, v: (done+gone) ? 100*gone/(done+gone) : null };
+    });
+  return [];
+}
+var METRIC_LABEL = { items_per_sprint: 'Items closed per sprint', spillover_rate: 'Spillover rate' };
+var METRIC_UNIT  = { items_per_sprint: '', spillover_rate: '%' };
+
+function renderLoop() {
+  document.getElementById('loop').innerHTML = D.changes.map(function (c) {
+    var ser = seriesFor(c.metric).filter(function (p) { return p.v != null; });
+    var idx = ser.map(function (p) { return p.name; }).indexOf(c.from_sprint);
+    var unit = METRIC_UNIT[c.metric];
+    var head = '<div class="card"><h3>' + esc(METRIC_LABEL[c.metric]) + '</h3>' +
+      '<div class="h3sub">' + esc(c.what) + '<br><span style="font-size:12.5px">Recorded on the <b>' +
+      esc(c.source) + '</b>, in effect from <b>' + esc(c.from_sprint.split(' ').pop()) + '</b> (' + day(c.date) +
+      '). Expected to move <b>' + esc(METRIC_LABEL[c.metric].toLowerCase()) + '</b> <b>' + c.direction + '</b>.</div>';
+
+    if (idx < 0) {
+      // the change starts at a sprint that has not closed yet
+      var closedAfter = 0;
+      return head + '<div class="warnbox"><b>Not readable yet.</b> The change takes effect from ' +
+        esc(c.from_sprint.split(' ').pop()) + ', which is still running. The report needs <b>two closed sprints</b> ' +
+        'after a change before it will say anything &mdash; ' + closedAfter + ' so far. Until then it holds the ' +
+        'question open instead of answering it early, which is the whole point of writing the expected direction down ' +
+        'in advance.</div></div>';
+    }
+
+    var before = ser.slice(Math.max(0, idx-3), idx).map(function (p) { return p.v; });
+    var after  = ser.slice(idx, idx+3).map(function (p) { return p.v; });
+    var b = mean(before), a = mean(after);
+    var delta = b ? (a - b) / b : null;
+    var moved = delta > 0.05 ? 'up' : (delta < -0.05 ? 'down' : 'steady');
+    var ok = moved === c.direction;
+
+    var W = 700, H = 150, maxv = Math.max.apply(null, ser.map(function(p){return p.v;})) * 1.2;
+    var step = (W - 40) / ser.length, bars = '';
+    ser.forEach(function (p, i) {
+      var h = (H - 40) * p.v / maxv, x = 20 + i*step + 4, y = (H - 40) - h;
+      bars += '<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+(step-8).toFixed(1)+'" height="'+Math.max(1,h).toFixed(1)+
+        '" rx="3" fill="'+(i < idx ? '#c3cdda' : '#007CBC')+'"/>' +
+        '<text x="'+(x+(step-8)/2).toFixed(1)+'" y="'+(H-24)+'" text-anchor="middle" font-size="10" fill="#626c84">'+
+        esc(p.name.split(' ').pop().split('-')[0])+'</text>';
+    });
+    var xline = 20 + idx*step;
+    bars += '<line x1="'+xline.toFixed(1)+'" y1="6" x2="'+xline.toFixed(1)+'" y2="'+(H-40)+
+      '" stroke="#ED7D31" stroke-width="1.5" stroke-dasharray="4 3"/>' +
+      '<text x="'+(xline+5).toFixed(1)+'" y="15" font-size="10" font-weight="700" fill="#ED7D31">changed here</text>';
+
+    return head +
+      '<div class="row">' +
+        tile('Before', b.toFixed(1) + unit, before.length + ' sprints up to the change') +
+        tile('After',  a.toFixed(1) + unit, after.length + ' sprints from the change') +
+        tile('Moved', (delta > 0 ? '+' : '') + Math.round(delta*100) + '%', 'expected: ' + c.direction) +
+        tile('Verdict', ok ? 'As expected' : 'Not as expected',
+             ok ? 'the number went where the team said it would' : 'the number did not go where the team said it would') +
+      '</div>' +
+      '<svg viewBox="0 0 '+W+' '+H+'" style="width:100%;height:150px" role="img" aria-label="Metric before and after the change">'+bars+'</svg>' +
+      '<div class="note"><b>What this does not claim.</b> It says the number moved the way the team expected, not ' +
+      'that the change caused it. Two sprints either side of one event is evidence, not proof — and it is ' +
+      'considerably more than the nothing a retro gets today.</div></div>';
+  }).join('');
+}
+
+/* ------------------------------------------------------------------ tabs */
+(function () {
+  var tabs = [].slice.call(document.querySelectorAll('.tab'));
+  function show(id) {
+    tabs.forEach(function (t) { t.classList.toggle('active', t.dataset.tab === id); });
+    [].slice.call(document.querySelectorAll('.panel')).forEach(function (p) {
+      p.classList.toggle('active', p.id === id); });
+    try { history.replaceState(null, '', '#' + id); } catch (e) {}
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.tab); window.scrollTo({top:0,behavior:'smooth'}); }); });
+  var h = (location.hash || '').replace('#','');
+  if (h && document.getElementById(h)) show(h);
+})();
+
+document.getElementById('drain').addEventListener('input', renderForecast);
+document.getElementById('pace').addEventListener('input', renderForecast);
+renderForecast(); renderLead(); renderFindings(); renderLoop();
+</script>
+</body></html>
