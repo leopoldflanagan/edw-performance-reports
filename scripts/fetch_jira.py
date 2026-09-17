@@ -362,6 +362,13 @@ def signoff(page_id):
     ver  = (p.get("version") or {})
     names = {}
 
+    # The register's own address, as Confluence reports it. This used to be built by
+    # hand as /wiki/spaces/EDW/pages/<id>, which quietly sent every DS report's
+    # sign-off chip to a space DS has nothing to do with.
+    _wu   = ((p.get("_links") or {}).get("webui") or "").strip()
+    _purl = (BASE + "/wiki" + _wu) if _wu.startswith("/") else \
+            f"{BASE}/wiki/pages/viewpage.action?pageId={page_id}"
+
     def who(aid):
         if aid not in names:
             u = _soft("/wiki/rest/api/user?accountId=" + parse.quote(aid))
@@ -378,7 +385,7 @@ def signoff(page_id):
         ids    = re.findall(r'ri:account-id="([^"]+)"', row)
         done   = [a for a, st in zip(ids, states) if st == "complete"]
         entry  = {"page": page_id,
-                  "url": f"{BASE}/wiki/spaces/EDW/pages/{page_id}",
+                  "url": _purl,
                   "version": ver.get("number"), "checked": len(done), "of": len(states)}
         if states and len(done) == len(states):
             entry["status"] = "reviewed"
