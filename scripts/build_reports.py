@@ -446,7 +446,7 @@ FIND_RANK = [
     ("p-red",   "Risk",    "needs a decision now"),
     ("p-amber", "Action",  "someone has to do something"),
     ("p-blue",  "Discuss", "bring it to the team; no owner yet"),
-    ("p-green", "Working", "going well, worth protecting"),
+    ("p-green", "Cleared", "was true earlier in the series, is not any more"),
     ("p-grey",  "Context", "background for the numbers above"),
 ]
 
@@ -1710,41 +1710,7 @@ def month_page(mk):
   </div>
   {series_block()}
 </section>
-<section class="panel" id="act">
-  <div class="sectit">Findings &amp; retro</div>
-  <div class="secsub">What the data shows, as input for the team's conversation.</div>
-  <div class="insightbox"><div class="k">Observation of the month</div>
-   <h2>{m['headline']}</h2>
-   <p>The references we measure against — {Q1['thr_med']} deliveries a month, {VEL_BASE} points a sprint, WIP of 12/6/18 — were set with a 4-dev team in Q1. Since then Harisha and Shruti joined and Dipika left. Comparing against those figures says more about the baseline than about the team.</p>
-  </div>
-  {obs_block}
-  <div class="sectit" style="font-size:20px;margin-top:28px">Directions to explore</div>
-  <div class="secsub">Ideas to validate, adapt or set aside depending on the real context.</div>
-  <div class="act"><div class="pri p-blue"></div><div class="inner">
-   <div class="atop"><h4>Recalculate the baselines with the current team</h4><span class="pill pill-blue">Discuss</span></div>
-   <p>Throughput and Velocity have been out of range for months, and WIP has already been recalculated to 5 devs. The guide asks for a quarterly review; the Q2 report in this series proposes the new starting point.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
-  <div class="act"><div class="pri p-blue"></div><div class="inner">
-   <div class="atop"><h4>Look at the sustained 100% completion</h4><span class="pill pill-blue">Discuss</span></div>
-   <p>Five sprints in a row closing everything committed, with no spillover. It could be conservative planning, or tickets closed right at the sprint edge. The team is the one who knows which, and the answer changes how reliable Velocity is for planning.</p>
-   <div class="owner">For discussion with: <b>EDW</b></div></div></div>
-  <div class="act"><div class="pri p-amber"></div><div class="inner">
-   <div class="atop"><h4>Bring back the Unplanned label</h4><span class="pill pill-amber">Action</span></div>
-   <p>Without it there is no predictability metric. It is the same follow-up left open in the May retro, and in August it cut the series entirely.</p>
-   <div class="owner">Follow-up by: <b>EDW</b></div></div></div>
-  {disc_note}
-  <div class="act"><div class="pri p-amber"></div><div class="inner">
-   <div class="atop"><h4>{c['nodev']} items closed without entering development</h4><span class="pill pill-amber">Review</span></div>
-   <p>Of the {c['base']} items closed this {PERIOD_WORD}, {c['nodev']} ({nodev_pct:.0f}%) never recorded a transition into <i>In Development</i>: they went from backlog or the previous column straight to closed. Those tickets have no Cycle Time, so the metric is computed over the remaining {c['n']}. {_nodev_ref} It may be genuinely trivial work, or tickets closed without going through the flow — worth telling apart, because it changes how much Cycle Time really represents the month's work.</p>
-   <div class="owner">To review with: <b>EDW</b></div></div></div>
-  <div class="sectit" style="font-size:20px;margin-top:28px">For the retrospective</div>
-  <div class="retro"><h4>Questions for the team</h4><ul>
-   <li>Do we close at 100% because we commit to less, or because we close tickets to make the sprint cut-off?</li>
-   <li>With 5 devs today, how many deliveries a month and how many points a sprint are a realistic commitment?</li>
-   <li>What did we open this month that ended as Won't Do, and what was missing when it came in?</li>
-   <li>What would make the <i>Unplanned</i> label get applied on its own, without depending on someone remembering?</li>
-  </ul></div>
-</section>"""
+{findings_panel(mk)}"""
 
     charts = f"""
 new Chart(document.getElementById('donut'),{{type:'doughnut',
@@ -1850,8 +1816,8 @@ def q2_page():
  <div class="insightbox"><div class="k">Quarter takeaway</div>
   <h2>Q2 does not work as a baseline because it contains the team change, not because the numbers are wrong.</h2>
   <p>Q2's median lands almost exactly on Q1's, and that coincidence is misleading: the quarter averages two months of the old team with one of the new. The useful cut is not quarterly but by headcount, and that cut falls in May.</p></div>
- <div class="act"><div class="pri p-green"></div><div class="inner">
-  <div class="atop"><h4>Adopt Jun-Aug as the working baseline</h4><span class="pill pill-green">Proposal</span></div>
+ <div class="act"><div class="pri p-blue"></div><div class="inner">
+  <div class="atop"><h4>Adopt Jun-Aug as the working baseline</h4><span class="pill pill-blue">Discuss</span></div>
   <p>Median of 79 deliveries a month with a 67 to 91 range. It replaces the {Q1['thr_med']} in the dashboard cards and in the status thresholds.</p>
   <div class="owner">To agree with: <b>EDW</b></div></div></div>
  <div class="act"><div class="pri p-blue"></div><div class="inner">
@@ -2005,6 +1971,230 @@ new Chart(document.getElementById('cQ1'),{{type:'bar',
  plugins:[q1Ref]}});
 {charts_scrum(only=q1n)}"""
     return html + FOOT.replace("__CHARTS__", charts).replace("{ZOOMJS}", ZOOMJS + RESIZEJS + TIPJS)
+
+
+
+# ------------------------------------------------------------------ findings
+# A finding is a rule over the series, not a paragraph.
+#
+# The Findings tab used to be prose written for one period. When the next period
+# closed it kept describing the last one, and nothing told anybody -- the same
+# failure as a hand-written sprint goal or a hand-written label: a human
+# description standing in for generated content. It also could not be ported to a
+# second team without carrying this team's conclusions with it.
+#
+# So each finding states a condition, and the report evaluates it. It appears when
+# it becomes true, carries the period it FIRST became true in, and stops being
+# shown when the team fixes the thing. The series is truncated at the period being
+# rendered, so a frozen report for 9.05 shows what was true in 9.05, not what is
+# true today.
+#
+# A rule that has stopped firing is kept and shown separately. It is the only
+# evidence a team ever gets that something they changed worked.
+
+def _rel_spill(k):
+    """Points that left the sprint over every point the sprint ever held."""
+    done = gone = 0.0
+    for n in (RELEASES.get(k) or {}).get("sprints", []):
+        sp = SPILL.get(n)
+        if not sp:
+            continue
+        done += sp["done"][1]
+        gone += sp["open"][1] + sp["out"][1]
+    return (gone / (done + gone)) if (done + gone) else None
+
+
+def _rel_scope(k):
+    """Day-1 commitment against final scope, over the release's own sprints."""
+    c = f = 0.0
+    for n in (RELEASES.get(k) or {}).get("sprints", []):
+        r = sp(n)
+        if not r:
+            continue
+        c += r[5]; f += r[6]
+    return (f / c) if c else None
+
+
+def _pctf(x):
+    return f"{100*x:.0f}%"
+
+
+FINDINGS = [
+ dict(id="spill", sev="p-red", label="Risk",
+      title=lambda k: "A third of committed work never finishes in its sprint",
+      test=lambda k: (_rel_spill(k) or 0) >= 0.30,
+      why="Every sprint reads as complete because the work is taken out before the "
+          "sprint closes, not because it was done. The burndown cannot show this and "
+          "the commitment number cannot either.",
+      ev=lambda k: f"Points that left the sprint over every point it held: "
+                   f"<b>{_pctf(_rel_spill(k))}</b>.",
+      q="Do we close at 100% because we commit to less, or because work leaves the "
+        "sprint before anyone counts it?"),
+
+ dict(id="unp", sev="p-amber", label="Action",
+      title=lambda k: "Reactive work cannot be measured at all",
+      test=lambda k: (RELEASES.get(k) or {}).get("unp_pct") is None,
+      why="Planned against unplanned is the one metric a service team cannot do "
+          "without, and it is dark. Publishing 0% would invent an improvement nobody "
+          "earned, so the charts break the line instead.",
+      ev=lambda k: f"No item in <b>{MONTH_LABEL.get(k, k)}</b> carries the Unplanned "
+                   f"label or the Urgent Task type.",
+      q="What would make the Unplanned label get applied on its own, without "
+        "depending on somebody remembering?"),
+
+ dict(id="scope", sev="p-amber", label="Action",
+      title=lambda k: "Scope roughly doubles after day 1",
+      test=lambda k: (_rel_scope(k) or 0) >= 1.7,
+      why="For a service team some of this is unavoidable: urgent requests land "
+          "mid-sprint and cannot be planned. The question the split answers is how "
+          "much of it was genuinely unplannable.",
+      ev=lambda k: f"Day-1 commitment grows <b>{_rel_scope(k):.2f}x</b> by the time "
+                   f"the sprints in {MONTH_LABEL.get(k, k)} close.",
+      q="How much capacity should we reserve for service load, and why is the "
+        "plannable half not on the board on day 1?"),
+
+ dict(id="tail", sev="p-amber", label="Action",
+      title=lambda k: "The cycle-time tail is pulling away from the median",
+      test=lambda k: bool((CYC.get(k) or {}).get("med")) and
+                     (CYC[k]["avg"] / CYC[k]["med"]) >= 1.8,
+      why="The middle of the work flows fine. A few items sit for weeks, and only the "
+          "average sees them, which is why a target on the average alone fires for a "
+          "reason nobody can act on.",
+      ev=lambda k: f"Average <b>{CYC[k]['avg']:.2f}d</b> against a median of "
+                   f"<b>{CYC[k]['med']:.2f}d</b> \u2014 ratio {CYC[k]['avg']/CYC[k]['med']:.2f}, "
+                   f"longest item {CYC[k].get('mx', 0):.0f}d.",
+      q="Which items are the long tail, and what were they waiting for?"),
+
+ dict(id="nodev", sev="p-amber", label="Action",
+      title=lambda k: "Work closes without ever entering development",
+      test=lambda k: bool((CYC.get(k) or {}).get("base")) and
+                     CYC[k]["nodev"] / CYC[k]["base"] >= 0.20,
+      why="Either the work was genuinely trivial, or the board is not being moved. "
+          "The two have very different consequences, and cycle time is computed over "
+          "what is left either way.",
+      ev=lambda k: f"<b>{CYC[k]['nodev']} of {CYC[k]['base']}</b> closed items "
+                   f"({_pctf(CYC[k]['nodev']/CYC[k]['base'])}) recorded no transition into "
+                   f"<i>In Development</i>, so cycle time is computed over the other "
+                   f"{CYC[k]['n']}.",
+      q="Of the items that closed without entering development, how many were real "
+        "work that skipped the board?"),
+
+ dict(id="discard", sev="p-amber", label="Action",
+      title=lambda k: "A tenth of resolved work is discarded, not delivered",
+      test=lambda k: bool((RELEASES.get(k) or {}).get("resolved")) and
+                     RELEASES[k]["discarded"] / RELEASES[k]["resolved"] >= 0.10,
+      why="Work that reaches the board and is then thrown away was refined, estimated "
+          "and planned first. That cost is already spent by the time it is dropped.",
+      ev=lambda k: f"<b>{RELEASES[k]['discarded']} of {RELEASES[k]['resolved']}</b> "
+                   f"resolved items ended as Won\u2019t Do "
+                   f"({_pctf(RELEASES[k]['discarded']/RELEASES[k]['resolved'])}).",
+      q="What did we open this period that ended as Won\u2019t Do, and what was "
+        "missing when it came in?"),
+
+ dict(id="shrink", sev="p-blue", label="Discuss",
+      title=lambda k: "The team is smaller than the baselines were set with",
+      test=lambda k: _prev_rel(k) is not None and
+                     (CAP.get(k) or [0,0,0,0])[3] < (CAP.get(_prev_rel(k)) or [0,0,0,0])[3],
+      why="Every fixed baseline on these pages was set with a different team. This is "
+          "why the status comes from the team\u2019s own expected range rather than from "
+          "the distance to a number somebody wrote down once.",
+      ev=lambda k: f"People closing work went from <b>{CAP[_prev_rel(k)][3]:.0f}</b> in "
+                   f"{MONTH_LABEL.get(_prev_rel(k), _prev_rel(k))} to "
+                   f"<b>{CAP[k][3]:.0f}</b> in {MONTH_LABEL.get(k, k)}.",
+      q="With the team we have today, how many deliveries a period and how many "
+        "points a sprint are a realistic commitment?"),
+]
+
+
+def _prev_rel(k):
+    ks = sorted(RELEASES)
+    i = ks.index(k) if k in ks else -1
+    return ks[i-1] if i > 0 else None
+
+
+def find_eval(mk):
+    """Every rule over the series up to and including `mk`. Returns the ones firing
+    at `mk` with the period they first became true in, and the ones that were true
+    earlier and have since stopped."""
+    series = [k for k in sorted(RELEASES) if k <= mk]
+    firing, cleared = [], []
+    for rule in FINDINGS:
+        hits = []
+        for k in series:
+            try:
+                hits.append(bool(rule["test"](k)))
+            except Exception:
+                hits.append(False)          # a rule can never break a page
+        if not any(hits):
+            continue
+        if hits[-1]:
+            run = 0
+            for h in reversed(hits):
+                if not h: break
+                run += 1
+            firing.append(dict(rule=rule, first=series[len(hits)-run], streak=run))
+        else:
+            last = max(i for i, h in enumerate(hits) if h)
+            cleared.append(dict(rule=rule, last=series[last],
+                                gone=series[last+1] if last+1 < len(series) else None))
+    firing.sort(key=lambda r: (FIND_RANK_IX.get(r["rule"]["sev"], 9), -r["streak"]))
+    return firing, cleared
+
+
+FIND_RANK_IX = {c: i for i, (c, _l, _d) in enumerate(FIND_RANK)}
+
+
+def findings_panel(mk):
+    firing, cleared = find_eval(mk)
+    lab = MONTH_LABEL.get(mk, mk)
+    out = ['<section class="panel" id="act">',
+           '<div class="sectit">Findings &amp; retro</div>',
+           '<div class="secsub">Each finding below is a rule over the series, not a note '
+           'written for this page. It appears when it becomes true, carries the '
+           f'{PERIOD_WORD} it first became true in, and disappears when the team fixes it. '
+           f'Evaluated as of {lab}, so this page says what was true then.</div>']
+
+    if not firing:
+        out.append('<div class="insightbox"><div class="k">Nothing is firing</div>'
+                   '<h2>No rule is true for this ' + PERIOD_WORD + '.</h2>'
+                   '<p>That is a result, not an empty page.</p></div>')
+    for f in firing:
+        r, k = f["rule"], mk
+        streak = f["streak"]
+        since = (f'first true in {MONTH_LABEL.get(f["first"], f["first"])}'
+                 + (f' \u00b7 {streak} {PERIOD_WORD}s running' if streak > 1 else ''))
+        out.append(
+            f'<div class="act"><div class="pri {r["sev"]}"></div><div class="inner">'
+            f'<div class="atop"><h4>{r["title"](k)}</h4>'
+            f'<span class="pill pill-{r["sev"].split("-")[1]}">{r["label"]}</span></div>'
+            f'<p>{r["why"]}</p>'
+            f'<div class="owner" style="font-weight:400">{r["ev"](k)}</div>'
+            f'<div class="owner">{since}</div></div></div>')
+
+    if cleared:
+        out.append('<div class="sectit" style="font-size:20px;margin-top:28px">Cleared</div>'
+                   '<div class="secsub">Rules that were true earlier in the series and are '
+                   'not any more. This is the only evidence a team gets that something it '
+                   'changed worked.</div>')
+        for c in cleared:
+            r = c["rule"]
+            tail = (f'true through {MONTH_LABEL.get(c["last"], c["last"])}'
+                    + (f', gone by {MONTH_LABEL.get(c["gone"], c["gone"])}' if c["gone"] else ''))
+            out.append(
+                f'<div class="act"><div class="pri p-green"></div><div class="inner">'
+                f'<div class="atop"><h4>{r["title"](c["last"])}</h4>'
+                f'<span class="pill pill-green">Cleared</span></div>'
+                f'<p>{r["why"]}</p><div class="owner">{tail}</div></div></div>')
+
+    qs = [f["rule"]["q"] for f in firing]
+    if qs:
+        out.append('<div class="sectit" style="font-size:20px;margin-top:28px">For the '
+                   'retrospective</div><div class="secsub">One question per finding above. '
+                   'When a finding clears, its question stops being asked.</div>'
+                   '<div class="retro"><h4>Questions for the team</h4><ul>'
+                   + "".join(f'<li>{q}</li>' for q in qs) + '</ul></div>')
+    out.append('</section>')
+    return "\n".join(out)
 
 
 # ---------------------------------------------------------------- index page
