@@ -9,15 +9,15 @@
   "end": "2026-09-27",
   "prev": "",
   "prev_closed": 57,
-  "closed": 52,
+  "closed": 53,
   "discarded": 2,
-  "resolved": 54,
-  "unplanned": 0,
-  "unp_pct": 0.0,
+  "resolved": 55,
+  "unplanned": 1,
+  "unp_pct": 1.9,
   "types": [
    [
     "Story",
-    45
+    46
    ],
    [
     "Bug",
@@ -36,12 +36,17 @@
    "EDW-Sprint 21-26",
    "EDW-Sprint 22-26"
   ],
-  "unp_items": [],
+  "unp_items": [
+   [
+    "EDW-2370",
+    "[Onboarding] - Data for PDS"
+   ]
+  ],
   "open": true,
   "day": 17,
   "days": 28,
   "status": "warning",
-  "headline": "52 items closed in the first 17 days, a pace of about 86 for the month against 57 last month. Cycle time average 9.4d against a 5.0d median - a long tail.",
+  "headline": "53 items closed in the first 17 days, a pace of about 87 for the month against 57 last month. Cycle time average 9.4d against a 5.0d median - a long tail.",
   "notes": [
    "cycle time average 9.4d against a 5.0d median - a long tail"
   ]
@@ -98,12 +103,12 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   28,
-   7,
-   51,
-   55,
-   12,
+   29,
    8,
+   51,
+   56,
+   13,
+   10,
    [
     41.0,
     49.0,
@@ -114,7 +119,7 @@
     41.0,
     51.0,
     51.0,
-    55.0
+    56.0
    ]
   ]
  ],
@@ -141,8 +146,8 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    7,
-    12
+    8,
+    13
    ],
    "open": [
     14,
@@ -167,9 +172,9 @@
    "pct": 0
   },
   "EDW-Sprint 22-26": {
-   "react": 0,
+   "react": 1,
    "plan": 2,
-   "pct": 0
+   "pct": 33
   }
  },
  "TIS": {
@@ -223,6 +228,10 @@
   },
   "EDW-Sprint 22-26": {
    "tis": {
+    "Closed": {
+     "n": 9,
+     "med": 11.52
+    },
     "Backlog": {
      "n": 17,
      "med": 1.2
@@ -230,10 +239,6 @@
     "In Development": {
      "n": 14,
      "med": 11.47
-    },
-    "Closed": {
-     "n": 8,
-     "med": 11.52
     },
     "Awaiting Review": {
      "n": 4,
@@ -249,9 +254,9 @@
     }
    },
    "dist": {
+    "Closed": 8,
     "Backlog": 4,
     "In Development": 8,
-    "Closed": 7,
     "Awaiting Review": 1,
     "Won't Do": 1,
     "Ready for Development": 7
@@ -259,7 +264,7 @@
    "stalled": 20,
    "worst": 12.48,
    "worstSt": "Ready for Development",
-   "items": 28
+   "items": 29
   }
  },
  "GHOST": {
@@ -290,9 +295,9 @@
  },
  "CAP": {
   "9.08": [
-   52,
-   47,
-   169,
+   53,
+   48,
+   170,
    6
   ]
  },
@@ -302,8 +307,8 @@
    "avg": 9.39,
    "n": 35,
    "mx": 50.15,
-   "nodev": 17,
-   "base": 52
+   "nodev": 18,
+   "base": 53
   }
  },
  "complete": false,
