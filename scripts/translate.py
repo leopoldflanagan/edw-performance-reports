@@ -160,8 +160,11 @@ def main():
     if stats["missing"]:
         print(f"still in English: {len(stats['missing'])} phrases")
         if a.report:
+            # JSON on one line each: a phrase can contain newlines, so printing it
+            # raw made the list unusable as input to anything, including a person
+            # copying it into the dictionary.
             for k in sorted(stats["missing"], key=lambda s: (-len(s.split()), s)):
-                print("   ", k)
+                print("   ", json.dumps(k, ensure_ascii=False))
 
 
 if __name__ == "__main__":
