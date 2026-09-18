@@ -629,7 +629,11 @@ ADHOC        = "8-AdHoc"
 LONG_HAUL    = 4          # sprints an item can ride before it is worth naming
 
 
-def admin(project, live_sp, cap_page):
+# how many days before a sprint ends the missing next sprint is worth raising
+NEXT_SPRINT_NOTICE = 7
+
+
+def admin(project, live_sp, cap_page, nxt=None):
     """Administrative hygiene, split by what it actually costs.
 
     BLOCKING is the Definition of Ready exactly as the team's Backlog Organization
@@ -769,6 +773,34 @@ def admin(project, live_sp, cap_page):
         setup.append({"rule": "The sprint is missing from the capacity page",
                       "why": "the planning record and Jira have drifted apart.",
                       "n": 1, "items": []})
+
+    # The reports follow Jira's own sprint STATE, never the calendar, so a sprint
+    # that starts on Tuesday because Monday was a holiday costs nothing at all.
+    # What does cost something is the next sprint not existing: the moment this one
+    # closes there is no active sprint, the live view has nothing to follow it with,
+    # and the only way anyone finds out is by looking. Hence a week's notice.
+    #
+    # Deliberately NOT done by guessing the next name from this one. DS is the proof:
+    # the sprint after DS-Sprint 16-26 is named DS-Sprint 16-27, so incrementing the
+    # number would hunt for a sprint 17 that does not exist and call the board empty
+    # while the real sprint sits on it. The board is asked, not the naming scheme.
+    if live_sp and not nxt:
+        _end = (live_sp.get("end") or "")[:10]
+        if _end:
+            try:
+                _left = (dt.date.fromisoformat(_end) - dt.date.today()).days
+            except ValueError:
+                _left = None
+            if _left is not None and _left <= NEXT_SPRINT_NOTICE:
+                _when = ("ends today" if _left == 0 else
+                         f"ends in {_left} days" if _left > 0 else
+                         f"ended {-_left} days ago")
+                setup.append({
+                    "rule": "The next sprint has not been created",
+                    "why": (f"{live_sp.get('name')} {_when} and the board holds no "
+                            f"future sprint after it. When this one closes the active "
+                            f"sprint view has nothing to move on to."),
+                    "n": 1, "items": []})
 
     print(f"  admin checks: {sum(x['n'] for x in B)} blocking, "
           f"{sum(x['n'] for x in D)} debt, {len(setup)} sprint setup", flush=True)
@@ -1285,7 +1317,7 @@ def main():
         "capacity": cap_page,
         "backlog": backlog(a.project, a.frozen),
         "projection": projection(live_sp, a.frozen),
-        "admin": admin(a.project, live_sp, cap_page),
+        "admin": admin(a.project, live_sp, cap_page, nxt=(future[0] if future else None)),
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),
