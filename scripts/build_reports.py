@@ -49,11 +49,37 @@ TEAM.update(DATA.get("TEAM") or {})
 TKEY, TSITE = TEAM["key"], TEAM["site"]
 
 
+def _series_note():
+    """What the index says it holds, from what it actually holds.
+
+    This sentence used to be typed into the template, and it promised a monthly
+    series and a set of quarter baselines. EDW stopped publishing the monthly
+    pages and the sentence stayed; DS is that template copied across and never had
+    either, so its index offered a reader two kinds of report that do not exist.
+    A page describing itself has no business guessing.
+    """
+    # Discriminated by the FILE, not by the label beside it. REPORTS holds only the
+    # quarter baselines on EDW but the releases themselves on DS, so "the label does
+    # not start with Q, therefore it is a month" put a monthly series on the DS index
+    # that has never existed.
+    import re as _re
+    hrefs    = [h for _, h in (DATA.get("REPORTS") or [])]
+    quarters = [h for h in hrefs if _re.search(r"-q\d", h)]
+    months   = [h for h in hrefs if _re.search(r"^\d{4}-\d{2}-[a-z]", h)]
+    out = ""
+    if quarters:
+        out += " Quarter reports carry the baselines each release is measured against."
+    if months:
+        out += " Monthly reports are a closed series kept from before the release calendar."
+    return out
+
+
 def _fill(head):
     """The index head is a template shared by every page built on it."""
     return (head.replace("__SITE__", TSITE)
                 .replace("__TEAMNAME__", TEAM["name"])
-                .replace("__ORG__", TEAM["org"]))
+                .replace("__ORG__", TEAM["org"])
+                .replace("__SERIES__", _series_note()))
 
 
 def doclink(key, label):
