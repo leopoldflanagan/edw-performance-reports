@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T16:00:29Z",
+ "generated": "2026-09-18T16:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 16,
-    "points": 48,
+    "n": 14,
+    "points": 47,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -358,17 +358,17 @@
   "days": 14,
   "n": 10,
   "done_now": 18,
-  "committed": 52,
+  "committed": 53,
   "lo": 47,
   "mid": 51,
   "hi": 63,
-  "pct": 98,
+  "pct": 96,
   "verdict": "on track for the commitment",
   "share_mid": 0.354
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 20,
    "sprint": 20,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 4,
+    "n": 3,
     "items": [
      {
       "key": "EDW-2355",
@@ -387,10 +387,6 @@
       "summary": "PRODUCTION - Office Assignment"
      },
      {
-      "key": "EDW-2332",
-      "summary": "Renewals by Month - Fix X-axis values to display properly"
-     },
-     {
       "key": "EDW-2340",
       "summary": "Prod/DCA Custom website/DCA Corporate office is displayed in the office list for"
      }
@@ -399,7 +395,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 16,
+    "n": 14,
     "items": [
      {
       "key": "EDW-2360",
@@ -418,10 +414,6 @@
       "summary": "Rework Storybook controls and mocked data"
      },
      {
-      "key": "EDW-2332",
-      "summary": "Renewals by Month - Fix X-axis values to display properly"
-     },
-     {
       "key": "EDW-2327",
       "summary": "Loan Activity page - No Data Available"
      },
@@ -430,8 +422,12 @@
       "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
      },
      {
-      "key": "EDW-2308",
-      "summary": "ACH - ACH purchase returns (Declines) Not Visible in Plan Sales Report "
+      "key": "EDW-2209",
+      "summary": "LL backfill non-annual plan records"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -489,14 +485,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 32 of 36 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 32,
+    "why": "missing on 30 of 35 items. This reads as a field the team does not use rather than 30 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 30,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 36 of 36 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 36,
+    "why": "missing on 35 of 35 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 35,
     "items": []
    },
    {
@@ -595,15 +591,15 @@
   "goal": "",
   "items": 30,
   "items_done": 15,
-  "committed": 52,
-  "final": 57,
+  "committed": 53,
+  "final": 58,
   "completed": 18,
-  "scope_change": 10,
-  "vs_commitment": 35,
+  "scope_change": 9,
+  "vs_commitment": 34,
   "time_elapsed": 30,
   "spill": {
    "open_items": 13,
-   "open_pts": 37.0,
+   "open_pts": 38.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 18.0
@@ -617,34 +613,34 @@
   "spill_rate": null,
   "dist": {
    "Closed": 15,
-   "In Development": 5,
+   "In Development": 6,
    "Awaiting Review": 2,
    "Won't Do": 1,
-   "Ready for Development": 6
+   "Ready for Development": 5
   },
   "burn": [
-   42.0,
-   50.0,
+   43.0,
+   51.0,
+   46.0,
    45.0,
-   44.0,
-   39.0,
-   39.0
+   40.0,
+   40.0
   ],
   "scope": [
-   42.0,
-   52.0,
-   52.0,
-   57.0,
-   57.0,
-   57.0
+   43.0,
+   53.0,
+   53.0,
+   58.0,
+   58.0,
+   58.0
   ],
   "ghost": [
-   42.0,
-   50.0,
+   43.0,
+   51.0,
+   46.0,
    45.0,
-   44.0,
-   39.0,
-   39.0
+   40.0,
+   40.0
   ],
   "days": 14,
   "day": 5,
@@ -693,20 +689,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
+    "open": 20,
     "med_age": 15.4,
     "max_age": 192.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 16,
+    "over": 14,
     "clear_med": 3.0,
-    "clear_n": 194
+    "clear_n": 196
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 3.5,
+    "open": 7,
+    "med_age": 3.1,
     "max_age": 20.9,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -714,6 +710,18 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 237
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 135
    },
    {
     "status": "New",
@@ -728,18 +736,6 @@
     "clear_n": 63
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -750,18 +746,6 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
    },
    {
     "status": "In Progress",
@@ -786,14 +770,26 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
-  "open_total": 28,
-  "stale": 18,
+  "open_total": 27,
+  "stale": 16,
   "worst": "Ready for Development"
  }
 }
