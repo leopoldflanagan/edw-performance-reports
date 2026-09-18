@@ -9,9 +9,9 @@
   "end": "2026-09-27",
   "prev": "",
   "prev_closed": 57,
-  "closed": 56,
+  "closed": 57,
   "discarded": 2,
-  "resolved": 58,
+  "resolved": 59,
   "unplanned": 1,
   "unp_pct": 1.8,
   "types": [
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    4
+    5
    ],
    [
     "Task",
@@ -46,7 +46,7 @@
   "day": 18,
   "days": 28,
   "status": "healthy",
-  "headline": "56 items closed in the first 18 days, a pace of about 87 for the month against 57 last month.",
+  "headline": "57 items closed in the first 18 days, a pace of about 89 for the month against 57 last month.",
   "notes": []
  },
  "SPRINTS": [
@@ -298,7 +298,7 @@
  },
  "CAP": {
   "9.08": [
-   56,
+   57,
    51,
    180,
    6
@@ -310,8 +310,8 @@
    "avg": 8.75,
    "n": 38,
    "mx": 50.15,
-   "nodev": 18,
-   "base": 56
+   "nodev": 19,
+   "base": 57
   }
  },
  "complete": false,

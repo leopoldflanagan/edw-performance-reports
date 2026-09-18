@@ -815,7 +815,7 @@ const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
 new Chart(document.getElementById('cThru'),{type:'bar',
  data:{labels:["R9.04", "R9.05", "R9.06", "R9.07", "R9.08"],datasets:[{label:'Closed',
-  data:[14.5, 30.0, 38.0, 28.5, 28.0],backgroundColor:["#65B2D5", "#65B2D5", "#007CBC", "#65B2D5", "#65B2D5"],borderRadius:6}]},
+  data:[14.5, 30.0, 38.0, 28.5, 28.5],backgroundColor:["#65B2D5", "#65B2D5", "#007CBC", "#65B2D5", "#65B2D5"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:48,grid:{color:gridc},title:{display:true,text:'Items closed per sprint'}},x:{grid:{display:false}}}},
  plugins:[thrRef]});
 new Chart(document.getElementById('cCyc'),{type:'bar',

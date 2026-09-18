@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T22:30:24Z",
+ "generated": "2026-09-18T22:36:50Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -670,7 +670,7 @@
   "end": "2026-09-27",
   "day": 19,
   "days": 28,
-  "closed": 56,
+  "closed": 57,
   "points": 180,
   "unplanned": 1,
   "unplanned_pct": 1.8,
@@ -724,30 +724,6 @@
     "clear_n": 15
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -782,11 +758,35 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 136
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
    "Deferred": 75,
-   "Backlog": 72
+   "Backlog": 71
   },
   "open_total": 27,
   "stale": 16,
