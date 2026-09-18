@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T16:45:24Z",
+ "generated": "2026-09-18T17:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 47,
+    "n": 13,
+    "points": 42,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,18 +357,18 @@
   "day": 5,
   "days": 14,
   "n": 10,
-  "done_now": 18,
+  "done_now": 23,
   "committed": 53,
-  "lo": 47,
-  "mid": 51,
-  "hi": 63,
-  "pct": 96,
+  "lo": 60,
+  "mid": 65,
+  "hi": 80,
+  "pct": 123,
   "verdict": "on track for the commitment",
   "share_mid": 0.354
  },
  "admin": {
   "scope": {
-   "ready": 20,
+   "ready": 19,
    "sprint": 20,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -395,7 +395,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2360",
@@ -408,10 +408,6 @@
      {
       "key": "EDW-2347",
       "summary": "PRODUCTION - Office Assignment"
-     },
-     {
-      "key": "EDW-2336",
-      "summary": "Rework Storybook controls and mocked data"
      },
      {
       "key": "EDW-2327",
@@ -428,6 +424,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -590,19 +590,19 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 30,
-  "items_done": 15,
+  "items_done": 16,
   "committed": 53,
   "final": 58,
-  "completed": 18,
+  "completed": 23,
   "scope_change": 9,
-  "vs_commitment": 34,
+  "vs_commitment": 43,
   "time_elapsed": 30,
   "spill": {
-   "open_items": 13,
-   "open_pts": 38.0,
+   "open_items": 12,
+   "open_pts": 33.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 18.0
+   "done_pts": 23.0
   },
   "recv": {
    "items": 5,
@@ -612,11 +612,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 15,
-   "In Development": 6,
-   "Awaiting Review": 2,
+   "Closed": 16,
+   "In Development": 7,
+   "Awaiting Review": 1,
    "Won't Do": 1,
-   "Ready for Development": 5
+   "Ready for Development": 4
   },
   "burn": [
    43.0,
@@ -624,7 +624,7 @@
    46.0,
    45.0,
    40.0,
-   40.0
+   35.0
   ],
   "scope": [
    43.0,
@@ -640,7 +640,7 @@
    46.0,
    45.0,
    40.0,
-   40.0
+   35.0
   ],
   "days": 14,
   "day": 5,
@@ -670,8 +670,8 @@
   "end": "2026-09-27",
   "day": 19,
   "days": 28,
-  "closed": 55,
-  "points": 175,
+  "closed": 56,
+  "points": 180,
   "unplanned": 1,
   "unplanned_pct": 1.8,
   "access_requests": 0,
@@ -689,30 +689,30 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 20,
-    "med_age": 15.4,
+    "open": 19,
+    "med_age": 15.9,
     "max_age": 192.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 14,
     "clear_med": 3.0,
-    "clear_n": 196
+    "clear_n": 198
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 3.1,
+    "open": 8,
+    "med_age": 3.0,
     "max_age": 21.0,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
     "worst_who": "Jeff Schniederjan",
     "over": 2,
-    "clear_med": 2.2,
-    "clear_n": 237
+    "clear_med": 2.1,
+    "clear_n": 238
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -720,11 +720,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -732,8 +732,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "On Hold",
@@ -756,11 +756,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
+    "clear_med": 0.9,
+    "clear_n": 136
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -768,11 +768,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -780,13 +780,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
+    "clear_med": 9.9,
     "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 27,
   "stale": 16,
