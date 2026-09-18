@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-17T23:45:19Z",
+ "generated": "2026-09-18T00:00:40Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 4,
+  "day": 5,
   "days": 14,
   "n": 10,
   "done_now": 18,
   "committed": 52,
-  "lo": 50,
-  "mid": 60,
-  "hi": 65,
-  "pct": 115,
+  "lo": 47,
+  "mid": 51,
+  "hi": 63,
+  "pct": 98,
   "verdict": "on track for the commitment",
-  "share_mid": 0.299
+  "share_mid": 0.354
  },
  "admin": {
   "scope": {
@@ -644,7 +644,7 @@
    39.0
   ],
   "days": 14,
-  "day": 4,
+  "day": 5,
   "capacity": {
    "release": "9.08",
    "start": "2026-09-14",
@@ -669,7 +669,7 @@
   "kind": "release",
   "start": "2026-08-31",
   "end": "2026-09-27",
-  "day": 18,
+  "day": 19,
   "days": 28,
   "closed": 55,
   "points": 175,
@@ -697,8 +697,8 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 16,
-    "clear_med": 2.9,
-    "clear_n": 199
+    "clear_med": 3.0,
+    "clear_n": 194
    },
    {
     "status": "In Development",
@@ -710,31 +710,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 2,
     "clear_med": 2.2,
-    "clear_n": 241
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 138
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_n": 237
    },
    {
     "status": "New",
@@ -747,6 +723,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "PR Created",
@@ -773,7 +773,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,13 +781,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 1.0,
+    "clear_n": 135
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 28,
   "stale": 18,
