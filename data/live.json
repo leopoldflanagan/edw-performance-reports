@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T13:00:29Z",
+ "generated": "2026-09-18T13:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -691,8 +691,8 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 15.2,
-    "max_age": 192.7,
+    "med_age": 15.3,
+    "max_age": 192.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -703,7 +703,7 @@
    {
     "status": "In Development",
     "open": 6,
-    "med_age": 3.3,
+    "med_age": 3.4,
     "max_age": 20.8,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -711,6 +711,30 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 237
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 135
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "On Hold",
@@ -737,30 +761,6 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -773,7 +773,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,8 +781,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
