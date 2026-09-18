@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-18T05:45:18Z",
+ "generated": "2026-09-18T06:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -691,8 +691,8 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 14.9,
-    "max_age": 192.4,
+    "med_age": 15.0,
+    "max_age": 192.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -703,7 +703,7 @@
    {
     "status": "In Development",
     "open": 6,
-    "med_age": 3.0,
+    "med_age": 3.1,
     "max_age": 20.5,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -711,18 +711,6 @@
     "over": 2,
     "clear_med": 2.2,
     "clear_n": 237
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    },
    {
     "status": "WAITING REVIEW",
@@ -749,6 +737,30 @@
     "clear_n": 135
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -771,23 +783,11 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 28,
   "stale": 18,
