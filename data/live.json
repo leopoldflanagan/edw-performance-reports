@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-19T01:00:31Z",
+ "generated": "2026-09-19T01:15:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -596,7 +596,7 @@
   "completed": 23,
   "scope_change": 9,
   "vs_commitment": 43,
-  "time_elapsed": 32,
+  "time_elapsed": 33,
   "spill": {
    "open_items": 12,
    "open_pts": 33.0,
@@ -690,8 +690,8 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 16.2,
-    "max_age": 193.2,
+    "med_age": 16.3,
+    "max_age": 193.3,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -702,7 +702,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 3.3,
+    "med_age": 3.4,
     "max_age": 21.3,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -710,6 +710,18 @@
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 238
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 136
    },
    {
     "status": "PR Created",
@@ -724,7 +736,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -732,8 +744,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "In Progress",
@@ -760,7 +772,7 @@
     "clear_n": 15
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -768,25 +780,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 136
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 71,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 71
   },
   "open_total": 27,
   "stale": 16,
