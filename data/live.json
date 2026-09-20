@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-19T23:45:17Z",
+ "generated": "2026-09-20T00:00:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 6,
+  "day": 7,
   "days": 14,
   "n": 10,
   "done_now": 23,
   "committed": 53,
-  "lo": 56,
-  "mid": 61,
-  "hi": 66,
-  "pct": 115,
+  "lo": 52,
+  "mid": 54,
+  "hi": 58,
+  "pct": 102,
   "verdict": "on track for the commitment",
-  "share_mid": 0.377
+  "share_mid": 0.422
  },
  "admin": {
   "scope": {
@@ -646,7 +646,7 @@
    35.0
   ],
   "days": 14,
-  "day": 6,
+  "day": 7,
   "capacity": {
    "release": "9.08",
    "start": "2026-09-14",
@@ -671,7 +671,7 @@
   "kind": "release",
   "start": "2026-08-31",
   "end": "2026-09-27",
-  "day": 20,
+  "day": 21,
   "days": 28,
   "closed": 57,
   "points": 180,
@@ -715,6 +715,18 @@
     "clear_n": 238
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -725,6 +737,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "In Progress",
@@ -748,30 +772,6 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
     "clear_n": 1
    },
    {
