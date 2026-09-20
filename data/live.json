@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20T08:00:28Z",
+ "generated": "2026-09-20T08:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -705,7 +705,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 4.6,
+    "med_age": 4.7,
     "max_age": 22.6,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -727,7 +727,7 @@
     "clear_n": 136
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -735,8 +735,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -751,18 +763,6 @@
     "clear_n": 15
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -775,7 +775,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -783,13 +783,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 63
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 71
+   "Backlog": 71,
+   "Deferred": 75
   },
   "open_total": 27,
   "stale": 16,
