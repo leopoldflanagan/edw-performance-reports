@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-20T14:36:46Z",
+ "generated": "2026-09-20T14:45:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -730,18 +730,6 @@
     "clear_n": 136
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -763,6 +751,18 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
     "clear_n": 1
    },
    {
