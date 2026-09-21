@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T18:30:22Z",
+ "generated": "2026-09-21T18:44:18Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 42,
+    "n": 14,
+    "points": 47,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 21,
    "sprint": 22,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -395,7 +395,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
      {
       "key": "EDW-2360",
@@ -404,6 +404,10 @@
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+     },
+     {
+      "key": "EDW-2352",
+      "summary": "[Launch Loyalty] - Commission calcs for Phase 2 Orgs"
      },
      {
       "key": "EDW-2347",
@@ -424,10 +428,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      }
     ]
    },
@@ -447,8 +447,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 29,
+    "n": 31,
     "items": [
+     {
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
+     },
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
@@ -466,33 +470,29 @@
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
      },
      {
+      "key": "EDW-2352",
+      "summary": "[Launch Loyalty] - Commission calcs for Phase 2 Orgs"
+     },
+     {
       "key": "EDW-2326",
       "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
      },
      {
       "key": "EDW-2310",
       "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
-     },
-     {
-      "key": "EDW-2214",
-      "summary": "Update CI eligibility file"
-     },
-     {
-      "key": "EDW-2209",
-      "summary": "LL backfill non-annual plan records"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 32 of 37 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 32,
+    "why": "missing on 34 of 39 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 34,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 37 of 37 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 39 of 39 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 39,
     "items": []
    },
    {
@@ -698,8 +698,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 19.0,
+    "open": 21,
+    "med_age": 18.0,
     "max_age": 196.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -719,6 +719,30 @@
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 227
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 132
    },
    {
     "status": "PR Created",
@@ -757,30 +781,6 @@
     "clear_n": 15
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 132
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -794,10 +794,10 @@
    }
   ],
   "parked": {
-   "Backlog": 71,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
-  "open_total": 27,
+  "open_total": 29,
   "stale": 18,
   "worst": "Ready for Development"
  }
