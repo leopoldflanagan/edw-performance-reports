@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T16:00:31Z",
+ "generated": "2026-09-21T16:15:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
+    "n": 13,
     "points": 42,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -369,19 +369,15 @@
  "admin": {
   "scope": {
    "ready": 20,
-   "sprint": 20,
+   "sprint": 21,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 4,
+    "n": 3,
     "items": [
-     {
-      "key": "EDW-2377",
-      "summary": "PRODUCTION: Renewal issue for plans assigned to Corporate Office"
-     },
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
@@ -399,12 +395,8 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
-     {
-      "key": "EDW-2377",
-      "summary": "PRODUCTION: Renewal issue for plans assigned to Corporate Office"
-     },
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
@@ -432,6 +424,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -593,17 +589,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 30,
+  "items": 31,
   "items_done": 16,
   "committed": 53,
-  "final": 58,
+  "final": 60,
   "completed": 23,
-  "scope_change": 9,
+  "scope_change": 13,
   "vs_commitment": 43,
   "time_elapsed": 52,
   "spill": {
-   "open_items": 12,
-   "open_pts": 33.0,
+   "open_items": 13,
+   "open_pts": 35.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 23.0
@@ -616,11 +612,11 @@
   },
   "spill_rate": null,
   "dist": {
+   "Ready for Development": 5,
    "Closed": 16,
    "In Development": 7,
    "Awaiting Review": 1,
-   "Won't Do": 1,
-   "Ready for Development": 4
+   "Won't Do": 1
   },
   "burn": [
    43.0,
@@ -631,7 +627,7 @@
    35.0,
    35.0,
    35.0,
-   35.0
+   37.0
   ],
   "scope": [
    43.0,
@@ -642,7 +638,7 @@
    58.0,
    58.0,
    58.0,
-   58.0
+   60.0
   ],
   "ghost": [
    43.0,
@@ -653,7 +649,7 @@
    35.0,
    35.0,
    35.0,
-   35.0
+   37.0
   ],
   "days": 14,
   "day": 8,
@@ -725,7 +721,7 @@
     "clear_n": 226
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -733,7 +729,19 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
     "clear_n": 1
    },
    {
@@ -749,6 +757,18 @@
     "clear_n": 5
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -761,18 +781,6 @@
     "clear_n": 63
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -783,18 +791,6 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 131
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    }
   ],
   "parked": {
