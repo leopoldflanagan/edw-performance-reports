@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T01:45:19Z",
+ "generated": "2026-09-21T02:00:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -709,13 +709,37 @@
     "status": "In Development",
     "open": 8,
     "med_age": 5.4,
-    "max_age": 23.3,
+    "max_age": 23.4,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
     "worst_who": "Jeff Schniederjan",
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 226
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -742,18 +766,6 @@
     "clear_n": 131
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -764,18 +776,6 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    },
    {
     "status": "PR Created",
@@ -791,8 +791,8 @@
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 71
+   "Backlog": 71,
+   "Deferred": 75
   },
   "open_total": 27,
   "stale": 16,
