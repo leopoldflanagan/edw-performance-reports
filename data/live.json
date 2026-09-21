@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T22:38:02Z",
+ "generated": "2026-09-21T22:45:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -700,7 +700,7 @@
     "status": "Ready for Development",
     "open": 21,
     "med_age": 18.2,
-    "max_age": 196.1,
+    "max_age": 196.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -721,18 +721,6 @@
     "clear_n": 227
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 132
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -745,7 +733,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -753,8 +741,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "In Progress",
@@ -781,7 +769,7 @@
     "clear_n": 63
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -789,8 +777,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 132
    }
   ],
   "parked": {
