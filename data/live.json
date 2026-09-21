@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T05:45:20Z",
+ "generated": "2026-09-21T06:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -696,8 +696,8 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 18.4,
-    "max_age": 195.4,
+    "med_age": 18.5,
+    "max_age": 195.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -708,7 +708,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 5.5,
+    "med_age": 5.6,
     "max_age": 23.5,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
@@ -730,7 +730,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -738,8 +738,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 1.0,
+    "clear_n": 131
    },
    {
     "status": "New",
@@ -766,6 +766,18 @@
     "clear_n": 15
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -776,23 +788,11 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
    }
   ],
   "parked": {
-   "Backlog": 71,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 71
   },
   "open_total": 27,
   "stale": 16,
