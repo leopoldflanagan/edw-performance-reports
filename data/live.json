@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-21T20:37:49Z",
+ "generated": "2026-09-21T20:45:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -721,42 +721,6 @@
     "clear_n": 227
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 132
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -767,6 +731,18 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -781,6 +757,18 @@
     "clear_n": 5
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -791,11 +779,23 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 132
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 29,
   "stale": 18,
