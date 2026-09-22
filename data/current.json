@@ -9,15 +9,15 @@
   "end": "2026-09-27",
   "prev": "",
   "prev_closed": 57,
-  "closed": 59,
+  "closed": 60,
   "discarded": 2,
-  "resolved": 61,
+  "resolved": 62,
   "unplanned": 2,
-  "unp_pct": 3.4,
+  "unp_pct": 3.3,
   "types": [
    [
     "Story",
-    50
+    51
    ],
    [
     "Bug",
@@ -50,7 +50,7 @@
   "day": 22,
   "days": 28,
   "status": "healthy",
-  "headline": "59 items closed in the first 22 days, a pace of about 75 for the month against 57 last month.",
+  "headline": "60 items closed in the first 22 days, a pace of about 76 for the month against 57 last month.",
   "notes": []
  },
  "SPRINTS": [
@@ -105,12 +105,12 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   33,
-   18,
+   34,
+   19,
    53,
-   66,
-   25,
-   25,
+   67,
+   26,
+   26,
    [
     43.0,
     51.0,
@@ -131,7 +131,7 @@
     58.0,
     58.0,
     58.0,
-    66.0
+    67.0
    ]
   ]
  ],
@@ -158,8 +158,8 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    18,
-    25
+    19,
+    26
    ],
    "open": [
     13,
@@ -185,8 +185,8 @@
   },
   "EDW-Sprint 22-26": {
    "react": 2,
-   "plan": 4,
-   "pct": 33
+   "plan": 5,
+   "pct": 29
   }
  },
  "TIS": {
@@ -240,6 +240,10 @@
   },
   "EDW-Sprint 22-26": {
    "tis": {
+    "Closed": {
+     "n": 20,
+     "med": 10.53
+    },
     "Ready for Development": {
      "n": 16,
      "med": 2.97
@@ -247,10 +251,6 @@
     "Awaiting Review": {
      "n": 9,
      "med": 0.02
-    },
-    "Closed": {
-     "n": 19,
-     "med": 10.57
     },
     "In Development": {
      "n": 21,
@@ -266,8 +266,8 @@
     }
    },
    "dist": {
+    "Closed": 19,
     "Ready for Development": 6,
-    "Closed": 18,
     "In Development": 7,
     "Awaiting Review": 1,
     "Won't Do": 1
@@ -275,7 +275,7 @@
    "stalled": 14,
    "worst": 2.97,
    "worstSt": "Ready for Development",
-   "items": 33
+   "items": 34
   }
  },
  "GHOST": {
@@ -311,9 +311,9 @@
  },
  "CAP": {
   "9.08": [
-   59,
-   53,
-   182,
+   60,
+   54,
+   183,
    6
   ]
  },
@@ -323,8 +323,8 @@
    "avg": 8.6,
    "n": 39,
    "mx": 50.15,
-   "nodev": 20,
-   "base": 59
+   "nodev": 21,
+   "base": 60
   }
  },
  "complete": false,

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T14:00:28Z",
+ "generated": "2026-09-22T14:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,19 +357,19 @@
   "day": 9,
   "days": 14,
   "n": 10,
-  "done_now": 25,
+  "done_now": 26,
   "committed": 53,
-  "lo": 43,
-  "mid": 46,
-  "hi": 49,
-  "pct": 87,
+  "lo": 45,
+  "mid": 48,
+  "hi": 51,
+  "pct": 91,
   "verdict": "a little short of the commitment",
   "share_mid": 0.544
  },
  "admin": {
   "scope": {
    "ready": 22,
-   "sprint": 23,
+   "sprint": 24,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -458,7 +458,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 31,
+    "n": 32,
     "items": [
      {
       "key": "EDW-2375",
@@ -496,14 +496,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 35 of 40 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 35,
+    "why": "missing on 36 of 41 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 36,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 40 of 40 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 41 of 41 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 41,
     "items": []
    },
    {
@@ -600,20 +600,20 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 33,
-  "items_done": 18,
+  "items": 34,
+  "items_done": 19,
   "committed": 53,
-  "final": 66,
-  "completed": 25,
-  "scope_change": 25,
-  "vs_commitment": 47,
+  "final": 67,
+  "completed": 26,
+  "scope_change": 26,
+  "vs_commitment": 49,
   "time_elapsed": 58,
   "spill": {
    "open_items": 13,
    "open_pts": 39.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 25.0
+   "done_pts": 26.0
   },
   "recv": {
    "items": 5,
@@ -623,8 +623,8 @@
   },
   "spill_rate": null,
   "dist": {
+   "Closed": 19,
    "Ready for Development": 5,
-   "Closed": 18,
    "In Development": 7,
    "Awaiting Review": 1,
    "Won't Do": 1
@@ -649,7 +649,7 @@
    58.0,
    58.0,
    58.0,
-   66.0
+   67.0
   ],
   "ghost": [
    43.0,
@@ -690,10 +690,10 @@
   "end": "2026-09-27",
   "day": 23,
   "days": 28,
-  "closed": 59,
-  "points": 182,
+  "closed": 60,
+  "points": 183,
   "unplanned": 2,
-  "unplanned_pct": 3.4,
+  "unplanned_pct": 3.3,
   "access_requests": 0,
   "people_active": 6,
   "sprints": [
@@ -732,7 +732,7 @@
     "clear_n": 222
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -740,8 +740,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -754,6 +754,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Created",
@@ -778,35 +802,11 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 130
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 30,
   "stale": 21,
