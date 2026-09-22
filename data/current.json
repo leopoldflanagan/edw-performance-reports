@@ -10,8 +10,8 @@
   "prev": "",
   "prev_closed": 57,
   "closed": 61,
-  "discarded": 2,
-  "resolved": 63,
+  "discarded": 3,
+  "resolved": 64,
   "unplanned": 2,
   "unp_pct": 3.3,
   "types": [
@@ -161,11 +161,11 @@
   "EDW-Sprint 22-26": {
    "done": [
     20,
-    29
+    31
    ],
    "open": [
-    14,
-    40
+    13,
+    38
    ],
    "out": [
     1,
@@ -230,9 +230,9 @@
    "dist": {
     "Closed": 37,
     "Ready for Development": 6,
-    "Won't Do": 2,
+    "Won't Do": 3,
     "Deferred": 4,
-    "In Development": 3,
+    "In Development": 2,
     "Backlog": 1
    },
    "stalled": 12,
@@ -263,19 +263,19 @@
      "med": 2.17
     },
     "Won't Do": {
-     "n": 1,
-     "med": 13.5
+     "n": 2,
+     "med": 9.54
     }
    },
    "dist": {
     "Closed": 20,
     "Ready for Development": 6,
-    "In Development": 7,
+    "In Development": 6,
     "Awaiting Review": 1,
-    "Won't Do": 1,
+    "Won't Do": 2,
     "Backlog": 1
    },
-   "stalled": 15,
+   "stalled": 14,
    "worst": 2.97,
    "worstSt": "Ready for Development",
    "items": 36
