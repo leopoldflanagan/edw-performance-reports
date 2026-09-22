@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T19:00:31Z",
+ "generated": "2026-09-22T19:14:39Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 21,
    "sprint": 26,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -635,10 +635,10 @@
   "spill_rate": null,
   "dist": {
    "Closed": 20,
-   "Ready for Development": 5,
-   "In Development": 5,
+   "In Development": 6,
    "Awaiting Review": 2,
    "Won't Do": 2,
+   "Ready for Development": 4,
    "Backlog": 1
   },
   "burn": [
@@ -724,27 +724,51 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 19.5,
+    "open": 21,
+    "med_age": 19.0,
     "max_age": 197.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 18,
-    "clear_med": 3.0,
-    "clear_n": 183
+    "over": 17,
+    "clear_med": 3.1,
+    "clear_n": 184
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 7.1,
-    "max_age": 22.0,
+    "open": 7,
+    "med_age": 7.0,
+    "max_age": 22.1,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
     "worst_who": "William Ikwogo",
     "over": 4,
     "clear_med": 2.1,
     "clear_n": 224
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "WAITING REVIEW",
@@ -771,42 +795,6 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -817,14 +805,26 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 131
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 28,
-  "stale": 22,
+  "stale": 21,
   "worst": "Ready for Development"
  }
 }
