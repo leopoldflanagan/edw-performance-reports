@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T19:45:19Z",
+ "generated": "2026-09-22T20:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
-   "sprint": 26,
+   "ready": 22,
+   "sprint": 27,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -469,8 +469,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 34,
+    "n": 35,
     "items": [
+     {
+      "key": "EDW-2382",
+      "summary": "EDW query for CI refund records"
+     },
      {
       "key": "EDW-2375",
       "summary": "Member Adoption Report"
@@ -498,23 +502,19 @@
      {
       "key": "EDW-2326",
       "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
-     },
-     {
-      "key": "EDW-2310",
-      "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 38 of 43 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 38,
+    "why": "missing on 39 of 44 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 39,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 43 of 43 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 43,
+    "why": "missing on 44 of 44 items. This reads as a field the team does not use rather than 44 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 44,
     "items": []
    },
    {
@@ -611,17 +611,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 36,
+  "items": 38,
   "items_done": 20,
   "committed": 53,
-  "final": 71,
+  "final": 72,
   "completed": 29,
-  "scope_change": 34,
+  "scope_change": 36,
   "vs_commitment": 55,
   "time_elapsed": 60,
   "spill": {
-   "open_items": 13,
-   "open_pts": 38.0,
+   "open_items": 14,
+   "open_pts": 39.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 31.0
@@ -634,11 +634,11 @@
   },
   "spill_rate": null,
   "dist": {
+   "Ready for Development": 6,
    "Closed": 20,
    "In Development": 6,
    "Awaiting Review": 2,
    "Won't Do": 2,
-   "Ready for Development": 4,
    "Backlog": 1
   },
   "burn": [
@@ -651,7 +651,7 @@
    35.0,
    35.0,
    41.0,
-   42.0
+   43.0
   ],
   "scope": [
    43.0,
@@ -663,7 +663,7 @@
    58.0,
    58.0,
    67.0,
-   71.0
+   72.0
   ],
   "ghost": [
    43.0,
@@ -675,7 +675,7 @@
    35.0,
    35.0,
    41.0,
-   42.0
+   43.0
   ],
   "days": 14,
   "day": 9,
@@ -724,8 +724,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 19.0,
+    "open": 22,
+    "med_age": 19.1,
     "max_age": 197.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -747,6 +747,18 @@
     "clear_n": 224
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -757,6 +769,18 @@
     "over": 0,
     "clear_med": 9.9,
     "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "Awaiting Review",
@@ -771,30 +795,6 @@
     "clear_n": 131
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -807,7 +807,7 @@
     "clear_n": 1
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,15 +815,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 214.9,
+    "clear_n": 15
    }
   ],
   "parked": {
    "Deferred": 75,
    "Backlog": 69
   },
-  "open_total": 28,
+  "open_total": 29,
   "stale": 21,
   "worst": "Ready for Development"
  }
