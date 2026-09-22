@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T18:15:25Z",
+ "generated": "2026-09-22T18:22:52Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -636,8 +636,8 @@
   "dist": {
    "Closed": 20,
    "Ready for Development": 5,
-   "In Development": 6,
-   "Awaiting Review": 1,
+   "In Development": 5,
+   "Awaiting Review": 2,
    "Won't Do": 2,
    "Backlog": 1
   },
@@ -731,13 +731,13 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
-    "clear_med": 3.1,
-    "clear_n": 184
+    "clear_med": 3.0,
+    "clear_n": 183
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 7.0,
+    "open": 6,
+    "med_age": 7.1,
     "max_age": 22.0,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
@@ -745,6 +745,30 @@
     "over": 4,
     "clear_med": 2.1,
     "clear_n": 224
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "New",
@@ -769,30 +793,6 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 131
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    },
    {
     "status": "PR Created",
@@ -823,7 +823,7 @@
    "Backlog": 69,
    "Deferred": 75
   },
-  "open_total": 29,
+  "open_total": 28,
   "stale": 21,
   "worst": "Ready for Development"
  }

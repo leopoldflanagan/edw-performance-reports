@@ -251,8 +251,8 @@
      "med": 2.97
     },
     "Awaiting Review": {
-     "n": 9,
-     "med": 0.02
+     "n": 10,
+     "med": 0.41
     },
     "In Development": {
      "n": 21,
@@ -270,8 +270,8 @@
    "dist": {
     "Closed": 20,
     "Ready for Development": 6,
-    "In Development": 6,
-    "Awaiting Review": 1,
+    "In Development": 5,
+    "Awaiting Review": 2,
     "Won't Do": 2,
     "Backlog": 1
    },
