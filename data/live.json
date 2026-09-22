@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T16:18:35Z",
+ "generated": "2026-09-22T16:30:59Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -738,49 +738,13 @@
     "status": "In Development",
     "open": 8,
     "med_age": 7.0,
-    "max_age": 24.9,
+    "max_age": 25.0,
     "worst_key": "EDW-2168",
     "worst_sum": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility",
     "worst_who": "Jeff Schniederjan",
     "over": 4,
     "clear_med": 2.1,
     "clear_n": 223
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "PR Created",
@@ -795,6 +759,42 @@
     "clear_n": 1
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 131
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -807,7 +807,7 @@
     "clear_n": 63
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,13 +815,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 30,
   "stale": 21,
