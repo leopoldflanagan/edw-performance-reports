@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T16:15:22Z",
+ "generated": "2026-09-22T16:18:35Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,19 +357,19 @@
   "day": 9,
   "days": 14,
   "n": 10,
-  "done_now": 26,
+  "done_now": 29,
   "committed": 53,
-  "lo": 45,
-  "mid": 48,
-  "hi": 51,
-  "pct": 91,
-  "verdict": "a little short of the commitment",
+  "lo": 50,
+  "mid": 53,
+  "hi": 57,
+  "pct": 100,
+  "verdict": "on track for the commitment",
   "share_mid": 0.544
  },
  "admin": {
   "scope": {
    "ready": 22,
-   "sprint": 25,
+   "sprint": 26,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -469,7 +469,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 33,
+    "n": 34,
     "items": [
      {
       "key": "EDW-2375",
@@ -507,21 +507,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 37 of 42 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 43 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 42 of 42 items. This reads as a field the team does not use rather than 42 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 42,
+    "why": "missing on 43 of 43 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 43,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 10,
+    "n": 11,
     "items": [
+     {
+      "key": "EDW-2381",
+      "summary": "EDW - Add Dependent Members to DCA Member List Report (Starts, Stops, Renewals)"
+     },
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
@@ -549,10 +553,6 @@
      {
       "key": "EDW-2344",
       "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Pre-Migration Email"
-     },
-     {
-      "key": "EDW-2337",
-      "summary": "Dynamic x-axis display depending on the date range selection"
      }
     ]
    },
@@ -611,20 +611,20 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 35,
-  "items_done": 19,
+  "items": 36,
+  "items_done": 20,
   "committed": 53,
-  "final": 68,
-  "completed": 26,
-  "scope_change": 28,
-  "vs_commitment": 49,
+  "final": 71,
+  "completed": 29,
+  "scope_change": 34,
+  "vs_commitment": 55,
   "time_elapsed": 59,
   "spill": {
    "open_items": 14,
    "open_pts": 40.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 26.0
+   "done_pts": 29.0
   },
   "recv": {
    "items": 5,
@@ -634,7 +634,7 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 19,
+   "Closed": 20,
    "Ready for Development": 5,
    "In Development": 7,
    "Awaiting Review": 1,
@@ -663,7 +663,7 @@
    58.0,
    58.0,
    67.0,
-   68.0
+   71.0
   ],
   "ghost": [
    43.0,
@@ -747,7 +747,7 @@
     "clear_n": 223
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -755,20 +755,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -781,6 +769,18 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "PR Created",
@@ -807,7 +807,7 @@
     "clear_n": 63
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,8 +815,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 0.9,
+    "clear_n": 131
    }
   ],
   "parked": {
