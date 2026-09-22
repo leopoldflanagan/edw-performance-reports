@@ -9,15 +9,15 @@
   "end": "2026-09-27",
   "prev": "",
   "prev_closed": 57,
-  "closed": 60,
+  "closed": 61,
   "discarded": 2,
-  "resolved": 62,
+  "resolved": 63,
   "unplanned": 2,
   "unp_pct": 3.3,
   "types": [
    [
     "Story",
-    51
+    52
    ],
    [
     "Bug",
@@ -50,7 +50,7 @@
   "day": 22,
   "days": 28,
   "status": "healthy",
-  "headline": "60 items closed in the first 22 days, a pace of about 76 for the month against 57 last month.",
+  "headline": "61 items closed in the first 22 days, a pace of about 78 for the month against 57 last month.",
   "notes": []
  },
  "SPRINTS": [
@@ -105,12 +105,12 @@
    "EDW-Sprint 22-26",
    "Sep 14",
    "Sep 28",
-   35,
-   19,
+   36,
+   20,
    53,
-   68,
-   26,
-   28,
+   71,
+   29,
+   34,
    [
     43.0,
     51.0,
@@ -133,7 +133,7 @@
     58.0,
     58.0,
     67.0,
-    68.0
+    71.0
    ]
   ]
  ],
@@ -160,8 +160,8 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    19,
-    26
+    20,
+    29
    ],
    "open": [
     14,
@@ -187,8 +187,8 @@
   },
   "EDW-Sprint 22-26": {
    "react": 2,
-   "plan": 6,
-   "pct": 25
+   "plan": 7,
+   "pct": 22
   }
  },
  "TIS": {
@@ -243,8 +243,8 @@
   "EDW-Sprint 22-26": {
    "tis": {
     "Closed": {
-     "n": 20,
-     "med": 10.53
+     "n": 21,
+     "med": 10.48
     },
     "Ready for Development": {
      "n": 16,
@@ -268,7 +268,7 @@
     }
    },
    "dist": {
-    "Closed": 19,
+    "Closed": 20,
     "Ready for Development": 6,
     "In Development": 7,
     "Awaiting Review": 1,
@@ -278,7 +278,7 @@
    "stalled": 15,
    "worst": 2.97,
    "worstSt": "Ready for Development",
-   "items": 35
+   "items": 36
   }
  },
  "GHOST": {
@@ -315,20 +315,20 @@
  },
  "CAP": {
   "9.08": [
-   60,
-   54,
-   183,
+   61,
+   55,
+   186,
    6
   ]
  },
  "CYC": {
   "9.08": {
-   "med": 4.88,
-   "avg": 8.6,
-   "n": 39,
+   "med": 4.81,
+   "avg": 8.39,
+   "n": 40,
    "mx": 50.15,
    "nodev": 21,
-   "base": 60
+   "base": 61
   }
  },
  "complete": false,

@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T16:00:34Z",
+ "generated": "2026-09-22T16:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -705,8 +705,8 @@
   "end": "2026-09-27",
   "day": 23,
   "days": 28,
-  "closed": 60,
-  "points": 183,
+  "closed": 61,
+  "points": 186,
   "unplanned": 2,
   "unplanned_pct": 3.3,
   "access_requests": 0,
@@ -744,10 +744,10 @@
     "worst_who": "Jeff Schniederjan",
     "over": 4,
     "clear_med": 2.1,
-    "clear_n": 222
+    "clear_n": 223
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -755,8 +755,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 131
    },
    {
     "status": "On Hold",
@@ -771,7 +771,7 @@
     "clear_n": 15
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -779,8 +779,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 130
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Created",
