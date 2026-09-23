@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-22T23:45:19Z",
+ "generated": "2026-09-23T00:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 9,
+  "day": 10,
   "days": 14,
   "n": 10,
   "done_now": 29,
   "committed": 53,
-  "lo": 50,
-  "mid": 53,
-  "hi": 57,
-  "pct": 100,
-  "verdict": "on track for the commitment",
-  "share_mid": 0.544
+  "lo": 39,
+  "mid": 44,
+  "hi": 49,
+  "pct": 83,
+  "verdict": "a little short of the commitment",
+  "share_mid": 0.665
  },
  "admin": {
   "scope": {
@@ -678,7 +678,7 @@
    43.0
   ],
   "days": 14,
-  "day": 9,
+  "day": 10,
   "capacity": {
    "release": "9.08",
    "start": "2026-09-14",
@@ -703,7 +703,7 @@
   "kind": "release",
   "start": "2026-08-31",
   "end": "2026-09-27",
-  "day": 23,
+  "day": 24,
   "days": 28,
   "closed": 61,
   "points": 186,
@@ -731,32 +731,20 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
-    "clear_med": 3.1,
-    "clear_n": 184
+    "clear_med": 3.2,
+    "clear_n": 182
    },
    {
     "status": "In Development",
     "open": 7,
     "med_age": 7.2,
-    "max_age": 22.2,
+    "max_age": 22.3,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
     "worst_who": "William Ikwogo",
     "over": 4,
     "clear_med": 2.1,
-    "clear_n": 224
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
+    "clear_n": 222
    },
    {
     "status": "PR Created",
@@ -771,6 +759,18 @@
     "clear_n": 1
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -781,18 +781,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -807,7 +795,7 @@
     "clear_n": 1
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,8 +803,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 0.9,
+    "clear_n": 130
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
