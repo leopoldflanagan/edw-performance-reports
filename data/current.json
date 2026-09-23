@@ -9,11 +9,11 @@
   "end": "2026-09-27",
   "prev": "",
   "prev_closed": 57,
-  "closed": 61,
+  "closed": 62,
   "discarded": 3,
-  "resolved": 64,
+  "resolved": 65,
   "unplanned": 2,
-  "unp_pct": 3.3,
+  "unp_pct": 3.2,
   "types": [
    [
     "Story",
@@ -25,7 +25,7 @@
    ],
    [
     "Task",
-    2
+    3
    ],
    [
     "Spike",
@@ -50,7 +50,7 @@
   "day": 23,
   "days": 28,
   "status": "healthy",
-  "headline": "61 items closed in the first 23 days, a pace of about 74 for the month against 57 last month.",
+  "headline": "62 items closed in the first 23 days, a pace of about 75 for the month against 57 last month.",
   "notes": []
  },
  "SPRINTS": [
@@ -106,10 +106,10 @@
    "Sep 14",
    "Sep 28",
    39,
-   20,
+   21,
    53,
    74,
-   29,
+   34,
    40,
    [
     43.0,
@@ -122,7 +122,7 @@
     35.0,
     41.0,
     43.0,
-    45.0
+    40.0
    ],
    [
     43.0,
@@ -162,12 +162,12 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    20,
-    31
+    21,
+    36
    ],
    "open": [
-    15,
-    41
+    14,
+    36
    ],
    "out": [
     1,
@@ -257,8 +257,8 @@
      "med": 8.24
     },
     "Closed": {
-     "n": 21,
-     "med": 10.48
+     "n": 22,
+     "med": 10.47
     },
     "In Development": {
      "n": 22,
@@ -275,13 +275,13 @@
    },
    "dist": {
     "Ready for Development": 8,
-    "Closed": 20,
+    "Closed": 21,
     "In Development": 6,
-    "Awaiting Review": 2,
+    "Awaiting Review": 1,
     "Won't Do": 2,
     "Backlog": 1
    },
-   "stalled": 17,
+   "stalled": 16,
    "worst": 8.24,
    "worstSt": "To Do",
    "items": 39
@@ -317,25 +317,25 @@
    35.0,
    41.0,
    43.0,
-   45.0
+   40.0
   ]
  },
  "CAP": {
   "9.08": [
-   61,
-   55,
-   186,
+   62,
+   56,
+   191,
    6
   ]
  },
  "CYC": {
   "9.08": {
-   "med": 4.81,
-   "avg": 8.39,
-   "n": 40,
+   "med": 4.88,
+   "avg": 8.3,
+   "n": 41,
    "mx": 50.15,
    "nodev": 21,
-   "base": 61
+   "base": 62
   }
  },
  "complete": false,
