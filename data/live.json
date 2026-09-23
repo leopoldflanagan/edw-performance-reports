@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:00:29Z",
+ "generated": "2026-09-23T12:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -820,8 +820,8 @@
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 29,
   "stale": 21,
