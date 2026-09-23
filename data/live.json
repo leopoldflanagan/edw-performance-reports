@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T12:48:56Z",
+ "generated": "2026-09-23T13:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -737,7 +737,7 @@
    {
     "status": "In Development",
     "open": 7,
-    "med_age": 7.7,
+    "med_age": 7.8,
     "max_age": 22.8,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
@@ -747,7 +747,7 @@
     "clear_n": 222
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -755,7 +755,7 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
     "clear_n": 1
    },
    {
@@ -771,7 +771,7 @@
     "clear_n": 130
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -779,20 +779,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 63
    },
    {
     "status": "In Progress",
@@ -807,7 +795,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,13 +803,25 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 29,
   "stale": 21,
