@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T18:00:26Z",
+ "generated": "2026-09-23T18:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,19 +357,19 @@
   "day": 10,
   "days": 14,
   "n": 10,
-  "done_now": 34,
+  "done_now": 36,
   "committed": 53,
-  "lo": 46,
-  "mid": 51,
-  "hi": 57,
-  "pct": 96,
+  "lo": 49,
+  "mid": 54,
+  "hi": 60,
+  "pct": 102,
   "verdict": "on track for the commitment",
   "share_mid": 0.665
  },
  "admin": {
   "scope": {
    "ready": 23,
-   "sprint": 28,
+   "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -468,27 +468,31 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 36 of 45 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 36,
+    "why": "missing on 37 of 46 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 37,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 40 of 45 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 41 of 46 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 41,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 45,
+    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 46,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 11,
+    "n": 12,
     "items": [
+     {
+      "key": "EDW-2385",
+      "summary": "WFP Dynamics feed: split semantic-model tables into Regular / Bulk / Missed to s"
+     },
      {
       "key": "EDW-2381",
       "summary": "EDW - Add Dependent Members to DCA Member List Report (Starts, Stops, Renewals)"
@@ -516,10 +520,6 @@
      {
       "key": "EDW-2351",
       "summary": "Add  UserId columns to .Net Plans reporting"
-     },
-     {
-      "key": "EDW-2344",
-      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Pre-Migration Email"
      }
     ]
    },
@@ -578,20 +578,20 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 39,
-  "items_done": 21,
+  "items": 40,
+  "items_done": 22,
   "committed": 53,
-  "final": 74,
-  "completed": 34,
-  "scope_change": 40,
-  "vs_commitment": 64,
+  "final": 79,
+  "completed": 36,
+  "scope_change": 49,
+  "vs_commitment": 68,
   "time_elapsed": 67,
   "spill": {
    "open_items": 14,
-   "open_pts": 36.0,
+   "open_pts": 39.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 36.0
+   "done_pts": 38.0
   },
   "recv": {
    "items": 5,
@@ -601,10 +601,10 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 7,
-   "Closed": 21,
-   "In Development": 6,
    "Awaiting Review": 1,
+   "Ready for Development": 7,
+   "Closed": 22,
+   "In Development": 6,
    "Won't Do": 2,
    "Backlog": 1
   },
@@ -619,7 +619,7 @@
    35.0,
    41.0,
    43.0,
-   40.0
+   43.0
   ],
   "scope": [
    43.0,
@@ -632,7 +632,7 @@
    58.0,
    67.0,
    72.0,
-   74.0
+   79.0
   ],
   "ghost": [
    43.0,
@@ -645,7 +645,7 @@
    35.0,
    41.0,
    43.0,
-   40.0
+   43.0
   ],
   "days": 14,
   "day": 10,
@@ -675,8 +675,8 @@
   "end": "2026-09-27",
   "day": 24,
   "days": 28,
-  "closed": 62,
-  "points": 191,
+  "closed": 63,
+  "points": 193,
   "unplanned": 2,
   "unplanned_pct": 3.2,
   "access_requests": 0,
@@ -714,10 +714,10 @@
     "worst_who": "William Ikwogo",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 223
+    "clear_n": 224
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -725,20 +725,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 0.9,
+    "clear_n": 132
    },
    {
     "status": "New",
@@ -753,30 +741,6 @@
     "clear_n": 63
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -787,11 +751,47 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 30,
   "stale": 22,
