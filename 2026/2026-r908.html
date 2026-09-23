@@ -870,10 +870,10 @@ new Chart(document.getElementById('bd0'),{type:'line',
   {label:'Ideal from day-1 commitment',data:[67.0, 62.5, 58.1, 53.6, 49.1, 44.7, 40.2, 35.7, 31.3, 26.8, 22.3, 17.9, 13.4, 8.9, 4.5, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false},{label:'Open if nothing had been removed',data:[64.0, 79.0, 77.0, 73.0, 62.0, 62.0, 62.0, 62.0, 62.0, 65.0, 60.0, 54.0, 47.0, 47.0, 47.0, 44.0],borderColor:'#ED7D31',borderDash:[2,3],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('bd1'),{type:'line',
- data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9"],datasets:[
-  {label:'Total scope',data:[43.0, 53.0, 53.0, 58.0, 58.0, 58.0, 58.0, 58.0, 67.0, 72.0],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
-  {label:'Work still open',data:[43.0, 51.0, 46.0, 45.0, 40.0, 35.0, 35.0, 35.0, 41.0, 43.0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
-  {label:'Ideal from day-1 commitment',data:[43.0, 38.2, 33.4, 28.7, 23.9, 19.1, 14.3, 9.6, 4.8, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
+ data:{labels:["d0", "d1", "d2", "d3", "d4", "d5", "d6", "d7", "d8", "d9", "d10"],datasets:[
+  {label:'Total scope',data:[43.0, 53.0, 53.0, 58.0, 58.0, 58.0, 58.0, 58.0, 67.0, 72.0, 72.0],borderColor:GREY,backgroundColor:'rgba(195,205,218,.25)',fill:true,tension:.2,pointRadius:0,borderWidth:2},
+  {label:'Work still open',data:[43.0, 51.0, 46.0, 45.0, 40.0, 35.0, 35.0, 35.0, 41.0, 43.0, 43.0],borderColor:BLUE,backgroundColor:'rgba(0,124,188,.10)',fill:true,tension:.2,pointRadius:3,borderWidth:3},
+  {label:'Ideal from day-1 commitment',data:[43.0, 38.7, 34.4, 30.1, 25.8, 21.5, 17.2, 12.9, 8.6, 4.3, 0.0],borderColor:'#c3cdda',borderDash:[5,4],pointRadius:0,borderWidth:2,fill:false}]},
  options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true,grid:{color:gridc},title:{display:true,text:'Story points'}},x:{grid:{display:false},title:{display:true,text:'Sprint day'}}}}});
 new Chart(document.getElementById('cTis'),{type:'bar',
  data:{labels:["R9.04", "R9.05", "R9.06", "R9.07"],datasets:[{label:"Ready for Development",data:[1.49, 1.04, 0.97, 0.85],backgroundColor:'#65B2D5',borderRadius:3},{label:"In Development",data:[0.86, 1.67, 1.9, 0.66],backgroundColor:'#007CBC',borderRadius:3},{label:"Awaiting Review",data:[3.9, 0.61, 1.35, 1.0],backgroundColor:'#ED7D31',borderRadius:3}]},
