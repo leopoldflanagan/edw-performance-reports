@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-23T15:00:28Z",
+ "generated": "2026-09-23T15:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
-   "sprint": 27,
+   "ready": 23,
+   "sprint": 28,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -467,54 +467,21 @@
   ],
   "debt": [
    {
-    "rule": "No fix version",
-    "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 35,
-    "items": [
-     {
-      "key": "EDW-2382",
-      "summary": "EDW query for CI refund records"
-     },
-     {
-      "key": "EDW-2375",
-      "summary": "Member Adoption Report"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
-     },
-     {
-      "key": "EDW-2369",
-      "summary": "ONESMILE NV/WA & Essential Smiles - Data Report"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2355",
-      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
-     },
-     {
-      "key": "EDW-2352",
-      "summary": "[Launch Loyalty] - Commission calcs for Phase 2 Orgs"
-     },
-     {
-      "key": "EDW-2326",
-      "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
-     }
-    ]
+    "rule": "Fix version is not in use",
+    "why": "missing on 36 of 45 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 36,
+    "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 39 of 44 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 39,
+    "why": "missing on 40 of 45 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 40,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 44 of 44 items. This reads as a field the team does not use rather than 44 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 44,
+    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 45,
     "items": []
    },
    {
@@ -611,17 +578,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 38,
+  "items": 39,
   "items_done": 20,
   "committed": 53,
-  "final": 72,
+  "final": 74,
   "completed": 29,
-  "scope_change": 36,
+  "scope_change": 40,
   "vs_commitment": 55,
   "time_elapsed": 66,
   "spill": {
-   "open_items": 14,
-   "open_pts": 39.0,
+   "open_items": 15,
+   "open_pts": 41.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 31.0
@@ -634,7 +601,7 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 6,
+   "Ready for Development": 7,
    "Closed": 20,
    "In Development": 6,
    "Awaiting Review": 2,
@@ -652,7 +619,7 @@
    35.0,
    41.0,
    43.0,
-   43.0
+   45.0
   ],
   "scope": [
    43.0,
@@ -665,7 +632,7 @@
    58.0,
    67.0,
    72.0,
-   72.0
+   74.0
   ],
   "ghost": [
    43.0,
@@ -678,7 +645,7 @@
    35.0,
    41.0,
    43.0,
-   43.0
+   45.0
   ],
   "days": 14,
   "day": 10,
@@ -727,8 +694,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 19.8,
+    "open": 23,
+    "med_age": 19.9,
     "max_age": 197.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -750,18 +717,6 @@
     "clear_n": 222
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -774,7 +729,7 @@
     "clear_n": 15
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -782,8 +737,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -810,7 +765,7 @@
     "clear_n": 130
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -818,15 +773,27 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    }
   ],
   "parked": {
    "Deferred": 75,
    "Backlog": 69
   },
-  "open_total": 29,
+  "open_total": 30,
   "stale": 22,
   "worst": "Ready for Development"
  }
