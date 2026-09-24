@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T04:45:18Z",
+ "generated": "2026-09-24T05:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -708,7 +708,7 @@
     "status": "In Development",
     "open": 7,
     "med_age": 8.4,
-    "max_age": 23.4,
+    "max_age": 23.5,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
     "worst_who": "William Ikwogo",
@@ -717,7 +717,7 @@
     "clear_n": 221
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -725,11 +725,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
+    "clear_med": 9.9,
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -737,8 +737,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 129
    },
    {
     "status": "On Hold",
@@ -765,7 +765,7 @@
     "clear_n": 63
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -773,11 +773,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 129
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -785,7 +785,7 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
     "clear_n": 1
    }
   ],
