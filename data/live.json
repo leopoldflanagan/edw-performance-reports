@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T19:45:20Z",
+ "generated": "2026-09-24T20:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 45,
+    "n": 14,
+    "points": 50,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 22,
    "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -395,8 +395,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2388",
+      "summary": "Smile Brands Reporting"
+     },
      {
       "key": "EDW-2386",
       "summary": "Biweekly update of Phase 2+3"
@@ -424,10 +428,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      }
     ]
    },
@@ -468,20 +468,20 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 37 of 46 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 47 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 40 of 46 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 41 of 47 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 41,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 46,
+    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
@@ -693,8 +693,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 21.0,
+    "open": 22,
+    "med_age": 21.1,
     "max_age": 199.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -728,7 +728,7 @@
     "clear_n": 1
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -736,20 +736,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 130
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -764,7 +752,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,8 +760,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 0.9,
+    "clear_n": 130
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "On Hold",
@@ -792,7 +792,7 @@
    "Backlog": 69,
    "Deferred": 75
   },
-  "open_total": 26,
+  "open_total": 27,
   "stale": 19,
   "worst": "Ready for Development"
  }
