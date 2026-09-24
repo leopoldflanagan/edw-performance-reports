@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T15:17:35Z",
+ "generated": "2026-09-24T15:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,18 +357,18 @@
   "day": 11,
   "days": 14,
   "n": 10,
-  "done_now": 38,
+  "done_now": 39,
   "committed": 52,
-  "lo": 49,
-  "mid": 50,
-  "hi": 57,
-  "pct": 96,
+  "lo": 50,
+  "mid": 52,
+  "hi": 59,
+  "pct": 100,
   "verdict": "on track for the commitment",
   "share_mid": 0.757
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 21,
    "sprint": 28,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -575,19 +575,19 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 39,
-  "items_done": 23,
+  "items_done": 24,
   "committed": 52,
   "final": 78,
-  "completed": 38,
+  "completed": 39,
   "scope_change": 50,
-  "vs_commitment": 73,
+  "vs_commitment": 75,
   "time_elapsed": 73,
   "spill": {
-   "open_items": 12,
-   "open_pts": 36.0,
+   "open_items": 11,
+   "open_pts": 35.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 40.0
+   "done_pts": 41.0
   },
   "recv": {
    "items": 5,
@@ -598,8 +598,8 @@
   "spill_rate": null,
   "dist": {
    "Awaiting Review": 2,
-   "Ready for Development": 6,
-   "Closed": 23,
+   "Ready for Development": 5,
+   "Closed": 24,
    "In Development": 4,
    "Won't Do": 2,
    "Backlog": 1
@@ -616,7 +616,7 @@
    40.0,
    42.0,
    42.0,
-   40.0
+   39.0
   ],
   "scope": [
    43.0,
@@ -644,7 +644,7 @@
    40.0,
    42.0,
    42.0,
-   40.0
+   39.0
   ],
   "days": 14,
   "day": 11,
@@ -674,8 +674,8 @@
   "end": "2026-09-27",
   "day": 25,
   "days": 28,
-  "closed": 64,
-  "points": 195,
+  "closed": 65,
+  "points": 196,
   "unplanned": 2,
   "unplanned_pct": 3.1,
   "access_requests": 0,
@@ -693,7 +693,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
+    "open": 21,
     "med_age": 20.9,
     "max_age": 198.8,
     "worst_key": "EDW-1599",
@@ -701,7 +701,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 3.3,
-    "clear_n": 179
+    "clear_n": 180
    },
    {
     "status": "In Development",
@@ -716,18 +716,6 @@
     "clear_n": 223
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -738,6 +726,18 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 129
    },
    {
     "status": "New",
@@ -752,7 +752,7 @@
     "clear_n": 62
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -760,8 +760,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 129
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Created",
@@ -792,7 +792,7 @@
    "Backlog": 69,
    "Deferred": 75
   },
-  "open_total": 26,
+  "open_total": 25,
   "stale": 19,
   "worst": "Ready for Development"
  }
