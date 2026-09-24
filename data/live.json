@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T19:15:22Z",
+ "generated": "2026-09-24T19:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 21,
-   "sprint": 28,
+   "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -468,27 +468,31 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 37 of 45 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 46 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 40 of 45 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 41 of 46 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 41,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 45,
+    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 46,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 12,
+    "n": 13,
     "items": [
+     {
+      "key": "EDW-2387",
+      "summary": "Disable the column sorting function in tables"
+     },
      {
       "key": "EDW-2385",
       "summary": "WFP Dynamics feed: split semantic-model tables into Regular / Bulk / Missed to s"
@@ -516,10 +520,6 @@
      {
       "key": "EDW-2353",
       "summary": "DCA Duplicate Member Report \u2014 Add Payment Method & Last Payment Data for Careing"
-     },
-     {
-      "key": "EDW-2351",
-      "summary": "Add  UserId columns to .Net Plans reporting"
      }
     ]
    },
@@ -574,17 +574,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 39,
+  "items": 40,
   "items_done": 24,
   "committed": 52,
-  "final": 78,
+  "final": 79,
   "completed": 39,
-  "scope_change": 50,
+  "scope_change": 52,
   "vs_commitment": 75,
   "time_elapsed": 75,
   "spill": {
-   "open_items": 11,
-   "open_pts": 35.0,
+   "open_items": 12,
+   "open_pts": 36.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 41.0
@@ -597,10 +597,10 @@
   },
   "spill_rate": null,
   "dist": {
+   "In Development": 5,
    "Awaiting Review": 2,
    "Ready for Development": 5,
    "Closed": 24,
-   "In Development": 4,
    "Won't Do": 2,
    "Backlog": 1
   },
@@ -616,7 +616,7 @@
    40.0,
    42.0,
    42.0,
-   39.0
+   40.0
   ],
   "scope": [
    43.0,
@@ -630,7 +630,7 @@
    66.0,
    71.0,
    78.0,
-   78.0
+   79.0
   ],
   "ghost": [
    43.0,
@@ -644,7 +644,7 @@
    40.0,
    42.0,
    42.0,
-   39.0
+   40.0
   ],
   "days": 14,
   "day": 11,
@@ -705,8 +705,8 @@
    },
    {
     "status": "In Development",
-    "open": 4,
-    "med_age": 9.1,
+    "open": 5,
+    "med_age": 9.0,
     "max_age": 10.1,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -716,7 +716,7 @@
     "clear_n": 223
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -724,8 +724,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "Awaiting Review",
@@ -740,18 +740,6 @@
     "clear_n": 130
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -762,6 +750,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "In Progress",
@@ -776,7 +776,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -784,15 +784,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
    "Deferred": 75,
    "Backlog": 69
   },
-  "open_total": 25,
+  "open_total": 26,
   "stale": 19,
   "worst": "Ready for Development"
  }
