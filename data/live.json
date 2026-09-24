@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T03:20:36Z",
+ "generated": "2026-09-24T03:30:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -707,7 +707,7 @@
    {
     "status": "In Development",
     "open": 7,
-    "med_age": 8.3,
+    "med_age": 8.4,
     "max_age": 23.4,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
