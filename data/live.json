@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T11:45:23Z",
+ "generated": "2026-09-24T12:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -708,25 +708,13 @@
     "status": "In Development",
     "open": 7,
     "med_age": 8.7,
-    "max_age": 23.7,
+    "max_age": 23.8,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
     "worst_who": "William Ikwogo",
     "over": 5,
     "clear_med": 2.1,
     "clear_n": 221
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 63
    },
    {
     "status": "On Hold",
@@ -787,11 +775,23 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 63
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 69
+   "Backlog": 69,
+   "Deferred": 75
   },
   "open_total": 30,
   "stale": 23,
