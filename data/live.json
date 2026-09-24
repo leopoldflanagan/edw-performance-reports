@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T22:45:20Z",
+ "generated": "2026-09-24T23:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -706,7 +706,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 9.2,
+    "med_age": 9.3,
     "max_age": 10.2,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -716,7 +716,7 @@
     "clear_n": 224
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -724,8 +724,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 131
    },
    {
     "status": "In Progress",
@@ -764,7 +776,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,20 +784,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
