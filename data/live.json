@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T18:45:19Z",
+ "generated": "2026-09-24T19:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -707,13 +707,37 @@
     "status": "In Development",
     "open": 4,
     "med_age": 9.1,
-    "max_age": 10.0,
+    "max_age": 10.1,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 223
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "Awaiting Review",
@@ -740,18 +764,6 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -764,7 +776,7 @@
     "clear_n": 1
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,25 +784,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 69
   },
   "open_total": 25,
   "stale": 19,
