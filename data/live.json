@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T14:18:54Z",
+ "generated": "2026-09-24T14:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 47,
+    "n": 15,
+    "points": 49,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 23,
+   "ready": 24,
    "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -395,8 +395,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 15,
     "items": [
+     {
+      "key": "EDW-2386",
+      "summary": "Biweekly update of Phase 2+3"
+     },
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
@@ -424,10 +428,6 @@
      {
       "key": "EDW-2209",
       "summary": "LL backfill non-annual plan records"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -468,20 +468,20 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 37 of 46 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 47 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 41 of 46 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 41,
+    "why": "missing on 42 of 47 items. This reads as a field the team does not use rather than 42 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 42,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 46,
+    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
@@ -697,7 +697,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 23,
+    "open": 24,
     "med_age": 20.8,
     "max_age": 198.8,
     "worst_key": "EDW-1599",
@@ -711,25 +711,13 @@
     "status": "In Development",
     "open": 7,
     "med_age": 8.8,
-    "max_age": 23.8,
+    "max_age": 23.9,
     "worst_key": "EDW-1766",
     "worst_sum": "Validate NSIP Analytics DB Object Queries",
     "worst_who": "William Ikwogo",
     "over": 5,
     "clear_med": 2.1,
     "clear_n": 221
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "New",
@@ -742,6 +730,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 63
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -768,6 +768,18 @@
     "clear_n": 1
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -778,25 +790,13 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
    }
   ],
   "parked": {
    "Deferred": 75,
    "Backlog": 69
   },
-  "open_total": 30,
+  "open_total": 31,
   "stale": 23,
   "worst": "Ready for Development"
  }
