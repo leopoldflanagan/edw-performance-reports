@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T18:15:20Z",
+ "generated": "2026-09-25T18:20:41Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
+    "n": 14,
     "points": 45,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 23,
    "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -376,8 +376,12 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 3,
+    "n": 4,
     "items": [
+     {
+      "key": "EDW-2389",
+      "summary": "Digital smiles - Location information missing from map/office selection"
+     },
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
@@ -395,8 +399,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2389",
+      "summary": "Digital smiles - Location information missing from map/office selection"
+     },
      {
       "key": "EDW-2386",
       "summary": "Biweekly update of Phase 2+3"
@@ -424,10 +432,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      }
     ]
    },
@@ -452,36 +456,58 @@
       "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
      }
     ]
-   },
-   {
-    "rule": "Still in Backlog inside the sprint",
-    "why": "in the sprint but never pulled into the flow.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2103",
-      "summary": "REVENUE SHARE REPORT: Add Effective Date to the current Revenue Share Reports fo"
-     }
-    ]
    }
   ],
   "debt": [
    {
-    "rule": "Fix version is not in use",
-    "why": "missing on 38 of 47 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "rule": "No fix version",
+    "why": "the release a delivery belongs to cannot be traced without it.",
     "n": 38,
-    "items": []
+    "items": [
+     {
+      "key": "EDW-2388",
+      "summary": "Smile Brands Reporting"
+     },
+     {
+      "key": "EDW-2386",
+      "summary": "Biweekly update of Phase 2+3"
+     },
+     {
+      "key": "EDW-2384",
+      "summary": "Netsuite integration investigation"
+     },
+     {
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
+     },
+     {
+      "key": "EDW-2369",
+      "summary": "ONESMILE NV/WA & Essential Smiles - Data Report"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2355",
+      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+     }
+    ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 41 of 47 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 41,
+    "why": "missing on 42 of 48 items. This reads as a field the team does not use rather than 42 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 42,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 47,
+    "why": "missing on 48 of 48 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 48,
     "items": []
    },
    {
@@ -600,9 +626,8 @@
    "Closed": 26,
    "Awaiting Review": 2,
    "Ready for Development": 5,
-   "In Development": 4,
-   "Won't Do": 1,
-   "Backlog": 1
+   "In Development": 5,
+   "Won't Do": 1
   },
   "burn": [
    43.0,
@@ -696,7 +721,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
+    "open": 23,
     "med_age": 22.0,
     "max_age": 200.0,
     "worst_key": "EDW-1599",
@@ -708,8 +733,8 @@
    },
    {
     "status": "In Development",
-    "open": 4,
-    "med_age": 10.1,
+    "open": 5,
+    "med_age": 10.0,
     "max_age": 11.0,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -731,6 +756,18 @@
     "clear_n": 1
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -743,7 +780,7 @@
     "clear_n": 1
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -751,8 +788,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "Awaiting Review",
@@ -777,25 +814,13 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    }
   ],
   "parked": {
-   "Backlog": 69,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 67
   },
-  "open_total": 26,
+  "open_total": 28,
   "stale": 20,
   "worst": "Ready for Development"
  }
