@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T08:15:20Z",
+ "generated": "2026-09-25T08:24:52Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -581,7 +581,7 @@
   "completed": 40,
   "scope_change": 52,
   "vs_commitment": 77,
-  "time_elapsed": 78,
+  "time_elapsed": 79,
   "spill": {
    "open_items": 11,
    "open_pts": 35.0,
@@ -695,7 +695,7 @@
     "status": "Ready for Development",
     "open": 22,
     "med_age": 21.6,
-    "max_age": 199.5,
+    "max_age": 199.6,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -706,7 +706,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 9.6,
+    "med_age": 9.7,
     "max_age": 10.6,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -714,18 +714,6 @@
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 223
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -740,7 +728,7 @@
     "clear_n": 15
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -748,20 +736,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -776,6 +752,18 @@
     "clear_n": 1
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -786,6 +774,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 131
    }
   ],
   "parked": {
