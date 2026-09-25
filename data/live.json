@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T18:00:26Z",
+ "generated": "2026-09-25T18:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 12,
   "days": 14,
   "n": 10,
-  "done_now": 40,
+  "done_now": 42,
   "committed": 52,
-  "lo": 50,
-  "mid": 52,
-  "hi": 61,
-  "pct": 100,
+  "lo": 52,
+  "mid": 55,
+  "hi": 64,
+  "pct": 106,
   "verdict": "on track for the commitment",
   "share_mid": 0.766
  },
@@ -575,13 +575,13 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 40,
-  "items_done": 25,
+  "items_done": 26,
   "committed": 52,
   "final": 79,
-  "completed": 40,
+  "completed": 42,
   "scope_change": 52,
-  "vs_commitment": 77,
-  "time_elapsed": 81,
+  "vs_commitment": 81,
+  "time_elapsed": 82,
   "spill": {
    "open_items": 11,
    "open_pts": 35.0,
@@ -597,11 +597,11 @@
   },
   "spill_rate": 47,
   "dist": {
-   "Closed": 25,
+   "Closed": 26,
    "Awaiting Review": 2,
    "Ready for Development": 5,
    "In Development": 4,
-   "Won't Do": 2,
+   "Won't Do": 1,
    "Backlog": 1
   },
   "burn": [
@@ -617,7 +617,7 @@
    42.0,
    42.0,
    39.0,
-   39.0
+   37.0
   ],
   "scope": [
    43.0,
@@ -647,7 +647,7 @@
    42.0,
    42.0,
    39.0,
-   39.0
+   37.0
   ],
   "days": 14,
   "day": 12,
@@ -677,8 +677,8 @@
   "end": "2026-09-27",
   "day": 26,
   "days": 28,
-  "closed": 66,
-  "points": 197,
+  "closed": 67,
+  "points": 199,
   "unplanned": 2,
   "unplanned_pct": 3.0,
   "access_requests": 0,
@@ -716,19 +716,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.1,
-    "clear_n": 223
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_n": 224
    },
    {
     "status": "PR Created",
@@ -755,6 +743,30 @@
     "clear_n": 1
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 131
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -777,18 +789,6 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
    }
   ],
   "parked": {
