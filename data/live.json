@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T18:20:41Z",
+ "generated": "2026-09-25T18:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
+    "n": 15,
     "points": 45,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -357,18 +357,18 @@
   "day": 12,
   "days": 14,
   "n": 10,
-  "done_now": 42,
+  "done_now": 43,
   "committed": 52,
-  "lo": 52,
-  "mid": 55,
-  "hi": 64,
-  "pct": 106,
+  "lo": 53,
+  "mid": 56,
+  "hi": 65,
+  "pct": 108,
   "verdict": "on track for the commitment",
   "share_mid": 0.766
  },
  "admin": {
   "scope": {
-   "ready": 23,
+   "ready": 24,
    "sprint": 29,
    "sprint_name": "EDW-Sprint 22-26"
   },
@@ -376,8 +376,12 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 4,
+    "n": 5,
     "items": [
+     {
+      "key": "EDW-2390",
+      "summary": "Aurora Dental - Office information missing on site"
+     },
      {
       "key": "EDW-2389",
       "summary": "Digital smiles - Location information missing from map/office selection"
@@ -399,8 +403,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 15,
     "items": [
+     {
+      "key": "EDW-2390",
+      "summary": "Aurora Dental - Office information missing on site"
+     },
      {
       "key": "EDW-2389",
       "summary": "Digital smiles - Location information missing from map/office selection"
@@ -428,10 +436,6 @@
      {
       "key": "EDW-2310",
       "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -500,14 +504,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 42 of 48 items. This reads as a field the team does not use rather than 42 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 42,
+    "why": "missing on 43 of 49 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 43,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 48 of 48 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 48,
+    "why": "missing on 49 of 49 items. This reads as a field the team does not use rather than 49 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 49,
     "items": []
    },
    {
@@ -601,19 +605,19 @@
   "end": "2026-09-28",
   "goal": "",
   "items": 40,
-  "items_done": 26,
+  "items_done": 27,
   "committed": 52,
   "final": 79,
-  "completed": 42,
+  "completed": 43,
   "scope_change": 52,
-  "vs_commitment": 81,
+  "vs_commitment": 83,
   "time_elapsed": 82,
   "spill": {
-   "open_items": 11,
-   "open_pts": 35.0,
+   "open_items": 10,
+   "open_pts": 34.0,
    "out_items": 1,
    "out_pts": 2.0,
-   "done_pts": 42.0
+   "done_pts": 43.0
   },
   "recv": {
    "items": 5,
@@ -621,12 +625,12 @@
    "pct": 23,
    "from": "EDW-Sprint 21-26"
   },
-  "spill_rate": 47,
+  "spill_rate": 46,
   "dist": {
-   "Closed": 26,
+   "Closed": 27,
    "Awaiting Review": 2,
    "Ready for Development": 5,
-   "In Development": 5,
+   "In Development": 4,
    "Won't Do": 1
   },
   "burn": [
@@ -642,7 +646,7 @@
    42.0,
    42.0,
    39.0,
-   37.0
+   36.0
   ],
   "scope": [
    43.0,
@@ -672,7 +676,7 @@
    42.0,
    42.0,
    39.0,
-   37.0
+   36.0
   ],
   "days": 14,
   "day": 12,
@@ -702,10 +706,10 @@
   "end": "2026-09-27",
   "day": 26,
   "days": 28,
-  "closed": 67,
-  "points": 199,
+  "closed": 68,
+  "points": 200,
   "unplanned": 2,
-  "unplanned_pct": 3.0,
+  "unplanned_pct": 2.9,
   "access_requests": 0,
   "people_active": 6,
   "sprints": [
@@ -721,8 +725,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 23,
-    "med_age": 22.0,
+    "open": 24,
+    "med_age": 16.6,
     "max_age": 200.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -733,15 +737,15 @@
    },
    {
     "status": "In Development",
-    "open": 5,
-    "med_age": 10.0,
+    "open": 4,
+    "med_age": 10.1,
     "max_age": 11.0,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.1,
-    "clear_n": 224
+    "clear_n": 225
    },
    {
     "status": "PR Created",
@@ -756,7 +760,7 @@
     "clear_n": 1
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -764,20 +768,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -792,6 +784,18 @@
     "clear_n": 15
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -801,10 +805,10 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.9,
-    "clear_n": 131
+    "clear_n": 132
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -812,13 +816,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
    "Deferred": 75,
-   "Backlog": 67
+   "Backlog": 68
   },
   "open_total": 28,
   "stale": 20,
