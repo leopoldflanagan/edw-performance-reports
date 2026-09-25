@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25T03:30:22Z",
+ "generated": "2026-09-25T03:43:48Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -695,7 +695,7 @@
     "status": "Ready for Development",
     "open": 22,
     "med_age": 21.4,
-    "max_age": 199.3,
+    "max_age": 199.4,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -706,7 +706,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 9.4,
+    "med_age": 9.5,
     "max_age": 10.4,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -714,6 +714,30 @@
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 223
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -726,18 +750,6 @@
     "over": 0,
     "clear_med": 9.9,
     "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 131
    },
    {
     "status": "PR Created",
@@ -764,7 +776,7 @@
     "clear_n": 62
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,20 +784,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 131
    }
   ],
   "parked": {
