@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-24T23:45:20Z",
+ "generated": "2026-09-25T00:00:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 11,
+  "day": 12,
   "days": 14,
   "n": 10,
   "done_now": 40,
   "committed": 52,
-  "lo": 52,
-  "mid": 53,
+  "lo": 50,
+  "mid": 52,
   "hi": 61,
-  "pct": 102,
+  "pct": 100,
   "verdict": "on track for the commitment",
-  "share_mid": 0.757
+  "share_mid": 0.766
  },
  "admin": {
   "scope": {
@@ -647,7 +647,7 @@
    39.0
   ],
   "days": 14,
-  "day": 11,
+  "day": 12,
   "capacity": {
    "release": "9.08",
    "start": "2026-09-14",
@@ -672,7 +672,7 @@
   "kind": "release",
   "start": "2026-08-31",
   "end": "2026-09-27",
-  "day": 25,
+  "day": 26,
   "days": 28,
   "closed": 66,
   "points": 197,
@@ -713,7 +713,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.1,
-    "clear_n": 224
+    "clear_n": 223
    },
    {
     "status": "On Hold",
@@ -764,18 +764,6 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -786,6 +774,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
