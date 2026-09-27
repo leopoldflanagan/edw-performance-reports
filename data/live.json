@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-27T10:30:24Z",
+ "generated": "2026-09-27T10:37:59Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -741,7 +741,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 11.7,
+    "med_age": 11.8,
     "max_age": 12.7,
     "worst_key": "EDW-2315",
     "worst_sum": "[Launch Loyalty] - DCA Commissions",
@@ -751,7 +751,7 @@
     "clear_n": 225
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -759,32 +759,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "Awaiting Review",
@@ -799,6 +775,18 @@
     "clear_n": 132
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -811,7 +799,7 @@
     "clear_n": 62
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -819,8 +807,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 1
    }
   ],
   "parked": {
