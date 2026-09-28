@@ -106,10 +106,10 @@
    "Sep 14",
    "Sep 28",
    42,
-   27,
+   29,
    52,
    81,
-   43,
+   45,
    56,
    [
     43.0,
@@ -126,7 +126,8 @@
     40.0,
     38.0,
     38.0,
-    38.0
+    38.0,
+    36.0
    ],
    [
     43.0,
@@ -141,6 +142,7 @@
     71.0,
     79.0,
     80.0,
+    81.0,
     81.0,
     81.0,
     81.0
@@ -170,7 +172,7 @@
   },
   "EDW-Sprint 22-26": {
    "done": [
-    27,
+    29,
     45
    ],
    "open": [
@@ -268,8 +270,8 @@
      "med": 0.1
     },
     "Closed": {
-     "n": 29,
-     "med": 10.38
+     "n": 31,
+     "med": 10.09
     },
     "To Do": {
      "n": 1,
@@ -277,17 +279,17 @@
     },
     "Won't Do": {
      "n": 2,
-     "med": 8.27
+     "med": 8.53
     }
    },
    "dist": {
-    "Ready for Development": 7,
+    "Ready for Development": 6,
     "In Development": 4,
-    "Closed": 28,
+    "Closed": 29,
     "Awaiting Review": 2,
     "Won't Do": 1
    },
-   "stalled": 13,
+   "stalled": 12,
    "worst": 8.24,
    "worstSt": "To Do",
    "items": 42
@@ -327,7 +329,8 @@
    40.0,
    38.0,
    38.0,
-   38.0
+   38.0,
+   36.0
   ]
  },
  "CAP": {
@@ -348,7 +351,7 @@
    "base": 68
   }
  },
- "complete": false,
+ "complete": true,
  "kind": "release",
  "n_sprints": 2,
  "CAPACITY": {
