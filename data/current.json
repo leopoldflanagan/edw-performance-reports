@@ -171,11 +171,11 @@
   "EDW-Sprint 22-26": {
    "done": [
     27,
-    43
+    45
    ],
    "open": [
-    12,
-    36
+    11,
+    34
    ],
    "out": [
     1,
@@ -238,10 +238,9 @@
     }
    },
    "dist": {
-    "Closed": 38,
+    "Closed": 39,
     "Won't Do": 2,
     "Deferred": 4,
-    "In Development": 1,
     "Ready for Development": 4,
     "Backlog": 2
    },
@@ -283,8 +282,8 @@
    },
    "dist": {
     "Ready for Development": 7,
-    "In Development": 5,
-    "Closed": 27,
+    "In Development": 4,
+    "Closed": 28,
     "Awaiting Review": 2,
     "Won't Do": 1
    },
