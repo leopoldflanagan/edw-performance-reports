@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T14:00:31Z",
+ "generated": "2026-09-28T14:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 15,
-    "points": 45,
+    "n": 16,
+    "points": 46,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 24,
-   "sprint": 29,
+   "ready": 25,
+   "sprint": 31,
    "sprint_name": "EDW-Sprint 22-26"
   },
   "blocking": [
@@ -403,8 +403,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 15,
+    "n": 16,
     "items": [
+     {
+      "key": "EDW-2397",
+      "summary": "ONE SMILE - Website Review - showing incorrect information"
+     },
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
@@ -432,10 +436,6 @@
      {
       "key": "EDW-2347",
       "summary": "PRODUCTION - Office Assignment"
-     },
-     {
-      "key": "EDW-2310",
-      "summary": "Plans Sales Report - tie-back of ACH Refund Declines"
      }
     ]
    },
@@ -453,8 +453,12 @@
    {
     "rule": "No assignee in the active sprint",
     "why": "work in the sprint that nobody owns.",
-    "n": 1,
+    "n": 2,
     "items": [
+     {
+      "key": "EDW-2397",
+      "summary": "ONE SMILE - Website Review - showing incorrect information"
+     },
      {
       "key": "EDW-2326",
       "summary": "Research requirements on ACH internal reports FR-11 and FR-12"
@@ -504,14 +508,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 43 of 49 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 43,
+    "why": "missing on 45 of 51 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 45,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 49 of 49 items. This reads as a field the team does not use rather than 49 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 49,
+    "why": "missing on 51 of 51 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 51,
     "items": []
    },
    {
@@ -556,7 +560,7 @@
    {
     "rule": "Riding 4+ sprints",
     "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-    "n": 7,
+    "n": 8,
     "items": [
      {
       "key": "EDW-2145",
@@ -583,6 +587,10 @@
       "summary": "LL Commission Model 5 - ADF pipeline"
      },
      {
+      "key": "EDW-2396",
+      "summary": "Dashboard -After purchasing a single ACH plan, the Plans Sold (YTD) count increa"
+     },
+     {
       "key": "EDW-2168",
       "summary": "Clone-Epic 4: Admin Fee Splits \u2014 EDW Reporting Handoff & Backward Compatibility"
      }
@@ -604,17 +612,17 @@
   "start": "2026-09-14",
   "end": "2026-09-28",
   "goal": "",
-  "items": 40,
+  "items": 42,
   "items_done": 27,
   "committed": 52,
-  "final": 79,
+  "final": 81,
   "completed": 43,
-  "scope_change": 52,
+  "scope_change": 56,
   "vs_commitment": 83,
   "time_elapsed": 100,
   "spill": {
-   "open_items": 10,
-   "open_pts": 34.0,
+   "open_items": 12,
+   "open_pts": 36.0,
    "out_items": 1,
    "out_pts": 2.0,
    "done_pts": 43.0
@@ -625,12 +633,12 @@
    "pct": 23,
    "from": "EDW-Sprint 21-26"
   },
-  "spill_rate": 46,
+  "spill_rate": 47,
   "dist": {
+   "Ready for Development": 6,
+   "In Development": 5,
    "Closed": 27,
    "Awaiting Review": 2,
-   "Ready for Development": 5,
-   "In Development": 4,
    "Won't Do": 1
   },
   "burn": [
@@ -644,11 +652,11 @@
    34.0,
    40.0,
    42.0,
-   42.0,
-   39.0,
-   36.0,
-   36.0,
-   36.0
+   43.0,
+   40.0,
+   38.0,
+   38.0,
+   38.0
   ],
   "scope": [
    43.0,
@@ -661,11 +669,11 @@
    57.0,
    66.0,
    71.0,
-   78.0,
    79.0,
-   79.0,
-   79.0,
-   79.0
+   80.0,
+   81.0,
+   81.0,
+   81.0
   ],
   "ghost": [
    43.0,
@@ -678,11 +686,11 @@
    34.0,
    40.0,
    42.0,
-   42.0,
-   39.0,
-   36.0,
-   36.0,
-   36.0
+   43.0,
+   40.0,
+   38.0,
+   38.0,
+   38.0
   ],
   "days": 14,
   "day": 14,
@@ -731,8 +739,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 24,
-    "med_age": 19.4,
+    "open": 25,
+    "med_age": 14.0,
     "max_age": 202.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -743,63 +751,15 @@
    },
    {
     "status": "In Development",
-    "open": 4,
-    "med_age": 12.9,
-    "max_age": 13.8,
-    "worst_key": "EDW-2315",
-    "worst_sum": "[Launch Loyalty] - DCA Commissions",
-    "worst_who": "Jeff Schniederjan",
-    "over": 3,
+    "open": 5,
+    "med_age": 13.0,
+    "max_age": 17.8,
+    "worst_key": "EDW-2396",
+    "worst_sum": "Dashboard -After purchasing a single ACH plan, the Plans Sold (YTD) count increases by 5 i",
+    "worst_who": "Lloyd Tokerud",
+    "over": 4,
     "clear_med": 2.1,
     "clear_n": 221
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 130
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 1
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "New",
@@ -814,6 +774,30 @@
     "clear_n": 62
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -824,14 +808,38 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 130
    }
   ],
   "parked": {
-   "Backlog": 70,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 70
   },
-  "open_total": 28,
-  "stale": 20,
+  "open_total": 30,
+  "stale": 21,
   "worst": "Ready for Development"
  }
 }
