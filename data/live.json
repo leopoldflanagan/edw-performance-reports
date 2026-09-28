@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-28T20:17:25Z",
+ "generated": "2026-09-28T20:30:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -640,7 +640,7 @@
     "status": "Ready for Development",
     "open": 25,
     "med_age": 14.2,
-    "max_age": 203.0,
+    "max_age": 203.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -651,7 +651,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 13.1,
+    "med_age": 13.2,
     "max_age": 18.0,
     "worst_key": "EDW-2396",
     "worst_sum": "Dashboard -After purchasing a single ACH plan, the Plans Sold (YTD) count increases by 5 i",
@@ -659,30 +659,6 @@
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 222
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    },
    {
     "status": "WAITING REVIEW",
@@ -695,18 +671,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 130
    },
    {
     "status": "On Hold",
@@ -731,11 +695,47 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 130
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 70,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 70
   },
   "open_total": 29,
   "stale": 22,
