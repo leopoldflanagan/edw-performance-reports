@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T05:43:02Z",
+ "generated": "2026-09-29T05:45:55Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -658,7 +658,7 @@
    {
     "status": "In Development",
     "open": 4,
-    "med_age": 13.5,
+    "med_age": 13.6,
     "max_age": 18.4,
     "worst_key": "EDW-2396",
     "worst_sum": "Dashboard -After purchasing a single ACH plan, the Plans Sold (YTD) count increases by 5 i",
@@ -668,7 +668,7 @@
     "clear_n": 221
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -676,8 +676,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -692,7 +692,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -700,8 +700,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 130
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "On Hold",
@@ -716,7 +716,7 @@
     "clear_n": 15
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -724,11 +724,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 0.9,
+    "clear_n": 130
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -736,8 +736,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
