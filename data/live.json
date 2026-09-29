@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T17:45:21Z",
+ "generated": "2026-09-29T18:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -643,7 +643,7 @@
     "status": "Ready for Development",
     "open": 20,
     "med_age": 14.6,
-    "max_age": 203.9,
+    "max_age": 204.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -654,17 +654,17 @@
    {
     "status": "In Development",
     "open": 2,
-    "med_age": 10.4,
+    "med_age": 10.5,
     "max_age": 14.0,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
-    "over": 1,
+    "over": 2,
     "clear_med": 2.1,
     "clear_n": 224
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -672,8 +672,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "In Progress",
@@ -712,7 +724,7 @@
     "clear_n": 131
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -720,28 +732,16 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 76,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 76
   },
   "open_total": 22,
-  "stale": 15,
+  "stale": 16,
   "worst": "Ready for Development"
  }
 }
