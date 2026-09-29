@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T16:20:53Z",
+ "generated": "2026-09-29T16:30:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 20,
-   "sprint": 14,
+   "sprint": 13,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -445,28 +445,6 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
-   },
-   {
-    "rule": "No assignee in the active sprint",
-    "why": "work in the sprint that nobody owns.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2397",
-      "summary": "ONE SMILE - Website Review - showing incorrect information"
-     }
-    ]
-   },
-   {
-    "rule": "Still in Backlog inside the sprint",
-    "why": "in the sprint but never pulled into the flow.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2397",
-      "summary": "ONE SMILE - Website Review - showing incorrect information"
-     }
-    ]
    }
   ],
   "debt": [
@@ -511,14 +489,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 28 of 28 items. This reads as a field the team does not use rather than 28 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 28,
+    "why": "missing on 27 of 27 items. This reads as a field the team does not use rather than 27 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 27,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 28 of 28 items. This reads as a field the team does not use rather than 28 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 28,
+    "why": "missing on 27 of 27 items. This reads as a field the team does not use rather than 27 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 27,
     "items": []
    },
    {
@@ -583,12 +561,12 @@
   "completed": 9,
   "scope_change": 0,
   "vs_commitment": 15,
-  "time_elapsed": 6,
+  "time_elapsed": 7,
   "spill": {
-   "open_items": 10,
-   "open_pts": 40.0,
-   "out_items": 5,
-   "out_pts": 12.0,
+   "open_items": 9,
+   "open_pts": 39.0,
+   "out_items": 6,
+   "out_pts": 13.0,
    "done_pts": 8.0
   },
   "recv": {
@@ -600,7 +578,6 @@
   "spill_rate": null,
   "dist": {
    "Ready for Development": 6,
-   "Backlog": 1,
    "Closed": 5,
    "Awaiting Review": 1,
    "In Development": 2
@@ -687,6 +664,18 @@
     "clear_n": 224
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -735,18 +724,6 @@
     "clear_n": 2
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -761,7 +738,7 @@
   ],
   "parked": {
    "Deferred": 75,
-   "Backlog": 76
+   "Backlog": 75
   },
   "open_total": 22,
   "stale": 15,
