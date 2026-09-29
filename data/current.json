@@ -243,8 +243,8 @@
     "Closed": 39,
     "Won't Do": 2,
     "Deferred": 4,
-    "Ready for Development": 4,
-    "Backlog": 2
+    "Backlog": 4,
+    "Ready for Development": 2
    },
    "stalled": 10,
    "worst": 1.34,
@@ -283,10 +283,11 @@
     }
    },
    "dist": {
-    "Ready for Development": 6,
-    "In Development": 4,
-    "Closed": 29,
-    "Awaiting Review": 2,
+    "Backlog": 4,
+    "Closed": 32,
+    "Awaiting Review": 1,
+    "Ready for Development": 2,
+    "In Development": 2,
     "Won't Do": 1
    },
    "stalled": 12,
