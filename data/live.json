@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-29T20:15:20Z",
+ "generated": "2026-09-29T20:19:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -661,7 +661,7 @@
    {
     "status": "In Development",
     "open": 3,
-    "med_age": 7.0,
+    "med_age": 7.1,
     "max_age": 14.1,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
@@ -669,18 +669,6 @@
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 224
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "PR Created",
@@ -693,30 +681,6 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -741,6 +705,42 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 131
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
