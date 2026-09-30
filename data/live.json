@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T14:00:34Z",
+ "generated": "2026-09-30T14:15:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 15,
-    "points": 47,
+    "n": 14,
+    "points": 42,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 20,
+   "ready": 19,
    "sprint": 14,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -399,12 +399,8 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 15,
+    "n": 14,
     "items": [
-     {
-      "key": "EDW-2398",
-      "summary": "Reporting and Migration fixes for sprit 23"
-     },
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
@@ -432,6 +428,10 @@
      {
       "key": "EDW-2347",
       "summary": "PRODUCTION - Office Assignment"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -453,10 +453,6 @@
     "why": "the release a delivery belongs to cannot be traced without it.",
     "n": 21,
     "items": [
-     {
-      "key": "EDW-2398",
-      "summary": "Reporting and Migration fixes for sprit 23"
-     },
      {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
@@ -484,6 +480,10 @@
      {
       "key": "EDW-2352",
       "summary": "[Launch Loyalty] - Commission calcs for Phase 2 Orgs"
+     },
+     {
+      "key": "EDW-2214",
+      "summary": "Update CI eligibility file"
      }
     ]
    },
@@ -581,9 +581,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 3,
-   "Ready for Development": 6,
+   "In Development": 4,
    "Closed": 5,
+   "Ready for Development": 5,
    "Awaiting Review": 1
   },
   "burn": [
@@ -648,20 +648,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 20,
-    "med_age": 15.5,
+    "open": 19,
+    "med_age": 16.0,
     "max_age": 204.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 14,
+    "over": 15,
     "clear_med": 3.9,
-    "clear_n": 181
+    "clear_n": 182
    },
    {
     "status": "In Development",
-    "open": 3,
-    "med_age": 7.8,
+    "open": 4,
+    "med_age": 4.8,
     "max_age": 14.8,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
@@ -669,42 +669,6 @@
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 222
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "Awaiting Review",
@@ -717,6 +681,18 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 128
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -741,6 +717,30 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
@@ -748,7 +748,7 @@
    "Backlog": 75
   },
   "open_total": 23,
-  "stale": 16,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
