@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T20:30:24Z",
+ "generated": "2026-09-30T20:41:43Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,19 +357,19 @@
   "day": 3,
   "days": 14,
   "n": 10,
-  "done_now": 14,
-  "committed": 61,
-  "lo": 48,
-  "mid": 61,
-  "hi": 68,
-  "pct": 100,
+  "done_now": 17,
+  "committed": 64,
+  "lo": 58,
+  "mid": 74,
+  "hi": 83,
+  "pct": 116,
   "verdict": "on track for the commitment",
   "share_mid": 0.23
  },
  "admin": {
   "scope": {
    "ready": 19,
-   "sprint": 17,
+   "sprint": 18,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -462,7 +462,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 22,
+    "n": 23,
     "items": [
      {
       "key": "EDW-2388",
@@ -500,21 +500,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 30 of 31 items. This reads as a field the team does not use rather than 30 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 30,
+    "why": "missing on 31 of 32 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 31,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 31 of 31 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 31,
+    "why": "missing on 32 of 32 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 32,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 5,
+    "n": 6,
     "items": [
+     {
+      "key": "EDW-2409",
+      "summary": "Summary: Phase 3 \u2014 Combined hard-copy letter master file (deduplicated across al"
+     },
      {
       "key": "EDW-2402",
       "summary": "ACH failed payments report \u2013 identify unpaid ACH members for AutoRenew turnoff"
@@ -577,50 +581,50 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 24,
-  "items_done": 7,
-  "committed": 61,
-  "final": 67,
-  "completed": 14,
-  "scope_change": 10,
-  "vs_commitment": 23,
+  "items": 25,
+  "items_done": 8,
+  "committed": 64,
+  "final": 70,
+  "completed": 17,
+  "scope_change": 9,
+  "vs_commitment": 27,
   "time_elapsed": 15,
   "spill": {
    "open_items": 11,
    "open_pts": 40.0,
    "out_items": 6,
    "out_pts": 13.0,
-   "done_pts": 13.0
+   "done_pts": 16.0
   },
   "recv": {
    "items": 9,
    "pts": 24,
-   "pct": 39,
+   "pct": 38,
    "from": "EDW-Sprint 22-26"
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 7,
+   "Closed": 8,
    "Awaiting Review": 2,
    "In Development": 4,
    "Ready for Development": 5
   },
   "burn": [
+   53.0,
+   49.0,
    50.0,
-   46.0,
-   47.0,
    47.0
   ],
   "scope": [
-   51.0,
-   55.0,
-   61.0,
-   61.0
+   54.0,
+   58.0,
+   64.0,
+   64.0
   ],
   "ghost": [
-   52.0,
-   52.0,
-   53.0,
+   55.0,
+   55.0,
+   56.0,
    53.0
   ],
   "days": 14,
@@ -693,42 +697,6 @@
     "clear_n": 222
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 129
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -763,6 +731,42 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 129
    }
   ],
   "parked": {
