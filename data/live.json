@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-30T18:30:26Z",
+ "generated": "2026-09-30T18:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 42,
+    "n": 15,
+    "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 20,
    "sprint": 17,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -399,8 +399,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 15,
     "items": [
+     {
+      "key": "EDW-2401",
+      "summary": "Stage - PMP -Data isn't showing up in the Plans Sales report "
+     },
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
@@ -428,10 +432,6 @@
      {
       "key": "EDW-2347",
       "summary": "PRODUCTION - Office Assignment"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -447,30 +447,8 @@
     ]
    },
    {
-    "rule": "No assignee in the active sprint",
-    "why": "work in the sprint that nobody owns.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2401",
-      "summary": "Stage - PMP -Data isn't showing up in the Plans Sales report "
-     }
-    ]
-   },
-   {
     "rule": "Open dependency",
     "why": "the guide: Definition of Ready means no open dependencies.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2401",
-      "summary": "Stage - PMP -Data isn't showing up in the Plans Sales report "
-     }
-    ]
-   },
-   {
-    "rule": "Still in Backlog inside the sprint",
-    "why": "in the sprint but never pulled into the flow.",
     "n": 1,
     "items": [
      {
@@ -484,7 +462,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 23,
+    "n": 22,
     "items": [
      {
       "key": "EDW-2388",
@@ -623,9 +601,8 @@
   "spill_rate": null,
   "dist": {
    "Closed": 7,
-   "Backlog": 1,
+   "Ready for Development": 6,
    "In Development": 4,
-   "Ready for Development": 5,
    "Awaiting Review": 1
   },
   "burn": [
@@ -690,8 +667,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 16.2,
+    "open": 20,
+    "med_age": 15.7,
     "max_age": 205.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -713,7 +690,7 @@
     "clear_n": 222
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -721,20 +698,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -761,6 +726,18 @@
     "clear_n": 129
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -773,7 +750,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,15 +758,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 62
    }
   ],
   "parked": {
-   "Backlog": 76,
+   "Backlog": 75,
    "Deferred": 75
   },
-  "open_total": 23,
+  "open_total": 24,
   "stale": 17,
   "worst": "Ready for Development"
  }
