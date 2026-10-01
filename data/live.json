@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T12:54:14Z",
+ "generated": "2026-10-01T13:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -688,7 +688,7 @@
     "status": "In Development",
     "open": 4,
     "med_age": 5.8,
-    "max_age": 15.7,
+    "max_age": 15.8,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
@@ -721,6 +721,18 @@
     "clear_n": 1
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 128
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -731,18 +743,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -757,7 +757,7 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -765,8 +765,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 128
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
