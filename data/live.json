@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T15:30:27Z",
+ "generated": "2026-10-01T15:42:38Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 18,
-   "sprint": 18,
+   "sprint": 19,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -500,21 +500,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 31 of 32 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
+    "why": "missing on 31 of 33 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
     "n": 31,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 32 of 32 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 32,
+    "why": "missing on 33 of 33 items. This reads as a field the team does not use rather than 33 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 33,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 6,
+    "n": 7,
     "items": [
+     {
+      "key": "EDW-2410",
+      "summary": "Audit and assess the health status project"
+     },
      {
       "key": "EDW-2409",
       "summary": "Summary: Phase 3 \u2014 Combined hard-copy letter master file (deduplicated across al"
@@ -581,17 +585,17 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 25,
+  "items": 26,
   "items_done": 9,
   "committed": 64,
-  "final": 70,
+  "final": 75,
   "completed": 18,
-  "scope_change": 9,
+  "scope_change": 17,
   "vs_commitment": 28,
   "time_elapsed": 21,
   "spill": {
-   "open_items": 10,
-   "open_pts": 39.0,
+   "open_items": 11,
+   "open_pts": 44.0,
    "out_items": 6,
    "out_pts": 13.0,
    "done_pts": 17.0
@@ -604,8 +608,8 @@
   },
   "spill_rate": null,
   "dist": {
+   "In Development": 6,
    "Closed": 9,
-   "In Development": 5,
    "Ready for Development": 4,
    "Awaiting Review": 1
   },
@@ -613,19 +617,19 @@
    53.0,
    49.0,
    50.0,
-   46.0
+   51.0
   ],
   "scope": [
    54.0,
    58.0,
    64.0,
-   64.0
+   69.0
   ],
   "ghost": [
    55.0,
    55.0,
    56.0,
-   52.0
+   57.0
   ],
   "days": 14,
   "day": 4,
@@ -676,7 +680,7 @@
     "status": "Ready for Development",
     "open": 18,
     "med_age": 22.4,
-    "max_age": 205.8,
+    "max_age": 205.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -686,8 +690,8 @@
    },
    {
     "status": "In Development",
-    "open": 5,
-    "med_age": 2.9,
+    "open": 6,
+    "med_age": 2.0,
     "max_age": 15.9,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
@@ -707,42 +711,6 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -767,13 +735,49 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 129
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
    "Deferred": 75,
-   "Backlog": 79
+   "Backlog": 78
   },
-  "open_total": 23,
+  "open_total": 24,
   "stale": 17,
   "worst": "Ready for Development"
  }
