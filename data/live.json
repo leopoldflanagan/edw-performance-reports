@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T16:15:24Z",
+ "generated": "2026-10-01T16:19:12Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -445,17 +445,6 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
-   },
-   {
-    "rule": "Still in Backlog inside the sprint",
-    "why": "in the sprint but never pulled into the flow.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2412",
-      "summary": "Update AutoRenewal Fialure code comment Username row"
-     }
-    ]
    }
   ],
   "debt": [
@@ -612,9 +601,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 1,
+   "In Development": 7,
    "Ready for Development": 5,
-   "In Development": 6,
    "Closed": 9,
    "Awaiting Review": 1
   },
@@ -695,8 +683,8 @@
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 2.0,
+    "open": 7,
+    "med_age": 1.1,
     "max_age": 15.9,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
@@ -704,42 +692,6 @@
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 220
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -754,6 +706,30 @@
     "clear_n": 129
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -764,6 +740,18 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "On Hold",
@@ -779,10 +767,10 @@
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 79
+   "Backlog": 78,
+   "Deferred": 75
   },
-  "open_total": 25,
+  "open_total": 26,
   "stale": 17,
   "worst": "Ready for Development"
  }
