@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T18:15:22Z",
+ "generated": "2026-10-02T18:23:45Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -451,11 +451,15 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 25,
+    "n": 26,
     "items": [
      {
       "key": "EDW-2411",
       "summary": "Renewals Remaining check"
+     },
+     {
+      "key": "EDW-2390",
+      "summary": "Aurora Dental - Office information missing on site"
      },
      {
       "key": "EDW-2388",
@@ -480,10 +484,6 @@
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
-     },
-     {
-      "key": "EDW-2214",
-      "summary": "Update CI eligibility file"
      }
     ]
    },
@@ -675,7 +675,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 18.1,
+    "med_age": 18.2,
     "max_age": 207.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -697,18 +697,6 @@
     "clear_n": 221
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -721,7 +709,7 @@
     "clear_n": 15
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -729,20 +717,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "Awaiting Review",
@@ -757,7 +733,7 @@
     "clear_n": 129
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -765,8 +741,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
