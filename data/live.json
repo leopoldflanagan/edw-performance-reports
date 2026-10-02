@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-01T23:45:19Z",
+ "generated": "2026-10-02T00:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 4,
+  "day": 5,
   "days": 14,
   "n": 10,
   "done_now": 20,
   "committed": 64,
-  "lo": 56,
-  "mid": 67,
-  "hi": 72,
-  "pct": 105,
-  "verdict": "on track for the commitment",
-  "share_mid": 0.299
+  "lo": 52,
+  "mid": 56,
+  "hi": 70,
+  "pct": 88,
+  "verdict": "a little short of the commitment",
+  "share_mid": 0.354
  },
  "admin": {
   "scope": {
@@ -628,7 +628,7 @@
    58.0
   ],
   "days": 14,
-  "day": 4,
+  "day": 5,
   "capacity": {
    "release": "9.09",
    "start": "2026-09-28",
@@ -697,30 +697,6 @@
     "clear_n": 221
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -731,6 +707,18 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -757,7 +745,7 @@
     "clear_n": 62
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -765,8 +753,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
