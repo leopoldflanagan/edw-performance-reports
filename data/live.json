@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-02T23:45:19Z",
+ "generated": "2026-10-03T00:00:32Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 5,
+  "day": 6,
   "days": 14,
   "n": 10,
   "done_now": 25,
   "committed": 64,
-  "lo": 65,
-  "mid": 71,
-  "hi": 87,
-  "pct": 111,
+  "lo": 61,
+  "mid": 66,
+  "hi": 71,
+  "pct": 103,
   "verdict": "on track for the commitment",
-  "share_mid": 0.354
+  "share_mid": 0.377
  },
  "admin": {
   "scope": {
@@ -631,7 +631,7 @@
    53.0
   ],
   "days": 14,
-  "day": 5,
+  "day": 6,
   "capacity": {
    "release": "9.09",
    "start": "2026-09-28",
@@ -700,18 +700,6 @@
     "clear_n": 222
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -722,30 +710,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    },
    {
     "status": "Awaiting Review",
@@ -760,6 +724,30 @@
     "clear_n": 129
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -770,6 +758,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
