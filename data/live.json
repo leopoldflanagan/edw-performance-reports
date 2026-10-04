@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-04T06:15:21Z",
+ "generated": "2026-10-04T06:30:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -585,7 +585,7 @@
   "completed": 25,
   "scope_change": 22,
   "vs_commitment": 39,
-  "time_elapsed": 40,
+  "time_elapsed": 41,
   "spill": {
    "open_items": 11,
    "open_pts": 40.0,
@@ -681,7 +681,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 19.6,
+    "med_age": 19.7,
     "max_age": 208.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -701,42 +701,6 @@
     "over": 2,
     "clear_med": 2.1,
     "clear_n": 222
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 129
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -763,6 +727,18 @@
     "clear_n": 1
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 129
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -773,6 +749,30 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
