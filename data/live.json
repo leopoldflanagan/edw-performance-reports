@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T17:30:25Z",
+ "generated": "2026-10-05T17:41:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
+    "n": 13,
     "points": 36,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 20,
    "sprint": 24,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 5,
+    "n": 4,
     "items": [
      {
       "key": "EDW-2415",
@@ -385,10 +385,6 @@
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
-     },
-     {
-      "key": "EDW-2389",
-      "summary": "Digital smiles - Location information missing from map/office selection"
      },
      {
       "key": "EDW-2355",
@@ -403,7 +399,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2415",
@@ -416,10 +412,6 @@
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
-     },
-     {
-      "key": "EDW-2389",
-      "summary": "Digital smiles - Location information missing from map/office selection"
      },
      {
       "key": "EDW-2360",
@@ -436,6 +428,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -504,14 +500,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 36 of 39 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 36,
+    "why": "missing on 35 of 38 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 35,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 39 of 39 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 39,
+    "why": "missing on 38 of 38 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
@@ -699,13 +695,13 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 20.1,
+    "open": 20,
+    "med_age": 20.6,
     "max_age": 209.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 17,
+    "over": 16,
     "clear_med": 3.9,
     "clear_n": 171
    },
@@ -717,57 +713,9 @@
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
-    "over": 2,
+    "over": 3,
     "clear_med": 2.1,
     "clear_n": 207
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "WAITING REVIEW",
@@ -782,6 +730,18 @@
     "clear_n": 2
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -792,13 +752,49 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 121
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
    "Backlog": 78,
    "Deferred": 75
   },
-  "open_total": 27,
+  "open_total": 26,
   "stale": 19,
   "worst": "Ready for Development"
  }
