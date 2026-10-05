@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T21:26:21Z",
+ "generated": "2026-10-05T21:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 16,
-    "points": 49,
+    "n": 14,
+    "points": 47,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,18 +357,18 @@
   "day": 8,
   "days": 14,
   "n": 10,
-  "done_now": 26,
+  "done_now": 27,
   "committed": 62,
-  "lo": 50,
-  "mid": 54,
-  "hi": 58,
-  "pct": 87,
+  "lo": 52,
+  "mid": 56,
+  "hi": 60,
+  "pct": 90,
   "verdict": "a little short of the commitment",
   "share_mid": 0.483
  },
  "admin": {
   "scope": {
-   "ready": 24,
+   "ready": 22,
    "sprint": 34,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -387,7 +387,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 16,
+    "n": 14,
     "items": [
      {
       "key": "EDW-2417",
@@ -406,10 +406,6 @@
       "summary": "Renewals Remaining check"
      },
      {
-      "key": "EDW-2390",
-      "summary": "Aurora Dental - Office information missing on site"
-     },
-     {
       "key": "EDW-2374",
       "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
      },
@@ -418,8 +414,12 @@
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      },
      {
-      "key": "EDW-2355",
-      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
+      "key": "EDW-2347",
+      "summary": "PRODUCTION - Office Assignment"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -582,19 +582,19 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 39,
-  "items_done": 12,
+  "items_done": 13,
   "committed": 62,
   "final": 95,
-  "completed": 26,
+  "completed": 27,
   "scope_change": 53,
-  "vs_commitment": 42,
+  "vs_commitment": 44,
   "time_elapsed": 53,
   "spill": {
-   "open_items": 24,
-   "open_pts": 60.0,
+   "open_items": 23,
+   "open_pts": 59.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 24.0
+   "done_pts": 25.0
   },
   "recv": {
    "items": 9,
@@ -605,9 +605,9 @@
   "spill_rate": null,
   "dist": {
    "In Development": 7,
-   "Ready for Development": 11,
-   "Closed": 11,
-   "Awaiting Review": 5,
+   "Ready for Development": 9,
+   "Closed": 12,
+   "Awaiting Review": 6,
    "Backlog": 1
   },
   "burn": [
@@ -619,7 +619,7 @@
    47.0,
    47.0,
    64.0,
-   63.0
+   62.0
   ],
   "scope": [
    52.0,
@@ -641,7 +641,7 @@
    51.0,
    51.0,
    70.0,
-   69.0
+   68.0
   ],
   "days": 14,
   "day": 8,
@@ -690,15 +690,15 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 24,
+    "open": 22,
     "med_age": 19.6,
     "max_age": 210.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 16,
+    "over": 14,
     "clear_med": 3.9,
-    "clear_n": 172
+    "clear_n": 173
    },
    {
     "status": "In Development",
@@ -725,7 +725,7 @@
     "clear_n": 15
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -733,8 +733,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -749,7 +749,7 @@
     "clear_n": 62
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -757,8 +757,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -773,7 +773,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,16 +781,16 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.9,
+    "clear_n": 121
    }
   ],
   "parked": {
-   "Backlog": 72,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 72
   },
-  "open_total": 31,
-  "stale": 19,
+  "open_total": 29,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
