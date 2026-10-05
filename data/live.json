@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T15:15:20Z",
+ "generated": "2026-10-05T15:18:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -376,12 +376,8 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 5,
+    "n": 4,
     "items": [
-     {
-      "key": "EDW-2414",
-      "summary": "[Accounting] - Patterson rev share not match Plan Activity Data - F32"
-     },
      {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
@@ -585,14 +581,14 @@
   "items": 29,
   "items_done": 11,
   "committed": 64,
-  "final": 78,
+  "final": 81,
   "completed": 25,
-  "scope_change": 22,
+  "scope_change": 27,
   "vs_commitment": 39,
   "time_elapsed": 51,
   "spill": {
    "open_items": 12,
-   "open_pts": 40.0,
+   "open_pts": 43.0,
    "out_items": 6,
    "out_pts": 13.0,
    "done_pts": 24.0
@@ -618,7 +614,7 @@
    52.0,
    47.0,
    47.0,
-   47.0
+   50.0
   ],
   "scope": [
    54.0,
@@ -628,7 +624,7 @@
    72.0,
    72.0,
    72.0,
-   72.0
+   75.0
   ],
   "ghost": [
    55.0,
@@ -638,7 +634,7 @@
    58.0,
    53.0,
    53.0,
-   53.0
+   56.0
   ],
   "days": 14,
   "day": 8,
@@ -710,7 +706,7 @@
     "clear_n": 207
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -718,20 +714,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "On Hold",
@@ -746,7 +730,7 @@
     "clear_n": 15
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -754,8 +738,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 0.9,
+    "clear_n": 121
    },
    {
     "status": "In Progress",
@@ -770,7 +754,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -778,8 +762,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
