@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T20:25:12Z",
+ "generated": "2026-10-05T21:26:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 41,
+    "n": 16,
+    "points": 49,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,18 +357,18 @@
   "day": 8,
   "days": 14,
   "n": 10,
-  "done_now": 25,
+  "done_now": 26,
   "committed": 62,
-  "lo": 48,
-  "mid": 52,
-  "hi": 56,
-  "pct": 84,
+  "lo": 50,
+  "mid": 54,
+  "hi": 58,
+  "pct": 87,
   "verdict": "a little short of the commitment",
   "share_mid": 0.483
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 24,
    "sprint": 34,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -387,23 +387,31 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 16,
     "items": [
+     {
+      "key": "EDW-2417",
+      "summary": "Reload Historical BenefitPlan records to break out separate years"
+     },
      {
       "key": "EDW-2415",
       "summary": "PMP/Dashboard/Plans/Plan that have already renewed are displayed in Renewal rema"
+     },
+     {
+      "key": "EDW-2413",
+      "summary": "Desert Valley Dental"
      },
      {
       "key": "EDW-2411",
       "summary": "Renewals Remaining check"
      },
      {
-      "key": "EDW-2397",
-      "summary": "ONE SMILE - Website Review - showing incorrect information"
-     },
-     {
       "key": "EDW-2390",
       "summary": "Aurora Dental - Office information missing on site"
+     },
+     {
+      "key": "EDW-2374",
+      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
      },
      {
       "key": "EDW-2360",
@@ -412,14 +420,6 @@
      {
       "key": "EDW-2355",
       "summary": "PRODUCTION - Incorrect Plans assigned to Members"
-     },
-     {
-      "key": "EDW-2347",
-      "summary": "PRODUCTION - Office Assignment"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -435,45 +435,10 @@
     ]
    },
    {
-    "rule": "No assignee in the active sprint",
-    "why": "work in the sprint that nobody owns.",
-    "n": 6,
-    "items": [
-     {
-      "key": "EDW-2415",
-      "summary": "PMP/Dashboard/Plans/Plan that have already renewed are displayed in Renewal rema"
-     },
-     {
-      "key": "EDW-2413",
-      "summary": "Desert Valley Dental"
-     },
-     {
-      "key": "EDW-2390",
-      "summary": "Aurora Dental - Office information missing on site"
-     },
-     {
-      "key": "EDW-2355",
-      "summary": "PRODUCTION - Incorrect Plans assigned to Members"
-     },
-     {
-      "key": "EDW-2347",
-      "summary": "PRODUCTION - Office Assignment"
-     },
-     {
-      "key": "EDW-2150",
-      "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
-     }
-    ]
-   },
-   {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 2,
+    "n": 1,
     "items": [
-     {
-      "key": "EDW-2413",
-      "summary": "Desert Valley Dental"
-     },
      {
       "key": "EDW-2150",
       "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
@@ -485,8 +450,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 29,
+    "n": 32,
     "items": [
+     {
+      "key": "EDW-2417",
+      "summary": "Reload Historical BenefitPlan records to break out separate years"
+     },
      {
       "key": "EDW-2414",
       "summary": "[Accounting] - Patterson rev share not match Plan Activity Data - F32"
@@ -508,29 +477,25 @@
       "summary": "Netsuite integration investigation"
      },
      {
+      "key": "EDW-2374",
+      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
+     },
+     {
       "key": "EDW-2369",
       "summary": "ONESMILE NV/WA & Essential Smiles - Data Report"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2214",
-      "summary": "Update CI eligibility file"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 40 of 44 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 43 of 47 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 43,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 44 of 44 items. This reads as a field the team does not use rather than 44 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 44,
+    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
@@ -575,7 +540,7 @@
    {
     "rule": "Riding 4+ sprints",
     "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-    "n": 6,
+    "n": 7,
     "items": [
      {
       "key": "EDW-2145",
@@ -592,6 +557,10 @@
      {
       "key": "EDW-1765",
       "summary": "Load Relationship/Contacts"
+     },
+     {
+      "key": "EDW-1733",
+      "summary": "EDW-CREG TPA Reporting"
      },
      {
       "key": "EDW-1599",
@@ -613,16 +582,16 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 39,
-  "items_done": 11,
+  "items_done": 12,
   "committed": 62,
   "final": 95,
-  "completed": 25,
+  "completed": 26,
   "scope_change": 53,
-  "vs_commitment": 40,
-  "time_elapsed": 52,
+  "vs_commitment": 42,
+  "time_elapsed": 53,
   "spill": {
-   "open_items": 25,
-   "open_pts": 61.0,
+   "open_items": 24,
+   "open_pts": 60.0,
    "out_items": 4,
    "out_pts": 10.0,
    "done_pts": 24.0
@@ -637,9 +606,9 @@
   "dist": {
    "In Development": 7,
    "Ready for Development": 11,
-   "Backlog": 2,
-   "Closed": 10,
-   "Awaiting Review": 5
+   "Closed": 11,
+   "Awaiting Review": 5,
+   "Backlog": 1
   },
   "burn": [
    51.0,
@@ -650,7 +619,7 @@
    47.0,
    47.0,
    64.0,
-   64.0
+   63.0
   ],
   "scope": [
    52.0,
@@ -672,7 +641,7 @@
    51.0,
    51.0,
    70.0,
-   70.0
+   69.0
   ],
   "days": 14,
   "day": 8,
@@ -721,15 +690,15 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 20.3,
+    "open": 24,
+    "med_age": 19.6,
     "max_age": 210.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 3.9,
-    "clear_n": 171
+    "clear_n": 172
    },
    {
     "status": "In Development",
@@ -742,30 +711,6 @@
     "over": 3,
     "clear_med": 2.1,
     "clear_n": 207
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "On Hold",
@@ -792,7 +737,7 @@
     "clear_n": 121
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -800,8 +745,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -814,13 +759,37 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 75,
+   "Backlog": 72,
    "Deferred": 75
   },
-  "open_total": 28,
+  "open_total": 31,
   "stale": 19,
   "worst": "Ready for Development"
  }

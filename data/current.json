@@ -283,9 +283,9 @@
     }
    },
    "dist": {
-    "Ready for Development": 3,
-    "Closed": 32,
+    "Closed": 33,
     "Awaiting Review": 1,
+    "Ready for Development": 2,
     "In Development": 2,
     "Won't Do": 1,
     "Backlog": 3
