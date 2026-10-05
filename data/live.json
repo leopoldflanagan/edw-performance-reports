@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T14:15:28Z",
+ "generated": "2026-10-05T14:22:51Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 38,
+    "n": 13,
+    "points": 36,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -403,7 +403,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2411",
@@ -416,10 +416,6 @@
      {
       "key": "EDW-2389",
       "summary": "Digital smiles - Location information missing from map/office selection"
-     },
-     {
-      "key": "EDW-2386",
-      "summary": "Biweekly update of Phase 2+3"
      },
      {
       "key": "EDW-2360",
@@ -436,6 +432,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -466,12 +466,12 @@
       "summary": "Renewals Remaining check"
      },
      {
-      "key": "EDW-2388",
-      "summary": "Smile Brands Reporting"
+      "key": "EDW-2398",
+      "summary": "Reporting and Migration fixes for sprit 23"
      },
      {
-      "key": "EDW-2386",
-      "summary": "Biweekly update of Phase 2+3"
+      "key": "EDW-2388",
+      "summary": "Smile Brands Reporting"
      },
      {
       "key": "EDW-2384",
@@ -693,33 +693,21 @@
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 18,
+    "over": 17,
     "clear_med": 3.9,
-    "clear_n": 170
+    "clear_n": 171
    },
    {
     "status": "In Development",
     "open": 6,
-    "med_age": 5.9,
+    "med_age": 5.4,
     "max_age": 19.8,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
     "over": 2,
     "clear_med": 2.1,
-    "clear_n": 206
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_n": 207
    },
    {
     "status": "WAITING REVIEW",
@@ -732,30 +720,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
    },
    {
     "status": "PR Created",
@@ -780,6 +744,42 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 121
    }
   ],
   "parked": {
@@ -787,7 +787,7 @@
    "Deferred": 75
   },
   "open_total": 26,
-  "stale": 20,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
