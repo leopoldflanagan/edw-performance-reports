@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T21:30:26Z",
+ "generated": "2026-10-05T21:41:34Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 47,
+    "n": 13,
+    "points": 45,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 21,
    "sprint": 34,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -387,7 +387,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2417",
@@ -396,14 +396,6 @@
      {
       "key": "EDW-2415",
       "summary": "PMP/Dashboard/Plans/Plan that have already renewed are displayed in Renewal rema"
-     },
-     {
-      "key": "EDW-2413",
-      "summary": "Desert Valley Dental"
-     },
-     {
-      "key": "EDW-2411",
-      "summary": "Renewals Remaining check"
      },
      {
       "key": "EDW-2374",
@@ -418,8 +410,16 @@
       "summary": "PRODUCTION - Office Assignment"
      },
      {
+      "key": "EDW-2150",
+      "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
+     },
+     {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -431,17 +431,6 @@
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
-     }
-    ]
-   },
-   {
-    "rule": "Still in Backlog inside the sprint",
-    "why": "in the sprint but never pulled into the flow.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2150",
-      "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
      }
     ]
    }
@@ -459,10 +448,6 @@
      {
       "key": "EDW-2414",
       "summary": "[Accounting] - Patterson rev share not match Plan Activity Data - F32"
-     },
-     {
-      "key": "EDW-2411",
-      "summary": "Renewals Remaining check"
      },
      {
       "key": "EDW-2398",
@@ -483,6 +468,10 @@
      {
       "key": "EDW-2369",
       "summary": "ONESMILE NV/WA & Essential Smiles - Data Report"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -605,10 +594,9 @@
   "spill_rate": null,
   "dist": {
    "In Development": 7,
-   "Ready for Development": 9,
-   "Closed": 12,
-   "Awaiting Review": 6,
-   "Backlog": 1
+   "Ready for Development": 8,
+   "Awaiting Review": 8,
+   "Closed": 12
   },
   "burn": [
    51.0,
@@ -690,8 +678,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 19.6,
+    "open": 21,
+    "med_age": 20.1,
     "max_age": 210.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -725,18 +713,6 @@
     "clear_n": 15
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -747,6 +723,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 121
    },
    {
     "status": "WAITING REVIEW",
@@ -773,7 +761,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -781,15 +769,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 72
+   "Backlog": 71,
+   "Deferred": 75
   },
-  "open_total": 29,
+  "open_total": 28,
   "stale": 17,
   "worst": "Ready for Development"
  }
