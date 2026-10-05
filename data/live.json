@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T15:18:31Z",
+ "generated": "2026-10-05T15:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -358,18 +358,18 @@
   "days": 14,
   "n": 10,
   "done_now": 25,
-  "committed": 64,
+  "committed": 62,
   "lo": 48,
   "mid": 52,
   "hi": 56,
-  "pct": 81,
+  "pct": 84,
   "verdict": "a little short of the commitment",
   "share_mid": 0.483
  },
  "admin": {
   "scope": {
    "ready": 20,
-   "sprint": 22,
+   "sprint": 23,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -451,7 +451,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 26,
+    "n": 27,
     "items": [
      {
       "key": "EDW-2414",
@@ -489,20 +489,20 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 34 of 36 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 34,
+    "why": "missing on 35 of 37 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 35,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 36 of 36 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 36,
+    "why": "missing on 37 of 37 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 37,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 8,
+    "n": 9,
     "items": [
      {
       "key": "EDW-2412",
@@ -533,8 +533,8 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      },
      {
-      "key": "EDW-2372",
-      "summary": "Verification of Wellfit Id & Careington Id Columns to Plans Reports"
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
      }
     ]
    },
@@ -580,34 +580,34 @@
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 29,
   "items_done": 11,
-  "committed": 64,
+  "committed": 62,
   "final": 81,
   "completed": 25,
-  "scope_change": 27,
-  "vs_commitment": 39,
+  "scope_change": 31,
+  "vs_commitment": 40,
   "time_elapsed": 51,
   "spill": {
-   "open_items": 12,
-   "open_pts": 43.0,
-   "out_items": 6,
-   "out_pts": 13.0,
+   "open_items": 13,
+   "open_pts": 45.0,
+   "out_items": 5,
+   "out_pts": 11.0,
    "done_pts": 24.0
   },
   "recv": {
    "items": 9,
    "pts": 24,
-   "pct": 38,
+   "pct": 39,
    "from": "EDW-Sprint 22-26"
   },
   "spill_rate": null,
   "dist": {
    "Ready for Development": 6,
    "Closed": 11,
-   "In Development": 5,
+   "In Development": 6,
    "Awaiting Review": 1
   },
   "burn": [
-   53.0,
+   51.0,
    49.0,
    50.0,
    52.0,
@@ -617,7 +617,7 @@
    50.0
   ],
   "scope": [
-   54.0,
+   52.0,
    58.0,
    64.0,
    72.0,
@@ -627,13 +627,13 @@
    75.0
   ],
   "ghost": [
-   55.0,
-   55.0,
+   53.0,
+   53.0,
+   54.0,
    56.0,
-   58.0,
-   58.0,
-   53.0,
-   53.0,
+   56.0,
+   51.0,
+   51.0,
    56.0
   ],
   "days": 14,
@@ -684,7 +684,7 @@
    {
     "status": "Ready for Development",
     "open": 20,
-    "med_age": 20.5,
+    "med_age": 20.6,
     "max_age": 209.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -697,7 +697,7 @@
     "status": "In Development",
     "open": 6,
     "med_age": 5.5,
-    "max_age": 19.8,
+    "max_age": 19.9,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
@@ -706,7 +706,7 @@
     "clear_n": 207
    },
    {
-    "status": "New",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -714,20 +714,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -740,6 +728,18 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 121
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "In Progress",
@@ -766,7 +766,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -774,8 +774,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 62
    }
   ],
   "parked": {
