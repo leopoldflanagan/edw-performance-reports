@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T19:15:31Z",
+ "generated": "2026-10-05T19:17:07Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -437,7 +437,7 @@
    {
     "rule": "No assignee in the active sprint",
     "why": "work in the sprint that nobody owns.",
-    "n": 7,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2415",
@@ -446,10 +446,6 @@
      {
       "key": "EDW-2413",
       "summary": "Desert Valley Dental"
-     },
-     {
-      "key": "EDW-2397",
-      "summary": "ONE SMILE - Website Review - showing incorrect information"
      },
      {
       "key": "EDW-2390",
@@ -745,18 +741,6 @@
     "clear_n": 207
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -767,18 +751,6 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 121
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -803,6 +775,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
