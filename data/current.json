@@ -283,12 +283,12 @@
     }
    },
    "dist": {
-    "Backlog": 4,
+    "Ready for Development": 3,
     "Closed": 32,
     "Awaiting Review": 1,
-    "Ready for Development": 2,
     "In Development": 2,
-    "Won't Do": 1
+    "Won't Do": 1,
+    "Backlog": 3
    },
    "stalled": 12,
    "worst": 8.24,
