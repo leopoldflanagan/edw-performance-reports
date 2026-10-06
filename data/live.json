@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-06T21:30:26Z",
+ "generated": "2026-10-06T21:39:45Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 9,
   "days": 14,
   "n": 10,
-  "done_now": 28,
+  "done_now": 29,
   "committed": 62,
-  "lo": 48,
-  "mid": 51,
-  "hi": 55,
-  "pct": 82,
+  "lo": 50,
+  "mid": 53,
+  "hi": 57,
+  "pct": 85,
   "verdict": "a little short of the commitment",
   "share_mid": 0.544
  },
@@ -571,12 +571,12 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 39,
-  "items_done": 14,
+  "items_done": 15,
   "committed": 62,
   "final": 95,
-  "completed": 28,
+  "completed": 29,
   "scope_change": 53,
-  "vs_commitment": 45,
+  "vs_commitment": 47,
   "time_elapsed": 60,
   "spill": {
    "open_items": 22,
@@ -593,9 +593,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 9,
+   "In Development": 7,
+   "Awaiting Review": 10,
    "Ready for Development": 5,
-   "Awaiting Review": 8,
    "Closed": 13
   },
   "burn": [
@@ -608,7 +608,7 @@
    47.0,
    64.0,
    61.0,
-   61.0
+   60.0
   ],
   "scope": [
    52.0,
@@ -632,7 +632,7 @@
    51.0,
    70.0,
    67.0,
-   67.0
+   66.0
   ],
   "days": 14,
   "day": 9,
@@ -689,12 +689,12 @@
     "worst_who": "Jeff Schniederjan",
     "over": 13,
     "clear_med": 3.9,
-    "clear_n": 175
+    "clear_n": 173
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 1.4,
+    "open": 7,
+    "med_age": 5.3,
     "max_age": 21.1,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
@@ -704,7 +704,7 @@
     "clear_n": 206
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -712,8 +712,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 0.9,
+    "clear_n": 120
    },
    {
     "status": "New",
@@ -728,7 +728,7 @@
     "clear_n": 62
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -736,8 +736,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -752,7 +752,7 @@
     "clear_n": 2
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -760,11 +760,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,15 +772,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 71,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 71
   },
-  "open_total": 27,
+  "open_total": 25,
   "stale": 16,
   "worst": "Ready for Development"
  }
