@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-05T23:45:21Z",
+ "generated": "2026-10-06T00:00:32Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 8,
+  "day": 9,
   "days": 14,
   "n": 10,
   "done_now": 28,
   "committed": 62,
-  "lo": 54,
-  "mid": 58,
-  "hi": 63,
-  "pct": 94,
+  "lo": 48,
+  "mid": 51,
+  "hi": 55,
+  "pct": 82,
   "verdict": "a little short of the commitment",
-  "share_mid": 0.483
+  "share_mid": 0.544
  },
  "admin": {
   "scope": {
@@ -632,7 +632,7 @@
    67.0
   ],
   "days": 14,
-  "day": 8,
+  "day": 9,
   "capacity": {
    "release": "9.09",
    "start": "2026-09-28",
@@ -686,22 +686,22 @@
     "worst_who": "Jeff Schniederjan",
     "over": 13,
     "clear_med": 3.9,
-    "clear_n": 176
+    "clear_n": 175
    },
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 0.4,
+    "med_age": 0.5,
     "max_age": 20.2,
     "worst_key": "EDW-2359",
     "worst_sum": "[Accounting] - Remodel Plan Activity Data",
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.1,
-    "clear_n": 207
+    "clear_n": 206
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -709,8 +709,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 121
    },
    {
     "status": "New",
@@ -725,7 +725,7 @@
     "clear_n": 62
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -733,8 +733,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 122
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -759,23 +771,11 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 71
+   "Backlog": 71,
+   "Deferred": 75
   },
   "open_total": 27,
   "stale": 16,
