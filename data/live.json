@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T14:45:20Z",
+ "generated": "2026-10-07T15:00:35Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,18 +357,18 @@
   "day": 10,
   "days": 14,
   "n": 10,
-  "done_now": 29,
+  "done_now": 34,
   "committed": 62,
-  "lo": 39,
-  "mid": 44,
-  "hi": 49,
-  "pct": 71,
-  "verdict": "well short of the commitment",
+  "lo": 46,
+  "mid": 51,
+  "hi": 57,
+  "pct": 82,
+  "verdict": "a little short of the commitment",
   "share_mid": 0.665
  },
  "admin": {
   "scope": {
-   "ready": 18,
+   "ready": 17,
    "sprint": 34,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -450,10 +450,6 @@
       "summary": "[Accounting] - Patterson rev share not match Plan Activity Data - F32"
      },
      {
-      "key": "EDW-2398",
-      "summary": "Reporting and Migration fixes for sprit 23"
-     },
-     {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
      },
@@ -472,6 +468,10 @@
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2214",
+      "summary": "Update CI eligibility file"
      }
     ]
    },
@@ -571,19 +571,19 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 39,
-  "items_done": 15,
+  "items_done": 16,
   "committed": 62,
   "final": 95,
-  "completed": 29,
+  "completed": 34,
   "scope_change": 53,
-  "vs_commitment": 47,
+  "vs_commitment": 55,
   "time_elapsed": 65,
   "spill": {
-   "open_items": 22,
-   "open_pts": 58.0,
+   "open_items": 21,
+   "open_pts": 53.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 26.0
+   "done_pts": 31.0
   },
   "recv": {
    "items": 9,
@@ -595,8 +595,8 @@
   "dist": {
    "In Development": 7,
    "Awaiting Review": 10,
-   "Ready for Development": 5,
-   "Closed": 13
+   "Ready for Development": 4,
+   "Closed": 14
   },
   "burn": [
    51.0,
@@ -608,7 +608,7 @@
    47.0,
    64.0,
    61.0,
-   60.0
+   55.0
   ],
   "scope": [
    52.0,
@@ -632,7 +632,7 @@
    51.0,
    70.0,
    67.0,
-   66.0
+   61.0
   ],
   "days": 14,
   "day": 10,
@@ -681,15 +681,15 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 18,
-    "med_age": 27.8,
+    "open": 17,
+    "med_age": 33.8,
     "max_age": 211.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 13,
     "clear_med": 3.9,
-    "clear_n": 173
+    "clear_n": 174
    },
    {
     "status": "In Development",
@@ -704,7 +704,7 @@
     "clear_n": 205
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -712,8 +712,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -752,7 +752,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -760,8 +760,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -780,7 +780,7 @@
    "Deferred": 75,
    "Backlog": 73
   },
-  "open_total": 25,
+  "open_total": 24,
   "stale": 16,
   "worst": "Ready for Development"
  }
