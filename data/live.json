@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-07T18:45:23Z",
+ "generated": "2026-10-07T18:48:13Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 17,
-   "sprint": 37,
+   "sprint": 38,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -433,13 +433,24 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
+   },
+   {
+    "rule": "Still in Backlog inside the sprint",
+    "why": "in the sprint but never pulled into the flow.",
+    "n": 1,
+    "items": [
+     {
+      "key": "EDW-2420",
+      "summary": "Review current Auto Sort implementation "
+     }
+    ]
    }
   ],
   "debt": [
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 32,
+    "n": 33,
     "items": [
      {
       "key": "EDW-2417",
@@ -477,14 +488,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 46 of 50 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 46,
+    "why": "missing on 47 of 51 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 50 of 50 items. This reads as a field the team does not use rather than 50 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 50,
+    "why": "missing on 51 of 51 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 51,
     "items": []
    },
    {
@@ -570,17 +581,17 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 45,
+  "items": 46,
   "items_done": 22,
   "committed": 62,
-  "final": 108,
+  "final": 111,
   "completed": 47,
-  "scope_change": 74,
+  "scope_change": 79,
   "vs_commitment": 76,
   "time_elapsed": 67,
   "spill": {
-   "open_items": 21,
-   "open_pts": 53.0,
+   "open_items": 22,
+   "open_pts": 56.0,
    "out_items": 4,
    "out_pts": 10.0,
    "done_pts": 44.0
@@ -594,6 +605,7 @@
   "spill_rate": null,
   "dist": {
    "Closed": 20,
+   "Backlog": 1,
    "In Development": 7,
    "Awaiting Review": 10,
    "Ready for Development": 4
@@ -608,7 +620,7 @@
    47.0,
    64.0,
    61.0,
-   55.0
+   58.0
   ],
   "scope": [
    52.0,
@@ -620,7 +632,7 @@
    72.0,
    89.0,
    89.0,
-   102.0
+   105.0
   ],
   "ghost": [
    53.0,
@@ -632,7 +644,7 @@
    51.0,
    70.0,
    67.0,
-   61.0
+   64.0
   ],
   "days": 14,
   "day": 10,
@@ -704,30 +716,6 @@
     "clear_n": 206
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -740,7 +728,7 @@
     "clear_n": 62
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -748,8 +736,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -764,7 +752,7 @@
     "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -772,8 +760,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.9,
+    "clear_n": 121
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 214.9,
+    "clear_n": 15
    }
   ],
   "parked": {
