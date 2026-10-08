@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T19:00:25Z",
+ "generated": "2026-10-08T19:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -318,8 +318,8 @@
    "points": 3
   },
   "misfiled": {
-   "items": 16,
-   "points": 69
+   "items": 17,
+   "points": 74
   },
   "runway": 0.0,
   "runway_if_fixed": 0.9,
@@ -328,8 +328,8 @@
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 16,
-    "points": 69,
+    "n": 17,
+    "points": 74,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
    {
@@ -691,56 +691,20 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 12,
-    "clear_med": 3.9,
-    "clear_n": 175
+    "clear_med": 4.0,
+    "clear_n": 178
    },
    {
     "status": "In Development",
-    "open": 8,
-    "med_age": 1.7,
-    "max_age": 23.0,
-    "worst_key": "EDW-2359",
-    "worst_sum": "[Accounting] - Remodel Plan Activity Data",
-    "worst_who": "Jeff Schniederjan",
-    "over": 3,
+    "open": 10,
+    "med_age": 6.2,
+    "max_age": 65.0,
+    "worst_key": "EDW-2436",
+    "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
+    "worst_who": "Shruti  Kulkarni",
+    "over": 5,
     "clear_med": 2.1,
-    "clear_n": 200
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_n": 201
    },
    {
     "status": "On Hold",
@@ -751,8 +715,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -767,6 +731,30 @@
     "clear_n": 120
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -777,14 +765,26 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
    "Deferred": 75,
-   "Backlog": 73
+   "Backlog": 79
   },
-  "open_total": 23,
-  "stale": 15,
+  "open_total": 25,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
