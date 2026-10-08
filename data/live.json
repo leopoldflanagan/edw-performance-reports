@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T17:15:56Z",
+ "generated": "2026-10-08T17:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,14 +314,14 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 2,
-   "points": 8
+   "items": 1,
+   "points": 3
   },
   "misfiled": {
    "items": 16,
    "points": 69
   },
-  "runway": 0.1,
+  "runway": 0.0,
   "runway_if_fixed": 0.9,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
@@ -357,18 +357,18 @@
   "day": 11,
   "days": 14,
   "n": 10,
-  "done_now": 49,
+  "done_now": 52,
   "committed": 62,
-  "lo": 63,
-  "mid": 65,
-  "hi": 74,
-  "pct": 105,
+  "lo": 67,
+  "mid": 69,
+  "hi": 79,
+  "pct": 111,
   "verdict": "on track for the commitment",
   "share_mid": 0.757
  },
  "admin": {
   "scope": {
-   "ready": 17,
+   "ready": 16,
    "sprint": 40,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -442,10 +442,6 @@
     "n": 34,
     "items": [
      {
-      "key": "EDW-2430",
-      "summary": "Revise and implement the multisort functionality for tables"
-     },
-     {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
      },
@@ -472,6 +468,10 @@
      {
       "key": "EDW-2214",
       "summary": "Update CI eligibility file"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -571,19 +571,19 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 48,
-  "items_done": 23,
+  "items_done": 24,
   "committed": 62,
   "final": 119,
-  "completed": 49,
+  "completed": 52,
   "scope_change": 92,
-  "vs_commitment": 79,
+  "vs_commitment": 84,
   "time_elapsed": 74,
   "spill": {
-   "open_items": 23,
-   "open_pts": 62.0,
+   "open_items": 22,
+   "open_pts": 59.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 46.0
+   "done_pts": 49.0
   },
   "recv": {
    "items": 9,
@@ -593,10 +593,10 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 4,
    "In Development": 7,
-   "Closed": 21,
-   "Awaiting Review": 12
+   "Closed": 22,
+   "Awaiting Review": 12,
+   "Ready for Development": 3
   },
   "burn": [
    51.0,
@@ -609,7 +609,7 @@
    64.0,
    61.0,
    58.0,
-   64.0
+   61.0
   ],
   "scope": [
    52.0,
@@ -635,7 +635,7 @@
    70.0,
    67.0,
    64.0,
-   70.0
+   67.0
   ],
   "days": 14,
   "day": 11,
@@ -684,7 +684,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
+    "open": 16,
     "med_age": 34.9,
     "max_age": 212.9,
     "worst_key": "EDW-1599",
@@ -692,7 +692,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 12,
     "clear_med": 3.9,
-    "clear_n": 170
+    "clear_n": 171
    },
    {
     "status": "In Development",
@@ -704,10 +704,10 @@
     "worst_who": "Jeff Schniederjan",
     "over": 4,
     "clear_med": 2.1,
-    "clear_n": 198
+    "clear_n": 199
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -715,8 +715,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 214.9,
+    "clear_n": 15
    },
    {
     "status": "WAITING REVIEW",
@@ -731,18 +731,6 @@
     "clear_n": 2
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -755,7 +743,7 @@
     "clear_n": 117
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -763,8 +751,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 214.9,
-    "clear_n": 15
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "PR Created",
@@ -780,10 +780,10 @@
    }
   ],
   "parked": {
-   "Backlog": 73,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 74
   },
-  "open_total": 24,
+  "open_total": 23,
   "stale": 16,
   "worst": "Ready for Development"
  }
