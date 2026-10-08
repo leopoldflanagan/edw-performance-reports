@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T17:15:20Z",
+ "generated": "2026-10-08T17:15:56Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,14 +314,14 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 1,
-   "points": 3
+   "items": 2,
+   "points": 8
   },
   "misfiled": {
    "items": 16,
    "points": 69
   },
-  "runway": 0.0,
+  "runway": 0.1,
   "runway_if_fixed": 0.9,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
+    "n": 10,
     "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -376,12 +376,8 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 2,
+    "n": 1,
     "items": [
-     {
-      "key": "EDW-2430",
-      "summary": "Revise and implement the multisort functionality for tables"
-     },
      {
       "key": "EDW-2150",
       "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
@@ -391,12 +387,8 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 10,
     "items": [
-     {
-      "key": "EDW-2430",
-      "summary": "Revise and implement the multisort functionality for tables"
-     },
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
@@ -424,6 +416,10 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
+     },
+     {
+      "key": "EDW-1950",
+      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -577,14 +573,14 @@
   "items": 48,
   "items_done": 23,
   "committed": 62,
-  "final": 114,
+  "final": 119,
   "completed": 49,
-  "scope_change": 84,
+  "scope_change": 92,
   "vs_commitment": 79,
   "time_elapsed": 74,
   "spill": {
    "open_items": 23,
-   "open_pts": 57.0,
+   "open_pts": 62.0,
    "out_items": 4,
    "out_pts": 10.0,
    "done_pts": 46.0
@@ -613,7 +609,7 @@
    64.0,
    61.0,
    58.0,
-   59.0
+   64.0
   ],
   "scope": [
    52.0,
@@ -626,7 +622,7 @@
    89.0,
    89.0,
    105.0,
-   108.0
+   113.0
   ],
   "ghost": [
    53.0,
@@ -639,7 +635,7 @@
    70.0,
    67.0,
    64.0,
-   65.0
+   70.0
   ],
   "days": 14,
   "day": 11,
@@ -711,18 +707,6 @@
     "clear_n": 198
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -733,18 +717,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 62
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -759,7 +731,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -767,8 +739,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 117
    },
    {
     "status": "On Hold",
@@ -781,6 +765,18 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
