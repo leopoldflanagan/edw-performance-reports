@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T17:00:27Z",
+ "generated": "2026-10-08T17:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 10,
+    "n": 11,
     "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,16 +368,20 @@
  },
  "admin": {
   "scope": {
-   "ready": 16,
-   "sprint": 39,
+   "ready": 17,
+   "sprint": 40,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 1,
+    "n": 2,
     "items": [
+     {
+      "key": "EDW-2430",
+      "summary": "Revise and implement the multisort functionality for tables"
+     },
      {
       "key": "EDW-2150",
       "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
@@ -387,8 +391,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 10,
+    "n": 11,
     "items": [
+     {
+      "key": "EDW-2430",
+      "summary": "Revise and implement the multisort functionality for tables"
+     },
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
@@ -416,10 +424,6 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -439,8 +443,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 33,
+    "n": 34,
     "items": [
+     {
+      "key": "EDW-2430",
+      "summary": "Revise and implement the multisort functionality for tables"
+     },
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
@@ -468,23 +476,19 @@
      {
       "key": "EDW-2214",
       "summary": "Update CI eligibility file"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 48 of 52 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 48,
+    "why": "missing on 49 of 53 items. This reads as a field the team does not use rather than 49 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 49,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 52 of 52 items. This reads as a field the team does not use rather than 52 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 52,
+    "why": "missing on 53 of 53 items. This reads as a field the team does not use rather than 53 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 53,
     "items": []
    },
    {
@@ -570,16 +574,16 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 47,
+  "items": 48,
   "items_done": 23,
   "committed": 62,
   "final": 114,
   "completed": 49,
   "scope_change": 84,
   "vs_commitment": 79,
-  "time_elapsed": 73,
+  "time_elapsed": 74,
   "spill": {
-   "open_items": 22,
+   "open_items": 23,
    "open_pts": 57.0,
    "out_items": 4,
    "out_pts": 10.0,
@@ -593,10 +597,10 @@
   },
   "spill_rate": null,
   "dist": {
+   "Ready for Development": 4,
    "In Development": 7,
    "Closed": 21,
-   "Awaiting Review": 12,
-   "Ready for Development": 3
+   "Awaiting Review": 12
   },
   "burn": [
    51.0,
@@ -684,7 +688,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 16,
+    "open": 17,
     "med_age": 34.9,
     "max_age": 212.9,
     "worst_key": "EDW-1599",
@@ -707,7 +711,7 @@
     "clear_n": 198
    },
    {
-    "status": "PR Created",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -715,8 +719,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 0.9,
+    "clear_n": 117
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -743,6 +759,18 @@
     "clear_n": 2
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -753,37 +781,13 @@
     "over": 0,
     "clear_med": 214.9,
     "clear_n": 15
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
    }
   ],
   "parked": {
    "Backlog": 73,
    "Deferred": 75
   },
-  "open_total": 23,
+  "open_total": 24,
   "stale": 16,
   "worst": "Ready for Development"
  }
