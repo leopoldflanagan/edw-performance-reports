@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T14:15:20Z",
+ "generated": "2026-10-08T14:19:41Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,18 +357,18 @@
   "day": 11,
   "days": 14,
   "n": 10,
-  "done_now": 47,
+  "done_now": 49,
   "committed": 62,
-  "lo": 61,
-  "mid": 62,
-  "hi": 71,
-  "pct": 100,
+  "lo": 63,
+  "mid": 65,
+  "hi": 74,
+  "pct": 105,
   "verdict": "on track for the commitment",
   "share_mid": 0.757
  },
  "admin": {
   "scope": {
-   "ready": 17,
+   "ready": 16,
    "sprint": 39,
    "sprint_name": "EDW-Sprint 23-26"
   },
@@ -450,10 +450,6 @@
       "summary": "[Accounting] - Patterson rev share not match Plan Activity Data - F32"
      },
      {
-      "key": "EDW-2388",
-      "summary": "Smile Brands Reporting"
-     },
-     {
       "key": "EDW-2384",
       "summary": "Netsuite integration investigation"
      },
@@ -472,6 +468,10 @@
      {
       "key": "EDW-2214",
       "summary": "Update CI eligibility file"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -571,19 +571,19 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 47,
-  "items_done": 22,
+  "items_done": 23,
   "committed": 62,
   "final": 114,
-  "completed": 47,
+  "completed": 49,
   "scope_change": 84,
-  "vs_commitment": 76,
+  "vs_commitment": 79,
   "time_elapsed": 73,
   "spill": {
-   "open_items": 23,
-   "open_pts": 59.0,
+   "open_items": 22,
+   "open_pts": 57.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 44.0
+   "done_pts": 46.0
   },
   "recv": {
    "items": 9,
@@ -593,8 +593,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 7,
-   "Closed": 20,
+   "In Development": 6,
+   "Closed": 21,
    "Awaiting Review": 12,
    "Ready for Development": 4
   },
@@ -609,7 +609,7 @@
    64.0,
    61.0,
    58.0,
-   61.0
+   59.0
   ],
   "scope": [
    52.0,
@@ -635,7 +635,7 @@
    70.0,
    67.0,
    64.0,
-   67.0
+   65.0
   ],
   "days": 14,
   "day": 11,
@@ -684,15 +684,15 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
+    "open": 16,
     "med_age": 34.8,
     "max_age": 212.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 13,
+    "over": 12,
     "clear_med": 3.9,
-    "clear_n": 169
+    "clear_n": 170
    },
    {
     "status": "In Development",
@@ -704,19 +704,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 4,
     "clear_med": 2.1,
-    "clear_n": 197
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_n": 198
    },
    {
     "status": "On Hold",
@@ -731,7 +719,7 @@
     "clear_n": 15
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -739,8 +727,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -755,6 +743,18 @@
     "clear_n": 62
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -767,7 +767,7 @@
     "clear_n": 117
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -775,16 +775,16 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 72,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 72
   },
-  "open_total": 24,
-  "stale": 17,
+  "open_total": 23,
+  "stale": 16,
   "worst": "Ready for Development"
  }
 }
