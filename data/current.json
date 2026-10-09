@@ -8,7 +8,7 @@
   "start": "2026-09-28",
   "end": "2026-10-25",
   "prev": "",
-  "prev_closed": 51,
+  "prev_closed": 68,
   "closed": 29,
   "discarded": 1,
   "resolved": 30,
@@ -57,7 +57,7 @@
   "day": 9,
   "days": 28,
   "status": "warning",
-  "headline": "29 items closed in the first 9 days, a pace of about 90 for the month against 51 last month. Unplanned work at 13.8%.",
+  "headline": "29 items closed in the first 9 days, a pace of about 90 for the month against 68 last month. Unplanned work at 13.8%.",
   "notes": [
    "unplanned work at 13.8%"
   ]
