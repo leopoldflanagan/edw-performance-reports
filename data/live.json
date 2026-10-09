@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-09T17:45:18Z",
+ "generated": "2026-10-09T18:00:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 12,
   "days": 14,
   "n": 10,
-  "done_now": 65,
+  "done_now": 68,
   "committed": 62,
-  "lo": 81,
-  "mid": 85,
-  "hi": 98,
-  "pct": 137,
+  "lo": 85,
+  "mid": 89,
+  "hi": 103,
+  "pct": 144,
   "verdict": "on track for the commitment",
   "share_mid": 0.766
  },
@@ -566,7 +566,26 @@
     ]
    }
   ],
-  "setup": []
+  "setup": [
+   {
+    "rule": "Release 9.06 has two different windows on the schedule",
+    "why": "the feature-freeze column gives 2026-06-22 to 2026-07-26 and the dev-window column gives 2026-06-22 to 2026-08-02. The calendar keeps what it already had; the page needs one of the two corrected.",
+    "n": 1,
+    "items": []
+   },
+   {
+    "rule": "Release 9.07 has two different windows on the schedule",
+    "why": "the feature-freeze column gives 2026-07-27 to 2026-08-23 and the dev-window column gives 2026-08-03 to 2026-08-30. The calendar keeps what it already had; the page needs one of the two corrected.",
+    "n": 1,
+    "items": []
+   },
+   {
+    "rule": "Release 9.08 has two different windows on the schedule",
+    "why": "the feature-freeze column gives 2026-08-24 to 2026-09-27 and the dev-window column gives 2026-08-31 to 2026-09-27. The calendar keeps what it already had; the page needs one of the two corrected.",
+    "n": 1,
+    "items": []
+   }
+  ]
  },
  "sprint": {
   "name": "EDW-Sprint 23-26",
@@ -575,12 +594,12 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 50,
-  "items_done": 29,
+  "items_done": 30,
   "committed": 62,
   "final": 124,
-  "completed": 65,
+  "completed": 68,
   "scope_change": 100,
-  "vs_commitment": 105,
+  "vs_commitment": 110,
   "time_elapsed": 81,
   "spill": {
    "open_items": 19,
@@ -597,9 +616,9 @@
   },
   "spill_rate": 50,
   "dist": {
-   "In Development": 9,
+   "In Development": 8,
+   "Awaiting Review": 9,
    "Closed": 27,
-   "Awaiting Review": 8,
    "Ready for Development": 2
   },
   "burn": [
@@ -614,7 +633,7 @@
    61.0,
    58.0,
    58.0,
-   53.0
+   50.0
   ],
   "scope": [
    52.0,
@@ -642,7 +661,7 @@
    67.0,
    64.0,
    64.0,
-   59.0
+   56.0
   ],
   "days": 14,
   "day": 12,
@@ -665,25 +684,25 @@
   "state": "not started"
  },
  "month": {
-  "month": "9.08",
-  "label": "Release 9.08",
+  "month": "9.09",
+  "label": "Release 9.09",
   "kind": "release",
-  "start": "2026-08-31",
-  "end": "2026-09-27",
-  "day": 28,
+  "start": "2026-09-28",
+  "end": "2026-10-25",
+  "day": 12,
   "days": 28,
-  "closed": 68,
-  "points": 200,
-  "unplanned": 2,
-  "unplanned_pct": 2.9,
+  "closed": 28,
+  "points": 65,
+  "unplanned": 4,
+  "unplanned_pct": 14.3,
   "access_requests": 0,
-  "people_active": 6,
+  "people_active": 4,
   "sprints": [
-   "EDW-Sprint 21-26",
-   "EDW-Sprint 22-26"
+   "EDW-Sprint 23-26",
+   "EDW-Sprint 24-26"
   ],
   "n_sprints": 2,
-  "sprints_done": 2
+  "sprints_done": 0
  },
  "aging": {
   "window_days": 90,
@@ -693,7 +712,7 @@
     "status": "Ready for Development",
     "open": 15,
     "med_age": 36.0,
-    "max_age": 213.9,
+    "max_age": 214.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -703,18 +722,18 @@
    },
    {
     "status": "In Development",
-    "open": 11,
-    "med_age": 4.2,
-    "max_age": 65.9,
+    "open": 10,
+    "med_age": 2.7,
+    "max_age": 66.0,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
-    "over": 5,
+    "over": 4,
     "clear_med": 2.1,
     "clear_n": 201
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -722,20 +741,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "New",
@@ -750,18 +757,6 @@
     "clear_n": 62
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -774,7 +769,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -782,16 +777,40 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 120
    }
   ],
   "parked": {
    "Deferred": 75,
    "Backlog": 80
   },
-  "open_total": 26,
-  "stale": 17,
+  "open_total": 25,
+  "stale": 16,
   "worst": "Ready for Development"
  }
 }

@@ -2538,6 +2538,66 @@
    "closed": null,
    "per_sprint": null,
    "open": true
+  },
+  "9.00": {
+   "slug": "2026-r900",
+   "label": "Release 9.00",
+   "short": "9.00",
+   "start": "2026-01-05",
+   "end": "2026-02-01",
+   "sprints": [
+    "EDW-R9.00-S4",
+    "EDW-R9.00-S5"
+   ],
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "n_sprints": 2
+  },
+  "9.01": {
+   "slug": "2026-r901",
+   "label": "Release 9.01",
+   "short": "9.01",
+   "start": "2026-02-02",
+   "end": "2026-03-01",
+   "sprints": [
+    "EDW-Sprint 6-26",
+    "EDW-Sprint 7-26"
+   ],
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "n_sprints": 2
+  },
+  "9.02": {
+   "slug": "2026-r902",
+   "label": "Release 9.02",
+   "short": "9.02",
+   "start": "2026-03-02",
+   "end": "2026-03-29",
+   "sprints": [
+    "EDW-Sprint 8-27",
+    "EDW-Sprint 9-26"
+   ],
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "n_sprints": 2
+  },
+  "9.03": {
+   "slug": "2026-r903",
+   "label": "Release 9.03",
+   "short": "9.03",
+   "start": "2026-03-30",
+   "end": "2026-04-26",
+   "sprints": [
+    "EDW-Sprint 10-26",
+    "EDW-Sprint 11-26"
+   ],
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "n_sprints": 2
   }
  },
  "SP_BY_RELEASE": {
@@ -2644,7 +2704,11 @@
   "9.07": "R9.07",
   "9.08": "R9.08",
   "9.09": "R9.09",
-  "9.10": "R9.10"
+  "9.10": "R9.10",
+  "9.00": "R9.00",
+  "9.01": "R9.01",
+  "9.02": "R9.02",
+  "9.03": "R9.03"
  },
  "HISTORICAL": [
   "2026-q1.html",

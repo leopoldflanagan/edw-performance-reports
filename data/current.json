@@ -1,358 +1,217 @@
 {
- "ym": "9.08",
+ "ym": "9.09",
  "month": {
-  "slug": "2026-r908",
-  "label": "Release 9.08",
-  "short": "9.08",
+  "slug": "2026-r909",
+  "label": "Release 9.09",
+  "short": "9.09",
   "n_sprints": 2,
-  "start": "2026-08-31",
-  "end": "2026-09-27",
+  "start": "2026-09-28",
+  "end": "2026-10-25",
   "prev": "",
-  "prev_closed": 57,
-  "closed": 68,
-  "discarded": 3,
-  "resolved": 71,
-  "unplanned": 2,
-  "unp_pct": 2.9,
+  "prev_closed": 51,
+  "closed": 28,
+  "discarded": 1,
+  "resolved": 29,
+  "unplanned": 4,
+  "unp_pct": 14.3,
   "types": [
    [
-    "Story",
-    56
-   ],
-   [
     "Bug",
-    6
+    13
    ],
    [
-    "Task",
-    4
+    "Story",
+    11
    ],
    [
     "Spike",
     2
+   ],
+   [
+    "Task",
+    2
    ]
   ],
   "sprints": [
-   "EDW-Sprint 21-26",
-   "EDW-Sprint 22-26"
+   "EDW-Sprint 23-26"
   ],
   "unp_items": [
    [
-    "EDW-2378",
-    "[Accounting] - Voided checks for Check Renewals report"
+    "EDW-2425",
+    "1.3: Add GetCareingtonRefundReport CSP endpoint and download screen"
    ],
    [
-    "EDW-2370",
-    "[Onboarding] - Data for PDS"
+    "EDW-2423",
+    "1.2: Create pr_GetCareingtonRefundReport_csp stored procedure for the refund ledger"
+   ],
+   [
+    "EDW-2421",
+    "1.1: Verify Careington refund data availability (amounts, external ID, org) before build"
+   ],
+   [
+    "EDW-2398",
+    "Reporting and Migration fixes for sprit 23"
    ]
   ],
-  "open": false,
+  "open": true,
   "day": 9,
   "days": 28,
-  "status": "healthy",
-  "headline": "68 items closed against 57 the month before.",
-  "notes": []
+  "status": "warning",
+  "headline": "28 items closed in the first 9 days, a pace of about 87 for the month against 51 last month. Unplanned work at 14.3%.",
+  "notes": [
+   "unplanned work at 14.3%"
+  ]
  },
  "SPRINTS": [
   [
-   "EDW-Sprint 21-26",
-   "Aug 31",
-   "Sep 14",
-   51,
-   35,
-   84,
-   118,
-   78,
-   40,
-   [
-    60.0,
-    75.0,
-    73.0,
-    69.0,
-    58.0,
-    58.0,
-    58.0,
-    58.0,
-    58.0,
-    61.0,
-    53.0,
-    47.0,
-    40.0,
-    40.0,
-    40.0,
-    31.0
-   ],
-   [
-    63.0,
-    84.0,
-    89.0,
-    89.0,
-    92.0,
-    92.0,
-    92.0,
-    92.0,
-    92.0,
-    103.0,
-    105.0,
-    115.0,
-    115.0,
-    115.0,
-    115.0,
-    109.0
-   ]
-  ],
-  [
-   "EDW-Sprint 22-26",
-   "Sep 14",
+   "EDW-Sprint 23-26",
    "Sep 28",
-   42,
-   29,
-   52,
-   81,
-   45,
-   56,
+   "Oct 12",
+   50,
+   30,
+   62,
+   124,
+   68,
+   100,
    [
-    43.0,
+    51.0,
+    49.0,
     50.0,
-    45.0,
-    44.0,
-    39.0,
-    34.0,
-    34.0,
-    34.0,
-    40.0,
-    42.0,
-    43.0,
-    40.0,
-    38.0,
-    38.0,
-    38.0,
-    36.0
+    52.0,
+    52.0,
+    47.0,
+    47.0,
+    64.0,
+    61.0,
+    58.0,
+    58.0,
+    50.0
    ],
    [
-    43.0,
     52.0,
-    52.0,
-    57.0,
-    57.0,
-    57.0,
-    57.0,
-    57.0,
-    66.0,
-    71.0,
-    79.0,
-    80.0,
-    81.0,
-    81.0,
-    81.0,
-    81.0
+    58.0,
+    64.0,
+    72.0,
+    72.0,
+    72.0,
+    72.0,
+    89.0,
+    89.0,
+    105.0,
+    118.0,
+    118.0
    ]
   ]
  ],
  "SPILL": {
-  "EDW-Sprint 21-26": {
+  "EDW-Sprint 23-26": {
    "done": [
-    35,
-    69
+    30,
+    62
    ],
    "open": [
-    1,
-    5
+    19,
+    51
    ],
    "out": [
-    15,
-    39
+    4,
+    10
    ],
    "in": [
     9,
-    21
+    24
    ],
-   "in_pct": 25,
-   "in_from": "EDW-Sprint 20-26"
-  },
-  "EDW-Sprint 22-26": {
-   "done": [
-    29,
-    45
-   ],
-   "open": [
-    11,
-    34
-   ],
-   "out": [
-    1,
-    2
-   ],
-   "in": [
-    5,
-    12
-   ],
-   "in_pct": 23,
-   "in_from": "EDW-Sprint 21-26"
+   "in_pct": 39,
+   "in_from": "EDW-Sprint 22-26"
   }
  },
  "SPLIT": {
-  "EDW-Sprint 21-26": {
-   "react": 0,
-   "plan": 14,
-   "pct": 0
-  },
-  "EDW-Sprint 22-26": {
-   "react": 2,
-   "plan": 13,
-   "pct": 13
+  "EDW-Sprint 23-26": {
+   "react": 4,
+   "plan": 21,
+   "pct": 16
   }
  },
  "TIS": {
-  "EDW-Sprint 21-26": {
+  "EDW-Sprint 23-26": {
    "tis": {
     "Backlog": {
-     "n": 20,
-     "med": 0.23
-    },
-    "In Development": {
-     "n": 35,
-     "med": 1.03
-    },
-    "Ready for Development": {
-     "n": 23,
-     "med": 1.34
-    },
-    "Awaiting Review": {
-     "n": 24,
-     "med": 0.78
-    },
-    "Closed": {
-     "n": 37,
-     "med": 11.02
-    },
-    "To Do": {
-     "n": 2,
+     "n": 16,
      "med": 0.15
     },
-    "Won't Do": {
-     "n": 1,
-     "med": 3.13
-    },
-    "Deferred": {
-     "n": 4,
-     "med": 0.05
-    }
-   },
-   "dist": {
-    "Closed": 39,
-    "Won't Do": 2,
-    "Deferred": 4,
-    "Backlog": 4,
-    "Ready for Development": 2
-   },
-   "stalled": 10,
-   "worst": 1.34,
-   "worstSt": "Ready for Development",
-   "items": 51
-  },
-  "EDW-Sprint 22-26": {
-   "tis": {
-    "Ready for Development": {
-     "n": 19,
-     "med": 2.03
-    },
     "In Development": {
-     "n": 26,
-     "med": 1.03
+     "n": 22,
+     "med": 3.2
     },
-    "Backlog": {
-     "n": 21,
-     "med": 1.2
-    },
-    "Awaiting Review": {
-     "n": 15,
-     "med": 0.1
+    "Ready for Development": {
+     "n": 27,
+     "med": 0.8
     },
     "Closed": {
      "n": 31,
-     "med": 10.09
+     "med": 4.67
+    },
+    "Awaiting Review": {
+     "n": 18,
+     "med": 2.94
     },
     "To Do": {
-     "n": 1,
-     "med": 8.24
+     "n": 3,
+     "med": 8.82
     },
-    "Won't Do": {
-     "n": 2,
-     "med": 8.53
+    "Done": {
+     "n": 1,
+     "med": 0.0
     }
    },
    "dist": {
-    "Closed": 33,
-    "Awaiting Review": 1,
+    "In Development": 8,
+    "Awaiting Review": 9,
+    "Closed": 27,
     "Ready for Development": 2,
-    "In Development": 2,
-    "Won't Do": 1,
-    "Backlog": 3
+    "Backlog": 4
    },
-   "stalled": 12,
-   "worst": 8.24,
+   "stalled": 22,
+   "worst": 8.82,
    "worstSt": "To Do",
-   "items": 42
+   "items": 50
   }
  },
  "GHOST": {
-  "EDW-Sprint 21-26": [
-   60.0,
-   75.0,
-   73.0,
-   69.0,
-   58.0,
-   58.0,
-   58.0,
-   58.0,
-   58.0,
-   61.0,
+  "EDW-Sprint 23-26": [
+   53.0,
+   53.0,
+   54.0,
    56.0,
-   50.0,
-   43.0,
-   43.0,
-   43.0,
-   40.0
-  ],
-  "EDW-Sprint 22-26": [
-   43.0,
-   50.0,
-   45.0,
-   44.0,
-   39.0,
-   34.0,
-   34.0,
-   34.0,
-   40.0,
-   42.0,
-   43.0,
-   40.0,
-   38.0,
-   38.0,
-   38.0,
-   36.0
+   56.0,
+   51.0,
+   51.0,
+   70.0,
+   67.0,
+   64.0,
+   64.0,
+   56.0
   ]
  },
  "CAP": {
-  "9.08": [
-   68,
-   62,
-   200,
-   6
+  "9.09": [
+   28,
+   24,
+   65,
+   4
   ]
  },
  "CYC": {
-  "9.08": {
-   "med": 4.81,
-   "avg": 8.25,
-   "n": 46,
-   "mx": 50.15,
-   "nodev": 22,
-   "base": 68
+  "9.09": {
+   "med": 5.09,
+   "avg": 6.86,
+   "n": 12,
+   "mx": 18.77,
+   "nodev": 16,
+   "base": 28
   }
  },
- "complete": true,
+ "complete": false,
  "kind": "release",
  "n_sprints": 2,
  "CAPACITY": {
