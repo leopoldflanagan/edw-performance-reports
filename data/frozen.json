@@ -2506,6 +2506,38 @@
    "unp_items": [],
    "open": true,
    "unp_pct": null
+  },
+  "9.09": {
+   "slug": "2026-r909",
+   "label": "Release 9.09",
+   "short": "9.09",
+   "start": "2026-09-28",
+   "end": "2026-10-25",
+   "sprints": [
+    "EDW-Sprint 23-26",
+    "EDW-Sprint 24-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "open": true
+  },
+  "9.10": {
+   "slug": "2026-r910",
+   "label": "Release 9.10",
+   "short": "9.10",
+   "start": "2026-10-26",
+   "end": "2026-11-22",
+   "sprints": [
+    "EDW-Sprint 25-26",
+    "EDW-Sprint 26-26"
+   ],
+   "n_sprints": 2,
+   "weeks": 4,
+   "closed": null,
+   "per_sprint": null,
+   "open": true
   }
  },
  "SP_BY_RELEASE": {
@@ -2610,7 +2642,9 @@
   "9.05": "R9.05",
   "9.06": "R9.06",
   "9.07": "R9.07",
-  "9.08": "R9.08"
+  "9.08": "R9.08",
+  "9.09": "R9.09",
+  "9.10": "R9.10"
  },
  "HISTORICAL": [
   "2026-q1.html",

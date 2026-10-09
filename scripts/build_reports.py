@@ -2799,13 +2799,21 @@ def index_page():
     rel, months, quarters = [], [], []
     # the measured ones only: an unmeasured release has no figures to put in a
     # card, and a card with no figures is a claim that there was nothing to show
-    for rk, r in sorted(((k, v) for k, v in (DATA.get("RELEASES") or {}).items()
-                         if v.get("closed") is not None or v.get("open")),
-                        reverse=True):
+    # the same test the module-level filter uses: a release gets a card when it has
+    # figures, never merely because it is on the calendar. A second copy of this
+    # condition is how the index came to advertise a release whose page was never
+    # written.
+    for rk, r in sorted(((k, v) for k, v in RELEASES.items()), reverse=True):
         href = r["slug"] + ".html"
         _ns = [n.split()[-1].split("-")[0] for n in r["sprints"]]
+        # A release on the calendar that nothing has measured yet has no figures to
+        # put here. It used to print whatever placeholder the file carried -- "0
+        # closed" for a release that closed 23 items -- which is the one thing the
+        # rest of this report refuses to do.
+        _fig = (f"{r['closed']} closed, {r['per_sprint']} per sprint"
+                if r.get("closed") is not None else "not measured yet")
         sub = (f"Sprint{'s' if len(_ns) > 1 else ''} {', '.join(_ns[:-1]) + ' and ' + _ns[-1] if len(_ns) > 1 else _ns[0]}"
-               f" · {r['start']} to {r['end']} · {r['closed']} closed, {r['per_sprint']} per sprint")
+               f" · {r['start']} to {r['end']} · {_fig}")
         rel.append((href, card_for(href, idx.get(href), "open" if r.get("open") else r.get("status"),
                                    short=r["short"], title=f"Release {rk} Performance Report",
                                    blurb=(idx.get(href) or {}).get("blurb") or sub)))
@@ -2875,6 +2883,68 @@ def freeze_month():
     return True
 
 
+def freeze_release():
+    """A release whose window has ended and whose sprints have all closed becomes
+    history: the figures the refresh just computed are written into frozen.json and
+    never recomputed again.
+
+    This is the step that did not exist. The build merged the live figures into the
+    release in memory and threw them away, so frozen.json kept whatever placeholder
+    it was seeded with -- a 0 on DS, a mid-flight 51 on EDW -- and the index card
+    published that while the release page recomputed something else. Two numbers for
+    one release, on the same screen, for as long as nobody looked.
+    """
+    if not (CURRENT_RELEASE and globals().get("PERIOD_WORD") == "release"):
+        return False
+    rk = CURRENT_RELEASE["ym"]
+    m  = CURRENT_RELEASE["month"]
+    D  = json.load(open(os.path.join(REPO, "data", "frozen.json")))
+    rel = (D.get("RELEASES") or {}).get(rk)
+    if not rel:
+        return False
+    end = (rel.get("end") or "").strip()
+    if not end:
+        return False
+    try:
+        if dt.date.today() <= dt.date.fromisoformat(end):
+            return False                      # still inside its window
+    except ValueError:
+        return False
+    if not CURRENT_RELEASE.get("complete"):
+        return False                          # a sprint is still open; wait for it
+    if rel.get("closed") is not None and not rel.get("open", True):
+        return False                          # already history
+
+    keep = {k: rel[k] for k in ("slug", "label", "short", "sprints", "n_sprints",
+                                "weeks", "start", "end") if k in rel}
+    D["RELEASES"][rk] = {**m, **keep, "open": False,
+                         "per_sprint": round(m["closed"] / max(1, keep.get("n_sprints", 1)), 1)}
+    D.setdefault("CAP_R", {})[rk] = list(CURRENT_RELEASE["CAP"].values())[0]
+    D.setdefault("CYC_R", {})[rk] = list(CURRENT_RELEASE["CYC"].values())[0]
+    D.setdefault("SP_BY_RELEASE", {})[rk] = keep.get("sprints", m.get("sprints", []))
+    D.setdefault("RELEASE_LABEL", {}).setdefault(rk, keep.get("short", rk))
+    have = {r[0] for r in D.get("SPRINTS", [])}
+    D.setdefault("SPRINTS", []).extend([r for r in CURRENT_RELEASE["SPRINTS"]
+                                        if r[0] not in have])
+    for key in ("SPILL", "SPLIT", "TIS"):
+        if CURRENT_RELEASE.get(key):
+            D.setdefault(key, {}).update(CURRENT_RELEASE[key])
+    D.setdefault("INDEX", {})[keep.get("slug", m["slug"]) + ".html"] = {
+        "short": keep.get("short", m["short"]),
+        "title": f"{keep.get('label', m['label'])} Performance Report",
+        "badge": BADGE_LABEL.get(m["status"], "Warning"),
+        "blurb": m["headline"]}
+    with open(os.path.join(REPO, "data", "frozen.json"), "w") as f:
+        json.dump(D, f, indent=1, ensure_ascii=False)
+    try:
+        os.remove(os.path.join(REPO, "data", "current.json"))
+    except OSError:
+        pass
+    print(f"froze {keep.get('label', rk)} into frozen.json "
+          f"({m['closed']} closed) - it will not be recomputed again")
+    return True
+
+
 def quarter_ready():
     """Names a quarter whose three months are all frozen but that has no page yet."""
     D = json.load(open(os.path.join(REPO, "data", "frozen.json")))
@@ -2917,8 +2987,35 @@ if DATA.get("QUARTERS_CLOSED"):
 # would state that the team delivered nothing. scripts/backfill.py computes the
 # closed ones from Jira; the refresh job measures the open one. Either way a page
 # appears when there is something true to put on it.
+def _is_open(v):
+    """Whether a release is still running, from its own window rather than from a
+    stored flag. Nothing ever wrote `open: false` back into frozen.json, so a
+    release stayed "in progress" for as long as the file said so -- 9.08 was still
+    open twelve days after it ended, which kept the backfill from ever measuring it
+    and left a placeholder zero on the index card."""
+    _s, _e = (v.get("start") or "").strip(), (v.get("end") or "").strip()
+    if not _e:
+        return bool(v.get("open"))
+    try:
+        _t = dt.date.today()
+        if _t > dt.date.fromisoformat(_e):
+            return False                      # its window has ended
+        return (not _s) or dt.date.fromisoformat(_s) <= _t
+    except ValueError:
+        return bool(v.get("open"))
+
+
+for _v in (DATA.get("RELEASES") or {}).values():
+    _v["open"] = _is_open(_v)
+
+# A release earns a page by having figures: either it was measured and frozen, or it
+# is the one the refresh just measured live. A row that is only a window and a list
+# of sprint names is a fact about the calendar, not a result -- and rendering it used
+# to mean either publishing a placeholder zero or crashing on a figure that is not
+# there. Extending the calendar should never be able to do either.
+_CUR_RK = (CURRENT_RELEASE or {}).get("ym")
 RELEASES = {k: v for k, v in (DATA.get("RELEASES") or {}).items()
-            if v.get("closed") is not None or v.get("open")}
+            if v.get("closed") is not None or (v.get("open") and k == _CUR_RK)}
 _UNMEASURED = sorted(set(DATA.get("RELEASES") or {}) - set(RELEASES))
 if _UNMEASURED:
     print("not measured yet, so not rendered:", ", ".join(_UNMEASURED),
@@ -2933,11 +3030,12 @@ if RELEASES:
     PERIOD_WORD  = "release"
 
     MK_ALL  = sorted(RELEASES)
-    MK_OPEN = next((k for k, v in RELEASES.items() if v.get("open")), None)
-    MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
+    MK_OPEN = next((k for k, v in sorted(RELEASES.items()) if v.get("open")), None)
+    MK_DONE = [k for k in MK_ALL
+               if k != MK_OPEN and RELEASES[k].get("closed") is not None]
     MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3] or MK_DONE[:1]
     MK_LAST = MK_ALL[-1]
-    MK_LABS = [MONTH_LABEL[k] for k in MK_DONE]
+    MK_LABS = [MONTH_LABEL.get(k, k) for k in MK_DONE]
     BASE_KEYS = []
     CYC_ORDER = list(MK_DONE)
     _FROZEN_MONTHS = set(MK_DONE)
@@ -2965,7 +3063,7 @@ if RELEASES:
         MK_OPEN = _rk if RELEASES[_rk].get("open") else None
         MK_DONE = [k for k in MK_ALL if k != MK_OPEN]
         MK_L3, MK_P3 = MK_DONE[-3:], MK_DONE[-6:-3] or MK_DONE[:1]
-        MK_LABS = [MONTH_LABEL[k] for k in MK_DONE]
+        MK_LABS = [MONTH_LABEL.get(k, k) for k in MK_DONE]
         CYC_ORDER = list(MK_DONE)
         PNORM = {k: v.get("n_sprints", 1) for k, v in RELEASES.items()}
 
@@ -3073,7 +3171,7 @@ _index = index_page()
 open(os.path.join(REPO, "index.html"), "w").write(_index)
 print("wrote index")
 
-_froze = freeze_month()
+_froze = freeze_month() or freeze_release()
 _q = quarter_ready()
 if _q:
     print(f"NOTE: {_q} now has all of its months frozen and no quarter page yet.")
