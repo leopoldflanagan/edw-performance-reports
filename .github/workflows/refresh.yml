@@ -26,6 +26,7 @@ env:
   TEAM_KEY:    EDW
   BOARD_ID:    "11"
   PROJECT_KEY: EDW
+  SCHEDULE_PAGE: "2842362029"   # Release Schedule 2026, WF Releases space
 
 jobs:
   refresh:

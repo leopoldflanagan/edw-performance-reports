@@ -452,6 +452,156 @@ def _sprint_name(x):
     return m.group(0) if m else None
 
 
+SCHEDULE_PAGE = (os.environ.get("SCHEDULE_PAGE") or "").strip()
+
+
+def release_schedule(page_id):
+    """The company release calendar, as its own Confluence page states it.
+
+    Nothing is derived here. The page gives each release a feature-freeze date and
+    a dev-window length in weeks, and those two do not agree on every row; sorting
+    that out is not a parser's job.
+    """
+    if not page_id:
+        return []
+    p = _soft(f"/wiki/api/v2/pages/{page_id}?body-format=storage")
+    if not p:
+        return []
+    html = (((p.get("body") or {}).get("storage") or {}).get("value")) or ""
+    import re as _re
+    for t in _tables(html):
+        if not all(any(m.lower() in h.lower() for h in t["headers"])
+                   for m in ("Release", "Freeze", "Sprint")):
+            continue
+        col = lambda r, want: next((v for k, v in r.items()
+                                    if want.lower() in k.lower()), "") or ""
+        out = []
+        for r in t["rows"]:
+            rid = _re.sub(r"[^0-9.]", "", col(r, "Release ID") or col(r, "Release"))
+            fz, spr = col(r, "Freeze"), col(r, "Eligible Sprint") or col(r, "Sprint")
+            wk = _re.search(r"\d+", col(r, "Dev Window") or "")
+            m = _re.search(r"([A-Z][a-z]{2})[a-z]*\.?,?\s+(\d{1,2})", fz)
+            if not (rid and m):
+                continue
+            out.append({"id": rid,
+                        "freeze_mon": m.group(1), "freeze_day": int(m.group(2)),
+                        "sprints": [int(n) for n in _re.findall(r"\d+", spr)],
+                        "weeks": int(wk.group()) if wk else None})
+        if out:
+            return out
+    return []
+
+
+_MONS = {m: i + 1 for i, m in enumerate(
+    ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+     "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"])}
+
+
+def schedule_windows(sched, year):
+    """Each release's window, derived twice, and kept only where the two agree.
+
+    The page states a window two ways: the freeze date of each release, and the
+    dev-window length in weeks. On the 2026 page those readings differ for two
+    releases -- the freeze dates of 9.06 and 9.07 were not updated when 9.06 grew
+    to three sprints -- so deriving from either column alone silently moves a
+    window by a week.
+
+    A window is returned only when both readings land on the same dates. The rest
+    come back as disagreements, to be reported rather than resolved: picking one
+    would move figures that have already been published and signed off.
+    """
+    good, bad, prev_freeze, prev_end = {}, [], None, None
+    for row in sched:
+        try:
+            fz = dt.date(year, _MONS[row["freeze_mon"]], row["freeze_day"])
+        except (KeyError, ValueError):
+            continue
+        by_freeze = ((prev_freeze + dt.timedelta(days=1)) if prev_freeze else None, fz)
+        by_window = None
+        if row.get("weeks") and prev_end is not None:
+            _s = prev_end + dt.timedelta(days=1)
+            by_window = (_s, _s + dt.timedelta(weeks=row["weeks"]) - dt.timedelta(days=1))
+        if by_window and by_freeze[0] and by_freeze == by_window:
+            good[row["id"]] = (by_freeze[0], by_freeze[1], row["sprints"])
+            prev_end = by_freeze[1]
+        else:
+            if by_window and by_freeze[0]:
+                bad.append({"id": row["id"],
+                            "by_freeze": f"{by_freeze[0]} to {by_freeze[1]}",
+                            "by_window": f"{by_window[0]} to {by_window[1]}"})
+            prev_end = (by_window or by_freeze)[1]
+        prev_freeze = fz
+    return good, bad
+
+
+def sprints_in_window(mine, start, end):
+    """The team's sprints belonging to a window, by which window contains each
+    sprint's midpoint. Not by name: DS has no sprint 17 -- the one that ran between
+    16 and 18 is called 16-27 -- so arithmetic on the number finds nothing. And not
+    by either endpoint: board dates drift a day or two from the planning calendar,
+    which would drop a sprint whose last day lands just outside."""
+    out = []
+    for s in mine:
+        a, b = _dtp(s.get("startDate")), _dtp(s.get("completeDate") or s.get("endDate"))
+        if not (a and b):
+            continue
+        mid = (a + (b - a) / 2).date()
+        if start <= mid <= end:
+            out.append((a, s["name"]))
+    return [n for _, n in sorted(out)]
+
+
+def sync_calendar(frozen_path, mine, team, page_id):
+    """Bring the release calendar in frozen.json up to the company schedule.
+
+    Only adds a release that is not there, or corrects one that nothing has
+    measured yet. A release that already carries figures is never touched: its
+    numbers have been published, and moving its window underneath them would
+    change a signed-off report without saying so. Those are reported instead.
+    """
+    sched = release_schedule(page_id)
+    if not sched:
+        return {"added": [], "updated": [], "conflicts": [], "locked": []}
+    D = json.load(open(frozen_path))
+    REL = D.setdefault("RELEASES", {})
+    year = dt.date.today().year
+    good, conflicts = schedule_windows(sched, year)
+    added, updated, locked, dirty = [], [], [], False
+
+    for rid, (start, end, _nums) in good.items():
+        names = sprints_in_window(mine, start, end)
+        cur = REL.get(rid)
+        if cur and cur.get("closed") is not None:
+            if cur.get("start") != str(start) or cur.get("end") != str(end):
+                locked.append({"id": rid, "has": f"{cur.get('start')} to {cur.get('end')}",
+                               "schedule": f"{start} to {end}"})
+            continue
+        if not names and not cur:
+            continue                      # no sprints on the board for it yet
+        entry = dict(cur or {})
+        entry.update({
+            "slug": f"{year}-r{rid.replace('.', '')}", "label": f"Release {rid}",
+            "short": rid, "start": str(start), "end": str(end),
+            "sprints": names or (cur or {}).get("sprints", []),
+            "weeks": max(1, ((end - start).days + 1) // 7)})
+        entry.setdefault("closed", None)
+        entry.setdefault("per_sprint", None)
+        entry["n_sprints"] = len(entry["sprints"])
+        if entry != cur:
+            REL[rid] = entry
+            D.setdefault("RELEASE_LABEL", {}).setdefault(rid, f"R{rid}")
+            (added if not cur else updated).append(rid)
+            dirty = True
+
+    if dirty:
+        with open(frozen_path, "w") as f:
+            json.dump(D, f, indent=1, ensure_ascii=False)
+    print(f"  release calendar: +{len(added)} added, {len(updated)} updated, "
+          f"{len(conflicts)} ambiguous, {len(locked)} already measured and differing",
+          flush=True)
+    return {"added": added, "updated": updated, "conflicts": conflicts, "locked": locked}
+
+
 def capacity(page_id):
     """Team capacity, sprint goals and the roster, from the Confluence page.
 
@@ -633,7 +783,7 @@ LONG_HAUL    = 4          # sprints an item can ride before it is worth naming
 NEXT_SPRINT_NOTICE = 7
 
 
-def admin(project, live_sp, cap_page, nxt=None):
+def admin(project, live_sp, cap_page, nxt=None, cal=None):
     """Administrative hygiene, split by what it actually costs.
 
     BLOCKING is the Definition of Ready exactly as the team's Backlog Organization
@@ -801,6 +951,23 @@ def admin(project, live_sp, cap_page, nxt=None):
                             f"future sprint after it. When this one closes the active "
                             f"sprint view has nothing to move on to."),
                     "n": 1, "items": []})
+
+    # the release calendar cannot resolve itself, so it says so here rather than
+    # guessing. Both of these are somebody's edit to make, not the job's.
+    for c in (cal or {}).get("conflicts", []):
+        setup.append({
+            "rule": f"Release {c['id']} has two different windows on the schedule",
+            "why": (f"the feature-freeze column gives {c['by_freeze']} and the "
+                    f"dev-window column gives {c['by_window']}. The calendar keeps "
+                    f"what it already had; the page needs one of the two corrected."),
+            "n": 1, "items": []})
+    for c in (cal or {}).get("locked", []):
+        setup.append({
+            "rule": f"Release {c['id']} was measured on a window the schedule no longer states",
+            "why": (f"measured over {c['has']}, scheduled as {c['schedule']}. The "
+                    f"figures are left alone -- moving a published window silently "
+                    f"would change a report somebody has already read."),
+            "n": 1, "items": []})
 
     print(f"  admin checks: {sum(x['n'] for x in B)} blocking, "
           f"{sum(x['n'] for x in D)} debt, {len(setup)} sprint setup", flush=True)
@@ -1284,6 +1451,11 @@ def main():
         live_sp["day"]  = max(1, min((dt.date.today() - _s).days + 1, live_sp["days"]))
 
     # the period in progress, in the unit the reports now use: the release
+    # the calendar before anything reads it: a release the company has scheduled but
+    # nobody added by hand is why the live panel kept calling a closed release the
+    # period in progress
+    _cal = sync_calendar(a.frozen, mine, a.team, SCHEDULE_PAGE)
+
     cur = current_release(a.frozen)
     if cur:
         _rk, _r = cur
@@ -1317,7 +1489,7 @@ def main():
         "capacity": cap_page,
         "backlog": backlog(a.project, a.frozen),
         "projection": projection(live_sp, a.frozen),
-        "admin": admin(a.project, live_sp, cap_page, nxt=(future[0] if future else None)),
+        "admin": admin(a.project, live_sp, cap_page, nxt=(future[0] if future else None), cal=_cal),
         "sprint": live_sp,
         "next": ({"name": future[0]["name"], "start": future[0]["startDate"][:10],
                   "state": "not started"} if future else None),
