@@ -1278,6 +1278,48 @@ def current_release(frozen_path):
     k = sorted(rel)[-1]
     return k, rel[k]
 
+def pending_releases(frozen_path, cur_key, limit=4):
+    """Releases whose window has ended but that frozen.json still has no final figure
+    for. A release stops being the current one the day it ends, so without this nobody
+    ever goes back to measure it and its seeded placeholder stands forever."""
+    try:
+        rel = json.load(open(frozen_path)).get("RELEASES") or {}
+    except Exception:
+        return []
+    today = dt.date.today().isoformat()
+    out = []
+    for k in sorted(rel):
+        v = rel[k]
+        if k == cur_key:
+            continue
+        end = (v.get("end") or "").strip()
+        if not end or end >= today:
+            continue                      # still running, or no window to end
+        if v.get("closed") is not None and not v.get("open", True):
+            continue                      # already history
+        if not v.get("sprints"):
+            continue                      # nothing to measure it over
+        out.append((k, v))
+    return out[-limit:]
+
+
+def _prev_per_release(frozen_path, rk, n_sprints):
+    """Last release's throughput, scaled to this one's sprint count, as the reference
+    the verdict compares against. None when the previous release has no final figure."""
+    try:
+        fz = json.load(open(frozen_path))
+        keys = sorted(fz.get("RELEASES", {}))
+        i = keys.index(rk)
+        if not i:
+            return None
+        p = fz["RELEASES"][keys[i - 1]]
+        if p.get("closed") is None or not p.get("n_sprints"):
+            return None
+        return round(p["closed"] / p["n_sprints"] * n_sprints)
+    except Exception:
+        return None
+
+
 def sprints_named(mine, names):
     """The board's sprints matching a release's sprint list, in order, skipping
     any that have not started."""
@@ -1543,6 +1585,38 @@ def main():
         blk["kind"] = "month"
     with open(a.month_out, "w") as f:
         json.dump(blk, f, indent=1)
+
+    # Releases that ended while the calendar had already moved past them. These are
+    # measured here, once, so the build has something to freeze them with; the next
+    # run drops them from this list because frozen.json then has their final figure.
+    _pend = []
+    for _rk, _r in pending_releases(a.frozen, (cur or (None, None))[0]):
+        # Closing an old release is housekeeping, not the live report. If one of
+        # them cannot be measured -- a renamed sprint, a board that no longer
+        # carries it -- that is said out loud and the refresh carries on, rather
+        # than taking the whole site down with it.
+        try:
+            _b = month_block(a.board, a.project, a.team, mine, _rk,
+                             _prev_per_release(a.frozen, _rk, len(_r["sprints"])),
+                             window=(_r["start"], _r["end"]), sprint_names=_r["sprints"],
+                             label=f"Release {_rk}")
+        except Exception as e:
+            print(f"pending: Release {_rk} could not be measured for closing - "
+                  f"{type(e).__name__}: {e}")
+            continue
+        _b["kind"] = "release"
+        _b["n_sprints"] = len(_r["sprints"])
+        if cap_page:
+            _b["CAPACITY"] = cap_page["sprints"]
+            _b["GOALS"]    = cap_page["goals"]
+            _b["ROSTER"]   = cap_page["roster"]
+            _b["CHANGES"]  = cap_page["changes"]
+            _b["CAP_URL"]  = cap_page["url"]
+        _pend.append(_b)
+        print(f"pending: Release {_rk} measured for closing - "
+              f"{_b['month']['closed']} closed, all sprints closed: {_b['complete']}")
+    with open(os.path.join(os.path.dirname(a.month_out) or ".", "pending.json"), "w") as f:
+        json.dump(_pend, f, indent=1)
 
     # the sign-off register. Written here rather than hand-edited, so the only way
     # a report turns green is that both people ticked their own box in Confluence.

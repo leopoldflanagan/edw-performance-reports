@@ -75,6 +75,13 @@ jobs:
           if [ "$code" = "0" ] && [ -z "$SELFCHECK" ]; then
             python3 scripts/build_reports.py --all 2>&1 | tee -a /tmp/run.log
             code=${PIPESTATUS[0]}
+            # The close happens after the pages are written, so the run that
+            # closes a release renders it from the figure it is about to replace.
+            # Build once more and this same run publishes the final one.
+            if [ "$code" = "0" ] && grep -q "into frozen.json" /tmp/run.log; then
+              python3 scripts/build_reports.py --all 2>&1 | tee -a /tmp/run.log
+              code=${PIPESTATUS[0]}
+            fi
           fi
           {
             echo "### Refresh - exit code $code"

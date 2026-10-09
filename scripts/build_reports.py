@@ -2883,21 +2883,17 @@ def freeze_month():
     return True
 
 
-def freeze_release():
-    """A release whose window has ended and whose sprints have all closed becomes
-    history: the figures the refresh just computed are written into frozen.json and
-    never recomputed again.
+def _freeze_one(blk, drop_current=False):
+    """Write one measured release into frozen.json as history, and never recompute it.
 
-    This is the step that did not exist. The build merged the live figures into the
-    release in memory and threw them away, so frozen.json kept whatever placeholder
-    it was seeded with -- a 0 on DS, a mid-flight 51 on EDW -- and the index card
-    published that while the release page recomputed something else. Two numbers for
-    one release, on the same screen, for as long as nobody looked.
+    `blk` is a measured period in the shape the fetcher writes: the live current.json,
+    or one of the entries in pending.json for a release whose window closed while the
+    calendar had already moved past it.
     """
-    if not (CURRENT_RELEASE and globals().get("PERIOD_WORD") == "release"):
+    if not blk or not blk.get("ym") or not blk.get("month"):
         return False
-    rk = CURRENT_RELEASE["ym"]
-    m  = CURRENT_RELEASE["month"]
+    rk = blk["ym"]
+    m  = blk["month"]
     D  = json.load(open(os.path.join(REPO, "data", "frozen.json")))
     rel = (D.get("RELEASES") or {}).get(rk)
     if not rel:
@@ -2910,7 +2906,7 @@ def freeze_release():
             return False                      # still inside its window
     except ValueError:
         return False
-    if not CURRENT_RELEASE.get("complete"):
+    if not blk.get("complete"):
         return False                          # a sprint is still open; wait for it
     if rel.get("closed") is not None and not rel.get("open", True):
         return False                          # already history
@@ -2919,16 +2915,16 @@ def freeze_release():
                                 "weeks", "start", "end") if k in rel}
     D["RELEASES"][rk] = {**m, **keep, "open": False,
                          "per_sprint": round(m["closed"] / max(1, keep.get("n_sprints", 1)), 1)}
-    D.setdefault("CAP_R", {})[rk] = list(CURRENT_RELEASE["CAP"].values())[0]
-    D.setdefault("CYC_R", {})[rk] = list(CURRENT_RELEASE["CYC"].values())[0]
+    D.setdefault("CAP_R", {})[rk] = list(blk["CAP"].values())[0]
+    D.setdefault("CYC_R", {})[rk] = list(blk["CYC"].values())[0]
     D.setdefault("SP_BY_RELEASE", {})[rk] = keep.get("sprints", m.get("sprints", []))
     D.setdefault("RELEASE_LABEL", {}).setdefault(rk, keep.get("short", rk))
     have = {r[0] for r in D.get("SPRINTS", [])}
-    D.setdefault("SPRINTS", []).extend([r for r in CURRENT_RELEASE["SPRINTS"]
+    D.setdefault("SPRINTS", []).extend([r for r in blk["SPRINTS"]
                                         if r[0] not in have])
     for key in ("SPILL", "SPLIT", "TIS"):
-        if CURRENT_RELEASE.get(key):
-            D.setdefault(key, {}).update(CURRENT_RELEASE[key])
+        if blk.get(key):
+            D.setdefault(key, {}).update(blk[key])
     D.setdefault("INDEX", {})[keep.get("slug", m["slug"]) + ".html"] = {
         "short": keep.get("short", m["short"]),
         "title": f"{keep.get('label', m['label'])} Performance Report",
@@ -2936,13 +2932,37 @@ def freeze_release():
         "blurb": m["headline"]}
     with open(os.path.join(REPO, "data", "frozen.json"), "w") as f:
         json.dump(D, f, indent=1, ensure_ascii=False)
-    try:
-        os.remove(os.path.join(REPO, "data", "current.json"))
-    except OSError:
-        pass
+    if drop_current:
+        try:
+            os.remove(os.path.join(REPO, "data", "current.json"))
+        except OSError:
+            pass
     print(f"froze {keep.get('label', rk)} into frozen.json "
           f"({m['closed']} closed) - it will not be recomputed again")
     return True
+
+
+def freeze_release():
+    """Close out every release that has ended and is still carrying a provisional
+    figure: the one whose window just ended, and any older one that ended while the
+    calendar had already moved on.
+
+    Freezing only the current release was not enough. A release stops being current
+    the day its window ends, so 9.08 was not the current release on any day after it
+    closed, and the refresh that was meant to close it was instead already measuring
+    9.09. The placeholder -- a 0 on DS, a mid-flight 51 on EDW -- would have stood
+    forever, and no run would ever have gone back for it.
+    """
+    froze = False
+    if CURRENT_RELEASE and globals().get("PERIOD_WORD") == "release":
+        froze = _freeze_one(CURRENT_RELEASE, drop_current=True) or froze
+    try:
+        blocks = json.load(open(os.path.join(REPO, "data", "pending.json")))
+    except Exception:
+        blocks = []
+    for b in (blocks if isinstance(blocks, list) else []):
+        froze = _freeze_one(b) or froze
+    return froze
 
 
 def quarter_ready():
@@ -3171,7 +3191,10 @@ _index = index_page()
 open(os.path.join(REPO, "index.html"), "w").write(_index)
 print("wrote index")
 
-_froze = freeze_month() or freeze_release()
+# both, not one or the other: `or` short-circuits, so a frozen month would
+# have skipped the release close entirely
+_froze = freeze_month()
+_froze = freeze_release() or _froze
 _q = quarter_ready()
 if _q:
     print(f"NOTE: {_q} now has all of its months frozen and no quarter page yet.")
