@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-08T23:45:17Z",
+ "generated": "2026-10-09T00:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 11,
+  "day": 12,
   "days": 14,
   "n": 10,
-  "done_now": 60,
+  "done_now": 65,
   "committed": 62,
-  "lo": 78,
-  "mid": 79,
-  "hi": 91,
-  "pct": 127,
+  "lo": 81,
+  "mid": 85,
+  "hi": 98,
+  "pct": 137,
   "verdict": "on track for the commitment",
-  "share_mid": 0.757
+  "share_mid": 0.766
  },
  "admin": {
   "scope": {
@@ -575,19 +575,19 @@
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
   "items": 50,
-  "items_done": 28,
+  "items_done": 29,
   "committed": 62,
   "final": 124,
-  "completed": 60,
+  "completed": 65,
   "scope_change": 100,
-  "vs_commitment": 97,
+  "vs_commitment": 105,
   "time_elapsed": 76,
   "spill": {
-   "open_items": 20,
-   "open_pts": 56.0,
+   "open_items": 19,
+   "open_pts": 51.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 57.0
+   "done_pts": 62.0
   },
   "recv": {
    "items": 9,
@@ -598,8 +598,8 @@
   "spill_rate": null,
   "dist": {
    "In Development": 9,
-   "Closed": 26,
-   "Awaiting Review": 9,
+   "Closed": 27,
+   "Awaiting Review": 8,
    "Ready for Development": 2
   },
   "burn": [
@@ -614,7 +614,7 @@
    61.0,
    58.0,
    58.0,
-   58.0
+   53.0
   ],
   "scope": [
    52.0,
@@ -642,10 +642,10 @@
    67.0,
    64.0,
    64.0,
-   64.0
+   59.0
   ],
   "days": 14,
-  "day": 11,
+  "day": 12,
   "capacity": {
    "release": "9.09",
    "start": "2026-09-28",
@@ -698,44 +698,20 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 12,
-    "clear_med": 3.9,
-    "clear_n": 179
+    "clear_med": 4.0,
+    "clear_n": 178
    },
    {
     "status": "In Development",
     "open": 11,
-    "med_age": 3.4,
+    "med_age": 3.5,
     "max_age": 65.2,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 202
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_n": 201
    },
    {
     "status": "PR Created",
@@ -750,7 +726,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -758,8 +734,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -784,6 +760,30 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 120
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
