@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-11T19:15:18Z",
+ "generated": "2026-10-11T19:30:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -635,6 +635,7 @@
    58.0,
    50.0,
    45.0,
+   45.0,
    45.0
   ],
   "scope": [
@@ -648,6 +649,7 @@
    89.0,
    89.0,
    105.0,
+   118.0,
    118.0,
    118.0,
    118.0,
@@ -666,6 +668,7 @@
    64.0,
    64.0,
    56.0,
+   51.0,
    51.0,
    51.0
   ],
@@ -739,6 +742,18 @@
     "clear_n": 202
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 120
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -749,42 +764,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "PR Created",
@@ -799,7 +778,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -807,13 +786,37 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 80
+   "Backlog": 80,
+   "Deferred": 75
   },
   "open_total": 24,
   "stale": 16,
