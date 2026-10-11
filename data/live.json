@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-10T23:45:18Z",
+ "generated": "2026-10-11T00:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 13,
+  "day": 14,
   "days": 14,
   "n": 19,
   "done_now": 73,
   "committed": 62,
-  "lo": 76,
-  "mid": 83,
-  "hi": 95,
-  "pct": 134,
+  "lo": 73,
+  "mid": 73,
+  "hi": 73,
+  "pct": 118,
   "verdict": "on track for the commitment",
-  "share_mid": 0.88
+  "share_mid": 1.0
  },
  "admin": {
   "scope": {
@@ -670,7 +670,7 @@
    51.0
   ],
   "days": 14,
-  "day": 13,
+  "day": 14,
   "capacity": {
    "release": "9.09",
    "start": "2026-09-28",
@@ -695,7 +695,7 @@
   "kind": "release",
   "start": "2026-09-28",
   "end": "2026-10-25",
-  "day": 13,
+  "day": 14,
   "days": 28,
   "closed": 29,
   "points": 70,
@@ -729,7 +729,7 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 5.4,
+    "med_age": 5.5,
     "max_age": 67.2,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -751,30 +751,6 @@
     "clear_n": 16
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -787,6 +763,18 @@
     "clear_n": 1
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -797,6 +785,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 120
    },
    {
     "status": "New",
@@ -812,8 +812,8 @@
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 80
+   "Backlog": 80,
+   "Deferred": 75
   },
   "open_total": 24,
   "stale": 16,
