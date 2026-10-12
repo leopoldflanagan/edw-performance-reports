@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T17:30:21Z",
+ "generated": "2026-10-12T17:43:09Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 15,
-   "sprint": 43,
+   "sprint": 44,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -437,6 +437,17 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
+   },
+   {
+    "rule": "Still in Backlog inside the sprint",
+    "why": "in the sprint but never pulled into the flow.",
+    "n": 1,
+    "items": [
+     {
+      "key": "EDW-2450",
+      "summary": "Caching system refinement"
+     }
+    ]
    }
   ],
   "debt": [
@@ -481,21 +492,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 51 of 56 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "why": "missing on 51 of 57 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
     "n": 51,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 56 of 56 items. This reads as a field the team does not use rather than 56 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 56,
+    "why": "missing on 57 of 57 items. This reads as a field the team does not use rather than 57 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 57,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2450",
+      "summary": "Caching system refinement"
+     },
      {
       "key": "EDW-2449",
       "summary": "Compare and Review Phase 2/3 Incremental Data "
@@ -523,10 +538,6 @@
      {
       "key": "EDW-2409",
       "summary": "Summary: Phase 3 \u2014 Combined hard-copy letter master file (deduplicated across al"
-     },
-     {
-      "key": "EDW-2402",
-      "summary": "ACH failed payments report \u2013 identify unpaid ACH members for AutoRenew turnoff"
      }
     ]
    },
@@ -593,17 +604,17 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 51,
+  "items": 52,
   "items_done": 31,
   "committed": 64,
-  "final": 126,
+  "final": 128,
   "completed": 73,
-  "scope_change": 97,
+  "scope_change": 100,
   "vs_commitment": 114,
   "time_elapsed": 100,
   "spill": {
-   "open_items": 18,
-   "open_pts": 45.0,
+   "open_items": 19,
+   "open_pts": 47.0,
    "out_items": 4,
    "out_pts": 10.0,
    "done_pts": 70.0
@@ -614,8 +625,9 @@
    "pct": 38,
    "from": "EDW-Sprint 22-26"
   },
-  "spill_rate": 44,
+  "spill_rate": 45,
   "dist": {
+   "Backlog": 1,
    "In Development": 8,
    "Closed": 29,
    "Awaiting Review": 8,
@@ -636,7 +648,7 @@
    52.0,
    47.0,
    47.0,
-   44.0
+   46.0
   ],
   "scope": [
    54.0,
@@ -653,7 +665,7 @@
    120.0,
    120.0,
    120.0,
-   120.0
+   122.0
   ],
   "ghost": [
    55.0,
@@ -670,7 +682,7 @@
    58.0,
    53.0,
    53.0,
-   50.0
+   52.0
   ],
   "days": 14,
   "day": 14,
@@ -720,7 +732,7 @@
    {
     "status": "Ready for Development",
     "open": 15,
-    "med_age": 38.9,
+    "med_age": 39.0,
     "max_age": 216.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -742,30 +754,6 @@
     "clear_n": 199
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -776,18 +764,6 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 119
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    },
    {
     "status": "New",
@@ -802,6 +778,18 @@
     "clear_n": 62
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -812,11 +800,35 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 79,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 80
   },
   "open_total": 25,
   "stale": 17,
