@@ -96,6 +96,43 @@ def _series_note():
     return out
 
 
+def _unp_absent_head():
+    """What the empty figure is, in this team's own terms."""
+    # The team's own first-named marker, in the order it wrote them, not sorted:
+    # EDW lists unplanned first and three spellings it also accepts, and sorting
+    # that list made the card offer the reader "not planned".
+    names = [n for n in (CFG.opt("reactive.labels", "reactive work") or [])] \
+            or [n for n in (CFG.opt("reactive.types", "reactive work") or [])]
+    if not names:
+        return "this team marks no work as reactive"
+    return f"0 items labeled <i>{names[0]}</i>"
+
+
+def _unp_absent_why(m):
+    """Why there is no figure -- and these are two different reasons.
+
+    A team that applies a reactive marker and shows none of it may have stopped
+    applying it. A team that has never defined one was never asked the question.
+    Telling the second team the first team's story is how a site explains a
+    number with somebody else's history: this panel used to end with "the
+    labeling follow-up has been open since the May retro", which is a fact about
+    EDW and about no other team.
+    """
+    if not (CFG.set_("reactive.labels") or CFG.set_("reactive.types")):
+        return (f"This team has no marker for reactive work, so its share cannot be "
+                f"measured here. That is not the same as zero — publishing 0% would "
+                f"claim all {m['closed']} deliveries were planned, which nothing in Jira "
+                f"says. Agreeing on a label is what turns this into a number.")
+    # A team may have its own standing note about why -- EDW's was "the labeling
+    # follow-up has been open since the May retro", which was typed in here and so
+    # was told to every other team as its own history.
+    note = CFG.opt("reactive.note", "this team's own note about the gap")
+    return (f"Zero labels in a {PERIOD_WORD} of {m['closed']} deliveries does not mean "
+            f"zero reactive work: it means the labeling stopped being applied. "
+            f"Publishing 0% would invent an improvement the team did not have."
+            + (f" {note}" if note else ""))
+
+
 def _headline_metrics():
     """The metrics this site actually carries, named on the front page.
 
@@ -1863,9 +1900,9 @@ def month_page(mk):
     if m["unplanned"] is None:
         unp_card = f"""<div class="card">
       <div class="ghead"><span class="gname">Planned vs Unplanned</span><span class="badge" style="background:var(--pillbg);color:var(--wf-muted2)"><span class="d" style="background:var(--muted3)"></span>No data</span></div>
-      <div class="nodata" style="margin:10px 0"><span class="big">—</span>0 items labeled <i>Unplanned</i> {"so far this " + PERIOD_WORD if m.get("open") else "in the whole " + PERIOD_WORD}</div>
+      <div class="nodata" style="margin:10px 0"><span class="big">—</span>{_unp_absent_head()} {"so far this " + PERIOD_WORD if m.get("open") else "in the whole " + PERIOD_WORD}</div>
       <div class="targetline"><span class="tl">Target</span> &le;5% · Warning 5-10% · Risk &gt;10%</div>
-      <div class="infopanel ip-amber">Zero labels in a {PERIOD_WORD} of {m['closed']} deliveries does not mean zero reactive work: it means the labeling stopped being applied. Publishing 0% would invent an improvement the team did not have. The labeling follow-up has been open since the May retro.</div>
+      <div class="infopanel ip-amber">{_unp_absent_why(m)}</div>
       <div class="cardfill"></div><hr class="docsep">
       {doclink('unp', 'Planned vs Unplanned — Team Guide')}</div>"""
     else:

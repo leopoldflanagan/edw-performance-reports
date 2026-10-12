@@ -26,8 +26,9 @@
 
   "reactive": {
     "_": "How this team marks work it did not plan. EDW applies the label unevenly, which is why the report says so rather than publishing 0%.",
-    "labels": ["unplanned", "not planned", "not_planned", "urgent"],
-    "types": ["Urgent Task"]
+    "labels": ["Unplanned", "not planned", "not_planned", "urgent"],
+    "types": ["Urgent Task"],
+    "note": "The labeling follow-up has been open since the May retro."
   },
 
   "pods": [
