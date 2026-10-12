@@ -296,7 +296,7 @@ def month_so_far(project, window=None, label=None, key=None):
     # marker" means the question was never asked, not that no reactive work
     # happened. Reading that as 0% is the false-zero the reports warn about;
     # any other label being present does not make THIS one measured.
-    labelled = unp > 0
+    labelled = bool(REACTIVE_LABELS or REACTIVE_TYPES) and unp > 0
     dar   = sum(1 for i in iss if any("access" in l.lower() for l in i["fields"].get("labels", [])))
     pts   = sum(sp_of(i) for i in iss)
     people = {}
@@ -873,7 +873,8 @@ def admin(project, live_sp, cap_page, nxt=None, cal=None):
         "the guide does not allow it. Unlabelled reactive work is why the reactive "
         "share cannot be measured.",
         [i for i in gate if groom(i).startswith("8")
-         and not any(l.lower() == "unplanned" for l in i["fields"].get("labels", []))])
+         and not any((l or "").lower() in REACTIVE_LABELS
+                      for l in i["fields"].get("labels", []))])
     add(B, "No assignee in the active sprint",
         "work in the sprint that nobody owns.",
         [i for i in sprint if not i["fields"].get("assignee")])
@@ -1465,7 +1466,19 @@ def month_block(board, project, team, mine, ym, prev_closed=None, window=None, s
         if (i["fields"].get("resolution") or {}).get("name") != "Done": continue
         t = i["fields"]["issuetype"]["name"]; types[t] = types.get(t, 0) + 1
         if _is_reactive(i): unp_items.append([i["key"], i["fields"].get("summary", "")])
-    labelled = any(i["fields"].get("labels") for i in allres)
+    # Whether reactive work is measured here is answered by whether this team has
+    # a reactive marker at all, not by whether its items carry any label
+    # whatsoever. Plans labels plenty of things and none of them reactively: the
+    # old test read that as "labelling works here, and the answer is zero" and
+    # published 0% unplanned on a team that has never marked a single item. That
+    # is the false zero this whole system exists to refuse, produced by the
+    # system itself.
+    #
+    # Two different absences, kept apart: a team with no marker is not measured
+    # and says so; a team with a marker and no items carrying it may genuinely
+    # have had none, and that case still reads as zero with its own warning.
+    measured = bool(REACTIVE_LABELS or REACTIVE_TYPES)
+    labelled = measured and any(i["fields"].get("labels") for i in allres)
     unp     = len(unp_items) if labelled else None
     unp_pct = round(100*unp/cap[0], 1) if (unp is not None and cap[0]) else None
 
