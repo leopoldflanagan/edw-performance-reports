@@ -171,11 +171,11 @@
     }
    },
    "dist": {
-    "Backlog": 5,
-    "In Development": 8,
+    "In Development": 9,
     "Closed": 29,
     "Awaiting Review": 8,
-    "Ready for Development": 2
+    "Ready for Development": 2,
+    "Backlog": 4
    },
    "stalled": 22,
    "worst": 8.82,
