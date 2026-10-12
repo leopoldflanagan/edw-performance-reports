@@ -25,6 +25,16 @@ import os
 import sys
 
 
+def _prefixes(pod):
+    """A pod's sprint-name prefixes, upper-cased. One string or a list of them:
+    Plans has been through six sprint naming schemes in two years, so a pod that
+    wants its own history readable needs to name more than one."""
+    raw = pod.get("sprint_prefix") or []
+    if isinstance(raw, str):
+        raw = [raw]
+    return [p.upper() for p in raw if p]
+
+
 class Absent:
     """A value this team has not configured, and the reason, carried together.
 
@@ -113,11 +123,16 @@ class TeamConfig:
         """
         if not sprint_name:
             return None
+        n = sprint_name.upper()
+        best, best_len = None, -1
         for p in self.pods():
-            pre = p.get("sprint_prefix")
-            if pre and sprint_name.startswith(pre):
-                return p["key"]
-        return None
+            for pre in _prefixes(p):
+                # longest match wins, so a pod that renamed its sprints mid-year
+                # can list both spellings without the shorter one swallowing the
+                # other pod's names
+                if n.startswith(pre) and len(pre) > best_len:
+                    best, best_len = p["key"], len(pre)
+        return best
 
 
 REQUIRED = ["team", "label", "project", "board",
@@ -149,7 +164,7 @@ def check(repo):
     if len(pods) > 1:
         seen = set()
         for p in pods:
-            pre = p.get("sprint_prefix")
+            pre = ",".join(_prefixes(p))
             if not pre:
                 sys.exit(f"CONFIG ERROR: {cfg.path}: pod '{p.get('key')}' has no\n"
                          f"  sprint_prefix. With more than one pod on a board there is\n"

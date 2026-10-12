@@ -1331,6 +1331,40 @@ def _prev_per_release(frozen_path, rk, n_sprints):
         return None
 
 
+def team_sprints(all_sp):
+    """The sprints on this board that belong to this team, each tagged with the
+    pod it belongs to.
+
+    A board is not a team. Plans' board carries Launch Loyalty's sprints, EDW's,
+    Platform's and QA's, and two of them are active at the same time, so taking
+    the first active sprint would have reported another pod's work as this one's
+    without failing. The pod is decided by how the sprint is named because that
+    is the only thing in Jira that separates them.
+
+    For a team with one pod -- which is every team but Plans -- this is exactly
+    the old prefix test, and the figures do not move.
+    """
+    out = []
+    for s in all_sp:
+        pod = CFG.pod_of(s.get("name"))
+        if pod is None:
+            continue                  # another team's sprint, sitting on the same board
+        s = dict(s)
+        s["pod"] = pod
+        out.append(s)
+    return out
+
+
+def pods_active(mine):
+    """The sprint each pod has running, by pod. A pod with none is absent from the
+    mapping rather than carrying a stand-in for another pod's sprint."""
+    out = {}
+    for s in mine:
+        if s.get("state") == "active":
+            out.setdefault(s["pod"], s)
+    return out
+
+
 def sprints_named(mine, names):
     """The board's sprints matching a release's sprint list, in order, skipping
     any that have not started."""
@@ -1481,7 +1515,7 @@ def main():
     a = ap.parse_args()
 
     all_sp = [s for s in sprints(a.board) if s.get("startDate")]
-    mine   = [s for s in all_sp if s["name"].upper().startswith(a.team.upper())]
+    mine   = team_sprints(all_sp)
     active = [s for s in mine if s["state"] == "active"]
     future = sorted([s for s in mine if s["state"] == "future"], key=lambda s: s["startDate"])
     closed = sorted([s for s in mine if s["state"] == "closed"],
