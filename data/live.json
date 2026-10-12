@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T19:30:21Z",
+ "generated": "2026-10-12T19:41:13Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -318,18 +318,18 @@
    "points": 3
   },
   "misfiled": {
-   "items": 17,
-   "points": 74
+   "items": 5,
+   "points": 18
   },
   "runway": 0.0,
-  "runway_if_fixed": 0.9,
+  "runway_if_fixed": 0.3,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 17,
-    "points": 74,
+    "n": 5,
+    "points": 18,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
    {
@@ -346,8 +346,8 @@
    },
    {
     "rule": "Groomed work archived as Deferred",
-    "n": 8,
-    "points": 31,
+    "n": 20,
+    "points": 87,
     "why": "work that met Definition of Ready and was then parked."
    }
   ]
@@ -362,25 +362,10 @@
  "admin": {
   "scope": {
    "ready": 16,
-   "sprint": 21,
+   "sprint": 22,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
-   {
-    "rule": "No estimate",
-    "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 2,
-    "items": [
-     {
-      "key": "EDW-2447",
-      "summary": "[Launch Loyalty] - Parameterize rev share query for phase 2"
-     },
-     {
-      "key": "EDW-2150",
-      "summary": " Clearbrook Dental Clinic Ltd.- Reporting, post back and decline issues"
-     }
-    ]
-   },
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
@@ -430,36 +415,25 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
-   },
-   {
-    "rule": "No assignee in the active sprint",
-    "why": "work in the sprint that nobody owns.",
-    "n": 1,
-    "items": [
-     {
-      "key": "EDW-2417",
-      "summary": "Reload Historical BenefitPlan records to break out separate years"
-     }
-    ]
    }
   ],
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 27 of 32 items. This reads as a field the team does not use rather than 27 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 27,
+    "why": "missing on 28 of 33 items. This reads as a field the team does not use rather than 28 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 28,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 31 of 32 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
+    "why": "missing on 31 of 33 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
     "n": 31,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 32 of 32 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 32,
+    "why": "missing on 33 of 33 items. This reads as a field the team does not use rather than 33 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 33,
     "items": []
    },
    {
@@ -554,45 +528,45 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 29,
+  "items": 30,
   "items_done": 3,
-  "committed": 84,
-  "final": 84,
+  "committed": 88,
+  "final": 88,
   "completed": 4,
   "scope_change": 0,
   "vs_commitment": 5,
   "time_elapsed": 0,
   "spill": {
-   "open_items": 21,
-   "open_pts": 58.0,
+   "open_items": 22,
+   "open_pts": 62.0,
    "out_items": 7,
    "out_pts": 26.0,
    "done_pts": 0
   },
   "recv": {
    "items": 15,
-   "pts": 38,
-   "pct": 45,
+   "pts": 39,
+   "pct": 44,
    "from": "EDW-Sprint 23-26"
   },
   "spill_rate": null,
   "dist": {
    "Ready for Development": 5,
    "In Development": 8,
-   "Awaiting Review": 8,
+   "Awaiting Review": 9,
    "Closed": 1
   },
   "burn": [
-   69.0,
-   74.0
-  ],
-  "scope": [
-   73.0,
+   72.0,
    78.0
   ],
+  "scope": [
+   76.0,
+   82.0
+  ],
   "ghost": [
-   74.0,
-   79.0
+   77.0,
+   83.0
   ],
   "days": 14,
   "day": 1,
@@ -664,6 +638,18 @@
     "clear_n": 200
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 120
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -676,7 +662,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -684,8 +670,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -700,6 +686,18 @@
     "clear_n": 1
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -710,35 +708,11 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    }
   ],
   "parked": {
-   "Deferred": 75,
-   "Backlog": 79
+   "Backlog": 56,
+   "Deferred": 98
   },
   "open_total": 26,
   "stale": 17,
