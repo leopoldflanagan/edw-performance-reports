@@ -1,0 +1,42 @@
+{
+  "_": "The words EDW uses for the measurement. The method is in the scripts; this is the vocabulary. A value left out is reported as unavailable, with its reason, never defaulted to another team's.",
+
+  "team": "EDW",
+  "label": "EDW",
+  "project": "EDW",
+  "board": 11,
+
+  "counts": {
+    "_": "What counts as one delivered thing, and when it is delivered.",
+    "exclude_types": ["Sub-task", "Epic"],
+    "done_statuses": ["Closed", "Done", "Resolved"],
+    "delivered_resolution": "Done"
+  },
+
+  "flow": {
+    "_": "Where an item can sit, and what that means for flow.",
+    "ready_status": "Ready for Development",
+    "terminal_statuses": ["Closed", "Done", "Resolved", "Won't Do", "Cancelled", "Duplicate"],
+    "parked_statuses": ["Backlog", "Deferred"],
+    "queue_out_statuses": ["Backlog"],
+    "stalled_days": 3,
+    "_sprint_label_prefixes": "How this board's sprint names are shortened on a chart axis. Longest match wins, so a specific prefix beats a general one. These are display prefixes and are deliberately NOT the pod prefixes: 'DS-' would also match 'DS-R9.00-S4' and strip it to nonsense.",
+    "sprint_label_prefixes": ["EDW-Sprint "]
+  },
+
+  "reactive": {
+    "_": "How this team marks work it did not plan. EDW applies the label unevenly, which is why the report says so rather than publishing 0%.",
+    "labels": ["unplanned", "not planned", "not_planned", "urgent"],
+    "types": ["Urgent Task"]
+  },
+
+  "pods": [
+    { "key": "EDW", "name": "EDW", "sprint_prefix": "EDW-" }
+  ],
+
+  "pages": {
+    "signoff": "3746431012",
+    "capacity": "3747938305",
+    "schedule": "2842362029"
+  }
+}

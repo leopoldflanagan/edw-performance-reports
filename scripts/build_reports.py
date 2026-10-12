@@ -48,6 +48,28 @@ TEAM = {
 TEAM.update(DATA.get("TEAM") or {})
 TKEY, TSITE = TEAM["key"], TEAM["site"]
 
+# The team's measurement vocabulary, from the same file the fetch reads. TEAM
+# above is page chrome -- what the site is called; this is what the numbers mean.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import teamconfig
+CFG = teamconfig.load(REPO)
+
+# How the headline figure is defined, written out for the reader in the team's
+# own words. This sentence used to be typed in, and on the DS site it said
+# "project = EDW" -- true for the team it was written for, false here, and
+# invisible because that section is not published on every site.
+DEFINITION = (f'project = {CFG.need("project")} AND '
+              + "issuetype NOT IN (" + ", ".join(CFG.need("counts.exclude_types")) + ") AND "
+              + f'resolution = {CFG.need("counts.delivered_resolution")}')
+
+# How sprint names are shortened on a chart axis. Longest prefix first, so a
+# specific one beats a general one: before this the list ended with two other
+# teams' names typed into the code, and a board carrying a third team's sprints
+# printed them in full beside the shortened ones.
+SPRINT_PREFIXES = sorted(
+    {p for p in [TEAM["prefix"], *CFG.set_("flow.sprint_label_prefixes")] if p},
+    key=len, reverse=True)
+
 
 def _series_note():
     """What the index says it holds, from what it actually holds.
@@ -263,7 +285,7 @@ def dashlink():
 def short_sprint(n):
     """'EDW-Sprint 14-26' -> 'S14-26'. Any team's prefix, then the generic one."""
     n = str(n)
-    for pre in (TEAM["prefix"], "EDW-Sprint ", "DS-Sprint "):
+    for pre in SPRINT_PREFIXES:
         if pre and n.startswith(pre):
             return "S" + n[len(pre):]
     return n
@@ -2280,7 +2302,7 @@ def q1_page():
     {rlink('dash', '&#128216;', 'How to read the dashboard')}
     {dashlink()}
   </div></div>
-  <div class="fnote">Definition used: <code>project = EDW AND issuetype NOT IN (Sub-task, Epic) AND resolution = Done</code>
+  <div class="fnote">Definition used: <code>{DEFINITION}</code>
   over each month's resolution date, which excludes discarded work. Figures reconciled in September 2026 — the method
   and what changed are documented in Findings &amp; Retro.</div>
 </section>

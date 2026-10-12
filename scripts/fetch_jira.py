@@ -21,6 +21,19 @@ EMAIL = (os.environ.get("JIRA_EMAIL") or "").strip()
 TOKEN = (os.environ.get("JIRA_TOKEN") or "").strip()
 SP_FIELD = os.environ.get("JIRA_SP_FIELD", "customfield_10033")   # Story Points
 
+# The team's own vocabulary. Loaded here, at import, so a missing or malformed
+# value stops the run before a single Jira call rather than after one that
+# publishes another team's words as this team's numbers.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import teamconfig
+CFG = teamconfig.load(os.environ.get("REPO_ROOT") or ".")
+
+# What counts as one delivered thing. Written once, from the file, instead of
+# spelled out in seven JQL strings that could drift apart.
+TYPE_FILTER = ("issuetype NOT IN (" +
+               ", ".join(f'"{t}"' for t in CFG.need("counts.exclude_types")) + ")")
+DELIVERED   = CFG.need("counts.delivered_resolution")
+
 def _mask(e):
     if not e:          return "EMPTY"
     u, at, d = e.partition("@")
@@ -155,7 +168,7 @@ def sprint_detail(board, sp, project, prev=None):
     day1  = start + dt.timedelta(days=1)
     now   = dt.datetime.now(dt.timezone.utc)
     horizon = min(end, now)
-    DONE = {"Closed", "Done", "Resolved"}
+    DONE = CFG.set_("counts.done_statuses")
 
     entered = lambda i: _entered_sprint(i, name)
 
@@ -272,14 +285,14 @@ def month_so_far(project, window=None, label=None, key=None):
     else:
         first = today.replace(day=1)
         nxt   = (first + dt.timedelta(days=32)).replace(day=1)
-    base  = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
-             f'AND resolution = Done AND resolved >= "{first}" AND resolved < "{nxt}"')
+    base  = (f'project = "{project}" AND {TYPE_FILTER} '
+             f'AND resolution = {DELIVERED} AND resolved >= "{first}" AND resolved < "{nxt}"')
     iss   = search(base, ["resolutiondate", SP_FIELD, "labels", "issuetype", "assignee"])
     unp   = sum(1 for i in iss
-                if any(l.lower() in ("unplanned", "not planned", "not_planned")
+                if any((l or "").lower() in REACTIVE_LABELS
                        for l in i["fields"].get("labels", []))
-                or i["fields"]["issuetype"]["name"] == "Urgent Task")
-    # EDW does not apply the Unplanned label, so "no item carries a reactive
+                or i["fields"]["issuetype"]["name"] in REACTIVE_TYPES)
+    # Where a team does not apply the label, "no item carries a reactive
     # marker" means the question was never asked, not that no reactive work
     # happened. Reading that as 0% is the false-zero the reports warn about;
     # any other label being present does not make THIS one measured.
@@ -307,22 +320,18 @@ def month_so_far(project, window=None, label=None, key=None):
 # kind of bug here: it does not fail, it quietly reports another team's plan as
 # this team's. So there is no cross-team fallback -- a team that is not in the
 # table must pass the id in the environment, or the run stops.
-_PAGES = {
-    "EDW": {"signoff": "3746431012", "capacity": "3747938305"},
-}
-
-
 def page_id(kind, team):
+    """This team's Confluence page of that kind, or None when it has none.
+
+    There is no cross-team fallback and there never was: a wrong default here
+    does not fail, it quietly reports another team's plan as this team's. The
+    environment still wins, so a page can be repointed without a code change.
+    """
     env = (os.environ.get(kind.upper() + "_PAGE") or "").strip()
     if env:
         return env
-    known = _PAGES.get(team.upper(), {}).get(kind)
-    if known:
-        return known
-    raise SystemExit(
-        f"CONFIG ERROR: no {kind} page for team {team}.\n"
-        f"  Set {kind.upper()}_PAGE in the workflow's env block to this team's\n"
-        f"  Confluence page id. Refusing to fall back to another team's page.")
+    known = CFG.opt(f"pages.{kind}", f"the {kind} panel")
+    return known or None
 
 
 
@@ -452,7 +461,8 @@ def _sprint_name(x):
     return m.group(0) if m else None
 
 
-SCHEDULE_PAGE = (os.environ.get("SCHEDULE_PAGE") or "").strip()
+SCHEDULE_PAGE = ((os.environ.get("SCHEDULE_PAGE") or "").strip()
+                 or (CFG.opt("pages.schedule", "the release calendar") or ""))
 
 
 def release_schedule(page_id):
@@ -686,7 +696,7 @@ def capacity(page_id):
 
 
 GROOM_FIELD = os.environ.get("JIRA_GROOM_FIELD", "customfield_10176")   # Grooming Status
-READY_STATUS = "Ready for Development"
+READY_STATUS = CFG.need("flow.ready_status")
 GROOMED      = "7-Groomed"
 
 
@@ -702,7 +712,7 @@ def backlog(project, frozen_path):
     because the dropdown's JQL name is easy to get subtly wrong and a miscounted
     backlog is worse than none.
     """
-    iss = search(f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
+    iss = search(f'project = "{project}" AND {TYPE_FILTER} '
                  f'AND statusCategory != Done',
                  ["status", SP_FIELD, GROOM_FIELD, "summary"], cap=6)
     if not iss:
@@ -798,7 +808,7 @@ def admin(project, live_sp, cap_page, nxt=None, cal=None):
     always red is not a check, and a page where everything is red says nothing.
     """
     active = (live_sp or {}).get("name")
-    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) AND ('
+    jql = (f'project = "{project}" AND {TYPE_FILTER} AND ('
            f'status = "{READY_STATUS}"'
            + (f' OR sprint = "{active}"' if active else "") + ")")
     # "sprint" is not a field name Jira answers to -- the Sprint field is a custom
@@ -1044,7 +1054,7 @@ def projection(live_sp, frozen_path):
             "share_mid": round(mid_s, 3)}
 
 
-PARKED = {"Backlog", "Deferred"}   # layer 3 and layer 4 of the backlog guide: not in flow
+PARKED = CFG.set_("flow.parked_statuses")   # not in flow: parked, not moving
 STALE_AGE = 7    # calendar days in one status before open work counts as stuck
 
 
@@ -1061,7 +1071,7 @@ def aging(project, window_days=90):
     Backlog is reported apart - waiting to be pulled is not a workflow bottleneck.
     """
     since_d = (dt.date.today() - dt.timedelta(days=window_days)).isoformat()
-    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
+    jql = (f'project = "{project}" AND {TYPE_FILTER} '
            f'AND (statusCategory != Done OR resolved >= "{since_d}")')
     iss = search(jql, ["status", "summary", "created", "issuetype", "assignee"],
                  expand="changelog", cap=8)
@@ -1133,10 +1143,11 @@ def cyc_status(c):
 # Everything below builds the SAME shape the frozen periods use, so a month that
 # closes can be appended to data/frozen.json and never recomputed again.
 
-REACTIVE_LABELS = {"unplanned", "not planned", "not_planned", "urgent"}
-TERMINAL     = {"Closed", "Done", "Resolved", "Won't Do", "Cancelled", "Duplicate"}
-QUEUE_OUT    = {"Backlog"}   # waiting to be pulled is not a workflow bottleneck
-STALLED_DAYS = 3             # days in the current, non-terminal status at sprint end
+REACTIVE_LABELS = {l.lower() for l in CFG.set_("reactive.labels")}
+REACTIVE_TYPES  = CFG.set_("reactive.types")
+TERMINAL     = CFG.set_("flow.terminal_statuses")
+QUEUE_OUT    = CFG.set_("flow.queue_out_statuses")   # waiting to be pulled is not a bottleneck
+STALLED_DAYS = CFG.need("flow.stalled_days")   # days in the current, non-terminal status at sprint end
 
 def _dtp(s):
     return dt.datetime.fromisoformat(s.replace("Z", "+00:00"))
@@ -1148,7 +1159,7 @@ def _median(xs):
 
 def _is_reactive(i):
     f = i["fields"]
-    if f.get("issuetype", {}).get("name") == "Urgent Task": return True
+    if f.get("issuetype", {}).get("name") in REACTIVE_TYPES: return True
     return any((l or "").lower() in REACTIVE_LABELS for l in f.get("labels", []))
 
 def split_of(issues, sprint_name, day1, start):
@@ -1210,8 +1221,8 @@ def tis_of(issues, start, end, sprint_name=None):
 
 def cycle_of(project, first, nxt):
     """First entry into In Development -> resolution. Calendar days, closed items only."""
-    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
-           f'AND resolution = Done AND resolved >= "{first}" AND resolved < "{nxt}"')
+    jql = (f'project = "{project}" AND {TYPE_FILTER} '
+           f'AND resolution = {DELIVERED} AND resolved >= "{first}" AND resolved < "{nxt}"')
     iss = search(jql, ["resolutiondate", "status"], expand="changelog", cap=8)
     days, nodev = [], 0
     for i in iss:
@@ -1233,8 +1244,8 @@ def cycle_of(project, first, nxt):
 
 def cap_of(project, first, nxt):
     """items closed, items carrying points, points, people with >= 2 closed items."""
-    jql = (f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
-           f'AND resolution = Done AND resolved >= "{first}" AND resolved < "{nxt}"')
+    jql = (f'project = "{project}" AND {TYPE_FILTER} '
+           f'AND resolution = {DELIVERED} AND resolved >= "{first}" AND resolved < "{nxt}"')
     iss = search(jql, [SP_FIELD, "assignee"], cap=8)
     people = {}
     for i in iss:
@@ -1410,7 +1421,7 @@ def month_block(board, project, team, mine, ym, prev_closed=None, window=None, s
     cap = cap_of(project, first, nxt)
     cyc = cycle_of(project, first, nxt)
 
-    allres = search(f'project = "{project}" AND issuetype NOT IN (Sub-task, Epic) '
+    allres = search(f'project = "{project}" AND {TYPE_FILTER} '
                     f'AND resolved >= "{first}" AND resolved < "{nxt}"',
                     ["resolution", "issuetype", "labels", "summary"], cap=8)
     discarded = sum(1 for i in allres
