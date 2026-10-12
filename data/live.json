@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T19:15:18Z",
+ "generated": "2026-10-12T19:30:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -353,24 +353,17 @@
   ]
  },
  "projection": {
-  "too_early": false,
-  "day": 14,
+  "too_early": true,
+  "day": 1,
   "days": 14,
   "n": 19,
-  "done_now": 73,
-  "committed": 64,
-  "lo": 73,
-  "mid": 73,
-  "hi": 73,
-  "pct": 114,
-  "verdict": "on track for the commitment",
-  "share_mid": 1.0
+  "why": "this early, past sprints had finished too little of their work for the comparison to say anything"
  },
  "admin": {
   "scope": {
-   "ready": 15,
-   "sprint": 44,
-   "sprint_name": "EDW-Sprint 23-26"
+   "ready": 16,
+   "sprint": 21,
+   "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
    {
@@ -437,103 +430,69 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
-   }
-  ],
-  "debt": [
+   },
    {
-    "rule": "No fix version",
-    "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 36,
+    "rule": "No assignee in the active sprint",
+    "why": "work in the sprint that nobody owns.",
+    "n": 1,
     "items": [
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
-     },
-     {
-      "key": "EDW-2384",
-      "summary": "Netsuite integration investigation"
-     },
-     {
-      "key": "EDW-2374",
-      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2214",
-      "summary": "Update CI eligibility file"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
-     },
-     {
-      "key": "EDW-2060",
-      "summary": "Create CDC on database side and Analyzing the Monthly Mass Update "
      }
     ]
+   }
+  ],
+  "debt": [
+   {
+    "rule": "Fix version is not in use",
+    "why": "missing on 27 of 32 items. This reads as a field the team does not use rather than 27 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 27,
+    "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 51 of 57 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 51,
+    "why": "missing on 31 of 32 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 31,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 57 of 57 items. This reads as a field the team does not use rather than 57 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 57,
+    "why": "missing on 32 of 32 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 32,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 14,
+    "n": 5,
     "items": [
-     {
-      "key": "EDW-2450",
-      "summary": "Caching system refinement"
-     },
      {
       "key": "EDW-2449",
       "summary": "Compare and Review Phase 2/3 Incremental Data "
-     },
-     {
-      "key": "EDW-2433",
-      "summary": "Architectural audit of the library"
      },
      {
       "key": "EDW-2427",
       "summary": "PROD data-EDW will share Benefit plan ID,Auto Renewal Date, Credit card exp date"
      },
      {
-      "key": "EDW-2416",
-      "summary": "Caching system"
+      "key": "EDW-2385",
+      "summary": "WFP Dynamics feed: split semantic-model tables into Regular / Bulk / Missed to s"
      },
      {
-      "key": "EDW-2412",
-      "summary": "Update AutoRenewal Failure code comment Username row"
+      "key": "EDW-2379",
+      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      },
      {
-      "key": "EDW-2410",
-      "summary": "Audit and assess the health status project"
-     },
-     {
-      "key": "EDW-2409",
-      "summary": "Summary: Phase 3 \u2014 Combined hard-copy letter master file (deduplicated across al"
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
      }
     ]
    },
    {
     "rule": "Riding 4+ sprints",
     "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-    "n": 7,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2145",
@@ -558,15 +517,17 @@
      {
       "key": "EDW-1599",
       "summary": "LL Commission Model 5 - ADF pipeline"
-     },
-     {
-      "key": "EDW-2396",
-      "summary": "Dashboard -After purchasing a single ACH plan, the Plans Sold (YTD) count increa"
      }
     ]
    }
   ],
   "setup": [
+   {
+    "rule": "The active sprint has no goal",
+    "why": "neither Jira nor the capacity page records one, so delivery can only be measured in points.",
+    "n": 1,
+    "items": []
+   },
    {
     "rule": "Release 9.06 has two different windows on the schedule",
     "why": "the feature-freeze column gives 2026-06-22 to 2026-07-26 and the dev-window column gives 2026-06-22 to 2026-08-02. The calendar keeps what it already had; the page needs one of the two corrected.",
@@ -588,96 +549,57 @@
   ]
  },
  "sprint": {
-  "name": "EDW-Sprint 23-26",
+  "name": "EDW-Sprint 24-26",
   "state": "active",
-  "start": "2026-09-28",
-  "end": "2026-10-12",
-  "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 52,
-  "items_done": 31,
-  "committed": 64,
-  "final": 128,
-  "completed": 73,
-  "scope_change": 100,
-  "vs_commitment": 114,
-  "time_elapsed": 100,
+  "start": "2026-10-12",
+  "end": "2026-10-26",
+  "goal": "",
+  "items": 29,
+  "items_done": 3,
+  "committed": 84,
+  "final": 84,
+  "completed": 4,
+  "scope_change": 0,
+  "vs_commitment": 5,
+  "time_elapsed": 0,
   "spill": {
-   "open_items": 18,
-   "open_pts": 45.0,
-   "out_items": 4,
-   "out_pts": 10.0,
-   "done_pts": 72.0
+   "open_items": 21,
+   "open_pts": 58.0,
+   "out_items": 7,
+   "out_pts": 26.0,
+   "done_pts": 0
   },
   "recv": {
-   "items": 9,
-   "pts": 24,
-   "pct": 38,
-   "from": "EDW-Sprint 22-26"
+   "items": 15,
+   "pts": 38,
+   "pct": 45,
+   "from": "EDW-Sprint 23-26"
   },
-  "spill_rate": 43,
+  "spill_rate": null,
   "dist": {
-   "Closed": 30,
+   "Ready for Development": 5,
    "In Development": 8,
    "Awaiting Review": 8,
-   "Ready for Development": 2
+   "Closed": 1
   },
   "burn": [
-   53.0,
-   51.0,
-   52.0,
-   54.0,
-   54.0,
-   49.0,
-   49.0,
-   66.0,
-   63.0,
-   60.0,
-   60.0,
-   52.0,
-   47.0,
-   47.0,
-   44.0
+   69.0,
+   74.0
   ],
   "scope": [
-   54.0,
-   60.0,
-   66.0,
-   74.0,
-   74.0,
-   74.0,
-   74.0,
-   91.0,
-   91.0,
-   107.0,
-   120.0,
-   120.0,
-   120.0,
-   120.0,
-   122.0
+   73.0,
+   78.0
   ],
   "ghost": [
-   55.0,
-   55.0,
-   56.0,
-   58.0,
-   58.0,
-   53.0,
-   53.0,
-   72.0,
-   69.0,
-   66.0,
-   66.0,
-   58.0,
-   53.0,
-   53.0,
-   50.0
+   74.0,
+   79.0
   ],
   "days": 14,
-  "day": 14,
+  "day": 1,
   "capacity": {
    "release": "9.09",
-   "start": "2026-09-28",
-   "end": "2026-10-11",
+   "start": "2026-10-12",
+   "end": "2026-10-25",
    "members": 4.0,
    "holidays": 0.0,
    "pto": 0.0,
@@ -688,8 +610,8 @@
   }
  },
  "next": {
-  "name": "EDW-Sprint 24-26",
-  "start": "2026-10-12",
+  "name": "EDW-Sprint 25-26",
+  "start": "2026-10-26",
   "state": "not started"
  },
  "month": {
@@ -711,7 +633,7 @@
    "EDW-Sprint 24-26"
   ],
   "n_sprints": 2,
-  "sprints_done": 0
+  "sprints_done": 1
  },
  "aging": {
   "window_days": 90,
@@ -719,7 +641,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 15,
+    "open": 16,
     "med_age": 39.0,
     "max_age": 217.0,
     "worst_key": "EDW-1599",
@@ -766,7 +688,7 @@
     "clear_n": 62
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -774,8 +696,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "WAITING REVIEW",
@@ -790,7 +712,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -798,8 +720,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 0.9,
+    "clear_n": 120
    },
    {
     "status": "On Hold",
@@ -815,10 +737,10 @@
    }
   ],
   "parked": {
-   "Backlog": 79,
-   "Deferred": 75
+   "Deferred": 75,
+   "Backlog": 79
   },
-  "open_total": 25,
+  "open_total": 26,
   "stale": 17,
   "worst": "Ready for Development"
  }
