@@ -173,6 +173,19 @@ def check(repo):
                 sys.exit(f"CONFIG ERROR: {cfg.path}: two pods share the sprint prefix\n"
                          f"  '{pre}'. Every sprint would be counted under the first one.")
             seen.add(pre)
+    # The workflow still names the board, project and team in its env block, and a
+    # value in two places is a value that drifts. Neither wins: they must agree.
+    for env_name, key in (("TEAM_KEY", "team"), ("PROJECT_KEY", "project"),
+                          ("BOARD_ID", "board")):
+        env = (os.environ.get(env_name) or "").strip()
+        if env and env != str(cfg.need(key)):
+            sys.exit(
+                f"CONFIG ERROR: {env_name} is '{env}' in the workflow but "
+                f"'{cfg.need(key)}' in {cfg.path}.\n"
+                f"  These name the same thing. Measuring one team's board under\n"
+                f"  another team's vocabulary is exactly the failure this file exists\n"
+                f"  to prevent, so neither value is preferred. Make them agree.")
+
     print(f"config ok: {cfg.need('label')} -- project {cfg.need('project')}, "
           f"board {cfg.need('board')}, "
           f"{len(pods)} pod(s): {', '.join(p['key'] for p in pods)}")

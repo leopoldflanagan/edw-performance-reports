@@ -96,11 +96,27 @@ def _series_note():
     return out
 
 
+def _headline_metrics():
+    """The metrics this site actually carries, named on the front page.
+
+    The list used to be typed into the template and ended with Planned vs
+    Unplanned. Plans applies no reactive label at all -- zero uses across a whole
+    release -- so for Plans that sentence promised a reader a measurement the site
+    cannot make, on the page they land on first. A page describing itself has no
+    business guessing, here either.
+    """
+    out = ["Cycle Time", "Throughput", "WIP"]
+    if CFG.set_("reactive.labels") or CFG.set_("reactive.types"):
+        out.append("Planned vs Unplanned")
+    return ", ".join(out[:-1]) + " and " + out[-1]
+
+
 def _fill(head):
     """The index head is a template shared by every page built on it."""
     return (head.replace("__SITE__", TSITE)
                 .replace("__TEAMNAME__", TEAM["name"])
                 .replace("__ORG__", TEAM["org"])
+                .replace("__METRICS__", _headline_metrics())
                 .replace("__SERIES__", _series_note()))
 
 

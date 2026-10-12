@@ -19,13 +19,24 @@ Settings → Secrets and variables → Actions.
 | `JIRA_EMAIL` | the Atlassian account the token belongs to |
 | `JIRA_TOKEN` | the token from step 1 |
 
-**Variables** (plain, not secret) — these are what make the same files work for both repos:
+**The board and project** live in the workflow's `env:` block, and the same three
+values are in `config/team.json`. Both are checked against each other before the
+run starts, so they cannot drift apart:
 
-| Name | EDW repo | DS repo |
-|---|---|---|
-| `TEAM_KEY` | `EDW` | `DS` |
-| `BOARD_ID` | `11` | `257` |
-| `PROJECT_KEY` | `EDW` | `Database Services` |
+| Name | EDW | DS | Plans |
+|---|---|---|---|
+| `TEAM_KEY` | `EDW` | `DS` | `PLANS` |
+| `BOARD_ID` | `11` | `257` | `15` |
+| `PROJECT_KEY` | `EDW` | `DS` | `PLANS` |
+
+(This table used to say the DS project key was `Database Services`. It is `DS` —
+that is the project key; `Database Services` is the team's name. Nothing read the
+table, so nothing broke, which is why it stayed wrong.)
+
+**Everything else about a team** — what counts as a delivered item, which statuses
+are terminal, how reactive work is marked, which Confluence pages are this team's,
+and which pods share the board — is in `config/team.json`. A value that team does
+not have is left out, and the report says so rather than borrowing another team's.
 
 ## 3. Add the files
 
