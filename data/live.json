@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T14:00:27Z",
+ "generated": "2026-10-12T14:15:18Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -358,18 +358,18 @@
   "days": 14,
   "n": 19,
   "done_now": 73,
-  "committed": 62,
+  "committed": 64,
   "lo": 73,
   "mid": 73,
   "hi": 73,
-  "pct": 118,
+  "pct": 114,
   "verdict": "on track for the commitment",
   "share_mid": 1.0
  },
  "admin": {
   "scope": {
    "ready": 15,
-   "sprint": 42,
+   "sprint": 43,
    "sprint_name": "EDW-Sprint 23-26"
   },
   "blocking": [
@@ -443,7 +443,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 35,
+    "n": 36,
     "items": [
      {
       "key": "EDW-2417",
@@ -481,21 +481,25 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 50 of 55 items. This reads as a field the team does not use rather than 50 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 50,
+    "why": "missing on 51 of 56 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 51,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 55 of 55 items. This reads as a field the team does not use rather than 55 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 55,
+    "why": "missing on 56 of 56 items. This reads as a field the team does not use rather than 56 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 56,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 12,
+    "n": 13,
     "items": [
+     {
+      "key": "EDW-2449",
+      "summary": "Compare and Review Phase 2/3 Incremental Data "
+     },
      {
       "key": "EDW-2433",
       "summary": "Architectural audit of the library"
@@ -523,10 +527,6 @@
      {
       "key": "EDW-2402",
       "summary": "ACH failed payments report \u2013 identify unpaid ACH members for AutoRenew turnoff"
-     },
-     {
-      "key": "EDW-2400",
-      "summary": "EDW - Add Required Fields to PPA Table & Temporary table creation - Day 0 Welcom"
      }
     ]
    },
@@ -593,84 +593,84 @@
   "start": "2026-09-28",
   "end": "2026-10-12",
   "goal": "Goal: Deliver the Phase 2 commission calculations and September DCA data, and publish the ONESMILE, Essential Smiles, Smile Brands and Member reports.\n\nFocus:\nJeff - finalize DCA commission data for September\nShruti - Phase 2 welcome dataReport\nLloyd - support integration issues as they happen (reserved capacity)",
-  "items": 50,
+  "items": 51,
   "items_done": 31,
-  "committed": 62,
-  "final": 124,
+  "committed": 64,
+  "final": 126,
   "completed": 73,
-  "scope_change": 100,
-  "vs_commitment": 118,
+  "scope_change": 97,
+  "vs_commitment": 114,
   "time_elapsed": 100,
   "spill": {
    "open_items": 18,
-   "open_pts": 46.0,
+   "open_pts": 45.0,
    "out_items": 4,
    "out_pts": 10.0,
-   "done_pts": 67.0
+   "done_pts": 70.0
   },
   "recv": {
    "items": 9,
    "pts": 24,
-   "pct": 39,
+   "pct": 38,
    "from": "EDW-Sprint 22-26"
   },
-  "spill_rate": 46,
+  "spill_rate": 44,
   "dist": {
-   "In Development": 7,
-   "Closed": 28,
-   "Awaiting Review": 9,
+   "In Development": 8,
+   "Closed": 29,
+   "Awaiting Review": 8,
    "Ready for Development": 2
   },
   "burn": [
+   53.0,
    51.0,
+   52.0,
+   54.0,
+   54.0,
    49.0,
-   50.0,
-   52.0,
+   49.0,
+   66.0,
+   63.0,
+   60.0,
+   60.0,
    52.0,
    47.0,
    47.0,
-   64.0,
-   61.0,
-   58.0,
-   58.0,
-   50.0,
-   45.0,
-   45.0,
-   45.0
+   44.0
   ],
   "scope": [
-   52.0,
-   58.0,
-   64.0,
-   72.0,
-   72.0,
-   72.0,
-   72.0,
-   89.0,
-   89.0,
-   105.0,
-   118.0,
-   118.0,
-   118.0,
-   118.0,
-   118.0
+   54.0,
+   60.0,
+   66.0,
+   74.0,
+   74.0,
+   74.0,
+   74.0,
+   91.0,
+   91.0,
+   107.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0,
+   120.0
   ],
   "ghost": [
+   55.0,
+   55.0,
+   56.0,
+   58.0,
+   58.0,
    53.0,
    53.0,
-   54.0,
-   56.0,
-   56.0,
-   51.0,
-   51.0,
-   70.0,
-   67.0,
-   64.0,
-   64.0,
-   56.0,
-   51.0,
-   51.0,
-   51.0
+   72.0,
+   69.0,
+   66.0,
+   66.0,
+   58.0,
+   53.0,
+   53.0,
+   50.0
   ],
   "days": 14,
   "day": 14,
@@ -700,10 +700,10 @@
   "end": "2026-10-25",
   "day": 15,
   "days": 28,
-  "closed": 29,
-  "points": 70,
+  "closed": 30,
+  "points": 73,
   "unplanned": 4,
-  "unplanned_pct": 13.8,
+  "unplanned_pct": 13.3,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -726,20 +726,20 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 12,
-    "clear_med": 4.1,
-    "clear_n": 176
+    "clear_med": 4.0,
+    "clear_n": 177
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 7.0,
+    "open": 10,
+    "med_age": 5.5,
     "max_age": 68.8,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 198
+    "clear_n": 199
    },
    {
     "status": "WAITING REVIEW",
@@ -754,18 +754,6 @@
     "clear_n": 2
    },
    {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -776,6 +764,18 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "PR Created",
@@ -799,7 +799,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.9,
-    "clear_n": 118
+    "clear_n": 119
    },
    {
     "status": "In Progress",
@@ -818,7 +818,7 @@
    "Deferred": 75,
    "Backlog": 80
   },
-  "open_total": 24,
+  "open_total": 25,
   "stale": 17,
   "worst": "Ready for Development"
  }
