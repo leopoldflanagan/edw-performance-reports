@@ -9,15 +9,15 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 31,
+  "closed": 34,
   "discarded": 1,
-  "resolved": 32,
+  "resolved": 35,
   "unplanned": 4,
-  "unp_pct": 12.9,
+  "unp_pct": 11.8,
   "types": [
    [
     "Bug",
-    13
+    16
    ],
    [
     "Story",
@@ -58,9 +58,9 @@
   "day": 12,
   "days": 28,
   "status": "warning",
-  "headline": "31 items closed in the first 12 days, a pace of about 72 for the month against 68 last month. Unplanned work at 12.9%.",
+  "headline": "34 items closed in the first 12 days, a pace of about 79 for the month against 68 last month. Unplanned work at 11.8%.",
   "notes": [
-   "unplanned work at 12.9%"
+   "unplanned work at 11.8%"
   ]
  },
  "SPRINTS": [
@@ -114,14 +114,14 @@
    "Oct 12",
    "Oct 26",
    30,
-   3,
+   6,
    88,
    88,
-   4,
+   8,
    0,
    [
     72.0,
-    78.0
+    74.0
    ],
    [
     76.0,
@@ -152,12 +152,12 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    3,
-    0
+    6,
+    4
    ],
    "open": [
-    22,
-    62
+    19,
+    58
    ],
    "out": [
     7,
@@ -212,9 +212,9 @@
     }
    },
    "dist": {
-    "Closed": 30,
+    "Closed": 32,
     "In Development": 8,
-    "Awaiting Review": 8,
+    "Awaiting Review": 6,
     "Ready for Development": 2,
     "Backlog": 1,
     "Deferred": 3
@@ -243,18 +243,18 @@
      "med": 14.0
     },
     "Closed": {
-     "n": 1,
-     "med": 14.0
+     "n": 4,
+     "med": 13.93
     }
    },
    "dist": {
     "Ready for Development": 6,
     "In Development": 8,
-    "Awaiting Review": 9,
-    "Closed": 1,
+    "Closed": 4,
+    "Awaiting Review": 6,
     "Backlog": 6
    },
-   "stalled": 29,
+   "stalled": 26,
    "worst": 14.0,
    "worstSt": "Ready for Development",
    "items": 30
@@ -280,14 +280,14 @@
   ],
   "EDW-Sprint 24-26": [
    77.0,
-   83.0
+   79.0
   ]
  },
  "CAP": {
   "9.09": [
-   31,
-   27,
-   75,
+   34,
+   30,
+   79,
    4
   ]
  },
@@ -297,8 +297,8 @@
    "avg": 6.49,
    "n": 15,
    "mx": 18.77,
-   "nodev": 16,
-   "base": 31
+   "nodev": 19,
+   "base": 34
   }
  },
  "complete": false,
