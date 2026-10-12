@@ -171,9 +171,9 @@
     }
    },
    "dist": {
-    "In Development": 9,
+    "Awaiting Review": 9,
+    "In Development": 8,
     "Closed": 29,
-    "Awaiting Review": 8,
     "Ready for Development": 2,
     "Backlog": 4
    },
