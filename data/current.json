@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 30,
+  "closed": 31,
   "discarded": 1,
-  "resolved": 31,
+  "resolved": 32,
   "unplanned": 4,
-  "unp_pct": 13.3,
+  "unp_pct": 12.9,
   "types": [
    [
     "Bug",
@@ -25,7 +25,7 @@
    ],
    [
     "Task",
-    3
+    4
    ],
    [
     "Spike",
@@ -57,9 +57,9 @@
   "day": 12,
   "days": 28,
   "status": "warning",
-  "headline": "30 items closed in the first 12 days, a pace of about 70 for the month against 68 last month. Unplanned work at 13.3%.",
+  "headline": "31 items closed in the first 12 days, a pace of about 72 for the month against 68 last month. Unplanned work at 12.9%.",
   "notes": [
-   "unplanned work at 13.3%"
+   "unplanned work at 12.9%"
   ]
  },
  "SPRINTS": [
@@ -88,7 +88,7 @@
     52.0,
     47.0,
     47.0,
-    46.0
+    44.0
    ],
    [
     54.0,
@@ -113,11 +113,11 @@
   "EDW-Sprint 23-26": {
    "done": [
     31,
-    70
+    72
    ],
    "open": [
-    19,
-    47
+    18,
+    45
    ],
    "out": [
     4,
@@ -171,9 +171,9 @@
     }
    },
    "dist": {
-    "Awaiting Review": 9,
+    "Closed": 30,
     "In Development": 8,
-    "Closed": 29,
+    "Awaiting Review": 8,
     "Ready for Development": 2,
     "Backlog": 4
    },
@@ -199,25 +199,25 @@
    58.0,
    53.0,
    53.0,
-   52.0
+   50.0
   ]
  },
  "CAP": {
   "9.09": [
-   30,
-   26,
-   73,
+   31,
+   27,
+   75,
    4
   ]
  },
  "CYC": {
   "9.09": {
-   "med": 5.09,
-   "avg": 6.95,
-   "n": 14,
+   "med": 3.15,
+   "avg": 6.49,
+   "n": 15,
    "mx": 18.77,
    "nodev": 16,
-   "base": 30
+   "base": 31
   }
  },
  "complete": false,
