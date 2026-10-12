@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-12T09:15:21Z",
+ "generated": "2026-10-12T09:30:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -732,7 +732,7 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 6.8,
+    "med_age": 6.9,
     "max_age": 68.6,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -740,42 +740,6 @@
     "over": 4,
     "clear_med": 2.1,
     "clear_n": 198
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -790,7 +754,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -798,8 +762,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "Awaiting Review",
@@ -812,6 +776,42 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 118
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
