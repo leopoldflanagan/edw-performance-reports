@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T16:45:21Z",
+ "generated": "2026-10-13T17:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -318,7 +318,7 @@
    "points": 8
   },
   "misfiled": {
-   "items": 4,
+   "items": 5,
    "points": 13
   },
   "runway": 0.1,
@@ -328,7 +328,7 @@
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 4,
+    "n": 5,
     "points": 13,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
@@ -695,7 +695,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -703,8 +703,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 124
+    "clear_med": 40.1,
+    "clear_n": 62
    },
    {
     "status": "In Progress",
@@ -719,7 +719,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -727,20 +727,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.9,
+    "clear_n": 124
    },
    {
     "status": "On Hold",
@@ -753,11 +741,23 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
    "Deferred": 98,
-   "Backlog": 52
+   "Backlog": 53
   },
   "open_total": 31,
   "stale": 20,
