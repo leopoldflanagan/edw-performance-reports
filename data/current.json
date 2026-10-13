@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 37,
+  "closed": 38,
   "discarded": 1,
-  "resolved": 38,
-  "unplanned": 4,
-  "unp_pct": 10.8,
+  "resolved": 39,
+  "unplanned": 5,
+  "unp_pct": 13.2,
   "types": [
    [
     "Bug",
@@ -21,7 +21,7 @@
    ],
    [
     "Story",
-    13
+    14
    ],
    [
     "Task",
@@ -37,6 +37,10 @@
    "EDW-Sprint 24-26"
   ],
   "unp_items": [
+   [
+    "EDW-2462",
+    "[Finance] - PayFac by Product Type"
+   ],
    [
     "EDW-2425",
     "1.3: Add GetCareingtonRefundReport CSP endpoint and download screen"
@@ -58,9 +62,9 @@
   "day": 13,
   "days": 28,
   "status": "warning",
-  "headline": "37 items closed in the first 13 days, a pace of about 80 for the month against 68 last month. Unplanned work at 10.8%.",
+  "headline": "38 items closed in the first 13 days, a pace of about 82 for the month against 68 last month. Unplanned work at 13.2%.",
   "notes": [
-   "unplanned work at 10.8%"
+   "unplanned work at 13.2%"
   ]
  },
  "SPRINTS": [
@@ -113,12 +117,12 @@
    "EDW-Sprint 24-26",
    "Oct 12",
    "Oct 26",
-   37,
-   8,
+   38,
+   9,
    90,
-   93,
-   15,
-   3,
+   95,
+   17,
+   6,
    [
     72.0,
     69.0,
@@ -127,7 +131,7 @@
    [
     76.0,
     84.0,
-    87.0
+    89.0
    ]
   ]
  ],
@@ -154,8 +158,8 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    8,
-    14
+    9,
+    16
    ],
    "open": [
     19,
@@ -180,9 +184,9 @@
    "pct": 15
   },
   "EDW-Sprint 24-26": {
-   "react": 1,
+   "react": 2,
    "plan": 1,
-   "pct": 50
+   "pct": 67
   }
  },
  "TIS": {
@@ -231,6 +235,14 @@
   },
   "EDW-Sprint 24-26": {
    "tis": {
+    "In Development": {
+     "n": 10,
+     "med": 14.0
+    },
+    "Closed": {
+     "n": 8,
+     "med": 13.92
+    },
     "Awaiting Review": {
      "n": 11,
      "med": 12.98
@@ -242,27 +254,19 @@
     "Ready for Development": {
      "n": 7,
      "med": 14.0
-    },
-    "Closed": {
-     "n": 7,
-     "med": 13.93
-    },
-    "In Development": {
-     "n": 9,
-     "med": 14.0
     }
    },
    "dist": {
+    "Closed": 8,
     "Awaiting Review": 6,
     "Backlog": 10,
     "Ready for Development": 6,
-    "Closed": 7,
     "In Development": 8
    },
    "stalled": 30,
    "worst": 14.0,
-   "worstSt": "Ready for Development",
-   "items": 37
+   "worstSt": "In Development",
+   "items": 38
   }
  },
  "GHOST": {
@@ -291,20 +295,20 @@
  },
  "CAP": {
   "9.09": [
-   37,
-   33,
-   89,
+   38,
+   34,
+   91,
    4
   ]
  },
  "CYC": {
   "9.09": {
-   "med": 5.09,
-   "avg": 6.96,
-   "n": 16,
+   "med": 3.15,
+   "avg": 6.55,
+   "n": 17,
    "mx": 18.77,
    "nodev": 21,
-   "base": 37
+   "base": 38
   }
  },
  "complete": false,
