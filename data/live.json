@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T12:15:20Z",
+ "generated": "2026-10-13T12:29:10Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -649,18 +649,6 @@
     "clear_n": 200
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -673,7 +661,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -681,8 +669,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -707,6 +695,18 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 123
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "New",
