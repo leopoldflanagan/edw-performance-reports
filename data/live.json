@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T15:30:23Z",
+ "generated": "2026-10-13T15:45:01Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,27 +314,27 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 1,
-   "points": 3
+   "items": 2,
+   "points": 8
   },
   "misfiled": {
-   "items": 5,
-   "points": 18
+   "items": 4,
+   "points": 13
   },
-  "runway": 0.0,
+  "runway": 0.1,
   "runway_if_fixed": 0.3,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 5,
-    "points": 18,
+    "n": 4,
+    "points": 13,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 10,
+    "n": 13,
     "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,16 +368,51 @@
  },
  "admin": {
   "scope": {
-   "ready": 15,
+   "ready": 21,
    "sprint": 23,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
    {
+    "rule": "No estimate",
+    "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
+    "n": 4,
+    "items": [
+     {
+      "key": "EDW-2454",
+      "summary": "[Onboarding] - Onboard Report modifications"
+     },
+     {
+      "key": "EDW-2439",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
+     },
+     {
+      "key": "EDW-2438",
+      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     }
+    ]
+   },
+   {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 10,
+    "n": 13,
     "items": [
+     {
+      "key": "EDW-2439",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
+     },
+     {
+      "key": "EDW-2438",
+      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
@@ -397,18 +432,6 @@
      {
       "key": "EDW-2076",
       "summary": "Fabric POC"
-     },
-     {
-      "key": "EDW-2060",
-      "summary": "Create CDC on database side and Analyzing the Monthly Mass Update "
-     },
-     {
-      "key": "EDW-2037",
-      "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -426,25 +449,36 @@
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      }
     ]
+   },
+   {
+    "rule": "Open dependency",
+    "why": "the guide: Definition of Ready means no open dependencies.",
+    "n": 1,
+    "items": [
+     {
+      "key": "EDW-2434",
+      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     }
+    ]
    }
   ],
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 29 of 34 items. This reads as a field the team does not use rather than 29 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 29,
+    "why": "missing on 34 of 40 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 34,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 31 of 34 items. This reads as a field the team does not use rather than 31 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 31,
+    "why": "missing on 37 of 40 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 37,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 34 of 34 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 34,
+    "why": "missing on 40 of 40 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 40,
     "items": []
    },
    {
@@ -548,11 +582,11 @@
   "vs_commitment": 11,
   "time_elapsed": 6,
   "spill": {
-   "open_items": 19,
-   "open_pts": 58.0,
+   "open_items": 18,
+   "open_pts": 55.0,
    "out_items": 7,
    "out_pts": 26.0,
-   "done_pts": 6.0
+   "done_pts": 9.0
   },
   "recv": {
    "items": 15,
@@ -562,10 +596,10 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 5,
+   "Closed": 6,
    "In Development": 9,
-   "Awaiting Review": 6,
-   "Ready for Development": 4
+   "Ready for Development": 4,
+   "Awaiting Review": 5
   },
   "burn": [
    72.0,
@@ -607,10 +641,10 @@
   "end": "2026-10-25",
   "day": 16,
   "days": 28,
-  "closed": 35,
-  "points": 81,
+  "closed": 36,
+  "points": 84,
   "unplanned": 4,
-  "unplanned_pct": 11.4,
+  "unplanned_pct": 11.1,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -626,9 +660,9 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 15,
-    "med_age": 39.9,
-    "max_age": 217.8,
+    "open": 21,
+    "med_age": 26.8,
+    "max_age": 217.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -639,17 +673,17 @@
    {
     "status": "In Development",
     "open": 11,
-    "med_age": 5.0,
-    "max_age": 69.8,
+    "med_age": 5.1,
+    "max_age": 69.9,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 200
+    "clear_n": 201
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -657,32 +691,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 123
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -697,6 +707,30 @@
     "clear_n": 2
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -709,7 +743,7 @@
     "clear_n": 16
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -717,15 +751,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 124
    }
   ],
   "parked": {
-   "Backlog": 57,
+   "Backlog": 52,
    "Deferred": 98
   },
-  "open_total": 26,
+  "open_total": 32,
   "stale": 20,
   "worst": "Ready for Development"
  }

@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 35,
+  "closed": 36,
   "discarded": 1,
-  "resolved": 36,
+  "resolved": 37,
   "unplanned": 4,
-  "unp_pct": 11.4,
+  "unp_pct": 11.1,
   "types": [
    [
     "Bug",
@@ -21,7 +21,7 @@
    ],
    [
     "Story",
-    12
+    13
    ],
    [
     "Task",
@@ -58,9 +58,9 @@
   "day": 13,
   "days": 28,
   "status": "warning",
-  "headline": "35 items closed in the first 13 days, a pace of about 75 for the month against 68 last month. Unplanned work at 11.4%.",
+  "headline": "36 items closed in the first 13 days, a pace of about 78 for the month against 68 last month. Unplanned work at 11.1%.",
   "notes": [
-   "unplanned work at 11.4%"
+   "unplanned work at 11.1%"
   ]
  },
  "SPRINTS": [
@@ -153,11 +153,11 @@
   "EDW-Sprint 24-26": {
    "done": [
     7,
-    6
+    9
    ],
    "open": [
-    19,
-    58
+    18,
+    55
    ],
    "out": [
     7,
@@ -212,11 +212,10 @@
     }
    },
    "dist": {
-    "Closed": 32,
+    "Closed": 33,
     "In Development": 8,
-    "Awaiting Review": 6,
-    "Ready for Development": 2,
-    "Backlog": 1,
+    "Awaiting Review": 5,
+    "Ready for Development": 3,
     "Deferred": 3
    },
    "stalled": 21,
@@ -227,7 +226,7 @@
   "EDW-Sprint 24-26": {
    "tis": {
     "Closed": {
-     "n": 5,
+     "n": 6,
      "med": 13.93
     },
     "Backlog": {
@@ -248,13 +247,13 @@
     }
    },
    "dist": {
-    "Closed": 5,
+    "Closed": 6,
     "In Development": 9,
-    "Awaiting Review": 6,
     "Ready for Development": 5,
+    "Awaiting Review": 5,
     "Backlog": 6
    },
-   "stalled": 26,
+   "stalled": 25,
    "worst": 14.0,
    "worstSt": "Ready for Development",
    "items": 31
@@ -285,20 +284,20 @@
  },
  "CAP": {
   "9.09": [
-   35,
-   31,
-   81,
+   36,
+   32,
+   84,
    4
   ]
  },
  "CYC": {
   "9.09": {
-   "med": 3.15,
-   "avg": 6.49,
-   "n": 15,
+   "med": 5.09,
+   "avg": 6.96,
+   "n": 16,
    "mx": 18.77,
    "nodev": 20,
-   "base": 35
+   "base": 36
   }
  },
  "complete": false,
