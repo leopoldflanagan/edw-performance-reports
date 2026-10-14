@@ -10,8 +10,8 @@
   "prev": "",
   "prev_closed": 68,
   "closed": 38,
-  "discarded": 75,
-  "resolved": 113,
+  "discarded": 96,
+  "resolved": 134,
   "unplanned": 5,
   "unp_pct": 13.2,
   "types": [
@@ -226,7 +226,7 @@
     "Awaiting Review": 6,
     "In Development": 7,
     "Ready for Development": 3,
-    "Deferred": 3
+    "Won't Do": 3
    },
    "stalled": 21,
    "worst": 8.82,
