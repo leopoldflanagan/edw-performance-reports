@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-13T23:45:20Z",
+ "generated": "2026-10-14T00:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 2,
+  "day": 3,
   "days": 14,
   "n": 19,
   "done_now": 17,
   "committed": 90,
-  "lo": 86,
-  "mid": 115,
-  "hi": 154,
-  "pct": 128,
-  "verdict": "on track for the commitment",
-  "share_mid": 0.148
+  "lo": 56,
+  "mid": 76,
+  "hi": 89,
+  "pct": 84,
+  "verdict": "a little short of the commitment",
+  "share_mid": 0.225
  },
  "admin": {
   "scope": {
@@ -580,7 +580,7 @@
   "completed": 17,
   "scope_change": 6,
   "vs_commitment": 19,
-  "time_elapsed": 8,
+  "time_elapsed": 9,
   "spill": {
    "open_items": 19,
    "open_pts": 53.0,
@@ -618,7 +618,7 @@
    77.0
   ],
   "days": 14,
-  "day": 2,
+  "day": 3,
   "capacity": {
    "release": "9.09",
    "start": "2026-10-12",
@@ -643,7 +643,7 @@
   "kind": "release",
   "start": "2026-09-28",
   "end": "2026-10-25",
-  "day": 16,
+  "day": 17,
   "days": 28,
   "closed": 38,
   "points": 91,
@@ -677,7 +677,7 @@
    {
     "status": "In Development",
     "open": 10,
-    "med_age": 6.9,
+    "med_age": 7.0,
     "max_age": 70.2,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -687,7 +687,7 @@
     "clear_n": 202
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -695,8 +695,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 125
    },
    {
     "status": "In Progress",
@@ -723,7 +735,7 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -731,20 +743,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 125
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "On Hold",
