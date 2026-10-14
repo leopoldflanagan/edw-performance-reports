@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T02:00:24Z",
+ "generated": "2026-10-14T02:15:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -665,7 +665,7 @@
    {
     "status": "Ready for Development",
     "open": 21,
-    "med_age": 27.2,
+    "med_age": 27.3,
     "max_age": 218.3,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -699,18 +699,6 @@
     "clear_n": 62
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -721,18 +709,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -747,6 +723,18 @@
     "clear_n": 125
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -757,6 +745,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
