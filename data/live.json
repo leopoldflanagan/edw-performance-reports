@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T05:45:17Z",
+ "generated": "2026-10-14T06:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -666,7 +666,7 @@
     "status": "Ready for Development",
     "open": 21,
     "med_age": 27.4,
-    "max_age": 218.4,
+    "max_age": 218.5,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -677,50 +677,14 @@
    {
     "status": "In Development",
     "open": 10,
-    "med_age": 7.1,
-    "max_age": 70.4,
+    "med_age": 7.2,
+    "max_age": 70.5,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
     "clear_n": 202
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 62
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 125
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -735,6 +699,42 @@
     "clear_n": 1
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 125
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 62
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -747,7 +747,7 @@
     "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -755,8 +755,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
