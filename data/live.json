@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T16:00:26Z",
+ "generated": "2026-10-15T16:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
+    "n": 13,
     "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 23,
+   "ready": 22,
    "sprint": 29,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -378,10 +378,6 @@
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
     "n": 4,
     "items": [
-     {
-      "key": "EDW-2465",
-      "summary": "[Launch Loyalty] - Commission Report for Laryssa"
-     },
      {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
@@ -393,18 +389,18 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2465",
+      "summary": "[Launch Loyalty] - Commission Report for Laryssa"
      }
     ]
    },
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
-     {
-      "key": "EDW-2465",
-      "summary": "[Launch Loyalty] - Commission Report for Laryssa"
-     },
      {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
@@ -432,6 +428,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2076",
+      "summary": "Fabric POC"
      }
     ]
    },
@@ -592,7 +592,7 @@
   "completed": 20,
   "scope_change": 13,
   "vs_commitment": 22,
-  "time_elapsed": 20,
+  "time_elapsed": 21,
   "spill": {
    "open_items": 20,
    "open_pts": 57.0,
@@ -608,8 +608,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 7,
-   "In Development": 8,
+   "In Development": 9,
+   "Ready for Development": 6,
    "Closed": 10,
    "Backlog": 4,
    "Awaiting Review": 5
@@ -679,30 +679,30 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 23,
-    "med_age": 9.8,
+    "open": 22,
+    "med_age": 19.3,
     "max_age": 219.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 14,
-    "clear_med": 4.0,
-    "clear_n": 174
+    "clear_med": 3.9,
+    "clear_n": 175
    },
    {
     "status": "In Development",
-    "open": 10,
-    "med_age": 8.5,
+    "open": 11,
+    "med_age": 7.0,
     "max_age": 71.9,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
-    "over": 5,
+    "over": 6,
     "clear_med": 2.1,
     "clear_n": 194
    },
    {
-    "status": "On Hold",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -710,20 +710,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -750,6 +738,18 @@
     "clear_n": 5
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -762,7 +762,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -770,15 +770,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 53
   },
   "open_total": 33,
-  "stale": 19,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
