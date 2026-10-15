@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-14T23:45:21Z",
+ "generated": "2026-10-15T00:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 3,
+  "day": 4,
   "days": 14,
   "n": 19,
   "done_now": 18,
   "committed": 90,
-  "lo": 60,
-  "mid": 80,
-  "hi": 94,
-  "pct": 89,
-  "verdict": "a little short of the commitment",
-  "share_mid": 0.225
+  "lo": 48,
+  "mid": 62,
+  "hi": 82,
+  "pct": 69,
+  "verdict": "well short of the commitment",
+  "share_mid": 0.291
  },
  "admin": {
   "scope": {
@@ -629,7 +629,7 @@
    83.0
   ],
   "days": 14,
-  "day": 3,
+  "day": 4,
   "capacity": {
    "release": "9.09",
    "start": "2026-10-12",
@@ -654,7 +654,7 @@
   "kind": "release",
   "start": "2026-09-28",
   "end": "2026-10-25",
-  "day": 17,
+  "day": 18,
   "days": 28,
   "closed": 38,
   "points": 89,
@@ -682,8 +682,8 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 14,
-    "clear_med": 3.9,
-    "clear_n": 181
+    "clear_med": 4.0,
+    "clear_n": 174
    },
    {
     "status": "In Development",
@@ -695,10 +695,10 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 202
+    "clear_n": 192
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -706,32 +706,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 125
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Created",
@@ -746,7 +722,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -754,8 +730,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 119
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "WAITING REVIEW",
