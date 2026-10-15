@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T15:18:01Z",
+ "generated": "2026-10-15T15:30:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
+    "n": 14,
     "points": 43,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,16 +368,20 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
-   "sprint": 28,
+   "ready": 23,
+   "sprint": 29,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 3,
+    "n": 4,
     "items": [
+     {
+      "key": "EDW-2465",
+      "summary": "[Launch Loyalty] - Commission Report for Laryssa"
+     },
      {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
@@ -395,8 +399,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2465",
+      "summary": "[Launch Loyalty] - Commission Report for Laryssa"
+     },
      {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
@@ -424,10 +432,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      }
     ]
    },
@@ -461,20 +465,20 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 36 of 44 items. This reads as a field the team does not use rather than 36 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 36,
+    "why": "missing on 37 of 45 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 37,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 40 of 44 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 40,
+    "why": "missing on 41 of 45 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 41,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 44 of 44 items. This reads as a field the team does not use rather than 44 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 44,
+    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 45,
     "items": []
    },
    {
@@ -581,7 +585,7 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 40,
+  "items": 41,
   "items_done": 11,
   "committed": 90,
   "final": 102,
@@ -590,7 +594,7 @@
   "vs_commitment": 22,
   "time_elapsed": 20,
   "spill": {
-   "open_items": 19,
+   "open_items": 20,
    "open_pts": 57.0,
    "out_items": 7,
    "out_pts": 26.0,
@@ -604,8 +608,8 @@
   },
   "spill_rate": null,
   "dist": {
+   "Ready for Development": 7,
    "In Development": 8,
-   "Ready for Development": 6,
    "Closed": 10,
    "Backlog": 4,
    "Awaiting Review": 5
@@ -675,8 +679,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 19.2,
+    "open": 23,
+    "med_age": 9.8,
     "max_age": 219.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -698,7 +702,7 @@
     "clear_n": 194
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -706,8 +710,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.9,
+    "clear_n": 121
    },
    {
     "status": "In Progress",
@@ -722,7 +726,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -730,20 +734,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -768,12 +760,24 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
    "Backlog": 53
   },
-  "open_total": 32,
+  "open_total": 33,
   "stale": 19,
   "worst": "Ready for Development"
  }
