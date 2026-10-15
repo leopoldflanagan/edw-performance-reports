@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T19:30:26Z",
+ "generated": "2026-10-15T19:37:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 22,
-   "sprint": 29,
+   "sprint": 36,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
@@ -456,63 +456,164 @@
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      }
     ]
+   },
+   {
+    "rule": "Still in Backlog inside the sprint",
+    "why": "in the sprint but never pulled into the flow.",
+    "n": 7,
+    "items": [
+     {
+      "key": "EDW-2473",
+      "summary": "Request and sorting pass"
+     },
+     {
+      "key": "EDW-2472",
+      "summary": "wf-reporting/mocks entry point"
+     },
+     {
+      "key": "EDW-2471",
+      "summary": "Visual context in the application layer and layer boundaries"
+     },
+     {
+      "key": "EDW-2470",
+      "summary": "Pilot pass: Payment and Lending"
+     },
+     {
+      "key": "EDW-2469",
+      "summary": "Reorganized mocks and working export in mock mode"
+     },
+     {
+      "key": "EDW-2468",
+      "summary": "Additive toolkit"
+     },
+     {
+      "key": "EDW-2467",
+      "summary": "Configurable timeout for library requests"
+     }
+    ]
    }
   ],
   "debt": [
    {
-    "rule": "Fix version is not in use",
-    "why": "missing on 37 of 45 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "rule": "No fix version",
+    "why": "the release a delivery belongs to cannot be traced without it.",
     "n": 37,
-    "items": []
-   },
-   {
-    "rule": "Original estimate is not in use",
-    "why": "missing on 41 of 45 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 41,
-    "items": []
-   },
-   {
-    "rule": "Target end date is not in use",
-    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 45,
-    "items": []
-   },
-   {
-    "rule": "Assignee is not on the roster",
-    "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 8,
     "items": [
-     {
-      "key": "EDW-2464",
-      "summary": "Architectural library audit roadmap"
-     },
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
      },
      {
-      "key": "EDW-2461",
-      "summary": "CRM accounts linked to wrong Practice ID (wf_practiceid) \u2013 Paradise Dental + 8 o"
+      "key": "EDW-2454",
+      "summary": "[Onboarding] - Onboard Report modifications"
      },
      {
-      "key": "EDW-2449",
-      "summary": "Compare and Review Phase 2/3 Incremental Data "
+      "key": "EDW-2439",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      },
      {
-      "key": "EDW-2427",
-      "summary": "PROD data-EDW will share Benefit plan ID,Auto Renewal Date, Credit card exp date"
+      "key": "EDW-2438",
+      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
-      "key": "EDW-2385",
-      "summary": "WFP Dynamics feed: split semantic-model tables into Regular / Bulk / Missed to s"
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
-      "key": "EDW-2379",
-      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
+      "key": "EDW-2417",
+      "summary": "Reload Historical BenefitPlan records to break out separate years"
      },
      {
-      "key": "EDW-2375",
-      "summary": "Member Adoption Report"
+      "key": "EDW-2388",
+      "summary": "Smile Brands Reporting"
+     },
+     {
+      "key": "EDW-2374",
+      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
+     }
+    ]
+   },
+   {
+    "rule": "No original estimate",
+    "why": "time tracking is empty, so effort cannot be compared to points.",
+    "n": 41,
+    "items": [
+     {
+      "key": "EDW-2463",
+      "summary": "EDW Ambetter development"
+     },
+     {
+      "key": "EDW-2454",
+      "summary": "[Onboarding] - Onboard Report modifications"
+     },
+     {
+      "key": "EDW-2439",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
+     },
+     {
+      "key": "EDW-2438",
+      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2434",
+      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2417",
+      "summary": "Reload Historical BenefitPlan records to break out separate years"
+     },
+     {
+      "key": "EDW-2388",
+      "summary": "Smile Brands Reporting"
+     }
+    ]
+   },
+   {
+    "rule": "Target end date is not in use",
+    "why": "missing on 52 of 52 items. This reads as a field the team does not use rather than 52 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 52,
+    "items": []
+   },
+   {
+    "rule": "Assignee is not on the roster",
+    "why": "the capacity page lists the team; this work is assigned outside it.",
+    "n": 15,
+    "items": [
+     {
+      "key": "EDW-2473",
+      "summary": "Request and sorting pass"
+     },
+     {
+      "key": "EDW-2472",
+      "summary": "wf-reporting/mocks entry point"
+     },
+     {
+      "key": "EDW-2471",
+      "summary": "Visual context in the application layer and layer boundaries"
+     },
+     {
+      "key": "EDW-2470",
+      "summary": "Pilot pass: Payment and Lending"
+     },
+     {
+      "key": "EDW-2469",
+      "summary": "Reorganized mocks and working export in mock mode"
+     },
+     {
+      "key": "EDW-2468",
+      "summary": "Additive toolkit"
+     },
+     {
+      "key": "EDW-2467",
+      "summary": "Configurable timeout for library requests"
+     },
+     {
+      "key": "EDW-2464",
+      "summary": "Architectural library audit roadmap"
      }
     ]
    },
@@ -581,17 +682,17 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 42,
+  "items": 48,
   "items_done": 12,
   "committed": 90,
-  "final": 104,
+  "final": 126,
   "completed": 22,
-  "scope_change": 16,
+  "scope_change": 40,
   "vs_commitment": 24,
-  "time_elapsed": 21,
+  "time_elapsed": 22,
   "spill": {
-   "open_items": 20,
-   "open_pts": 57.0,
+   "open_items": 27,
+   "open_pts": 84.0,
    "out_items": 7,
    "out_pts": 26.0,
    "done_pts": 21.0
@@ -604,9 +705,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 5,
+   "Backlog": 10,
+   "In Development": 8,
    "Closed": 11,
-   "In Development": 7,
    "Ready for Development": 6,
    "Awaiting Review": 6
   },
@@ -615,21 +716,21 @@
    69.0,
    73.0,
    76.0,
-   76.0
+   98.0
   ],
   "scope": [
    76.0,
    84.0,
    91.0,
    98.0,
-   98.0
+   120.0
   ],
   "ghost": [
    77.0,
    74.0,
    78.0,
    81.0,
-   81.0
+   103.0
   ],
   "days": 14,
   "day": 4,
@@ -713,30 +814,6 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 121
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -749,6 +826,18 @@
     "clear_n": 16
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -759,6 +848,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 121
    },
    {
     "status": "WAITING REVIEW",
