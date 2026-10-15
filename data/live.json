@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T13:17:44Z",
+ "generated": "2026-10-15T13:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 4,
   "days": 14,
   "n": 19,
-  "done_now": 18,
+  "done_now": 20,
   "committed": 90,
-  "lo": 48,
-  "mid": 62,
-  "hi": 82,
-  "pct": 69,
+  "lo": 54,
+  "mid": 69,
+  "hi": 91,
+  "pct": 77,
   "verdict": "well short of the commitment",
   "share_mid": 0.291
  },
@@ -582,19 +582,19 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 40,
-  "items_done": 10,
+  "items_done": 11,
   "committed": 90,
   "final": 102,
-  "completed": 18,
+  "completed": 20,
   "scope_change": 13,
-  "vs_commitment": 20,
+  "vs_commitment": 22,
   "time_elapsed": 20,
   "spill": {
-   "open_items": 21,
-   "open_pts": 62.0,
+   "open_items": 20,
+   "open_pts": 60.0,
    "out_items": 7,
    "out_pts": 26.0,
-   "done_pts": 14.0
+   "done_pts": 16.0
   },
   "recv": {
    "items": 15,
@@ -604,9 +604,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 9,
+   "In Development": 8,
    "Ready for Development": 6,
-   "Closed": 8,
+   "Closed": 9,
    "Backlog": 4,
    "Awaiting Review": 6
   },
@@ -614,7 +614,7 @@
    72.0,
    69.0,
    73.0,
-   78.0
+   76.0
   ],
   "scope": [
    76.0,
@@ -626,7 +626,7 @@
    77.0,
    74.0,
    78.0,
-   83.0
+   81.0
   ],
   "days": 14,
   "day": 4,
@@ -656,10 +656,10 @@
   "end": "2026-10-25",
   "day": 18,
   "days": 28,
-  "closed": 38,
-  "points": 89,
+  "closed": 39,
+  "points": 91,
   "unplanned": 5,
-  "unplanned_pct": 13.2,
+  "unplanned_pct": 12.8,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -687,18 +687,18 @@
    },
    {
     "status": "In Development",
-    "open": 11,
-    "med_age": 6.8,
+    "open": 10,
+    "med_age": 8.4,
     "max_age": 71.8,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
-    "clear_n": 192
+    "clear_n": 193
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -706,32 +706,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -758,7 +734,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -766,14 +742,38 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
    "Backlog": 53
   },
-  "open_total": 33,
+  "open_total": 32,
   "stale": 19,
   "worst": "Ready for Development"
  }

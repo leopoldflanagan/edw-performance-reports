@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 38,
+  "closed": 39,
   "discarded": 99,
-  "resolved": 137,
+  "resolved": 138,
   "unplanned": 5,
-  "unp_pct": 13.2,
+  "unp_pct": 12.8,
   "types": [
    [
     "Bug",
@@ -21,7 +21,7 @@
    ],
    [
     "Story",
-    13
+    14
    ],
    [
     "Task",
@@ -62,9 +62,9 @@
   "day": 15,
   "days": 28,
   "status": "warning",
-  "headline": "38 items closed in the first 15 days, a pace of about 71 for the month against 68 last month. Unplanned work at 13.2%.",
+  "headline": "39 items closed in the first 15 days, a pace of about 73 for the month against 68 last month. Unplanned work at 12.8%.",
   "notes": [
-   "unplanned work at 13.2%"
+   "unplanned work at 12.8%"
   ]
  },
  "SPRINTS": [
@@ -118,16 +118,16 @@
    "Oct 12",
    "Oct 26",
    40,
-   10,
+   11,
    90,
    102,
-   18,
+   20,
    13,
    [
     72.0,
     69.0,
     73.0,
-    78.0
+    76.0
    ],
    [
     76.0,
@@ -160,12 +160,12 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    10,
-    14
+    11,
+    16
    ],
    "open": [
-    21,
-    62
+    20,
+    60
    ],
    "out": [
     7,
@@ -224,9 +224,9 @@
     }
    },
    "dist": {
-    "Closed": 33,
+    "Closed": 34,
     "Awaiting Review": 6,
-    "In Development": 7,
+    "In Development": 6,
     "Ready for Development": 3,
     "Won't Do": 3
    },
@@ -239,7 +239,7 @@
    "tis": {
     "In Development": {
      "n": 12,
-     "med": 13.95
+     "med": 13.06
     },
     "Backlog": {
      "n": 12,
@@ -250,8 +250,8 @@
      "med": 12.95
     },
     "Closed": {
-     "n": 9,
-     "med": 13.9
+     "n": 10,
+     "med": 13.46
     },
     "Awaiting Review": {
      "n": 12,
@@ -259,14 +259,14 @@
     }
    },
    "dist": {
-    "In Development": 9,
+    "In Development": 8,
     "Ready for Development": 7,
-    "Closed": 8,
+    "Closed": 9,
     "Backlog": 10,
     "Awaiting Review": 6
    },
-   "stalled": 32,
-   "worst": 13.95,
+   "stalled": 31,
+   "worst": 13.06,
    "worstSt": "In Development",
    "items": 40
   }
@@ -293,25 +293,25 @@
    77.0,
    74.0,
    78.0,
-   83.0
+   81.0
   ]
  },
  "CAP": {
   "9.09": [
-   38,
-   34,
-   89,
+   39,
+   35,
+   91,
    4
   ]
  },
  "CYC": {
   "9.09": {
-   "med": 3.07,
-   "avg": 6.08,
-   "n": 16,
+   "med": 3.15,
+   "avg": 6.12,
+   "n": 17,
    "mx": 18.77,
    "nodev": 22,
-   "base": 38
+   "base": 39
   }
  },
  "complete": false,
