@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T19:45:20Z",
+ "generated": "2026-10-15T20:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 43,
+    "n": 14,
+    "points": 45,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
-   "sprint": 36,
+   "ready": 23,
+   "sprint": 37,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
@@ -395,8 +395,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2474",
+      "summary": "Create CSV list for Phase 4"
+     },
      {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
@@ -424,10 +428,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      }
     ]
    },
@@ -497,8 +497,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 37,
+    "n": 38,
     "items": [
+     {
+      "key": "EDW-2474",
+      "summary": "Create CSV list for Phase 4"
+     },
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
@@ -526,18 +530,18 @@
      {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
-     },
-     {
-      "key": "EDW-2374",
-      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
      }
     ]
    },
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 41,
+    "n": 42,
     "items": [
+     {
+      "key": "EDW-2474",
+      "summary": "Create CSV list for Phase 4"
+     },
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
@@ -565,24 +569,24 @@
      {
       "key": "EDW-2417",
       "summary": "Reload Historical BenefitPlan records to break out separate years"
-     },
-     {
-      "key": "EDW-2388",
-      "summary": "Smile Brands Reporting"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 52 of 52 items. This reads as a field the team does not use rather than 52 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 52,
+    "why": "missing on 53 of 53 items. This reads as a field the team does not use rather than 53 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 53,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 15,
+    "n": 16,
     "items": [
+     {
+      "key": "EDW-2474",
+      "summary": "Create CSV list for Phase 4"
+     },
      {
       "key": "EDW-2473",
       "summary": "Request and sorting pass"
@@ -610,10 +614,6 @@
      {
       "key": "EDW-2467",
       "summary": "Configurable timeout for library requests"
-     },
-     {
-      "key": "EDW-2464",
-      "summary": "Architectural library audit roadmap"
      }
     ]
    },
@@ -682,17 +682,17 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 49,
+  "items": 50,
   "items_done": 13,
   "committed": 90,
-  "final": 131,
+  "final": 133,
   "completed": 27,
-  "scope_change": 46,
+  "scope_change": 48,
   "vs_commitment": 30,
   "time_elapsed": 22,
   "spill": {
-   "open_items": 26,
-   "open_pts": 79.0,
+   "open_items": 27,
+   "open_pts": 81.0,
    "out_items": 7,
    "out_pts": 26.0,
    "done_pts": 26.0
@@ -705,10 +705,10 @@
   },
   "spill_rate": null,
   "dist": {
+   "Ready for Development": 7,
    "Backlog": 11,
    "In Development": 7,
    "Closed": 12,
-   "Ready for Development": 6,
    "Awaiting Review": 6
   },
   "burn": [
@@ -716,21 +716,21 @@
    69.0,
    73.0,
    76.0,
-   98.0
+   100.0
   ],
   "scope": [
    76.0,
    84.0,
    91.0,
    98.0,
-   125.0
+   127.0
   ],
   "ghost": [
    77.0,
    74.0,
    78.0,
    81.0,
-   103.0
+   105.0
   ],
   "days": 14,
   "day": 4,
@@ -779,8 +779,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 19.4,
+    "open": 23,
+    "med_age": 9.9,
     "max_age": 220.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -800,42 +800,6 @@
     "over": 6,
     "clear_med": 2.1,
     "clear_n": 196
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    },
    {
     "status": "On Hold",
@@ -862,6 +826,18 @@
     "clear_n": 5
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -872,12 +848,36 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 121
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
    "Backlog": 60
   },
-  "open_total": 30,
+  "open_total": 31,
   "stale": 20,
   "worst": "Ready for Development"
  }
