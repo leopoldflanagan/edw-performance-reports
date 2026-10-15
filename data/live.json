@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T13:00:27Z",
+ "generated": "2026-10-15T13:15:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -676,8 +676,8 @@
    {
     "status": "Ready for Development",
     "open": 22,
-    "med_age": 19.1,
-    "max_age": 219.7,
+    "med_age": 19.2,
+    "max_age": 219.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -689,13 +689,37 @@
     "status": "In Development",
     "open": 11,
     "med_age": 6.8,
-    "max_age": 71.7,
+    "max_age": 71.8,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.1,
     "clear_n": 192
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 119
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -722,7 +746,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -730,8 +754,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -744,30 +768,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 119
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
