@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 40,
+  "closed": 41,
   "discarded": 99,
-  "resolved": 139,
-  "unplanned": 5,
-  "unp_pct": 12.5,
+  "resolved": 140,
+  "unplanned": 6,
+  "unp_pct": 14.6,
   "types": [
    [
     "Bug",
@@ -21,7 +21,7 @@
    ],
    [
     "Story",
-    15
+    16
    ],
    [
     "Task",
@@ -37,6 +37,10 @@
    "EDW-Sprint 24-26"
   ],
   "unp_items": [
+   [
+    "EDW-2465",
+    "[Launch Loyalty] - Commission Report for Laryssa"
+   ],
    [
     "EDW-2462",
     "[Finance] - PayFac by Product Type"
@@ -62,9 +66,9 @@
   "day": 15,
   "days": 28,
   "status": "warning",
-  "headline": "40 items closed in the first 15 days, a pace of about 75 for the month against 68 last month. Unplanned work at 12.5%.",
+  "headline": "41 items closed in the first 15 days, a pace of about 77 for the month against 68 last month. Unplanned work at 14.6%.",
   "notes": [
-   "unplanned work at 12.5%"
+   "unplanned work at 14.6%"
   ]
  },
  "SPRINTS": [
@@ -118,7 +122,7 @@
    "Oct 12",
    "Oct 26",
    42,
-   11,
+   12,
    90,
    102,
    20,
@@ -160,11 +164,11 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    11,
+    12,
     19
    ],
    "open": [
-    21,
+    20,
     57
    ],
    "out": [
@@ -250,8 +254,8 @@
      "med": 12.21
     },
     "Closed": {
-     "n": 11,
-     "med": 13.01
+     "n": 12,
+     "med": 12.97
     },
     "Awaiting Review": {
      "n": 12,
@@ -260,12 +264,12 @@
    },
    "dist": {
     "Backlog": 11,
-    "In Development": 9,
+    "Closed": 11,
+    "In Development": 8,
     "Ready for Development": 7,
-    "Closed": 10,
     "Awaiting Review": 5
    },
-   "stalled": 32,
+   "stalled": 31,
    "worst": 12.58,
    "worstSt": "Ready for Development",
    "items": 42
@@ -298,7 +302,7 @@
  },
  "CAP": {
   "9.09": [
-   40,
+   41,
    36,
    94,
    4
@@ -306,12 +310,12 @@
  },
  "CYC": {
   "9.09": {
-   "med": 4.91,
-   "avg": 6.67,
-   "n": 18,
+   "med": 3.15,
+   "avg": 6.32,
+   "n": 19,
    "mx": 18.77,
    "nodev": 22,
-   "base": 40
+   "base": 41
   }
  },
  "complete": false,
