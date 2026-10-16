@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T17:00:26Z",
+ "generated": "2026-10-16T17:13:48Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 21,
-   "sprint": 39,
+   "sprint": 40,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
@@ -570,15 +570,19 @@
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 53 of 53 items. This reads as a field the team does not use rather than 53 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 53,
+    "why": "missing on 54 of 54 items. This reads as a field the team does not use rather than 54 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 54,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 18,
+    "n": 19,
     "items": [
+     {
+      "key": "EDW-2475",
+      "summary": "EDW - Show/hide Export button on embedded reports/dashboards using the export fl"
+     },
      {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
@@ -606,10 +610,6 @@
      {
       "key": "EDW-2468",
       "summary": "Additive toolkit"
-     },
-     {
-      "key": "EDW-2467",
-      "summary": "Configurable timeout for library requests"
      }
     ]
    },
@@ -678,17 +678,17 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 52,
+  "items": 53,
   "items_done": 14,
   "committed": 90,
-  "final": 133,
+  "final": 136,
   "completed": 29,
-  "scope_change": 48,
+  "scope_change": 51,
   "vs_commitment": 32,
   "time_elapsed": 28,
   "spill": {
-   "open_items": 28,
-   "open_pts": 79.0,
+   "open_items": 29,
+   "open_pts": 82.0,
    "out_items": 7,
    "out_pts": 26.0,
    "done_pts": 28.0
@@ -701,9 +701,9 @@
   },
   "spill_rate": null,
   "dist": {
+   "In Development": 11,
    "Ready for Development": 7,
    "Backlog": 10,
-   "In Development": 10,
    "Closed": 13,
    "Awaiting Review": 5
   },
@@ -712,21 +712,21 @@
    69.0,
    73.0,
    76.0,
-   98.0
+   101.0
   ],
   "scope": [
    76.0,
    84.0,
    91.0,
    98.0,
-   127.0
+   130.0
   ],
   "ghost": [
    77.0,
    74.0,
    78.0,
    81.0,
-   103.0
+   106.0
   ],
   "days": 14,
   "day": 5,
@@ -787,8 +787,8 @@
    },
    {
     "status": "In Development",
-    "open": 11,
-    "med_age": 7.9,
+    "open": 12,
+    "med_age": 5.8,
     "max_age": 72.9,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -796,42 +796,6 @@
     "over": 6,
     "clear_med": 2.1,
     "clear_n": 195
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -846,7 +810,7 @@
     "clear_n": 120
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -854,8 +818,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "On Hold",
@@ -868,12 +832,48 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Backlog": 60
+   "Backlog": 59
   },
-  "open_total": 32,
+  "open_total": 33,
   "stale": 20,
   "worst": "Ready for Development"
  }
