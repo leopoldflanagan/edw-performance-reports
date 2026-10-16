@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T16:15:20Z",
+ "generated": "2026-10-16T16:18:12Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -460,7 +460,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 7,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2473",
@@ -485,10 +485,6 @@
      {
       "key": "EDW-2468",
       "summary": "Additive toolkit"
-     },
-     {
-      "key": "EDW-2467",
-      "summary": "Configurable timeout for library requests"
      }
     ]
    }
@@ -706,8 +702,8 @@
   "spill_rate": null,
   "dist": {
    "Ready for Development": 7,
-   "Backlog": 11,
-   "In Development": 9,
+   "Backlog": 10,
+   "In Development": 10,
    "Closed": 13,
    "Awaiting Review": 5
   },
@@ -791,8 +787,8 @@
    },
    {
     "status": "In Development",
-    "open": 10,
-    "med_age": 8.0,
+    "open": 11,
+    "med_age": 7.9,
     "max_age": 72.9,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -802,7 +798,7 @@
     "clear_n": 195
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -810,20 +806,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -838,6 +822,18 @@
     "clear_n": 61
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -850,7 +846,7 @@
     "clear_n": 120
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -858,8 +854,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -875,9 +871,9 @@
    }
   ],
   "parked": {
-   "Backlog": 61
+   "Backlog": 60
   },
-  "open_total": 31,
+  "open_total": 32,
   "stale": 20,
   "worst": "Ready for Development"
  }
