@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-16T20:16:01Z",
+ "generated": "2026-10-16T20:30:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -780,7 +780,7 @@
     "status": "Ready for Development",
     "open": 21,
     "med_age": 30.0,
-    "max_age": 221.0,
+    "max_age": 221.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -792,7 +792,7 @@
     "status": "In Development",
     "open": 12,
     "med_age": 6.0,
-    "max_age": 73.0,
+    "max_age": 73.1,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
@@ -811,6 +811,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -837,18 +861,6 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -859,18 +871,6 @@
     "over": 0,
     "clear_med": 0.9,
     "clear_n": 120
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    }
   ],
   "parked": {
