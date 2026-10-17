@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-17T12:30:22Z",
+ "generated": "2026-10-17T12:43:58Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -791,7 +791,7 @@
    {
     "status": "In Development",
     "open": 11,
-    "med_age": 8.7,
+    "med_age": 8.8,
     "max_age": 73.7,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -799,30 +799,6 @@
     "over": 6,
     "clear_med": 2.1,
     "clear_n": 195
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -835,6 +811,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -859,6 +847,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
