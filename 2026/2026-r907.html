@@ -668,7 +668,7 @@
     <div class="cmpgrid">
       <div class="chartbox" style="height:250px"><canvas id="cUnp"></canvas></div>
       <div class="readout">
-        <div class="line"><span class="vs-tag">The series</span><br>R9.00 2.4% &rarr; R9.01 5.4% &rarr; R9.02 5.6% &rarr; R9.03 15.2% &rarr; R9.04 24.1% &rarr; R9.05 6.7% &rarr; R9.06 13.2% &rarr; R9.07 no data &rarr; R9.08 2.9% &rarr; R9.09 14.0%.</div>
+        <div class="line"><span class="vs-tag">The series</span><br>R9.00 2.4% &rarr; R9.01 5.4% &rarr; R9.02 5.6% &rarr; R9.03 15.2% &rarr; R9.04 24.1% &rarr; R9.05 6.7% &rarr; R9.06 13.2% &rarr; R9.07 no data &rarr; R9.08 2.9% &rarr; R9.09 15.9%.</div>
         <div class="line" style="border-color:var(--warning)"><span class="vs-tag">Careful</span><br>The break at R9.07 is not a drop to zero, it is missing labeling. The line is interrupted on purpose.</div>
       </div>
     </div>
@@ -791,7 +791,7 @@ const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{
   ctx.fillStyle=r.col;ctx.font='600 10px DM Sans';ctx.textAlign='right';ctx.fillText(r.t,right-4,yp-4);ctx.restore();});}};
 new Chart(document.getElementById('cThru'),{type:'bar',
  data:{labels:["R9.00", "R9.01", "R9.02", "R9.03", "R9.04", "R9.05", "R9.06", "R9.07", "R9.08", "R9.09"],datasets:[{label:'Closed',
-  data:[21.0, 18.5, 18.0, 16.5, 14.5, 30.0, 38.0, 28.5, 34.0, 21.5],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#007CBC", "#65B2D5", "#65B2D5"],borderRadius:6}]},
+  data:[21.0, 18.5, 18.0, 16.5, 14.5, 30.0, 38.0, 28.5, 34.0, 22.0],backgroundColor:["#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#65B2D5", "#007CBC", "#65B2D5", "#65B2D5"],borderRadius:6}]},
  options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,max:48,grid:{color:gridc},title:{display:true,text:'Items closed per sprint'}},x:{grid:{display:false}}}},
  plugins:[thrRef]});
 new Chart(document.getElementById('cCyc'),{type:'bar',
@@ -804,7 +804,7 @@ const bands={id:'bands',beforeDraw(c){const{ctx,chartArea:{left,right},scales:{y
  ctx.fillStyle='rgba(237,125,49,.12)';ctx.fillRect(left,z(10),right-left,z(5)-z(10));
  ctx.fillStyle='rgba(214,69,80,.08)';ctx.fillRect(left,z(20),right-left,z(10)-z(20));ctx.restore();}};
 new Chart(document.getElementById('cUnp'),{type:'line',
- data:{labels:["R9.00", "R9.01", "R9.02", "R9.03", "R9.04", "R9.05", "R9.06", "R9.07", "R9.08", "R9.09"],datasets:[{data:[2.4, 5.4, 5.6, 15.2, 24.1, 6.7, 13.2, null, 2.9, 14.0],
+ data:{labels:["R9.00", "R9.01", "R9.02", "R9.03", "R9.04", "R9.05", "R9.06", "R9.07", "R9.08", "R9.09"],datasets:[{data:[2.4, 5.4, 5.6, 15.2, 24.1, 6.7, 13.2, null, 2.9, 15.9],
   borderColor:BLUED,backgroundColor:BLUED,tension:.25,pointRadius:6,borderWidth:3,spanGaps:false,
   pointBackgroundColor:[GREEN,AMBER,AMBER,RED,RED,AMBER,RED,GREY,GREEN,RED]}]},
  options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.raw==null?' no data':` ${c.raw}% unplanned`}}},

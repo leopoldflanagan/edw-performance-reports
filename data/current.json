@@ -9,18 +9,18 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 43,
+  "closed": 44,
   "discarded": 99,
-  "resolved": 142,
-  "unplanned": 6,
-  "unp_pct": 14.0,
+  "resolved": 143,
+  "unplanned": 7,
+  "unp_pct": 15.9,
   "types": [
    [
-    "Story",
-    17
+    "Bug",
+    18
    ],
    [
-    "Bug",
+    "Story",
     17
    ],
    [
@@ -37,6 +37,10 @@
    "EDW-Sprint 24-26"
   ],
   "unp_items": [
+   [
+    "EDW-2480",
+    "CSP - Office assigned from PMP, the office assignment is not reflected Plan Sales."
+   ],
    [
     "EDW-2465",
     "[Launch Loyalty] - Commission Report for Laryssa"
@@ -65,10 +69,10 @@
   "open": true,
   "day": 19,
   "days": 28,
-  "status": "warning",
-  "headline": "43 items closed in the first 19 days, a pace of about 63 for the month against 68 last month. Unplanned work at 14.0%.",
+  "status": "risk",
+  "headline": "44 items closed in the first 19 days, a pace of about 65 for the month against 68 last month. Unplanned work at 15.9% of everything closed.",
   "notes": [
-   "unplanned work at 14.0%"
+   "unplanned work at 15.9% of everything closed"
   ]
  },
  "SPRINTS": [
@@ -122,7 +126,7 @@
    "Oct 12",
    "Oct 26",
    56,
-   14,
+   15,
    92,
    138,
    29,
@@ -135,6 +139,7 @@
     101.0,
     101.0,
     101.0,
+    101.0,
     101.0
    ],
    [
@@ -142,6 +147,7 @@
     84.0,
     91.0,
     98.0,
+    130.0,
     130.0,
     130.0,
     130.0,
@@ -172,11 +178,11 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    14,
+    15,
     28
    ],
    "open": [
-    30,
+    29,
     82
    ],
    "out": [
@@ -257,6 +263,10 @@
      "n": 21,
      "med": 7.22
     },
+    "Closed": {
+     "n": 15,
+     "med": 12.22
+    },
     "Awaiting Review": {
      "n": 15,
      "med": 2.16
@@ -264,20 +274,16 @@
     "Ready for Development": {
      "n": 11,
      "med": 10.98
-    },
-    "Closed": {
-     "n": 14,
-     "med": 12.57
     }
    },
    "dist": {
     "Backlog": 18,
-    "In Development": 12,
+    "Closed": 14,
     "Awaiting Review": 7,
     "Ready for Development": 6,
-    "Closed": 13
+    "In Development": 11
    },
-   "stalled": 43,
+   "stalled": 42,
    "worst": 10.98,
    "worstSt": "Ready for Development",
    "items": 56
@@ -309,12 +315,13 @@
    108.0,
    108.0,
    108.0,
+   108.0,
    108.0
   ]
  },
  "CAP": {
   "9.09": [
-   43,
+   44,
    39,
    103,
    4
@@ -322,12 +329,12 @@
  },
  "CYC": {
   "9.09": {
-   "med": 3.15,
-   "avg": 5.92,
-   "n": 21,
+   "med": 3.07,
+   "avg": 5.65,
+   "n": 22,
    "mx": 18.77,
    "nodev": 22,
-   "base": 43
+   "base": 44
   }
  },
  "complete": false,
