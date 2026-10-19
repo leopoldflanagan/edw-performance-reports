@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T13:46:58Z",
+ "generated": "2026-10-19T14:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 45,
+    "n": 11,
+    "points": 40,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 20,
+   "ready": 19,
    "sprint": 40,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -395,7 +395,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2474",
@@ -404,10 +404,6 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2417",
-      "summary": "Reload Historical BenefitPlan records to break out separate years"
      },
      {
       "key": "EDW-2374",
@@ -428,6 +424,10 @@
      {
       "key": "EDW-2060",
       "summary": "Create CDC on database side and Analyzing the Monthly Mass Update "
+     },
+     {
+      "key": "EDW-2037",
+      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -512,10 +512,6 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
-      "key": "EDW-2417",
-      "summary": "Reload Historical BenefitPlan records to break out separate years"
-     },
-     {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
      },
@@ -526,6 +522,10 @@
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -555,16 +555,16 @@
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      },
      {
-      "key": "EDW-2417",
-      "summary": "Reload Historical BenefitPlan records to break out separate years"
-     },
-     {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
      },
      {
       "key": "EDW-2374",
       "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
@@ -701,8 +701,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "Awaiting Review": 6,
-   "Ready for Development": 6,
+   "Awaiting Review": 7,
+   "Ready for Development": 5,
    "Backlog": 10,
    "In Development": 11,
    "Closed": 13
@@ -784,51 +784,27 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 20,
-    "med_age": 23.7,
+    "open": 19,
+    "med_age": 33.8,
     "max_age": 223.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 13,
+    "over": 12,
     "clear_med": 3.9,
     "clear_n": 169
    },
    {
     "status": "In Development",
     "open": 12,
-    "med_age": 8.8,
+    "med_age": 5.8,
     "max_age": 75.8,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
     "worst_who": "Shruti  Kulkarni",
-    "over": 6,
+    "over": 5,
     "clear_med": 2.1,
     "clear_n": 187
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -855,18 +831,6 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -877,13 +841,49 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 117
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
-   "Backlog": 61
+   "Backlog": 62
   },
-  "open_total": 32,
-  "stale": 19,
+  "open_total": 31,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
