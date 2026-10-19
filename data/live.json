@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T19:00:26Z",
+ "generated": "2026-10-19T19:12:41Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,18 +369,22 @@
  "admin": {
   "scope": {
    "ready": 19,
-   "sprint": 40,
+   "sprint": 41,
    "sprint_name": "EDW-Sprint 24-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 3,
+    "n": 4,
     "items": [
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2480",
+      "summary": "CSP - Office assigned from PMP, the office assignment is not reflected Plan Sale"
      },
      {
       "key": "EDW-2439",
@@ -493,7 +497,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 38,
+    "n": 39,
     "items": [
      {
       "key": "EDW-2474",
@@ -532,7 +536,7 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 42,
+    "n": 43,
     "items": [
      {
       "key": "EDW-2474",
@@ -570,8 +574,8 @@
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 54 of 54 items. This reads as a field the team does not use rather than 54 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 54,
+    "why": "missing on 55 of 55 items. This reads as a field the team does not use rather than 55 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 55,
     "items": []
    },
    {
@@ -678,7 +682,7 @@
   "start": "2026-10-12",
   "end": "2026-10-26",
   "goal": "",
-  "items": 53,
+  "items": 56,
   "items_done": 14,
   "committed": 92,
   "final": 138,
@@ -687,7 +691,7 @@
   "vs_commitment": 32,
   "time_elapsed": 50,
   "spill": {
-   "open_items": 29,
+   "open_items": 30,
    "open_pts": 82.0,
    "out_items": 7,
    "out_pts": 28.0,
@@ -701,10 +705,10 @@
   },
   "spill_rate": null,
   "dist": {
+   "Backlog": 12,
+   "In Development": 12,
    "Awaiting Review": 7,
    "Ready for Development": 5,
-   "Backlog": 10,
-   "In Development": 11,
    "Closed": 13
   },
   "burn": [
@@ -796,8 +800,8 @@
    },
    {
     "status": "In Development",
-    "open": 12,
-    "med_age": 6.1,
+    "open": 13,
+    "med_age": 5.2,
     "max_age": 76.0,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -819,7 +823,7 @@
     "clear_n": 16
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -827,8 +831,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Created",
@@ -867,7 +871,7 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -875,14 +879,14 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.9,
+    "clear_n": 117
    }
   ],
   "parked": {
-   "Backlog": 63
+   "Backlog": 62
   },
-  "open_total": 31,
+  "open_total": 32,
   "stale": 17,
   "worst": "Ready for Development"
  }
