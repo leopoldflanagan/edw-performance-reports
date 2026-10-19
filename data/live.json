@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T12:45:21Z",
+ "generated": "2026-10-19T12:53:15Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 20,
    "sprint": 40,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -702,9 +702,9 @@
   "spill_rate": null,
   "dist": {
    "Awaiting Review": 6,
-   "Ready for Development": 7,
+   "Ready for Development": 6,
    "Backlog": 10,
-   "In Development": 10,
+   "In Development": 11,
    "Closed": 13
   },
   "burn": [
@@ -784,20 +784,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
-    "med_age": 32.7,
+    "open": 20,
+    "med_age": 23.7,
     "max_age": 223.7,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 14,
+    "over": 13,
     "clear_med": 3.9,
-    "clear_n": 168
+    "clear_n": 169
    },
    {
     "status": "In Development",
-    "open": 11,
-    "med_age": 10.8,
+    "open": 12,
+    "med_age": 8.7,
     "max_age": 75.7,
     "worst_key": "EDW-2436",
     "worst_sum": "EDW - Route Weekly Incremental Deliveries Through New Dataverse Tables and  identify Updat",
@@ -807,7 +807,7 @@
     "clear_n": 187
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -815,8 +815,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "Awaiting Review",
@@ -855,7 +855,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -863,8 +863,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -883,7 +883,7 @@
    "Backlog": 61
   },
   "open_total": 32,
-  "stale": 20,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
