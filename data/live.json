@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-18T23:45:21Z",
+ "generated": "2026-10-19T00:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 7,
+  "day": 8,
   "days": 14,
   "n": 19,
   "done_now": 29,
   "committed": 90,
-  "lo": 57,
-  "mid": 68,
-  "hi": 80,
-  "pct": 76,
+  "lo": 49,
+  "mid": 59,
+  "hi": 68,
+  "pct": 66,
   "verdict": "well short of the commitment",
-  "share_mid": 0.429
+  "share_mid": 0.495
  },
  "admin": {
   "scope": {
@@ -738,7 +738,7 @@
    106.0
   ],
   "days": 14,
-  "day": 7,
+  "day": 8,
   "capacity": {
    "release": "9.09",
    "start": "2026-10-12",
@@ -763,7 +763,7 @@
   "kind": "release",
   "start": "2026-09-28",
   "end": "2026-10-25",
-  "day": 21,
+  "day": 22,
   "days": 28,
   "closed": 43,
   "points": 103,
@@ -792,7 +792,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 14,
     "clear_med": 3.9,
-    "clear_n": 173
+    "clear_n": 168
    },
    {
     "status": "In Development",
@@ -804,7 +804,7 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 6,
     "clear_med": 2.1,
-    "clear_n": 195
+    "clear_n": 187
    },
    {
     "status": "On Hold",
@@ -819,7 +819,7 @@
     "clear_n": 16
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -827,20 +827,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 120
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -855,6 +843,30 @@
     "clear_n": 61
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.9,
+    "clear_n": 117
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -865,18 +877,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
    }
   ],
   "parked": {
