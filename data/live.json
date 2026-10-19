@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T22:30:22Z",
+ "generated": "2026-10-19T22:38:06Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
-    "points": 40,
+    "n": 12,
+    "points": 45,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 20,
    "sprint": 41,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -395,11 +395,15 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
+     },
+     {
+      "key": "EDW-2468",
+      "summary": "Additive toolkit"
      },
      {
       "key": "EDW-2437",
@@ -424,10 +428,6 @@
      {
       "key": "EDW-2060",
       "summary": "Create CDC on database side and Analyzing the Monthly Mass Update "
-     },
-     {
-      "key": "EDW-2037",
-      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -460,7 +460,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 6,
+    "n": 5,
     "items": [
      {
       "key": "EDW-2473",
@@ -481,10 +481,6 @@
      {
       "key": "EDW-2469",
       "summary": "Reorganized mocks and working export in mock mode"
-     },
-     {
-      "key": "EDW-2468",
-      "summary": "Additive toolkit"
      }
     ]
    }
@@ -701,10 +697,10 @@
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 12,
+   "Backlog": 11,
    "Closed": 14,
    "Awaiting Review": 8,
-   "Ready for Development": 5,
+   "Ready for Development": 6,
    "In Development": 10
   },
   "burn": [
@@ -787,8 +783,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 34.1,
+    "open": 20,
+    "med_age": 24.1,
     "max_age": 224.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -822,7 +818,7 @@
     "clear_n": 1
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -830,8 +826,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.9,
+    "clear_n": 117
    },
    {
     "status": "New",
@@ -846,30 +842,6 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -880,12 +852,36 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Backlog": 62
+   "Backlog": 61
   },
-  "open_total": 30,
+  "open_total": 31,
   "stale": 18,
   "worst": "Ready for Development"
  }

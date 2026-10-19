@@ -272,19 +272,19 @@
      "med": 4.57
     },
     "Ready for Development": {
-     "n": 11,
-     "med": 10.98
+     "n": 12,
+     "med": 8.92
     }
    },
    "dist": {
-    "Backlog": 18,
+    "Backlog": 17,
     "Closed": 14,
     "Awaiting Review": 8,
-    "Ready for Development": 6,
+    "Ready for Development": 7,
     "In Development": 10
    },
    "stalled": 42,
-   "worst": 10.98,
+   "worst": 8.92,
    "worstSt": "Ready for Development",
    "items": 56
   }
