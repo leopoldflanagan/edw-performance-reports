@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T20:00:31Z",
+ "generated": "2026-10-20T20:15:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -787,7 +787,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 14.9,
+    "med_age": 15.0,
     "max_age": 225.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -809,7 +809,7 @@
     "clear_n": 183
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -817,8 +817,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 1.0,
+    "clear_n": 116
    },
    {
     "status": "New",
@@ -833,7 +833,7 @@
     "clear_n": 61
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -841,8 +841,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 116
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
