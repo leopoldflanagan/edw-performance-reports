@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T14:00:31Z",
+ "generated": "2026-10-20T14:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 45,
+    "n": 11,
+    "points": 37,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 20,
+   "ready": 19,
    "sprint": 41,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -395,7 +395,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2474",
@@ -422,12 +422,12 @@
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
      },
      {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
-     },
-     {
       "key": "EDW-2060",
       "summary": "Create CDC on database side and Analyzing the Monthly Mass Update "
+     },
+     {
+      "key": "EDW-2037",
+      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -489,7 +489,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 39,
+    "n": 38,
     "items": [
      {
       "key": "EDW-2474",
@@ -528,7 +528,7 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 43,
+    "n": 42,
     "items": [
      {
       "key": "EDW-2474",
@@ -566,8 +566,8 @@
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 55 of 55 items. This reads as a field the team does not use rather than 55 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 55,
+    "why": "missing on 54 of 54 items. This reads as a field the team does not use rather than 54 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 54,
     "items": []
    },
    {
@@ -612,15 +612,11 @@
    {
     "rule": "Riding 4+ sprints",
     "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-    "n": 6,
+    "n": 5,
     "items": [
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2076",
-      "summary": "Fabric POC"
      },
      {
       "key": "EDW-2037",
@@ -783,15 +779,15 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 20,
-    "med_age": 24.7,
+    "open": 19,
+    "med_age": 14.7,
     "max_age": 224.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 12,
-    "clear_med": 4.1,
-    "clear_n": 167
+    "over": 11,
+    "clear_med": 4.0,
+    "clear_n": 164
    },
    {
     "status": "In Development",
@@ -803,31 +799,7 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 6,
     "clear_med": 2.1,
-    "clear_n": 185
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_n": 182
    },
    {
     "status": "PR Created",
@@ -842,18 +814,6 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -866,6 +826,18 @@
     "clear_n": 5
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -876,13 +848,37 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
    }
   ],
   "parked": {
    "Backlog": 61
   },
-  "open_total": 31,
-  "stale": 18,
+  "open_total": 30,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
