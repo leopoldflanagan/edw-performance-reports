@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T23:45:20Z",
+ "generated": "2026-10-20T00:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 8,
+  "day": 9,
   "days": 14,
   "n": 19,
   "done_now": 31,
   "committed": 92,
-  "lo": 53,
-  "mid": 63,
-  "hi": 73,
-  "pct": 68,
+  "lo": 46,
+  "mid": 56,
+  "hi": 64,
+  "pct": 61,
   "verdict": "well short of the commitment",
-  "share_mid": 0.495
+  "share_mid": 0.551
  },
  "admin": {
   "scope": {
@@ -737,7 +737,7 @@
    108.0
   ],
   "days": 14,
-  "day": 8,
+  "day": 9,
   "capacity": {
    "release": "9.09",
    "start": "2026-10-12",
@@ -762,7 +762,7 @@
   "kind": "release",
   "start": "2026-09-28",
   "end": "2026-10-25",
-  "day": 22,
+  "day": 23,
   "days": 28,
   "closed": 44,
   "points": 105,
@@ -790,8 +790,8 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 12,
-    "clear_med": 3.9,
-    "clear_n": 169
+    "clear_med": 4.1,
+    "clear_n": 167
    },
    {
     "status": "In Development",
@@ -803,19 +803,7 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 6,
     "clear_med": 2.1,
-    "clear_n": 188
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_n": 185
    },
    {
     "status": "On Hold",
@@ -828,6 +816,18 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
    },
    {
     "status": "In Progress",
@@ -854,18 +854,6 @@
     "clear_n": 61
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 117
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -876,6 +864,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
