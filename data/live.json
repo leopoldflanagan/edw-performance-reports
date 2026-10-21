@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T19:00:27Z",
+ "generated": "2026-10-21T19:13:36Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -800,7 +800,7 @@
     "status": "In Development",
     "open": 9,
     "med_age": 5.9,
-    "max_age": 16.2,
+    "max_age": 16.3,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
@@ -845,7 +845,7 @@
     "clear_n": 115
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -853,8 +853,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "On Hold",
@@ -869,7 +869,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -877,8 +877,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
