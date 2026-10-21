@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T12:00:30Z",
+ "generated": "2026-10-21T12:15:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -799,7 +799,7 @@
    {
     "status": "In Development",
     "open": 10,
-    "med_age": 6.2,
+    "med_age": 6.3,
     "max_age": 70.9,
     "worst_key": "EDW-2441",
     "worst_sum": "Add Member Name and Phone Number to Bounced Emails File (On going) ",
@@ -807,30 +807,6 @@
     "over": 4,
     "clear_med": 2.1,
     "clear_n": 184
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -857,7 +833,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -865,8 +841,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "PR Created",
@@ -879,6 +855,30 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
