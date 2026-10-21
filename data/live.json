@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T13:18:05Z",
+ "generated": "2026-10-21T13:30:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -681,7 +681,7 @@
   "completed": 39,
   "scope_change": 57,
   "vs_commitment": 43,
-  "time_elapsed": 62,
+  "time_elapsed": 63,
   "spill": {
    "open_items": 28,
    "open_pts": 75.0,
@@ -792,7 +792,7 @@
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 15,
+    "over": 16,
     "clear_med": 3.9,
     "clear_n": 164
    },
@@ -809,18 +809,6 @@
     "clear_n": 184
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -831,30 +819,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "On Hold",
@@ -869,6 +833,30 @@
     "clear_n": 16
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -879,13 +867,25 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
    "Backlog": 60
   },
   "open_total": 28,
-  "stale": 20,
+  "stale": 21,
   "worst": "Ready for Development"
  }
 }
