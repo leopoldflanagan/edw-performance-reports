@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T14:45:20Z",
+ "generated": "2026-10-21T15:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -767,10 +767,10 @@
   "end": "2026-10-25",
   "day": 24,
   "days": 28,
-  "closed": 47,
-  "points": 118,
+  "closed": 48,
+  "points": 121,
   "unplanned": 7,
-  "unplanned_pct": 14.9,
+  "unplanned_pct": 14.6,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -798,18 +798,18 @@
    },
    {
     "status": "In Development",
-    "open": 11,
+    "open": 10,
     "med_age": 5.8,
-    "max_age": 71.0,
-    "worst_key": "EDW-2441",
-    "worst_sum": "Add Member Name and Phone Number to Bounced Emails File (On going) ",
+    "max_age": 16.1,
+    "worst_key": "EDW-2375",
+    "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
-    "over": 5,
+    "over": 4,
     "clear_med": 2.1,
-    "clear_n": 184
+    "clear_n": 185
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -817,44 +817,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -869,7 +833,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -877,15 +841,51 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 60
   },
-  "open_total": 28,
-  "stale": 20,
+  "open_total": 27,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
