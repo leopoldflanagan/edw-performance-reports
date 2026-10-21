@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-21T14:18:52Z",
+ "generated": "2026-10-21T14:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 18,
+   "ready": 17,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -516,16 +516,16 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
-      "key": "EDW-2388",
-      "summary": "Smile Brands Reporting"
-     },
-     {
       "key": "EDW-2374",
       "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
      },
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -559,12 +559,12 @@
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      },
      {
-      "key": "EDW-2388",
-      "summary": "Smile Brands Reporting"
-     },
-     {
       "key": "EDW-2374",
       "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
@@ -700,8 +700,8 @@
    "Awaiting Review": 8,
    "Backlog": 11,
    "Closed": 16,
-   "Ready for Development": 5,
-   "In Development": 10
+   "Ready for Development": 4,
+   "In Development": 11
   },
   "burn": [
    72.0,
@@ -786,20 +786,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 18,
+    "open": 17,
     "med_age": 15.7,
     "max_age": 225.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 16,
+    "over": 15,
     "clear_med": 3.9,
-    "clear_n": 164
+    "clear_n": 165
    },
    {
     "status": "In Development",
-    "open": 10,
-    "med_age": 6.3,
+    "open": 11,
+    "med_age": 5.8,
     "max_age": 71.0,
     "worst_key": "EDW-2441",
     "worst_sum": "Add Member Name and Phone Number to Bounced Emails File (On going) ",
@@ -809,7 +809,7 @@
     "clear_n": 184
    },
    {
-    "status": "In Progress",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -817,32 +817,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "On Hold",
@@ -857,6 +833,30 @@
     "clear_n": 16
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -869,7 +869,7 @@
     "clear_n": 61
    },
    {
-    "status": "PR Created",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -877,15 +877,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 1.0,
+    "clear_n": 115
    }
   ],
   "parked": {
    "Backlog": 60
   },
   "open_total": 28,
-  "stale": 21,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
