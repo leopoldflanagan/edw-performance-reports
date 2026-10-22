@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T20:00:26Z",
+ "generated": "2026-10-22T20:15:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
-    "points": 32,
+    "n": 10,
+    "points": 27,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 18,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -399,7 +399,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 10,
     "items": [
      {
       "key": "EDW-2485",
@@ -412,10 +412,6 @@
      {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
-     },
-     {
-      "key": "EDW-2469",
-      "summary": "Reorganized mocks and working export in mock mode"
      },
      {
       "key": "EDW-2437",
@@ -432,6 +428,10 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
+     },
+     {
+      "key": "EDW-1950",
+      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -696,8 +696,8 @@
    "Awaiting Review": 10,
    "Backlog": 10,
    "Closed": 16,
-   "Ready for Development": 4,
-   "In Development": 10
+   "Ready for Development": 3,
+   "In Development": 11
   },
   "burn": [
    70.0,
@@ -788,19 +788,19 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 9.2,
+    "open": 18,
+    "med_age": 13.1,
     "max_age": 227.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 4.0,
-    "clear_n": 164
+    "clear_med": 3.9,
+    "clear_n": 165
    },
    {
     "status": "In Development",
-    "open": 9,
+    "open": 10,
     "med_age": 7.0,
     "max_age": 17.3,
     "worst_key": "EDW-2375",
@@ -823,7 +823,7 @@
     "clear_n": 118
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -831,32 +831,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -871,7 +847,7 @@
     "clear_n": 2
    },
    {
-    "status": "In Progress",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -879,8 +855,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
