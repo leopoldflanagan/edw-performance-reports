@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T16:00:30Z",
+ "generated": "2026-10-22T16:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
-    "points": 27,
+    "n": 12,
+    "points": 32,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 18,
+   "ready": 19,
    "sprint": 43,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -403,7 +403,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2486",
@@ -416,6 +416,10 @@
      {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
+     },
+     {
+      "key": "EDW-2469",
+      "summary": "Reorganized mocks and working export in mock mode"
      },
      {
       "key": "EDW-2437",
@@ -432,10 +436,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2037",
-      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -468,7 +468,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 5,
+    "n": 4,
     "items": [
      {
       "key": "EDW-2473",
@@ -485,10 +485,6 @@
      {
       "key": "EDW-2470",
       "summary": "Pilot pass: Payment and Lending"
-     },
-     {
-      "key": "EDW-2469",
-      "summary": "Reorganized mocks and working export in mock mode"
      }
     ]
    }
@@ -685,7 +681,7 @@
   "completed": 39,
   "scope_change": 60,
   "vs_commitment": 43,
-  "time_elapsed": 70,
+  "time_elapsed": 71,
   "spill": {
    "open_items": 29,
    "open_pts": 78.0,
@@ -703,9 +699,9 @@
   "dist": {
    "In Development": 10,
    "Awaiting Review": 10,
-   "Backlog": 11,
+   "Backlog": 10,
    "Closed": 16,
-   "Ready for Development": 4
+   "Ready for Development": 5
   },
   "burn": [
    72.0,
@@ -793,7 +789,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 18,
+    "open": 19,
     "med_age": 16.8,
     "max_age": 226.9,
     "worst_key": "EDW-1599",
@@ -816,7 +812,7 @@
     "clear_n": 181
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -824,8 +820,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
    },
    {
     "status": "WAITING REVIEW",
@@ -852,7 +860,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -860,8 +868,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -874,24 +882,12 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    }
   ],
   "parked": {
-   "Backlog": 60
+   "Backlog": 59
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 19,
   "worst": "Ready for Development"
  }
