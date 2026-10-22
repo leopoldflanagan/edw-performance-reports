@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T14:00:31Z",
+ "generated": "2026-10-22T14:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -701,11 +701,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "Awaiting Review": 9,
+   "Awaiting Review": 10,
    "Backlog": 11,
    "Closed": 16,
    "Ready for Development": 4,
-   "In Development": 10
+   "In Development": 9
   },
   "burn": [
    72.0,
@@ -800,13 +800,13 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 4.0,
-    "clear_n": 162
+    "clear_med": 3.9,
+    "clear_n": 161
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 6.7,
+    "open": 8,
+    "med_age": 7.3,
     "max_age": 17.0,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -814,6 +814,18 @@
     "over": 4,
     "clear_med": 2.0,
     "clear_n": 181
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "WAITING REVIEW",
@@ -826,6 +838,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -852,18 +876,6 @@
     "clear_n": 5
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -874,24 +886,12 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    }
   ],
   "parked": {
    "Backlog": 60
   },
-  "open_total": 27,
+  "open_total": 26,
   "stale": 19,
   "worst": "Ready for Development"
  }
