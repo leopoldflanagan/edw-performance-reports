@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T20:30:24Z",
+ "generated": "2026-10-22T20:41:07Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 11,
   "days": 14,
   "n": 19,
-  "done_now": 42,
+  "done_now": 44,
   "committed": 88,
-  "lo": 53,
-  "mid": 56,
-  "hi": 63,
-  "pct": 64,
+  "lo": 56,
+  "mid": 59,
+  "hi": 66,
+  "pct": 67,
   "verdict": "well short of the commitment",
   "share_mid": 0.752
  },
@@ -671,19 +671,19 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 59,
-  "items_done": 18,
+  "items_done": 20,
   "committed": 88,
   "final": 144,
-  "completed": 42,
+  "completed": 44,
   "scope_change": 64,
-  "vs_commitment": 48,
+  "vs_commitment": 50,
   "time_elapsed": 72,
   "spill": {
-   "open_items": 28,
-   "open_pts": 72.0,
+   "open_items": 24,
+   "open_pts": 68.0,
    "out_items": 9,
    "out_pts": 34.0,
-   "done_pts": 38.0
+   "done_pts": 42.0
   },
   "recv": {
    "items": 15,
@@ -693,9 +693,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "Awaiting Review": 10,
+   "Awaiting Review": 6,
    "Backlog": 10,
-   "Closed": 16,
+   "Closed": 20,
    "Ready for Development": 3,
    "In Development": 11
   },
@@ -711,7 +711,7 @@
    97.0,
    92.0,
    94.0,
-   94.0
+   92.0
   ],
   "scope": [
    74.0,
@@ -739,7 +739,7 @@
    104.0,
    99.0,
    101.0,
-   101.0
+   99.0
   ],
   "days": 14,
   "day": 11,
@@ -769,10 +769,10 @@
   "end": "2026-10-25",
   "day": 25,
   "days": 28,
-  "closed": 48,
-  "points": 121,
+  "closed": 52,
+  "points": 125,
   "unplanned": 7,
-  "unplanned_pct": 14.6,
+  "unplanned_pct": 13.5,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -796,7 +796,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 15,
     "clear_med": 3.9,
-    "clear_n": 165
+    "clear_n": 169
    },
    {
     "status": "In Development",
@@ -808,10 +808,10 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 6,
     "clear_med": 2.0,
-    "clear_n": 184
+    "clear_n": 186
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -819,32 +819,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.9,
-    "clear_n": 118
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -859,7 +835,7 @@
     "clear_n": 61
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -867,8 +843,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 123
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "On Hold",
