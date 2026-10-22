@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T01:00:26Z",
+ "generated": "2026-10-22T01:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 10,
+    "n": 11,
     "points": 27,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 17,
+   "ready": 18,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -376,8 +376,12 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 4,
+    "n": 5,
     "items": [
+     {
+      "key": "EDW-2485",
+      "summary": "Kalendar Org - missing email"
+     },
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
@@ -399,8 +403,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 10,
+    "n": 11,
     "items": [
+     {
+      "key": "EDW-2485",
+      "summary": "Kalendar Org - missing email"
+     },
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
@@ -428,10 +436,6 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -532,8 +536,12 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 42,
+    "n": 43,
     "items": [
+     {
+      "key": "EDW-2485",
+      "summary": "Kalendar Org - missing email"
+     },
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
@@ -561,17 +569,13 @@
      {
       "key": "EDW-2374",
       "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 55 of 55 items. This reads as a field the team does not use rather than 55 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 55,
+    "why": "missing on 56 of 56 items. This reads as a field the team does not use rather than 56 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 56,
     "items": []
    },
    {
@@ -789,9 +793,9 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
-    "med_age": 16.1,
-    "max_age": 226.2,
+    "open": 18,
+    "med_age": 16.2,
+    "max_age": 226.3,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -810,18 +814,6 @@
     "over": 4,
     "clear_med": 2.0,
     "clear_n": 181
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -860,7 +852,7 @@
     "clear_n": 61
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -868,8 +860,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "In Progress",
@@ -882,12 +874,24 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
    }
   ],
   "parked": {
    "Backlog": 60
   },
-  "open_total": 26,
+  "open_total": 27,
   "stale": 19,
   "worst": "Ready for Development"
  }
