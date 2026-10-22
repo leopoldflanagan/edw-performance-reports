@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T16:45:34Z",
+ "generated": "2026-10-22T17:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 11,
   "days": 14,
   "n": 19,
-  "done_now": 39,
+  "done_now": 42,
   "committed": 90,
-  "lo": 49,
-  "mid": 52,
-  "hi": 59,
-  "pct": 58,
+  "lo": 53,
+  "mid": 56,
+  "hi": 63,
+  "pct": 62,
   "verdict": "well short of the commitment",
   "share_mid": 0.752
  },
@@ -671,12 +671,12 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 59,
-  "items_done": 17,
+  "items_done": 18,
   "committed": 90,
   "final": 147,
-  "completed": 39,
+  "completed": 42,
   "scope_change": 63,
-  "vs_commitment": 43,
+  "vs_commitment": 47,
   "time_elapsed": 71,
   "spill": {
    "open_items": 29,
@@ -710,7 +710,7 @@
    101.0,
    99.0,
    94.0,
-   100.0
+   97.0
   ],
   "scope": [
    76.0,
@@ -736,7 +736,7 @@
    108.0,
    106.0,
    101.0,
-   107.0
+   104.0
   ],
   "days": 14,
   "day": 11,
@@ -798,7 +798,7 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 6.8,
+    "med_age": 6.9,
     "max_age": 17.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -820,18 +820,6 @@
     "clear_n": 61
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -844,7 +832,7 @@
     "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -852,8 +840,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 1.0,
+    "clear_n": 115
    },
    {
     "status": "PR Created",
@@ -868,7 +856,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -876,8 +864,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
