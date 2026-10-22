@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T18:30:27Z",
+ "generated": "2026-10-22T18:45:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -489,7 +489,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 39,
+    "n": 38,
     "items": [
      {
       "key": "EDW-2484",
@@ -498,10 +498,6 @@
      {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
-     },
-     {
-      "key": "EDW-2463",
-      "summary": "EDW Ambetter development"
      },
      {
       "key": "EDW-2454",
@@ -522,6 +518,10 @@
      {
       "key": "EDW-2214",
       "summary": "Update CI eligibility file"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -673,14 +673,14 @@
   "items": 59,
   "items_done": 18,
   "committed": 90,
-  "final": 147,
+  "final": 146,
   "completed": 42,
-  "scope_change": 63,
+  "scope_change": 62,
   "vs_commitment": 47,
   "time_elapsed": 71,
   "spill": {
    "open_items": 29,
-   "open_pts": 78.0,
+   "open_pts": 77.0,
    "out_items": 8,
    "out_pts": 31.0,
    "done_pts": 38.0
@@ -693,11 +693,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 11,
-   "Awaiting Review": 10,
+   "Awaiting Review": 11,
    "Backlog": 10,
    "Closed": 16,
-   "Ready for Development": 4
+   "Ready for Development": 4,
+   "In Development": 10
   },
   "burn": [
    72.0,
@@ -710,7 +710,7 @@
    101.0,
    99.0,
    94.0,
-   97.0
+   96.0
   ],
   "scope": [
    76.0,
@@ -723,7 +723,7 @@
    130.0,
    133.0,
    133.0,
-   139.0
+   138.0
   ],
   "ghost": [
    77.0,
@@ -736,7 +736,7 @@
    108.0,
    106.0,
    101.0,
-   104.0
+   103.0
   ],
   "days": 14,
   "day": 11,
@@ -791,13 +791,13 @@
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 14,
+    "over": 15,
     "clear_med": 3.9,
-    "clear_n": 164
+    "clear_n": 163
    },
    {
     "status": "In Development",
-    "open": 10,
+    "open": 9,
     "med_age": 6.9,
     "max_age": 17.2,
     "worst_key": "EDW-2375",
@@ -806,30 +806,6 @@
     "over": 4,
     "clear_med": 2.0,
     "clear_n": 182
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -856,6 +832,18 @@
     "clear_n": 61
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -868,7 +856,7 @@
     "clear_n": 115
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -876,15 +864,27 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 59
   },
-  "open_total": 28,
-  "stale": 18,
+  "open_total": 27,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
