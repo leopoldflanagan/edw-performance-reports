@@ -187,12 +187,12 @@
     38
    ],
    "open": [
-    29,
-    78
+    28,
+    75
    ],
    "out": [
-    7,
-    28
+    8,
+    31
    ],
    "in": [
     15,
@@ -260,13 +260,13 @@
   },
   "EDW-Sprint 24-26": {
    "tis": {
-    "In Development": {
-     "n": 25,
-     "med": 3.14
-    },
     "Backlog": {
      "n": 25,
      "med": 10.99
+    },
+    "In Development": {
+     "n": 25,
+     "med": 3.05
     },
     "Awaiting Review": {
      "n": 20,
@@ -277,8 +277,8 @@
      "med": 11.24
     },
     "Ready for Development": {
-     "n": 13,
-     "med": 6.78
+     "n": 14,
+     "med": 6.76
     },
     "Won't Do": {
      "n": 1,
@@ -286,14 +286,14 @@
     }
    },
    "dist": {
-    "In Development": 10,
     "Awaiting Review": 10,
     "Backlog": 16,
     "Closed": 16,
-    "Ready for Development": 6
+    "Ready for Development": 7,
+    "In Development": 9
    },
    "stalled": 42,
-   "worst": 6.78,
+   "worst": 6.76,
    "worstSt": "Ready for Development",
    "items": 58
   }

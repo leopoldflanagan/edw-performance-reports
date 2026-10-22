@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-22T16:30:25Z",
+ "generated": "2026-10-22T16:42:48Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 32,
+    "n": 13,
+    "points": 35,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 20,
    "sprint": 43,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -403,7 +403,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2486",
@@ -412,6 +412,10 @@
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
      },
      {
       "key": "EDW-2474",
@@ -432,10 +436,6 @@
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -500,6 +500,10 @@
       "summary": "Phase 3 members that were pushed to phase 4"
      },
      {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
+     },
+     {
       "key": "EDW-2474",
       "summary": "Create CSV list for Phase 4"
      },
@@ -522,10 +526,6 @@
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -541,6 +541,10 @@
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
      },
      {
       "key": "EDW-2474",
@@ -561,10 +565,6 @@
      {
       "key": "EDW-2434",
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
-     },
-     {
-      "key": "EDW-2374",
-      "summary": "[Launch Loyalty] - Commission Reporting for Phase 2 Orgs"
      }
     ]
    },
@@ -697,11 +697,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 10,
+   "Ready for Development": 6,
    "Awaiting Review": 10,
    "Backlog": 10,
    "Closed": 16,
-   "Ready for Development": 5
+   "In Development": 9
   },
   "burn": [
    72.0,
@@ -789,8 +789,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 16.8,
+    "open": 20,
+    "med_age": 12.9,
     "max_age": 226.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -801,15 +801,39 @@
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 6.8,
-    "max_age": 17.1,
+    "open": 8,
+    "med_age": 7.4,
+    "max_age": 17.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
     "clear_med": 2.0,
-    "clear_n": 181
+    "clear_n": 182
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -822,6 +846,18 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 115
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "New",
@@ -846,42 +882,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    }
   ],
   "parked": {
