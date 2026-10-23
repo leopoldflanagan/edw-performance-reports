@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T18:45:20Z",
+ "generated": "2026-10-23T19:00:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 12,
   "days": 14,
   "n": 19,
-  "done_now": 48,
-  "committed": 88,
-  "lo": 59,
-  "mid": 62,
-  "hi": 71,
-  "pct": 70,
+  "done_now": 50,
+  "committed": 90,
+  "lo": 61,
+  "mid": 65,
+  "hi": 74,
+  "pct": 72,
   "verdict": "well short of the commitment",
   "share_mid": 0.768
  },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 5,
+    "n": 4,
     "items": [
      {
       "key": "EDW-2485",
@@ -385,10 +385,6 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2488",
-      "summary": "Put Gate on WFP models for duplicate orgs "
      },
      {
       "key": "EDW-2439",
@@ -675,74 +671,74 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 61,
-  "items_done": 22,
-  "committed": 88,
-  "final": 145,
-  "completed": 48,
-  "scope_change": 65,
-  "vs_commitment": 55,
+  "items_done": 23,
+  "committed": 90,
+  "final": 147,
+  "completed": 50,
+  "scope_change": 63,
+  "vs_commitment": 56,
   "time_elapsed": 78,
   "spill": {
-   "open_items": 23,
+   "open_items": 22,
    "open_pts": 62.0,
    "out_items": 9,
    "out_pts": 34.0,
-   "done_pts": 49.0
+   "done_pts": 51.0
   },
   "recv": {
    "items": 15,
    "pts": 37,
-   "pct": 42,
+   "pct": 41,
    "from": "EDW-Sprint 23-26"
   },
   "spill_rate": null,
   "dist": {
    "In Development": 12,
-   "Closed": 23,
-   "Awaiting Review": 4,
+   "Closed": 24,
    "Backlog": 10,
-   "Ready for Development": 3
+   "Ready for Development": 3,
+   "Awaiting Review": 3
   },
   "burn": [
-   70.0,
-   65.0,
-   69.0,
    72.0,
-   97.0,
-   97.0,
-   97.0,
+   67.0,
+   71.0,
+   74.0,
    99.0,
-   97.0,
-   92.0,
+   99.0,
+   99.0,
+   101.0,
+   99.0,
    94.0,
+   96.0,
    89.0
   ],
   "scope": [
-   74.0,
-   80.0,
-   87.0,
-   94.0,
-   126.0,
-   126.0,
-   126.0,
+   76.0,
+   82.0,
+   89.0,
+   96.0,
    128.0,
-   131.0,
-   131.0,
-   136.0,
-   137.0
+   128.0,
+   128.0,
+   130.0,
+   133.0,
+   133.0,
+   138.0,
+   139.0
   ],
   "ghost": [
-   75.0,
-   72.0,
-   76.0,
-   79.0,
-   104.0,
-   104.0,
-   104.0,
+   77.0,
+   74.0,
+   78.0,
+   81.0,
    106.0,
-   104.0,
-   99.0,
+   106.0,
+   106.0,
+   108.0,
+   106.0,
    101.0,
+   103.0,
    96.0
   ],
   "days": 14,
@@ -773,10 +769,10 @@
   "end": "2026-10-25",
   "day": 26,
   "days": 28,
-  "closed": 55,
-  "points": 132,
+  "closed": 56,
+  "points": 134,
   "unplanned": 7,
-  "unplanned_pct": 12.7,
+  "unplanned_pct": 12.5,
   "access_requests": 0,
   "people_active": 4,
   "sprints": [
@@ -799,8 +795,8 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 4.0,
-    "clear_n": 168
+    "clear_med": 3.9,
+    "clear_n": 169
    },
    {
     "status": "In Development",
@@ -812,7 +808,19 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 6,
     "clear_med": 2.0,
-    "clear_n": 188
+    "clear_n": 189
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 129
    },
    {
     "status": "On Hold",
@@ -825,42 +833,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 128
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -885,6 +857,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
