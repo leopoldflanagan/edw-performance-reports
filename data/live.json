@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T20:00:26Z",
+ "generated": "2026-10-23T20:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -693,11 +693,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 12,
+   "In Development": 11,
    "Closed": 24,
    "Backlog": 10,
    "Ready for Development": 3,
-   "Awaiting Review": 3
+   "Awaiting Review": 4
   },
   "burn": [
    72.0,
@@ -792,18 +792,18 @@
    {
     "status": "Ready for Development",
     "open": 18,
-    "med_age": 14.0,
+    "med_age": 14.1,
     "max_age": 228.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 3.9,
-    "clear_n": 169
+    "clear_med": 4.0,
+    "clear_n": 168
    },
    {
     "status": "In Development",
-    "open": 11,
+    "open": 10,
     "med_age": 8.0,
     "max_age": 18.3,
     "worst_key": "EDW-2375",
@@ -812,42 +812,6 @@
     "over": 6,
     "clear_med": 2.0,
     "clear_n": 189
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -874,6 +838,42 @@
     "clear_n": 2
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -889,7 +889,7 @@
   "parked": {
    "Backlog": 59
   },
-  "open_total": 29,
+  "open_total": 28,
   "stale": 21,
   "worst": "Ready for Development"
  }
