@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 56,
+  "closed": 58,
   "discarded": 100,
-  "resolved": 156,
+  "resolved": 158,
   "unplanned": 7,
-  "unp_pct": 12.5,
+  "unp_pct": 12.1,
   "types": [
    [
     "Bug",
@@ -25,7 +25,7 @@
    ],
    [
     "Task",
-    9
+    11
    ],
    [
     "Spike",
@@ -70,10 +70,10 @@
   "day": 23,
   "days": 28,
   "status": "risk",
-  "headline": "56 items closed in the first 23 days, a pace of about 68 for the month against 68 last month. Unplanned work at 12.5%.",
+  "headline": "58 items closed in the first 23 days, a pace of about 71 for the month against 68 last month. Unplanned work at 12.1%.",
   "notes": [
-   "unplanned work at 12.5%",
-   "cycle time median 4.0d and average 11.5d, both past the healthy band"
+   "unplanned work at 12.1%",
+   "cycle time median 3.3d and average 10.9d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -127,10 +127,10 @@
    "Oct 12",
    "Oct 26",
    61,
-   23,
+   25,
    90,
    147,
-   50,
+   60,
    63,
    [
     72.0,
@@ -145,7 +145,7 @@
     94.0,
     96.0,
     89.0,
-    89.0
+    79.0
    ],
    [
     76.0,
@@ -187,12 +187,12 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    23,
-    51
+    25,
+    61
    ],
    "open": [
-    22,
-    62
+    20,
+    52
    ],
    "out": [
     9,
@@ -273,12 +273,12 @@
      "med": 2.97
     },
     "Closed": {
-     "n": 26,
-     "med": 8.98
+     "n": 28,
+     "med": 6.55
     },
     "Awaiting Review": {
      "n": 26,
-     "med": 1.91
+     "med": 1.46
     },
     "Ready for Development": {
      "n": 15,
@@ -291,12 +291,12 @@
    },
    "dist": {
     "In Development": 11,
-    "Closed": 24,
+    "Closed": 26,
     "Backlog": 16,
     "Ready for Development": 6,
-    "Awaiting Review": 4
+    "Awaiting Review": 2
    },
-   "stalled": 36,
+   "stalled": 35,
    "worst": 6.73,
    "worstSt": "Ready for Development",
    "items": 61
@@ -333,25 +333,25 @@
    101.0,
    103.0,
    96.0,
-   96.0
+   86.0
   ]
  },
  "CAP": {
   "9.09": [
-   56,
-   52,
-   134,
+   58,
+   54,
+   144,
    4
   ]
  },
  "CYC": {
   "9.09": {
-   "med": 3.99,
-   "avg": 11.5,
-   "n": 31,
+   "med": 3.26,
+   "avg": 10.93,
+   "n": 33,
    "mx": 77.06,
    "nodev": 25,
-   "base": 56
+   "base": 58
   }
  },
  "complete": false,
