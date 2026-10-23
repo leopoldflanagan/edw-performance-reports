@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T20:41:09Z",
+ "generated": "2026-10-23T20:45:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -693,11 +693,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 11,
+   "Awaiting Review": 3,
    "Closed": 26,
    "Backlog": 10,
    "Ready for Development": 3,
-   "Awaiting Review": 2
+   "In Development": 10
   },
   "burn": [
    72.0,
@@ -803,7 +803,7 @@
    },
    {
     "status": "In Development",
-    "open": 10,
+    "open": 9,
     "med_age": 8.0,
     "max_age": 18.3,
     "worst_key": "EDW-2375",
@@ -812,30 +812,6 @@
     "over": 6,
     "clear_med": 2.0,
     "clear_n": 191
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
    },
    {
     "status": "In Progress",
@@ -862,7 +838,7 @@
     "clear_n": 1
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -870,8 +846,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -884,12 +860,36 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 131
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 59
   },
-  "open_total": 28,
+  "open_total": 27,
   "stale": 21,
   "worst": "Ready for Development"
  }
