@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 53,
+  "closed": 55,
   "discarded": 100,
-  "resolved": 153,
+  "resolved": 155,
   "unplanned": 7,
-  "unp_pct": 13.2,
+  "unp_pct": 12.7,
   "types": [
    [
     "Bug",
@@ -25,7 +25,7 @@
    ],
    [
     "Task",
-    7
+    9
    ],
    [
     "Spike",
@@ -70,10 +70,10 @@
   "day": 23,
   "days": 28,
   "status": "risk",
-  "headline": "53 items closed in the first 23 days, a pace of about 65 for the month against 68 last month. Unplanned work at 13.2%.",
+  "headline": "55 items closed in the first 23 days, a pace of about 67 for the month against 68 last month. Unplanned work at 12.7%.",
   "notes": [
-   "unplanned work at 13.2%",
-   "cycle time median 5.3d and average 12.3d, both past the healthy band"
+   "unplanned work at 12.7%",
+   "cycle time median 5.3d and average 11.8d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -127,10 +127,10 @@
    "Oct 12",
    "Oct 26",
    60,
-   21,
+   22,
    88,
    145,
-   45,
+   48,
    65,
    [
     70.0,
@@ -144,7 +144,7 @@
     97.0,
     92.0,
     94.0,
-    92.0
+    89.0
    ],
    [
     74.0,
@@ -185,12 +185,12 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    21,
-    43
+    22,
+    49
    ],
    "open": [
-    24,
-    68
+    22,
+    62
    ],
    "out": [
     9,
@@ -263,8 +263,8 @@
   "EDW-Sprint 24-26": {
    "tis": {
     "Closed": {
-     "n": 23,
-     "med": 10.99
+     "n": 25,
+     "med": 10.95
     },
     "In Development": {
      "n": 30,
@@ -272,7 +272,7 @@
     },
     "Awaiting Review": {
      "n": 25,
-     "med": 2.16
+     "med": 1.94
     },
     "Backlog": {
      "n": 26,
@@ -288,13 +288,13 @@
     }
    },
    "dist": {
-    "Closed": 21,
-    "Awaiting Review": 6,
+    "Closed": 23,
+    "Awaiting Review": 4,
     "Backlog": 16,
     "Ready for Development": 6,
     "In Development": 11
    },
-   "stalled": 39,
+   "stalled": 37,
    "worst": 6.73,
    "worstSt": "Ready for Development",
    "items": 60
@@ -330,25 +330,25 @@
    104.0,
    99.0,
    101.0,
-   99.0
+   96.0
   ]
  },
  "CAP": {
   "9.09": [
-   53,
-   49,
-   126,
+   55,
+   51,
+   132,
    4
   ]
  },
  "CYC": {
   "9.09": {
    "med": 5.33,
-   "avg": 12.34,
-   "n": 28,
+   "avg": 11.85,
+   "n": 30,
    "mx": 77.06,
    "nodev": 25,
-   "base": 53
+   "base": 55
   }
  },
  "complete": false,
