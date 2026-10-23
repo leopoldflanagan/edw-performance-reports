@@ -9,11 +9,11 @@
   "end": "2026-10-25",
   "prev": "",
   "prev_closed": 68,
-  "closed": 58,
+  "closed": 59,
   "discarded": 100,
-  "resolved": 158,
+  "resolved": 159,
   "unplanned": 7,
-  "unp_pct": 12.1,
+  "unp_pct": 11.9,
   "types": [
    [
     "Bug",
@@ -21,7 +21,7 @@
    ],
    [
     "Story",
-    22
+    23
    ],
    [
     "Task",
@@ -70,9 +70,9 @@
   "day": 23,
   "days": 28,
   "status": "risk",
-  "headline": "58 items closed in the first 23 days, a pace of about 71 for the month against 68 last month. Unplanned work at 12.1%.",
+  "headline": "59 items closed in the first 23 days, a pace of about 72 for the month against 68 last month. Unplanned work at 11.9%.",
   "notes": [
-   "unplanned work at 12.1%",
+   "unplanned work at 11.9%",
    "cycle time median 3.3d and average 10.9d, both past the healthy band"
   ]
  },
@@ -127,10 +127,10 @@
    "Oct 12",
    "Oct 26",
    61,
-   25,
+   26,
    90,
    147,
-   60,
+   62,
    63,
    [
     72.0,
@@ -145,7 +145,7 @@
     94.0,
     96.0,
     89.0,
-    79.0
+    77.0
    ],
    [
     76.0,
@@ -187,12 +187,12 @@
   },
   "EDW-Sprint 24-26": {
    "done": [
-    25,
-    61
+    26,
+    63
    ],
    "open": [
-    20,
-    52
+    19,
+    50
    ],
    "out": [
     9,
@@ -277,8 +277,8 @@
      "med": 1.87
     },
     "Closed": {
-     "n": 28,
-     "med": 6.55
+     "n": 29,
+     "med": 6.11
     },
     "Ready for Development": {
      "n": 15,
@@ -291,12 +291,12 @@
    },
    "dist": {
     "Awaiting Review": 3,
-    "Closed": 26,
+    "Closed": 27,
     "Backlog": 16,
-    "Ready for Development": 6,
-    "In Development": 10
+    "In Development": 10,
+    "Ready for Development": 5
    },
-   "stalled": 34,
+   "stalled": 33,
    "worst": 6.73,
    "worstSt": "Ready for Development",
    "items": 61
@@ -333,14 +333,14 @@
    101.0,
    103.0,
    96.0,
-   86.0
+   84.0
   ]
  },
  "CAP": {
   "9.09": [
-   58,
-   54,
-   144,
+   59,
+   55,
+   146,
    4
   ]
  },
@@ -350,8 +350,8 @@
    "avg": 10.93,
    "n": 33,
    "mx": 77.06,
-   "nodev": 25,
-   "base": 58
+   "nodev": 26,
+   "base": 59
   }
  },
  "complete": false,
