@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-23T09:30:22Z",
+ "generated": "2026-10-23T09:43:35Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -789,7 +789,7 @@
    {
     "status": "Ready for Development",
     "open": 18,
-    "med_age": 13.6,
+    "med_age": 13.7,
     "max_age": 227.6,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -801,7 +801,7 @@
    {
     "status": "In Development",
     "open": 10,
-    "med_age": 7.5,
+    "med_age": 7.6,
     "max_age": 17.9,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -811,7 +811,7 @@
     "clear_n": 185
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -819,44 +819,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -871,7 +835,7 @@
     "clear_n": 123
    },
    {
-    "status": "New",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -879,8 +843,44 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 1
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
