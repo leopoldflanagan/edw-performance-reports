@@ -9,26 +9,31 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": null,
-  "closed": 2,
+  "closed": 3,
   "discarded": 0,
-  "resolved": 2,
-  "unplanned": null,
-  "unp_pct": null,
+  "resolved": 3,
+  "unplanned": 1,
+  "unp_pct": 33.3,
   "types": [
    [
     "Story",
-    2
+    3
    ]
   ],
   "sprints": [],
-  "unp_items": [],
+  "unp_items": [
+   [
+    "EDW-2454",
+    "[Onboarding] - Onboard Report modifications"
+   ]
+  ],
   "open": true,
   "day": 26,
   "days": 28,
-  "status": "warning",
-  "headline": "2 items closed in the first 26 days. The Unplanned label was not applied, so reactive work cannot be measured.",
+  "status": "risk",
+  "headline": "3 items closed in the first 26 days. Unplanned work at 33.3% of everything closed.",
   "notes": [
-   "the Unplanned label was not applied, so reactive work cannot be measured"
+   "unplanned work at 33.3% of everything closed"
   ]
  },
  "SPRINTS": [],
@@ -38,20 +43,20 @@
  "GHOST": {},
  "CAP": {
   "9.10": [
-   2,
-   2,
-   5,
+   3,
+   3,
+   7,
    1
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 5.47,
-   "avg": 5.47,
-   "n": 2,
+   "med": 3.86,
+   "avg": 3.65,
+   "n": 3,
    "mx": 7.07,
    "nodev": 0,
-   "base": 2
+   "base": 3
   }
  },
  "complete": false,
