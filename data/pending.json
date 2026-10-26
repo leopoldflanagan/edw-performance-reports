@@ -128,7 +128,7 @@
     "Oct 12",
     "Oct 26",
     61,
-    29,
+    30,
     90,
     147,
     67,
@@ -192,7 +192,7 @@
    },
    "EDW-Sprint 24-26": {
     "done": [
-     29,
+     30,
      68
     ],
     "open": [
@@ -274,16 +274,16 @@
       "med": 10.99
      },
      "In Development": {
-      "n": 34,
-      "med": 1.4
+      "n": 36,
+      "med": 1.0
      },
      "Awaiting Review": {
       "n": 28,
       "med": 1.46
      },
      "Closed": {
-      "n": 32,
-      "med": 4.93
+      "n": 33,
+      "med": 3.95
      },
      "Ready for Development": {
       "n": 15,
@@ -296,12 +296,12 @@
     },
     "dist": {
      "Awaiting Review": 2,
-     "Closed": 30,
-     "Backlog": 14,
-     "In Development": 11,
+     "Closed": 31,
+     "Backlog": 12,
+     "In Development": 12,
      "Ready for Development": 4
     },
-    "stalled": 28,
+    "stalled": 26,
     "worst": 6.73,
     "worstSt": "Ready for Development",
     "items": 61
