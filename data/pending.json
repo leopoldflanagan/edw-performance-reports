@@ -196,12 +196,12 @@
      70
     ],
     "open": [
-     15,
-     40
+     14,
+     37
     ],
     "out": [
-     10,
-     37
+     11,
+     40
     ],
     "in": [
      15,
@@ -287,8 +287,8 @@
       "med": 3.95
      },
      "Ready for Development": {
-      "n": 15,
-      "med": 6.73
+      "n": 16,
+      "med": 5.42
      },
      "Won't Do": {
       "n": 1,
@@ -298,12 +298,12 @@
     "dist": {
      "Awaiting Review": 2,
      "Closed": 34,
-     "Backlog": 13,
-     "In Development": 8,
-     "Ready for Development": 4
+     "Backlog": 12,
+     "Ready for Development": 5,
+     "In Development": 8
     },
-    "stalled": 25,
-    "worst": 6.73,
+    "stalled": 24,
+    "worst": 5.42,
     "worstSt": "Ready for Development",
     "items": 61
    }
