@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": null,
-  "closed": 5,
+  "closed": 6,
   "discarded": 0,
-  "resolved": 5,
+  "resolved": 6,
   "unplanned": 2,
-  "unp_pct": 40.0,
+  "unp_pct": 33.3,
   "types": [
    [
     "Story",
-    5
+    6
    ]
   ],
   "sprints": [],
@@ -35,10 +35,10 @@
   "day": 26,
   "days": 28,
   "status": "risk",
-  "headline": "5 items closed in the first 26 days. Unplanned work at 40.0% of everything closed.",
+  "headline": "6 items closed in the first 26 days. Unplanned work at 33.3% of everything closed.",
   "notes": [
-   "unplanned work at 40.0% of everything closed",
-   "cycle time average 7.4d against a 7.1d median - a long tail"
+   "unplanned work at 33.3% of everything closed",
+   "cycle time median 9.6d and average 9.2d, both past the healthy band"
   ]
  },
  "SPRINTS": [],
@@ -48,20 +48,20 @@
  "GHOST": {},
  "CAP": {
   "9.10": [
-   5,
-   5,
-   14,
+   6,
+   6,
+   19,
    2
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 7.07,
-   "avg": 7.39,
-   "n": 5,
-   "mx": 13.83,
+   "med": 9.61,
+   "avg": 9.16,
+   "n": 6,
+   "mx": 18.03,
    "nodev": 0,
-   "base": 5
+   "base": 6
   }
  },
  "complete": false,
