@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T07:00:29Z",
+ "generated": "2026-10-26T07:15:18Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -810,8 +810,8 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 10.4,
-    "max_age": 20.7,
+    "med_age": 10.5,
+    "max_age": 20.8,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
@@ -820,7 +820,7 @@
     "clear_n": 188
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -828,11 +828,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
-    "status": "In Progress",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -840,8 +840,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "WAITING REVIEW",
@@ -868,7 +868,7 @@
     "clear_n": 61
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -876,11 +876,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
-    "status": "PR Created",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -888,8 +888,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 1.0,
+    "clear_n": 131
    }
   ],
   "parked": {
