@@ -8,7 +8,7 @@
   "start": "2026-10-26",
   "end": "2026-11-22",
   "prev": "",
-  "prev_closed": null,
+  "prev_closed": 59,
   "closed": 7,
   "discarded": 0,
   "resolved": 7,
@@ -37,8 +37,9 @@
   "day": 26,
   "days": 28,
   "status": "risk",
-  "headline": "7 items closed in the first 26 days. Unplanned work at 28.6% of everything closed.",
+  "headline": "7 items closed in the first 26 days, a pace of about 8 for the month against 59 last month. Running 87% behind last month's pace.",
   "notes": [
+   "running 87% behind last month's pace",
    "unplanned work at 28.6% of everything closed",
    "cycle time average 8.3d against a 7.1d median - a long tail"
   ]

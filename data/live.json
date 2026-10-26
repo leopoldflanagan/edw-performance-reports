@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T19:30:23Z",
+ "generated": "2026-10-26T19:40:44Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -307,7 +307,7 @@
   ]
  },
  "backlog": {
-  "per_sprint_pts": 82.5,
+  "per_sprint_pts": 68.0,
   "bands": {
    "skinny": "< 1.5 sprints",
    "in_shape": "1.5 to 2.5 sprints",
@@ -322,7 +322,7 @@
    "points": 16
   },
   "runway": 0.1,
-  "runway_if_fixed": 0.3,
+  "runway_if_fixed": 0.4,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
   "violations": [
@@ -356,7 +356,7 @@
   "too_early": true,
   "day": 1,
   "days": 14,
-  "n": 19,
+  "n": 21,
   "why": "this early, past sprints had finished too little of their work for the comparison to say anything"
  },
  "admin": {
@@ -811,6 +811,18 @@
     "clear_n": 196
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -821,30 +833,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
    },
    {
     "status": "WAITING REVIEW",
@@ -871,7 +859,7 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -879,8 +867,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 135
    }
   ],
   "parked": {
