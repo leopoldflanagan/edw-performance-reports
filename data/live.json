@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T16:00:30Z",
+ "generated": "2026-10-26T16:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 17,
+   "ready": 16,
    "sprint": 44,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -496,10 +496,6 @@
       "summary": "CREG - Pull data and create Model"
      },
      {
-      "key": "EDW-2454",
-      "summary": "[Onboarding] - Onboard Report modifications"
-     },
-     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
@@ -522,6 +518,10 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
+     },
+     {
+      "key": "EDW-1950",
+      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -543,10 +543,6 @@
       "summary": "EDW Ambetter development"
      },
      {
-      "key": "EDW-2454",
-      "summary": "[Onboarding] - Onboard Report modifications"
-     },
-     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
@@ -561,6 +557,10 @@
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -671,7 +671,7 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 61,
-  "items_done": 28,
+  "items_done": 29,
   "committed": 90,
   "final": 147,
   "completed": 67,
@@ -694,10 +694,10 @@
   "spill_rate": 54,
   "dist": {
    "Awaiting Review": 2,
-   "Closed": 29,
-   "Backlog": 10,
-   "In Development": 9,
-   "Ready for Development": 2
+   "Closed": 30,
+   "Backlog": 9,
+   "In Development": 10,
+   "Ready for Development": 1
   },
   "burn": [
    72.0,
@@ -797,20 +797,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
-    "med_age": 20.8,
+    "open": 16,
+    "med_age": 30.8,
     "max_age": 230.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 14,
-    "clear_med": 4.0,
-    "clear_n": 168
+    "over": 13,
+    "clear_med": 4.1,
+    "clear_n": 169
    },
    {
     "status": "In Development",
-    "open": 8,
-    "med_age": 11.4,
+    "open": 9,
+    "med_age": 10.8,
     "max_age": 21.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -820,7 +820,7 @@
     "clear_n": 190
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -828,20 +828,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 133
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -856,7 +844,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -864,8 +852,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "New",
@@ -880,7 +868,7 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -888,15 +876,27 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 1.0,
+    "clear_n": 133
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
    "Backlog": 59
   },
   "open_total": 25,
-  "stale": 21,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
