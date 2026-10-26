@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T19:00:26Z",
+ "generated": "2026-10-26T19:15:17Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 14,
   "days": 14,
   "n": 19,
-  "done_now": 76,
+  "done_now": 78,
   "committed": 90,
-  "lo": 76,
-  "mid": 76,
-  "hi": 76,
-  "pct": 84,
+  "lo": 78,
+  "mid": 78,
+  "hi": 78,
+  "pct": 87,
   "verdict": "a little short of the commitment",
   "share_mid": 1.0
  },
@@ -667,19 +667,19 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 61,
-  "items_done": 35,
+  "items_done": 36,
   "committed": 90,
   "final": 147,
-  "completed": 76,
+  "completed": 78,
   "scope_change": 63,
-  "vs_commitment": 84,
+  "vs_commitment": 87,
   "time_elapsed": 100,
   "spill": {
-   "open_items": 11,
-   "open_pts": 25.0,
+   "open_items": 10,
+   "open_pts": 23.0,
    "out_items": 11,
    "out_pts": 40.0,
-   "done_pts": 82.0
+   "done_pts": 84.0
   },
   "recv": {
    "items": 15,
@@ -687,10 +687,9 @@
    "pct": 41,
    "from": "EDW-Sprint 23-26"
   },
-  "spill_rate": 44,
+  "spill_rate": 43,
   "dist": {
-   "Awaiting Review": 1,
-   "Closed": 37,
+   "Closed": 38,
    "Backlog": 5,
    "In Development": 6,
    "Ready for Development": 1
@@ -710,7 +709,7 @@
    89.0,
    77.0,
    77.0,
-   63.0
+   61.0
   ],
   "scope": [
    76.0,
@@ -744,7 +743,7 @@
    96.0,
    84.0,
    84.0,
-   65.0
+   63.0
   ],
   "days": 14,
   "day": 14,
@@ -774,10 +773,10 @@
   "end": "2026-11-22",
   "day": 1,
   "days": 28,
-  "closed": 6,
-  "points": 19,
+  "closed": 7,
+  "points": 21,
   "unplanned": 2,
-  "unplanned_pct": 33.3,
+  "unplanned_pct": 28.6,
   "access_requests": 0,
   "people_active": 2,
   "sprints": [
@@ -807,13 +806,25 @@
     "status": "In Development",
     "open": 7,
     "med_age": 7.2,
-    "max_age": 21.2,
+    "max_age": 21.3,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
     "clear_med": 2.0,
-    "clear_n": 195
+    "clear_n": 196
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -840,30 +851,6 @@
     "clear_n": 5
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -885,7 +872,19 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 1.0,
-    "clear_n": 134
+    "clear_n": 135
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
