@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T19:15:17Z",
+ "generated": "2026-10-26T19:30:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -353,30 +353,23 @@
   ]
  },
  "projection": {
-  "too_early": false,
-  "day": 14,
+  "too_early": true,
+  "day": 1,
   "days": 14,
   "n": 19,
-  "done_now": 78,
-  "committed": 90,
-  "lo": 78,
-  "mid": 78,
-  "hi": 78,
-  "pct": 87,
-  "verdict": "a little short of the commitment",
-  "share_mid": 1.0
+  "why": "this early, past sprints had finished too little of their work for the comparison to say anything"
  },
  "admin": {
   "scope": {
    "ready": 17,
-   "sprint": 42,
-   "sprint_name": "EDW-Sprint 24-26"
+   "sprint": 23,
+   "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 4,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2485",
@@ -387,12 +380,20 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
+      "key": "EDW-2478",
+      "summary": "CT Medical Discount Plan Renewal (DMPO)"
+     },
+     {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      },
      {
       "key": "EDW-2438",
       "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2428",
+      "summary": "RI DMPO Annual Report"
      }
     ]
    },
@@ -438,34 +439,81 @@
    {
     "rule": "AdHoc without the unplanned label",
     "why": "the guide does not allow it. Unlabelled reactive work is why the reactive share cannot be measured.",
-    "n": 2,
+    "n": 1,
     "items": [
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
+     }
+    ]
+   },
+   {
+    "rule": "No assignee in the active sprint",
+    "why": "work in the sprint that nobody owns.",
+    "n": 5,
+    "items": [
+     {
+      "key": "EDW-2407",
+      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
      },
      {
-      "key": "EDW-2453",
-      "summary": " Smile Alliance Club Patient's plan is showing as deleted"
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
+     },
+     {
+      "key": "EDW-2403",
+      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
+     },
+     {
+      "key": "EDW-2394",
+      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
+     },
+     {
+      "key": "EDW-2392",
+      "summary": "1.3: (EDW) rpt_CregHrReport - MRN-only HR projection"
      }
     ]
    },
    {
     "rule": "Open dependency",
     "why": "the guide: Definition of Ready means no open dependencies.",
-    "n": 1,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2434",
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2407",
+      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
+     },
+     {
+      "key": "EDW-2403",
+      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
+     },
+     {
+      "key": "EDW-2394",
+      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
+     },
+     {
+      "key": "EDW-2392",
+      "summary": "1.3: (EDW) rpt_CregHrReport - MRN-only HR projection"
      }
     ]
    },
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 3,
+    "n": 12,
     "items": [
+     {
+      "key": "EDW-2478",
+      "summary": "CT Medical Discount Plan Renewal (DMPO)"
+     },
      {
       "key": "EDW-2473",
       "summary": "Request and sorting pass"
@@ -477,6 +525,22 @@
      {
       "key": "EDW-2471",
       "summary": "Visual context in the application layer and layer boundaries"
+     },
+     {
+      "key": "EDW-2428",
+      "summary": "RI DMPO Annual Report"
+     },
+     {
+      "key": "EDW-2419",
+      "summary": "[Accounting] - Add MID, Practice ID page"
+     },
+     {
+      "key": "EDW-2414",
+      "summary": "[Accounting] - Patterson rev share not matching Plan Activity Data - F32"
+     },
+     {
+      "key": "EDW-2407",
+      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
      }
     ]
    }
@@ -485,7 +549,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 39,
+    "n": 29,
     "items": [
      {
       "key": "EDW-2490",
@@ -522,75 +586,22 @@
     ]
    },
    {
-    "rule": "No original estimate",
-    "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 44,
-    "items": [
-     {
-      "key": "EDW-2490",
-      "summary": "Netsuite project dev completion for testing"
-     },
-     {
-      "key": "EDW-2485",
-      "summary": "Kalendar Org - missing email"
-     },
-     {
-      "key": "EDW-2484",
-      "summary": "CREG - Pull data and create Model"
-     },
-     {
-      "key": "EDW-2463",
-      "summary": "EDW Ambetter development"
-     },
-     {
-      "key": "EDW-2437",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2434",
-      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
-     },
-     {
-      "key": "EDW-2379",
-      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
-     }
-    ]
+    "rule": "Original estimate is not in use",
+    "why": "missing on 33 of 37 items. This reads as a field the team does not use rather than 33 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 33,
+    "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 58 of 58 items. This reads as a field the team does not use rather than 58 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 58,
+    "why": "missing on 37 of 37 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 37,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 21,
+    "n": 8,
     "items": [
-     {
-      "key": "EDW-2488",
-      "summary": "Put Gate on WFP models for duplicate orgs "
-     },
-     {
-      "key": "EDW-2486",
-      "summary": "Phase 3 members that were pushed to phase 4"
-     },
-     {
-      "key": "EDW-2483",
-      "summary": "Testing of multi-column sorting for tables"
-     },
-     {
-      "key": "EDW-2475",
-      "summary": "EDW - Show/hide Export button on embedded reports/dashboards using the export fl"
-     },
-     {
-      "key": "EDW-2474",
-      "summary": "Create CSV list for Phase 4"
-     },
      {
       "key": "EDW-2473",
       "summary": "Request and sorting pass"
@@ -602,13 +613,33 @@
      {
       "key": "EDW-2471",
       "summary": "Visual context in the application layer and layer boundaries"
+     },
+     {
+      "key": "EDW-2470",
+      "summary": "Pilot pass with Payment and Lending"
+     },
+     {
+      "key": "EDW-2463",
+      "summary": "EDW Ambetter development"
+     },
+     {
+      "key": "EDW-2439",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
+     },
+     {
+      "key": "EDW-2438",
+      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
      }
     ]
    },
    {
     "rule": "Riding 4+ sprints",
     "why": "an item that keeps moving forward is not spillover, it is a decision nobody has made.",
-    "n": 5,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2145",
@@ -629,6 +660,10 @@
      {
       "key": "EDW-1599",
       "summary": "LL Commission Model 5 - ADF pipeline"
+     },
+     {
+      "key": "EDW-2414",
+      "summary": "[Accounting] - Patterson rev share not matching Plan Activity Data - F32"
      }
     ]
    }
@@ -661,108 +696,69 @@
   ]
  },
  "sprint": {
-  "name": "EDW-Sprint 24-26",
+  "name": "EDW-Sprint 25-26",
   "state": "active",
-  "start": "2026-10-12",
-  "end": "2026-10-26",
+  "start": "2026-10-26",
+  "end": "2026-11-09",
   "goal": "",
-  "items": 61,
-  "items_done": 36,
-  "committed": 90,
-  "final": 147,
-  "completed": 78,
-  "scope_change": 63,
-  "vs_commitment": 87,
-  "time_elapsed": 100,
+  "items": 33,
+  "items_done": 4,
+  "committed": 67,
+  "final": 67,
+  "completed": 2,
+  "scope_change": 0,
+  "vs_commitment": 3,
+  "time_elapsed": 0,
   "spill": {
-   "open_items": 10,
-   "open_pts": 23.0,
-   "out_items": 11,
-   "out_pts": 40.0,
-   "done_pts": 84.0
+   "open_items": 23,
+   "open_pts": 65.0,
+   "out_items": 0,
+   "out_pts": 0,
+   "done_pts": 0
   },
   "recv": {
-   "items": 15,
-   "pts": 37,
-   "pct": 41,
-   "from": "EDW-Sprint 23-26"
+   "items": 18,
+   "pts": 52,
+   "pct": 78,
+   "from": "EDW-Sprint 24-26"
   },
-  "spill_rate": 43,
+  "spill_rate": null,
   "dist": {
-   "Closed": 38,
-   "Backlog": 5,
-   "In Development": 6,
-   "Ready for Development": 1
+   "Ready for Development": 3,
+   "In Development": 8,
+   "Backlog": 21,
+   "Closed": 1
   },
   "burn": [
-   72.0,
-   67.0,
-   71.0,
-   74.0,
-   99.0,
-   99.0,
-   99.0,
-   101.0,
-   99.0,
-   94.0,
-   96.0,
-   89.0,
-   77.0,
-   77.0,
-   61.0
+   65.0,
+   65.0
   ],
   "scope": [
-   76.0,
-   82.0,
-   89.0,
-   96.0,
-   128.0,
-   128.0,
-   128.0,
-   130.0,
-   133.0,
-   133.0,
-   138.0,
-   139.0,
-   139.0,
-   139.0,
-   139.0
+   67.0,
+   67.0
   ],
   "ghost": [
-   77.0,
-   74.0,
-   78.0,
-   81.0,
-   106.0,
-   106.0,
-   106.0,
-   108.0,
-   106.0,
-   101.0,
-   103.0,
-   96.0,
-   84.0,
-   84.0,
-   63.0
+   65.0,
+   65.0
   ],
   "days": 14,
-  "day": 14,
+  "day": 1,
   "capacity": {
-   "release": "9.09",
-   "start": "2026-10-12",
-   "end": "2026-10-25",
+   "release": "9.10",
+   "start": "2026-10-26",
+   "end": "2026-11-08",
    "members": 4.0,
    "holidays": 0.0,
    "pto": 0.0,
    "eff_days": 40.0,
    "pct": 100.0,
    "risk": "\ud83d\udfe2",
-   "planned": false
+   "planned": true
   }
  },
  "next": {
-  "name": "EDW-Sprint 25-26",
-  "start": "2026-10-26",
+  "name": "EDW-Sprint 26-26",
+  "start": "2026-11-10",
   "state": "not started"
  },
  "month": {
@@ -827,30 +823,6 @@
     "clear_n": 16
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -875,6 +847,18 @@
     "clear_n": 135
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -885,6 +869,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {

@@ -20,7 +20,9 @@
     7
    ]
   ],
-  "sprints": [],
+  "sprints": [
+   "EDW-Sprint 25-26"
+  ],
   "unp_items": [
    [
     "EDW-2454",
@@ -41,11 +43,90 @@
    "cycle time average 8.3d against a 7.1d median - a long tail"
   ]
  },
- "SPRINTS": [],
- "SPILL": {},
- "SPLIT": {},
- "TIS": {},
- "GHOST": {},
+ "SPRINTS": [
+  [
+   "EDW-Sprint 25-26",
+   "Oct 26",
+   "Nov 9",
+   33,
+   4,
+   67,
+   67,
+   2,
+   0,
+   [
+    65.0,
+    65.0
+   ],
+   [
+    67.0,
+    67.0
+   ]
+  ]
+ ],
+ "SPILL": {
+  "EDW-Sprint 25-26": {
+   "done": [
+    4,
+    0
+   ],
+   "open": [
+    23,
+    65
+   ],
+   "out": [
+    0,
+    0
+   ],
+   "in": [
+    18,
+    52
+   ],
+   "in_pct": 78,
+   "in_from": "EDW-Sprint 24-26"
+  }
+ },
+ "SPLIT": {
+  "EDW-Sprint 25-26": null
+ },
+ "TIS": {
+  "EDW-Sprint 25-26": {
+   "tis": {
+    "Ready for Development": {
+     "n": 3,
+     "med": 14.0
+    },
+    "In Development": {
+     "n": 8,
+     "med": 14.0
+    },
+    "Backlog": {
+     "n": 21,
+     "med": 14.0
+    },
+    "Closed": {
+     "n": 1,
+     "med": 14.0
+    }
+   },
+   "dist": {
+    "Ready for Development": 3,
+    "In Development": 8,
+    "Backlog": 21,
+    "Closed": 1
+   },
+   "stalled": 32,
+   "worst": 14.0,
+   "worstSt": "Ready for Development",
+   "items": 33
+  }
+ },
+ "GHOST": {
+  "EDW-Sprint 25-26": [
+   65.0,
+   65.0
+  ]
+ },
  "CAP": {
   "9.10": [
    7,
