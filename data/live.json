@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T21:00:27Z",
+ "generated": "2026-10-26T21:15:13Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -362,7 +362,7 @@
  "admin": {
   "scope": {
    "ready": 17,
-   "sprint": 23,
+   "sprint": 24,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -450,8 +450,12 @@
    {
     "rule": "No assignee in the active sprint",
     "why": "work in the sprint that nobody owns.",
-    "n": 5,
+    "n": 6,
     "items": [
+     {
+      "key": "EDW-2492",
+      "summary": "PDS Daily files delimiting change"
+     },
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
@@ -549,7 +553,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 29,
+    "n": 30,
     "items": [
      {
       "key": "EDW-2490",
@@ -587,14 +591,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 33 of 37 items. This reads as a field the team does not use rather than 33 oversights. Worth deciding: adopt it or stop asking for it.",
+    "why": "missing on 33 of 38 items. This reads as a field the team does not use rather than 33 oversights. Worth deciding: adopt it or stop asking for it.",
     "n": 33,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 37 of 37 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 38 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
@@ -701,17 +705,17 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 33,
+  "items": 34,
   "items_done": 4,
-  "committed": 67,
-  "final": 67,
+  "committed": 69,
+  "final": 69,
   "completed": 2,
   "scope_change": 0,
   "vs_commitment": 3,
-  "time_elapsed": 0,
+  "time_elapsed": 1,
   "spill": {
-   "open_items": 23,
-   "open_pts": 65.0,
+   "open_items": 24,
+   "open_pts": 67.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 0
@@ -719,28 +723,28 @@
   "recv": {
    "items": 18,
    "pts": 52,
-   "pct": 78,
+   "pct": 75,
    "from": "EDW-Sprint 24-26"
   },
   "spill_rate": null,
   "dist": {
+   "In Development": 8,
    "Ready for Development": 3,
-   "In Development": 7,
    "Backlog": 21,
    "Closed": 1,
    "Awaiting Review": 1
   },
   "burn": [
    65.0,
-   65.0
+   67.0
   ],
   "scope": [
    67.0,
-   67.0
+   69.0
   ],
   "ghost": [
    65.0,
-   65.0
+   67.0
   ],
   "days": 14,
   "day": 1,
@@ -801,8 +805,8 @@
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 9.2,
+    "open": 7,
+    "med_age": 7.3,
     "max_age": 21.3,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -824,7 +828,7 @@
     "clear_n": 61
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -832,32 +836,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 1.0,
+    "clear_n": 135
    },
    {
     "status": "In Progress",
@@ -872,7 +852,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -880,14 +860,38 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 61
+   "Backlog": 60
   },
-  "open_total": 23,
+  "open_total": 24,
   "stale": 17,
   "worst": "Ready for Development"
  }
