@@ -9,21 +9,27 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": null,
-  "closed": 0,
+  "closed": 1,
   "discarded": 0,
-  "resolved": 0,
+  "resolved": 1,
   "unplanned": null,
   "unp_pct": null,
-  "types": [],
+  "types": [
+   [
+    "Story",
+    1
+   ]
+  ],
   "sprints": [],
   "unp_items": [],
   "open": true,
   "day": 26,
   "days": 28,
   "status": "warning",
-  "headline": "0 items closed in the first 26 days. The Unplanned label was not applied, so reactive work cannot be measured.",
+  "headline": "1 items closed in the first 26 days. The Unplanned label was not applied, so reactive work cannot be measured.",
   "notes": [
-   "the Unplanned label was not applied, so reactive work cannot be measured"
+   "the Unplanned label was not applied, so reactive work cannot be measured",
+   "cycle time average 7.1d against a 7.1d median - a long tail"
   ]
  },
  "SPRINTS": [],
@@ -33,20 +39,20 @@
  "GHOST": {},
  "CAP": {
   "9.10": [
-   0,
-   0,
-   0,
+   1,
+   1,
+   2,
    0
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 0,
-   "avg": 0,
-   "n": 0,
-   "mx": 0,
+   "med": 7.07,
+   "avg": 7.07,
+   "n": 1,
+   "mx": 7.07,
    "nodev": 0,
-   "base": 0
+   "base": 1
   }
  },
  "complete": false,
