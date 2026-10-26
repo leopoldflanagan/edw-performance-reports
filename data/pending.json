@@ -274,7 +274,7 @@
       "med": 10.99
      },
      "In Development": {
-      "n": 36,
+      "n": 37,
       "med": 1.0
      },
      "Awaiting Review": {
@@ -298,8 +298,8 @@
      "Awaiting Review": 1,
      "Closed": 37,
      "Backlog": 12,
-     "Ready for Development": 5,
-     "In Development": 6
+     "In Development": 7,
+     "Ready for Development": 4
     },
     "stalled": 21,
     "worst": 5.42,
