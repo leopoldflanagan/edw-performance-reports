@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": null,
-  "closed": 3,
+  "closed": 5,
   "discarded": 0,
-  "resolved": 3,
-  "unplanned": 1,
-  "unp_pct": 33.3,
+  "resolved": 5,
+  "unplanned": 2,
+  "unp_pct": 40.0,
   "types": [
    [
     "Story",
-    3
+    5
    ]
   ],
   "sprints": [],
@@ -25,15 +25,20 @@
    [
     "EDW-2454",
     "[Onboarding] - Onboard Report modifications"
+   ],
+   [
+    "EDW-2451",
+    "Migration/Reporting adhoc clean-up items for Sprint 24"
    ]
   ],
   "open": true,
   "day": 26,
   "days": 28,
   "status": "risk",
-  "headline": "3 items closed in the first 26 days. Unplanned work at 33.3% of everything closed.",
+  "headline": "5 items closed in the first 26 days. Unplanned work at 40.0% of everything closed.",
   "notes": [
-   "unplanned work at 33.3% of everything closed"
+   "unplanned work at 40.0% of everything closed",
+   "cycle time average 7.4d against a 7.1d median - a long tail"
   ]
  },
  "SPRINTS": [],
@@ -43,20 +48,20 @@
  "GHOST": {},
  "CAP": {
   "9.10": [
-   3,
-   3,
-   7,
-   1
+   5,
+   5,
+   14,
+   2
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 3.86,
-   "avg": 3.65,
-   "n": 3,
-   "mx": 7.07,
+   "med": 7.07,
+   "avg": 7.39,
+   "n": 5,
+   "mx": 13.83,
    "nodev": 0,
-   "base": 3
+   "base": 5
   }
  },
  "complete": false,

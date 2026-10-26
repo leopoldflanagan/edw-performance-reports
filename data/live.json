@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T17:30:23Z",
+ "generated": "2026-10-26T17:40:52Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 10,
-    "points": 28,
+    "n": 11,
+    "points": 31,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,18 +357,18 @@
   "day": 14,
   "days": 14,
   "n": 19,
-  "done_now": 69,
+  "done_now": 76,
   "committed": 90,
-  "lo": 69,
-  "mid": 69,
-  "hi": 69,
-  "pct": 77,
-  "verdict": "well short of the commitment",
+  "lo": 76,
+  "mid": 76,
+  "hi": 76,
+  "pct": 84,
+  "verdict": "a little short of the commitment",
   "share_mid": 1.0
  },
  "admin": {
   "scope": {
-   "ready": 17,
+   "ready": 18,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 24-26"
   },
@@ -399,8 +399,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 10,
+    "n": 11,
     "items": [
+     {
+      "key": "EDW-2490",
+      "summary": "Netsuite project dev completion for testing"
+     },
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
@@ -428,10 +432,6 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -485,8 +485,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 38,
+    "n": 39,
     "items": [
+     {
+      "key": "EDW-2490",
+      "summary": "Netsuite project dev completion for testing"
+     },
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
@@ -514,18 +518,18 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 43,
+    "n": 44,
     "items": [
+     {
+      "key": "EDW-2490",
+      "summary": "Netsuite project dev completion for testing"
+     },
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
@@ -553,17 +557,13 @@
      {
       "key": "EDW-2373",
       "summary": "script for MemberNotes ingestion"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 57 of 57 items. This reads as a field the team does not use rather than 57 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 57,
+    "why": "missing on 58 of 58 items. This reads as a field the team does not use rather than 58 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 58,
     "items": []
    },
    {
@@ -667,19 +667,19 @@
   "end": "2026-10-26",
   "goal": "",
   "items": 61,
-  "items_done": 33,
+  "items_done": 35,
   "committed": 90,
   "final": 147,
-  "completed": 69,
+  "completed": 76,
   "scope_change": 63,
-  "vs_commitment": 77,
-  "time_elapsed": 99,
+  "vs_commitment": 84,
+  "time_elapsed": 100,
   "spill": {
-   "open_items": 14,
-   "open_pts": 37.0,
+   "open_items": 12,
+   "open_pts": 30.0,
    "out_items": 11,
    "out_pts": 40.0,
-   "done_pts": 70.0
+   "done_pts": 77.0
   },
   "recv": {
    "items": 15,
@@ -687,13 +687,13 @@
    "pct": 41,
    "from": "EDW-Sprint 23-26"
   },
-  "spill_rate": 52,
+  "spill_rate": 48,
   "dist": {
    "Awaiting Review": 2,
-   "Closed": 34,
+   "Closed": 36,
    "Backlog": 5,
    "Ready for Development": 2,
-   "In Development": 7
+   "In Development": 5
   },
   "burn": [
    72.0,
@@ -710,7 +710,7 @@
    89.0,
    77.0,
    77.0,
-   70.0
+   63.0
   ],
   "scope": [
    76.0,
@@ -744,7 +744,7 @@
    96.0,
    84.0,
    84.0,
-   77.0
+   70.0
   ],
   "days": 14,
   "day": 14,
@@ -774,12 +774,12 @@
   "end": "2026-11-22",
   "day": 1,
   "days": 28,
-  "closed": 3,
-  "points": 7,
-  "unplanned": 1,
-  "unplanned_pct": 33.3,
+  "closed": 5,
+  "points": 14,
+  "unplanned": 2,
+  "unplanned_pct": 40.0,
   "access_requests": 0,
-  "people_active": 1,
+  "people_active": 2,
   "sprints": [
    "EDW-Sprint 25-26",
    "EDW-Sprint 26-26"
@@ -793,8 +793,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
-    "med_age": 20.8,
+    "open": 18,
+    "med_age": 16.9,
     "max_age": 230.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -805,15 +805,15 @@
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 10.9,
+    "open": 6,
+    "med_age": 9.1,
     "max_age": 21.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
-    "over": 6,
+    "over": 4,
     "clear_med": 2.0,
-    "clear_n": 192
+    "clear_n": 194
    },
    {
     "status": "WAITING REVIEW",
@@ -828,7 +828,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -836,8 +836,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Progress",
@@ -852,7 +852,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -860,8 +860,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.0,
+    "clear_n": 1
    },
    {
     "status": "Awaiting Review",
@@ -876,7 +876,7 @@
     "clear_n": 133
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -884,15 +884,15 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 59
   },
   "open_total": 24,
-  "stale": 19,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
