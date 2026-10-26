@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-26T14:15:23Z",
+ "generated": "2026-10-26T14:30:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -677,7 +677,7 @@
   "completed": 62,
   "scope_change": 63,
   "vs_commitment": 69,
-  "time_elapsed": 98,
+  "time_elapsed": 99,
   "spill": {
    "open_items": 19,
    "open_pts": 50.0,
@@ -693,10 +693,10 @@
   },
   "spill_rate": 57,
   "dist": {
-   "Awaiting Review": 3,
+   "Awaiting Review": 4,
    "Closed": 27,
    "Backlog": 10,
-   "In Development": 10,
+   "In Development": 9,
    "Ready for Development": 2
   },
   "burn": [
@@ -805,55 +805,19 @@
     "worst_who": "Jeff Schniederjan",
     "over": 14,
     "clear_med": 3.9,
-    "clear_n": 167
+    "clear_n": 166
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 10.7,
-    "max_age": 21.0,
+    "open": 8,
+    "med_age": 11.4,
+    "max_age": 21.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 7,
     "clear_med": 1.9,
     "clear_n": 188
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -880,6 +844,18 @@
     "clear_n": 1
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -890,12 +866,36 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
    "Backlog": 59
   },
-  "open_total": 26,
+  "open_total": 25,
   "stale": 21,
   "worst": "Ready for Development"
  }
