@@ -108,13 +108,18 @@
     "Closed": {
      "n": 1,
      "med": 14.0
+    },
+    "Awaiting Review": {
+     "n": 1,
+     "med": 13.97
     }
    },
    "dist": {
     "Ready for Development": 3,
-    "In Development": 8,
+    "In Development": 7,
     "Backlog": 21,
-    "Closed": 1
+    "Closed": 1,
+    "Awaiting Review": 1
    },
    "stalled": 32,
    "worst": 14.0,
