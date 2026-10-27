@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T03:15:19Z",
+ "generated": "2026-10-27T03:20:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -813,7 +813,7 @@
    {
     "status": "In Development",
     "open": 7,
-    "med_age": 7.5,
+    "med_age": 7.6,
     "max_age": 21.6,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -821,18 +821,6 @@
     "over": 4,
     "clear_med": 2.0,
     "clear_n": 196
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 134
    },
    {
     "status": "PR Created",
@@ -859,6 +847,30 @@
     "clear_n": 2
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 134
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -881,18 +893,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
