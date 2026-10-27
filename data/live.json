@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T05:15:18Z",
+ "generated": "2026-10-27T05:17:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -685,24 +685,6 @@
     "why": "neither Jira nor the capacity page records one, so delivery can only be measured in points.",
     "n": 1,
     "items": []
-   },
-   {
-    "rule": "Release 9.06 has two different windows on the schedule",
-    "why": "the feature-freeze column gives 2026-06-22 to 2026-07-26 and the dev-window column gives 2026-06-22 to 2026-08-02. The calendar keeps what it already had; the page needs one of the two corrected.",
-    "n": 1,
-    "items": []
-   },
-   {
-    "rule": "Release 9.07 has two different windows on the schedule",
-    "why": "the feature-freeze column gives 2026-07-27 to 2026-08-23 and the dev-window column gives 2026-08-03 to 2026-08-30. The calendar keeps what it already had; the page needs one of the two corrected.",
-    "n": 1,
-    "items": []
-   },
-   {
-    "rule": "Release 9.08 has two different windows on the schedule",
-    "why": "the feature-freeze column gives 2026-08-24 to 2026-09-27 and the dev-window column gives 2026-08-31 to 2026-09-27. The calendar keeps what it already had; the page needs one of the two corrected.",
-    "n": 1,
-    "items": []
    }
   ]
  },
@@ -823,18 +805,6 @@
     "clear_n": 196
    },
    {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -871,18 +841,6 @@
     "clear_n": 1
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -893,6 +851,30 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 134
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
