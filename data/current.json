@@ -99,10 +99,10 @@
     },
     "Ready for Development": {
      "n": 4,
-     "med": 14.0
+     "med": 13.61
     },
     "In Development": {
-     "n": 9,
+     "n": 10,
      "med": 14.0
     },
     "Closed": {
@@ -115,15 +115,15 @@
     }
    },
    "dist": {
-    "Ready for Development": 4,
-    "In Development": 8,
+    "Ready for Development": 3,
+    "In Development": 9,
     "Backlog": 21,
     "Closed": 1,
     "Awaiting Review": 1
    },
    "stalled": 34,
    "worst": 14.0,
-   "worstSt": "Ready for Development",
+   "worstSt": "In Development",
    "items": 35
   }
  },
