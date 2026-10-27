@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T22:36:32Z",
+ "generated": "2026-10-27T22:45:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -772,7 +772,7 @@
     "status": "Ready for Development",
     "open": 18,
     "med_age": 14.3,
-    "max_age": 232.1,
+    "max_age": 232.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -783,7 +783,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 7.3,
+    "med_age": 7.4,
     "max_age": 22.4,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -791,6 +791,42 @@
     "over": 4,
     "clear_med": 2.0,
     "clear_n": 196
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 134
    },
    {
     "status": "PR Created",
@@ -817,18 +853,6 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 134
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -839,30 +863,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    }
   ],
   "parked": {
