@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T17:00:26Z",
+ "generated": "2026-10-27T17:11:54Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 10,
-    "points": 28,
+    "n": 11,
+    "points": 30,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -358,18 +358,18 @@
   "days": 14,
   "n": 21,
   "done_now": 2,
-  "committed": 74,
+  "committed": 76,
   "lo": 9,
   "mid": 13,
   "hi": 17,
-  "pct": 18,
+  "pct": 17,
   "verdict": "well short of the commitment",
   "share_mid": 0.159
  },
  "admin": {
   "scope": {
-   "ready": 17,
-   "sprint": 25,
+   "ready": 18,
+   "sprint": 26,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -407,8 +407,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 10,
+    "n": 11,
     "items": [
+     {
+      "key": "EDW-2496",
+      "summary": "Review NetSuite documentation"
+     },
      {
       "key": "EDW-2490",
       "summary": "Netsuite project dev completion for testing"
@@ -436,10 +440,6 @@
      {
       "key": "EDW-2037",
       "summary": "Collaborate with sales team to drive self-service and process optimization"
-     },
-     {
-      "key": "EDW-1950",
-      "summary": "Ingestion issue - Phase 1 - SQL Watermark"
      }
     ]
    },
@@ -558,54 +558,21 @@
   ],
   "debt": [
    {
-    "rule": "No fix version",
-    "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 31,
-    "items": [
-     {
-      "key": "EDW-2493",
-      "summary": "[Launch Loyalty] - Phase 2 Commission; small groups"
-     },
-     {
-      "key": "EDW-2490",
-      "summary": "Netsuite project dev completion for testing"
-     },
-     {
-      "key": "EDW-2484",
-      "summary": "CREG - Pull data and create Model"
-     },
-     {
-      "key": "EDW-2437",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2214",
-      "summary": "Update CI eligibility file"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     }
-    ]
+    "rule": "Fix version is not in use",
+    "why": "missing on 32 of 40 items. This reads as a field the team does not use rather than 32 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 32,
+    "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 34 of 39 items. This reads as a field the team does not use rather than 34 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 34,
+    "why": "missing on 35 of 40 items. This reads as a field the team does not use rather than 35 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 35,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 39 of 39 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 39,
+    "why": "missing on 40 of 40 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 40,
     "items": []
    },
    {
@@ -712,17 +679,17 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 35,
+  "items": 36,
   "items_done": 4,
-  "committed": 74,
-  "final": 74,
+  "committed": 76,
+  "final": 76,
   "completed": 2,
   "scope_change": 0,
   "vs_commitment": 3,
   "time_elapsed": 6,
   "spill": {
-   "open_items": 25,
-   "open_pts": 72.0,
+   "open_items": 26,
+   "open_pts": 74.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 0
@@ -730,12 +697,12 @@
   "recv": {
    "items": 18,
    "pts": 52,
-   "pct": 70,
+   "pct": 68,
    "from": "EDW-Sprint 24-26"
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 3,
+   "Ready for Development": 4,
    "In Development": 9,
    "Backlog": 21,
    "Closed": 1,
@@ -743,15 +710,15 @@
   },
   "burn": [
    70.0,
-   72.0
+   74.0
   ],
   "scope": [
    72.0,
-   74.0
+   76.0
   ],
   "ghost": [
    70.0,
-   72.0
+   74.0
   ],
   "days": 14,
   "day": 2,
@@ -800,7 +767,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 17,
+    "open": 18,
     "med_age": 14.1,
     "max_age": 231.9,
     "worst_key": "EDW-1599",
@@ -823,7 +790,7 @@
     "clear_n": 196
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -831,8 +798,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "New",
@@ -847,18 +814,6 @@
     "clear_n": 61
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -871,7 +826,7 @@
     "clear_n": 134
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -879,8 +834,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -893,12 +848,24 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
-   "Backlog": 64
+   "Backlog": 63
   },
-  "open_total": 25,
+  "open_total": 26,
   "stale": 16,
   "worst": "Ready for Development"
  }
