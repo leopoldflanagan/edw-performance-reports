@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-27T20:30:24Z",
+ "generated": "2026-10-27T20:36:17Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -686,7 +686,7 @@
   "completed": 2,
   "scope_change": 0,
   "vs_commitment": 3,
-  "time_elapsed": 7,
+  "time_elapsed": 8,
   "spill": {
    "open_items": 26,
    "open_pts": 74.0,
@@ -793,7 +793,7 @@
     "clear_n": 196
    },
    {
-    "status": "PR Created",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -801,8 +801,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 1
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -815,6 +815,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "On Hold",
@@ -841,7 +853,7 @@
     "clear_n": 134
    },
    {
-    "status": "In Progress",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -849,20 +861,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 1
    }
   ],
   "parked": {
