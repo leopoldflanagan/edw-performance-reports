@@ -49,8 +49,8 @@
    "EDW-Sprint 25-26",
    "Oct 26",
    "Nov 9",
-   36,
-   4,
+   37,
+   5,
    76,
    76,
    2,
@@ -70,11 +70,11 @@
  "SPILL": {
   "EDW-Sprint 25-26": {
    "done": [
-    4,
+    5,
     0
    ],
    "open": [
-    26,
+    27,
     74
    ],
    "out": [
@@ -90,11 +90,19 @@
   }
  },
  "SPLIT": {
-  "EDW-Sprint 25-26": null
+  "EDW-Sprint 25-26": {
+   "react": 0,
+   "plan": 1,
+   "pct": 0
+  }
  },
  "TIS": {
   "EDW-Sprint 25-26": {
    "tis": {
+    "In Development": {
+     "n": 11,
+     "med": 14.0
+    },
     "Ready for Development": {
      "n": 5,
      "med": 13.23
@@ -103,13 +111,9 @@
      "n": 22,
      "med": 14.0
     },
-    "In Development": {
-     "n": 10,
-     "med": 14.0
-    },
     "Closed": {
-     "n": 1,
-     "med": 14.0
+     "n": 2,
+     "med": 13.11
     },
     "Awaiting Review": {
      "n": 1,
@@ -117,16 +121,16 @@
     }
    },
    "dist": {
+    "In Development": 10,
     "Ready for Development": 4,
-    "In Development": 9,
-    "Backlog": 21,
-    "Closed": 1,
+    "Backlog": 20,
+    "Closed": 2,
     "Awaiting Review": 1
    },
    "stalled": 35,
    "worst": 14.0,
    "worstSt": "In Development",
-   "items": 36
+   "items": 37
   }
  },
  "GHOST": {
