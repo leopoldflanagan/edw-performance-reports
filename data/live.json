@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T15:12:49Z",
+ "generated": "2026-10-28T15:15:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
-    "points": 30,
+    "n": 12,
+    "points": 35,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 18,
+   "ready": 19,
    "sprint": 27,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -411,7 +411,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2496",
@@ -430,6 +430,10 @@
       "summary": "CREG - Pull data and create Model"
      },
      {
+      "key": "EDW-2473",
+      "summary": "Request and sorting pass"
+     },
+     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
@@ -440,10 +444,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2037",
-      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -523,19 +523,11 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 11,
+    "n": 9,
     "items": [
      {
       "key": "EDW-2478",
       "summary": "CT Medical Discount Plan Renewal (DMPO)"
-     },
-     {
-      "key": "EDW-2473",
-      "summary": "Request and sorting pass"
-     },
-     {
-      "key": "EDW-2472",
-      "summary": "wf-reporting/mocks entry point"
      },
      {
       "key": "EDW-2428",
@@ -556,6 +548,14 @@
      {
       "key": "EDW-2405",
       "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
+     },
+     {
+      "key": "EDW-2403",
+      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
+     },
+     {
+      "key": "EDW-2394",
+      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
      }
     ]
    }
@@ -706,9 +706,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 11,
-   "Ready for Development": 4,
-   "Backlog": 19,
+   "In Development": 12,
+   "Ready for Development": 5,
+   "Backlog": 17,
    "Closed": 2,
    "Awaiting Review": 1
   },
@@ -774,7 +774,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 18,
+    "open": 19,
     "med_age": 15.0,
     "max_age": 232.8,
     "worst_key": "EDW-1599",
@@ -786,8 +786,8 @@
    },
    {
     "status": "In Development",
-    "open": 10,
-    "med_age": 4.5,
+    "open": 11,
+    "med_age": 1.9,
     "max_age": 23.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -795,6 +795,18 @@
     "over": 5,
     "clear_med": 2.0,
     "clear_n": 195
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "New",
@@ -807,6 +819,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -843,36 +867,12 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
-   "Backlog": 63
+   "Backlog": 61
   },
-  "open_total": 28,
+  "open_total": 30,
   "stale": 17,
   "worst": "Ready for Development"
  }
