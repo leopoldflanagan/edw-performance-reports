@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T18:16:21Z",
+ "generated": "2026-10-28T18:30:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -710,8 +710,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "Awaiting Review": 2,
-   "In Development": 12,
+   "Awaiting Review": 3,
+   "In Development": 11,
    "Ready for Development": 5,
    "Backlog": 17,
    "Closed": 2
@@ -790,8 +790,8 @@
    },
    {
     "status": "In Development",
-    "open": 11,
-    "med_age": 2.0,
+    "open": 10,
+    "med_age": 4.6,
     "max_age": 23.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -799,42 +799,6 @@
     "over": 5,
     "clear_med": 2.0,
     "clear_n": 195
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    },
    {
     "status": "PR Created",
@@ -847,6 +811,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -871,12 +847,36 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 133
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
    "Backlog": 61
   },
-  "open_total": 30,
+  "open_total": 29,
   "stale": 17,
   "worst": "Ready for Development"
  }
