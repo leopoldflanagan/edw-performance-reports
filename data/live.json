@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T13:00:30Z",
+ "generated": "2026-10-28T13:12:37Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -772,7 +772,7 @@
     "status": "Ready for Development",
     "open": 18,
     "med_age": 14.9,
-    "max_age": 232.7,
+    "max_age": 232.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -788,21 +788,9 @@
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
-    "over": 4,
+    "over": 5,
     "clear_med": 2.0,
     "clear_n": 195
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "New",
@@ -829,7 +817,7 @@
     "clear_n": 16
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -837,8 +825,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -863,13 +851,25 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
    "Backlog": 64
   },
   "open_total": 26,
-  "stale": 16,
+  "stale": 17,
   "worst": "Ready for Development"
  }
 }
