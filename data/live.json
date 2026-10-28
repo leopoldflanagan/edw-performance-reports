@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T15:00:28Z",
+ "generated": "2026-10-28T15:12:49Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -523,7 +523,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2478",
@@ -536,10 +536,6 @@
      {
       "key": "EDW-2472",
       "summary": "wf-reporting/mocks entry point"
-     },
-     {
-      "key": "EDW-2471",
-      "summary": "Visual context in the application layer and layer boundaries"
      },
      {
       "key": "EDW-2428",
@@ -556,6 +552,10 @@
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
      }
     ]
    }
@@ -706,9 +706,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 10,
+   "In Development": 11,
    "Ready for Development": 4,
-   "Backlog": 20,
+   "Backlog": 19,
    "Closed": 2,
    "Awaiting Review": 1
   },
@@ -786,8 +786,8 @@
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 7.0,
+    "open": 10,
+    "med_age": 4.5,
     "max_age": 23.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -795,6 +795,18 @@
     "over": 5,
     "clear_med": 2.0,
     "clear_n": 195
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "WAITING REVIEW",
@@ -845,18 +857,6 @@
     "clear_n": 16
    },
    {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -870,9 +870,9 @@
    }
   ],
   "parked": {
-   "Backlog": 64
+   "Backlog": 63
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 17,
   "worst": "Ready for Development"
  }

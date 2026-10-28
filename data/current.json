@@ -100,7 +100,7 @@
   "EDW-Sprint 25-26": {
    "tis": {
     "In Development": {
-     "n": 11,
+     "n": 12,
      "med": 14.0
     },
     "Ready for Development": {
@@ -121,9 +121,9 @@
     }
    },
    "dist": {
-    "In Development": 10,
+    "In Development": 11,
     "Ready for Development": 4,
-    "Backlog": 20,
+    "Backlog": 19,
     "Closed": 2,
     "Awaiting Review": 1
    },
