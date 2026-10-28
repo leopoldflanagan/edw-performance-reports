@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T19:00:27Z",
+ "generated": "2026-10-28T19:10:41Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -779,7 +779,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 15.1,
+    "med_age": 15.2,
     "max_age": 233.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -792,7 +792,7 @@
     "status": "In Development",
     "open": 10,
     "med_age": 4.7,
-    "max_age": 23.2,
+    "max_age": 23.3,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
@@ -813,7 +813,7 @@
     "clear_n": 1
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -821,8 +821,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 133
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -837,7 +849,7 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -845,8 +857,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 1.0,
+    "clear_n": 133
    },
    {
     "status": "On Hold",
@@ -859,18 +871,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    }
   ],
   "parked": {
