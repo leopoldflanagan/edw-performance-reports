@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T01:13:43Z",
+ "generated": "2026-10-28T01:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -805,7 +805,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -813,8 +813,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "Awaiting Review",
@@ -827,18 +827,6 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 133
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -863,6 +851,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 1
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
