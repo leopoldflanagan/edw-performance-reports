@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T19:15:20Z",
+ "generated": "2026-10-28T19:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -719,15 +719,18 @@
   "burn": [
    70.0,
    74.0,
+   74.0,
    74.0
   ],
   "scope": [
    72.0,
    76.0,
+   76.0,
    76.0
   ],
   "ghost": [
    70.0,
+   74.0,
    74.0,
    74.0
   ],
@@ -801,7 +804,7 @@
     "clear_n": 195
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -809,20 +812,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 133
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -837,7 +828,7 @@
     "clear_n": 1
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -845,8 +836,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "In Progress",
@@ -861,7 +864,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -869,8 +872,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 1.0,
+    "clear_n": 133
    }
   ],
   "parked": {
