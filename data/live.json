@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T15:45:22Z",
+ "generated": "2026-10-29T16:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 31,
+    "n": 11,
+    "points": 29,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,18 +357,18 @@
   "day": 4,
   "days": 14,
   "n": 21,
-  "done_now": 5,
+  "done_now": 8,
   "committed": 80,
-  "lo": 13,
-  "mid": 17,
-  "hi": 20,
-  "pct": 21,
+  "lo": 22,
+  "mid": 28,
+  "hi": 32,
+  "pct": 35,
   "verdict": "well short of the commitment",
   "share_mid": 0.291
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 18,
    "sprint": 30,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -407,15 +407,11 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2503",
       "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
-     },
-     {
-      "key": "EDW-2496",
-      "summary": "Review NetSuite documentation"
      },
      {
       "key": "EDW-2490",
@@ -440,6 +436,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2037",
+      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -684,19 +684,19 @@
   "end": "2026-11-09",
   "goal": "",
   "items": 40,
-  "items_done": 8,
+  "items_done": 9,
   "committed": 80,
   "final": 81,
-  "completed": 5,
+  "completed": 8,
   "scope_change": 1,
-  "vs_commitment": 6,
+  "vs_commitment": 10,
   "time_elapsed": 20,
   "spill": {
-   "open_items": 27,
-   "open_pts": 76.0,
+   "open_items": 26,
+   "open_pts": 73.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 3.0
+   "done_pts": 6.0
   },
   "recv": {
    "items": 18,
@@ -707,16 +707,16 @@
   "spill_rate": null,
   "dist": {
    "Backlog": 17,
-   "Awaiting Review": 5,
-   "In Development": 9,
-   "Ready for Development": 4,
-   "Closed": 5
+   "Awaiting Review": 4,
+   "In Development": 10,
+   "Ready for Development": 3,
+   "Closed": 6
   },
   "burn": [
    74.0,
    78.0,
    78.0,
-   76.0
+   73.0
   ],
   "scope": [
    76.0,
@@ -728,7 +728,7 @@
    74.0,
    78.0,
    78.0,
-   76.0
+   73.0
   ],
   "days": 14,
   "day": 4,
@@ -758,10 +758,10 @@
   "end": "2026-11-22",
   "day": 4,
   "days": 28,
-  "closed": 12,
-  "points": 32,
+  "closed": 13,
+  "points": 35,
   "unplanned": 2,
-  "unplanned_pct": 16.7,
+  "unplanned_pct": 15.4,
   "access_requests": 0,
   "people_active": 2,
   "sprints": [
@@ -777,7 +777,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
+    "open": 18,
     "med_age": 16.0,
     "max_age": 233.9,
     "worst_key": "EDW-1599",
@@ -785,31 +785,19 @@
     "worst_who": "Jeff Schniederjan",
     "over": 14,
     "clear_med": 3.9,
-    "clear_n": 167
+    "clear_n": 169
    },
    {
     "status": "In Development",
-    "open": 8,
-    "med_age": 5.5,
+    "open": 9,
+    "med_age": 2.9,
     "max_age": 24.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
-    "clear_med": 1.9,
-    "clear_n": 201
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 1.8,
+    "clear_n": 202
    },
    {
     "status": "New",
@@ -824,42 +812,6 @@
     "clear_n": 61
    },
    {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 133
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -872,7 +824,7 @@
     "clear_n": 5
    },
    {
-    "status": "On Hold",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -880,8 +832,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Ready Prod",
@@ -896,6 +860,18 @@
     "clear_n": 2
    },
    {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -906,11 +882,35 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 4
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 134
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 60
   },
   "open_total": 27,
   "stale": 18,
