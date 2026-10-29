@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 15,
+  "closed": 16,
   "discarded": 0,
-  "resolved": 15,
+  "resolved": 16,
   "unplanned": 2,
-  "unp_pct": 13.3,
+  "unp_pct": 12.5,
   "types": [
    [
     "Story",
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    3
+    4
    ],
    [
     "Task",
@@ -45,10 +45,10 @@
   "day": 29,
   "days": 28,
   "status": "risk",
-  "headline": "15 items closed against 59 the month before. Running 75% behind last month's pace.",
+  "headline": "16 items closed against 59 the month before. Running 74% behind last month's pace.",
   "notes": [
-   "running 75% behind last month's pace",
-   "unplanned work at 13.3%",
+   "running 74% behind last month's pace",
+   "unplanned work at 12.5%",
    "cycle time median 3.5d and average 99.0d, both past the healthy band"
   ]
  },
@@ -57,12 +57,12 @@
    "EDW-Sprint 25-26",
    "Oct 26",
    "Nov 9",
-   40,
-   10,
+   41,
+   11,
    80,
-   86,
+   88,
+   12,
    10,
-   8,
    [
     74.0,
     78.0,
@@ -75,15 +75,15 @@
     80.0,
     85.0,
     86.0,
-    86.0
+    88.0
    ]
   ]
  ],
  "SPILL": {
   "EDW-Sprint 25-26": {
    "done": [
-    10,
-    8
+    11,
+    10
    ],
    "open": [
     25,
@@ -104,7 +104,7 @@
  "SPLIT": {
   "EDW-Sprint 25-26": {
    "react": 0,
-   "plan": 3,
+   "plan": 4,
    "pct": 0
   }
  },
@@ -112,7 +112,7 @@
   "EDW-Sprint 25-26": {
    "tis": {
     "Backlog": {
-     "n": 26,
+     "n": 27,
      "med": 14.0
     },
     "In Development": {
@@ -120,7 +120,7 @@
      "med": 1.68
     },
     "Closed": {
-     "n": 8,
+     "n": 9,
      "med": 11.17
     },
     "Awaiting Review": {
@@ -133,7 +133,7 @@
     }
    },
    "dist": {
-    "Closed": 7,
+    "Closed": 8,
     "Awaiting Review": 5,
     "In Development": 10,
     "Ready for Development": 3,
@@ -142,7 +142,7 @@
    "stalled": 33,
    "worst": 11.55,
    "worstSt": "Awaiting Review",
-   "items": 40
+   "items": 41
   }
  },
  "GHOST": {
@@ -156,9 +156,9 @@
  },
  "CAP": {
   "9.10": [
+   16,
    15,
-   14,
-   37,
+   39,
    3
   ]
  },
@@ -168,8 +168,8 @@
    "avg": 98.96,
    "n": 14,
    "mx": 678.96,
-   "nodev": 1,
-   "base": 15
+   "nodev": 2,
+   "base": 16
   }
  },
  "complete": false,

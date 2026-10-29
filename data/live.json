@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T19:36:55Z",
+ "generated": "2026-10-29T19:45:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,19 +357,19 @@
   "day": 4,
   "days": 14,
   "n": 21,
-  "done_now": 10,
+  "done_now": 12,
   "committed": 80,
-  "lo": 27,
-  "mid": 34,
-  "hi": 39,
-  "pct": 42,
+  "lo": 32,
+  "mid": 41,
+  "hi": 47,
+  "pct": 51,
   "verdict": "well short of the commitment",
   "share_mid": 0.291
  },
  "admin": {
   "scope": {
    "ready": 18,
-   "sprint": 30,
+   "sprint": 31,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -555,20 +555,20 @@
   "debt": [
    {
     "rule": "Fix version is not in use",
-    "why": "missing on 39 of 45 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 39,
+    "why": "missing on 40 of 46 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 40,
     "items": []
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 38 of 45 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "why": "missing on 38 of 46 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
     "n": 38,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 45,
+    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 46,
     "items": []
    },
    {
@@ -675,20 +675,20 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 40,
-  "items_done": 10,
+  "items": 41,
+  "items_done": 11,
   "committed": 80,
-  "final": 86,
-  "completed": 10,
-  "scope_change": 8,
-  "vs_commitment": 12,
-  "time_elapsed": 21,
+  "final": 88,
+  "completed": 12,
+  "scope_change": 10,
+  "vs_commitment": 15,
+  "time_elapsed": 22,
   "spill": {
    "open_items": 25,
    "open_pts": 76.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 8.0
+   "done_pts": 10.0
   },
   "recv": {
    "items": 18,
@@ -698,7 +698,7 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 7,
+   "Closed": 8,
    "Awaiting Review": 5,
    "In Development": 10,
    "Ready for Development": 3,
@@ -716,7 +716,7 @@
    80.0,
    85.0,
    86.0,
-   86.0
+   88.0
   ],
   "ghost": [
    74.0,
@@ -753,10 +753,10 @@
   "end": "2026-11-22",
   "day": 4,
   "days": 28,
-  "closed": 15,
-  "points": 37,
+  "closed": 16,
+  "points": 39,
   "unplanned": 2,
-  "unplanned_pct": 13.3,
+  "unplanned_pct": 12.5,
   "access_requests": 0,
   "people_active": 3,
   "sprints": [
@@ -795,7 +795,7 @@
     "clear_n": 203
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -803,8 +803,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Progress",
@@ -819,6 +819,18 @@
     "clear_n": 5
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "In Stage",
     "open": 0,
     "med_age": 0,
@@ -831,7 +843,7 @@
     "clear_n": 3
    },
    {
-    "status": "PR Merged",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -839,8 +851,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -867,7 +879,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -875,11 +887,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -887,25 +899,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 4
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 57
+   "Backlog": 56,
+   "Deferred": 2
   },
   "open_total": 27,
   "stale": 19,
