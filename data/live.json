@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-28T23:45:19Z",
+ "generated": "2026-10-29T00:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 3,
+  "day": 4,
   "days": 14,
   "n": 21,
   "done_now": 2,
   "committed": 76,
-  "lo": 7,
-  "mid": 8,
-  "hi": 10,
-  "pct": 11,
+  "lo": 5,
+  "mid": 7,
+  "hi": 8,
+  "pct": 9,
   "verdict": "well short of the commitment",
-  "share_mid": 0.24
+  "share_mid": 0.291
  },
  "admin": {
   "scope": {
@@ -739,7 +739,7 @@
    74.0
   ],
   "days": 14,
-  "day": 3,
+  "day": 4,
   "capacity": {
    "release": "9.10",
    "start": "2026-10-26",
@@ -764,7 +764,7 @@
   "kind": "release",
   "start": "2026-10-26",
   "end": "2026-11-22",
-  "day": 3,
+  "day": 4,
   "days": 28,
   "closed": 9,
   "points": 29,
@@ -786,50 +786,26 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 15.3,
+    "med_age": 15.4,
     "max_age": 233.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 12,
-    "clear_med": 4.0,
-    "clear_n": 170
+    "over": 13,
+    "clear_med": 3.9,
+    "clear_n": 168
    },
    {
     "status": "In Development",
     "open": 10,
     "med_age": 4.8,
-    "max_age": 23.4,
+    "max_age": 23.5,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
     "clear_med": 2.0,
-    "clear_n": 200
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_n": 197
    },
    {
     "status": "On Hold",
@@ -844,7 +820,7 @@
     "clear_n": 16
    },
    {
-    "status": "Ready Prod",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -852,11 +828,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -864,8 +840,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 1.0,
+    "clear_n": 133
    },
    {
     "status": "PR Merged",
@@ -880,6 +856,30 @@
     "clear_n": 3
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -892,18 +892,6 @@
     "clear_n": 4
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 135
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -914,14 +902,26 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 61
+   "Backlog": 61,
+   "Deferred": 2
   },
   "open_total": 29,
-  "stale": 17,
+  "stale": 18,
   "worst": "Ready for Development"
  }
 }
