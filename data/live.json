@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T17:36:57Z",
+ "generated": "2026-10-29T17:45:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -792,6 +792,18 @@
     "clear_n": 203
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -802,30 +814,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "In Stage",
@@ -840,7 +828,7 @@
     "clear_n": 3
    },
    {
-    "status": "Ready Prod",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -848,7 +836,7 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
+    "clear_med": 11.4,
     "clear_n": 2
    },
    {
@@ -862,6 +850,18 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 134
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "PR Merged",
@@ -888,7 +888,7 @@
     "clear_n": 4
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -896,13 +896,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 57
+   "Backlog": 57,
+   "Deferred": 2
   },
   "open_total": 28,
   "stale": 18,
