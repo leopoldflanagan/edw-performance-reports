@@ -111,11 +111,11 @@
     },
     "In Development": {
      "n": 16,
-     "med": 13.52
+     "med": 12.66
     },
     "Awaiting Review": {
-     "n": 4,
-     "med": 12.08
+     "n": 5,
+     "med": 12.04
     },
     "Ready for Development": {
      "n": 7,
@@ -127,15 +127,15 @@
     }
    },
    "dist": {
-    "Awaiting Review": 4,
-    "In Development": 11,
+    "Awaiting Review": 5,
+    "In Development": 10,
     "Ready for Development": 4,
     "Backlog": 18,
     "Closed": 2
    },
    "stalled": 37,
-   "worst": 13.52,
-   "worstSt": "In Development",
+   "worst": 13.09,
+   "worstSt": "Ready for Development",
    "items": 39
   }
  },
