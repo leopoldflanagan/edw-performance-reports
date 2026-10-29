@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T16:15:25Z",
+ "generated": "2026-10-29T16:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 11,
-    "points": 29,
+    "n": 12,
+    "points": 34,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 18,
+   "ready": 19,
    "sprint": 30,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 6,
+    "n": 5,
     "items": [
      {
       "key": "EDW-2485",
@@ -391,10 +391,6 @@
       "summary": "Patients are receiving emails that their credit card on File has been charged wh"
      },
      {
-      "key": "EDW-2501",
-      "summary": "Migrate reporting server"
-     },
-     {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      },
@@ -407,7 +403,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 11,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2503",
@@ -426,6 +422,10 @@
       "summary": "CREG - Pull data and create Model"
      },
      {
+      "key": "EDW-2473",
+      "summary": "Request and sorting pass"
+     },
+     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
@@ -436,10 +436,6 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
-     },
-     {
-      "key": "EDW-2037",
-      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -523,12 +519,8 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 8,
+    "n": 7,
     "items": [
-     {
-      "key": "EDW-2473",
-      "summary": "Request and sorting pass"
-     },
      {
       "key": "EDW-2419",
       "summary": "[Accounting] - Add MID, Practice ID page"
@@ -686,14 +678,14 @@
   "items": 40,
   "items_done": 10,
   "committed": 80,
-  "final": 81,
+  "final": 86,
   "completed": 10,
-  "scope_change": 1,
+  "scope_change": 8,
   "vs_commitment": 12,
-  "time_elapsed": 20,
+  "time_elapsed": 21,
   "spill": {
    "open_items": 25,
-   "open_pts": 71.0,
+   "open_pts": 76.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 8.0
@@ -709,26 +701,26 @@
    "Closed": 7,
    "Awaiting Review": 4,
    "In Development": 10,
-   "Ready for Development": 3,
-   "Backlog": 16
+   "Ready for Development": 4,
+   "Backlog": 15
   },
   "burn": [
    74.0,
    78.0,
-   78.0,
-   71.0
+   83.0,
+   76.0
   ],
   "scope": [
    76.0,
    80.0,
-   80.0,
-   81.0
+   85.0,
+   86.0
   ],
   "ghost": [
    74.0,
    78.0,
-   78.0,
-   71.0
+   83.0,
+   76.0
   ],
   "days": 14,
   "day": 4,
@@ -777,7 +769,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 18,
+    "open": 19,
     "med_age": 16.0,
     "max_age": 233.9,
     "worst_key": "EDW-1599",
@@ -790,7 +782,7 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 2.9,
+    "med_age": 3.0,
     "max_age": 24.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -798,6 +790,42 @@
     "over": 4,
     "clear_med": 1.8,
     "clear_n": 203
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "New",
@@ -824,7 +852,7 @@
     "clear_n": 16
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -832,20 +860,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -860,7 +876,7 @@
     "clear_n": 134
    },
    {
-    "status": "Ready Prod",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -868,32 +884,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "In Stage",
@@ -909,10 +901,10 @@
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 59
+   "Backlog": 58,
+   "Deferred": 2
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 18,
   "worst": "Ready for Development"
  }
