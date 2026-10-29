@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T17:11:32Z",
+ "generated": "2026-10-29T17:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 34,
+    "n": 11,
+    "points": 29,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 18,
    "sprint": 30,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -403,7 +403,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2503",
@@ -422,10 +422,6 @@
       "summary": "CREG - Pull data and create Model"
      },
      {
-      "key": "EDW-2473",
-      "summary": "Request and sorting pass"
-     },
-     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
@@ -436,6 +432,10 @@
      {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
+     },
+     {
+      "key": "EDW-2037",
+      "summary": "Collaborate with sales team to drive self-service and process optimization"
      }
     ]
    },
@@ -700,8 +700,8 @@
   "dist": {
    "Closed": 7,
    "Awaiting Review": 4,
-   "In Development": 10,
-   "Ready for Development": 4,
+   "In Development": 11,
+   "Ready for Development": 3,
    "Backlog": 15
   },
   "burn": [
@@ -769,7 +769,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
+    "open": 18,
     "med_age": 16.1,
     "max_age": 233.9,
     "worst_key": "EDW-1599",
@@ -777,12 +777,12 @@
     "worst_who": "Jeff Schniederjan",
     "over": 14,
     "clear_med": 3.9,
-    "clear_n": 169
+    "clear_n": 170
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 3.0,
+    "open": 10,
+    "med_age": 2.9,
     "max_age": 24.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -792,7 +792,7 @@
     "clear_n": 203
    },
    {
-    "status": "In Progress",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -800,20 +800,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "PR Created",
@@ -840,7 +828,7 @@
     "clear_n": 2
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -848,11 +836,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
-    "status": "PR Merged",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -860,8 +848,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -876,7 +876,7 @@
     "clear_n": 134
    },
    {
-    "status": "In Stage",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -888,7 +888,7 @@
     "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -896,13 +896,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 57,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 57
   },
   "open_total": 28,
   "stale": 18,
