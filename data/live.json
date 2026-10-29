@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T18:38:02Z",
+ "generated": "2026-10-29T18:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -775,7 +775,7 @@
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 14,
+    "over": 15,
     "clear_med": 3.9,
     "clear_n": 170
    },
@@ -804,7 +804,31 @@
     "clear_n": 61
    },
    {
-    "status": "In Stage",
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 134
+   },
+   {
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -826,30 +850,6 @@
     "over": 0,
     "clear_med": 344.9,
     "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 134
    },
    {
     "status": "PR Created",
@@ -876,6 +876,18 @@
     "clear_n": 16
    },
    {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -886,18 +898,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
@@ -905,7 +905,7 @@
    "Deferred": 2
   },
   "open_total": 28,
-  "stale": 18,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
