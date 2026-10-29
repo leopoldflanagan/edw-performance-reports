@@ -67,12 +67,14 @@
     74.0,
     78.0,
     83.0,
+    76.0,
     76.0
    ],
    [
     76.0,
     80.0,
     85.0,
+    86.0,
     86.0
    ]
   ]
@@ -115,15 +117,15 @@
     },
     "In Development": {
      "n": 22,
-     "med": 6.91
+     "med": 1.68
     },
     "Closed": {
      "n": 8,
      "med": 11.17
     },
     "Awaiting Review": {
-     "n": 5,
-     "med": 11.83
+     "n": 6,
+     "med": 11.55
     },
     "Ready for Development": {
      "n": 8,
@@ -132,13 +134,13 @@
    },
    "dist": {
     "Closed": 7,
-    "Awaiting Review": 4,
-    "In Development": 11,
+    "Awaiting Review": 5,
+    "In Development": 10,
     "Ready for Development": 3,
     "Backlog": 15
    },
    "stalled": 33,
-   "worst": 11.83,
+   "worst": 11.55,
    "worstSt": "Awaiting Review",
    "items": 40
   }
@@ -148,6 +150,7 @@
    74.0,
    78.0,
    83.0,
+   76.0,
    76.0
   ]
  },
