@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 14,
+  "closed": 15,
   "discarded": 0,
-  "resolved": 14,
+  "resolved": 15,
   "unplanned": 2,
-  "unp_pct": 14.3,
+  "unp_pct": 13.3,
   "types": [
    [
     "Story",
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    2
+    3
    ],
    [
     "Task",
@@ -45,10 +45,10 @@
   "day": 29,
   "days": 28,
   "status": "risk",
-  "headline": "14 items closed against 59 the month before. Running 77% behind last month's pace.",
+  "headline": "15 items closed against 59 the month before. Running 75% behind last month's pace.",
   "notes": [
-   "running 77% behind last month's pace",
-   "unplanned work at 14.3%",
+   "running 75% behind last month's pace",
+   "unplanned work at 13.3%",
    "cycle time median 3.5d and average 99.0d, both past the healthy band"
   ]
  },
@@ -153,7 +153,7 @@
  },
  "CAP": {
   "9.10": [
-   14,
+   15,
    14,
    37,
    3
@@ -165,8 +165,8 @@
    "avg": 98.96,
    "n": 14,
    "mx": 678.96,
-   "nodev": 0,
-   "base": 14
+   "nodev": 1,
+   "base": 15
   }
  },
  "complete": false,
