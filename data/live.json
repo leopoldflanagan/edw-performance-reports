@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T15:00:29Z",
+ "generated": "2026-10-29T15:12:42Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 4,
   "days": 14,
   "n": 21,
-  "done_now": 3,
-  "committed": 78,
-  "lo": 8,
-  "mid": 10,
-  "hi": 12,
-  "pct": 13,
+  "done_now": 4,
+  "committed": 80,
+  "lo": 11,
+  "mid": 14,
+  "hi": 16,
+  "pct": 18,
   "verdict": "well short of the commitment",
   "share_mid": 0.291
  },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 8,
+    "n": 6,
     "items": [
      {
       "key": "EDW-2485",
@@ -395,20 +395,12 @@
       "summary": "Migrate reporting server"
      },
      {
-      "key": "EDW-2478",
-      "summary": "CT Medical Discount Plan Renewal (DMPO)"
-     },
-     {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      },
      {
       "key": "EDW-2438",
       "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2428",
-      "summary": "RI DMPO Annual Report"
      }
     ]
    },
@@ -531,7 +523,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 10,
+    "n": 9,
     "items": [
      {
       "key": "EDW-2506",
@@ -540,10 +532,6 @@
      {
       "key": "EDW-2473",
       "summary": "Request and sorting pass"
-     },
-     {
-      "key": "EDW-2428",
-      "summary": "RI DMPO Annual Report"
      },
      {
       "key": "EDW-2419",
@@ -564,6 +552,10 @@
      {
       "key": "EDW-2403",
       "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
+     },
+     {
+      "key": "EDW-2394",
+      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
      }
     ]
    }
@@ -692,51 +684,51 @@
   "end": "2026-11-09",
   "goal": "",
   "items": 40,
-  "items_done": 6,
-  "committed": 78,
-  "final": 79,
-  "completed": 3,
+  "items_done": 7,
+  "committed": 80,
+  "final": 81,
+  "completed": 4,
   "scope_change": 1,
-  "vs_commitment": 4,
+  "vs_commitment": 5,
   "time_elapsed": 20,
   "spill": {
-   "open_items": 29,
-   "open_pts": 76.0,
+   "open_items": 28,
+   "open_pts": 77.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 1.0
+   "done_pts": 2.0
   },
   "recv": {
    "items": 18,
    "pts": 52,
-   "pct": 67,
+   "pct": 65,
    "from": "EDW-Sprint 24-26"
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 18,
+   "Backlog": 17,
    "Awaiting Review": 5,
    "In Development": 10,
    "Ready for Development": 4,
-   "Closed": 3
+   "Closed": 4
   },
   "burn": [
-   72.0,
-   76.0,
-   76.0,
-   76.0
-  ],
-  "scope": [
    74.0,
    78.0,
    78.0,
-   79.0
+   77.0
+  ],
+  "scope": [
+   76.0,
+   80.0,
+   80.0,
+   81.0
   ],
   "ghost": [
-   72.0,
-   76.0,
-   76.0,
-   76.0
+   74.0,
+   78.0,
+   78.0,
+   77.0
   ],
   "days": 14,
   "day": 4,
@@ -766,10 +758,10 @@
   "end": "2026-11-22",
   "day": 4,
   "days": 28,
-  "closed": 10,
-  "points": 30,
+  "closed": 11,
+  "points": 31,
   "unplanned": 2,
-  "unplanned_pct": 20.0,
+  "unplanned_pct": 18.2,
   "access_requests": 0,
   "people_active": 2,
   "sprints": [
@@ -805,19 +797,7 @@
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
     "clear_med": 1.9,
-    "clear_n": 198
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 133
+    "clear_n": 199
    },
    {
     "status": "PR Merged",
@@ -832,31 +812,7 @@
     "clear_n": 3
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "In Stage",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -865,7 +821,31 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 133
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "New",
@@ -880,7 +860,31 @@
     "clear_n": 61
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -889,19 +893,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_n": 3
    },
    {
     "status": "Ready Prod",
@@ -918,7 +910,7 @@
   ],
   "parked": {
    "Deferred": 2,
-   "Backlog": 61
+   "Backlog": 60
   },
   "open_total": 28,
   "stale": 17,
