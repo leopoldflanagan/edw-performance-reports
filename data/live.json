@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T00:34:27Z",
+ "generated": "2026-10-29T00:45:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -808,6 +808,18 @@
     "clear_n": 197
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -820,7 +832,7 @@
     "clear_n": 16
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -828,11 +840,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
-    "status": "PR Merged",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -841,10 +853,10 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
    },
    {
-    "status": "In Stage",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -868,19 +880,7 @@
     "clear_n": 133
    },
    {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Created",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -889,7 +889,19 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -902,18 +914,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
    }
   ],
   "parked": {
