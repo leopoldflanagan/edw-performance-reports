@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 20,
+  "closed": 21,
   "discarded": 0,
-  "resolved": 20,
+  "resolved": 21,
   "unplanned": 2,
-  "unp_pct": 10.0,
+  "unp_pct": 9.5,
   "types": [
    [
     "Story",
-    12
+    13
    ],
    [
     "Bug",
@@ -45,11 +45,10 @@
   "day": 30,
   "days": 28,
   "status": "risk",
-  "headline": "20 items closed against 59 the month before. Running 68% behind last month's pace.",
+  "headline": "21 items closed against 59 the month before. Running 67% behind last month's pace.",
   "notes": [
-   "running 68% behind last month's pace",
-   "unplanned work at 10.0%",
-   "cycle time median 3.0d and average 86.7d, both past the healthy band"
+   "running 67% behind last month's pace",
+   "cycle time median 2.9d and average 81.7d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -58,10 +57,10 @@
    "Oct 26",
    "Nov 9",
    48,
-   13,
+   14,
    108,
    118,
-   16,
+   21,
    9,
    [
     102.0,
@@ -69,7 +68,7 @@
     111.0,
     104.0,
     102.0,
-    102.0
+    97.0
    ],
    [
     104.0,
@@ -84,12 +83,12 @@
  "SPILL": {
   "EDW-Sprint 25-26": {
    "done": [
-    13,
-    14
+    14,
+    19
    ],
    "open": [
-    30,
-    102
+    29,
+    97
    ],
    "out": [
     0,
@@ -126,7 +125,7 @@
      "med": 11.28
     },
     "Closed": {
-     "n": 11,
+     "n": 12,
      "med": 11.14
     },
     "Ready for Development": {
@@ -136,12 +135,12 @@
    },
    "dist": {
     "Backlog": 21,
-    "Closed": 10,
+    "Closed": 11,
     "Awaiting Review": 5,
-    "In Development": 9,
-    "Ready for Development": 3
+    "Ready for Development": 3,
+    "In Development": 8
    },
-   "stalled": 38,
+   "stalled": 37,
    "worst": 11.28,
    "worstSt": "Awaiting Review",
    "items": 48
@@ -154,25 +153,25 @@
    111.0,
    104.0,
    102.0,
-   102.0
+   97.0
   ]
  },
  "CAP": {
   "9.10": [
-   20,
-   18,
-   44,
+   21,
+   19,
+   49,
    5
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 2.98,
-   "avg": 86.66,
-   "n": 16,
+   "med": 2.91,
+   "avg": 81.69,
+   "n": 17,
    "mx": 678.96,
    "nodev": 4,
-   "base": 20
+   "base": 21
   }
  },
  "complete": false,
