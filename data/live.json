@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-29T23:45:20Z",
+ "generated": "2026-10-30T00:00:29Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 4,
+  "day": 5,
   "days": 14,
   "n": 21,
   "done_now": 12,
   "committed": 80,
-  "lo": 32,
-  "mid": 41,
+  "lo": 31,
+  "mid": 37,
   "hi": 47,
-  "pct": 51,
+  "pct": 46,
   "verdict": "well short of the commitment",
-  "share_mid": 0.291
+  "share_mid": 0.321
  },
  "admin": {
   "scope": {
@@ -726,7 +726,7 @@
    76.0
   ],
   "days": 14,
-  "day": 4,
+  "day": 5,
   "capacity": {
    "release": "9.10",
    "start": "2026-10-26",
@@ -751,7 +751,7 @@
   "kind": "release",
   "start": "2026-10-26",
   "end": "2026-11-22",
-  "day": 4,
+  "day": 5,
   "days": 28,
   "closed": 18,
   "points": 40,
@@ -773,62 +773,26 @@
    {
     "status": "Ready for Development",
     "open": 18,
-    "med_age": 16.3,
+    "med_age": 16.4,
     "max_age": 234.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 3.9,
-    "clear_n": 168
+    "clear_med": 3.3,
+    "clear_n": 163
    },
    {
     "status": "In Development",
     "open": 9,
     "med_age": 3.3,
-    "max_age": 24.4,
+    "max_age": 24.5,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
-    "clear_med": 1.8,
-    "clear_n": 203
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 1.9,
+    "clear_n": 199
    },
    {
     "status": "In Stage",
@@ -843,7 +807,7 @@
     "clear_n": 3
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -851,8 +815,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -867,7 +831,7 @@
     "clear_n": 4
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -875,11 +839,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 134
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -887,8 +851,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Ready Prod",
@@ -901,11 +865,47 @@
     "over": 0,
     "clear_med": 344.9,
     "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 131
    }
   ],
   "parked": {
-   "Backlog": 54,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 54
   },
   "open_total": 27,
   "stale": 19,
