@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 19,
+  "closed": 20,
   "discarded": 0,
-  "resolved": 19,
+  "resolved": 20,
   "unplanned": 2,
-  "unp_pct": 10.5,
+  "unp_pct": 10.0,
   "types": [
    [
     "Story",
@@ -25,7 +25,7 @@
    ],
    [
     "Task",
-    1
+    2
    ]
   ],
   "sprints": [
@@ -45,11 +45,11 @@
   "day": 30,
   "days": 28,
   "status": "risk",
-  "headline": "19 items closed against 59 the month before. Running 70% behind last month's pace.",
+  "headline": "20 items closed against 59 the month before. Running 68% behind last month's pace.",
   "notes": [
-   "running 70% behind last month's pace",
-   "unplanned work at 10.5%",
-   "cycle time median 3.1d and average 92.4d, both past the healthy band"
+   "running 68% behind last month's pace",
+   "unplanned work at 10.0%",
+   "cycle time median 3.0d and average 86.7d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -58,17 +58,17 @@
    "Oct 26",
    "Nov 9",
    48,
-   12,
+   13,
    108,
    118,
-   14,
+   16,
    9,
    [
     102.0,
     106.0,
     111.0,
     104.0,
-    104.0
+    102.0
    ],
    [
     104.0,
@@ -82,12 +82,12 @@
  "SPILL": {
   "EDW-Sprint 25-26": {
    "done": [
-    12,
-    12
+    13,
+    14
    ],
    "open": [
-    31,
-    104
+    30,
+    102
    ],
    "out": [
     0,
@@ -117,15 +117,15 @@
     },
     "In Development": {
      "n": 23,
-     "med": 1.03
-    },
-    "Closed": {
-     "n": 10,
-     "med": 11.15
+     "med": 0.64
     },
     "Awaiting Review": {
-     "n": 6,
-     "med": 11.55
+     "n": 7,
+     "med": 11.28
+    },
+    "Closed": {
+     "n": 11,
+     "med": 11.14
     },
     "Ready for Development": {
      "n": 8,
@@ -134,13 +134,13 @@
    },
    "dist": {
     "Backlog": 21,
-    "In Development": 10,
-    "Closed": 9,
+    "Closed": 10,
     "Awaiting Review": 5,
+    "In Development": 9,
     "Ready for Development": 3
    },
-   "stalled": 39,
-   "worst": 11.55,
+   "stalled": 38,
+   "worst": 11.28,
    "worstSt": "Awaiting Review",
    "items": 48
   }
@@ -151,25 +151,25 @@
    106.0,
    111.0,
    104.0,
-   104.0
+   102.0
   ]
  },
  "CAP": {
   "9.10": [
-   19,
-   17,
-   42,
-   4
+   20,
+   18,
+   44,
+   5
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 3.06,
-   "avg": 92.43,
-   "n": 15,
+   "med": 2.98,
+   "avg": 86.66,
+   "n": 16,
    "mx": 678.96,
    "nodev": 4,
-   "base": 19
+   "base": 20
   }
  },
  "complete": false,

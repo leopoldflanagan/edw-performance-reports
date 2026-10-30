@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T18:35:35Z",
+ "generated": "2026-10-30T18:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 5,
   "days": 14,
   "n": 21,
-  "done_now": 14,
+  "done_now": 16,
   "committed": 108,
-  "lo": 36,
-  "mid": 44,
-  "hi": 55,
-  "pct": 41,
+  "lo": 41,
+  "mid": 50,
+  "hi": 63,
+  "pct": 46,
   "verdict": "well short of the commitment",
   "share_mid": 0.321
  },
@@ -746,19 +746,19 @@
   "end": "2026-11-09",
   "goal": "",
   "items": 48,
-  "items_done": 12,
+  "items_done": 13,
   "committed": 108,
   "final": 118,
-  "completed": 14,
+  "completed": 16,
   "scope_change": 9,
-  "vs_commitment": 13,
+  "vs_commitment": 15,
   "time_elapsed": 28,
   "spill": {
-   "open_items": 31,
-   "open_pts": 104.0,
+   "open_items": 30,
+   "open_pts": 102.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 12.0
+   "done_pts": 14.0
   },
   "recv": {
    "items": 18,
@@ -769,9 +769,9 @@
   "spill_rate": null,
   "dist": {
    "Backlog": 21,
-   "In Development": 10,
-   "Closed": 9,
+   "Closed": 10,
    "Awaiting Review": 5,
+   "In Development": 9,
    "Ready for Development": 3
   },
   "burn": [
@@ -779,7 +779,7 @@
    106.0,
    111.0,
    104.0,
-   104.0
+   102.0
   ],
   "scope": [
    104.0,
@@ -793,7 +793,7 @@
    106.0,
    111.0,
    104.0,
-   104.0
+   102.0
   ],
   "days": 14,
   "day": 5,
@@ -823,12 +823,12 @@
   "end": "2026-11-22",
   "day": 5,
   "days": 28,
-  "closed": 19,
-  "points": 42,
+  "closed": 20,
+  "points": 44,
   "unplanned": 2,
-  "unplanned_pct": 10.5,
+  "unplanned_pct": 10.0,
   "access_requests": 0,
-  "people_active": 4,
+  "people_active": 5,
   "sprints": [
    "EDW-Sprint 25-26",
    "EDW-Sprint 26-26"
@@ -854,75 +854,15 @@
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 4.0,
+    "open": 8,
+    "med_age": 6.6,
     "max_age": 25.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
     "clear_med": 1.8,
-    "clear_n": 200
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_n": 201
    },
    {
     "status": "In Stage",
@@ -937,7 +877,7 @@
     "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -945,8 +885,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "New",
@@ -961,7 +913,31 @@
     "clear_n": 61
    },
    {
-    "status": "PR Merged",
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -970,14 +946,38 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 132
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 61,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 61
   },
-  "open_total": 27,
+  "open_total": 26,
   "stale": 19,
   "worst": "Ready for Development"
  }
