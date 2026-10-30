@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T01:45:20Z",
+ "generated": "2026-10-30T02:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -785,7 +785,7 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 3.3,
+    "med_age": 3.4,
     "max_age": 24.5,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -793,6 +793,18 @@
     "over": 4,
     "clear_med": 1.9,
     "clear_n": 199
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -807,7 +819,31 @@
     "clear_n": 5
    },
    {
-    "status": "PR Merged",
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 131
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -831,42 +867,6 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -879,7 +879,7 @@
     "clear_n": 16
    },
    {
-    "status": "In Stage",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
