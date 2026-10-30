@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-30T16:00:55Z",
+ "generated": "2026-10-30T16:13:34Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,14 +369,14 @@
  "admin": {
   "scope": {
    "ready": 18,
-   "sprint": 31,
+   "sprint": 36,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 5,
+    "n": 10,
     "items": [
      {
       "key": "EDW-2485",
@@ -387,16 +387,28 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
+      "key": "EDW-2512",
+      "summary": "Pass with tables and drill-down pages"
+     },
+     {
+      "key": "EDW-2510",
+      "summary": "Pass with Open Network and drill-down"
+     },
+     {
+      "key": "EDW-2509",
+      "summary": "Pass with Org Plans"
+     },
+     {
+      "key": "EDW-2508",
+      "summary": "Pass with Arrangement and Plans Marketplace"
+     },
+     {
+      "key": "EDW-2507",
+      "summary": "Unified MSW-based testing"
+     },
+     {
       "key": "EDW-2502",
       "summary": "Patients are receiving emails that their credit card on File has been charged wh"
-     },
-     {
-      "key": "EDW-2439",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
-     },
-     {
-      "key": "EDW-2438",
-      "summary": "EDW - Prepare Phase 3 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
@@ -519,8 +531,28 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 7,
+    "n": 12,
     "items": [
+     {
+      "key": "EDW-2512",
+      "summary": "Pass with tables and drill-down pages"
+     },
+     {
+      "key": "EDW-2510",
+      "summary": "Pass with Open Network and drill-down"
+     },
+     {
+      "key": "EDW-2509",
+      "summary": "Pass with Org Plans"
+     },
+     {
+      "key": "EDW-2508",
+      "summary": "Pass with Arrangement and Plans Marketplace"
+     },
+     {
+      "key": "EDW-2507",
+      "summary": "Unified MSW-based testing"
+     },
      {
       "key": "EDW-2419",
       "summary": "[Accounting] - Add MID, Practice ID page"
@@ -532,50 +564,87 @@
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
-     },
-     {
-      "key": "EDW-2405",
-      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
-     },
-     {
-      "key": "EDW-2403",
-      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
-     },
-     {
-      "key": "EDW-2394",
-      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
-     },
-     {
-      "key": "EDW-2392",
-      "summary": "1.3: (EDW) rpt_CregHrReport - MRN-only HR projection"
      }
     ]
    }
   ],
   "debt": [
    {
-    "rule": "Fix version is not in use",
-    "why": "missing on 40 of 46 items. This reads as a field the team does not use rather than 40 oversights. Worth deciding: adopt it or stop asking for it.",
+    "rule": "No fix version",
+    "why": "the release a delivery belongs to cannot be traced without it.",
     "n": 40,
-    "items": []
+    "items": [
+     {
+      "key": "EDW-2493",
+      "summary": "[Launch Loyalty] - Phase 2 Commission; small groups"
+     },
+     {
+      "key": "EDW-2490",
+      "summary": "Netsuite project dev completion for testing"
+     },
+     {
+      "key": "EDW-2485",
+      "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2434",
+      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2379",
+      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
+     }
+    ]
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 38 of 46 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 38,
+    "why": "missing on 43 of 51 items. This reads as a field the team does not use rather than 43 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 43,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 46,
+    "why": "missing on 51 of 51 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 51,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 10,
+    "n": 15,
     "items": [
+     {
+      "key": "EDW-2512",
+      "summary": "Pass with tables and drill-down pages"
+     },
+     {
+      "key": "EDW-2510",
+      "summary": "Pass with Open Network and drill-down"
+     },
+     {
+      "key": "EDW-2509",
+      "summary": "Pass with Org Plans"
+     },
+     {
+      "key": "EDW-2508",
+      "summary": "Pass with Arrangement and Plans Marketplace"
+     },
+     {
+      "key": "EDW-2507",
+      "summary": "Unified MSW-based testing"
+     },
      {
       "key": "EDW-2506",
       "summary": "Putting Gate on Stage to pass only test emails "
@@ -587,26 +656,6 @@
      {
       "key": "EDW-2473",
       "summary": "Request and sorting pass"
-     },
-     {
-      "key": "EDW-2472",
-      "summary": "wf-reporting/mocks entry point"
-     },
-     {
-      "key": "EDW-2471",
-      "summary": "Visual context in the application layer and layer boundaries"
-     },
-     {
-      "key": "EDW-2470",
-      "summary": "Pilot pass with Payment and Lending"
-     },
-     {
-      "key": "EDW-2463",
-      "summary": "EDW Ambetter development"
-     },
-     {
-      "key": "EDW-2439",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      }
     ]
    },
@@ -675,7 +724,7 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 41,
+  "items": 46,
   "items_done": 11,
   "committed": 80,
   "final": 88,
@@ -684,7 +733,7 @@
   "vs_commitment": 15,
   "time_elapsed": 28,
   "spill": {
-   "open_items": 25,
+   "open_items": 30,
    "open_pts": 76.0,
    "out_items": 0,
    "out_pts": 0,
@@ -698,11 +747,11 @@
   },
   "spill_rate": null,
   "dist": {
+   "Backlog": 20,
    "Closed": 8,
    "Awaiting Review": 5,
    "In Development": 10,
-   "Ready for Development": 3,
-   "Backlog": 15
+   "Ready for Development": 3
   },
   "burn": [
    74.0,
@@ -784,8 +833,8 @@
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 3.9,
+    "open": 10,
+    "med_age": 3.8,
     "max_age": 25.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -805,6 +854,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "PR Merged",
@@ -831,30 +892,6 @@
     "clear_n": 2
    },
    {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 131
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -877,6 +914,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 131
    },
    {
     "status": "In Progress",
@@ -904,10 +953,10 @@
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 54
+   "Backlog": 59,
+   "Deferred": 2
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 19,
   "worst": "Ready for Development"
  }

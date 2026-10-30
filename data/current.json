@@ -57,7 +57,7 @@
    "EDW-Sprint 25-26",
    "Oct 26",
    "Nov 9",
-   41,
+   47,
    11,
    80,
    88,
@@ -86,7 +86,7 @@
     10
    ],
    "open": [
-    25,
+    31,
     76
    ],
    "out": [
@@ -112,7 +112,7 @@
   "EDW-Sprint 25-26": {
    "tis": {
     "Backlog": {
-     "n": 27,
+     "n": 33,
      "med": 14.0
     },
     "In Development": {
@@ -133,16 +133,16 @@
     }
    },
    "dist": {
+    "Backlog": 21,
     "Closed": 8,
     "Awaiting Review": 5,
     "In Development": 10,
-    "Ready for Development": 3,
-    "Backlog": 15
+    "Ready for Development": 3
    },
-   "stalled": 33,
+   "stalled": 39,
    "worst": 11.55,
    "worstSt": "Awaiting Review",
-   "items": 41
+   "items": 47
   }
  },
  "GHOST": {
