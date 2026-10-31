@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-31T16:35:39Z",
+ "generated": "2026-10-31T16:45:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -863,37 +863,13 @@
     "status": "In Development",
     "open": 7,
     "med_age": 10.1,
-    "max_age": 26.1,
+    "max_age": 26.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 4,
     "clear_med": 1.8,
     "clear_n": 203
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 132
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "In Stage",
@@ -908,6 +884,18 @@
     "clear_n": 3
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -920,7 +908,7 @@
     "clear_n": 61
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -929,7 +917,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
    },
    {
     "status": "WAITING REVIEW",
@@ -944,7 +932,7 @@
     "clear_n": 2
    },
    {
-    "status": "Ready Prod",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -952,8 +940,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 4
    },
    {
     "status": "In Progress",
@@ -968,7 +956,7 @@
     "clear_n": 5
    },
    {
-    "status": "PR Merged",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -976,13 +964,25 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 132
    }
   ],
   "parked": {
-   "Backlog": 61,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 61
   },
   "open_total": 26,
   "stale": 19,
