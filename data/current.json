@@ -46,12 +46,11 @@
    ]
   ],
   "open": true,
-  "day": 31,
+  "day": 1,
   "days": 28,
   "status": "risk",
-  "headline": "22 items closed against 59 the month before. Running 66% behind last month's pace.",
+  "headline": "22 items closed in the first 1 days, a pace of about 616 for the month against 59 last month. Unplanned work at 13.6%.",
   "notes": [
-   "running 66% behind last month's pace",
    "unplanned work at 13.6%",
    "cycle time median 2.6d and average 77.2d, both past the healthy band"
   ]
