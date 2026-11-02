@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-02T17:30:26Z",
+ "generated": "2026-11-02T17:36:55Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -318,8 +318,8 @@
    "points": 8
   },
   "misfiled": {
-   "items": 6,
-   "points": 18
+   "items": 5,
+   "points": 16
   },
   "runway": 0.1,
   "runway_if_fixed": 0.4,
@@ -328,14 +328,14 @@
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 6,
-    "points": 18,
+    "n": 5,
+    "points": 16,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 12,
-    "points": 29,
+    "n": 13,
+    "points": 31,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -357,19 +357,19 @@
   "day": 8,
   "days": 14,
   "n": 21,
-  "done_now": 22,
-  "committed": 109,
-  "lo": 39,
-  "mid": 47,
-  "hi": 54,
-  "pct": 43,
+  "done_now": 26,
+  "committed": 108,
+  "lo": 47,
+  "mid": 55,
+  "hi": 64,
+  "pct": 51,
   "verdict": "well short of the commitment",
   "share_mid": 0.472
  },
  "admin": {
   "scope": {
    "ready": 19,
-   "sprint": 39,
+   "sprint": 40,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -407,8 +407,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 12,
+    "n": 13,
     "items": [
+     {
+      "key": "EDW-2517",
+      "summary": "Netsuite QA of integration"
+     },
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
@@ -436,10 +440,6 @@
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
-     },
-     {
-      "key": "EDW-2145",
-      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -523,7 +523,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 13,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2513",
@@ -550,12 +550,12 @@
       "summary": "Unified MSW-based testing"
      },
      {
-      "key": "EDW-2419",
-      "summary": "[Accounting] - Add MID, Practice ID page"
-     },
-     {
       "key": "EDW-2414",
       "summary": "[Accounting] - Patterson rev share not matching Plan Activity Data - F32"
+     },
+     {
+      "key": "EDW-2407",
+      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
      }
     ]
    }
@@ -564,11 +564,11 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 41,
+    "n": 43,
     "items": [
      {
-      "key": "EDW-2493",
-      "summary": "[Launch Loyalty] - Phase 2 Commission; small groups"
+      "key": "EDW-2517",
+      "summary": "Netsuite QA of integration"
      },
      {
       "key": "EDW-2490",
@@ -603,8 +603,12 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 40,
+    "n": 42,
     "items": [
+     {
+      "key": "EDW-2517",
+      "summary": "Netsuite QA of integration"
+     },
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
@@ -612,10 +616,6 @@
      {
       "key": "EDW-2503",
       "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
-     },
-     {
-      "key": "EDW-2493",
-      "summary": "[Launch Loyalty] - Phase 2 Commission; small groups"
      },
      {
       "key": "EDW-2490",
@@ -641,8 +641,8 @@
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 55 of 55 items. This reads as a field the team does not use rather than 55 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 55,
+    "why": "missing on 57 of 57 items. This reads as a field the team does not use rather than 57 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 57,
     "items": []
    },
    {
@@ -749,20 +749,20 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 49,
-  "items_done": 15,
-  "committed": 109,
-  "final": 119,
-  "completed": 22,
-  "scope_change": 9,
-  "vs_commitment": 20,
+  "items": 50,
+  "items_done": 17,
+  "committed": 108,
+  "final": 120,
+  "completed": 26,
+  "scope_change": 11,
+  "vs_commitment": 24,
   "time_elapsed": 49,
   "spill": {
-   "open_items": 29,
-   "open_pts": 97.0,
+   "open_items": 28,
+   "open_pts": 94.0,
    "out_items": 0,
    "out_pts": 0,
-   "done_pts": 20.0
+   "done_pts": 24.0
   },
   "recv": {
    "items": 18,
@@ -772,41 +772,41 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 12,
-   "Backlog": 21,
+   "Closed": 14,
+   "Backlog": 20,
    "Awaiting Review": 5,
-   "Ready for Development": 3,
-   "In Development": 8
+   "In Development": 9,
+   "Ready for Development": 2
   },
   "burn": [
-   103.0,
-   107.0,
-   112.0,
-   105.0,
-   103.0,
-   97.0,
-   97.0,
-   97.0
+   102.0,
+   106.0,
+   111.0,
+   104.0,
+   102.0,
+   96.0,
+   96.0,
+   94.0
   ],
   "scope": [
-   105.0,
-   109.0,
+   104.0,
+   108.0,
+   113.0,
    114.0,
-   115.0,
-   119.0,
-   119.0,
-   119.0,
-   119.0
+   118.0,
+   118.0,
+   118.0,
+   120.0
   ],
   "ghost": [
-   103.0,
-   107.0,
-   112.0,
-   105.0,
-   103.0,
-   97.0,
-   97.0,
-   97.0
+   102.0,
+   106.0,
+   111.0,
+   104.0,
+   102.0,
+   96.0,
+   96.0,
+   94.0
   ],
   "days": 14,
   "day": 8,
@@ -836,10 +836,10 @@
   "end": "2026-11-22",
   "day": 8,
   "days": 28,
-  "closed": 22,
-  "points": 50,
-  "unplanned": 3,
-  "unplanned_pct": 13.6,
+  "closed": 24,
+  "points": 54,
+  "unplanned": 4,
+  "unplanned_pct": 16.7,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -863,55 +863,19 @@
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 3.3,
-    "clear_n": 152
+    "clear_n": 153
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 12.1,
+    "open": 8,
+    "med_age": 9.6,
     "max_age": 28.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
     "over": 5,
-    "clear_med": 1.6,
-    "clear_n": 188
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 1.5,
+    "clear_n": 189
    },
    {
     "status": "On Hold",
@@ -924,42 +888,6 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -984,13 +912,85 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 121
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 61,
+   "Backlog": 60,
    "Deferred": 2
   },
-  "open_total": 26,
+  "open_total": 27,
   "stale": 21,
   "worst": "Ready for Development"
  }
