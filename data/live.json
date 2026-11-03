@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T00:47:26Z",
+ "generated": "2026-11-03T01:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -881,30 +881,6 @@
     "clear_n": 188
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -915,6 +891,18 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -929,7 +917,7 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -937,8 +925,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 119
+    "clear_med": 0.0,
+    "clear_n": 4
    },
    {
     "status": "New",
@@ -965,6 +953,18 @@
     "clear_n": 2
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 119
+   },
+   {
     "status": "In Stage",
     "open": 0,
     "med_age": 0,
@@ -977,7 +977,7 @@
     "clear_n": 3
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -986,7 +986,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
    }
   ],
   "parked": {
