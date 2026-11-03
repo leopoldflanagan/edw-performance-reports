@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-03T21:00:31Z",
+ "generated": "2026-11-03T21:09:45Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,16 +368,20 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
-   "sprint": 40,
+   "ready": 20,
+   "sprint": 41,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 6,
+    "n": 7,
     "items": [
+     {
+      "key": "EDW-2520",
+      "summary": "Pre-Prod CSP/PP reports not displaying data"
+     },
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
@@ -457,8 +461,12 @@
    {
     "rule": "No assignee in the active sprint",
     "why": "work in the sprint that nobody owns.",
-    "n": 6,
+    "n": 7,
     "items": [
+     {
+      "key": "EDW-2520",
+      "summary": "Pre-Prod CSP/PP reports not displaying data"
+     },
      {
       "key": "EDW-2492",
       "summary": "PDS Daily files delimiting change"
@@ -564,8 +572,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 43,
+    "n": 44,
     "items": [
+     {
+      "key": "EDW-2520",
+      "summary": "Pre-Prod CSP/PP reports not displaying data"
+     },
      {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
@@ -593,18 +605,18 @@
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 42,
+    "n": 43,
     "items": [
+     {
+      "key": "EDW-2520",
+      "summary": "Pre-Prod CSP/PP reports not displaying data"
+     },
      {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
@@ -632,17 +644,13 @@
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
-     },
-     {
-      "key": "EDW-2437",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 57 of 57 items. This reads as a field the team does not use rather than 57 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 57,
+    "why": "missing on 58 of 58 items. This reads as a field the team does not use rather than 58 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 58,
     "items": []
    },
    {
@@ -861,7 +869,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
+    "open": 20,
     "med_age": 21.2,
     "max_age": 239.1,
     "worst_key": "EDW-1599",
@@ -884,30 +892,6 @@
     "clear_n": 188
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -918,6 +902,18 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 119
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "WAITING REVIEW",
@@ -944,7 +940,7 @@
     "clear_n": 61
    },
    {
-    "status": "PR Merged",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -952,8 +948,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "PR Created",
@@ -968,7 +976,7 @@
     "clear_n": 4
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -976,8 +984,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "In Stage",
@@ -993,10 +1001,10 @@
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 61
+   "Backlog": 61,
+   "Deferred": 2
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 23,
   "worst": "Ready for Development"
  }
