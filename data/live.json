@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-04T03:30:33Z",
+ "generated": "2026-11-04T03:36:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -871,7 +871,7 @@
     "status": "Ready for Development",
     "open": 20,
     "med_age": 21.5,
-    "max_age": 239.3,
+    "max_age": 239.4,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -882,7 +882,7 @@
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 10.9,
+    "med_age": 11.0,
     "max_age": 29.6,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -892,7 +892,7 @@
     "clear_n": 187
    },
    {
-    "status": "On Hold",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -900,11 +900,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -912,8 +912,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Stage",
@@ -952,6 +952,18 @@
     "clear_n": 4
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -962,18 +974,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
    },
    {
     "status": "WAITING REVIEW",
@@ -988,7 +988,7 @@
     "clear_n": 2
    },
    {
-    "status": "Ready Prod",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -996,8 +996,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
