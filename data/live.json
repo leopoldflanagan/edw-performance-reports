@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T18:15:19Z",
+ "generated": "2026-11-05T18:30:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 32,
+    "n": 12,
+    "points": 30,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -358,7 +358,7 @@
   "days": 14,
   "n": 21,
   "done_now": 36,
-  "committed": 108,
+  "committed": 109,
   "lo": 45,
   "mid": 48,
   "hi": 55,
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 20,
+   "ready": 19,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -411,7 +411,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 12,
     "items": [
      {
       "key": "EDW-2522",
@@ -424,10 +424,6 @@
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
-     },
-     {
-      "key": "EDW-2490",
-      "summary": "Netsuite project dev completion for testing"
      },
      {
       "key": "EDW-2485",
@@ -444,6 +440,10 @@
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -583,10 +583,6 @@
       "summary": "Netsuite QA of integration"
      },
      {
-      "key": "EDW-2490",
-      "summary": "Netsuite project dev completion for testing"
-     },
-     {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
      },
@@ -605,6 +601,10 @@
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
@@ -630,10 +630,6 @@
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
      },
      {
-      "key": "EDW-2490",
-      "summary": "Netsuite project dev completion for testing"
-     },
-     {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
      },
@@ -644,6 +640,10 @@
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
@@ -759,15 +759,15 @@
   "goal": "",
   "items": 52,
   "items_done": 19,
-  "committed": 108,
-  "final": 121,
+  "committed": 109,
+  "final": 122,
   "completed": 36,
   "scope_change": 12,
   "vs_commitment": 33,
   "time_elapsed": 71,
   "spill": {
    "open_items": 28,
-   "open_pts": 85.0,
+   "open_pts": 86.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 34.0
@@ -780,50 +780,50 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 3,
+   "Ready for Development": 2,
    "Closed": 16,
    "Backlog": 20,
-   "In Development": 7,
+   "In Development": 8,
    "Awaiting Review": 6
   },
   "burn": [
-   102.0,
-   106.0,
-   111.0,
-   104.0,
-   102.0,
-   96.0,
-   96.0,
-   94.0,
-   94.0,
+   103.0,
+   107.0,
+   112.0,
+   105.0,
+   103.0,
+   97.0,
+   97.0,
    95.0,
-   85.0
+   95.0,
+   96.0,
+   86.0
   ],
   "scope": [
-   104.0,
-   108.0,
-   113.0,
+   105.0,
+   109.0,
    114.0,
-   118.0,
-   118.0,
-   118.0,
-   120.0,
-   120.0,
+   115.0,
+   119.0,
+   119.0,
+   119.0,
    121.0,
-   121.0
+   121.0,
+   122.0,
+   122.0
   ],
   "ghost": [
-   102.0,
-   106.0,
-   111.0,
-   104.0,
-   102.0,
-   96.0,
-   96.0,
-   94.0,
-   94.0,
+   103.0,
+   107.0,
+   112.0,
+   105.0,
+   103.0,
+   97.0,
+   97.0,
    95.0,
-   85.0
+   95.0,
+   96.0,
+   86.0
   ],
   "days": 14,
   "day": 11,
@@ -872,20 +872,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 20,
+    "open": 19,
     "med_age": 23.1,
     "max_age": 241.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 16,
+    "over": 15,
     "clear_med": 3.9,
-    "clear_n": 152
+    "clear_n": 153
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 9.9,
+    "open": 8,
+    "med_age": 9.5,
     "max_age": 31.2,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
@@ -893,66 +893,6 @@
     "over": 5,
     "clear_med": 1.9,
     "clear_n": 187
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -967,7 +907,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -975,8 +915,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
    },
    {
     "status": "In Stage",
@@ -989,6 +941,54 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -1004,11 +1004,11 @@
    }
   ],
   "parked": {
-   "Backlog": 61,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 61
   },
   "open_total": 27,
-  "stale": 21,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
