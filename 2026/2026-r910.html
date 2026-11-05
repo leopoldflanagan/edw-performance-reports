@@ -490,7 +490,7 @@
         <span>Team <b>5 active</b> <i>(R9.09 4.0)</i></span></div>
       <div class="spark-cap">Items closed &middot; R9.00 to R9.09 &middot; this release is still running and is not plotted</div>
       <svg class="spark" viewBox="0 0 260 34" preserveAspectRatio="none" role="img" aria-hidden="true"><path d="M3.0,23.3 L31.2,26.2 L59.4,26.8 L87.7,28.6 L115.9,31.0 L144.1,12.5 L172.3,3.0 L200.6,14.3 L228.8,7.8 L257.0,13.1" fill="none" style="stroke:var(--edge)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
-      <div class="infopanel ip-amber">On top of the 26 closed there were <b>0 discarded</b> (Won't Do), which are not deliveries.
+      <div class="infopanel ip-amber">On top of the 26 closed there were <b>1 discarded</b> (Won't Do), which are not deliveries.
         Items are +12% on R9.09 while points are +12% at the same point in the month.
         <a href="#" class="ip-link" data-goto="cmp">Trend and expected range in Comparatives &rarr;</a></div>
       <div class="cardfill"></div><hr class="docsep">
@@ -524,10 +524,10 @@
     <div class="card mixcard">
       <div class="ghead" style="width:100%"><span class="gname"><span data-tip="Closed items against those resolved as Won’t Do in the same month.">Delivered vs discarded</span></span></div>
       <div class="mixbody"><div class="donutwrap"><canvas id="donut"></canvas>
-        <div class="donutctr"><div class="dc-num">26</div><div class="dc-lbl">of 26<br>closed</div></div></div>
+        <div class="donutctr"><div class="dc-num">26</div><div class="dc-lbl">of 27<br>closed</div></div></div>
         <div class="mixlegend">
           <div class="ml-row"><span class="ml-sw" style="background:#007CBC"></span><span class="ml-nm">Closed</span><span class="ml-val">26</span></div>
-          <div class="ml-row"><span class="ml-sw" style="background:var(--edge)"></span><span class="ml-nm">Won't Do</span><span class="ml-val">0</span></div>
+          <div class="ml-row"><span class="ml-sw" style="background:var(--edge)"></span><span class="ml-nm">Won't Do</span><span class="ml-val">1</span></div>
         </div></div>
       <div class="infopanel ip-amber">May closed 39 without a single discard. From June on, discards show up every month.</div>
       <div class="cardfill"></div>
@@ -1248,7 +1248,7 @@ window.__themeRedraw=function(){
 };
 
 new Chart(document.getElementById('donut'),{type:'doughnut',
- data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[26,0],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
+ data:{labels:['Cerrados',"Won't Do"],datasets:[{data:[26,1],backgroundColor:[BLUE,GREY],borderColor:'#fff',borderWidth:3}]},
  options:{cutout:'68%',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}}});
 const thrRef={id:'thrRef',afterDraw(c){const{ctx,chartArea:{left,right},scales:{y}}=c;
  [{v:30,t:'Q1 30',col:BLUED},{v:31,t:'Q2 31',col:AMBER}].forEach(r=>{
