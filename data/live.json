@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-05T15:11:09Z",
+ "generated": "2026-11-05T15:15:19Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
-    "points": 31,
+    "n": 13,
+    "points": 30,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 20,
    "sprint": 42,
    "sprint_name": "EDW-Sprint 25-26"
   },
@@ -415,7 +415,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2521",
@@ -428,10 +428,6 @@
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
-     },
-     {
-      "key": "EDW-2503",
-      "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
      },
      {
       "key": "EDW-2490",
@@ -448,6 +444,10 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -503,12 +503,12 @@
     "n": 7,
     "items": [
      {
-      "key": "EDW-2503",
-      "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
-     },
-     {
       "key": "EDW-2434",
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2503",
+      "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
      },
      {
       "key": "EDW-2407",
@@ -634,10 +634,6 @@
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
      },
      {
-      "key": "EDW-2503",
-      "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
-     },
-     {
       "key": "EDW-2490",
       "summary": "Netsuite project dev completion for testing"
      },
@@ -648,6 +644,10 @@
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
+     },
+     {
+      "key": "EDW-2463",
+      "summary": "EDW Ambetter development"
      }
     ]
    },
@@ -784,11 +784,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 4,
+   "Ready for Development": 3,
    "Closed": 15,
    "Backlog": 20,
-   "Awaiting Review": 5,
-   "In Development": 8
+   "In Development": 7,
+   "Awaiting Review": 7
   },
   "burn": [
    102.0,
@@ -876,27 +876,111 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
+    "open": 20,
     "med_age": 23.0,
     "max_age": 240.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 17,
+    "over": 16,
     "clear_med": 3.9,
-    "clear_n": 151
+    "clear_n": 150
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 15.0,
+    "open": 6,
+    "med_age": 9.9,
     "max_age": 31.1,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
-    "over": 7,
+    "over": 5,
     "clear_med": 1.8,
     "clear_n": 186
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "PR Merged",
@@ -921,98 +1005,14 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 115
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    }
   ],
   "parked": {
    "Backlog": 61,
    "Deferred": 2
   },
-  "open_total": 28,
-  "stale": 24,
+  "open_total": 26,
+  "stale": 21,
   "worst": "Ready for Development"
  }
 }
