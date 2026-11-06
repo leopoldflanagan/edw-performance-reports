@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T04:45:19Z",
+ "generated": "2026-11-06T05:00:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -876,7 +876,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 23.5,
+    "med_age": 23.6,
     "max_age": 241.4,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -898,7 +898,7 @@
     "clear_n": 189
    },
    {
-    "status": "PR Merged",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -907,7 +907,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
    },
    {
     "status": "In Stage",
@@ -934,18 +934,6 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
-   },
-   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -958,7 +946,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -967,10 +955,10 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -978,8 +966,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Progress",
@@ -994,7 +982,7 @@
     "clear_n": 5
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -1002,8 +990,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 1.0,
+    "clear_n": 117
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
