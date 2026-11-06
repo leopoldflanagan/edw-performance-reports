@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T04:15:19Z",
+ "generated": "2026-11-06T04:30:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -910,7 +910,7 @@
     "clear_n": 117
    },
    {
-    "status": "PR Created",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -919,19 +919,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_n": 3
    },
    {
     "status": "PR Merged",
@@ -946,7 +934,7 @@
     "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -954,20 +942,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -982,6 +958,18 @@
     "clear_n": 5
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -992,6 +980,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -1007,8 +1007,8 @@
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 60
   },
   "open_total": 27,
   "stale": 20,
