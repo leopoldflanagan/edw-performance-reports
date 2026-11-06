@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T01:00:26Z",
+ "generated": "2026-11-06T01:12:16Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -877,7 +877,7 @@
     "status": "Ready for Development",
     "open": 19,
     "med_age": 23.4,
-    "max_age": 241.2,
+    "max_age": 241.3,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -910,18 +910,6 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -934,31 +922,19 @@
     "clear_n": 4
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -982,7 +958,7 @@
     "clear_n": 16
    },
    {
-    "status": "Ready Prod",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -990,7 +966,7 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
+    "clear_med": 11.4,
     "clear_n": 2
    },
    {
@@ -1004,11 +980,35 @@
     "over": 0,
     "clear_med": 1.0,
     "clear_n": 117
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 60
   },
   "open_total": 27,
   "stale": 20,
