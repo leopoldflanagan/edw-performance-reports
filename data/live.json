@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-06T17:30:23Z",
+ "generated": "2026-11-06T17:35:08Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -898,7 +898,7 @@
     "clear_n": 189
    },
    {
-    "status": "PR Merged",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -906,8 +906,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -922,6 +922,18 @@
     "clear_n": 4
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -934,7 +946,7 @@
     "clear_n": 16
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -942,8 +954,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "Awaiting Review",
@@ -958,7 +970,7 @@
     "clear_n": 117
    },
    {
-    "status": "New",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -966,20 +978,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "In Progress",
@@ -994,7 +994,7 @@
     "clear_n": 5
    },
    {
-    "status": "In Stage",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -1002,13 +1002,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 59
+   "Backlog": 59,
+   "Deferred": 2
   },
   "open_total": 27,
   "stale": 20,
