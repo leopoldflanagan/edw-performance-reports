@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T04:35:45Z",
+ "generated": "2026-11-07T04:45:17Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -892,7 +892,7 @@
     "status": "In Development",
     "open": 8,
     "med_age": 10.9,
-    "max_age": 32.6,
+    "max_age": 32.7,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
@@ -913,7 +913,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -922,19 +922,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_n": 3
    },
    {
     "status": "In Progress",
@@ -949,7 +937,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -957,8 +945,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Stage",
@@ -973,18 +961,6 @@
     "clear_n": 3
    },
    {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -997,7 +973,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Merged",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -1006,7 +982,31 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
