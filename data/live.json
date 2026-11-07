@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T11:30:20Z",
+ "generated": "2026-11-07T11:35:12Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -901,7 +901,7 @@
     "clear_n": 189
    },
    {
-    "status": "PR Merged",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -910,7 +910,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
    },
    {
     "status": "Awaiting Review",
@@ -925,7 +925,7 @@
     "clear_n": 117
    },
    {
-    "status": "Ready Prod",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -933,8 +933,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "In Stage",
@@ -949,6 +949,18 @@
     "clear_n": 3
    },
    {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -961,6 +973,18 @@
     "clear_n": 5
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -971,30 +995,6 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -1010,8 +1010,8 @@
    }
   ],
   "parked": {
-   "Backlog": 59,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 59
   },
   "open_total": 27,
   "stale": 21,
