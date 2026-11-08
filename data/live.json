@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-08T19:15:18Z",
+ "generated": "2026-11-08T19:30:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -800,6 +800,7 @@
    86.0,
    75.0,
    75.0,
+   75.0,
    75.0
   ],
   "scope": [
@@ -812,6 +813,7 @@
    119.0,
    121.0,
    121.0,
+   122.0,
    122.0,
    122.0,
    122.0,
@@ -830,6 +832,7 @@
    95.0,
    96.0,
    86.0,
+   75.0,
    75.0,
    75.0,
    75.0
@@ -904,42 +907,6 @@
     "clear_n": 189
    },
    {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -964,7 +931,7 @@
     "clear_n": 117
    },
    {
-    "status": "On Hold",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -972,8 +939,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "WAITING REVIEW",
@@ -988,6 +955,18 @@
     "clear_n": 2
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -1000,7 +979,31 @@
     "clear_n": 2
    },
    {
-    "status": "PR Merged",
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
