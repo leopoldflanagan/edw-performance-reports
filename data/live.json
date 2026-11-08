@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-07T23:45:16Z",
+ "generated": "2026-11-08T00:00:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 13,
+  "day": 14,
   "days": 14,
   "n": 21,
   "done_now": 47,
   "committed": 109,
-  "lo": 49,
-  "mid": 53,
-  "hi": 61,
-  "pct": 49,
+  "lo": 47,
+  "mid": 47,
+  "hi": 47,
+  "pct": 43,
   "verdict": "well short of the commitment",
-  "share_mid": 0.88
+  "share_mid": 1.0
  },
  "admin": {
   "scope": {
@@ -835,7 +835,7 @@
    75.0
   ],
   "days": 14,
-  "day": 13,
+  "day": 14,
   "capacity": {
    "release": "9.10",
    "start": "2026-10-26",
@@ -860,7 +860,7 @@
   "kind": "release",
   "start": "2026-10-26",
   "end": "2026-11-22",
-  "day": 13,
+  "day": 14,
   "days": 28,
   "closed": 30,
   "points": 75,
@@ -882,7 +882,7 @@
    {
     "status": "Ready for Development",
     "open": 19,
-    "med_age": 25.3,
+    "med_age": 25.4,
     "max_age": 243.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -895,7 +895,7 @@
     "status": "In Development",
     "open": 8,
     "med_age": 11.7,
-    "max_age": 33.4,
+    "max_age": 33.5,
     "worst_key": "EDW-2375",
     "worst_sum": "Member Adoption Report",
     "worst_who": "Shruti  Kulkarni",
@@ -904,7 +904,7 @@
     "clear_n": 189
    },
    {
-    "status": "In Progress",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -912,8 +912,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -928,7 +928,7 @@
     "clear_n": 4
    },
    {
-    "status": "PR Merged",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -936,8 +936,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
    },
    {
     "status": "In Stage",
@@ -964,6 +976,18 @@
     "clear_n": 61
    },
    {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -973,18 +997,6 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
     "clear_n": 2
    },
    {
@@ -998,23 +1010,11 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
    }
   ],
   "parked": {
-   "Backlog": 59,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 59
   },
   "open_total": 27,
   "stale": 21,
