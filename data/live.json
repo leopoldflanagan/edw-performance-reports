@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T15:36:17Z",
+ "generated": "2026-11-09T15:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 15,
-    "points": 39,
+    "n": 14,
+    "points": 36,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 24,
-   "sprint": 42,
+   "ready": 23,
+   "sprint": 45,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -411,7 +411,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 15,
+    "n": 14,
     "items": [
      {
       "key": "EDW-2530",
@@ -420,10 +420,6 @@
      {
       "key": "EDW-2527",
       "summary": "Dashboard - Organization Plans - Total Active Plans Count Increases by 5 When Pu"
-     },
-     {
-      "key": "EDW-2524",
-      "summary": "Dashboard - Office Plans - Active Primary Members Count Increases by 5 Instead o"
      },
      {
       "key": "EDW-2522",
@@ -444,6 +440,10 @@
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
@@ -622,10 +622,6 @@
       "summary": "Dashboard - Organization Plans - Total Active Plans Count Increases by 5 When Pu"
      },
      {
-      "key": "EDW-2524",
-      "summary": "Dashboard - Office Plans - Active Primary Members Count Increases by 5 Instead o"
-     },
-     {
       "key": "EDW-2522",
       "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
      },
@@ -644,6 +640,10 @@
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
      }
     ]
    },
@@ -757,17 +757,17 @@
   "start": "2026-10-26",
   "end": "2026-11-09",
   "goal": "",
-  "items": 52,
+  "items": 61,
   "items_done": 28,
   "committed": 112,
-  "final": 125,
+  "final": 134,
   "completed": 58,
-  "scope_change": 12,
+  "scope_change": 20,
   "vs_commitment": 52,
   "time_elapsed": 99,
   "spill": {
-   "open_items": 21,
-   "open_pts": 67.0,
+   "open_items": 24,
+   "open_pts": 76.0,
    "out_items": 0,
    "out_pts": 0,
    "done_pts": 56.0
@@ -778,12 +778,12 @@
    "pct": 46,
    "from": "EDW-Sprint 24-26"
   },
-  "spill_rate": 54,
+  "spill_rate": 58,
   "dist": {
-   "Ready for Development": 4,
+   "Backlog": 23,
+   "Ready for Development": 6,
+   "In Development": 6,
    "Closed": 25,
-   "Backlog": 17,
-   "In Development": 5,
    "Awaiting Review": 1
   },
   "burn": [
@@ -801,7 +801,7 @@
    78.0,
    78.0,
    78.0,
-   67.0
+   76.0
   ],
   "scope": [
    108.0,
@@ -818,7 +818,7 @@
    125.0,
    125.0,
    125.0,
-   125.0
+   134.0
   ],
   "ghost": [
    106.0,
@@ -835,7 +835,7 @@
    78.0,
    78.0,
    78.0,
-   67.0
+   76.0
   ],
   "days": 14,
   "day": 14,
@@ -884,20 +884,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 24,
-    "med_age": 22.3,
+    "open": 23,
+    "med_age": 26.0,
     "max_age": 244.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 3.3,
-    "clear_n": 159
+    "clear_n": 160
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 4.0,
+    "open": 8,
+    "med_age": 2.0,
     "max_age": 19.1,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
@@ -907,7 +907,7 @@
     "clear_n": 194
    },
    {
-    "status": "Ready Prod",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -915,8 +915,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "WAITING REVIEW",
@@ -943,42 +943,6 @@
     "clear_n": 3
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -989,6 +953,18 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
    },
    {
     "status": "PR Created",
@@ -1003,6 +979,18 @@
     "clear_n": 4
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -1013,11 +1001,23 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 58,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 58
   },
   "open_total": 31,
   "stale": 19,
