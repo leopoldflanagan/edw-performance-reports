@@ -29,7 +29,8 @@
    ]
   ],
   "sprints": [
-   "EDW-Sprint 25-26"
+   "EDW-Sprint 25-26",
+   "EDW-Sprint 26-26"
   ],
   "unp_items": [
    [
@@ -69,7 +70,7 @@
    "Oct 26",
    "Nov 9",
    61,
-   29,
+   30,
    112,
    134,
    61,
@@ -89,6 +90,7 @@
     78.0,
     78.0,
     78.0,
+    73.0,
     73.0
    ],
    [
@@ -106,14 +108,34 @@
     125.0,
     125.0,
     125.0,
+    134.0,
     134.0
+   ]
+  ],
+  [
+   "EDW-Sprint 26-26",
+   "Nov 9",
+   "Nov 24",
+   40,
+   5,
+   87,
+   87,
+   0,
+   0,
+   [
+    87.0,
+    87.0
+   ],
+   [
+    87.0,
+    87.0
    ]
   ]
  ],
  "SPILL": {
   "EDW-Sprint 25-26": {
    "done": [
-    29,
+    30,
     59
    ],
    "open": [
@@ -130,6 +152,26 @@
    ],
    "in_pct": 46,
    "in_from": "EDW-Sprint 24-26"
+  },
+  "EDW-Sprint 26-26": {
+   "done": [
+    5,
+    0
+   ],
+   "open": [
+    26,
+    84
+   ],
+   "out": [
+    1,
+    3
+   ],
+   "in": [
+    17,
+    45
+   ],
+   "in_pct": 52,
+   "in_from": "EDW-Sprint 25-26"
   }
  },
  "SPLIT": {
@@ -137,7 +179,8 @@
    "react": 1,
    "plan": 10,
    "pct": 9
-  }
+  },
+  "EDW-Sprint 26-26": null
  },
  "TIS": {
   "EDW-Sprint 25-26": {
@@ -152,32 +195,67 @@
     },
     "Ready for Development": {
      "n": 16,
-     "med": 0.26
+     "med": 0.28
     },
     "In Development": {
-     "n": 33,
-     "med": 0.18
+     "n": 34,
+     "med": 0.19
     },
     "Closed": {
-     "n": 27,
-     "med": 7.07
+     "n": 28,
+     "med": 6.0
     },
     "Awaiting Review": {
-     "n": 9,
-     "med": 7.11
+     "n": 13,
+     "med": 4.0
     }
    },
    "dist": {
-    "Backlog": 21,
+    "Backlog": 16,
     "In Development": 5,
     "Awaiting Review": 5,
-    "Ready for Development": 4,
+    "Ready for Development": 9,
     "Closed": 26
    },
    "stalled": 23,
    "worst": 13.82,
    "worstSt": "To Do",
    "items": 61
+  },
+  "EDW-Sprint 26-26": {
+   "tis": {
+    "Backlog": {
+     "n": 22,
+     "med": 14.45
+    },
+    "In Development": {
+     "n": 7,
+     "med": 14.45
+    },
+    "Awaiting Review": {
+     "n": 5,
+     "med": 14.45
+    },
+    "Ready for Development": {
+     "n": 11,
+     "med": 14.45
+    },
+    "Closed": {
+     "n": 1,
+     "med": 14.45
+    }
+   },
+   "dist": {
+    "Backlog": 16,
+    "In Development": 7,
+    "Awaiting Review": 5,
+    "Ready for Development": 11,
+    "Closed": 1
+   },
+   "stalled": 39,
+   "worst": 14.45,
+   "worstSt": "In Development",
+   "items": 40
   }
  },
  "GHOST": {
@@ -196,7 +274,12 @@
    78.0,
    78.0,
    78.0,
+   73.0,
    73.0
+  ],
+  "EDW-Sprint 26-26": [
+   87.0,
+   87.0
   ]
  },
  "CAP": {
