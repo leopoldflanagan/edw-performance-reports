@@ -168,11 +168,11 @@
     }
    },
    "dist": {
-    "Backlog": 23,
+    "Backlog": 22,
     "Ready for Development": 5,
-    "In Development": 6,
+    "Awaiting Review": 4,
     "Closed": 26,
-    "Awaiting Review": 1
+    "In Development": 4
    },
    "stalled": 23,
    "worst": 13.82,
