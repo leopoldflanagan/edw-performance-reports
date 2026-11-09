@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T19:45:19Z",
+ "generated": "2026-11-09T20:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 33,
+    "n": 12,
+    "points": 30,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,8 +368,8 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
-   "sprint": 45,
+   "ready": 21,
+   "sprint": 44,
    "sprint_name": "EDW-Sprint 25-26"
   },
   "blocking": [
@@ -411,12 +411,8 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 12,
     "items": [
-     {
-      "key": "EDW-2530",
-      "summary": "Dashboard - Plan Sales Goal Percentage Displays 2% Instead of 1%  After a plan i"
-     },
      {
       "key": "EDW-2522",
       "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
@@ -444,6 +440,10 @@
      {
       "key": "EDW-2360",
       "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
+     },
+     {
+      "key": "EDW-2145",
+      "summary": "Analyzing data/records from dynamics and Platform and compare them"
      }
     ]
    },
@@ -572,7 +572,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 44,
+    "n": 43,
     "items": [
      {
       "key": "EDW-2520",
@@ -611,12 +611,8 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 47,
+    "n": 46,
     "items": [
-     {
-      "key": "EDW-2530",
-      "summary": "Dashboard - Plan Sales Goal Percentage Displays 2% Instead of 1%  After a plan i"
-     },
      {
       "key": "EDW-2522",
       "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
@@ -644,13 +640,17 @@
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 62 of 62 items. This reads as a field the team does not use rather than 62 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 62,
+    "why": "missing on 61 of 61 items. This reads as a field the team does not use rather than 61 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 61,
     "items": []
    },
    {
@@ -766,10 +766,10 @@
   "vs_commitment": 54,
   "time_elapsed": 100,
   "spill": {
-   "open_items": 23,
-   "open_pts": 73.0,
-   "out_items": 0,
-   "out_pts": 0,
+   "open_items": 22,
+   "open_pts": 70.0,
+   "out_items": 1,
+   "out_pts": 3.0,
    "done_pts": 59.0
   },
   "recv": {
@@ -780,11 +780,11 @@
   },
   "spill_rate": 55,
   "dist": {
-   "Backlog": 22,
-   "Ready for Development": 5,
-   "Awaiting Review": 4,
-   "Closed": 26,
-   "In Development": 4
+   "Backlog": 21,
+   "In Development": 4,
+   "Awaiting Review": 5,
+   "Ready for Development": 4,
+   "Closed": 26
   },
   "burn": [
    106.0,
@@ -884,20 +884,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 26.7,
+    "open": 21,
+    "med_age": 27.2,
     "max_age": 245.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
     "clear_med": 3.3,
-    "clear_n": 159
+    "clear_n": 160
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 8.7,
+    "open": 7,
+    "med_age": 4.2,
     "max_age": 19.2,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
@@ -907,7 +907,7 @@
     "clear_n": 195
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -915,8 +915,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 4
    },
    {
     "status": "Awaiting Review",
@@ -943,7 +943,43 @@
     "clear_n": 2
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -965,42 +1001,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
    },
    {
     "status": "On Hold",

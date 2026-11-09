@@ -117,12 +117,12 @@
     59
    ],
    "open": [
-    23,
-    73
+    22,
+    70
    ],
    "out": [
-    0,
-    0
+    1,
+    3
    ],
    "in": [
     18,
@@ -168,11 +168,11 @@
     }
    },
    "dist": {
-    "Backlog": 22,
-    "Ready for Development": 5,
-    "Awaiting Review": 4,
-    "Closed": 26,
-    "In Development": 4
+    "Backlog": 21,
+    "In Development": 5,
+    "Awaiting Review": 5,
+    "Ready for Development": 4,
+    "Closed": 26
    },
    "stalled": 23,
    "worst": 13.82,
