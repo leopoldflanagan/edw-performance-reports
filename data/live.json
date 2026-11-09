@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-09T15:15:21Z",
+ "generated": "2026-11-09T15:30:24Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -318,18 +318,18 @@
    "points": 8
   },
   "misfiled": {
-   "items": 5,
-   "points": 16
+   "items": 4,
+   "points": 13
   },
   "runway": 0.1,
-  "runway_if_fixed": 0.4,
+  "runway_if_fixed": 0.3,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
   "violations": [
    {
     "rule": "Groomed but still in Backlog",
-    "n": 5,
-    "points": 16,
+    "n": 4,
+    "points": 13,
     "why": "the guide: an item cannot be Groomed and remain in Backlog. This work is ready and invisible to planning."
    },
    {
@@ -531,7 +531,7 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 12,
+    "n": 11,
     "items": [
      {
       "key": "EDW-2513",
@@ -558,12 +558,12 @@
       "summary": "Unified MSW-based testing"
      },
      {
-      "key": "EDW-2414",
-      "summary": "[Accounting] - Patterson rev share not matching Plan Activity Data - F32"
-     },
-     {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
      }
     ]
    }
@@ -782,8 +782,8 @@
   "dist": {
    "Ready for Development": 4,
    "Closed": 25,
-   "Backlog": 18,
-   "In Development": 4,
+   "Backlog": 17,
+   "In Development": 5,
    "Awaiting Review": 1
   },
   "burn": [
@@ -896,8 +896,8 @@
    },
    {
     "status": "In Development",
-    "open": 6,
-    "med_age": 8.4,
+    "open": 7,
+    "med_age": 4.0,
     "max_age": 19.0,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
@@ -905,6 +905,54 @@
     "over": 3,
     "clear_med": 1.8,
     "clear_n": 194
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Merged",
@@ -931,7 +979,7 @@
     "clear_n": 3
    },
    {
-    "status": "PR Created",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -939,8 +987,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "In Progress",
@@ -953,54 +1001,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "Ready Prod",
@@ -1017,9 +1017,9 @@
   ],
   "parked": {
    "Deferred": 2,
-   "Backlog": 62
+   "Backlog": 61
   },
-  "open_total": 27,
+  "open_total": 28,
   "stale": 19,
   "worst": "Ready for Development"
  }
