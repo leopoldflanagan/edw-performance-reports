@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T22:35:23Z",
+ "generated": "2026-11-10T22:45:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -796,8 +796,8 @@
    {
     "status": "Ready for Development",
     "open": 26,
-    "med_age": 19.5,
-    "max_age": 246.1,
+    "med_age": 19.6,
+    "max_age": 246.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -809,7 +809,7 @@
     "status": "In Development",
     "open": 8,
     "med_age": 3.3,
-    "max_age": 20.3,
+    "max_age": 20.4,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
     "worst_who": "Jeff Schniederjan",
@@ -818,7 +818,7 @@
     "clear_n": 194
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -826,8 +826,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
    },
    {
     "status": "On Hold",
@@ -866,7 +890,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -874,20 +898,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -900,18 +912,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    },
    {
     "status": "PR Created",
