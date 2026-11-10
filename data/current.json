@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 38,
+  "closed": 39,
   "discarded": 1,
-  "resolved": 39,
-  "unplanned": 9,
-  "unp_pct": 23.7,
+  "resolved": 40,
+  "unplanned": 10,
+  "unp_pct": 25.6,
   "types": [
    [
     "Story",
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    8
+    9
    ],
    [
     "Task",
@@ -36,6 +36,10 @@
    [
     "EDW-2540",
     "Add Patterson Sales Rep column to All Offices page in Onboarding dashboard"
+   ],
+   [
+    "EDW-2530",
+    "Dashboard - Plan Sales Goal Percentage Displays 2% Instead of 1%  After a plan is purchased and upgraded."
    ],
    [
     "EDW-2527",
@@ -74,10 +78,10 @@
   "day": 10,
   "days": 28,
   "status": "risk",
-  "headline": "38 items closed in the first 10 days, a pace of about 106 for the month against 59 last month. Unplanned work at 23.7% of everything closed.",
+  "headline": "39 items closed in the first 10 days, a pace of about 109 for the month against 59 last month. Unplanned work at 25.6% of everything closed.",
   "notes": [
-   "unplanned work at 23.7% of everything closed",
-   "cycle time median 3.1d and average 67.8d, both past the healthy band"
+   "unplanned work at 25.6% of everything closed",
+   "cycle time median 3.0d and average 65.8d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -107,7 +111,7 @@
     78.0,
     78.0,
     73.0,
-    67.0
+    64.0
    ],
    [
     108.0,
@@ -133,14 +137,14 @@
    "Nov 9",
    "Nov 24",
    41,
-   9,
+   11,
    88,
    88,
-   7,
+   10,
    0,
    [
     87.0,
-    81.0
+    78.0
    ],
    [
     87.0,
@@ -171,12 +175,12 @@
   },
   "EDW-Sprint 26-26": {
    "done": [
-    9,
-    7
+    11,
+    10
    ],
    "open": [
-    23,
-    78
+    22,
+    75
    ],
    "out": [
     1,
@@ -227,9 +231,9 @@
     }
    },
    "dist": {
-    "Awaiting Review": 5,
-    "Backlog": 15,
-    "Closed": 28,
+    "Awaiting Review": 4,
+    "Closed": 30,
+    "Backlog": 14,
     "In Development": 6,
     "Ready for Development": 7
    },
@@ -249,12 +253,12 @@
      "med": 14.45
     },
     "Closed": {
-     "n": 5,
-     "med": 13.59
+     "n": 7,
+     "med": 13.57
     },
     "Awaiting Review": {
      "n": 8,
-     "med": 13.57
+     "med": 7.23
     },
     "Ready for Development": {
      "n": 11,
@@ -262,13 +266,13 @@
     }
    },
    "dist": {
-    "Closed": 5,
-    "Awaiting Review": 5,
-    "Backlog": 15,
+    "Closed": 7,
+    "Awaiting Review": 4,
+    "Backlog": 14,
     "In Development": 8,
     "Ready for Development": 8
    },
-   "stalled": 36,
+   "stalled": 34,
    "worst": 14.45,
    "worstSt": "In Development",
    "items": 41
@@ -291,29 +295,29 @@
    78.0,
    78.0,
    73.0,
-   67.0
+   64.0
   ],
   "EDW-Sprint 26-26": [
    87.0,
-   81.0
+   78.0
   ]
  },
  "CAP": {
   "9.10": [
-   38,
-   33,
-   96,
+   39,
+   34,
+   99,
    5
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 3.06,
-   "avg": 67.77,
-   "n": 33,
+   "med": 2.98,
+   "avg": 65.8,
+   "n": 34,
    "mx": 727.77,
    "nodev": 5,
-   "base": 38
+   "base": 39
   }
  },
  "complete": false,
