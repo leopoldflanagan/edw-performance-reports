@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T15:15:22Z",
+ "generated": "2026-11-10T15:30:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 18,
+    "n": 17,
     "points": 51,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -361,7 +361,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 27,
+   "ready": 25,
    "sprint": 26,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -374,10 +374,6 @@
      {
       "key": "EDW-2520",
       "summary": "Pre-Prod CSP/PP reports not displaying data"
-     },
-     {
-      "key": "EDW-2519",
-      "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
      },
      {
       "key": "EDW-2515",
@@ -396,6 +392,10 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
+      "key": "EDW-2519",
+      "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
+     },
+     {
       "key": "EDW-2439",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      }
@@ -404,15 +404,11 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 18,
+    "n": 17,
     "items": [
      {
       "key": "EDW-2522",
       "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
-     },
-     {
-      "key": "EDW-2519",
-      "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
      },
      {
       "key": "EDW-2517",
@@ -437,6 +433,10 @@
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
      }
     ]
    },
@@ -556,10 +556,6 @@
       "summary": "Pre-Prod CSP/PP reports not displaying data"
      },
      {
-      "key": "EDW-2519",
-      "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
-     },
-     {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
      },
@@ -582,6 +578,10 @@
      {
       "key": "EDW-2434",
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2407",
+      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
      }
     ]
    },
@@ -630,10 +630,6 @@
     "n": 7,
     "items": [
      {
-      "key": "EDW-2375",
-      "summary": "Member Adoption Report"
-     },
-     {
       "key": "EDW-2145",
       "summary": "Analyzing data/records from dynamics and Platform and compare them"
      },
@@ -652,6 +648,10 @@
      {
       "key": "EDW-2388",
       "summary": "Smile Brands Reporting"
+     },
+     {
+      "key": "EDW-2375",
+      "summary": "Member Adoption Report"
      },
      {
       "key": "EDW-1733",
@@ -717,9 +717,9 @@
   "spill_rate": null,
   "dist": {
    "Backlog": 15,
-   "In Development": 7,
+   "In Development": 9,
    "Awaiting Review": 5,
-   "Ready for Development": 11,
+   "Ready for Development": 9,
    "Closed": 1
   },
   "burn": [
@@ -781,20 +781,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 27,
-    "med_age": 18.9,
+    "open": 25,
+    "med_age": 19.6,
     "max_age": 245.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
     "clear_med": 3.9,
-    "clear_n": 155
+    "clear_n": 157
    },
    {
     "status": "In Development",
-    "open": 7,
-    "med_age": 5.0,
+    "open": 9,
+    "med_age": 1.0,
     "max_age": 20.0,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
@@ -802,6 +802,30 @@
     "over": 3,
     "clear_med": 2.0,
     "clear_n": 188
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "Awaiting Review",
@@ -816,7 +840,7 @@
     "clear_n": 113
    },
    {
-    "status": "On Hold",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -824,8 +848,44 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Stage",
@@ -849,66 +909,6 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
     "clear_n": 2
    }
   ],
