@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T18:45:20Z",
+ "generated": "2026-11-10T19:00:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 17,
-    "points": 51,
+    "n": 18,
+    "points": 54,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 25,
+   "ready": 26,
    "sprint": 27,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -415,8 +415,12 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 17,
+    "n": 18,
     "items": [
+     {
+      "key": "EDW-2543",
+      "summary": "Auto Renewal Retry \\ Failure notification email is not sent after all retry atte"
+     },
      {
       "key": "EDW-2522",
       "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
@@ -444,10 +448,6 @@
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
-     },
-     {
-      "key": "EDW-2405",
-      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
      }
     ]
    },
@@ -598,14 +598,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 37 of 44 items. This reads as a field the team does not use rather than 37 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 37,
+    "why": "missing on 38 of 45 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 44 of 44 items. This reads as a field the team does not use rather than 44 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 44,
+    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 45,
     "items": []
    },
    {
@@ -792,30 +792,30 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 25,
-    "med_age": 19.7,
+    "open": 26,
+    "med_age": 19.4,
     "max_age": 246.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
-    "clear_med": 3.6,
-    "clear_n": 160
+    "clear_med": 3.9,
+    "clear_n": 161
    },
    {
     "status": "In Development",
     "open": 8,
-    "med_age": 3.1,
+    "med_age": 3.2,
     "max_age": 20.2,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
     "worst_who": "Jeff Schniederjan",
     "over": 3,
-    "clear_med": 1.9,
-    "clear_n": 193
+    "clear_med": 1.8,
+    "clear_n": 194
    },
    {
-    "status": "New",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -823,8 +823,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 117
    },
    {
     "status": "Ready Prod",
@@ -836,18 +860,6 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
     "clear_n": 2
    },
    {
@@ -863,7 +875,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -871,32 +883,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 117
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -911,7 +899,7 @@
     "clear_n": 4
    },
    {
-    "status": "PR Merged",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -921,13 +909,25 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
    "Backlog": 56,
    "Deferred": 2
   },
-  "open_total": 33,
+  "open_total": 34,
   "stale": 20,
   "worst": "Ready for Development"
  }
