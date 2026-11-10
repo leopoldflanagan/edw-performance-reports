@@ -219,9 +219,9 @@
     }
    },
    "dist": {
-    "Backlog": 16,
-    "In Development": 7,
-    "Awaiting Review": 5,
+    "Awaiting Review": 7,
+    "Backlog": 15,
+    "In Development": 6,
     "Closed": 26,
     "Ready for Development": 7
    },
@@ -245,7 +245,7 @@
      "med": 13.6
     },
     "Awaiting Review": {
-     "n": 6,
+     "n": 8,
      "med": 14.45
     },
     "Ready for Development": {
@@ -255,9 +255,9 @@
    },
    "dist": {
     "Closed": 3,
-    "Backlog": 16,
-    "In Development": 9,
-    "Awaiting Review": 5,
+    "Awaiting Review": 7,
+    "Backlog": 15,
+    "In Development": 8,
     "Ready for Development": 8
    },
    "stalled": 38,
