@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-10T16:35:51Z",
+ "generated": "2026-11-10T16:45:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -353,15 +353,22 @@
   ]
  },
  "projection": {
-  "too_early": true,
+  "too_early": false,
   "day": 2,
   "days": 15,
   "n": 21,
-  "why": "nothing has closed yet, so there is no rate to project from"
+  "done_now": 1,
+  "committed": 88,
+  "lo": 5,
+  "mid": 7,
+  "hi": 10,
+  "pct": 8,
+  "verdict": "well short of the commitment",
+  "share_mid": 0.148
  },
  "admin": {
   "scope": {
-   "ready": 25,
+   "ready": 24,
    "sprint": 27,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -371,10 +378,6 @@
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
     "n": 7,
     "items": [
-     {
-      "key": "EDW-2520",
-      "summary": "Pre-Prod CSP/PP reports not displaying data"
-     },
      {
       "key": "EDW-2515",
       "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
@@ -390,6 +393,10 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2520",
+      "summary": "Pre-Prod CSP/PP reports not displaying data"
      },
      {
       "key": "EDW-2519",
@@ -520,12 +527,8 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 6,
+    "n": 5,
     "items": [
-     {
-      "key": "EDW-2540",
-      "summary": "Add Patterson Sales Rep column to All Offices page in Onboarding dashboard"
-     },
      {
       "key": "EDW-2513",
       "summary": "Stories with states (I)"
@@ -556,10 +559,6 @@
     "n": 31,
     "items": [
      {
-      "key": "EDW-2520",
-      "summary": "Pre-Prod CSP/PP reports not displaying data"
-     },
-     {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
      },
@@ -586,6 +585,10 @@
      {
       "key": "EDW-2407",
       "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "2.2: PDS supplemental report carve-out (exclude TPA plans) + mutual-exclusivity "
      }
     ]
    },
@@ -698,19 +701,19 @@
   "end": "2026-11-24",
   "goal": "",
   "items": 41,
-  "items_done": 5,
+  "items_done": 6,
   "committed": 88,
   "final": 88,
-  "completed": 0,
+  "completed": 1,
   "scope_change": 0,
-  "vs_commitment": 0,
+  "vs_commitment": 1,
   "time_elapsed": 6,
   "spill": {
-   "open_items": 27,
-   "open_pts": 85.0,
+   "open_items": 26,
+   "open_pts": 84.0,
    "out_items": 1,
    "out_pts": 3.0,
-   "done_pts": 0
+   "done_pts": 1.0
   },
   "recv": {
    "items": 17,
@@ -720,15 +723,15 @@
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 16,
+   "Closed": 2,
+   "Backlog": 15,
    "In Development": 8,
    "Awaiting Review": 6,
-   "Ready for Development": 9,
-   "Closed": 1
+   "Ready for Development": 9
   },
   "burn": [
    87.0,
-   88.0
+   87.0
   ],
   "scope": [
    87.0,
@@ -736,7 +739,7 @@
   ],
   "ghost": [
    87.0,
-   88.0
+   87.0
   ],
   "days": 15,
   "day": 2,
@@ -766,10 +769,10 @@
   "end": "2026-11-22",
   "day": 16,
   "days": 28,
-  "closed": 34,
-  "points": 89,
-  "unplanned": 5,
-  "unplanned_pct": 14.7,
+  "closed": 35,
+  "points": 90,
+  "unplanned": 6,
+  "unplanned_pct": 17.1,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -785,30 +788,30 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 25,
-    "med_age": 19.6,
+    "open": 24,
+    "med_age": 23.4,
     "max_age": 245.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 17,
     "clear_med": 3.9,
-    "clear_n": 156
+    "clear_n": 157
    },
    {
     "status": "In Development",
-    "open": 8,
-    "med_age": 3.1,
+    "open": 9,
+    "med_age": 1.1,
     "max_age": 20.1,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
     "worst_who": "Jeff Schniederjan",
     "over": 3,
     "clear_med": 2.0,
-    "clear_n": 188
+    "clear_n": 189
    },
    {
-    "status": "In Stage",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -816,8 +819,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "WAITING REVIEW",
@@ -832,7 +835,7 @@
     "clear_n": 2
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -840,8 +843,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Merged",
@@ -868,6 +871,18 @@
     "clear_n": 4
    },
    {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -878,18 +893,6 @@
     "over": 0,
     "clear_med": 344.9,
     "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -904,7 +907,7 @@
     "clear_n": 113
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -912,13 +915,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
    }
   ],
   "parked": {
-   "Backlog": 56,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 55
   },
   "open_total": 33,
   "stale": 20,
