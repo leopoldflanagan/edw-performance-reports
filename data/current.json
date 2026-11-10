@@ -233,7 +233,7 @@
      "med": 14.45
     },
     "Awaiting Review": {
-     "n": 5,
+     "n": 6,
      "med": 14.45
     },
     "Ready for Development": {
@@ -247,8 +247,8 @@
    },
    "dist": {
     "Backlog": 16,
-    "In Development": 9,
-    "Awaiting Review": 5,
+    "In Development": 8,
+    "Awaiting Review": 6,
     "Ready for Development": 9,
     "Closed": 1
    },
