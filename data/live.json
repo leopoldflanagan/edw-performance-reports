@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T22:35:42Z",
+ "generated": "2026-11-11T22:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -799,8 +799,8 @@
    {
     "status": "Ready for Development",
     "open": 27,
-    "med_age": 20.2,
-    "max_age": 247.1,
+    "med_age": 20.3,
+    "max_age": 247.2,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -812,7 +812,7 @@
     "status": "In Development",
     "open": 8,
     "med_age": 4.3,
-    "max_age": 21.3,
+    "max_age": 21.4,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
     "worst_who": "Jeff Schniederjan",
@@ -833,19 +833,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "In Stage",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -881,7 +869,19 @@
     "clear_n": 2
    },
    {
-    "status": "PR Merged",
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -905,7 +905,7 @@
     "clear_n": 4
    },
    {
-    "status": "Ready Prod",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -913,8 +913,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -930,8 +930,8 @@
    }
   ],
   "parked": {
-   "Backlog": 57,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 57
   },
   "open_total": 35,
   "stale": 21,
