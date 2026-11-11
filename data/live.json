@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-11T17:00:41Z",
+ "generated": "2026-11-11T17:10:03Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 18,
+    "n": 19,
     "points": 54,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 26,
+   "ready": 27,
    "sprint": 27,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -376,8 +376,12 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 8,
+    "n": 9,
     "items": [
+     {
+      "key": "EDW-2548",
+      "summary": "Plan showing for two active plans"
+     },
      {
       "key": "EDW-2541",
       "summary": "Prevent over-billing of dependents on renewal due to incorrect PrimaryPlan_Id"
@@ -405,18 +409,18 @@
      {
       "key": "EDW-2519",
       "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
-     },
-     {
-      "key": "EDW-2439",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Pre-Migration Email"
      }
     ]
    },
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 18,
+    "n": 19,
     "items": [
+     {
+      "key": "EDW-2548",
+      "summary": "Plan showing for two active plans"
+     },
      {
       "key": "EDW-2543",
       "summary": "Auto Renewal Retry \\ Failure notification email is not sent after all retry atte"
@@ -444,10 +448,6 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2407",
-      "summary": "2.3: Register CREG Supplemental Payment report in CSP with daily refresh"
      }
     ]
    },
@@ -598,14 +598,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 38 of 45 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 38,
+    "why": "missing on 39 of 46 items. This reads as a field the team does not use rather than 39 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 39,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 45 of 45 items. This reads as a field the team does not use rather than 45 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 45,
+    "why": "missing on 46 of 46 items. This reads as a field the team does not use rather than 46 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 46,
     "items": []
    },
    {
@@ -795,8 +795,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 26,
-    "med_age": 20.4,
+    "open": 27,
+    "med_age": 20.0,
     "max_age": 246.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -818,7 +818,7 @@
     "clear_n": 192
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -826,8 +826,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 1.0,
+    "clear_n": 116
    },
    {
     "status": "In Stage",
@@ -854,7 +854,7 @@
     "clear_n": 4
    },
    {
-    "status": "On Hold",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -862,20 +862,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "Ready Prod",
@@ -902,7 +890,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -910,11 +898,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 116
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
-    "status": "PR Merged",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -922,15 +910,27 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 56
+   "Backlog": 56,
+   "Deferred": 2
   },
-  "open_total": 34,
+  "open_total": 35,
   "stale": 21,
   "worst": "Ready for Development"
  }
