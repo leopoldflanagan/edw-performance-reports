@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 39,
+  "closed": 40,
   "discarded": 1,
-  "resolved": 40,
+  "resolved": 41,
   "unplanned": 10,
-  "unp_pct": 25.6,
+  "unp_pct": 25.0,
   "types": [
    [
     "Story",
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    9
+    10
    ],
    [
     "Task",
@@ -78,10 +78,10 @@
   "day": 11,
   "days": 28,
   "status": "risk",
-  "headline": "39 items closed in the first 11 days, a pace of about 99 for the month against 59 last month. Unplanned work at 25.6% of everything closed.",
+  "headline": "40 items closed in the first 11 days, a pace of about 102 for the month against 59 last month. Unplanned work at 25.0% of everything closed.",
   "notes": [
-   "unplanned work at 25.6% of everything closed",
-   "cycle time median 3.0d and average 65.8d, both past the healthy band"
+   "unplanned work at 25.0% of everything closed",
+   "cycle time median 2.9d and average 63.9d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -136,8 +136,8 @@
    "EDW-Sprint 26-26",
    "Nov 9",
    "Nov 24",
-   41,
-   11,
+   42,
+   12,
    93,
    93,
    10,
@@ -179,7 +179,7 @@
   },
   "EDW-Sprint 26-26": {
    "done": [
-    11,
+    12,
     10
    ],
    "open": [
@@ -204,7 +204,11 @@
    "plan": 6,
    "pct": 45
   },
-  "EDW-Sprint 26-26": null
+  "EDW-Sprint 26-26": {
+   "react": 0,
+   "plan": 1,
+   "pct": 0
+  }
  },
  "TIS": {
   "EDW-Sprint 25-26": {
@@ -248,17 +252,17 @@
   },
   "EDW-Sprint 26-26": {
    "tis": {
+    "In Development": {
+     "n": 12,
+     "med": 14.05
+    },
+    "Closed": {
+     "n": 8,
+     "med": 13.57
+    },
     "Backlog": {
      "n": 23,
      "med": 14.45
-    },
-    "In Development": {
-     "n": 11,
-     "med": 14.45
-    },
-    "Closed": {
-     "n": 7,
-     "med": 13.57
     },
     "Awaiting Review": {
      "n": 8,
@@ -270,7 +274,7 @@
     }
    },
    "dist": {
-    "Closed": 7,
+    "Closed": 8,
     "Awaiting Review": 4,
     "Backlog": 14,
     "In Development": 8,
@@ -278,8 +282,8 @@
    },
    "stalled": 34,
    "worst": 14.45,
-   "worstSt": "In Development",
-   "items": 41
+   "worstSt": "Ready for Development",
+   "items": 42
   }
  },
  "GHOST": {
@@ -310,7 +314,7 @@
  },
  "CAP": {
   "9.10": [
-   39,
+   40,
    35,
    102,
    5
@@ -318,12 +322,12 @@
  },
  "CYC": {
   "9.10": {
-   "med": 2.98,
-   "avg": 65.8,
-   "n": 34,
+   "med": 2.91,
+   "avg": 63.92,
+   "n": 35,
    "mx": 727.77,
    "nodev": 5,
-   "base": 39
+   "base": 40
   }
  },
  "complete": false,
