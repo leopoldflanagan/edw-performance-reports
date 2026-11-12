@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-12T20:45:18Z",
+ "generated": "2026-11-12T21:00:31Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -369,7 +369,7 @@
  "admin": {
   "scope": {
    "ready": 25,
-   "sprint": 31,
+   "sprint": 28,
    "sprint_name": "EDW-Sprint 26-26"
   },
   "blocking": [
@@ -469,38 +469,18 @@
    {
     "rule": "No assignee in the active sprint",
     "why": "work in the sprint that nobody owns.",
-    "n": 6,
+    "n": 1,
     "items": [
      {
       "key": "EDW-2492",
       "summary": "PDS Daily files delimiting change"
-     },
-     {
-      "key": "EDW-2407",
-      "summary": "CREG HR Report"
-     },
-     {
-      "key": "EDW-2405",
-      "summary": "PDS CREG Supplemental Payment Report"
-     },
-     {
-      "key": "EDW-2403",
-      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
-     },
-     {
-      "key": "EDW-2394",
-      "summary": "1.2: Build the shared CREG-scoped report base result (23 fields)"
-     },
-     {
-      "key": "EDW-2392",
-      "summary": "1.3: (EDW) rpt_CregHrReport - MRN-only HR projection"
      }
     ]
    },
    {
     "rule": "Open dependency",
     "why": "the guide: Definition of Ready means no open dependencies.",
-    "n": 4,
+    "n": 2,
     "items": [
      {
       "key": "EDW-2434",
@@ -509,14 +489,6 @@
      {
       "key": "EDW-2503",
       "summary": "ACH auto-renewal decline email not sent \u2013 add AchReturnLog as a source to the WF"
-     },
-     {
-      "key": "EDW-2403",
-      "summary": "2.1: rpt_CregSupplementalPayment - CREG-scoped supplemental projection"
-     },
-     {
-      "key": "EDW-2392",
-      "summary": "1.3: (EDW) rpt_CregHrReport - MRN-only HR projection"
      }
     ]
    },
@@ -552,7 +524,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 35,
+    "n": 32,
     "items": [
      {
       "key": "EDW-2551",
@@ -590,14 +562,14 @@
    },
    {
     "rule": "Original estimate is not in use",
-    "why": "missing on 41 of 50 items. This reads as a field the team does not use rather than 41 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 41,
+    "why": "missing on 38 of 47 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 38,
     "items": []
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 50 of 50 items. This reads as a field the team does not use rather than 50 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 50,
+    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
@@ -700,8 +672,8 @@
   "start": "2026-11-09",
   "end": "2026-11-24",
   "goal": "",
-  "items": 45,
-  "items_done": 13,
+  "items": 42,
+  "items_done": 12,
   "committed": 96,
   "final": 99,
   "completed": 11,
@@ -711,9 +683,9 @@
   "spill": {
    "open_items": 21,
    "open_pts": 74.0,
-   "out_items": 1,
-   "out_pts": 3.0,
-   "done_pts": 22.0
+   "out_items": 4,
+   "out_pts": 14.0,
+   "done_pts": 11.0
   },
   "recv": {
    "items": 17,
@@ -725,10 +697,9 @@
   "dist": {
    "In Development": 9,
    "Ready for Development": 6,
-   "Closed": 9,
+   "Closed": 10,
    "Awaiting Review": 4,
-   "Backlog": 13,
-   "Won't Do": 3
+   "Backlog": 9
   },
   "burn": [
    95.0,
@@ -833,7 +804,7 @@
     "clear_n": 4
    },
    {
-    "status": "PR Merged",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -841,32 +812,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 115
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "On Hold",
@@ -881,7 +828,7 @@
     "clear_n": 16
    },
    {
-    "status": "Ready Prod",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -889,8 +836,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "In Progress",
@@ -905,18 +864,6 @@
     "clear_n": 5
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "In Stage",
     "open": 0,
     "med_age": 0,
@@ -927,6 +874,30 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 115
    }
   ],
   "parked": {
