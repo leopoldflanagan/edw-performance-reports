@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T21:08:42Z",
+ "generated": "2026-11-13T21:15:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,7 +334,7 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 14,
+    "n": 15,
     "points": 33,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 22,
+   "ready": 23,
    "sprint": 28,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -376,8 +376,12 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 9,
+    "n": 10,
     "items": [
+     {
+      "key": "EDW-2557",
+      "summary": "Legacy West Dental - Missing Historical Member Data"
+     },
      {
       "key": "EDW-2548",
       "summary": "Plan showing for two active plans"
@@ -405,18 +409,18 @@
      {
       "key": "EDW-2549",
       "summary": "Request for October Daily Deposit Report"
-     },
-     {
-      "key": "EDW-2520",
-      "summary": "Pre-Prod CSP/PP reports not displaying data"
      }
     ]
    },
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 14,
+    "n": 15,
     "items": [
+     {
+      "key": "EDW-2557",
+      "summary": "Legacy West Dental - Missing Historical Member Data"
+     },
      {
       "key": "EDW-2548",
       "summary": "Plan showing for two active plans"
@@ -444,10 +448,6 @@
      {
       "key": "EDW-2484",
       "summary": "CREG - Pull data and create Model"
-     },
-     {
-      "key": "EDW-2437",
-      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
@@ -524,8 +524,12 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 32,
+    "n": 33,
     "items": [
+     {
+      "key": "EDW-2557",
+      "summary": "Legacy West Dental - Missing Historical Member Data"
+     },
      {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
@@ -553,23 +557,52 @@
      {
       "key": "EDW-2379",
       "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
-     },
-     {
-      "key": "EDW-2373",
-      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
    {
-    "rule": "Original estimate is not in use",
-    "why": "missing on 38 of 47 items. This reads as a field the team does not use rather than 38 oversights. Worth deciding: adopt it or stop asking for it.",
+    "rule": "No original estimate",
+    "why": "time tracking is empty, so effort cannot be compared to points.",
     "n": 38,
-    "items": []
+    "items": [
+     {
+      "key": "EDW-2548",
+      "summary": "Plan showing for two active plans"
+     },
+     {
+      "key": "EDW-2543",
+      "summary": "Auto Renewal Retry \\ Failure notification email is not sent after all retry atte"
+     },
+     {
+      "key": "EDW-2541",
+      "summary": "Prevent over-billing of dependents on renewal due to incorrect PrimaryPlan_Id"
+     },
+     {
+      "key": "EDW-2522",
+      "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
+     },
+     {
+      "key": "EDW-2517",
+      "summary": "Netsuite QA of integration"
+     },
+     {
+      "key": "EDW-2515",
+      "summary": "Include Weekly updates in the Phase 4 Day 0 Welcome email list"
+     },
+     {
+      "key": "EDW-2485",
+      "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
+     }
+    ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 47,
+    "why": "missing on 48 of 48 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 48,
     "items": []
    },
    {
@@ -772,8 +805,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 22,
-    "med_age": 30.8,
+    "open": 23,
+    "med_age": 30.3,
     "max_age": 249.1,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -795,7 +828,7 @@
     "clear_n": 189
    },
    {
-    "status": "In Progress",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -803,56 +836,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 1.0,
+    "clear_n": 113
    },
    {
     "status": "New",
@@ -867,7 +852,7 @@
     "clear_n": 61
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -875,8 +860,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 113
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
    },
    {
     "status": "In Stage",
@@ -891,7 +900,7 @@
     "clear_n": 3
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -900,14 +909,38 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 60
   },
-  "open_total": 33,
+  "open_total": 34,
   "stale": 21,
   "worst": "Ready for Development"
  }
