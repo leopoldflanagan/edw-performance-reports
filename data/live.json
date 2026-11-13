@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T13:00:28Z",
+ "generated": "2026-11-13T13:10:20Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -771,7 +771,7 @@
     "status": "Ready for Development",
     "open": 25,
     "med_age": 22.5,
-    "max_age": 248.7,
+    "max_age": 248.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
@@ -782,14 +782,26 @@
    {
     "status": "In Development",
     "open": 9,
-    "med_age": 3.9,
-    "max_age": 22.9,
+    "med_age": 4.0,
+    "max_age": 23.0,
     "worst_key": "EDW-2388",
     "worst_sum": "Smile Brands Reporting",
     "worst_who": "Jeff Schniederjan",
     "over": 4,
     "clear_med": 1.9,
     "clear_n": 190
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Merged",
@@ -804,18 +816,6 @@
     "clear_n": 3
    },
    {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -828,7 +828,7 @@
     "clear_n": 113
    },
    {
-    "status": "In Stage",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -836,8 +836,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "New",
@@ -850,6 +850,18 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Ready Prod",
@@ -876,7 +888,7 @@
     "clear_n": 4
    },
    {
-    "status": "In Progress",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -884,20 +896,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
+    "clear_med": 0.0,
+    "clear_n": 3
    }
   ],
   "parked": {
