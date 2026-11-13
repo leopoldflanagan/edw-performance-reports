@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T22:45:21Z",
+ "generated": "2026-11-13T23:00:28Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -712,7 +712,7 @@
   "completed": 11,
   "scope_change": 3,
   "vs_commitment": 11,
-  "time_elapsed": 28,
+  "time_elapsed": 29,
   "spill": {
    "open_items": 21,
    "open_pts": 74.0,
@@ -840,30 +840,6 @@
     "clear_n": 113
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -874,42 +850,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    },
    {
     "status": "On Hold",
@@ -934,6 +874,66 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 4
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    }
   ],
   "parked": {
