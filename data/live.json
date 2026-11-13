@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T15:10:19Z",
+ "generated": "2026-11-13T15:15:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 25,
+   "ready": 24,
    "sprint": 28,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -527,10 +527,6 @@
     "n": 32,
     "items": [
      {
-      "key": "EDW-2551",
-      "summary": "[Smile Brands] - SFTP file, extra columns requested by Brianna"
-     },
-     {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
      },
@@ -557,6 +553,10 @@
      {
       "key": "EDW-2407",
       "summary": "CREG HR Report"
+     },
+     {
+      "key": "EDW-2405",
+      "summary": "PDS CREG Supplemental Payment Report"
      }
     ]
    },
@@ -696,10 +696,10 @@
   "spill_rate": null,
   "dist": {
    "In Development": 9,
-   "Ready for Development": 6,
    "Closed": 11,
-   "Awaiting Review": 4,
-   "Backlog": 8
+   "Awaiting Review": 5,
+   "Backlog": 8,
+   "Ready for Development": 5
   },
   "burn": [
    95.0,
@@ -769,63 +769,27 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 25,
-    "med_age": 22.6,
+    "open": 24,
+    "med_age": 26.3,
     "max_age": 248.8,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 18,
     "clear_med": 3.0,
-    "clear_n": 157
+    "clear_n": 156
    },
    {
     "status": "In Development",
     "open": 9,
     "med_age": 4.0,
-    "max_age": 23.0,
-    "worst_key": "EDW-2388",
-    "worst_sum": "Smile Brands Reporting",
-    "worst_who": "Jeff Schniederjan",
-    "over": 4,
+    "max_age": 17.8,
+    "worst_key": "EDW-2492",
+    "worst_sum": "PDS Daily files delimiting change",
+    "worst_who": "unassigned",
+    "over": 3,
     "clear_med": 1.9,
-    "clear_n": 190
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 113
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_n": 189
    },
    {
     "status": "WAITING REVIEW",
@@ -840,6 +804,42 @@
     "clear_n": 2
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "In Stage",
     "open": 0,
     "med_age": 0,
@@ -850,6 +850,18 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 113
    },
    {
     "status": "On Hold",
@@ -864,7 +876,7 @@
     "clear_n": 16
    },
    {
-    "status": "New",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -872,8 +884,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "In Progress",
@@ -886,26 +898,14 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
    }
   ],
   "parked": {
    "Deferred": 2,
    "Backlog": 58
   },
-  "open_total": 34,
-  "stale": 22,
+  "open_total": 33,
+  "stale": 21,
   "worst": "Ready for Development"
  }
 }
