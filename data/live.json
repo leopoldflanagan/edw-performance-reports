@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T23:35:08Z",
+ "generated": "2026-11-13T23:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -818,7 +818,7 @@
    {
     "status": "In Development",
     "open": 11,
-    "med_age": 3.3,
+    "med_age": 3.4,
     "max_age": 18.1,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
@@ -826,6 +826,18 @@
     "over": 3,
     "clear_med": 1.9,
     "clear_n": 189
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "PR Created",
@@ -852,7 +864,7 @@
     "clear_n": 3
    },
    {
-    "status": "On Hold",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -860,20 +872,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "PR Merged",
@@ -888,7 +888,7 @@
     "clear_n": 3
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -896,11 +896,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
+    "clear_med": 344.9,
     "clear_n": 2
    },
    {
-    "status": "In Progress",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -908,8 +908,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -924,7 +924,7 @@
     "clear_n": 113
    },
    {
-    "status": "Ready Prod",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -932,13 +932,13 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 60
+   "Backlog": 60,
+   "Deferred": 2
   },
   "open_total": 34,
   "stale": 21,
