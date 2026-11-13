@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T16:15:21Z",
+ "generated": "2026-11-13T16:30:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 16,
-    "points": 43,
+    "n": 14,
+    "points": 33,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 24,
+   "ready": 22,
    "sprint": 28,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -415,7 +415,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 16,
+    "n": 14,
     "items": [
      {
       "key": "EDW-2548",
@@ -551,12 +551,12 @@
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      },
      {
-      "key": "EDW-2407",
-      "summary": "CREG HR Report"
+      "key": "EDW-2379",
+      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
      },
      {
-      "key": "EDW-2405",
-      "summary": "PDS CREG Supplemental Payment Report"
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
@@ -695,11 +695,11 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 9,
+   "In Development": 11,
    "Closed": 11,
    "Awaiting Review": 5,
    "Backlog": 8,
-   "Ready for Development": 5
+   "Ready for Development": 3
   },
   "burn": [
    95.0,
@@ -769,20 +769,20 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 24,
-    "med_age": 26.4,
+    "open": 22,
+    "med_age": 30.6,
     "max_age": 248.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 18,
     "clear_med": 3.0,
-    "clear_n": 156
+    "clear_n": 158
    },
    {
     "status": "In Development",
-    "open": 9,
-    "med_age": 4.0,
+    "open": 11,
+    "med_age": 3.1,
     "max_age": 17.8,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
@@ -790,18 +790,6 @@
     "over": 3,
     "clear_med": 1.9,
     "clear_n": 189
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
    },
    {
     "status": "Ready Prod",
@@ -816,7 +804,7 @@
     "clear_n": 2
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -824,32 +812,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 113
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "PR Merged",
@@ -864,6 +828,18 @@
     "clear_n": 3
    },
    {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -874,6 +850,18 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 113
    },
    {
     "status": "In Stage",
@@ -888,7 +876,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -896,8 +884,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    }
   ],
   "parked": {
