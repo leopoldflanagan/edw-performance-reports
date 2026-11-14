@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-13T23:45:22Z",
+ "generated": "2026-11-14T00:00:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -354,17 +354,17 @@
  },
  "projection": {
   "too_early": false,
-  "day": 5,
+  "day": 6,
   "days": 15,
   "n": 21,
   "done_now": 11,
   "committed": 96,
   "lo": 28,
-  "mid": 35,
+  "mid": 32,
   "hi": 43,
-  "pct": 36,
+  "pct": 33,
   "verdict": "well short of the commitment",
-  "share_mid": 0.317
+  "share_mid": 0.346
  },
  "admin": {
   "scope": {
@@ -759,7 +759,7 @@
    88.0
   ],
   "days": 15,
-  "day": 5,
+  "day": 6,
   "capacity": {
    "release": "9.10",
    "start": "2026-11-09",
@@ -784,7 +784,7 @@
   "kind": "release",
   "start": "2026-10-26",
   "end": "2026-11-22",
-  "day": 19,
+  "day": 20,
   "days": 28,
   "closed": 41,
   "points": 103,
@@ -828,7 +828,7 @@
     "clear_n": 189
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -836,8 +836,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "PR Created",
@@ -852,18 +852,6 @@
     "clear_n": 4
    },
    {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -876,30 +864,6 @@
     "clear_n": 5
    },
    {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -910,6 +874,18 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "Awaiting Review",
@@ -934,6 +910,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    }
   ],
   "parked": {
