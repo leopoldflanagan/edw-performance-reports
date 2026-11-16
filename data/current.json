@@ -249,11 +249,11 @@
     }
    },
    "dist": {
-    "Awaiting Review": 6,
+    "Awaiting Review": 7,
     "Closed": 32,
     "Backlog": 9,
     "In Development": 6,
-    "Ready for Development": 2
+    "Ready for Development": 1
    },
    "stalled": 17,
    "worst": 13.82,
@@ -279,20 +279,20 @@
      "med": 13.52
     },
     "Awaiting Review": {
-     "n": 10,
-     "med": 9.11
+     "n": 11,
+     "med": 7.57
     }
    },
    "dist": {
-    "Ready for Development": 4,
+    "Ready for Development": 3,
     "Closed": 12,
     "In Development": 12,
-    "Awaiting Review": 6,
+    "Awaiting Review": 7,
     "Backlog": 9
    },
    "stalled": 31,
-   "worst": 9.11,
-   "worstSt": "Awaiting Review",
+   "worst": 7.57,
+   "worstSt": "In Development",
    "items": 43
   }
  },
