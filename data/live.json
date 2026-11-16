@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T17:15:21Z",
+ "generated": "2026-11-16T17:30:27Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 15,
-    "points": 34,
+    "n": 13,
+    "points": 29,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -358,18 +358,18 @@
   "days": 15,
   "n": 21,
   "done_now": 14,
-  "committed": 85,
+  "committed": 86,
   "lo": 26,
   "mid": 32,
   "hi": 38,
-  "pct": 38,
+  "pct": 37,
   "verdict": "well short of the commitment",
   "share_mid": 0.436
  },
  "admin": {
   "scope": {
-   "ready": 24,
-   "sprint": 30,
+   "ready": 21,
+   "sprint": 32,
    "sprint_name": "EDW-Sprint 26-26"
   },
   "blocking": [
@@ -415,7 +415,7 @@
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 15,
+    "n": 13,
     "items": [
      {
       "key": "EDW-2557",
@@ -430,10 +430,6 @@
       "summary": "Auto Renewal Retry \\ Failure notification email is not sent after all retry atte"
      },
      {
-      "key": "EDW-2522",
-      "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
-     },
-     {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
      },
@@ -446,20 +442,20 @@
       "summary": "Kalendar Org - missing email"
      },
      {
-      "key": "EDW-2484",
-      "summary": "CREG - Pull data and create Model"
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
+     },
+     {
+      "key": "EDW-2360",
+      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
    {
     "rule": "AdHoc without the unplanned label",
     "why": "the guide does not allow it. Unlabelled reactive work is why the reactive share cannot be measured.",
-    "n": 2,
+    "n": 1,
     "items": [
-     {
-      "key": "EDW-2379",
-      "summary": "EDW - Create Power BI Table for Inactive Member Expired Plan Windback Email"
-     },
      {
       "key": "EDW-2552",
       "summary": "Savings field issue and Analysis "
@@ -524,7 +520,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 34,
+    "n": 33,
     "items": [
      {
       "key": "EDW-2558",
@@ -547,23 +543,23 @@
       "summary": "Kalendar Org - missing email"
      },
      {
-      "key": "EDW-2484",
-      "summary": "CREG - Pull data and create Model"
-     },
-     {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
       "key": "EDW-2434",
       "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
+     },
+     {
+      "key": "EDW-2373",
+      "summary": "script for MemberNotes ingestion"
      }
     ]
    },
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 39,
+    "n": 38,
     "items": [
      {
       "key": "EDW-2558",
@@ -582,10 +578,6 @@
       "summary": "Prevent over-billing of dependents on renewal due to incorrect PrimaryPlan_Id"
      },
      {
-      "key": "EDW-2522",
-      "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
-     },
-     {
       "key": "EDW-2517",
       "summary": "Netsuite QA of integration"
      },
@@ -596,23 +588,31 @@
      {
       "key": "EDW-2485",
       "summary": "Kalendar Org - missing email"
+     },
+     {
+      "key": "EDW-2463",
+      "summary": "EDW Ambetter development"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 49 of 49 items. This reads as a field the team does not use rather than 49 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 49,
+    "why": "missing on 48 of 48 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 48,
     "items": []
    },
    {
     "rule": "Assignee is not on the roster",
     "why": "the capacity page lists the team; this work is assigned outside it.",
-    "n": 6,
+    "n": 8,
     "items": [
      {
       "key": "EDW-2552",
       "summary": "Savings field issue and Analysis "
+     },
+     {
+      "key": "EDW-2522",
+      "summary": "EDW Story-  Limit the Resend Welcome on Demand query to resend requests from the"
      },
      {
       "key": "EDW-2503",
@@ -621,6 +621,10 @@
      {
       "key": "EDW-2502",
       "summary": "Patients are receiving emails that their credit card on File has been charged wh"
+     },
+     {
+      "key": "EDW-2484",
+      "summary": "CREG - Pull data and create Model"
      },
      {
       "key": "EDW-2463",
@@ -705,64 +709,64 @@
   "start": "2026-11-09",
   "end": "2026-11-24",
   "goal": "",
-  "items": 41,
+  "items": 43,
   "items_done": 13,
-  "committed": 85,
-  "final": 91,
+  "committed": 86,
+  "final": 97,
   "completed": 14,
-  "scope_change": 7,
+  "scope_change": 13,
   "vs_commitment": 16,
   "time_elapsed": 48,
   "spill": {
-   "open_items": 22,
-   "open_pts": 74.0,
+   "open_items": 24,
+   "open_pts": 80.0,
    "out_items": 1,
    "out_pts": 3.0,
    "done_pts": 14.0
   },
   "recv": {
    "items": 14,
-   "pts": 39,
-   "pct": 46,
+   "pts": 40,
+   "pct": 47,
    "from": "EDW-Sprint 25-26"
   },
   "spill_rate": null,
   "dist": {
    "Ready for Development": 5,
    "Closed": 12,
-   "In Development": 10,
-   "Awaiting Review": 5,
+   "In Development": 11,
+   "Awaiting Review": 6,
    "Backlog": 8
   },
   "burn": [
-   84.0,
-   75.0,
-   75.0,
-   77.0,
-   77.0,
-   77.0,
-   77.0,
-   77.0
+   85.0,
+   76.0,
+   76.0,
+   78.0,
+   78.0,
+   78.0,
+   78.0,
+   83.0
   ],
   "scope": [
-   84.0,
    85.0,
-   85.0,
-   88.0,
-   88.0,
-   88.0,
-   88.0,
-   91.0
+   86.0,
+   86.0,
+   89.0,
+   89.0,
+   89.0,
+   89.0,
+   97.0
   ],
   "ghost": [
-   84.0,
-   75.0,
-   75.0,
-   77.0,
-   77.0,
-   77.0,
-   77.0,
-   77.0
+   85.0,
+   76.0,
+   76.0,
+   78.0,
+   78.0,
+   78.0,
+   78.0,
+   83.0
   ],
   "days": 15,
   "day": 8,
@@ -792,10 +796,10 @@
   "end": "2026-11-22",
   "day": 22,
   "days": 28,
-  "closed": 42,
-  "points": 106,
+  "closed": 43,
+  "points": 109,
   "unplanned": 10,
-  "unplanned_pct": 23.8,
+  "unplanned_pct": 23.3,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -811,27 +815,39 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 24,
-    "med_age": 29.4,
+    "open": 21,
+    "med_age": 34.1,
     "max_age": 251.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 19,
-    "clear_med": 3.3,
-    "clear_n": 152
+    "over": 16,
+    "clear_med": 3.8,
+    "clear_n": 153
    },
    {
     "status": "In Development",
-    "open": 10,
-    "med_age": 6.6,
+    "open": 11,
+    "med_age": 6.0,
     "max_age": 20.8,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
     "worst_who": "unassigned",
-    "over": 5,
+    "over": 4,
     "clear_med": 1.9,
-    "clear_n": 187
+    "clear_n": 186
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
    },
    {
     "status": "In Stage",
@@ -844,6 +860,30 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
@@ -870,7 +910,7 @@
     "clear_n": 16
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -878,7 +918,19 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
     "clear_n": 2
    },
    {
@@ -892,62 +944,14 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
    }
   ],
   "parked": {
-   "Backlog": 59,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 59
   },
-  "open_total": 34,
-  "stale": 24,
+  "open_total": 32,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
