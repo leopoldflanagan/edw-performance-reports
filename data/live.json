@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T06:29:00Z",
+ "generated": "2026-11-16T06:30:21Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -834,7 +834,7 @@
     "clear_n": 186
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -842,8 +842,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 112
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "WAITING REVIEW",
@@ -858,7 +858,7 @@
     "clear_n": 2
    },
    {
-    "status": "In Stage",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -866,11 +866,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
-    "status": "Ready Prod",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -878,20 +878,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_med": 1.0,
+    "clear_n": 112
    },
    {
     "status": "On Hold",
@@ -918,6 +906,18 @@
     "clear_n": 4
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "PR Merged",
     "open": 0,
     "med_age": 0,
@@ -930,7 +930,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -938,8 +938,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
