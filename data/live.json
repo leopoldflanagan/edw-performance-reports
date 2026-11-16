@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T18:00:30Z",
+ "generated": "2026-11-16T18:14:11Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,7 +314,7 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 4,
+   "items": 3,
    "points": 8
   },
   "misfiled": {
@@ -340,7 +340,7 @@
    },
    {
     "rule": "Groomed items with no estimate",
-    "n": 2,
+    "n": 1,
     "points": 0,
     "why": "the guide: a Groomed item must be estimated."
    },
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 21,
+   "ready": 20,
    "sprint": 32,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -376,15 +376,11 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 9,
+    "n": 8,
     "items": [
      {
       "key": "EDW-2557",
       "summary": "Legacy West Dental - Missing Historical Member Data"
-     },
-     {
-      "key": "EDW-2541",
-      "summary": "Prevent over-billing of dependents on renewal due to incorrect PrimaryPlan_Id"
      },
      {
       "key": "EDW-2515",
@@ -409,6 +405,10 @@
      {
       "key": "EDW-2520",
       "summary": "Pre-Prod CSP/PP reports not displaying data"
+     },
+     {
+      "key": "EDW-2519",
+      "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
      }
     ]
    },
@@ -559,7 +559,7 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 38,
+    "n": 37,
     "items": [
      {
       "key": "EDW-2558",
@@ -572,10 +572,6 @@
      {
       "key": "EDW-2543",
       "summary": "Auto Renewal Retry \\ Failure notification email is not sent after all retry atte"
-     },
-     {
-      "key": "EDW-2541",
-      "summary": "Prevent over-billing of dependents on renewal due to incorrect PrimaryPlan_Id"
      },
      {
       "key": "EDW-2517",
@@ -592,13 +588,17 @@
      {
       "key": "EDW-2463",
       "summary": "EDW Ambetter development"
+     },
+     {
+      "key": "EDW-2437",
+      "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 48 of 48 items. This reads as a field the team does not use rather than 48 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 48,
+    "why": "missing on 47 of 47 items. This reads as a field the team does not use rather than 47 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 47,
     "items": []
    },
    {
@@ -796,10 +796,10 @@
   "end": "2026-11-22",
   "day": 22,
   "days": 28,
-  "closed": 43,
+  "closed": 44,
   "points": 109,
   "unplanned": 10,
-  "unplanned_pct": 23.3,
+  "unplanned_pct": 22.7,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -815,7 +815,7 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 21,
+    "open": 20,
     "med_age": 34.1,
     "max_age": 252.0,
     "worst_key": "EDW-1599",
@@ -823,7 +823,7 @@
     "worst_who": "Jeff Schniederjan",
     "over": 16,
     "clear_med": 3.8,
-    "clear_n": 153
+    "clear_n": 154
    },
    {
     "status": "In Development",
@@ -838,6 +838,42 @@
     "clear_n": 186
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
     "status": "New",
     "open": 0,
     "med_age": 0,
@@ -848,6 +884,30 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 112
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "WAITING REVIEW",
@@ -884,73 +944,13 @@
     "over": 0,
     "clear_med": 344.9,
     "clear_n": 2
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 112
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    }
   ],
   "parked": {
    "Deferred": 2,
    "Backlog": 59
   },
-  "open_total": 32,
+  "open_total": 31,
   "stale": 20,
   "worst": "Ready for Development"
  }
