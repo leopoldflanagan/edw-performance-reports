@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-16T21:10:12Z",
+ "generated": "2026-11-16T21:15:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -831,7 +831,7 @@
    {
     "status": "In Development",
     "open": 12,
-    "med_age": 4.7,
+    "med_age": 4.8,
     "max_age": 21.0,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
@@ -839,6 +839,30 @@
     "over": 4,
     "clear_med": 1.9,
     "clear_n": 184
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "Awaiting Review",
@@ -853,7 +877,7 @@
     "clear_n": 111
    },
    {
-    "status": "Ready Prod",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -861,8 +885,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    },
    {
     "status": "WAITING REVIEW",
@@ -889,7 +937,7 @@
     "clear_n": 61
    },
    {
-    "status": "In Progress",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -897,56 +945,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 344.9,
+    "clear_n": 2
    }
   ],
   "parked": {
