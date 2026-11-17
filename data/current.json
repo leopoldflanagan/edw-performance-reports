@@ -136,12 +136,12 @@
    "EDW-Sprint 26-26",
    "Nov 9",
    "Nov 24",
-   44,
+   46,
    14,
    86,
-   97,
+   98,
    17,
-   13,
+   14,
    [
     85.0,
     76.0,
@@ -151,7 +151,7 @@
     78.0,
     78.0,
     83.0,
-    80.0
+    81.0
    ],
    [
     85.0,
@@ -162,7 +162,7 @@
     89.0,
     89.0,
     97.0,
-    97.0
+    98.0
    ]
   ]
  ],
@@ -193,8 +193,8 @@
     17
    ],
    "open": [
-    24,
-    77
+    25,
+    78
    ],
    "out": [
     1,
@@ -216,8 +216,8 @@
   },
   "EDW-Sprint 26-26": {
    "react": 1,
-   "plan": 7,
-   "pct": 12
+   "plan": 8,
+   "pct": 11
   }
  },
  "TIS": {
@@ -262,17 +262,21 @@
   },
   "EDW-Sprint 26-26": {
    "tis": {
+    "To Do": {
+     "n": 1,
+     "med": 7.8
+    },
     "Ready for Development": {
-     "n": 12,
-     "med": 2.42
+     "n": 13,
+     "med": 3.84
+    },
+    "Backlog": {
+     "n": 19,
+     "med": 6.65
     },
     "In Development": {
      "n": 22,
      "med": 7.42
-    },
-    "Backlog": {
-     "n": 18,
-     "med": 8.75
     },
     "Closed": {
      "n": 13,
@@ -284,16 +288,16 @@
     }
    },
    "dist": {
-    "Ready for Development": 3,
+    "Ready for Development": 4,
+    "Backlog": 10,
     "In Development": 12,
     "Closed": 13,
-    "Awaiting Review": 7,
-    "Backlog": 9
+    "Awaiting Review": 7
    },
-   "stalled": 31,
-   "worst": 7.42,
-   "worstSt": "In Development",
-   "items": 44
+   "stalled": 33,
+   "worst": 7.8,
+   "worstSt": "To Do",
+   "items": 46
   }
  },
  "GHOST": {
@@ -324,7 +328,7 @@
    78.0,
    78.0,
    83.0,
-   80.0
+   81.0
   ]
  },
  "CAP": {
