@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T17:35:41Z",
+ "generated": "2026-11-17T17:45:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -824,7 +824,7 @@
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
-    "over": 15,
+    "over": 16,
     "clear_med": 3.6,
     "clear_n": 154
    },
@@ -841,7 +841,7 @@
     "clear_n": 183
    },
    {
-    "status": "PR Created",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -850,7 +850,19 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
+    "clear_n": 3
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
    },
    {
     "status": "New",
@@ -877,18 +889,6 @@
     "clear_n": 3
    },
    {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
     "status": "On Hold",
     "open": 0,
     "med_age": 0,
@@ -913,7 +913,19 @@
     "clear_n": 2
    },
    {
-    "status": "In Stage",
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -922,7 +934,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 3
+    "clear_n": 4
    },
    {
     "status": "PR Merged",
@@ -935,26 +947,14 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
    }
   ],
   "parked": {
-   "Backlog": 59,
+   "Backlog": 60,
    "Deferred": 2
   },
   "open_total": 33,
-  "stale": 19,
+  "stale": 20,
   "worst": "Ready for Development"
  }
 }
