@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 47,
+  "closed": 48,
   "discarded": 1,
-  "resolved": 48,
-  "unplanned": 10,
-  "unp_pct": 21.3,
+  "resolved": 49,
+  "unplanned": 11,
+  "unp_pct": 22.9,
   "types": [
    [
     "Story",
-    29
+    30
    ],
    [
     "Bug",
@@ -33,6 +33,10 @@
    "EDW-Sprint 26-26"
   ],
   "unp_items": [
+   [
+    "EDW-2567",
+    "[Compliance] - Investigate syncing of monthly office maximum"
+   ],
    [
     "EDW-2540",
     "Add Patterson Sales Rep column to All Offices page in Onboarding dashboard"
@@ -78,10 +82,10 @@
   "day": 17,
   "days": 28,
   "status": "risk",
-  "headline": "47 items closed in the first 17 days, a pace of about 77 for the month against 59 last month. Unplanned work at 21.3% of everything closed.",
+  "headline": "48 items closed in the first 17 days, a pace of about 79 for the month against 59 last month. Unplanned work at 22.9% of everything closed.",
   "notes": [
-   "unplanned work at 21.3% of everything closed",
-   "cycle time median 3.4d and average 58.9d, both past the healthy band"
+   "unplanned work at 22.9% of everything closed",
+   "cycle time median 3.1d and average 57.5d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -137,10 +141,10 @@
    "Nov 9",
    "Nov 24",
    48,
-   15,
+   16,
    88,
    103,
-   22,
+   23,
    17,
    [
     85.0,
@@ -151,7 +155,7 @@
     78.0,
     78.0,
     83.0,
-    79.0
+    78.0
    ],
    [
     85.0,
@@ -189,12 +193,12 @@
   },
   "EDW-Sprint 26-26": {
    "done": [
-    15,
-    22
+    16,
+    23
    ],
    "open": [
-    26,
-    78
+    25,
+    77
    ],
    "out": [
     1,
@@ -266,6 +270,10 @@
      "n": 25,
      "med": 6.89
     },
+    "Closed": {
+     "n": 15,
+     "med": 12.33
+    },
     "Backlog": {
      "n": 20,
      "med": 3.04
@@ -278,23 +286,19 @@
      "n": 1,
      "med": 7.8
     },
-    "Closed": {
-     "n": 14,
-     "med": 12.93
-    },
     "Awaiting Review": {
      "n": 12,
      "med": 7.4
     }
    },
    "dist": {
-    "In Development": 14,
+    "Closed": 15,
+    "In Development": 13,
     "Ready for Development": 4,
-    "Closed": 14,
     "Awaiting Review": 7,
     "Backlog": 9
    },
-   "stalled": 34,
+   "stalled": 33,
    "worst": 7.8,
    "worstSt": "To Do",
    "items": 48
@@ -328,25 +332,25 @@
    80.0,
    80.0,
    85.0,
-   81.0
+   80.0
   ]
  },
  "CAP": {
   "9.10": [
-   47,
-   40,
-   117,
+   48,
+   41,
+   118,
    5
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 3.44,
-   "avg": 58.91,
-   "n": 40,
+   "med": 3.06,
+   "avg": 57.48,
+   "n": 41,
    "mx": 727.77,
    "nodev": 7,
-   "base": 47
+   "base": 48
   }
  },
  "complete": false,
