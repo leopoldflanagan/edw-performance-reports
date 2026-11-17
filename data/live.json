@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T19:00:27Z",
+ "generated": "2026-11-17T19:09:40Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -314,15 +314,15 @@
    "fat": "> 2.5 sprints"
   },
   "ready": {
-   "items": 2,
-   "points": 8
+   "items": 3,
+   "points": 11
   },
   "misfiled": {
    "items": 4,
    "points": 13
   },
-  "runway": 0.1,
-  "runway_if_fixed": 0.3,
+  "runway": 0.2,
+  "runway_if_fixed": 0.4,
   "state": "Skinny",
   "state_if_fixed": "Skinny",
   "violations": [
@@ -368,7 +368,7 @@
  },
  "admin": {
   "scope": {
-   "ready": 19,
+   "ready": 20,
    "sprint": 36,
    "sprint_name": "EDW-Sprint 26-26"
   },
@@ -559,8 +559,12 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 41,
+    "n": 42,
     "items": [
+     {
+      "key": "EDW-2568",
+      "summary": "Create Orgs for all the Practices under Unitasis"
+     },
      {
       "key": "EDW-2561",
       "summary": "WFP| Plans sales report showing duplicate amount for purchase and upgrade"
@@ -588,17 +592,13 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2434",
-      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 52 of 52 items. This reads as a field the team does not use rather than 52 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 52,
+    "why": "missing on 53 of 53 items. This reads as a field the team does not use rather than 53 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 53,
     "items": []
    },
    {
@@ -818,8 +818,8 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 35.1,
+    "open": 20,
+    "med_age": 35.2,
     "max_age": 253.0,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
@@ -841,6 +841,30 @@
     "clear_n": 184
    },
    {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
+   },
+   {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 3
+   },
+   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -853,7 +877,7 @@
     "clear_n": 2
    },
    {
-    "status": "Awaiting Review",
+    "status": "In Stage",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -861,8 +885,44 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "On Hold",
@@ -887,73 +947,13 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 61
   },
-  "open_total": 33,
+  "open_total": 34,
   "stale": 20,
   "worst": "Ready for Development"
  }
