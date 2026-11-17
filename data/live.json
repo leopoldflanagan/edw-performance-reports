@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T10:11:47Z",
+ "generated": "2026-11-17T10:15:26Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -716,7 +716,7 @@
   "completed": 17,
   "scope_change": 13,
   "vs_commitment": 20,
-  "time_elapsed": 52,
+  "time_elapsed": 53,
   "spill": {
    "open_items": 23,
    "open_pts": 77.0,
@@ -841,7 +841,7 @@
     "clear_n": 181
    },
    {
-    "status": "PR Created",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -850,19 +850,7 @@
     "worst_who": "",
     "over": 0,
     "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
+    "clear_n": 3
    },
    {
     "status": "New",
@@ -877,18 +865,6 @@
     "clear_n": 61
    },
    {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
     "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
@@ -901,6 +877,42 @@
     "clear_n": 109
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -911,18 +923,6 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    },
    {
     "status": "In Stage",
