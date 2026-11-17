@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T17:00:30Z",
+ "generated": "2026-11-17T17:10:44Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -716,7 +716,7 @@
   "completed": 17,
   "scope_change": 16,
   "vs_commitment": 19,
-  "time_elapsed": 54,
+  "time_elapsed": 55,
   "spill": {
    "open_items": 26,
    "open_pts": 82.0,
@@ -841,18 +841,6 @@
     "clear_n": 181
    },
    {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
-   },
-   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -865,30 +853,6 @@
     "clear_n": 2
    },
    {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -899,6 +863,18 @@
     "over": 0,
     "clear_med": 11.4,
     "clear_n": 2
+   },
+   {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "In Progress",
@@ -925,7 +901,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -933,8 +909,32 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
    },
    {
     "status": "PR Created",
@@ -950,8 +950,8 @@
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 59
+   "Backlog": 59,
+   "Deferred": 2
   },
   "open_total": 33,
   "stale": 20,
