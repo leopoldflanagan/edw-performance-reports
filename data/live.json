@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T16:45:21Z",
+ "generated": "2026-11-17T17:00:30Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -334,8 +334,8 @@
    },
    {
     "rule": "Idea/Draft sitting in Ready for Development",
-    "n": 13,
-    "points": 29,
+    "n": 14,
+    "points": 30,
     "why": "the guide: Idea/Draft cannot be Ready for Development. It counts as ready to pull when it is not defined."
    },
    {
@@ -358,25 +358,25 @@
   "days": 15,
   "n": 21,
   "done_now": 17,
-  "committed": 86,
+  "committed": 88,
   "lo": 30,
   "mid": 34,
   "hi": 37,
-  "pct": 40,
+  "pct": 39,
   "verdict": "well short of the commitment",
   "share_mid": 0.5
  },
  "admin": {
   "scope": {
-   "ready": 19,
-   "sprint": 34,
+   "ready": 20,
+   "sprint": 35,
    "sprint_name": "EDW-Sprint 26-26"
   },
   "blocking": [
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 9,
+    "n": 8,
     "items": [
      {
       "key": "EDW-2560",
@@ -403,20 +403,24 @@
       "summary": "Request for October Daily Deposit Report"
      },
      {
-      "key": "EDW-2520",
-      "summary": "Pre-Prod CSP/PP reports not displaying data"
-     },
-     {
       "key": "EDW-2519",
       "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
+     },
+     {
+      "key": "EDW-2502",
+      "summary": "Patients are receiving emails that their credit card on File has been charged wh"
      }
     ]
    },
    {
     "rule": "Idea/Draft in Ready for Development",
     "why": "the guide does not allow it: it counts as ready to pull when it is not defined.",
-    "n": 13,
+    "n": 14,
     "items": [
+     {
+      "key": "EDW-2561",
+      "summary": "WFP| Plans sales report showing duplicate amount for purchase and upgrade"
+     },
      {
       "key": "EDW-2559",
       "summary": "Member has 2 active plans in the system (OneSmile ) "
@@ -444,10 +448,6 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2360",
-      "summary": "Sales Report shows wrong payments Accounts due to wrong Practice ID in Dynamics"
      }
     ]
    },
@@ -491,12 +491,8 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 6,
+    "n": 5,
     "items": [
-     {
-      "key": "EDW-2561",
-      "summary": "WFP| Plans sales report showing duplicate amount for purchase and upgrade"
-     },
      {
       "key": "EDW-2513",
       "summary": "Stories with states (I)"
@@ -524,7 +520,7 @@
    {
     "rule": "No fix version",
     "why": "the release a delivery belongs to cannot be traced without it.",
-    "n": 35,
+    "n": 36,
     "items": [
      {
       "key": "EDW-2560",
@@ -563,8 +559,12 @@
    {
     "rule": "No original estimate",
     "why": "time tracking is empty, so effort cannot be compared to points.",
-    "n": 39,
+    "n": 40,
     "items": [
+     {
+      "key": "EDW-2561",
+      "summary": "WFP| Plans sales report showing duplicate amount for purchase and upgrade"
+     },
      {
       "key": "EDW-2560",
       "summary": "[Launch Loyalty] - Payment details pre-migration phase 2 orgs for Laryssa."
@@ -592,17 +592,13 @@
      {
       "key": "EDW-2437",
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
-     },
-     {
-      "key": "EDW-2434",
-      "summary": "EDW Task- Related to CRM Email Notification for Delinquent Account"
      }
     ]
    },
    {
     "rule": "Target end date is not in use",
-    "why": "missing on 50 of 50 items. This reads as a field the team does not use rather than 50 oversights. Worth deciding: adopt it or stop asking for it.",
-    "n": 50,
+    "why": "missing on 51 of 51 items. This reads as a field the team does not use rather than 51 oversights. Worth deciding: adopt it or stop asking for it.",
+    "n": 51,
     "items": []
    },
    {
@@ -713,34 +709,34 @@
   "start": "2026-11-09",
   "end": "2026-11-24",
   "goal": "",
-  "items": 46,
+  "items": 47,
   "items_done": 14,
-  "committed": 86,
-  "final": 98,
+  "committed": 88,
+  "final": 102,
   "completed": 17,
-  "scope_change": 14,
-  "vs_commitment": 20,
+  "scope_change": 16,
+  "vs_commitment": 19,
   "time_elapsed": 54,
   "spill": {
-   "open_items": 25,
-   "open_pts": 78.0,
+   "open_items": 26,
+   "open_pts": 82.0,
    "out_items": 1,
    "out_pts": 3.0,
    "done_pts": 17.0
   },
   "recv": {
    "items": 14,
-   "pts": 40,
-   "pct": 47,
+   "pts": 42,
+   "pct": 48,
    "from": "EDW-Sprint 25-26"
   },
   "spill_rate": null,
   "dist": {
-   "Ready for Development": 4,
-   "Backlog": 9,
-   "In Development": 12,
+   "In Development": 13,
+   "Ready for Development": 5,
    "Closed": 13,
-   "Awaiting Review": 7
+   "Awaiting Review": 7,
+   "Backlog": 8
   },
   "burn": [
    85.0,
@@ -751,7 +747,7 @@
    78.0,
    78.0,
    83.0,
-   81.0
+   83.0
   ],
   "scope": [
    85.0,
@@ -762,18 +758,18 @@
    89.0,
    89.0,
    97.0,
-   98.0
+   100.0
   ],
   "ghost": [
+   87.0,
+   78.0,
+   78.0,
+   80.0,
+   80.0,
+   80.0,
+   80.0,
    85.0,
-   76.0,
-   76.0,
-   78.0,
-   78.0,
-   78.0,
-   78.0,
-   83.0,
-   81.0
+   85.0
   ],
   "days": 15,
   "day": 9,
@@ -822,19 +818,19 @@
   "rows": [
    {
     "status": "Ready for Development",
-    "open": 19,
-    "med_age": 35.0,
+    "open": 20,
+    "med_age": 35.1,
     "max_age": 252.9,
     "worst_key": "EDW-1599",
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
     "clear_med": 3.8,
-    "clear_n": 151
+    "clear_n": 152
    },
    {
     "status": "In Development",
-    "open": 12,
+    "open": 13,
     "med_age": 4.0,
     "max_age": 21.8,
     "worst_key": "EDW-2492",
@@ -845,7 +841,7 @@
     "clear_n": 181
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -853,7 +849,19 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
+    "clear_med": 1.0,
+    "clear_n": 109
+   },
+   {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
     "clear_n": 2
    },
    {
@@ -881,6 +889,18 @@
     "clear_n": 16
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 11.4,
+    "clear_n": 2
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -891,30 +911,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
    },
    {
     "status": "PR Merged",
@@ -929,7 +925,7 @@
     "clear_n": 3
    },
    {
-    "status": "Ready Prod",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -937,8 +933,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "PR Created",
@@ -955,9 +951,9 @@
   ],
   "parked": {
    "Deferred": 2,
-   "Backlog": 60
+   "Backlog": 59
   },
-  "open_total": 31,
+  "open_total": 33,
   "stale": 20,
   "worst": "Ready for Development"
  }
