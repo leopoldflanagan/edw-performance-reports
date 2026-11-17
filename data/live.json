@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-17T17:15:27Z",
+ "generated": "2026-11-17T17:30:23Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 9,
   "days": 15,
   "n": 21,
-  "done_now": 17,
+  "done_now": 22,
   "committed": 88,
-  "lo": 30,
-  "mid": 34,
-  "hi": 37,
-  "pct": 39,
+  "lo": 39,
+  "mid": 44,
+  "hi": 48,
+  "pct": 50,
   "verdict": "well short of the commitment",
   "share_mid": 0.5
  },
@@ -710,19 +710,19 @@
   "end": "2026-11-24",
   "goal": "",
   "items": 47,
-  "items_done": 14,
+  "items_done": 15,
   "committed": 88,
   "final": 102,
-  "completed": 17,
+  "completed": 22,
   "scope_change": 16,
-  "vs_commitment": 19,
+  "vs_commitment": 25,
   "time_elapsed": 55,
   "spill": {
-   "open_items": 26,
-   "open_pts": 82.0,
+   "open_items": 25,
+   "open_pts": 77.0,
    "out_items": 1,
    "out_pts": 3.0,
-   "done_pts": 17.0
+   "done_pts": 22.0
   },
   "recv": {
    "items": 14,
@@ -732,9 +732,9 @@
   },
   "spill_rate": null,
   "dist": {
-   "In Development": 14,
+   "In Development": 13,
    "Ready for Development": 4,
-   "Closed": 13,
+   "Closed": 14,
    "Awaiting Review": 7,
    "Backlog": 8
   },
@@ -747,7 +747,7 @@
    78.0,
    78.0,
    83.0,
-   83.0
+   78.0
   ],
   "scope": [
    85.0,
@@ -769,7 +769,7 @@
    80.0,
    80.0,
    85.0,
-   85.0
+   80.0
   ],
   "days": 15,
   "day": 9,
@@ -799,10 +799,10 @@
   "end": "2026-11-22",
   "day": 23,
   "days": 28,
-  "closed": 46,
-  "points": 112,
+  "closed": 47,
+  "points": 117,
   "unplanned": 10,
-  "unplanned_pct": 21.7,
+  "unplanned_pct": 21.3,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -825,80 +825,20 @@
     "worst_sum": "LL Commission Model 5 - ADF pipeline",
     "worst_who": "Jeff Schniederjan",
     "over": 15,
-    "clear_med": 3.8,
-    "clear_n": 153
+    "clear_med": 3.6,
+    "clear_n": 154
    },
    {
     "status": "In Development",
     "open": 14,
-    "med_age": 4.0,
+    "med_age": 2.5,
     "max_age": 21.8,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
     "worst_who": "unassigned",
-    "over": 5,
+    "over": 4,
     "clear_med": 1.9,
-    "clear_n": 181
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "PR Created",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
+    "clear_n": 183
    },
    {
     "status": "Ready Prod",
@@ -925,6 +865,18 @@
     "clear_n": 3
    },
    {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
     "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
@@ -933,8 +885,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 11.4,
-    "clear_n": 2
+    "clear_med": 9.9,
+    "clear_n": 3
    },
    {
     "status": "New",
@@ -947,14 +899,62 @@
     "over": 0,
     "clear_med": 40.1,
     "clear_n": 61
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "In Progress",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 33.7,
+    "clear_n": 5
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 59
+   "Backlog": 59,
+   "Deferred": 2
   },
   "open_total": 33,
-  "stale": 20,
+  "stale": 19,
   "worst": "Ready for Development"
  }
 }
