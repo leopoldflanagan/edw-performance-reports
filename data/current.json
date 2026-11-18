@@ -9,11 +9,11 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 51,
+  "closed": 52,
   "discarded": 1,
-  "resolved": 52,
+  "resolved": 53,
   "unplanned": 11,
-  "unp_pct": 21.6,
+  "unp_pct": 21.2,
   "types": [
    [
     "Story",
@@ -21,7 +21,7 @@
    ],
    [
     "Bug",
-    15
+    16
    ],
    [
     "Task",
@@ -82,10 +82,10 @@
   "day": 18,
   "days": 28,
   "status": "risk",
-  "headline": "51 items closed in the first 18 days, a pace of about 79 for the month against 59 last month. Unplanned work at 21.6% of everything closed.",
+  "headline": "52 items closed in the first 18 days, a pace of about 81 for the month against 59 last month. Unplanned work at 21.2% of everything closed.",
   "notes": [
-   "unplanned work at 21.6% of everything closed",
-   "cycle time median 3.1d and average 55.6d, both past the healthy band"
+   "unplanned work at 21.2% of everything closed",
+   "cycle time median 3.4d and average 54.4d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -340,20 +340,20 @@
  },
  "CAP": {
   "9.10": [
-   51,
-   43,
-   125,
+   52,
+   44,
+   127,
    5
   ]
  },
  "CYC": {
   "9.10": {
-   "med": 3.06,
-   "avg": 55.57,
-   "n": 43,
+   "med": 3.44,
+   "avg": 54.42,
+   "n": 44,
    "mx": 727.77,
    "nodev": 8,
-   "base": 51
+   "base": 52
   }
  },
  "complete": false,
