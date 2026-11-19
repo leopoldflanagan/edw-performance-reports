@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T17:30:33Z",
+ "generated": "2026-11-19T17:36:10Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 11,
   "days": 15,
   "n": 21,
-  "done_now": 31,
-  "committed": 90,
-  "lo": 39,
-  "mid": 44,
-  "hi": 51,
-  "pct": 49,
+  "done_now": 35,
+  "committed": 92,
+  "lo": 44,
+  "mid": 49,
+  "hi": 58,
+  "pct": 53,
   "verdict": "well short of the commitment",
   "share_mid": 0.709
  },
@@ -376,7 +376,7 @@
    {
     "rule": "No estimate",
     "why": "the guide: a Groomed item must be estimated. Ready for Development without story points means planning is committing to an unknown.",
-    "n": 9,
+    "n": 8,
     "items": [
      {
       "key": "EDW-2557",
@@ -395,10 +395,6 @@
       "summary": "EDW - Prepare Phase 4 Batch IDs and Data for Day 0 Welcome Email"
      },
      {
-      "key": "EDW-2572",
-      "summary": "Sales Aggregate Report Issue "
-     },
-     {
       "key": "EDW-2560",
       "summary": "[Launch Loyalty] - Payment details pre-migration phase 2 orgs for Laryssa."
      },
@@ -409,6 +405,10 @@
      {
       "key": "EDW-2519",
       "summary": "[Launch Loyalty] - October Commission Report for Laryssa"
+     },
+     {
+      "key": "EDW-2502",
+      "summary": "Patients are receiving emails that their credit card on File has been charged wh"
      }
     ]
    },
@@ -491,12 +491,8 @@
    {
     "rule": "Still in Backlog inside the sprint",
     "why": "in the sprint but never pulled into the flow.",
-    "n": 6,
+    "n": 5,
     "items": [
-     {
-      "key": "EDW-2573",
-      "summary": "Remove pre-go-live org exclusion filter from WFP Patient / Patient Plan intraday"
-     },
      {
       "key": "EDW-2513",
       "summary": "Stories with states (I)"
@@ -681,61 +677,35 @@
   "end": "2026-11-24",
   "goal": "",
   "items": 50,
-  "items_done": 19,
-  "committed": 90,
-  "final": 107,
-  "completed": 31,
-  "scope_change": 19,
-  "vs_commitment": 34,
+  "items_done": 21,
+  "committed": 92,
+  "final": 109,
+  "completed": 35,
+  "scope_change": 18,
+  "vs_commitment": 38,
   "time_elapsed": 68,
   "spill": {
-   "open_items": 24,
+   "open_items": 23,
    "open_pts": 73.0,
    "out_items": 1,
    "out_pts": 3.0,
-   "done_pts": 31.0
+   "done_pts": 33.0
   },
   "recv": {
    "items": 14,
    "pts": 42,
-   "pct": 47,
+   "pct": 46,
    "from": "EDW-Sprint 25-26"
   },
   "spill_rate": null,
   "dist": {
-   "Backlog": 9,
+   "Closed": 19,
    "In Development": 11,
-   "Closed": 18,
    "Ready for Development": 4,
-   "Awaiting Review": 7
+   "Awaiting Review": 7,
+   "Backlog": 8
   },
   "burn": [
-   87.0,
-   78.0,
-   78.0,
-   80.0,
-   80.0,
-   80.0,
-   80.0,
-   87.0,
-   82.0,
-   77.0,
-   74.0
-  ],
-  "scope": [
-   87.0,
-   88.0,
-   88.0,
-   91.0,
-   91.0,
-   91.0,
-   91.0,
-   101.0,
-   105.0,
-   105.0,
-   105.0
-  ],
-  "ghost": [
    89.0,
    80.0,
    80.0,
@@ -746,7 +716,33 @@
    89.0,
    84.0,
    79.0,
-   76.0
+   72.0
+  ],
+  "scope": [
+   89.0,
+   90.0,
+   90.0,
+   93.0,
+   93.0,
+   93.0,
+   93.0,
+   103.0,
+   107.0,
+   107.0,
+   107.0
+  ],
+  "ghost": [
+   91.0,
+   82.0,
+   82.0,
+   84.0,
+   84.0,
+   84.0,
+   84.0,
+   91.0,
+   86.0,
+   81.0,
+   74.0
   ],
   "days": 15,
   "day": 11,
@@ -776,10 +772,10 @@
   "end": "2026-11-22",
   "day": 25,
   "days": 28,
-  "closed": 55,
-  "points": 130,
+  "closed": 56,
+  "points": 132,
   "unplanned": 12,
-  "unplanned_pct": 21.8,
+  "unplanned_pct": 21.4,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -808,17 +804,17 @@
    {
     "status": "In Development",
     "open": 12,
-    "med_age": 6.0,
-    "max_age": 23.8,
+    "med_age": 6.1,
+    "max_age": 23.9,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
     "worst_who": "unassigned",
     "over": 4,
     "clear_med": 1.9,
-    "clear_n": 185
+    "clear_n": 186
    },
    {
-    "status": "PR Merged",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -826,68 +822,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "In Progress",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 33.7,
-    "clear_n": 5
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
-   },
-   {
-    "status": "In Stage",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
-   },
-   {
-    "status": "WAITING REVIEW",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "PR Created",
@@ -902,6 +838,18 @@
     "clear_n": 4
    },
    {
+    "status": "WAITING REVIEW",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 9.9,
+    "clear_n": 3
+   },
+   {
     "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
@@ -914,7 +862,7 @@
     "clear_n": 2
    },
    {
-    "status": "New",
+    "status": "In Progress",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -922,13 +870,61 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 33.7,
+    "clear_n": 5
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
+   },
+   {
+    "status": "On Hold",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
+   },
+   {
+    "status": "In Stage",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 3
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 61
+   "Backlog": 60,
+   "Deferred": 2
   },
   "open_total": 32,
   "stale": 20,

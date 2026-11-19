@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 55,
+  "closed": 56,
   "discarded": 1,
-  "resolved": 56,
+  "resolved": 57,
   "unplanned": 12,
-  "unp_pct": 21.8,
+  "unp_pct": 21.4,
   "types": [
    [
     "Story",
-    32
+    33
    ],
    [
     "Bug",
@@ -86,9 +86,9 @@
   "day": 19,
   "days": 28,
   "status": "risk",
-  "headline": "55 items closed in the first 19 days, a pace of about 81 for the month against 59 last month. Unplanned work at 21.8% of everything closed.",
+  "headline": "56 items closed in the first 19 days, a pace of about 83 for the month against 59 last month. Unplanned work at 21.4% of everything closed.",
   "notes": [
-   "unplanned work at 21.8% of everything closed",
+   "unplanned work at 21.4% of everything closed",
    "cycle time median 3.0d and average 52.1d, both past the healthy band"
   ]
  },
@@ -145,36 +145,36 @@
    "Nov 9",
    "Nov 24",
    50,
-   19,
-   90,
-   107,
-   31,
-   19,
+   21,
+   92,
+   109,
+   35,
+   18,
    [
-    87.0,
-    78.0,
-    78.0,
+    89.0,
     80.0,
     80.0,
-    80.0,
-    80.0,
-    87.0,
     82.0,
-    77.0,
-    74.0
+    82.0,
+    82.0,
+    82.0,
+    89.0,
+    84.0,
+    79.0,
+    72.0
    ],
    [
-    87.0,
-    88.0,
-    88.0,
-    91.0,
-    91.0,
-    91.0,
-    91.0,
-    101.0,
-    105.0,
-    105.0,
-    105.0
+    89.0,
+    90.0,
+    90.0,
+    93.0,
+    93.0,
+    93.0,
+    93.0,
+    103.0,
+    107.0,
+    107.0,
+    107.0
    ]
   ]
  ],
@@ -201,11 +201,11 @@
   },
   "EDW-Sprint 26-26": {
    "done": [
-    19,
-    31
+    21,
+    33
    ],
    "open": [
-    24,
+    23,
     73
    ],
    "out": [
@@ -216,7 +216,7 @@
     14,
     42
    ],
-   "in_pct": 47,
+   "in_pct": 46,
    "in_from": "EDW-Sprint 25-26"
   }
  },
@@ -278,13 +278,13 @@
      "n": 22,
      "med": 6.45
     },
-    "In Development": {
-     "n": 26,
-     "med": 5.43
-    },
     "Closed": {
-     "n": 18,
-     "med": 11.5
+     "n": 20,
+     "med": 11.41
+    },
+    "In Development": {
+     "n": 27,
+     "med": 4.56
     },
     "Ready for Development": {
      "n": 15,
@@ -300,13 +300,13 @@
     }
    },
    "dist": {
-    "Backlog": 10,
+    "Closed": 19,
     "In Development": 11,
-    "Closed": 18,
     "Ready for Development": 4,
-    "Awaiting Review": 7
+    "Awaiting Review": 7,
+    "Backlog": 9
    },
-   "stalled": 32,
+   "stalled": 31,
    "worst": 7.8,
    "worstSt": "To Do",
    "items": 50
@@ -332,24 +332,24 @@
    61.0
   ],
   "EDW-Sprint 26-26": [
-   89.0,
-   80.0,
-   80.0,
+   91.0,
    82.0,
    82.0,
-   82.0,
-   82.0,
-   89.0,
    84.0,
-   79.0,
-   76.0
+   84.0,
+   84.0,
+   84.0,
+   91.0,
+   86.0,
+   81.0,
+   74.0
   ]
  },
  "CAP": {
   "9.10": [
-   55,
-   45,
-   130,
+   56,
+   46,
+   132,
    5
   ]
  },
@@ -359,8 +359,8 @@
    "avg": 52.14,
    "n": 46,
    "mx": 727.77,
-   "nodev": 9,
-   "base": 55
+   "nodev": 10,
+   "base": 56
   }
  },
  "complete": false,
