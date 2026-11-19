@@ -9,15 +9,15 @@
   "end": "2026-11-22",
   "prev": "",
   "prev_closed": 59,
-  "closed": 54,
+  "closed": 55,
   "discarded": 1,
-  "resolved": 55,
-  "unplanned": 11,
-  "unp_pct": 20.4,
+  "resolved": 56,
+  "unplanned": 12,
+  "unp_pct": 21.8,
   "types": [
    [
     "Story",
-    31
+    32
    ],
    [
     "Bug",
@@ -36,6 +36,10 @@
    [
     "EDW-2567",
     "[Compliance] - Investigate syncing of monthly office maximum"
+   ],
+   [
+    "EDW-2560",
+    "[Launch Loyalty] - Payment details pre-migration phase 2 orgs for Laryssa."
    ],
    [
     "EDW-2540",
@@ -82,10 +86,10 @@
   "day": 19,
   "days": 28,
   "status": "risk",
-  "headline": "54 items closed in the first 19 days, a pace of about 80 for the month against 59 last month. Unplanned work at 20.4% of everything closed.",
+  "headline": "55 items closed in the first 19 days, a pace of about 81 for the month against 59 last month. Unplanned work at 21.8% of everything closed.",
   "notes": [
-   "unplanned work at 20.4% of everything closed",
-   "cycle time median 3.1d and average 53.3d, both past the healthy band"
+   "unplanned work at 21.8% of everything closed",
+   "cycle time median 3.0d and average 52.1d, both past the healthy band"
   ]
  },
  "SPRINTS": [
@@ -141,7 +145,7 @@
    "Nov 9",
    "Nov 24",
    48,
-   18,
+   19,
    88,
    105,
    31,
@@ -197,11 +201,11 @@
   },
   "EDW-Sprint 26-26": {
    "done": [
-    18,
+    19,
     31
    ],
    "open": [
-    23,
+    22,
     71
    ],
    "out": [
@@ -275,8 +279,8 @@
      "med": 6.59
     },
     "Closed": {
-     "n": 17,
-     "med": 11.58
+     "n": 18,
+     "med": 11.5
     },
     "Backlog": {
      "n": 20,
@@ -296,13 +300,13 @@
     }
    },
    "dist": {
-    "Closed": 17,
-    "In Development": 12,
+    "Closed": 18,
+    "In Development": 11,
     "Ready for Development": 4,
     "Awaiting Review": 6,
     "Backlog": 9
    },
-   "stalled": 31,
+   "stalled": 30,
    "worst": 7.8,
    "worstSt": "To Do",
    "items": 48
@@ -343,7 +347,7 @@
  },
  "CAP": {
   "9.10": [
-   54,
+   55,
    45,
    130,
    5
@@ -351,12 +355,12 @@
  },
  "CYC": {
   "9.10": {
-   "med": 3.06,
-   "avg": 53.26,
-   "n": 45,
+   "med": 2.98,
+   "avg": 52.14,
+   "n": 46,
    "mx": 727.77,
    "nodev": 9,
-   "base": 54
+   "base": 55
   }
  },
  "complete": false,
