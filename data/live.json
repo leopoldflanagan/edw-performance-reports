@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T20:00:27Z",
+ "generated": "2026-11-19T20:11:53Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -716,6 +716,7 @@
    89.0,
    84.0,
    79.0,
+   72.0,
    72.0
   ],
   "scope": [
@@ -727,6 +728,7 @@
    93.0,
    93.0,
    103.0,
+   107.0,
    107.0,
    107.0,
    107.0
@@ -742,6 +744,7 @@
    91.0,
    86.0,
    81.0,
+   74.0,
    74.0
   ],
   "days": 15,
@@ -814,7 +817,7 @@
     "clear_n": 186
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "PR Created",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -822,7 +825,19 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
+    "clear_med": 0.0,
+    "clear_n": 4
+   },
+   {
+    "status": "PR Merged",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
     "clear_n": 3
    },
    {
@@ -838,7 +853,7 @@
     "clear_n": 109
    },
    {
-    "status": "New",
+    "status": "Ready Prod",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -846,8 +861,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 344.9,
+    "clear_n": 2
    },
    {
     "status": "In Stage",
@@ -862,7 +877,7 @@
     "clear_n": 3
    },
    {
-    "status": "Ready Prod",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -870,11 +885,11 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
-    "status": "PR Created",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -882,8 +897,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 9.9,
+    "clear_n": 3
    },
    {
     "status": "In Progress",
@@ -896,18 +911,6 @@
     "over": 0,
     "clear_med": 33.7,
     "clear_n": 5
-   },
-   {
-    "status": "PR Merged",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
    },
    {
     "status": "On Hold",
