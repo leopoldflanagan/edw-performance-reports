@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T02:45:21Z",
+ "generated": "2026-11-19T03:00:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -357,12 +357,12 @@
   "day": 11,
   "days": 15,
   "n": 21,
-  "done_now": 28,
+  "done_now": 31,
   "committed": 88,
-  "lo": 35,
-  "mid": 39,
-  "hi": 46,
-  "pct": 44,
+  "lo": 39,
+  "mid": 44,
+  "hi": 51,
+  "pct": 50,
   "verdict": "well short of the commitment",
   "share_mid": 0.709
  },
@@ -710,19 +710,19 @@
   "end": "2026-11-24",
   "goal": "",
   "items": 48,
-  "items_done": 17,
+  "items_done": 18,
   "committed": 88,
   "final": 105,
-  "completed": 28,
+  "completed": 31,
   "scope_change": 19,
-  "vs_commitment": 32,
+  "vs_commitment": 35,
   "time_elapsed": 64,
   "spill": {
-   "open_items": 24,
-   "open_pts": 74.0,
+   "open_items": 23,
+   "open_pts": 71.0,
    "out_items": 1,
    "out_pts": 3.0,
-   "done_pts": 28.0
+   "done_pts": 31.0
   },
   "recv": {
    "items": 14,
@@ -732,8 +732,8 @@
   },
   "spill_rate": null,
   "dist": {
-   "Closed": 16,
-   "In Development": 13,
+   "Closed": 17,
+   "In Development": 12,
    "Ready for Development": 4,
    "Awaiting Review": 6,
    "Backlog": 8
@@ -749,7 +749,7 @@
    85.0,
    80.0,
    75.0,
-   75.0
+   72.0
   ],
   "scope": [
    85.0,
@@ -775,7 +775,7 @@
    87.0,
    82.0,
    77.0,
-   77.0
+   74.0
   ],
   "days": 15,
   "day": 11,
@@ -805,10 +805,10 @@
   "end": "2026-11-22",
   "day": 25,
   "days": 28,
-  "closed": 53,
-  "points": 127,
+  "closed": 54,
+  "points": 130,
   "unplanned": 11,
-  "unplanned_pct": 20.8,
+  "unplanned_pct": 20.4,
   "access_requests": 0,
   "people_active": 5,
   "sprints": [
@@ -836,7 +836,7 @@
    },
    {
     "status": "In Development",
-    "open": 13,
+    "open": 12,
     "med_age": 5.4,
     "max_age": 23.2,
     "worst_key": "EDW-2492",
@@ -844,10 +844,10 @@
     "worst_who": "unassigned",
     "over": 4,
     "clear_med": 1.9,
-    "clear_n": 183
+    "clear_n": 184
    },
    {
-    "status": "PR Merged",
+    "status": "WAITING REVIEW",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -855,7 +855,7 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
+    "clear_med": 9.9,
     "clear_n": 3
    },
    {
@@ -871,7 +871,7 @@
     "clear_n": 3
    },
    {
-    "status": "Awaiting Review",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -879,32 +879,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
-   },
-   {
-    "status": "Ready Prod",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 344.9,
-    "clear_n": 2
-   },
-   {
-    "status": "New",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "In Progress",
@@ -919,6 +895,18 @@
     "clear_n": 5
    },
    {
+    "status": "Ready Prod",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 344.9,
+    "clear_n": 2
+   },
+   {
     "status": "PR Created",
     "open": 0,
     "med_age": 0,
@@ -931,7 +919,7 @@
     "clear_n": 4
    },
    {
-    "status": "WAITING REVIEW",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -939,8 +927,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 9.9,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "On Hold",
@@ -953,13 +941,25 @@
     "over": 0,
     "clear_med": 164.0,
     "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
    }
   ],
   "parked": {
    "Backlog": 59,
    "Deferred": 2
   },
-  "open_total": 33,
+  "open_total": 32,
   "stale": 20,
   "worst": "Ready for Development"
  }
