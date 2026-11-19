@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-19T17:09:31Z",
+ "generated": "2026-11-19T17:15:25Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -807,7 +807,7 @@
    },
    {
     "status": "In Development",
-    "open": 11,
+    "open": 12,
     "med_age": 6.0,
     "max_age": 23.8,
     "worst_key": "EDW-2492",
@@ -816,18 +816,6 @@
     "over": 4,
     "clear_med": 1.9,
     "clear_n": 185
-   },
-   {
-    "status": "Awaiting Review",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 109
    },
    {
     "status": "In Progress",
@@ -842,7 +830,7 @@
     "clear_n": 5
    },
    {
-    "status": "PR Created",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -850,8 +838,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 4
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Ready Prod",
@@ -864,18 +852,6 @@
     "over": 0,
     "clear_med": 344.9,
     "clear_n": 2
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    },
    {
     "status": "PR Merged",
@@ -902,7 +878,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -910,8 +886,20 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 164.0,
+    "clear_n": 16
+   },
+   {
+    "status": "Awaiting Review",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 1.0,
+    "clear_n": 109
    },
    {
     "status": "In Stage",
@@ -924,13 +912,25 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
+   },
+   {
+    "status": "PR Created",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 0.0,
+    "clear_n": 4
    }
   ],
   "parked": {
-   "Deferred": 2,
-   "Backlog": 62
+   "Backlog": 61,
+   "Deferred": 2
   },
-  "open_total": 31,
+  "open_total": 32,
   "stale": 20,
   "worst": "Ready for Development"
  }
