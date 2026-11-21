@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T10:00:25Z",
+ "generated": "2026-11-21T10:09:46Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -840,7 +840,7 @@
     "clear_n": 3
    },
    {
-    "status": "New",
+    "status": "PR Merged",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -848,8 +848,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 0.0,
+    "clear_n": 3
    },
    {
     "status": "In Stage",
@@ -900,7 +900,7 @@
     "clear_n": 5
    },
    {
-    "status": "PR Merged",
+    "status": "New",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -908,8 +908,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 0.0,
-    "clear_n": 3
+    "clear_med": 40.1,
+    "clear_n": 61
    },
    {
     "status": "Awaiting Review",
