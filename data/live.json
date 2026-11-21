@@ -1,5 +1,5 @@
 {
- "generated": "2026-11-21T22:15:21Z",
+ "generated": "2026-11-21T22:30:22Z",
  "team": "EDW",
  "board": 11,
  "kind": "active",
@@ -810,7 +810,7 @@
     "status": "In Development",
     "open": 9,
     "med_age": 8.3,
-    "max_age": 26.0,
+    "max_age": 26.1,
     "worst_key": "EDW-2492",
     "worst_sum": "PDS Daily files delimiting change",
     "worst_who": "unassigned",
@@ -843,7 +843,7 @@
     "clear_n": 4
    },
    {
-    "status": "New",
+    "status": "Awaiting Review",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -851,8 +851,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 40.1,
-    "clear_n": 61
+    "clear_med": 1.0,
+    "clear_n": 106
    },
    {
     "status": "WAITING REVIEW",
@@ -879,6 +879,18 @@
     "clear_n": 2
    },
    {
+    "status": "New",
+    "open": 0,
+    "med_age": 0,
+    "max_age": 0,
+    "worst_key": "",
+    "worst_sum": "",
+    "worst_who": "",
+    "over": 0,
+    "clear_med": 40.1,
+    "clear_n": 61
+   },
+   {
     "status": "In Progress",
     "open": 0,
     "med_age": 0,
@@ -891,7 +903,7 @@
     "clear_n": 5
    },
    {
-    "status": "Awaiting Review",
+    "status": "On Hold",
     "open": 0,
     "med_age": 0,
     "max_age": 0,
@@ -899,8 +911,8 @@
     "worst_sum": "",
     "worst_who": "",
     "over": 0,
-    "clear_med": 1.0,
-    "clear_n": 106
+    "clear_med": 164.0,
+    "clear_n": 16
    },
    {
     "status": "In Stage",
@@ -913,23 +925,11 @@
     "over": 0,
     "clear_med": 0.0,
     "clear_n": 3
-   },
-   {
-    "status": "On Hold",
-    "open": 0,
-    "med_age": 0,
-    "max_age": 0,
-    "worst_key": "",
-    "worst_sum": "",
-    "worst_who": "",
-    "over": 0,
-    "clear_med": 164.0,
-    "clear_n": 16
    }
   ],
   "parked": {
-   "Backlog": 60,
-   "Deferred": 2
+   "Deferred": 2,
+   "Backlog": 60
   },
   "open_total": 30,
   "stale": 22,
